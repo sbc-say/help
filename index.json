@@ -140,15 +140,15 @@
 	"content": " Hugo docDock theme [Hugo-theme-docdock\n\n](https://github.com/vjeantet/hugo-theme-docdock) is a theme for Hugo, a fast and modern static website engine written in Go. Hugo is often used for blogs, this theme is fully designed for documentation.\nThis theme is a partial porting of the [Learn theme of matcornic\n\n](https://github.com/matcornic/hugo-theme-learn). and its default style \u0026ldquo;flex\u0026rdquo; comes from facette.io\u0026rsquo;s documentation.\ndocDock works with a \"page tree structure\" to organize content : All contents are pages, which belong to other pages. [read more about this](/help/content-organisation/)  \nMain features  Automatic Search Unlimited menu levels Generate RevealJS presentation from markdown (embededed or fullscreen page) Automatic next/prev buttons to navigate through menu entries Image resizing, shadow\u0026hellip; Attachments files List child pages Excerpt ! Include segment of content from one page in another Mermaid diagram (flowchart, sequence, gantt) Icons, Buttons, Alerts, Panels, Tip/Note/Info/Warning boxes, Expand customizable look and feel, theme style, theme variants  Layout styles This theme comes with two distinctive layout styles: Flex and Original. The main documentation is built with Flex, though available also in Original style\nStyle \u0026ldquo;Flex\u0026rdquo; (default) Style \u0026ldquo;Original\u0026rdquo; Contribute to this documentation Feel free to update this content, just click the Edit this page link displayed on top right of each page, and pullrequest it \u0026lt;div class=\u0026ldquo;alert alert-info\u0026rdquo;\nrole=\u0026ldquo;alert\u0026rdquo;\u0026gt;Your modification will be deployed automatically when merged !\nDocumentation website This current documentation has been statically generated with Hugo with a simple command : hugo -t docdock \u0026ndash; source code is [available here at GitHub\n\n](https://github.com/vjeantet/hugo-theme-docDock)\nAutomated deployments Automatically published and hosted thanks to [Netlify](https://www.netlify.com/). Read more about [Automated HUGO deployments with Netlify](https://www.netlify.com/blog/2015/07/30/hosting-hugo-on-netlifyinsanely-fast-deploys/)  Netlify builds, deploys, and hosts frontends.  "
 },
 {
-	"uri": "https://sbcloud.github.io/help/faq/",
-	"title": "FAQ",
+	"uri": "https://sbcloud.github.io/help/%E6%9C%80%E5%88%9D%E3%81%AE%E6%89%8B%E5%BC%95%E3%81%8D/",
+	"title": "最初の手引き",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://sbcloud.github.io/help/%E6%9C%80%E5%88%9D%E3%81%AE%E6%89%8B%E5%BC%95%E3%81%8D/",
-	"title": "最初の手引き",
+	"uri": "https://sbcloud.github.io/help/faq/",
+	"title": "FAQ",
 	"tags": [],
 	"description": "",
 	"content": ""
