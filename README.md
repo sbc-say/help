@@ -1,2 +1,0 @@
-# help
-SBC Technical Reference
