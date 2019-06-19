@@ -69,27 +69,27 @@
   
   <url>
     <loc>https://sbcloud.github.io/help/faq/ecs/</loc>
-    <lastmod>2019-06-04T15:31:42+09:00</lastmod>
+    <lastmod>2019-04-04T15:31:42+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://sbcloud.github.io/help/faq/rds/</loc>
-    <lastmod>2019-06-04T15:32:14+09:00</lastmod>
+    <lastmod>2019-04-04T15:32:14+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://sbcloud.github.io/help/faq/oss/</loc>
-    <lastmod>2019-06-04T15:33:15+09:00</lastmod>
+    <lastmod>2019-04-04T15:33:15+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://sbcloud.github.io/help/faq/slb/</loc>
-    <lastmod>2019-06-04T15:32:45+09:00</lastmod>
+    <lastmod>2019-04-04T15:32:45+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://sbcloud.github.io/help/faq/management/</loc>
-    <lastmod>2019-06-03T15:31:09+09:00</lastmod>
+    <lastmod>2019-04-03T15:31:09+09:00</lastmod>
   </url>
   
   <url>
@@ -100,12 +100,6 @@
   <url>
     <loc>https://sbcloud.github.io/help/%E6%9C%80%E5%88%9D%E3%81%AE%E6%89%8B%E5%BC%95%E3%81%8D/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/faq/</loc>
-    <lastmod>2019-06-04T15:33:15+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -128,6 +122,12 @@
   <url>
     <loc>https://sbcloud.github.io/help/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E5%88%A5%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/</loc>
     <lastmod>2019-05-13T16:20:40+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/faq/</loc>
+    <lastmod>2019-04-04T15:33:15+09:00</lastmod>
     <priority>0</priority>
   </url>
   
