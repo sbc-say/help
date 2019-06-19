@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SB Cloud Technical References</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-06-19T08:10:54 UTC">
+<title>OSS :: SB Cloud Technical References</title>
+<link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
+<link href="/help/css/font-awesome.min.css" rel="stylesheet">
+<link href="/help/css/nucleus.css" rel="stylesheet">
+<link href="/help/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/help/css/bootstrap.min.css">
+<script src="/help/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/sbcloud.github.io\/help\/";
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79101-13', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    
+  </head>
+  <body data-url="/help/faq/oss/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <a class="baselink" href="https://sbcloud.github.io/help/">SB Cloud Technical References</a>
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/vjeantet/hugo-theme-docdock"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://github.com/vjeantet/hugo-theme-docdock/archive/master.zip"  rel="noopener">
+                  <i class='fa fa-cloud-download'></i> <label>Download</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://gohugo.io/"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>Hugo Documentation</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="/help/credits"  rel="noopener">
+                  <i class='fa fa-bullhorn'></i> <label>Credits</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/help/" class="dd-item">
+          <a href="/help/">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="/help/getting-start/" class="dd-item alwaysopen haschildren
+        ">
+      <div>
+      <a href="/help/getting-start/">Getting started</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-start/installation/" class="dd-item">
+        <div>
+          <a href="/help/getting-start/installation/">
+            Installation
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-start/configuration/" class="dd-item">
+        <div>
+          <a href="/help/getting-start/configuration/">
+            Configuration
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/create-page/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/create-page/"><i class='fa fa-edit' ></i> Create Page</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/create-page/homepage/" class="dd-item">
+        <div>
+          <a href="/help/create-page/homepage/">
+            Home page
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/create-page/page-images/" class="dd-item">
+        <div>
+          <a href="/help/create-page/page-images/">
+            About images
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/create-page/page-slide/" class="dd-item">
+        <div>
+          <a href="/help/create-page/page-slide/">
+            Present a Slide
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/content-organisation/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/content-organisation/">Content Organisation</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/content-organisation/logo/" class="dd-item">
+        <div>
+          <a href="/help/content-organisation/logo/">
+            Logo placeholder
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/content-organisation/extramenu/" class="dd-item">
+        <div>
+          <a href="/help/content-organisation/extramenu/">
+            Extra menu entries
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/content-organisation/customize-style/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/content-organisation/customize-style/">Customize website look and feel</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/content-organisation/customize-style/disable/" class="dd-item">
+        <div>
+          <a href="/help/content-organisation/customize-style/disable/">
+            Disable features
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/content-organisation/customize-style/themestyle/" class="dd-item">
+        <div>
+          <a href="/help/content-organisation/customize-style/themestyle/">
+            Theme styles
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/content-organisation/customize-style/theme-variants/" class="dd-item">
+        <div>
+          <a href="/help/content-organisation/customize-style/theme-variants/">
+            Theme variants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/shortcodes/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/shortcodes/">Shortcodes</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/shortcodes/alert/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/alert/">
+            alert
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/shortcodes/attachments/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/attachments/">
+            attachments
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/shortcodes/button/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/button/">
+            button
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/shortcodes/children/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/shortcodes/children/">children</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/shortcodes/children/children-1/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/shortcodes/children/children-1/">page 1</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/shortcodes/children/children-1/children-1-1/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/shortcodes/children/children-1/children-1-1/">page 1-1</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/shortcodes/children/children-1/children-1-1/children-1-1-1/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/shortcodes/children/children-1/children-1-1/children-1-1-1/">page 1-1-1</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/shortcodes/children/children-1/children-1-1/children-1-1-1/children-1-1-1-1/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/shortcodes/children/children-1/children-1-1/children-1-1-1/children-1-1-1-1/">page 1-1-1-1</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/shortcodes/children/children-1/children-1-1/children-1-1-1/children-1-1-1-1/children-1-1-1-1-1/" class="dd-item
+        ">
+      <div>
+      <a href="/help/shortcodes/children/children-1/children-1-1/children-1-1-1/children-1-1-1-1/children-1-1-1-1-1/">page 1-1-1-1-1</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/shortcodes/children/children-2/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/shortcodes/children/children-2/">page 2</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/shortcodes/children/children-2/test3/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/children/children-2/test3/">
+            page test 3
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/shortcodes/children/children-3/" class="dd-item
+        ">
+      <div>
+      <a href="/help/shortcodes/children/children-3/">page 3</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+      <li data-nav-id="/help/shortcodes/children/test/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/children/test/">
+            page test
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/help/shortcodes/excerpt/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/excerpt/">
+            excerpt
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/shortcodes/excerpt-include/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/excerpt-include/">
+            excerpt-include
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/shortcodes/expand/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/expand/">
+            expand
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/shortcodes/icon/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/icon/">
+            icon
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/shortcodes/mermaid/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/mermaid/">
+            mermaid
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/shortcodes/notice/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/notice/">
+            notice
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/shortcodes/panel/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/panel/">
+            panel
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/shortcodes/revealjs/" class="dd-item">
+        <div>
+          <a href="/help/shortcodes/revealjs/">
+            revealjs
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/search/" class="dd-item
+        ">
+      <div>
+      <a href="/help/search/">About the Search Engine</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/help/faq/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/faq/">FAQ</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/faq/ecs/" class="dd-item">
+        <div>
+          <a href="/help/faq/ecs/">
+            ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/rds/" class="dd-item">
+        <div>
+          <a href="/help/faq/rds/">
+            RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/oss/" class="dd-item active">
+        <div>
+          <a href="/help/faq/oss/">
+            OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
+        <div>
+          <a href="/help/faq/slb/">
+            SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/management/" class="dd-item">
+        <div>
+          <a href="/help/faq/management/">
+            管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/%E6%9C%80%E5%88%9D%E3%81%AE%E6%89%8B%E5%BC%95%E3%81%8D/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/%E6%9C%80%E5%88%9D%E3%81%AE%E6%89%8B%E5%BC%95%E3%81%8D/">最初の手引き</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/%E6%9C%80%E5%88%9D%E3%81%AE%E6%89%8B%E5%BC%95%E3%81%8D/create-virtual-servers/" class="dd-item">
+        <div>
+          <a href="/help/%E6%9C%80%E5%88%9D%E3%81%AE%E6%89%8B%E5%BC%95%E3%81%8D/create-virtual-servers/">
+            第1章 ECSインスタンスの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/">AlibabaCloudの活用</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/simple_compare/" class="dd-item">
+        <div>
+          <a href="/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/simple_compare/">
+            Alibaba Cloudサービスの一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/how_to_use_terraform/" class="dd-item">
+        <div>
+          <a href="/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/how_to_use_terraform/">
+            第3章 Terraform の基本
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/authority_management/" class="dd-item">
+        <div>
+          <a href="/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/authority_management/">
+            第5章 権限管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E5%88%A5%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E5%88%A5%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/">ユースケース別アーキテクチャ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E5%88%A5%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/k8s/" class="dd-item">
+        <div>
+          <a href="/help/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E5%88%A5%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/k8s/">
+            K8s
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+
+<a class="github-button" href="https://github.com/vjeantet/hugo-theme-docdock/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download vjeantet/hugo-theme-docdock on GitHub">Download</a>
+
+
+<a class="github-button" href="https://github.com/vjeantet/hugo-theme-docdock" data-icon="octicon-star" data-show-count="false" aria-label="Star vjeantet/hugo-theme-docdock on GitHub">Star</a>
+
+
+<a class="github-button" href="https://github.com/vjeantet/hugo-theme-docdock/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork vjeantet/hugo-theme-docdock on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/help/getting-start/" >
+   Getting started</option> 
+      <option value="/help/getting-start/installation/" >- Installation</option>
+      <option value="/help/getting-start/configuration/" >- Configuration</option>
+  
+    <option value="/help/create-page/" >
+   Create Page</option>
+    <option value="/help/content-organisation/" >
+   Content Organisation</option>
+    <option value="/help/shortcodes/" >
+   Shortcodes</option>
+    <option value="/help/search/" >
+   About the Search Engine</option>
+    <option value="/help/faq/" >
+   FAQ</option> 
+      <option value="/help/faq/ecs/" >- ECS</option>
+      <option value="/help/faq/rds/" >- RDS</option>
+      <option value="/help/faq/oss/"  selected>- OSS</option>
+      <option value="/help/faq/slb/" >- SLB</option>
+      <option value="/help/faq/management/" >- 管理</option>
+  
+    <option value="/help/%E6%9C%80%E5%88%9D%E3%81%AE%E6%89%8B%E5%BC%95%E3%81%8D/" >
+   最初の手引き</option>
+    <option value="/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/" >
+   AlibabaCloudの活用</option>
+    <option value="/help/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E5%88%A5%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/" >
+   ユースケース別アーキテクチャ</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/help/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/help/js/auto-complete.js"></script>
+        <link href="/help/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/sbcloud.github.io\/help\/";
+          
+        </script>
+        <script type="text/javascript" src="/help/js/search.js"></script>
+      </div>
+    
+
+    <h1>OSS</h1>
+    
+    
+    
+    
+
+<h2 id="一般仕様">一般仕様</h2>
+
+<h4 id="q-中国東部1のossを利用しなくても課金される事象について">Q. 中国東部1のOSSを利用しなくても課金される事象について</h4>
+
+<p>OSSコンソールでのパケット操作は実質上にAPIで実行されています。<code>GetBucket</code>などのようなパケットを特定しないに操作以外、共通な属性を取得するようなリクエストを実行された場合、デフォルトで中国東部１リージョンのエンドポイントが利用される仕様となります。該当APIリクエストにより発生した料金は中国東部1のパケットに記録されますので、中国東部1のOSSを利用しなくても課金される事象の原因となります。</p>
+
+<h4 id="q-標準-ia-アーカイブの違いについて">Q. 標準、IA、アーカイブの違いについて</h4>
+
+<p>標準ストレージと比較する場合、低頻度アクセスストレージに保存したファイルを30日以内、アーカイブストレージは60日以内に削除した場合、料金がかかります。
+そして、アーカイブストレージからファイルを取り出す場合、解凍時間が必要となります。</p>
+
+<p>標準ストレージ
+高パフォーマンス、高信頼性、高可用性を実現する OSS インスタンス
+特徴：高スループット、ホットファイル、頻繁なアクセスを特徴とするサービスシナリオに適用可能
+信頼性: 99.999999999%
+最小保存期間：なし
+適用シナリオ: モバイルアプリケーション、大規模な Web サイト、画像共有、アクセス頻度の高いオーディオとビデオ</p>
+
+<p>低頻度アクセスストレージ
+比較的低いストレージコストとリアルタイムのアクセスを特徴とする OSS インスタンス
+特徴： リアルタイムの低頻度データアクセスをサポートするサービスシナリオに適用可能
+信頼性: 99.999999999%
+最小保存期間：30 日
+適用シナリオ： アプリケーションデータとエンタープライズデータのバックアップ、モニタリングデータ、オンラインストレージアプリケーション</p>
+
+<p>アーカイブストレージ
+低単価で長期のアーカイブデータストレージをサポートする OSS インスタンス
+特徴: データ復元の待機時間が発生し、データ保管期間に関する要件があるサービスシナリオに適用可能
+信頼性: 99.999999999%
+最小保存期間：60 日
+適用シナリオ: 長期のアーカイブデータストレージ、医療用画像、ビデオ映像</p>
+
+<h4 id="q-クロスリージョンレプリケーションの利用制限について">Q. クロスリージョンレプリケーションの利用制限について</h4>
+
+<p>クロスリージョンレプリケーションは対応していますが、中国本土リージョン間、またはアメリカ東部、西部間のみとなります。その以外のリージョンでは、現状中間サーバーを経由する必要があります。</p>
+
+<p>クロスリージョンレプリケーションは下記ドキュメントをご参照ください。
+<a href="https://jp.alibabacloud.com/help/doc-detail/31864.htm">https://jp.alibabacloud.com/help/doc-detail/31864.htm</a></p>
+
+<h4 id="q-パケット間のファイル複製方法について">Q. パケット間のファイル複製方法について</h4>
+
+<p>下記の前提条件であれば、OSSBrowserを利用してコピー/移動することが可能です。
+・同じリージョンの別バケット間のコピー/移動
+・標準パケットからアーカイブパケットへのコピー/移動
+※アーカイブパケットから標準パケットへのコピー/移動も可能ですが、事前にアーカイブファイルを解凍する必要があります。 一括解凍機能がないため、多数ファイルの場合、手間かかります。</p>
+
+<p>手順は下記となります。
+・ソースパケットのルートディレクトリにて全ファイルを選択し、「コピー」または「移動」をクリック
+・ターゲットのアーカイブパケットのルートディレクトリにて、「ペースト」をクリック</p>
+
+<p>OSSBrowserのダウンロードは下記ドキュメントをご参考お願いします。 <a href="https://jp.alibabacloud.com/help/doc-detail/61872.html">https://jp.alibabacloud.com/help/doc-detail/61872.html</a></p>
+
+<h4 id="q-5g以上のファイルのアップロード方法について">Q. 5G以上のファイルのアップロード方法について</h4>
+
+<p>コンソールからアップロード可能のファイルサイズは5GBまでなります。5GB以上のファイルをアップロードする場合、APIまたはSDKを利用する必要があります。</p>
+
+<p>アップロード方法は下記ドキュメントをご参照ください。
+<a href="https://jp.alibabacloud.com/help/doc-detail/31850.htm">https://jp.alibabacloud.com/help/doc-detail/31850.htm</a></p>
+
+<h4 id="q-同名ファイルを入れ替え後の即時反映について">Q. 同名ファイルを入れ替え後の即時反映について</h4>
+
+<p>OSS上に同名ファイルを入れ替え後に即時全ノードに反映することを保証していません。一定期間内に入れ替え前のファイルが取り出させる可能性があります。
+リアルタイム反映を求める場合、別ファイル名での利用が必要です。</p>
+
+<h4 id="q-プライベート-パブリックエンドポイントの違いについて">Q. プライベート/パブリックエンドポイントの違いについて</h4>
+
+<p>プライベートエンドポイントは同じリージョン内のインスタンスのみアクセス可能ですが、セキュリティ性が高く、トラフィック料金がかかりません。
+パブリックエンドポイントはインターネットからアクセス可能です。</p>
+
+<h4 id="q-ossのアクセスログの取得方法について">Q. OSSのアクセスログの取得方法について</h4>
+
+<p>OSSのアクセスログはLogServiceに転送することが可能です。</p>
+
+<p>転送方法は下記ドキュメントをご参照ください。
+<a href="https://jp.alibabacloud.com/help/doc-detail/29002.htm">https://jp.alibabacloud.com/help/doc-detail/29002.htm</a>
+OSSのアクセスログの取得方法は下記ドキュメントをご参照ください。
+<a href="https://jp.alibabacloud.com/help/doc-detail/31900.htm">https://jp.alibabacloud.com/help/doc-detail/31900.htm</a></p>
+
+<h4 id="q-ossのイメージ-ビデオ処理の利用方法について">Q. OSSのイメージ/ビデオ処理の利用方法について</h4>
+
+<p>OSSイメージ処理機能は下記ドキュメントをご参照ください。</p>
+
+<p>OSSイメージ処理機能
+<a href="https://jp.alibabacloud.com/help/doc-detail/31873.htm">https://jp.alibabacloud.com/help/doc-detail/31873.htm</a></p>
+
+<p>OSSイメージ処理手順
+<a href="https://jp.alibabacloud.com/help/doc-detail/44686.htm">https://jp.alibabacloud.com/help/doc-detail/44686.htm</a></p>
+
+<p>上記の機能により、お客様は好きなイメージ処理(リサイズなど)内容を 「スタイル」として保存することができます。 その後、保存した「スタイル」を適応することで、任意の画像にイメージ処理を実施することができます。 イメージ処理を適応した画像をOSSに保存したい場合は、適応画像のURLより別途、ローカルに保存いただき、 再度、OSSにアップロードいただく必要がございます。</p>
+
+<p>また、OSSでは動画のフレームキャプチャー機能も実装されております。 動画から任意のフレームを取得して、画像のリサイズ及び保存形式を設定することができます。 ただし、上記で作成した画像は自動で保存されないため、手動でローカル上に保存する必要があります。 また、上記機能で動画ファイルのサムネイル自動生成はできず、 以下の例のように画像URLに対して操作を指定する必要がございます。</p>
+
+<p>OSSに保存されている画像、動画にイメージ処理を実施した場合、 処理を適応した画像URLにアクセスすることで処理結果画像を取得できます。 その際に、OSSのファイルURLの有効期間を設定する必要がありますのでご認識いただければと存じます。 画像にイメージ処理を適応した画像URLを利用する場合、 この有効期間がサムネイルの利用時間となります。</p>
+
+<p>URLの有効期間の詳細につきましては、下記ドキュメントをご参照ください。
+<a href="https://jp.alibabacloud.com/help/doc-detail/31912.htm">https://jp.alibabacloud.com/help/doc-detail/31912.htm</a></p>
+
+<p>例： 例えば、下記の条件で動画から画像を取得します。 　対象のBucketドメイン名：a-image-demo.oss-cn-qingdao.aliyuncs.com 　対象Bucketに保存された動画ファイル：demo.mp4</p>
+
+<p>①動画の7秒目の映像を画像として取得します。 ②取得した画像のサイズを「800×600」にします。 ③エクスポートした画像の形式をjpgにします。 ④画像取得モードをfastにします。 　fastは7秒目の直前のフレームを取得します。 　<a href="http://a-image-demo.oss-cn-qingdao.aliyuncs.com/demo.mp4?x-oss-process=video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast">http://a-image-demo.oss-cn-qingdao.aliyuncs.com/demo.mp4?x-oss-process=video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast</a> 　※こちらは、サンプルです。</p>
+
+<p>上記、利用した引数について</p>
+
+<p>video/snapshotは操作内容と操作名で、 動画処理の場合は、上記リンクのように動画ファイル名の後に?x-oss-process=video/snapshotと記載いただき、 パラメータ指定を行なっていいただく必要がございます。</p>
+
+<p>t スクリーンショット時間(単位ms) w 画像の横サイズ（Pixel単位） h 画像の高サイズ（Pixel単位） m 画像の取得モード（fast） f 画像のフォーマット（jpg,png）</p>
+
+<h2 id="製品連携">製品連携</h2>
+
+<h4 id="q-ossをディスクとしてマウントする方法について">Q. OSSをディスクとしてマウントする方法について</h4>
+
+<p>OSSFSツールを利用し、LinuxシステムでAlibaba Cloud OSSバケットをローカルファイルにマウントできます。
+ただし、現在「Linux システム」のみ対応可能です。「Windows Server」には対応していません。また、該当仮想ディスクの性能は低く、複数インスタンスの同時マウントに利用できませんので、NASの利用を推奨します。</p>
+
+<p>OSSFSの利用方法は下記ドキュメントをご参照ください。
+<a href="https://jp.alibabacloud.com/help/doc-detail/32196.htm">https://jp.alibabacloud.com/help/doc-detail/32196.htm</a></p>
+
+<h4 id="q-functioncomputeのトリガーとして利用方法について">Q. FunctionComputeのトリガーとして利用方法について</h4>
+
+<p>OSSのイベントをFcunctionComputeのトリガーに設定することができます。</p>
+
+<p>OSSトリガーの利用方法は下記のドキュメントをご参照ください。
+<a href="https://jp.alibabacloud.com/help/doc-detail/74761.htm">https://jp.alibabacloud.com/help/doc-detail/74761.htm</a>
+<a href="https://jp.alibabacloud.com/help/doc-detail/74762.htm">https://jp.alibabacloud.com/help/doc-detail/74762.htm</a>
+<a href="https://jp.alibabacloud.com/help/doc-detail/74763.htm">https://jp.alibabacloud.com/help/doc-detail/74763.htm</a>
+<a href="https://jp.alibabacloud.com/help/doc-detail/74764.htm">https://jp.alibabacloud.com/help/doc-detail/74764.htm</a>
+<a href="https://jp.alibabacloud.com/help/doc-detail/74765.htm">https://jp.alibabacloud.com/help/doc-detail/74765.htm</a></p>
+
+<h4 id="q-cdnでoss静的サイトの公開方法について">Q. CDNでOSS静的サイトの公開方法について</h4>
+
+<p>CDNのオリジンサイトをOSSに構築された静的サイトに指定することができません。</p>
+
+<p>OSSで静的サイト構築方法は下記ドキュメントをご参照ください。
+<a href="https://jp.alibabacloud.com/help/doc-detail/67323.htm">https://jp.alibabacloud.com/help/doc-detail/67323.htm</a>
+CDNのオリジンサイト指定方法は下記ドキュメントをご参照ください。
+<a href="https://jp.alibabacloud.com/help/doc-detail/57589.htm">https://jp.alibabacloud.com/help/doc-detail/57589.htm</a></p>
+
+<h4 id="q-ossに静的サイトを設置した場合のicp必要性について">Q. OSSに静的サイトを設置した場合のICP必要性について</h4>
+
+<p>中国本土リージョンのOSSを利用し、所有するドメインとバインドし、静的サイトを公開する場合、該当ドメインは事前にICPを取得する必要です。OSSが提供するドメインを利用する場合、ICPを取得する必要がありません。</p>
+
+<h4 id="q-ossにインターネット経由で接続する際のfqdnについて">Q. OSSにインターネット経由で接続する際のFQDNについて</h4>
+
+<p>API、SDK、またはOSS-browserを利用する場合、OSSへのアクセスにつきましては、OSSコンソールで表示される「エンドポイント（東京リージョンはoss-ap-northeast-1.aliyuncs.com）」
+及び「パケットポイント（backetname.oss-ap-northeast-1.aliyuncs.com）」の２つのFQDNを許可する必要があります。
+Alibaba CloudアカウントでOSSコンソールにログイン後、該当バケットを選択した際に
+画面中央に表示される「アクセスドメイン名」の中の「インターネットアクセス」行にある２つのアクセスドメイン名をご登録下さい。
+※東京リージョンの場合、エンドポイントには「oss-ap-northeast-1.aliyuncs.com」と表示されております。</p>
+
+<p>OSSのIPアドレスは固定ではないため、ファイアウォールでIPフィルタすることができなく、FQDNフィルタする必要があります。</p>
+
+<h2 id="権限">権限</h2>
+
+<h4 id="q-ramユーザー対象にバケットアクセス権限の制御方法について">Q. RAMユーザー対象にバケットアクセス権限の制御方法について</h4>
+
+<p>下記のようなカスタマイズポリシーを作成し、RAMユーザに適用することで、バケットごとに制御することが可能です。</p>
+
+<p>カスタマイズポリシーは下記のドキュメントをご参照ください。
+<a href="https://jp.alibabacloud.com/help/doc-detail/28640.htm">https://jp.alibabacloud.com/help/doc-detail/28640.htm</a></p>
+
+<p>{ “Statement”: [ {
+　　 “Effect”: “Allow”,
+　　 “Action”: “oss:ListBuckets”,
+　　“Resource”: “acs:oss:<em>:</em>:*” },
+　　 { “Action”: “oss:<em>”,
+　　　　 “Effect”: “Allow”,
+“Resource”: [ “acs:oss:</em>:<em>:<bucketname>”,
+“acs:oss:</em>:*:<bucketname>/*” ]
+}
+],
+“Version”: “1” }</p>
+
+<h4 id="q-oss公開してもディレクトリにアクセスできない事象について">Q. OSS公開してもディレクトリにアクセスできない事象について</h4>
+
+<p>OSSパケットはフォルダのように見えますが、構造上にオブジェクト方式となります。
+ディレクトリがありませんので、OSSに保存されるファイルにアクセスするには、ファイルまでのパスを指定する必要がありますので、ディレクトリを指定して配下の全ファイルを表示する機能がありません。</p>
+
+<h4 id="q-ramユーザー利用時のbucketlist権限の必要性について">Q. RAMユーザー利用時のBucketList権限の必要性について</h4>
+
+<p>RAMユーザーに指定パケットのフル権限を付与した場合、バケット内のオブジェクトの操作に支障がありませんが、OSSコントロールから該当パケットを確認することができません。
+コンソールで確認するために、別途全パケットを参照する権限ListBucketsが必要です。また、ListBuckets権限には対象パケットの指定ができなく、全表示/全非表示しかできません。</p>
+
+<p>権限ポリシーには、以下のような部分を設定する必要です。
+　　 “Effect”: “Allow”,
+　　 “Action”: “oss:ListBuckets”,
+　 　“Resource”: “acs:oss:<em>:</em>:*”</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/help/faq/rds/" title="RDS"> <i class="fa fa-chevron-left"></i><label>RDS</label></a>
+    <a class="nav nav-next" href="/help/faq/slb/" title="SLB" style="margin-right: 0px;"><label>SLB</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 07/06/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/vjeantet/hugo-theme-docdock/edit/master/exampleSite/content/FAQ/OSS.md" target="blank"><i class="fa fa-code-fork"></i>
+        Improve this page</a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    Create a content/_footer.md file to customize the footer content
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/help/js/clipboard.min.js"></script>
+
+<link href="/help/css/featherlight.min.css" rel="stylesheet">
+<script src="/help/js/featherlight.min.js"></script>
+
+
+
+<script src="/help/theme-flex/script.js"></script>
+
+<link href="/help/mermaid/mermaid.css" type="text/css" rel="stylesheet" />
+<script src="/help/mermaid/mermaid.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
