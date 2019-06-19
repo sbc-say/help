@@ -1,9 +1,10 @@
-baseURL = "/"
-
+baseURL = "https://sbcloud.github.io/help/"
+#languageCode = "ja-jp"
 languageCode = "en-us"
 DefaultContentLanguage = "en"
-title = "DocDock Documentation"
+title = "SB Cloud Technical References"
 theme = "docdock"
+publishDir = "docs"
 #themesdir = "../.."
 pygmentsCodeFences = true
 pygmentsStyle = "monokailight"
