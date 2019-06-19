@@ -20,9 +20,9 @@ jobs:
           command: |
             HUGO_ENV=production hugo -v
             hugo
-      - add_ssh_keys:
-          fingerprints:
-            - "d2:51:83:81:f4:e3:ee:04:b2:40:19:14:19:ea:ec:fd"
+#      - add_ssh_keys:
+#          fingerprints:
+#            - "d2:51:83:81:f4:e3:ee:04:b2:40:19:14:19:ea:ec:fd"
       - deploy:
           name: Deploy to GitHub Pages
           command: |
