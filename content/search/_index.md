@@ -4,8 +4,6 @@ description = ""
 weight = 400000
 +++
 
-{{%excerpt-include filename="getting-start/configuration.md" /%}}
-
 
 Docdock theme uses the last improvement available in hugo version 20+ to generate a json index file ready to be consumed by lunr.js javascript search engine.
 
