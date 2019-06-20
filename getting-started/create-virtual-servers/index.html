@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-06-20T05:39:22 UTC">
-<title>Tags :: SB Cloud Technical References</title>
+<title>第1章 ECSインスタンスの作成 :: SB Cloud Technical References</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
     
   </head>
-  <body data-url="/help/tags/">
+  <body data-url="/help/getting-started/create-virtual-servers/">
     
       <header>
   <div class="logo">
@@ -77,13 +77,14 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+    <li data-nav-id="/help/getting-started/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/getting-started/">最初の手引き</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/getting-started/">最初の手引き</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/getting-started/create-virtual-servers/" class="dd-item">
+      <li data-nav-id="/help/getting-started/create-virtual-servers/" class="dd-item active">
         <div>
           <a href="/help/getting-started/create-virtual-servers/">
             第1章 ECSインスタンスの作成
@@ -221,7 +222,9 @@
         <select onchange="javascript:location.href = this.value;">
           
     <option value="/help/getting-started/" >
-   最初の手引き</option>
+   最初の手引き</option> 
+      <option value="/help/getting-started/create-virtual-servers/"  selected>- 第1章 ECSインスタンスの作成</option>
+  
     <option value="/help/blackbelt/" >
    Alibaba Cloudの活用</option>
     <option value="/help/usecases/" >
@@ -252,40 +255,156 @@
       </div>
     
 
-    <h1>Tags</h1>
+    <h1>第1章 ECSインスタンスの作成</h1>
     
     
     
+    <p>この記事では、Terraformを使用してECSインスタンスを作成する方法について説明します。</p>
+
+<ol>
+<li><p>VPCとVSwitchを作成します</p>
+
+<ol>
+<li><p>terraform.tfファイルを作成して次のように入力し、現在の実行ディレクトリに保存します。</p>
+
+<pre><code>resource &quot;alicloud_vpc&quot; &quot;vpc&quot; {
+  name       = &quot;tf_test_foo&quot;
+  cidr_block = &quot;172.16.0.0/12&quot;
+}
+        
+resource &quot;alicloud_vswitch&quot; &quot;vsw&quot; {
+  vpc_id            = &quot;${alicloud_vpc.vpc.id}&quot;
+  cidr_block        = &quot;172.16.0.0/21&quot;
+  availability_zone = &quot;cn-beijing-b&quot;
+}
+</code></pre></li>
+
+<li><p>作成を開始するために <code>terraform apply</code>を実行してください。</p></li>
+
+<li><p>作成したVPCとVSwitchを表示するために <code>terraform show</code>を実行します。</p>
+
+<p>VPCコンソールにログオンして、VPCとVSwitchの属性を表示することもできます。</p></li>
+</ol></li>
+
+<li><p>セキュリティグループを作成し、前の手順で作成したVPCに適用します。</p>
+
+<ol>
+<li><p>terraform.tfファイルに以下を追加します。</p>
+
+<pre><code>resource &quot;alicloud_security_group&quot; &quot;default&quot; {
+  name = &quot;default&quot;
+  vpc_id = &quot;${alicloud_vpc.vpc.id}&quot;
+}
+        
+resource &quot;alicloud_security_group_rule&quot; &quot;allow_all_tcp&quot; {
+  type              = &quot;ingress&quot;
+  ip_protocol       = &quot;tcp&quot;
+  nic_type          = &quot;intranet&quot;
+  policy            = &quot;accept&quot;
+  port_range        = &quot;1/65535&quot;
+  priority          = 1
+  security_group_id = &quot;${alicloud_security_group.default.id}&quot;
+  cidr_ip           = &quot;0.0.0.0/0&quot;
+}
+</code></pre></li>
+
+<li><p>作成を開始するために <code>terraform apply</code>を実行してください。</p></li>
+
+<li><p><code>terraform show</code>を実行して、作成されたセキュリティグループとセキュリティグループのルールを表示します。</p>
+
+<p>セキュリティグループとセキュリティグループのルールを表示するためにECSコンソールにログオンすることもできます。</p></li>
+</ol></li>
+
+<li><p>ECSインスタンスを作成します。</p>
+
+<ol>
+<li><p>terraform.tfファイルに以下を追加します:</p>
+
+<pre><code>resource &quot;alicloud_instance&quot; &quot;instance&quot; {
+  # cn-beijing
+  availability_zone = &quot;cn-beijing-b&quot;
+  security_groups = [&quot;${alicloud_security_group.default.*.id}&quot;]
+        
+  # series III
+  instance_type        = &quot;ecs.n2.small&quot;
+  system_disk_category = &quot;cloud_efficiency&quot;
+  image_id             = &quot;ubuntu_140405_64_40G_cloudinit_20161115.vhd&quot;
+  instance_name        = &quot;test_foo&quot;
+  vswitch_id = &quot;${alicloud_vswitch.vsw.id}&quot;
+  internet_max_bandwidth_out = 10
+  password = &quot;&lt;replace_with_your_password&gt;&quot;
+}
+</code></pre>
+
+<p><strong>Note:</strong></p>
+
+<ul>
+<li>上記の例では、「internet_max_bandwidth_out = 10」が指定されています。そのため、インスタンスにはパブリックIPが自動的に割り当てられます。</li>
+<li>パラメータの詳細な説明については、<a href="https://www.terraform.io/docs/providers/alicloud/d/instances.html">Alibaba Cloudのパラメータの説明</a>を参照してください。</li>
+</ul></li>
+
+<li><p>作成を開始するために <code>terraform apply</code>を実行してください。</p></li>
+
+<li><p>作成したECSインスタンスを表示するために <code>terraform show</code>を実行してください。</p></li>
+
+<li><p>ssh root@<publicip\>を実行して、ECSインスタンスにアクセスするためのパスワードを入力します。</p>
+
+<pre><code>provider &quot;alicloud&quot; {}
+  
+resource &quot;alicloud_vpc&quot; &quot;vpc&quot; {
+name       = &quot;tf_test_foo&quot;
+cidr_block = &quot;172.16.0.0/12&quot;
+}
+
+resource &quot;alicloud_vswitch&quot; &quot;vsw&quot; {
+vpc_id            = &quot;${alicloud_vpc.vpc.id}&quot;
+cidr_block        = &quot;172.16.0.0/21&quot;
+availability_zone = &quot;cn-beijing-b&quot;
+}
 
 
-
-<div class="extra-pagination inner">
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 0</span>
-	
-</nav>
-
-</div>
+resource &quot;alicloud_security_group&quot; &quot;default&quot; {
+name = &quot;default&quot;
+vpc_id = &quot;${alicloud_vpc.vpc.id}&quot;
+}
 
 
+resource &quot;alicloud_instance&quot; &quot;instance&quot; {
+# cn-beijing
+availability_zone = &quot;cn-beijing-b&quot;
+security_groups = [&quot;${alicloud_security_group.default.*.id}&quot;]
 
-<div style="margin-bottom:2rem"></div>
+# series III
+instance_type        = &quot;ecs.n2.small&quot;
+system_disk_category = &quot;cloud_efficiency&quot;
+image_id             = &quot;ubuntu_140405_64_40G_cloudinit_20161115.vhd&quot;
+instance_name        = &quot;test_foo&quot;
+vswitch_id = &quot;${alicloud_vswitch.vsw.id}&quot;
+internet_max_bandwidth_out = 10
+}
 
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 0</span>
-	
-</nav>
 
-
+resource &quot;alicloud_security_group_rule&quot; &quot;allow_all_tcp&quot; {
+type              = &quot;ingress&quot;
+ip_protocol       = &quot;tcp&quot;
+nic_type          = &quot;intranet&quot;
+policy            = &quot;accept&quot;
+port_range        = &quot;1/65535&quot;
+priority          = 1
+security_group_id = &quot;${alicloud_security_group.default.id}&quot;
+cidr_ip           = &quot;0.0.0.0/0&quot;
+}
+</code></pre></li>
+</ol></li>
+</ol>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/help/getting-started/" title="最初の手引き" style="margin-right: 0px;"><label>最初の手引き</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/getting-started/" title="最初の手引き"> <i class="fa fa-chevron-left"></i><label>最初の手引き</label></a>
+    <a class="nav nav-next" href="/help/blackbelt/" title="Alibaba Cloudの活用" style="margin-right: 0px;"><label>Alibaba Cloudの活用</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -299,10 +418,14 @@
     
 
     
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 05/06/2019
+    </div>
+    
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/contentgetting-started/create-virtual-servers.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
     

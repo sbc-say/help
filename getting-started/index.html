@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-06-20T05:39:22 UTC">
-<title>Tags :: SB Cloud Technical References</title>
+<title>最初の手引き :: SB Cloud Technical References</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
     
   </head>
-  <body data-url="/help/tags/">
+  <body data-url="/help/getting-started/">
     
       <header>
   <div class="logo">
@@ -77,10 +77,11 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+    <li data-nav-id="/help/getting-started/" class="dd-item parent active haschildren
         ">
       <div>
-      <a href="/help/getting-started/">最初の手引き</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/getting-started/">最初の手引き</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/getting-started/create-virtual-servers/" class="dd-item">
@@ -220,8 +221,10 @@
       <center>Navigation : 
         <select onchange="javascript:location.href = this.value;">
           
-    <option value="/help/getting-started/" >
-   最初の手引き</option>
+    <option value="/help/getting-started/"  selected>
+   最初の手引き</option> 
+      <option value="/help/getting-started/create-virtual-servers/" >- 第1章 ECSインスタンスの作成</option>
+  
     <option value="/help/blackbelt/" >
    Alibaba Cloudの活用</option>
     <option value="/help/usecases/" >
@@ -252,7 +255,7 @@
       </div>
     
 
-    <h1>Tags</h1>
+    <h1>最初の手引き</h1>
     
     
     
@@ -262,19 +265,44 @@
 <div class="extra-pagination inner">
 <nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 0</span>
+	<span class="page-number">Page 1 of 1</span>
 	
 </nav>
 
 </div>
 
 
+   <article class="post getting-started">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/help/getting-started/create-virtual-servers/">第1章 ECSインスタンスの作成</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>この記事では、Terraformを使用してECSインスタンスを作成する方法について説明します。
+ VPCとVSwitchを作成します
+ terraform.tfファイルを作成して次のように入力し、現在の実行ディレクトリに保存します。
+resource &quot;alicloud_vpc&quot; &quot;vpc&quot; { name = &quot;tf_test_foo&quot; cidr_block = &quot;172.16.0.0/12&quot; } resource &quot;alicloud_vswitch&quot; &quot;vsw&quot; { vpc_id = &quot;${alicloud_vpc.vpc.id}&quot; cidr_block = &quot;172.16.0.0/21&quot; availability_zone = &quot;cn-beijing-b&quot; }  作成を開始するために terraform applyを実行してください。
+ 作成したVPCとVSwitchを表示するために terraform showを実行します。
+VPCコンソールにログオンして、VPCとVSwitchの属性を表示することもできます。
+  セキュリティグループを作成し、前の手順で作成したVPCに適用します。
+ terraform.tfファイルに以下を追加します。
+resource &quot;alicloud_security_group&quot; &quot;default&quot; { name = &quot;default&quot; vpc_id = &quot;${alicloud_vpc.vpc.id}&quot; } resource &quot;alicloud_security_group_rule&quot; &quot;allow_all_tcp&quot; { type = &quot;ingress&quot; ip_protocol = &quot;tcp&quot; nic_type = &quot;intranet&quot; policy = &quot;accept&quot; port_range = &quot;1/65535&quot; priority = 1 security_group_id = &quot;${alicloud_security_group. <a class="read-more" href="/help/getting-started/create-virtual-servers/">&raquo;</a></p>
+    </section>
+    <footer class=" footline" >
+         
+        
+
+        
+        
+
+    </footer>
+</article>
+
 
 <div style="margin-bottom:2rem"></div>
 
 <nav class="pagination" role="navigation">
 	
-	<span class="page-number">Page 1 of 0</span>
+	<span class="page-number">Page 1 of 1</span>
 	
 </nav>
 
@@ -285,7 +313,8 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/help/getting-started/" title="最初の手引き" style="margin-right: 0px;"><label>最初の手引き</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
+    <a class="nav nav-next" href="/help/getting-started/create-virtual-servers/" title="第1章 ECSインスタンスの作成" style="margin-right: 0px;"><label>第1章 ECSインスタンスの作成</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -299,10 +328,14 @@
     
 
     
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 05/06/2019
+    </div>
+    
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/contentgetting-started/_index.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
     

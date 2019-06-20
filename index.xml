@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>DocDock Theme for Hugo on SB Cloud Technical References</title>
+    <title>SB Cloud Technical References</title>
     <link>https://sbcloud.github.io/help/</link>
-    <description>Recent content in DocDock Theme for Hugo on SB Cloud Technical References</description>
+    <description>Recent content on SB Cloud Technical References</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 05 Jun 2019 12:30:18 +0800</lastBuildDate>
@@ -12,56 +12,11 @@
     
     
     <item>
-      <title>Logo placeholder</title>
-      <link>https://sbcloud.github.io/help/content-organisation/logo/</link>
-      <pubDate>Mon, 24 Apr 2017 18:36:24 +0200</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/content-organisation/logo/</guid>
-      <description>Create a _header.md page in content folder. Its content is what you get in the logo placeholder (top left of the screen).
-**Tip :** you can add a image, a combobox with links to other documentation.... **Tip 2 :** look at [ extra static menu](/help/content-organisation/extramenu/) if you want to add links to other website in this sidebar </description>
-    </item>
-    
-    <item>
-      <title>Installation</title>
-      <link>https://sbcloud.github.io/help/getting-start/installation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/getting-start/installation/</guid>
-      <description>&lt;div class=&#34;alert 
-alert-warning&#34;
- 
-role=&#34;alert&#34;&gt;HUGO **v0.32** minimum required to use this theme&lt;/div&gt;
-
-&lt;p&gt;The following steps are here to help you initialize your new website. If you don’t know Hugo at all, we strongly suggest you to train by following this &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;great documentation for beginners&lt;/a&gt;.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Extra menu entries</title>
-      <link>https://sbcloud.github.io/help/content-organisation/extramenu/</link>
-      <pubDate>Sat, 29 Apr 2017 18:36:24 +0200</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/content-organisation/extramenu/</guid>
-      <description>You can define additional menu entries in the navigation menu without any link to content.
-Edit the website configuration config.toml and add a [[menu.shortcuts]] entry for each link your want to add.
-Example from the current website, note the pre param which allows you to insert HTML code and used here to separate content&amp;rsquo;s menu from this &amp;ldquo;static&amp;rdquo; menu
-[[menu.shortcuts]] pre = &amp;quot;&amp;lt;h3&amp;gt;More&amp;lt;/h3&amp;gt;&amp;quot; name = &amp;quot;&amp;lt;i class=&#39;fa fa-github&#39;&amp;gt;&amp;lt;/i&amp;gt; Github repo&amp;quot; identifier = &amp;quot;ds&amp;quot; url = &amp;quot;https://github.</description>
-    </item>
-    
-    <item>
-      <title>Configuration</title>
-      <link>https://sbcloud.github.io/help/getting-start/configuration/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/getting-start/configuration/</guid>
-      <description>&lt;p&gt;When building the website, you can set a theme by using &lt;code&gt;--theme&lt;/code&gt; option. We suggest you to edit your configuration file and set the theme by default. Example with &lt;code&gt;config.toml&lt;/code&gt; format.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>第1章 ECSインスタンスの作成</title>
-      <link>https://sbcloud.github.io/help/%E6%9C%80%E5%88%9D%E3%81%AE%E6%89%8B%E5%BC%95%E3%81%8D/create-virtual-servers/</link>
+      <link>https://sbcloud.github.io/help/getting-started/create-virtual-servers/</link>
       <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/%E6%9C%80%E5%88%9D%E3%81%AE%E6%89%8B%E5%BC%95%E3%81%8D/create-virtual-servers/</guid>
+      <guid>https://sbcloud.github.io/help/getting-started/create-virtual-servers/</guid>
       <description>この記事では、Terraformを使用してECSインスタンスを作成する方法について説明します。
  VPCとVSwitchを作成します
  terraform.tfファイルを作成して次のように入力し、現在の実行ディレクトリに保存します。
@@ -75,19 +30,19 @@ resource &amp;quot;alicloud_security_group&amp;quot; &amp;quot;default&amp;quot;
     
     <item>
       <title>Alibaba Cloudサービスの一覧</title>
-      <link>https://sbcloud.github.io/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/simple_compare/</link>
+      <link>https://sbcloud.github.io/help/blackbelt/simple_compare/</link>
       <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/simple_compare/</guid>
+      <guid>https://sbcloud.github.io/help/blackbelt/simple_compare/</guid>
       <description>云计算基础（Cloud Essentials）：云基础产品体系完整度全球领先，基础产品及功能持续投入建设，源源不断的通过新技术提高企业云上的计算、运维、开发和管理能力。 Cloud Essentials：クラウドベースの製品システムの中核は世界をリードし、基本的な製品と機能は構築され続けています新しいテクノロジーは、エンタープライズクラウドのコンピューティング、運用と保守、開発および管理機能を向上させるために使用されます。    カテゴリ カテゴリ_日本語訳 中国版_サービス名 中国版_サービス名_日本語翻訳 中国版_コメント_日本訳 国際版_サービス名 国際版_コメント_日本訳 日本版_サービス名 日本版_コメント     云服务器 クラウドサーバー 云服务器 ECS クラウドサーバーECS セキュアからインメモリ、アドバンストからエントリーレベルのクラウドサーバーまで Elastic Compute Service Alibaba Cloud Elastic Compute Service（ECS）は、高速なメモリと最新のIntel CPUを提供して、クラウドアプリケーションに電力を供給し、低遅延でより速い結果を達成するのに役立ちます。 すべてのECSインスタンスには、DDoS攻撃やトロイの木馬攻撃からデータやアプリケーションを保護するためのDDoS対策保護が付属しています。 Elastic Compute Service Elastic Compute Service（ECS）とはAlibaba Cloud Elastic Compute Service (ECS) は、信頼性と拡張性に優れた分散コンピューティングリソースをオンデマンドで提供するオンラインコンピューティングサービスです。ECS を使用すると、クラウドコンピューティング環境を完全に制御できます。ECS では、コンピューティングリソースを即座にデプロイし、ビジネスや Web アプリケーションのニーズにリアルタイムで対応できます。Alibaba Cloud はハイメモリおよび高性能な Intel CPU を使用することで高速な仮想サーバーを実現します。   云服务器 クラウドサーバー 弹性裸金属服务器（神龙） 柔軟なベアメタルサーバー（Shenlong） 仮想マシンの柔軟性と物理マシンの高性能、安全な物理的分離、正確な配信、クラウド製品の完全な互換性 ECS Bare Metal Instance Alibaba Cloudが独自に開発した次世代の仮想化テクノロジに基づいたECS Bare Metal Instanceは、仮想サーバーの弾力性と物理サーバーの高性能で包括的な機能の両方を備えています。 その前身と比較して、これらのインスタンスの次世代仮想化テクノロジは、標準のElastic Compute Service（ECS）およびネスト化された仮想化テクノロジをサポートする点で優れています。 これにより、物理サーバーと同じユーザーエクスペリエンスを提供しながら、一般的なECSの弾力性を維持することができます。 ECS Bare Metal Instance Alibaba Cloud が独自に開発した次世代仮想化技術により、ECS Bare Metal Instance は、仮想サーバーの柔軟性と、物理サーバーの高性能で包括的な機能を両方兼ね備えています。これまでの技術に比べて、標準の Elastic Compute Service (ECS) 仮想化技術およびネストされた仮想化技術 (Nested Virtualization) への対応に優れています。これにより、物理サーバーと同じパフォーマンスを提供しながら ECS の柔軟性を維持できます。   云服务器 クラウドサーバー 轻量应用服务器 軽量アプリケーションサーバー 迅速に構築および管理が容易な軽量クラウドサーバー Simple Application Server Simple Application Serverは、スタンドアロンアプリケーションシナリオ用の新世代コンピューティングサービスです。 ワンクリックのアプリケーション展開を提供し、ドメイン名解決、Webサイトの公開、セキュリティ、Oなどのオールインワンサービスをサポートします。 []()    云服务器 クラウドサーバー GPU 云服务器 GPUクラウドサーバ GPUインスタンス、強力なコンピューティングパフォーマンス、柔軟なオンデマンド拡張 Elastic GPU Service Elastic GPU Service（EGS）は、ディープラーニング、ビデオ処理、科学計算、視覚化などのシナリオに最適なGPUベースのコンピューティングサービスです。 EGSソリューションは、以下のGPUを使用します：AMD FirePro S7150、NVIDIA Tesla M40、NVIDIA Tesla P100、NVIDIA Tesla P4、およびNVIDIA Tesla V100。 Elastic GPU Service Elastic GPU Service (EGS) は、GPU ベースのコンピューティングサービスです。ディープラーニング、ビデオ処理、科学技術計算、グラフィック可視化などの作業に最適です。EGS は次の GPU を使用しています：AMD FirePro S7150、NVIDIA Tesla M40、NVIDIA Tesla P100、NVIDIA Tesla P4、NVIDIA Tesla V100。   云服务器 クラウドサーバー FPGA 云服务器 FPGAクラウドサーバ FPGAの例、低遅延プログラマブルハードウェアアクセラレーションサービス []()  []()    云服务器 クラウドサーバー 专有宿主机 専有ホスト セキュリティコンプライアンス、パブリッククラウド上に独自のリソースのプールを構築 Dedicated Host 専用ホスト（DDH）は、テナントがAlibaba Cloud仮想ホスティングサービスに基づく専用ハードウェアリソースを使用できるようにするホストサービスです。 このサービスにより、企業はカスタム展開を実現し、独自のライセンス（BYOL）を取得し、セキュリティと規制に準拠することができます。 DDHは複数の種類のECSインスタンスをサポートします。 DDH上に作成されたECSインスタンスは、クラウド内に作成された他のECSインスタンスと同じパフォーマンスと安定性を備えています。 Dedicated Host Alibaba Cloud Dedicated Host (DDH) は、Alibaba Cloud の仮想化ホスティングを使用し、物理ホストを占有したシングルテナント環境を提供します。セキュリティ、コンプライアンス、ECSの柔軟な移行、ライセンス（BYOL）の要件を満たします。また、DDH 上で複数のスペックの ECS インスタンスを作成でき、ECS インスタンスのスペック選択の柔軟性と安定したパフォーマンス、および機能を継承することができます。   高性能计算 HPC 高性能コンピューティングHPC 超级计算集群 スーパーコンピューティングクラスター RDMAをサポートして、極端な並列コンピューティング性能のサンプル仕様を提供 Super Computing Cluster Super Computing Cluster（SCC）サーバは、Elastic Bare Metal（EBM）インスタンスとRDMA（Remote Direct Memory Access）テクノロジの高速相互接続性に基づいて、ネットワークパフォーマンスを向上させ、大規模クラスタの加速率を向上させます。 SCCサーバは、EBMインスタンスのすべての利点を誇り、高帯域幅と低レイテンシで高品質のネットワークパフォーマンスを実現します。 Super Computing Cluster Super Computing Cluster (SCC) サーバーは、ECS Bare Metal Instance と Remote Direct Memory Access (RDMA) 技術の高速相互接続により、ネットワークパフォーマンスを改善し、大規模クラスターの加速率を向上させます。SCC サーバーは、ECS Bare Metal Instance のすべての利点を備え持ち、高帯域幅、低レイテンシの高品質なネットワークパフォーマンスを特徴としています。人工知能、科学技術計算、オーディオ/ビデオ処理に必要な高性能コンピューティングに対応します。   高性能计算 HPC 高性能コンピューティングHPC 弹性高性能计算 E-HPC 柔軟な高性能コンピューティングE-HPC ディープラーニング、レンダリング、科学計算を加速するGPUフィジックスマシン E-HPC Alibaba Cloudインフラストラクチャに基づいたAlibaba Cloud Elastic High Performance Computing（E-HPC）は、エンドツーエンドのパブリッククラウドサービスです。 E-HPCは、個々のユーザー、教育研究機関、および公的機関に、Alibaba Cloud製品と相互接続する高速で弾力性のある安全なクラウドコンピューティングプラットフォームを提供します。 E-HPC HPC 機能の需要増大に対応するため、HPCaaS クラウドサービスとして Elastic High Performance Computing (E-HPC) を提供します。オールインワンの高性能コンピューティングサービスを可能にするクラウドプラットフォームを使用できます。E-HPC は AI、および大規模データ分析などの能力を必要とする組織に適しています。   容器服务 コンテナサービス 容器服务 コンテナサービス マイクロサービスアーキテクチャとフルライフサイクル管理をサポートするDockerサービス Container Service Container Serviceは、DockerとKubernetesを使用してコンテナ化されたアプリケーションのライフサイクルを管理できる、高性能でスケーラブルなコンテナアプリケーション管理サービスです。 Container Service Alibaba Cloud Container Service はフルマネージドのクラウドコンテナー管理サービスです。Alibaba Cloud ECS インスタンスの分散クラスター上にある Docker アプリケーションを効率的に実行、管理できます。よって、従来のような個別でのコンテナークラスター基盤の導入や、運用、オートスケーリングなどの拡張設計が不要になります。アプリケーション開発作業など、本来の作業に集中できます。   容器服务 コンテナサービス 容器服务 Kubernetes 版 コンテナサービスKubernetes版 エンタープライズクラスのKubernetesコンテナアプリケーションのフルライフサイクル管理をサポートするための、高性能でスケーラブルなコンテナアプリケーション管理機能を提供します。 Container Service for Kubernetes Kubernetesのコンテナサービスは、アプリケーションのライフサイクルを通して、Kubernetesのコンテナ化されたアプリケーションのエンタープライズレベルの高性能で柔軟な管理を提供します。 このサービスはクラスターの作成と拡張を簡素化し、仮想化、ストレージ、ネットワーク、そしてセキュリティにAlibaba Cloudの機能を統合し、Kubernetesコンテナーアプリケーションの実行環境を改善します。 Container Service for Kubenetes Container Service for Kubernetes はフルマネージドのクラウドコンテナー管理サービスです。Kubernetes に対応し、他の Alibaba Cloud プロダクトと連携します。従来のような個別でのコンテナークラスター基盤の導入や、運用、オートスケーリングなどの拡張設計が不要になります。このため、アプリケーション開発作業など、本来の作業に集中できるようになります。   容器服务 コンテナサービス 弹性容器实例 ECI フレキシブルコンテナインスタンスECI 機敏で安全なサーバーレスコンテナランタイムサービスを提供します。 Elastic Container Instance Elastic Container Instance（ECI）は、機敏で安全なサーバーレスコンテナインスタンスサービスです。 サーバーを管理しなくても簡単にコンテナーを実行できます。 また、コンテナによって消費されたリソースに対してのみ支払います。 ECIは、インフラストラクチャを管理するのではなく、ビジネスアプリケーションに集中するのに役立ちます。 []()    容器服务 コンテナサービス 容器镜像服务 コンテナミラーリングサービス 多地域画像ホスティングをサポートする、レジストリの設定と操作の簡素化 Container Registry Container Registryを使用すると、イメージのライフサイクルを通してイメージを管理できます。 安全な画像管理、世界中の地域で安定した画像作成、そして簡単な画像許可管理を提供します。 このサービスは、イメージレジストリの作成と保守を簡素化し、複数の地域でのイメージ管理をサポートします。 Container Serviceなどの他のクラウドサービスと組み合わせると、Container RegistryはクラウドでDockerを使用するための最適化されたソリューションを提供します。 []()    弹性编排 弾性配置 弹性伸缩 弾性膨張 エラスティックコンピューティングリソースの管理サービスを自動的に調整する Auto Scaling Auto Scalingは、大量のユーザー要求に基づいてコンピューティングリソースを自動的に調整するサービスです。 コンピューティングリソースの需要が増えると、Auto Scalingは自動的にECSインスタンスを追加して追加のユーザー要求を処理します。あるいは、ユーザー要求が減った場合はインスタンスを削除します。 Auto Scaling Auto Scaling は、お客様のビジネスニーズとポリシーに合わせて、コンピューティングリソースを自動調整するサービスです。コンピューティングリソースの需要が増加すると、ユーザーリクエストの増加に対応できるよう、Auto Scaling によって自動的に ECS インスタンスが追加されます。ユーザーリクエストが減少すると、自動的にインスタンスが削除されます。このサービスは、無料でご利用いただけます。課金対象は、追加された ECS リソースの料金のみです。   弹性编排 弾性配置 资源编排 リソース配置 リソース一括コピー、作成および構成を提供する複雑な環境配置ツール Resource Orchestration Service Alibabaクラウドリソースオーケストレーションサービス（ROS）は、開発者とシステム管理者に、Alibabaクラウドリソースを作成および管理するための簡単な方法を提供します。 ROSを通じて、JSON形式のテキストファイルを使用して、必要なAlibaba Cloudリソース、リソース間の依存関係、および設定の詳細を定義できます。 Resource Orchestration Service クラウド環境の構成をテンプレートに定義し、テンプレートに応じてプロビジョニングすることができるオーケストレーションサービスです。   Serverless サーバーレス 函数计算 関数計算 サーバーなどのインフラストラクチャを管理する必要なしに、関数計算によってコードをアップロードする、イベント駆動型の完全管理コンピューティングサービス Function Compute Alibaba Cloud Function Computeは、完全管理のイベント駆動型コンピューティングサービスです。 サーバーなどのインフラストラクチャを管理する必要なしに、コードの作成とアップロードに集中することができます。 Function Computeは計算リソースを提供するため、コードをより柔軟かつ確実に実行できます。 さらに、コードを実行するときに消費されたリソースに対してのみ支払う必要があります。 コードを実行しない場合、料金はかかりません。 Function Compute Alibaba Cloud Function Compute はイベント駆動型のフルマネージドコンピューティングサービスです。お客様はサーバーなどインフラストラクチャを管理する必要がなくなりコーディングに集中できます。Function Compute はコンピューティングリソースを提供し、柔軟かつ信頼性の高い方式でコードを実行できます。またコード実行時支払う必要があるのは消費したリソースの分だけで、コードを実行しなければ料金は発生しません。   其他 その他の 批量计算 バッチ計算 大規模並列バッチコンピューティングサービス Batch Compute Batch Computeは、大規模な同時バッチ処理用のクラウドサービスです。 システムはリソースを自動的に管理し、タスクをスケジュールし、データをロードし、使用量ごとに請求します。 Batch Computeは、科学的応用、遺伝的データ分析、CGIレンダリング、メディアトランスコーディング、財務データ分析などのシナリオですでに広く使用されています。 []()    其他 その他の 图形工作站（公测中） グラフィックワークステーション（パブリックベータ版） リモートデスクトップ機能やノンリニア編集ソフトウェアなどの完全なグラフィック画像処理フローを提供し、高解像度デスクトップのリアルタイム対話を可能にします []()  []()    云存储 クラウドストレージ 对象存储 OSS オブジェクトストレージOSS N/A Object Storage Service Alibaba Cloud Object Storage Service (OSS) is an encrypted, secure, cost-effective, and easy-to-use object storage service that enables you to store, back up, and archive large amounts of data in the cloud, with a guaranteed reliability of 99.</description>
     </item>
     
     <item>
       <title>第3章 Terraform の基本</title>
-      <link>https://sbcloud.github.io/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/how_to_use_terraform/</link>
+      <link>https://sbcloud.github.io/help/blackbelt/how_to_use_terraform/</link>
       <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/how_to_use_terraform/</guid>
+      <guid>https://sbcloud.github.io/help/blackbelt/how_to_use_terraform/</guid>
       <description>本章では Terraform の基本、使い方を学びます。 簡単なWebサーバを立ち上げながら、Terraformの流れや中身を確認します。
 3.1 ディレクトリ・ファイル構成 Terraformのファイルの拡張子は *.tf です。 実行時、同じディレクトリの *.tf ファイルがマージされますので、以下3ファイルに分けてそれぞれの用途・目的に応じた記載・運用がベターです。
 main.tf … モジュールが内包するリソース、データソースなどの定義 outputs.tf … モジュールが出力するAttributeの定義 variables.tf … モジュールが受け取る変数の定義  main.tf には どのプロパイダを使うかを記載します。 階層化は任意ですが、.tfから別のフォルダの.tfに記載されてる変数を取り出すためにルートディレクトリを指定することがありますのでそこは注意が必要です。apply (=実行) にて分離実行することも可能です。
@@ -98,10 +53,10 @@ access_key = &amp;quot;xxxxxxxxxxxxxxxxxx&amp;quot; secret_key = &amp;quot;xxxxx
     
     <item>
       <title>第5章 権限管理</title>
-      <link>https://sbcloud.github.io/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/authority_management/</link>
+      <link>https://sbcloud.github.io/help/blackbelt/authority_management/</link>
       <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/alibabacloud%E3%81%AE%E6%B4%BB%E7%94%A8/authority_management/</guid>
+      <guid>https://sbcloud.github.io/help/blackbelt/authority_management/</guid>
       <description>AAlibabaCloudはどのサービスを利用・操作するにしろ権限が必要です。 Terraformで作成したリソースサービスにも他ユーザが操作できるように権限アタッチが必要になります。 本章では、AlibabaCloudサービスに対する権限付与の方法を学びます。
 5.1 Alibaba CloudのRAMについて RAM（Resource Access Management）はユーザーID の管理とアクセス制御、権限管理のためのサービスです。 RAMを使用することで、ユーザーアカウント (従業員、システム、アプリケーションなど) を作成および管理し、Alibaba Cloud アカウントのリソースに対してそのユーザーアカウントが所有する操作権限を制御できます。Terraformによるリソースを実行するときはRAMで実行権限が必須です。
 5.2 RAMロールとRAMユーザーの違い ・RAMロールは仮想ID であり、固定のIDは持っていますが、ID認証情報アクセスキーを持ちません。 ・RAMユーザは、固定のIDとID認証アクセスキーを持つ実際のIDであり、一般的には、特定のユーザーまたはアプリケーションに対応します。
@@ -237,61 +192,20 @@ Q. サブスクリプションインスタンスの削除方法について 年�
     
     <item>
       <title>K8s</title>
-      <link>https://sbcloud.github.io/help/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E5%88%A5%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/k8s/</link>
+      <link>https://sbcloud.github.io/help/usecases/k8s/</link>
       <pubDate>Mon, 13 May 2019 16:20:40 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E5%88%A5%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/k8s/</guid>
+      <guid>https://sbcloud.github.io/help/usecases/k8s/</guid>
       <description> Hello world Hello world </description>
     </item>
     
     <item>
       <title>K9s</title>
-      <link>https://sbcloud.github.io/help/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E5%88%A5%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/k9s/</link>
+      <link>https://sbcloud.github.io/help/usecases/k9s/</link>
       <pubDate>Mon, 13 May 2019 16:20:40 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9%E5%88%A5%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/k9s/</guid>
+      <guid>https://sbcloud.github.io/help/usecases/k9s/</guid>
       <description> Hello world Hello world </description>
-    </item>
-    
-    <item>
-      <title>Home page</title>
-      <link>https://sbcloud.github.io/help/create-page/homepage/</link>
-      <pubDate>Fri, 28 Apr 2017 18:36:24 +0200</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/create-page/homepage/</guid>
-      <description>To tell Hugo-theme-docdock to consider a page as homepage&amp;rsquo;s content, just create a content file named _index.md in content folder.</description>
-    </item>
-    
-    <item>
-      <title>About images</title>
-      <link>https://sbcloud.github.io/help/create-page/page-images/</link>
-      <pubDate>Mon, 24 Apr 2017 18:36:24 +0200</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/create-page/page-images/</guid>
-      <description> Images have a similar syntax to links but include a preceding exclamation point.
-![agence](https://github.com/vjeantet/vjeantet.fr/raw/master/static/images/sgthon/C.jpg)  Resizing image Add HTTP parameters width and/or height to the link image to resize the image. Values are CSS values (default is auto).
-![Hackathon](https://github.com/vjeantet/vjeantet.fr/raw/master/static/images/sgthon/C.jpg?height=80px)  Add CSS classes Add a HTTP classes parameter to the link image to add CSS classes. shadow and border are available but you could define other ones.
-![s](https://github.com/vjeantet/vjeantet.fr/raw/master/static/images/sgthon/C.jpg?classes=border,shadow)  </description>
-    </item>
-    
-    <item>
-      <title>My Slide ! fullscreen</title>
-      <link>https://sbcloud.github.io/help/create-page/myslide/</link>
-      <pubDate>Mon, 24 Apr 2017 18:36:24 +0200</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/create-page/myslide/</guid>
-      <description> In the morning Getting up  Turn off alarm Get out of bed  Breakfast  Eat eggs Drink coffee  In the evening Dinner  Eat spaghetti Drink wine  Going to sleep  Get in bed Count sheep  </description>
-    </item>
-    
-    <item>
-      <title>Present a Slide</title>
-      <link>https://sbcloud.github.io/help/create-page/page-slide/</link>
-      <pubDate>Mon, 24 Apr 2017 18:36:24 +0200</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/create-page/page-slide/</guid>
-      <description>A basic md content page can be rendered as a reveal.js presentation full screen.
-You can, also, **embed presentation in a page** as a small box, using the [revealjs](/help/shortcodes/revealjs/) shortcode in your md file. Formating Use your common Markdown syntax you use in Hugo, don&amp;rsquo;t forget, you can put html tags too.
-Special syntax (in html comment) is available for adding attributes to Markdown elements. This is useful for fragments, amongst other things.</description>
     </item>
     
     <item>
@@ -311,186 +225,12 @@ Special syntax (in html comment) is available for adding attributes to Markdown 
     </item>
     
     <item>
-      <title>Disable features</title>
-      <link>https://sbcloud.github.io/help/content-organisation/customize-style/disable/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/content-organisation/customize-style/disable/</guid>
-      <description> You can disable feature in docdock by changing some params in config.toml
-hide Next / Prev Chevrons [params] disableNavChevron = true  hide Search box in side menu [params] disableSearch = true  hide the 
-icon in side bar
-[params] disableHomeIcon = true  </description>
-    </item>
-    
-    <item>
       <title>Docdock-built Sites</title>
       <link>https://sbcloud.github.io/help/showcase/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://sbcloud.github.io/help/showcase/</guid>
       <description> https://invincible.site/ by @shazic https://bitfan.io/ by @vjeantet </description>
-    </item>
-    
-    <item>
-      <title>Theme styles</title>
-      <link>https://sbcloud.github.io/help/content-organisation/customize-style/themestyle/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/content-organisation/customize-style/themestyle/</guid>
-      <description> In site configuration file, you can set a subtheme name of this theme to load a specific css.
-add a param themeStyle = &amp;quot;STYLE_NAME&amp;quot; in the [params] part of config.toml file.
-Style &amp;ldquo;original&amp;rdquo; [params] themeStyle = &amp;quot;original&amp;quot;  Style &amp;ldquo;flex&amp;rdquo; (work in progress) [params] themeStyle = &amp;quot;flex&amp;quot;  </description>
-    </item>
-    
-    <item>
-      <title>Theme variants</title>
-      <link>https://sbcloud.github.io/help/content-organisation/customize-style/theme-variants/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/content-organisation/customize-style/theme-variants/</guid>
-      <description> In site configuration file, you can set a variant name of this theme to load a specific css, with different color specifications.
-add a param themeVariant = &amp;quot;VARIANT_NAME&amp;quot; in the [params] part of config.toml file.
-Available variants change only colors at this moment Variant &amp;ldquo;gray&amp;rdquo; [params] themeVariant = &amp;quot;gray&amp;quot;  Variant &amp;ldquo;gold&amp;rdquo; [params] themeVariant = &amp;quot;gold&amp;quot;  Variant &amp;ldquo;green&amp;rdquo; [params] themeVariant = &amp;quot;green&amp;quot;`  </description>
-    </item>
-    
-    <item>
-      <title>alert</title>
-      <link>https://sbcloud.github.io/help/shortcodes/alert/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/alert/</guid>
-      <description>The alert shortcode allow you to highlight information in your page. They create a colored box surrounding your text, like this:
-**This is** an alert ! Usage    Parameter Default Description     theme info success, info,warning,danger    **Tips :** setting only the theme as argument works too : `{{%alert warning%}}` instead of `{{%alert theme=&#34;warning&#34;%}}`  Basic examples {{% alert theme=&amp;quot;info&amp;quot; %}}**this** is a text{{% /alert %}} {{% alert theme=&amp;quot;success&amp;quot; %}}**Yeahhh !</description>
-    </item>
-    
-    <item>
-      <title>attachments</title>
-      <link>https://sbcloud.github.io/help/shortcodes/attachments/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/attachments/</guid>
-      <description>The Attachments shortcode displays a list of files attached to a page. Example : &amp;lt;div class=&amp;ldquo;alert alert-success&amp;rdquo;
-role=&amp;ldquo;alert&amp;rdquo;&amp;gt;  Attachments 
- &amp;lt;li&amp;gt; &amp;lt;a href=&amp;quot;https://sbcloud.github.io/help//shortcodes/attachments.files/BachGavotteShort.mp3&amp;quot; &amp;gt; BachGavotteShort.mp3 &amp;lt;/a&amp;gt; (357 kB) &amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; &amp;lt;a href=&amp;quot;https://sbcloud.github.io/help//shortcodes/attachments.files/Carroll_AliceAuPaysDesMerveilles.pdf&amp;quot; &amp;gt; Carroll_AliceAuPaysDesMerveilles.pdf &amp;lt;/a&amp;gt; (175 kB) &amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; &amp;lt;a href=&amp;quot;https://sbcloud.github.io/help//shortcodes/attachments.files/adivorciarsetoca00cape.pdf&amp;quot; &amp;gt; adivorciarsetoca00cape.pdf &amp;lt;/a&amp;gt; (361 kB) &amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; &amp;lt;a href=&amp;quot;https://sbcloud.github.io/help//shortcodes/attachments.files/hugo.png&amp;quot; &amp;gt; hugo.png &amp;lt;/a&amp;gt; (17 kB) &amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; &amp;lt;a href=&amp;quot;https://sbcloud.github.io/help//shortcodes/attachments.files/movieselectricsheep-flock-244-32500-2.mp4&amp;quot; &amp;gt; movieselectricsheep-flock-244-32500-2.mp4 &amp;lt;/a&amp;gt; (340 kB) &amp;lt;/li&amp;gt;</description>
-    </item>
-    
-    <item>
-      <title>button</title>
-      <link>https://sbcloud.github.io/help/shortcodes/button/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/button/</guid>
-      <description>Display an actionable button in your page.
- This is a warning button   Usage    Parameter Default Description     href &amp;rdquo;&amp;rdquo; The location href to link to   align &amp;ldquo;center&amp;rdquo; horizontal align button on page   theme primary default, primary , success,info,warning,danger    The inner text you place in short code will be displayed as the button text</description>
-    </item>
-    
-    <item>
-      <title>excerpt</title>
-      <link>https://sbcloud.github.io/help/shortcodes/excerpt/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/excerpt/</guid>
-      <description>The Excerpt shortcode is used to mark a part of a page&amp;rsquo;s content for re-use. Defining an excerpt enables other shortcodes, such as the excerpt-include shortcode, to display the marked content elsewhere.
-You can only define one excerpt per page. In other words, you can only add the Excerpt shortcode once to a page. Usage    Parameter Default Description     hidden &amp;ldquo;false&amp;rdquo; Controls whether the page content contained in the Excerpt shortcode placeholder is displayed on the page.</description>
-    </item>
-    
-    <item>
-      <title>excerpt-include</title>
-      <link>https://sbcloud.github.io/help/shortcodes/excerpt-include/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/excerpt-include/</guid>
-      <description>The Excerpt Include shortcode is used to display &amp;lsquo;excerpted&amp;rsquo; (that is, a segment of) content from one page in another. Before you can use this shortcode, the excerpt must have been defined using the Excerpt shortcode. &amp;lt;div class=&amp;ldquo;alert alert-info&amp;rdquo;
-role=&amp;ldquo;alert&amp;rdquo;&amp;gt;Note that you can have more than one Excerpt Include shortcode on a page (although you can have only one Excerpt shortcode on a page).
-Usage    Parameter Default Description     filename required Type the filename of the page that contains the excerpt to be displayed.</description>
-    </item>
-    
-    <item>
-      <title>expand</title>
-      <link>https://sbcloud.github.io/help/shortcodes/expand/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/expand/</guid>
-      <description>The Expand shortcode displays an expandable/collapsible section of text on your page. Here is an example
-  Expand me...   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</description>
-    </item>
-    
-    <item>
-      <title>icon</title>
-      <link>https://sbcloud.github.io/help/shortcodes/icon/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/icon/</guid>
-      <description>Display an icon like `
-
-`
-It uses :
- glyphicons library (bootstrap).more info here fontawesome library more info here  This icon shortcode will display an icon in your page.
-Usage    Parameter Default Description     name required name of icon (see bellow)   size none size of icon, medium, xx-small, x-small, small, large, x-large, xx-large, 11px, 2em, 20%&amp;hellip;.    **Tips :** setting only the name as argument works too : `{{}}` instead of `{{}}`  Demo {{&amp;lt; icon name=&amp;quot;film&amp;quot; size=&amp;quot;large&amp;quot; &amp;gt;}}   .</description>
-    </item>
-    
-    <item>
-      <title>mermaid</title>
-      <link>https://sbcloud.github.io/help/shortcodes/mermaid/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/mermaid/</guid>
-      <description>Flowchart example   Show code ...   {{}} graph LR; A[Hard edge] --|Link text| B(Round edge) B -- C{Decision} C --|One| D[Result one] C --|Two| E[Result two] {{}}   graph LR; A[Hard edge] --|Link text| B(Round edge) B -- C{Decision} C --|One| D[Result one] C --|Two| E[Result two]  With sub-graphs and some style   Show code...   {{}} graph LR; X -- Y linkStyle 0 stroke:#f00,stroke-width:4px; Y -- Z Z -- X linkStyle 1,2 interpolate basis stroke:#0f0,stroke-width:2px; X -- A1 subgraph right A2 -- B2 B2 -- C2 end subgraph left A1 -- B1 B1 -- C1 end C1 -- X Z -- A2 C2 -- Z style Y fill:#f9f,stroke:#333,stroke-width:4px classDef left fill:#ccf,stroke:#f66,stroke-width:2px,stroke-dasharray: 5, 5 class A1,B1,C1 left {{}}   graph LR; X -- Y linkStyle 0 stroke:#f00,stroke-width:4px; Y -- Z Z -- X linkStyle 1,2 interpolate basis stroke:#0f0,stroke-width:2px; X -- A1 subgraph right A2 -- B2 B2 -- C2 end subgraph left A1 -- B1 B1 -- C1 end C1 -- X Z -- A2 C2 -- Z style Y fill:#f9f,stroke:#333,stroke-width:4px classDef left fill:#ccf,stroke:#f66,stroke-width:2px,stroke-dasharray: 5, 5 class A1,B1,C1 left  Sequence example   Show code .</description>
-    </item>
-    
-    <item>
-      <title>notice</title>
-      <link>https://sbcloud.github.io/help/shortcodes/notice/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/notice/</guid>
-      <description>The notice shortcode shows 4 types of disclaimers to help you structure your page.
-Note {{% notice note %}} A notice disclaimer {{% /notice %}}  renders as
-A notice disclaimer  Info {{% notice info %}} An information disclaimer {{% /notice %}}  renders as
-An information disclaimer  Tip {{% notice tip %}} A tip disclaimer {{% /notice %}}  renders as
-A tip disclaimer  Warning {{% notice warning %}} An warning disclaimer {{% /notice %}}  renders as</description>
-    </item>
-    
-    <item>
-      <title>page test</title>
-      <link>https://sbcloud.github.io/help/shortcodes/children/test/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/children/test/</guid>
-      <description>This is a test demo child page</description>
-    </item>
-    
-    <item>
-      <title>page test 3</title>
-      <link>https://sbcloud.github.io/help/shortcodes/children/children-2/test3/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/children/children-2/test3/</guid>
-      <description>This is a test 3 demo child page</description>
-    </item>
-    
-    <item>
-      <title>panel</title>
-      <link>https://sbcloud.github.io/help/shortcodes/panel/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/panel/</guid>
-      <description>The panel shortcode Allow you to highlight information or put it in a box. They create a colored box surrounding your text 
-Usage    Parameter Default Description     header none The title of the panel. If specified, this title will be displayed in its own header row.   footer none the footer of the panel. If specified, this text will be displayed in its own row   theme primary default,primary,info,success,warning,danger    Basic example By default :</description>
-    </item>
-    
-    <item>
-      <title>revealjs</title>
-      <link>https://sbcloud.github.io/help/shortcodes/revealjs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/shortcodes/revealjs/</guid>
-      <description>This shortcode will format the enclosed markdow to render it with reveal.js at runtime (client-side)
-Read more on revealjs github repo.
-Usage revealjs can use the following named parameters :
- theme transition controls progress history center
-Important Even if the enclosed content is a mardown, use `  Content formating and slide delimiters read more on this here
-Demo  # In the morning ___ ## Getting up - Turn off alarm - Get out of bed ___ ## Breakfast - Eat eggs - Drink coffee --- # In the evening ___ ## Dinner - Eat spaghetti - Drink wine ___ ## Going to sleep - Get in bed - Count sheep       function initSlides() { Reveal.</description>
     </item>
     
   </channel>

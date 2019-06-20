@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ユースケース別アーキテクチャ on SB Cloud Technical References</title>
+    <link>https://sbcloud.github.io/help/usecases/</link>
+    <description>Recent content in ユースケース別アーキテクチャ on SB Cloud Technical References</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 Jun 2019 12:30:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://sbcloud.github.io/help/usecases/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>K8s</title>
+      <link>https://sbcloud.github.io/help/usecases/k8s/</link>
+      <pubDate>Mon, 13 May 2019 16:20:40 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/usecases/k8s/</guid>
+      <description> Hello world Hello world </description>
+    </item>
+    
+    <item>
+      <title>K9s</title>
+      <link>https://sbcloud.github.io/help/usecases/k9s/</link>
+      <pubDate>Mon, 13 May 2019 16:20:40 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/usecases/k9s/</guid>
+      <description> Hello world Hello world </description>
+    </item>
+    
+  </channel>
+</rss>
