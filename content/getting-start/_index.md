@@ -1,8 +1,8 @@
 +++
 title = "Getting started"
 description = ""
-weight = 1
-alwaysopen = true
+weight = 10000000
+# alwaysopen = true
 +++
 
 ## Requirements

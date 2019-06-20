@@ -1,12 +1,6 @@
 {{- $currentNode := . }}
-{{- if eq .Site.Params.ordersectionsby "title"}}
-  {{- range .Site.Home.Sections.ByTitle}}
-  {{- template "menu-nav" dict "sect" . "currentnode" $currentNode "level" 1}}
-  {{- end}}
-{{- else}}
-  {{- range .Site.Home.Sections.ByWeight}}
-  {{- template "menu-nav" dict "sect" . "currentnode" $currentNode "level" 1}}
-  {{- end}}
+{{- range .Site.Home.Sections.ByWeight}}
+{{- template "menu-nav" dict "sect" . "currentnode" $currentNode "level" 1}}
 {{- end}}
 
 <!-- templates -->
@@ -30,21 +24,12 @@
           {{- end}}
           {{- $pages := (.Scratch.Get "pages") }}
 
-        {{- if eq .Site.Params.ordersectionsby "title"}}
-          {{- range $pages.ByTitle }}
-            {{- if and .Params.hidden (not $.showhidden) }}
-            {{- else}}
-            {{- template "menu-nav" dict "sect" . "currentnode" $currentNode  }}
-            {{- end}}
-          {{- end}}
-        {{- else}}
           {{- range $pages.ByWeight }}
             {{- if and .Params.hidden (not $.showhidden) }}
             {{- else}}
             {{- template "menu-nav" dict "sect" . "currentnode" $currentNode "level" (add $level 1) }}
             {{- end}}
           {{- end}}
-        {{- end}}
 
       {{- end}}
   {{end}}

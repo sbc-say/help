@@ -1,7 +1,7 @@
 +++
 title = "About the Search Engine"
 description = ""
-weight = 40
+weight = 400000
 +++
 
 {{%excerpt-include filename="getting-start/configuration.md" /%}}

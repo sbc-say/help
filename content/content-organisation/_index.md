@@ -1,7 +1,7 @@
 +++
 title = "Content Organisation"
 description = ""
-weight = 20
+weight = 200000
 +++
 
 With **Hugo**, pages are the core of your site. Organize your site like any other Hugo project. **Magic occurs with the nested sections implemention done in v0.22 of hugo (congrats @bep)**.
