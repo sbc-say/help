@@ -2,7 +2,6 @@
 title = "第1章 ECSインスタンスの作成"
 description = ""
 weight = 10
-alwaysopen = true
 date= 2019-06-05T12:30:18+08:00
 draft= false
 +++
