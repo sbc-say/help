@@ -21,7 +21,6 @@
 * VPC
 * RDS
 * OSS
-* Data-V (?)
 * Express Connect 
 * Learning With Terraform
 
