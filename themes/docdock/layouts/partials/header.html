@@ -5,6 +5,7 @@
   {{ if .Site.GetPage "page" "_header.md" }}
     {{(.Site.GetPage "page" "_header.md").Content}}
   {{else}}
+    <img src="/img/sbcloud_logo.png" class="noshadow" width="30" height="30" alt="">
     <a class="baselink" href="{{.Site.BaseURL}}">{{.Site.Title}}</a>
   {{end}}
 {{end}}

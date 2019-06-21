@@ -6,6 +6,7 @@ title = "SB Cloud Technical References"
 theme = "docdock"
 publishDir = "docs"
 #themesdir = "../.."
+staticDir = ["static", "static2"]
 pygmentsCodeFences = true
 pygmentsStyle = "monokailight"
 
