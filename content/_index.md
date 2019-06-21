@@ -26,9 +26,9 @@
 
 ## 2. Advisories
 ###  Introduction
-* Principal Architecture (Refer to existing one)
+* Principal Architecture
 * Learning for Security
-* Learning for Cost (now working)
+* Learning for Cost
 * Learning for Operation
 
 ### Best Practice by Product
@@ -41,13 +41,13 @@
 * Migration from Other Cloud
 * Co-Existing with Other Cloud
 
-## 3. Scenarios 
-###  CI/CD
+## 3. Scenarios
+### CI/CD
 * E-Commerce with Terraform
-###  Container
+
+### Container
 * Java Springboot
 * Python Django
-
 
 ## 4. FAQ
 * ECS
