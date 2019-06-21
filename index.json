@@ -109,7 +109,7 @@
 	"title": "",
 	"tags": [],
 	"description": "",
-	"content": " Main features  最初の手引き Alibaba Cloudの活用 from markdown (embededed or fullscreen page) ユースケース faq  "
+	"content": " SBC Technical Reference [Getting Started](/help/getting-started/ Registration  Create Account Register Info Difference among JP site~ Int site ~ CN site  Product know-how  ECS SLB VPC RDS OSS Express Connect Comparison with Cloud Vendors  Starter guides  ECS SLB VPC RDS OSS Data-V (?) Express Connect Learning With Terraform  2. Advisories Introduction  Principal Architecture (Refer to existing one) Learning for Security Learning for Cost (now working) Learning for Operation  Best Practice by Product  Anti-DDos Data-V Kubernetes  Migration  Migration from On-Premises Migration from Other Cloud Co-Existing with Other Cloud  3. Scenarios CI/CD  E-Commerce with Terraform\nContainer Java Springboot\n Python Django\n  4. FAQ  ECS SLB VPC RDS OSS Account Managemant  "
 },
 {
 	"uri": "https://sbcloud.github.io/help/usecases/k8s/",
@@ -126,18 +126,18 @@
 	"content": " Hello world Hello world "
 },
 {
+	"uri": "https://sbcloud.github.io/help/credits/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "  最初の手引き Alibaba Cloudの活用 from markdown (embededed or fullscreen page) ユースケース faq  Setting for CircleCI https://circleci.com/gh/sbcloud/help/tree/master\n"
+},
+{
 	"uri": "https://sbcloud.github.io/help/categories/",
 	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
-},
-{
-	"uri": "https://sbcloud.github.io/help/credits/",
-	"title": "Credits",
-	"tags": [],
-	"description": "contributors and packages used by hugo-theme-docdock",
-	"content": " github contributors .ghContributors{ display:flex; flex-flow: wrap; align-content: flex-start }\n.ghContributors \u0026gt; div{ width: 50% ; display: inline-flex; margin-bottom: 5px; } .ghContributors \u0026gt; div label{ padding-left: 4px ; } .ghContributors \u0026gt; div span{ font-size: x-small; padding-left: 4px ; }\n  @vjeantet 247 commits \n @matcornic 49 commits \n @W-Floyd 24 commits \n @Pilskalns 24 commits \n @gwleclerc 21 commits \n @lierdakil 16 commits \n @jose-oc 8 commits \n @SiamKreative 6 commits \n @Xipas 5 commits \n @altinnadmin 4 commits \n @FMuro 2 commits \n @EnigmaCurry 2 commits \n @aral 2 commits \n @adamlamar 1 commits \n @byzheng 1 commits \n @zivbk1 1 commits \n @damoon 1 commits \n @vielmetti 1 commits \n @erikjasiak 1 commits \n @giuliov 1 commits \n @farmergreg 1 commits \n @jodumont 1 commits \n @tarpdalton 1 commits \n @jamestharpe 1 commits \n @JohnBlood 1 commits \n @kamilchm 1 commits \n @lgfischer 1 commits \n @ripienaar 1 commits \n @rsanderscybraics 1 commits \n @shazic 1 commits \n @viertaxa 1 commits \n @uweschaefer 1 commits \n @wshayes 1 commits \n @eyoder 1 commits \n @ivan-danilov 1 commits \n @justin-yan 1 commits \n @karlmacklin 1 commits \n @petzi53 1 commits \n @remi31000 1 commits \n @tonivj5 1 commits \n\nOther contribution  @bep supports and advices   @facette.io Flex style based on facette documentation theme, Thanks to @vbatoufflet  \nPackages and libraries  Bootstrap - front-end framework mermaid - generation of diagram and flowchart from text in a similar manner as markdown font awesome - the iconic font and CSS framework jQuery - The Write Less, Do More, JavaScript Library lunr - Lunr enables you to provide a great search experience without the need for external, server-side, search services\u0026hellip; JavaScript-autoComplete - An extremely lightweight and powerful vanilla JavaScript completion suggester. clipboard.js - copy text to clipboard highlight.js - Javascript syntax highlighter modernizr - A JavaScript toolkit that allows web developers to use new CSS3 and HTML5 features while maintaining a fine level of control over browsers that don\u0026rsquo;t support reveal-js - The HTML Presentation Framework  Tooling  Netlify - Continuous deployement and hosting of this documentation Hugo  \n"
 },
 {
 	"uri": "https://sbcloud.github.io/help/showcase/",
