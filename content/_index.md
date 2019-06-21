@@ -1,6 +1,6 @@
 # SBC Technical Reference
 
-## [Getting Started]({{%relref "getting-started/_index.md" %}}
+## 1. Getting Started
 ### Registration
 * Create Account
 * Register Info
