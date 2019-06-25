@@ -1,7 +1,7 @@
 +++
 title = "About SBC Technical Reference"
 description = ""
-weight = 600
+weight = 90
 +++
 
 

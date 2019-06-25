@@ -1,7 +1,7 @@
 ---
 title: "料金"
 date: 2019-04-03T15:31:09+09:00
-weight: 6000
+weight: 600
 draft: false
 ---
 
