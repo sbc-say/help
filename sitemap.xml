@@ -3,17 +3,12 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://sbcloud.github.io/help/getting-started/create-virtual-servers/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/getting-started/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/advisories/</loc>
+    <loc>https://sbcloud.github.io/help/best-practices/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -37,22 +32,27 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/best-practices/architecture/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/scenarios/web-application/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/advisories/product/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/advisories/product/ram/</loc>
+    <loc>https://sbcloud.github.io/help/best-practices/product/ram/</loc>
     <lastmod>2019-05-15T10:37:37+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/advisories/compare/vs-jp-cn/</loc>
+    <loc>https://sbcloud.github.io/help/best-practices/infrastructure-as-code/terraform/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practices/compare/vs-jp-cn/</loc>
     <lastmod>2019-05-15T10:37:37+09:00</lastmod>
   </url>
   
@@ -62,12 +62,12 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/advisories/terraform/</loc>
-    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+    <loc>https://sbcloud.github.io/help/scenarios/ci-cd/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/scenarios/ci-cd/</loc>
+    <loc>https://sbcloud.github.io/help/best-practices/security/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -77,12 +77,7 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/advisories/compare/vs-aws-gcp-azure/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/advisories/compare/</loc>
+    <loc>https://sbcloud.github.io/help/best-practices/compare/vs-aws-gcp-azure/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -102,8 +97,23 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/best-practices/infrastructure-as-code/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practices/product/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/faq/rds/</loc>
     <lastmod>2019-04-04T15:32:14+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practices/compare/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>

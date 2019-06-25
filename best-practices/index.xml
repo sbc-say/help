@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ベストプラクティス on SB Cloud Technical References</title>
+    <link>https://sbcloud.github.io/help/best-practices/</link>
+    <description>Recent content in ベストプラクティス on SB Cloud Technical References</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 Jun 2019 12:30:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://sbcloud.github.io/help/best-practices/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>アーキテクチャ</title>
+      <link>https://sbcloud.github.io/help/best-practices/architecture/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practices/architecture/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>セキュリティ</title>
+      <link>https://sbcloud.github.io/help/best-practices/security/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practices/security/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
