@@ -1,5 +1,5 @@
 +++
-title = "About the Search Engine"
+title = "About SBC Technical Reference"
 description = ""
 weight = 400000
 +++
