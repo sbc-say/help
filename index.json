@@ -21,15 +21,15 @@
 	"content": ""
 },
 {
-	"uri": "https://sbcloud.github.io/help/best-practice/",
-	"title": "Best Practice by Product",
+	"uri": "https://sbcloud.github.io/help/advisories/",
+	"title": "Advisories",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "https://sbcloud.github.io/help/advisories/",
-	"title": "Advisories",
+	"uri": "https://sbcloud.github.io/help/advisories/product/",
+	"title": "Best Practice by Product",
 	"tags": [],
 	"description": "",
 	"content": ""

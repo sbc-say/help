@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Best Practice by Product on SB Cloud Technical References</title>
-    <link>https://sbcloud.github.io/help/best-practice/</link>
+    <link>https://sbcloud.github.io/help/advisories/product/</link>
     <description>Recent content in Best Practice by Product on SB Cloud Technical References</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 05 Jun 2019 12:30:18 +0800</lastBuildDate>
     
-	<atom:link href="https://sbcloud.github.io/help/best-practice/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://sbcloud.github.io/help/advisories/product/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
