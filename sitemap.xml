@@ -23,11 +23,6 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/advisories/product/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/scenarios/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
@@ -35,6 +30,30 @@
   <url>
     <loc>https://sbcloud.github.io/help/faq/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenarios/web-application/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/getting-started/registration/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/advisories/product/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/faq/account/</loc>
+    <lastmod>2019-04-03T15:31:09+09:00</lastmod>
   </url>
   
   <url>
@@ -53,8 +72,28 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/scenarios/ci-cd/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/getting-started/info/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/faq/ecs/</loc>
     <lastmod>2019-04-04T15:31:42+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenarios/data-analysis/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/faq/slb/</loc>
+    <lastmod>2019-04-04T15:32:45+09:00</lastmod>
   </url>
   
   <url>
@@ -68,17 +107,8 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/faq/slb/</loc>
-    <lastmod>2019-04-04T15:32:45+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/faq/management/</loc>
+    <loc>https://sbcloud.github.io/help/faq/cost/</loc>
     <lastmod>2019-04-03T15:31:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/about/</loc>
   </url>
   
   <url>

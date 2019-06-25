@@ -5,8 +5,8 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-06-25T05:16:13 UTC">
-<title>FAQ :: SB Cloud Technical References</title>
+<meta name="revised" content="2019-06-25T06:45:10 UTC">
+<title>よくある質問 :: SB Cloud Technical References</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -91,12 +91,24 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+    <li data-nav-id="/help/getting-started/registration/" class="dd-item
+        ">
+      <div>
+      <a href="/help/getting-started/registration/">アカウント登録</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/help/getting-started/info/" class="dd-item
+        ">
+      <div>
+      <a href="/help/getting-started/info/">主要プロダクトの紹介</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/help/advisories/" class="dd-item haschildren
         ">
       <div>
-      <a href="/help/advisories/">Advisories</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/advisories/">ベストプラクティス</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/advisories/compare/" class="dd-item">
@@ -105,12 +117,6 @@
             クラウドサービスとの比較について
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
-    </li>
-    <li data-nav-id="/help/advisories/product/" class="dd-item
-        ">
-      <div>
-      <a href="/help/advisories/product/">Best Practice by Product</a><i class="fa fa-circle-thin read-icon"></i>
-      </div>
     </li>
       <li data-nav-id="/help/advisories/simple_compare/" class="dd-item">
         <div>
@@ -138,7 +144,7 @@
     <li data-nav-id="/help/scenarios/" class="dd-item haschildren
         ">
       <div>
-      <a href="/help/scenarios/">Scenarios</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/scenarios/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/scenarios/k8s/" class="dd-item">
@@ -160,14 +166,28 @@
     <li data-nav-id="/help/faq/" class="dd-item parent active haschildren
         ">
       <div>
-      <a href="/help/faq/">FAQ</a>
+      <a href="/help/faq/">よくある質問</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/help/faq/account/" class="dd-item">
+        <div>
+          <a href="/help/faq/account/">
+            アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/help/faq/ecs/" class="dd-item">
         <div>
           <a href="/help/faq/ecs/">
             ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
+        <div>
+          <a href="/help/faq/slb/">
+            SLB
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -185,17 +205,10 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/faq/slb/" class="dd-item">
+      <li data-nav-id="/help/faq/cost/" class="dd-item">
         <div>
-          <a href="/help/faq/slb/">
-            SLB
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/faq/management/" class="dd-item">
-        <div>
-          <a href="/help/faq/management/">
-            管理
+          <a href="/help/faq/cost/">
+            料金
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -238,16 +251,17 @@
     <option value="/help/getting-started/" >
    Getting Started</option>
     <option value="/help/advisories/" >
-   Advisories</option>
+   ベストプラクティス</option>
     <option value="/help/scenarios/" >
-   Scenarios</option>
+   ユースケース別シナリオ</option>
     <option value="/help/faq/"  selected>
-   FAQ</option> 
+   よくある質問</option> 
+      <option value="/help/faq/account/" >- アカウント</option>
       <option value="/help/faq/ecs/" >- ECS</option>
+      <option value="/help/faq/slb/" >- SLB</option>
       <option value="/help/faq/rds/" >- RDS</option>
       <option value="/help/faq/oss/" >- OSS</option>
-      <option value="/help/faq/slb/" >- SLB</option>
-      <option value="/help/faq/management/" >- 管理</option>
+      <option value="/help/faq/cost/" >- 料金</option>
   
     <option value="/help/about/" >
    About SBC Technical Reference</option>
@@ -273,7 +287,7 @@
       </div>
     
 
-    <h1>FAQ</h1>
+    <h1>よくある質問</h1>
     
     
     
@@ -289,6 +303,40 @@
 
 </div>
 
+
+   <article class="post faq">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/help/faq/account/">アカウント</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>アカウント Q. TOTP認証利用できなくなった時の対応方法について バインドしている携帯電話を紛失したり、TOTP認証アプリケーションを削除する等、何らかの理由で認証が行えなくなった場合、バインド解除を申請することができます。
+申請方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/faq-detail/54827.html
+Q. メールアドレスの変更方法について ログインに使用するメールアドレス（ログインアカウント）は変更することができます。
+変更方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/52915.html
+Q. クレジットカードの変更方法について アカウントには最低1枚のクレジットカードを登録する必要があります。 このため、クレジットカードの変更は、以下の手順で操作します。
+①新しいカードを追加 ②既存カードを削除
+変更方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/50107.html
+Q. アカウント登録氏名（社名）の変更方法について アカウントにクレジットカードを追加・有効化完了後は、コンソールから登録名（個人：姓名、法人：会社名）を変更することができません。 変更が必要な場合、チケット起票してサポートセンターに連絡する必要があります。
+なお、法人アカウントの「担当者名（連絡先情報の姓名）」はコンソールにログイン後、下記リンクにて変更できます。（チケットを起票する必要はありません。） https://myaccount.aliyun.com/account/complete-profile#/content
+Q. コンソール自動ログアウトの仕様について 操作の有無に関係なく、コンソールにログインしてから3時間経過すると、タイムアウトでセッションが切れ、自動的にログアウトされます。
+Q. サポートセンターの対応範囲について サポートセンターの対応範囲は下記となります。
+■サービスに関する問い合わせ ・プロダクトの概要/価格 ・ご購入内容/ご利用料金 ・お支払い方法/請求全般 ・アカウント関連
+■プロダクトに関する問い合わせ ・使い方/操作方法の説明 ・トラブルシュート ・障害対応 ※コンソール/API/SDKを含む
+下記内容は範囲外となります。 ・お客様が導入されたアプリケーションソフトウェアのトラブルシュート ・OSのパッチ適用 ・データベースチューニング
+サポートセンターの詳細は下記をご参照ください。 https://jp.alibabacloud.com/support/after-sales
+Q. チケット起票の推奨記載内容について 下記内容に近いコンテンツを提供することで、よりスムーズにサポートを受けることができます。
+現象　概要 どのような現象が発生しているか。具体的に　例: ・エラーが発生した　(要 具体的なエラーメッセージ、実施した手順)、 ・通信できない、応答しない、つながらない、反応しない、動かない、アクセスできない (要　どこからどこに、コマンドと結果、関連インスタンスのパラメータ) ・意図したものが表示されない、意図しないものが表示される (要　意図したもの、意図しなかったもの、参照ドキュメント) ・意図通りに動かない　(要　期待される動き、実際の動き)
+[How]　現象の根拠、現象の因果関係 現象を「トラブル」とする客観的な根拠。　例: ・Web管理コンソール画面、サービスのログ、ECS仮想マシン内のシステムログ、 ・コマンドの実行ログ 補足: ・リモートデスクトップ接続なのか、SSH接続なのか、VNC接続なのか ・再現性はあるか。ログオフ、再起動等をしても再現するか。 ・同様のインスタンス等の環境を作成しても再現するか。 ・リージョン等が異なっても再現するか。 ・実施した手順　※現象が発生した手順だけでなく、しなかった手順も分かると有効です <a class="read-more" href="/help/faq/account/">&raquo;</a></p>
+    </section>
+    <footer class=" footline" >
+         
+        
+
+        
+        
+
+    </footer>
+</article>
 
    <article class="post faq">
     <header class="post-header">
@@ -308,6 +356,40 @@ Q. ECSのデフォルトタイムゾーンについて リージョンに関わ�
 なお、カスタムイメージのタイムゾーンはイメージ作成した際のものとなりますが、初回ECS作成直後でも中国ローカル時間になりますので、個別に時間自動同期（NTP）設定が必要となります。
 Q. スナップショット取得時の性能影響について スナップショットの作成時は、ストレージのIO性能（最大10%低下）に影響します。 通常、稼働中のサービスへの影響はないと想定されますが、ストレージIOが少ない時間帯での取得を勧めします。
 Q. 購入可能な従量課金インスタンスの上限について 従量課金でのECSインスタンス購入上限は、vCPU数により制限されています。従量課金型ECSインスタンスの購入は各リージョン「50vCPU」までとなっております。 例）お客様が1台のECSに対して4vCPUで利用する場合は、12台の従量課金ECSを購入することができます。 <a class="read-more" href="/help/faq/ecs/">&raquo;</a></p>
+    </section>
+    <footer class=" footline" >
+         
+        
+
+        
+        
+
+    </footer>
+</article>
+
+   <article class="post faq">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/help/faq/slb/">SLB</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>一般仕様 Q. レイヤー4とレイヤー7のSLBの違いについて SLBはレイヤ4 (TCP、UDP)およびレイヤ7(HTTP、HTTPS)を提供しています。
+レイヤ 4 SLB は、ロードバランシングを実現するために keepalived のオープンソースソフトウェアの Linux 仮想サーバー（ LVS ）を使用し、クラウドコンピューティングの要件に応じて、いくつかのカスタマイズを行っています。 レイヤ 7 SLB は、ロードバランシングを実現するために Tengine を使用しています。 Tengine、Nginx に基づいて Web サーバープロジェクトは、多量トラフィックのウェブサイトに対応する機能を追加しています。
+Q. SLBのアクセスログについて SLBのレイヤ7のアクセスログは提供しています。
+アクセスログの取得は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85974.htm
+Q. SLBのスペック変更方法と業務影響について コンソールにて、SLBのスペック変更をオンラインで実施することができます。また、トラフィックが流れている状態でAPIよりSLBのスペックを変更することもできます。
+ただし、スペックを変更している時に、SLBサービスが中断されることあります。スペックの変更が完了になると、SLBが自動的に再開します。
+なお、SLBのスペック変更は「パフォーマンス専有型」から「パフォーマンス専有型」へのインスタンススペック変更、もしくは、「パフォーマンス共通型」から「パフォーマンス専有型」へのインスタンススペック変更となります。「パフォーマンス専有型」から「パフォーマンス共通型」へのスペック変更はできません。
+スペックの変更は下記のドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85942.htm
+Q. VServerグループとマスタースレーブグループの違いについて Vserverグループを利用した場合、ディレクトリ転送機能を利用できます。 転送設定されてないディレクトリの場合、デフォルトバックエンドサーバーに分散されます。
+デフォルトグループまたは、Vserverグループにて重みを0に設定してもマスタースレーブ構成になりませんので、マスタースレーブグループを利用する必要があります。
+VServerグループは下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85964.htm マスタースレーブグループは下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85965.htm
+Q. サードパーティ証明書のアップロード方法について SLBにサードパーティ証明書をアップロードすることができます。
+アップロード方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85971.htm
+Q. SLB関連の各API のスロットリング上限について SLBでは、AccessKey１つあたりのAPI呼び出し回数を１日に5000回まで制限されます。
+Server Load Balancer プロダクトの制限をご参照ください。 https://jp.alibabacloud.com/help/doc-detail/32459.htm
+ネットワーク Q. パブリックSLBとプライベートSLBの違いについて パブリックSLBはインターネットからのリクエストを受け取るため、パブリックIPアドレスを提供しています。AlibabaCloudの仕様として、パブリックSLBがVPC内にあるバックエンドECSと通信できますが、該当VPCのプライベートIPアドレスを持っていません。
+プライベートSLBはパブリックIPアドレスを提供しておらず、Alibaba Cloud イントラネットからのリクエストのみ受信できます。AlibabaCloudの仕様として、プライベートSLBはVPCのプライベートIPを持っています。 なお、プライベートSLBにEIPを付与することにより、パブリックSLBとして機能することもできます。
+Q. パブリックSLBとバックエンドECS間の通信仕様について パブリックSLBとバックエンドECS間はプロクシ通信となります。該当通信は、ECSのセキュリティグループで遮断できない仕様となります。 <a class="read-more" href="/help/faq/slb/">&raquo;</a></p>
     </section>
     <footer class=" footline" >
          
@@ -381,41 +463,7 @@ Q. 同名ファイルを入れ替え後の即時反映について OSS上に同�
 
    <article class="post faq">
     <header class="post-header">
-        <h2 class="post-title"><a href="/help/faq/slb/">SLB</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>一般仕様 Q. レイヤー4とレイヤー7のSLBの違いについて SLBはレイヤ4 (TCP、UDP)およびレイヤ7(HTTP、HTTPS)を提供しています。
-レイヤ 4 SLB は、ロードバランシングを実現するために keepalived のオープンソースソフトウェアの Linux 仮想サーバー（ LVS ）を使用し、クラウドコンピューティングの要件に応じて、いくつかのカスタマイズを行っています。 レイヤ 7 SLB は、ロードバランシングを実現するために Tengine を使用しています。 Tengine、Nginx に基づいて Web サーバープロジェクトは、多量トラフィックのウェブサイトに対応する機能を追加しています。
-Q. SLBのアクセスログについて SLBのレイヤ7のアクセスログは提供しています。
-アクセスログの取得は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85974.htm
-Q. SLBのスペック変更方法と業務影響について コンソールにて、SLBのスペック変更をオンラインで実施することができます。また、トラフィックが流れている状態でAPIよりSLBのスペックを変更することもできます。
-ただし、スペックを変更している時に、SLBサービスが中断されることあります。スペックの変更が完了になると、SLBが自動的に再開します。
-なお、SLBのスペック変更は「パフォーマンス専有型」から「パフォーマンス専有型」へのインスタンススペック変更、もしくは、「パフォーマンス共通型」から「パフォーマンス専有型」へのインスタンススペック変更となります。「パフォーマンス専有型」から「パフォーマンス共通型」へのスペック変更はできません。
-スペックの変更は下記のドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85942.htm
-Q. VServerグループとマスタースレーブグループの違いについて Vserverグループを利用した場合、ディレクトリ転送機能を利用できます。 転送設定されてないディレクトリの場合、デフォルトバックエンドサーバーに分散されます。
-デフォルトグループまたは、Vserverグループにて重みを0に設定してもマスタースレーブ構成になりませんので、マスタースレーブグループを利用する必要があります。
-VServerグループは下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85964.htm マスタースレーブグループは下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85965.htm
-Q. サードパーティ証明書のアップロード方法について SLBにサードパーティ証明書をアップロードすることができます。
-アップロード方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85971.htm
-Q. SLB関連の各API のスロットリング上限について SLBでは、AccessKey１つあたりのAPI呼び出し回数を１日に5000回まで制限されます。
-Server Load Balancer プロダクトの制限をご参照ください。 https://jp.alibabacloud.com/help/doc-detail/32459.htm
-ネットワーク Q. パブリックSLBとプライベートSLBの違いについて パブリックSLBはインターネットからのリクエストを受け取るため、パブリックIPアドレスを提供しています。AlibabaCloudの仕様として、パブリックSLBがVPC内にあるバックエンドECSと通信できますが、該当VPCのプライベートIPアドレスを持っていません。
-プライベートSLBはパブリックIPアドレスを提供しておらず、Alibaba Cloud イントラネットからのリクエストのみ受信できます。AlibabaCloudの仕様として、プライベートSLBはVPCのプライベートIPを持っています。 なお、プライベートSLBにEIPを付与することにより、パブリックSLBとして機能することもできます。
-Q. パブリックSLBとバックエンドECS間の通信仕様について パブリックSLBとバックエンドECS間はプロクシ通信となります。該当通信は、ECSのセキュリティグループで遮断できない仕様となります。 <a class="read-more" href="/help/faq/slb/">&raquo;</a></p>
-    </section>
-    <footer class=" footline" >
-         
-        
-
-        
-        
-
-    </footer>
-</article>
-
-   <article class="post faq">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/help/faq/management/">管理</a></h2>
+        <h2 class="post-title"><a href="/help/faq/cost/">料金</a></h2>
     </header>
     <section class="post-excerpt">
         <p>料金 Q. マイクロチャージの仕様について クレジットカードをご登録またはご追加の際に、マイクロチャージというクレジットカードの有効性を確認するプロセスにより、少額の課金（通常は100円以内）が発生します。 該当課金は、AlibabaCloudから24時間以内にカードに払い戻ししますが、カード発行会社により、ご利用のカードに対する払い戻しをご確認いただけるまでに 30 日程度を要する場合があります。
@@ -441,7 +489,7 @@ Q. インスタンス自動更新失敗後の動作について 自動更新設�
 ①有効期限日当日 ②有効期限日の7日後（有効期限日当日の課金に失敗した場合） ③有効期限日の14日後（有効期限日14日後の課金に失敗した場合）
 該当インスタンスに対する課金が3回とも失敗した場合、インスタンスが15日目に停止され、30日目にリリースされます。
 Q. 自動更新OFFの状態で有効期限切れ後の更新方法について 自動更新OFFの状態で有効期限を迎えた後、該当インスタンスの自動更新をONに設定することができませんので、先に手動更新する必要があります。 有効期間内の場合、自動更新をONに設定することができます。
-Q. サブスクリプションインスタンスの削除方法について 年単位または月単位のサブスクリプションで課金されるインスタンスは、お客様ご自身で削除またはリリースすることはできません。期限切れた日から15日後インスタンスが停止され、30日後は自動的にリリースされます。 <a class="read-more" href="/help/faq/management/">&raquo;</a></p>
+Q. サブスクリプションインスタンスの削除方法について 年単位または月単位のサブスクリプションで課金されるインスタンスは、お客様ご自身で削除またはリリースすることはできません。期限切れた日から15日後インスタンスが停止され、30日後は自動的にリリースされます。 <a class="read-more" href="/help/faq/cost/">&raquo;</a></p>
     </section>
     <footer class=" footline" >
          
@@ -470,7 +518,7 @@ Q. サブスクリプションインスタンスの削除方法について 年�
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="/help/scenarios/k9s/" title="K9s"> <i class="fa fa-chevron-left"></i><label>K9s</label></a>
-    <a class="nav nav-next" href="/help/faq/ecs/" title="ECS" style="margin-right: 0px;"><label>ECS</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/help/faq/account/" title="アカウント" style="margin-right: 0px;"><label>アカウント</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
