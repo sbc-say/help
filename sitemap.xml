@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://sbcloud.github.io/help/advisories/compare/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/getting-started/create-virtual-servers/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
@@ -37,12 +32,12 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/scenarios/web-application/</loc>
+    <loc>https://sbcloud.github.io/help/getting-started/registration/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/getting-started/registration/</loc>
+    <loc>https://sbcloud.github.io/help/scenarios/web-application/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -52,22 +47,22 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/advisories/product/ram/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/advisories/compare/vs-jp-cn/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/faq/account/</loc>
     <lastmod>2019-04-03T15:31:09+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/advisories/simple_compare/</loc>
-    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/advisories/how_to_use_terraform/</loc>
-    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/advisories/authority_management/</loc>
+    <loc>https://sbcloud.github.io/help/advisories/terraform/</loc>
     <lastmod>2019-05-15T10:37:37+09:00</lastmod>
   </url>
   
@@ -78,6 +73,16 @@
   
   <url>
     <loc>https://sbcloud.github.io/help/getting-started/info/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/advisories/compare/vs-aws-gcp-azure/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/advisories/compare/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   

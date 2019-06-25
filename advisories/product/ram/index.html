@@ -5,8 +5,8 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-06-25T06:45:10 UTC">
-<title>第5章 権限管理 :: SB Cloud Technical References</title>
+<meta name="revised" content="2019-06-25T06:58:48 UTC">
+<title>RAM :: SB Cloud Technical References</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
     
   </head>
-  <body data-url="/help/advisories/authority_management/">
+  <body data-url="/help/advisories/product/ram/">
     
       <header>
   <div class="logo">
@@ -108,43 +108,54 @@
     <li data-nav-id="/help/advisories/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/advisories/">ベストプラクティス</a>
+      <a href="/help/advisories/">導入アドバイザリ</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/advisories/compare/" class="dd-item">
-        <div>
-          <a href="/help/advisories/compare/">
-            クラウドサービスとの比較について
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-    <li data-nav-id="/help/advisories/product/" class="dd-item
+    <li data-nav-id="/help/advisories/product/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/advisories/product/">個別プロダクト</a><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/advisories/product/">個別プロダクト</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
-    </li>
-      <li data-nav-id="/help/advisories/simple_compare/" class="dd-item">
+        <ul>
+      <li data-nav-id="/help/advisories/product/ram/" class="dd-item active">
         <div>
-          <a href="/help/advisories/simple_compare/">
-            Alibaba Cloudサービスの一覧
+          <a href="/help/advisories/product/ram/">
+            RAM
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/advisories/how_to_use_terraform/" class="dd-item">
+        </ul>
+    </li>
+      <li data-nav-id="/help/advisories/terraform/" class="dd-item">
         <div>
-          <a href="/help/advisories/how_to_use_terraform/">
-            第3章 Terraform の基本
+          <a href="/help/advisories/terraform/">
+            Terraformを利用する
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/advisories/authority_management/" class="dd-item active">
+    <li data-nav-id="/help/advisories/compare/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/advisories/compare/">比較</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/advisories/compare/vs-jp-cn/" class="dd-item">
         <div>
-          <a href="/help/advisories/authority_management/">
-            第5章 権限管理
+          <a href="/help/advisories/compare/vs-jp-cn/">
+            中国および日本におけるサービス一覧
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
+    </li>
+      <li data-nav-id="/help/advisories/compare/vs-aws-gcp-azure/" class="dd-item">
+        <div>
+          <a href="/help/advisories/compare/vs-aws-gcp-azure/">
+            他社クラウドサービスとの比較一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -157,7 +168,7 @@
     <li data-nav-id="/help/scenarios/web-application/" class="dd-item
         ">
       <div>
-      <a href="/help/scenarios/web-application/">Scenarios</a><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/scenarios/web-application/">ウェブアプリケーション</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
     <li data-nav-id="/help/scenarios/ci-cd/" class="dd-item
@@ -275,14 +286,16 @@
     <option value="/help/getting-started/" >
    Getting Started</option>
     <option value="/help/advisories/" >
-   ベストプラクティス</option> 
-      <option value="/help/advisories/compare/" >- クラウドサービスとの比較について</option>
+   導入アドバイザリ</option> 
     <option value="/help/advisories/product/" >
   - 
-   個別プロダクト</option>
-      <option value="/help/advisories/simple_compare/" >- Alibaba Cloudサービスの一覧</option>
-      <option value="/help/advisories/how_to_use_terraform/" >- 第3章 Terraform の基本</option>
-      <option value="/help/advisories/authority_management/"  selected>- 第5章 権限管理</option>
+   個別プロダクト</option> 
+      <option value="/help/advisories/product/ram/"  selected>-- RAM</option>
+  
+      <option value="/help/advisories/terraform/" >- Terraformを利用する</option>
+    <option value="/help/advisories/compare/" >
+  - 
+   比較</option>
   
     <option value="/help/scenarios/" >
    ユースケース別シナリオ</option>
@@ -312,7 +325,7 @@
       </div>
     
 
-    <h1>第5章 権限管理</h1>
+    <h1>RAM</h1>
     
     
     
@@ -561,8 +574,8 @@ resource &quot;alicloud_ram_role_attachment&quot; &quot;attach&quot; {
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/advisories/how_to_use_terraform/" title="第3章 Terraform の基本"> <i class="fa fa-chevron-left"></i><label>第3章 Terraform の基本</label></a>
-    <a class="nav nav-next" href="/help/scenarios/" title="ユースケース別シナリオ" style="margin-right: 0px;"><label>ユースケース別シナリオ</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/advisories/product/" title="個別プロダクト"> <i class="fa fa-chevron-left"></i><label>個別プロダクト</label></a>
+    <a class="nav nav-next" href="/help/advisories/terraform/" title="Terraformを利用する" style="margin-right: 0px;"><label>Terraformを利用する</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -583,7 +596,7 @@ resource &quot;alicloud_ram_role_attachment&quot; &quot;attach&quot; {
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/contentadvisories/authority_management.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/contentadvisories/product/ram.md" target="blank"><i class="fa fa-code-fork"></i>
         Improve this page</a>
     </div>
     
