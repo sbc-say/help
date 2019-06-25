@@ -13,12 +13,41 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/scenarios/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/faq/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/about/</loc>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/getting-started/registration/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://sbcloud.github.io/help/best-practices/architecture/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenarios/web-application/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/faq/account/</loc>
+    <lastmod>2019-04-03T15:31:09+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenarios/ci-cd/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -33,7 +62,12 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/scenarios/</loc>
+    <loc>https://sbcloud.github.io/help/faq/ecs/</loc>
+    <lastmod>2019-04-04T15:31:42+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenarios/data-analysis/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -48,22 +82,28 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/faq/slb/</loc>
+    <lastmod>2019-04-04T15:32:45+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/best-practices/infrastructure-as-code/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/faq/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+    <loc>https://sbcloud.github.io/help/faq/rds/</loc>
+    <lastmod>2019-04-04T15:32:14+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/about/</loc>
+    <loc>https://sbcloud.github.io/help/faq/oss/</loc>
+    <lastmod>2019-04-04T15:33:15+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/scenarios/web-application/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+    <loc>https://sbcloud.github.io/help/faq/cost/</loc>
+    <lastmod>2019-04-03T15:31:09+09:00</lastmod>
   </url>
   
   <url>
@@ -82,48 +122,8 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/faq/account/</loc>
-    <lastmod>2019-04-03T15:31:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenarios/ci-cd/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/getting-started/compare/vs-aws-gcp-azure/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/faq/ecs/</loc>
-    <lastmod>2019-04-04T15:31:42+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenarios/data-analysis/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/faq/slb/</loc>
-    <lastmod>2019-04-04T15:32:45+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/faq/rds/</loc>
-    <lastmod>2019-04-04T15:32:14+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/faq/oss/</loc>
-    <lastmod>2019-04-04T15:33:15+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/faq/cost/</loc>
-    <lastmod>2019-04-03T15:31:09+09:00</lastmod>
   </url>
   
   <url>
