@@ -8,13 +8,18 @@ This Document intends for the following two purposes
 ## Policy
 This document gets updated along with four categories
 1. Getting Started
-2. Advisories
-3. Scenarios
-4. FAQ and others
+2. Best Practice by Product
+3. Advisories
+4. Scenarios
+5. FAQ and others
 
 ### Getting Started  
 -- Basic Manuals for Public/Alibaba Cloud beginners
-  
+
+
+### Best Practice by Product  
+-- Product-maximum-utilized Architectures 
+
 ###  Advisories  
 -- Recommended Strategies for design and architecture
 
