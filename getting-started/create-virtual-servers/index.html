@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-06-25T02:42:00 UTC">
+<meta name="revised" content="2019-06-25T05:02:22 UTC">
 <title>第1章 ECSインスタンスの作成 :: SB Cloud Technical References</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -81,7 +81,7 @@
     <li data-nav-id="/help/getting-started/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/getting-started/">最初の手引き</a>
+      <a href="/help/getting-started/">Getting Started</a>
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
@@ -94,58 +94,64 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/blackbelt/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/" class="dd-item
         ">
       <div>
-      <a href="/help/blackbelt/">Alibaba Cloudの活用</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/">Best Practice by Product</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/help/advisories/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/advisories/">Advisories</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/blackbelt/compare/" class="dd-item">
+      <li data-nav-id="/help/advisories/compare/" class="dd-item">
         <div>
-          <a href="/help/blackbelt/compare/">
+          <a href="/help/advisories/compare/">
             クラウドサービスとの比較について
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/blackbelt/simple_compare/" class="dd-item">
+      <li data-nav-id="/help/advisories/simple_compare/" class="dd-item">
         <div>
-          <a href="/help/blackbelt/simple_compare/">
+          <a href="/help/advisories/simple_compare/">
             Alibaba Cloudサービスの一覧
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/blackbelt/how_to_use_terraform/" class="dd-item">
+      <li data-nav-id="/help/advisories/how_to_use_terraform/" class="dd-item">
         <div>
-          <a href="/help/blackbelt/how_to_use_terraform/">
+          <a href="/help/advisories/how_to_use_terraform/">
             第3章 Terraform の基本
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/blackbelt/authority_management/" class="dd-item">
+      <li data-nav-id="/help/advisories/authority_management/" class="dd-item">
         <div>
-          <a href="/help/blackbelt/authority_management/">
+          <a href="/help/advisories/authority_management/">
             第5章 権限管理
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/usecases/" class="dd-item haschildren
+    <li data-nav-id="/help/scenarios/" class="dd-item haschildren
         ">
       <div>
-      <a href="/help/usecases/">ユースケース別アーキテクチャ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/scenarios/">シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/usecases/k8s/" class="dd-item">
+      <li data-nav-id="/help/scenarios/k8s/" class="dd-item">
         <div>
-          <a href="/help/usecases/k8s/">
+          <a href="/help/scenarios/k8s/">
             K8s
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/usecases/k9s/" class="dd-item">
+      <li data-nav-id="/help/scenarios/k9s/" class="dd-item">
         <div>
-          <a href="/help/usecases/k9s/">
+          <a href="/help/scenarios/k9s/">
             K9s
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
@@ -230,13 +236,15 @@
         <select onchange="javascript:location.href = this.value;">
           
     <option value="/help/getting-started/" >
-   最初の手引き</option> 
+   Getting Started</option> 
       <option value="/help/getting-started/create-virtual-servers/"  selected>- 第1章 ECSインスタンスの作成</option>
   
-    <option value="/help/blackbelt/" >
-   Alibaba Cloudの活用</option>
-    <option value="/help/usecases/" >
-   ユースケース別アーキテクチャ</option>
+    <option value="/help/best-practice/" >
+   Best Practice by Product</option>
+    <option value="/help/advisories/" >
+   Advisories</option>
+    <option value="/help/scenarios/" >
+   シナリオ</option>
     <option value="/help/faq/" >
    FAQ</option>
     <option value="/help/search/" >
@@ -411,8 +419,8 @@ cidr_ip           = &quot;0.0.0.0/0&quot;
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/getting-started/" title="最初の手引き"> <i class="fa fa-chevron-left"></i><label>最初の手引き</label></a>
-    <a class="nav nav-next" href="/help/blackbelt/" title="Alibaba Cloudの活用" style="margin-right: 0px;"><label>Alibaba Cloudの活用</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/getting-started/" title="Getting Started"> <i class="fa fa-chevron-left"></i><label>Getting Started</label></a>
+    <a class="nav nav-next" href="/help/best-practice/" title="Best Practice by Product" style="margin-right: 0px;"><label>Best Practice by Product</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
