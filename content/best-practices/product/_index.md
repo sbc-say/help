@@ -1,7 +1,7 @@
 +++
-title = "個別プロダクト"
+title = "プロダクト別ベストプラクティス"
 description = ""
-weight = 1000
+weight = 4000
 date= 2019-06-05T12:30:18+08:00
 draft= false
 +++
