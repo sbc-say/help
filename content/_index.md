@@ -3,51 +3,46 @@
 ## 1. Getting Started
 ### Registration
 * Create Account
-* Register Info
-* Difference among JP site~ Int site ~ CN site
+* Real Name Registration
 
-### Product know-how
+### Basic Information
 * ECS
+   - Product Outline
+   - Comparison with AWS/Azure/GCP
 * SLB
 * VPC
 * RDS
 * OSS
 * Express Connect 
-* Comparison with Cloud Vendors
 
-### Starter guides
-* ECS
-* SLB
-* VPC
-* RDS
-* OSS
-* Express Connect 
-* Learning With Terraform
+### 2. Best Practice by Product
+* Anti-DDoS
+* Real-Time Compute
+* Block chain
 
-## 2. Advisories
-###  Introduction
-* Principal Architecture
-* Learning for Security
-* Learning for Cost
-* Learning for Operation
+## 3. Advisories
+* Introduction Advisory
+* Design Diagrams ("構成図")
+* Cost Management
+* IaC
+* Security Guide
 
-### Best Practice by Product
-* Anti-DDos 
+## 4. Scenarios
+### Web Application
+* Java Springboot
+* Python Django
+
+### CI/CD
+* Kubernetes with Terraform
+
+### Data Analysis
 * Data-V
-* Kubernetes 
+* DWH
 
 ###  Migration
 * Migration from On-Premises
 * Migration from Other Cloud
 * Co-Existing with Other Cloud
-
-## 3. Scenarios
-### CI/CD
-* E-Commerce with Terraform
-
-### Container
-* Java Springboot
-* Python Django
 
 ## 4. FAQ
 * ECS
@@ -55,7 +50,7 @@
 * VPC
 * RDS
 * OSS
-* Account Managemant
+* Account Management
 
 
 
