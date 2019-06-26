@@ -30,7 +30,7 @@ pluralizelisttitles = false
 
 [params]
 companyName = "SB Cloud" 
-editURL = "https://github.com/sbcloud/help/tree/master/content"
+editURL = "https://github.com/sbcloud/help/tree/master/content/"
 showVisitedLinks = true # default is false
 themeStyle = "flex" # "original" or "flex" # default "flex"
 themeVariant = "blue" # choose theme variant "green", "gold" , "gray", "blue" (default)
