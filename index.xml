@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SB Cloud Technical References</title>
+    <title>テクニカルリファレンス</title>
     <link>https://sbcloud.github.io/help/</link>
-    <description>Recent content on SB Cloud Technical References</description>
+    <description>Recent content on テクニカルリファレンス</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>ja-jp</language>
     <lastBuildDate>Wed, 05 Jun 2019 12:30:18 +0800</lastBuildDate>
     
 	<atom:link href="https://sbcloud.github.io/help/index.xml" rel="self" type="application/rss+xml" />
