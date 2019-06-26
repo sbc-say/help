@@ -1,14 +1,4 @@
-{{ $header := print "_header." .Lang }}
-	{{ range where .Site.Pages "File.BaseFileName" $header }}
-	{{ .Content }} 
-	{{else}}
-  {{ if .Site.GetPage "page" "_header.md" }}
-    {{(.Site.GetPage "page" "_header.md").Content}}
-  {{else}}
-    <a href="{{.Site.BaseURL}}" style="vertical-align: baseline;">
-       <img src="{{.Site.BaseURL}}/img/sbcloud_logo.png" class="noshadow" alt="">
-    <a class="baselink" href="{{.Site.BaseURL}}" style="font-size:24px">
-        {{.Site.Title}}
-    </a>
-  {{end}}
-{{end}}
+<a href="{{.Site.BaseURL}}" style="vertical-align: baseline;">
+   <img src="{{.Site.BaseURL}}/img/sbcloud_logo.png" class="noshadow" alt="">
+<a class="baselink" href="{{.Site.BaseURL}}" style="font-size:24px">
+    {{.Site.Title}}
