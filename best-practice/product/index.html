@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-06-26T06:52:44 UTC">
+<meta name="revised" content="2019-06-26T07:23:15 UTC">
 <title>個別プロダクト :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -37,16 +37,10 @@
     
       <header>
   <div class="logo">
-    
-	
-  
     <a href="https://sbcloud.github.io/help/" style="vertical-align: baseline;">
-       <img src="https://sbcloud.github.io/help//img/sbcloud_logo.png" class="noshadow" alt="">
-    <a class="baselink" href="https://sbcloud.github.io/help/" style="font-size:24px">
-        テクニカルリファレンス
-    </a>
-  
-
+   <img src="https://sbcloud.github.io/help//img/sbcloud_logo.png" class="noshadow" alt="">
+<a class="baselink" href="https://sbcloud.github.io/help/" style="font-size:24px">
+    テクニカルリファレンス
 
   </div>
   <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
@@ -151,6 +145,13 @@
         <div>
           <a href="/help/best-practice/product/ram/">
             RAM
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/product/anti-ddos/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/anti-ddos/">
+            Anti-DDoS
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -308,6 +309,7 @@
   - 
    個別プロダクト</option> 
       <option value="/help/best-practice/product/ram/" >-- RAM</option>
+      <option value="/help/best-practice/product/anti-ddos/" >-- Anti-DDoS</option>
   
     <option value="/help/best-practice/infrastructure-as-code/" >
   - 
@@ -357,6 +359,23 @@ graph LR; A(&#34;ポリシーサービスに&lt;br&gt;対する権限&#34;)-.-&g
 5.3 ポリシー 権限はポリシーで定義します。ポリシーでは「実行可能なアクション」や「操作可能なリソース」を指定でき、柔軟に権限が設定できます。
 5.3.1 ポリシードキュメント ポリシードキュメントはJSON形式で管理しており、リスト5.3.1.1のようにまとめます。 ▼リスト 5.3.1.1 JSON 形式のポリシードキュメント
 { &quot;Statement&quot;: [ { &quot;Action&quot;: &quot;*&quot;, &quot;Effect&quot;: &quot;Allow&quot;, &quot;Resource&quot;: &quot;*&quot; } ], &quot;Version&quot;: &quot;1&quot; }  ポリシードキュメントでは、次のような要素を記述します。 * Effect - 許可する場合はAllow、許可しない場合はDeny * Resource - AlibabaCloudの操作可能なリソース・許可されたオブジェクトはなにかを指定します。たとえば ”ユーザAがリソースSampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、ResourceはSampleBucket です。 * Action - AlibabaCloudの各種サービスでどんな操作が実行できるか。サービスを個別指定することも可能。たとえば ”ユーザAがリソースSampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、ActionはGetBucket です。 * Condition - 権限付与が有効になる条件です。たとえば、”ユーザAが2018年12月31日より前にリソース SampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、Conditionは 2018年12月31日より前 です。 <a class="read-more" href="/help/best-practice/product/ram/">&raquo;</a></p>
+    </section>
+    <footer class=" footline" >
+         
+        
+
+        
+        
+
+    </footer>
+</article>
+
+   <article class="post best-practice">
+    <header class="post-header">
+        <h2 class="post-title"><a href="/help/best-practice/product/anti-ddos/">Anti-DDoS</a></h2>
+    </header>
+    <section class="post-excerpt">
+        <p>Anti-DDoS Basicについて Anti-DDoS Proについて Anti-DDoS Premiumについて Anti-DDoS Premiumの活用方法ついては以下のSlideShareを参照ください。 https:// hogehoge.com <a class="read-more" href="/help/best-practice/product/anti-ddos/">&raquo;</a></p>
     </section>
     <footer class=" footline" >
          
