@@ -8,11 +8,6 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practices/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/scenarios/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
@@ -32,11 +27,6 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practices/architecture/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/scenarios/web-application/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
@@ -52,27 +42,12 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practices/security/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/getting-started/info/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/faq/ecs/</loc>
     <lastmod>2019-04-04T15:31:42+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://sbcloud.github.io/help/scenarios/data-analysis/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practices/product/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -84,11 +59,6 @@
   <url>
     <loc>https://sbcloud.github.io/help/faq/slb/</loc>
     <lastmod>2019-04-04T15:32:45+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practices/infrastructure-as-code/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
@@ -104,16 +74,6 @@
   <url>
     <loc>https://sbcloud.github.io/help/faq/cost/</loc>
     <lastmod>2019-04-03T15:31:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practices/product/ram/</loc>
-    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practices/infrastructure-as-code/terraform/</loc>
-    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
   </url>
   
   <url>
