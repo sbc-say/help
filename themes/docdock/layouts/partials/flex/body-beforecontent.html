@@ -6,22 +6,22 @@
 
 <nav class="shortcuts">
     {{- if not .Site.Params.disableSearch}}
-<li>
+    <li>
         <span class="searchbox">
-          <input data-search-input id="search-by" type="text" placeholder="検索">
+            <input data-search-input id="search-by" type="text" placeholder="検索">
         </span>
         <script type="text/javascript" src="{{"js/lunr.min.js" | relURL}}"></script>
         <script type="text/javascript" src="{{"js/auto-complete.js" | relURL}}"></script>
         <link href="{{"css/auto-complete.css" | relURL}}" rel="stylesheet">
         <script type="text/javascript">
-          {{ if .Site.IsMultiLingual }}
-              var baseurl = "{{.Site.BaseURL}}{{.Site.LanguagePrefix}}";
-          {{ else }}
-              var baseurl = "{{.Site.BaseURL}}";
-          {{ end }}
+            {{ if .Site.IsMultiLingual }}
+            var baseurl = "{{.Site.BaseURL}}{{.Site.LanguagePrefix}}";
+            {{ else }}
+            var baseurl = "{{.Site.BaseURL}}";
+            {{ end }}
         </script>
         <script type="text/javascript" src="{{"js/search.js" | relURL}}"></script>
-</li>
+    </li>
     {{- end}}
 
   {{- with .Site.Menus.shortcuts}}
@@ -33,7 +33,7 @@
             </li>
         {{- end}}
   {{- end}}
-    </nav>
+        </nav>
 </header>
 <article>
   <aside>
@@ -56,6 +56,8 @@
     </section>
   </aside>
   <section class="page">
+
+    {{ partial "breadcrumb.html" . }}
     
     <div class="nav-select">
       <center>Navigation : 
