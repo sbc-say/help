@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-06-26T06:52:44 UTC">
-<title>CI/CD :: テクニカルリファレンス</title>
+<title>主要プロダクトの紹介 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
     
   </head>
-  <body data-url="/help/scenarios/ci-cd/">
+  <body data-url="/help/getting-started/product/">
     
       <header>
   <div class="logo">
@@ -76,10 +76,11 @@
 <article>
   <aside>
     <ul class="menu">
-    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+    <li data-nav-id="/help/getting-started/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/getting-started/">Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/getting-started/">Getting Started</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/getting-started/registration/" class="dd-item">
@@ -89,7 +90,7 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/help/getting-started/product/" class="dd-item
+    <li data-nav-id="/help/getting-started/product/" class="dd-item parent active
         ">
       <div>
       <a href="/help/getting-started/product/">主要プロダクトの紹介</a><i class="fa fa-circle-thin read-icon"></i>
@@ -139,43 +140,12 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/help/best-practice/product/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/help/best-practice/product/">個別プロダクト</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/help/best-practice/product/ram/" class="dd-item">
-        <div>
-          <a href="/help/best-practice/product/ram/">
-            RAM
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/infrastructure-as-code/" class="dd-item haschildren
+    <li data-nav-id="/help/scenarios/" class="dd-item haschildren
         ">
       <div>
-      <a href="/help/best-practice/infrastructure-as-code/">Infrastructure as Codeの実践</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/" class="dd-item">
-        <div>
-          <a href="/help/best-practice/infrastructure-as-code/terraform/">
-            Terraform
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/help/scenarios/" class="dd-item parent haschildren
-        ">
-      <div>
-      <a href="/help/scenarios/">ユースケース別シナリオ</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/scenarios/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
     <li data-nav-id="/help/scenarios/web-application/" class="dd-item
@@ -184,11 +154,10 @@
       <a href="/help/scenarios/web-application/">ウェブアプリケーション</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/help/scenarios/ci-cd/" class="dd-item parent active haschildren
+    <li data-nav-id="/help/scenarios/ci-cd/" class="dd-item haschildren
         ">
       <div>
-      <a href="/help/scenarios/ci-cd/">CI/CD</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/scenarios/ci-cd/">CI/CD</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/scenarios/ci-cd/k8s/" class="dd-item">
@@ -299,24 +268,20 @@
         <select onchange="javascript:location.href = this.value;">
           
     <option value="/help/getting-started/" >
-   Getting Started</option>
+   Getting Started</option> 
+      <option value="/help/getting-started/registration/" >- アカウント登録</option>
+    <option value="/help/getting-started/product/"  selected>
+  - 
+   主要プロダクトの紹介</option> 
+  
+    <option value="/help/getting-started/compare/" >
+  - 
+   比較</option>
+  
     <option value="/help/best-practice/" >
    ベストプラクティス</option>
     <option value="/help/scenarios/" >
-   ユースケース別シナリオ</option> 
-    <option value="/help/scenarios/web-application/" >
-  - 
-   ウェブアプリケーション</option>
-    <option value="/help/scenarios/ci-cd/"  selected>
-  - 
-   CI/CD</option> 
-      <option value="/help/scenarios/ci-cd/k8s/" >-- K8s</option>
-      <option value="/help/scenarios/ci-cd/k9s/" >-- K9s</option>
-  
-    <option value="/help/scenarios/data-analysis/" >
-  - 
-   データ分析</option>
-  
+   ユースケース別シナリオ</option>
     <option value="/help/faq/" >
    よくある質問</option>
     <option value="/help/about/" >
@@ -328,7 +293,7 @@
       </center>
     </div>
 
-    <h1>CI/CD</h1>
+    <h1>主要プロダクトの紹介</h1>
 
     
     
@@ -339,53 +304,19 @@
 <div class="extra-pagination inner">
 <nav class="pagination" role="navigation">
 	
-	<span class="page-number"> 1  1</span>
+	<span class="page-number"> 1  0</span>
 	
 </nav>
 
 </div>
 
 
-   <article class="post scenarios">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/help/scenarios/ci-cd/k8s/">K8s</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p> Hello world Hello world  <a class="read-more" href="/help/scenarios/ci-cd/k8s/">&raquo;</a></p>
-    </section>
-    <footer class=" footline" >
-         
-        
-
-        
-        
-
-    </footer>
-</article>
-
-   <article class="post scenarios">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/help/scenarios/ci-cd/k9s/">K9s</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p> Hello world Hello world  <a class="read-more" href="/help/scenarios/ci-cd/k9s/">&raquo;</a></p>
-    </section>
-    <footer class=" footline" >
-         
-        
-
-        
-        
-
-    </footer>
-</article>
-
 
 <div style="margin-bottom:2rem"></div>
 
 <nav class="pagination" role="navigation">
 	
-	<span class="page-number"> 1  1</span>
+	<span class="page-number"> 1  0</span>
 	
 </nav>
 
@@ -396,8 +327,8 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/scenarios/web-application/" title="ウェブアプリケーション"> <i class="fa fa-chevron-left"></i><label>ウェブアプリケーション</label></a>
-    <a class="nav nav-next" href="/help/scenarios/ci-cd/k8s/" title="K8s" style="margin-right: 0px;"><label>K8s</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/getting-started/registration/" title="アカウント登録"> <i class="fa fa-chevron-left"></i><label>アカウント登録</label></a>
+    <a class="nav nav-next" href="/help/getting-started/compare/" title="比較" style="margin-right: 0px;"><label>比較</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -418,7 +349,7 @@
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content/scenarios/ci-cd/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/content/getting-started/product/_index.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     

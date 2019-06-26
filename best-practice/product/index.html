@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-06-26T06:52:44 UTC">
-<title>CI/CD :: テクニカルリファレンス</title>
+<title>個別プロダクト :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
     
   </head>
-  <body data-url="/help/scenarios/ci-cd/">
+  <body data-url="/help/best-practice/product/">
     
       <header>
   <div class="logo">
@@ -119,10 +119,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/best-practice/">ベストプラクティス</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/architecture/" class="dd-item">
@@ -139,10 +140,11 @@
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/help/best-practice/product/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/product/" class="dd-item parent active haschildren
         ">
       <div>
-      <a href="/help/best-practice/product/">個別プロダクト</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/product/">個別プロダクト</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/product/ram/" class="dd-item">
@@ -171,11 +173,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/scenarios/" class="dd-item parent haschildren
+    <li data-nav-id="/help/scenarios/" class="dd-item haschildren
         ">
       <div>
-      <a href="/help/scenarios/">ユースケース別シナリオ</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/scenarios/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
     <li data-nav-id="/help/scenarios/web-application/" class="dd-item
@@ -184,11 +185,10 @@
       <a href="/help/scenarios/web-application/">ウェブアプリケーション</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/help/scenarios/ci-cd/" class="dd-item parent active haschildren
+    <li data-nav-id="/help/scenarios/ci-cd/" class="dd-item haschildren
         ">
       <div>
-      <a href="/help/scenarios/ci-cd/">CI/CD</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/scenarios/ci-cd/">CI/CD</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/scenarios/ci-cd/k8s/" class="dd-item">
@@ -301,22 +301,20 @@
     <option value="/help/getting-started/" >
    Getting Started</option>
     <option value="/help/best-practice/" >
-   ベストプラクティス</option>
+   ベストプラクティス</option> 
+      <option value="/help/best-practice/architecture/" >- アーキテクチャ</option>
+      <option value="/help/best-practice/security/" >- セキュリティ</option>
+    <option value="/help/best-practice/product/"  selected>
+  - 
+   個別プロダクト</option> 
+      <option value="/help/best-practice/product/ram/" >-- RAM</option>
+  
+    <option value="/help/best-practice/infrastructure-as-code/" >
+  - 
+   Infrastructure as Codeの実践</option>
+  
     <option value="/help/scenarios/" >
-   ユースケース別シナリオ</option> 
-    <option value="/help/scenarios/web-application/" >
-  - 
-   ウェブアプリケーション</option>
-    <option value="/help/scenarios/ci-cd/"  selected>
-  - 
-   CI/CD</option> 
-      <option value="/help/scenarios/ci-cd/k8s/" >-- K8s</option>
-      <option value="/help/scenarios/ci-cd/k9s/" >-- K9s</option>
-  
-    <option value="/help/scenarios/data-analysis/" >
-  - 
-   データ分析</option>
-  
+   ユースケース別シナリオ</option>
     <option value="/help/faq/" >
    よくある質問</option>
     <option value="/help/about/" >
@@ -328,7 +326,7 @@
       </center>
     </div>
 
-    <h1>CI/CD</h1>
+    <h1>個別プロダクト</h1>
 
     
     
@@ -346,29 +344,19 @@
 </div>
 
 
-   <article class="post scenarios">
+   <article class="post best-practice">
     <header class="post-header">
-        <h2 class="post-title"><a href="/help/scenarios/ci-cd/k8s/">K8s</a></h2>
+        <h2 class="post-title"><a href="/help/best-practice/product/ram/">RAM</a></h2>
     </header>
     <section class="post-excerpt">
-        <p> Hello world Hello world  <a class="read-more" href="/help/scenarios/ci-cd/k8s/">&raquo;</a></p>
-    </section>
-    <footer class=" footline" >
-         
-        
-
-        
-        
-
-    </footer>
-</article>
-
-   <article class="post scenarios">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/help/scenarios/ci-cd/k9s/">K9s</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p> Hello world Hello world  <a class="read-more" href="/help/scenarios/ci-cd/k9s/">&raquo;</a></p>
+        <p>AAlibabaCloudはどのサービスを利用・操作するにしろ権限が必要です。 Terraformで作成したリソースサービスにも他ユーザが操作できるように権限アタッチが必要になります。 本章では、AlibabaCloudサービスに対する権限付与の方法を学びます。
+5.1 Alibaba CloudのRAMについて RAM（Resource Access Management）はユーザーID の管理とアクセス制御、権限管理のためのサービスです。 RAMを使用することで、ユーザーアカウント (従業員、システム、アプリケーションなど) を作成および管理し、Alibaba Cloud アカウントのリソースに対してそのユーザーアカウントが所有する操作権限を制御できます。Terraformによるリソースを実行するときはRAMで実行権限が必須です。
+5.2 RAMロールとRAMユーザーの違い ・RAMロールは仮想ID であり、固定のIDは持っていますが、ID認証情報アクセスキーを持ちません。 ・RAMユーザは、固定のIDとID認証アクセスキーを持つ実際のIDであり、一般的には、特定のユーザーまたはアプリケーションに対応します。
+graph LR; A(&#34;ポリシーサービスに&lt;br&gt;対する権限&#34;)-.-&gt;B(&#34;RAMポリシーを&lt;br&gt;ロールにアタッチ&#34;) A(&#34;ポリシーサービスに&lt;br&gt;対する権限&#34;)-.-&gt;C(&#34;RAMポリシーを&lt;br&gt;ユーザにアタッチ&#34;) B(&#34;RAMポリシーを&lt;br&gt;ロールにアタッチ&#34;)-.-&gt;D(&#34;ロール(役割)&#34;) C(&#34;RAMポリシーを&lt;br&gt;ユーザにアタッチ&#34;)-.-&gt;E(&#34;ユーザ(人)&#34;) D(&#34;ロール(役割)&#34;)-.-&gt;F(&#34;ロール(役割)を&lt;br&gt;エンティティ(ECSインスタンスなど）にアタッチ&#34;) A(&#34;ポリシーサービスに&lt;br&gt;対する権限&#34;)-.-&gt;G(&#34;RAMポリシーを&lt;br&gt;グループにアタッチ&#34;) G(&#34;RAMポリシーを&lt;br&gt;グループにアタッチ&#34;)-.-&gt;H(&#34;グループ（ユーザの集まり）&#34;) graph TD A[お正月] --|お年玉をゲット| B(買い物に行くよ) B -- C{どれにしようかな} C --|これかな| D[iTunes Card] C --|これかな| E[iPhone XS Max] C --|ま まさか| F[fa:fa-car The CLS Coupé]  RAMロールは権限が付与された実際のユーザーが引き受ける必要があります。ロールを引き受けると実際のユーザーはこのRAMロールの一時セキュリティトークンを受け取ります。これにより、この一時セキュリティトークンを使用して、ロールに許可されているリソースにアクセスできます。
+普段の利用時はRAMユーザで管理・運用していくのがベストプラクティスですが、Terraform利用時は基本的にAdministratorAccessが必要となります。
+5.3 ポリシー 権限はポリシーで定義します。ポリシーでは「実行可能なアクション」や「操作可能なリソース」を指定でき、柔軟に権限が設定できます。
+5.3.1 ポリシードキュメント ポリシードキュメントはJSON形式で管理しており、リスト5.3.1.1のようにまとめます。 ▼リスト 5.3.1.1 JSON 形式のポリシードキュメント
+{ &quot;Statement&quot;: [ { &quot;Action&quot;: &quot;*&quot;, &quot;Effect&quot;: &quot;Allow&quot;, &quot;Resource&quot;: &quot;*&quot; } ], &quot;Version&quot;: &quot;1&quot; }  ポリシードキュメントでは、次のような要素を記述します。 * Effect - 許可する場合はAllow、許可しない場合はDeny * Resource - AlibabaCloudの操作可能なリソース・許可されたオブジェクトはなにかを指定します。たとえば ”ユーザAがリソースSampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、ResourceはSampleBucket です。 * Action - AlibabaCloudの各種サービスでどんな操作が実行できるか。サービスを個別指定することも可能。たとえば ”ユーザAがリソースSampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、ActionはGetBucket です。 * Condition - 権限付与が有効になる条件です。たとえば、”ユーザAが2018年12月31日より前にリソース SampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、Conditionは 2018年12月31日より前 です。 <a class="read-more" href="/help/best-practice/product/ram/">&raquo;</a></p>
     </section>
     <footer class=" footline" >
          
@@ -396,8 +384,8 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/scenarios/web-application/" title="ウェブアプリケーション"> <i class="fa fa-chevron-left"></i><label>ウェブアプリケーション</label></a>
-    <a class="nav nav-next" href="/help/scenarios/ci-cd/k8s/" title="K8s" style="margin-right: 0px;"><label>K8s</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/best-practice/security/" title="セキュリティ"> <i class="fa fa-chevron-left"></i><label>セキュリティ</label></a>
+    <a class="nav nav-next" href="/help/best-practice/product/ram/" title="RAM" style="margin-right: 0px;"><label>RAM</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -418,7 +406,7 @@
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content/scenarios/ci-cd/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/product/_index.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     

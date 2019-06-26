@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-06-26T06:52:44 UTC">
-<title>CI/CD :: テクニカルリファレンス</title>
+<title>Infrastructure as Codeの実践 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
     
   </head>
-  <body data-url="/help/scenarios/ci-cd/">
+  <body data-url="/help/best-practice/infrastructure-as-code/">
     
       <header>
   <div class="logo">
@@ -119,10 +119,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/best-practice/">ベストプラクティス</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/architecture/" class="dd-item">
@@ -154,10 +155,11 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/infrastructure-as-code/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/infrastructure-as-code/" class="dd-item parent active haschildren
         ">
       <div>
-      <a href="/help/best-practice/infrastructure-as-code/">Infrastructure as Codeの実践</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/infrastructure-as-code/">Infrastructure as Codeの実践</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/" class="dd-item">
@@ -171,11 +173,10 @@
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/scenarios/" class="dd-item parent haschildren
+    <li data-nav-id="/help/scenarios/" class="dd-item haschildren
         ">
       <div>
-      <a href="/help/scenarios/">ユースケース別シナリオ</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/scenarios/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
     <li data-nav-id="/help/scenarios/web-application/" class="dd-item
@@ -184,11 +185,10 @@
       <a href="/help/scenarios/web-application/">ウェブアプリケーション</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/help/scenarios/ci-cd/" class="dd-item parent active haschildren
+    <li data-nav-id="/help/scenarios/ci-cd/" class="dd-item haschildren
         ">
       <div>
-      <a href="/help/scenarios/ci-cd/">CI/CD</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/scenarios/ci-cd/">CI/CD</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/scenarios/ci-cd/k8s/" class="dd-item">
@@ -301,22 +301,10 @@
     <option value="/help/getting-started/" >
    Getting Started</option>
     <option value="/help/best-practice/" >
-   ベストプラクティス</option>
+   ベストプラクティス</option> 
+  
     <option value="/help/scenarios/" >
-   ユースケース別シナリオ</option> 
-    <option value="/help/scenarios/web-application/" >
-  - 
-   ウェブアプリケーション</option>
-    <option value="/help/scenarios/ci-cd/"  selected>
-  - 
-   CI/CD</option> 
-      <option value="/help/scenarios/ci-cd/k8s/" >-- K8s</option>
-      <option value="/help/scenarios/ci-cd/k9s/" >-- K9s</option>
-  
-    <option value="/help/scenarios/data-analysis/" >
-  - 
-   データ分析</option>
-  
+   ユースケース別シナリオ</option>
     <option value="/help/faq/" >
    よくある質問</option>
     <option value="/help/about/" >
@@ -328,7 +316,7 @@
       </center>
     </div>
 
-    <h1>CI/CD</h1>
+    <h1>Infrastructure as Codeの実践</h1>
 
     
     
@@ -346,29 +334,17 @@
 </div>
 
 
-   <article class="post scenarios">
+   <article class="post best-practice">
     <header class="post-header">
-        <h2 class="post-title"><a href="/help/scenarios/ci-cd/k8s/">K8s</a></h2>
+        <h2 class="post-title"><a href="/help/best-practice/infrastructure-as-code/terraform/">Terraform</a></h2>
     </header>
     <section class="post-excerpt">
-        <p> Hello world Hello world  <a class="read-more" href="/help/scenarios/ci-cd/k8s/">&raquo;</a></p>
-    </section>
-    <footer class=" footline" >
-         
-        
-
-        
-        
-
-    </footer>
-</article>
-
-   <article class="post scenarios">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/help/scenarios/ci-cd/k9s/">K9s</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p> Hello world Hello world  <a class="read-more" href="/help/scenarios/ci-cd/k9s/">&raquo;</a></p>
+        <p>本章では Terraform の基本、使い方を学びます。 簡単なWebサーバを立ち上げながら、Terraformの流れや中身を確認します。
+3.1 ディレクトリ・ファイル構成 Terraformのファイルの拡張子は *.tf です。 実行時、同じディレクトリの *.tf ファイルがマージされますので、以下3ファイルに分けてそれぞれの用途・目的に応じた記載・運用がベターです。
+main.tf … モジュールが内包するリソース、データソースなどの定義 outputs.tf … モジュールが出力するAttributeの定義 variables.tf … モジュールが受け取る変数の定義  main.tf には どのプロパイダを使うかを記載します。 階層化は任意ですが、.tfから別のフォルダの.tfに記載されてる変数を取り出すためにルートディレクトリを指定することがありますのでそこは注意が必要です。apply (=実行) にて分離実行することも可能です。
+├── main.tf ├── output.tf ├── variables.tf │ ├── region │├── VPC ││├── main.tf ││├── output.tf ││└── variables.tf ││ │├── ECS ││├── main.tf ││├── output.tf ││└── variables.tf ・ ・ ・  RAMなど他者へ渡したくない情報がある場合、別途設定ファイル（ terraform.confing など）へ記載し、実行時は -var-file引数で 設定ファイルを読み取り実行することができます。
+▼リスト 3.1.1 設定ファイル terraform.confing の中身
+access_key = &quot;xxxxxxxxxxxxxxxxxx&quot; secret_key = &quot;xxxxxxxxxxxxxxxxxx&quot; region = &quot;ap-northeast-1&quot; zone = &quot;ap-northeast-1a&quot;  記載した設定ファイルterraform. <a class="read-more" href="/help/best-practice/infrastructure-as-code/terraform/">&raquo;</a></p>
     </section>
     <footer class=" footline" >
          
@@ -396,8 +372,8 @@
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/scenarios/web-application/" title="ウェブアプリケーション"> <i class="fa fa-chevron-left"></i><label>ウェブアプリケーション</label></a>
-    <a class="nav nav-next" href="/help/scenarios/ci-cd/k8s/" title="K8s" style="margin-right: 0px;"><label>K8s</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/best-practice/product/ram/" title="RAM"> <i class="fa fa-chevron-left"></i><label>RAM</label></a>
+    <a class="nav nav-next" href="/help/best-practice/infrastructure-as-code/terraform/" title="Terraform" style="margin-right: 0px;"><label>Terraform</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -418,7 +394,7 @@
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content/scenarios/ci-cd/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/infrastructure-as-code/_index.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     
