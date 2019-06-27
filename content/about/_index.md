@@ -4,8 +4,7 @@ description = ""
 weight = 90
 +++
 
-
-Docdock theme uses the last improvement available in hugo version 20+ to generate a json index file ready to be consumed by lunr.js javascript search engine.
-
-
-{{%note%}}hugo generate lunrjs index.json at the root of `public` folder if the site only has one language or within each language subfolder. <br/>When you build the site with `hugo server`, hugo generates it internally and of course it don't show up in the filesystem{{%/note%}}
+|大項目|中項目|小項目|
+|:------:|:-----:|:------:|
+|[About]({{%relref "about/_index.md" %}}) (90)|一覧 (90)||
+| | [サイトマップ]{{%relref "about/sitemap.md" %}} (100)||
