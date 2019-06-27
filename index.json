@@ -32,7 +32,7 @@
 	"title": "About SBC Technical Reference",
 	"tags": [],
 	"description": "",
-	"content": "Docdock theme uses the last improvement available in hugo version 20+ to generate a json index file ready to be consumed by lunr.js javascript search engine.\nhugo generate lunrjs index.json at the root of `public` folder if the site only has one language or within each language subfolder. When you build the site with `hugo server`, hugo generates it internally and of course it don't show up in the filesystem "
+	"content": "   大項目 中項目 小項目     About (90) 一覧 (90)     [サイトマップ]/help/about/sitemap/ (100)     "
 },
 {
 	"uri": "https://sbcloud.github.io/help/getting-started/registration/",
@@ -61,6 +61,13 @@
 	"tags": [],
 	"description": "",
 	"content": " アカウント Q. TOTP認証利用できなくなった時の対応方法について バインドしている携帯電話を紛失したり、TOTP認証アプリケーションを削除する等、何らかの理由で認証が行えなくなった場合、バインド解除を申請することができます。\n申請方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/faq-detail/54827.html\nQ. メールアドレスの変更方法について ログインに使用するメールアドレス（ログインアカウント）は変更することができます。\n変更方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/52915.html\nQ. クレジットカードの変更方法について アカウントには最低1枚のクレジットカードを登録する必要があります。 このため、クレジットカードの変更は、以下の手順で操作します。\n①新しいカードを追加 ②既存カードを削除\n変更方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/50107.html\nQ. アカウント登録氏名（社名）の変更方法について アカウントにクレジットカードを追加・有効化完了後は、コンソールから登録名（個人：姓名、法人：会社名）を変更することができません。 変更が必要な場合、チケット起票してサポートセンターに連絡する必要があります。\nなお、法人アカウントの「担当者名（連絡先情報の姓名）」はコンソールにログイン後、下記リンクにて変更できます。（チケットを起票する必要はありません。） https://myaccount.aliyun.com/account/complete-profile#/content\nQ. コンソール自動ログアウトの仕様について 操作の有無に関係なく、コンソールにログインしてから3時間経過すると、タイムアウトでセッションが切れ、自動的にログアウトされます。\nQ. サポートセンターの対応範囲について サポートセンターの対応範囲は下記となります。\n■サービスに関する問い合わせ ・プロダクトの概要/価格 ・ご購入内容/ご利用料金 ・お支払い方法/請求全般 ・アカウント関連\n■プロダクトに関する問い合わせ ・使い方/操作方法の説明 ・トラブルシュート ・障害対応 ※コンソール/API/SDKを含む\n下記内容は範囲外となります。 ・お客様が導入されたアプリケーションソフトウェアのトラブルシュート ・OSのパッチ適用 ・データベースチューニング\nサポートセンターの詳細は下記をご参照ください。 https://jp.alibabacloud.com/support/after-sales\nQ. チケット起票の推奨記載内容について 下記内容に近いコンテンツを提供することで、よりスムーズにサポートを受けることができます。\n現象　概要 どのような現象が発生しているか。具体的に　例: ・エラーが発生した　(要 具体的なエラーメッセージ、実施した手順)、 ・通信できない、応答しない、つながらない、反応しない、動かない、アクセスできない (要　どこからどこに、コマンドと結果、関連インスタンスのパラメータ) ・意図したものが表示されない、意図しないものが表示される (要　意図したもの、意図しなかったもの、参照ドキュメント) ・意図通りに動かない　(要　期待される動き、実際の動き)\n[How]　現象の根拠、現象の因果関係 現象を「トラブル」とする客観的な根拠。　例: ・Web管理コンソール画面、サービスのログ、ECS仮想マシン内のシステムログ、 ・コマンドの実行ログ 補足: ・リモートデスクトップ接続なのか、SSH接続なのか、VNC接続なのか ・再現性はあるか。ログオフ、再起動等をしても再現するか。 ・同様のインスタンス等の環境を作成しても再現するか。 ・リージョン等が異なっても再現するか。 ・実施した手順　※現象が発生した手順だけでなく、しなかった手順も分かると有効です\n　★「現象 概要」とリンクしているか、チェック\n[When]　現象の発生日時、頻度 発生は、いつ(JST/CST)、何回、定期的か不規則か、今でも継続しているか、時間経過で変化するか その他の条件下: ・CPU、ネットワークが高負荷時 ・特定のインスタンスが\n[Where]、[Which]　現象の発生場所の特定、またはその範囲の局所化 どのサービス、どのリージョン、どのAZ、どのインスタンス どのセグメント、など どこからアクセスしたか ※現象が発生するケースだけでなく、発生しないケースも分かると有効です\n[Who]　現象が発生した際に操作していたアカウント だれでログインしたか、RAMであれば権限定義も　代理店系 ※現象が発生するユーザだけでなく、発生しないユーザも分かると有効です\nその他、提供いただきたい情報 システム構成図、ネットワーク構成図、プロダクト関連図、パラメータシート 参照した手順、資料、ドキュメント\n本トラブルのゴール 何をもって解決とするか。例: ・xxx から xxx にpingを送信して応答があること ・ECSインスタンス購入画面において購入が完了しインスタンスが作成されること\n　※ゴール達成時はチケットをクローズいただき、もし追加で質問やトラブルがある場合は 別のチケットを起票するようにお願いします。\n　★「現象 概要」とリンクしているか、チェック\nご留意事項: ・すべての情報が揃っていないと問合せ拒否、というわけではない。 現時点の視野内の情報を元に切り分けの支援も必要。 ただし、情報が少ない場合は、「再現待ち」などの案内も検討する。\n・いただいた情報をもとに〜 (情報の提供漏れは顧客の不利益、という意味) ・状況説明、環境説明は、チケット内で説明を完結させるようお願いします。 以前のチケットに記載の内容も省略しないようお願いします。 ・関連するインスタンス等は、極力、削除せず保存しておいてください。 ・一つのチケットに複数の現象やトラブルを記載しないようにお願いします。 ・一つのチケットに複数のAlibabaCloudプロダクトの質問を記載しないようにお願いします。 プロダクトごとに分割して記載をするようにお願いします。 ・同じお客様でも異なるアカウントに関する質問はお受けできません。 ・解決策は唯一解ではなく他に最適解がある可能性があります。 また、サポートセンターからパラメータの例をご案内することがありますが、 実際の環境への適用は、影響範囲等を考慮の上、自己責任で実施願います。\n・AlibabaCloudプロダクト内の障害については、原則として詳細なご説明はいたしかねます。 ・性能指標については、原則として公開しておりません。 要件となる性能については、お客様の環境や処理内容等に依存し、誤誘導になりかねず、 お客様自身で測定いただきフィットアンドギャップいただくことをおすすめします。 ・メンテナンスの過去の実績や履歴は公開しておりません。 これらの情報を元に今後のメンテナンスの予測をすることは困難であり、 ついてはメンテナンス時の状況を考慮したシステム設計をおすすめします。\n"
+},
+{
+	"uri": "https://sbcloud.github.io/help/about/sitemap/",
+	"title": "サイトマップ",
+	"tags": [],
+	"description": "",
+	"content": "   大項目 中項目 小項目     Getting Started (10) 一覧 (10)     アカウント登録 (100)     比較 (200) 一覧 (200)     国際アカウントvs中国アカウント (1000)     Alibaba vs AWS vs Azure vs GCP (2000)    主要プロダクト (300) 一覧 (300)     ECS (1000)     RDS (2000)     SLB (3000)     OSS (4000)     VPC (5000)     ExpressConnect (6000)   ベストプラクティス (20) 一覧 (20)     アーキテクチャ (100)     コスト体系 (200)     セキュリティ (300)     プロダクト (400) 一覧 (400)     RAM (1000)     Anti-DDoS (2000)    Infrastructure as Code (500) 一覧 (500)     Terraform１章 (1000)     Terraform2章 (2000)     Terraform3章 (3000)     Terraform4章 (4000)   ユースベース別シナリオ (30) 一覧 (30)     Webアプリケーション (100) 一覧 (100)     Java Springboot (1000)     Python Django (2000)    CI/CD (200) 一覧 (200)     E-commerce site with Terraform (1000)    Data-Analysis (300) 一覧 (300)     some technical reference for Data-V (1000)   よくある質問 (40) 一覧 (40)     アカウント (100)     ECS (100)     RDS (200)     SLB (300)     OSS (400)     VPC (500)     コスト (600)     アカウント (700)    About (90) 一覧 (90)     サイトマップ (100)     "
 },
 {
 	"uri": "https://sbcloud.github.io/help/scenarios/ci-cd/",
@@ -203,25 +210,11 @@
 	"content": " Hello world Hello world "
 },
 {
-	"uri": "https://sbcloud.github.io/help/credits/",
-	"title": "",
-	"tags": [],
-	"description": "",
-	"content": "  最初の手引き [Alibaba Cloudの活用]() from markdown (embededed or fullscreen page) [ユースケース]() faq  Setting for CircleCI https://circleci.com/gh/sbcloud/help/tree/master\n"
-},
-{
 	"uri": "https://sbcloud.github.io/help/categories/",
 	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
-},
-{
-	"uri": "https://sbcloud.github.io/help/showcase/",
-	"title": "Docdock-built Sites",
-	"tags": [],
-	"description": "Hugo-built Sites with docdock theme",
-	"content": " https://invincible.site/ by @shazic https://bitfan.io/ by @vjeantet "
 },
 {
 	"uri": "https://sbcloud.github.io/help/tags/",

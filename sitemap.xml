@@ -47,6 +47,10 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/about/sitemap/</loc>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/scenarios/ci-cd/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
@@ -148,17 +152,8 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/credits/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/categories/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/showcase/</loc>
   </url>
   
   <url>
