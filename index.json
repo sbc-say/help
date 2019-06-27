@@ -4,28 +4,28 @@
 	"title": "Getting Started",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " Links for basic manuals "
 },
 {
 	"uri": "https://sbcloud.github.io/help/best-practice/",
 	"title": "ベストプラクティス",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " Links for Best Practices This page provides the links below.\n"
 },
 {
 	"uri": "https://sbcloud.github.io/help/scenarios/",
 	"title": "ユースケース別シナリオ",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " Links for use case scenarios "
 },
 {
 	"uri": "https://sbcloud.github.io/help/faq/",
 	"title": "よくある質問",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " よくある質問 ##\n"
 },
 {
 	"uri": "https://sbcloud.github.io/help/about/",
@@ -46,14 +46,14 @@
 	"title": "アーキテクチャ",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " Architecture Diagrams "
 },
 {
 	"uri": "https://sbcloud.github.io/help/scenarios/web-application/",
 	"title": "ウェブアプリケーション",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " ここではWebApplicationを中心に記載します "
 },
 {
 	"uri": "https://sbcloud.github.io/help/faq/account/",
@@ -67,21 +67,21 @@
 	"title": "CI/CD",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " ここではCI/CDの実践構成を記載します "
 },
 {
 	"uri": "https://sbcloud.github.io/help/best-practice/security/",
 	"title": "セキュリティ",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " Security "
 },
 {
 	"uri": "https://sbcloud.github.io/help/getting-started/product/",
 	"title": "主要プロダクトの紹介",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します "
 },
 {
 	"uri": "https://sbcloud.github.io/help/faq/ecs/",
@@ -95,21 +95,21 @@
 	"title": "データ分析",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " ここではデータ分析の手法を記載します "
 },
 {
 	"uri": "https://sbcloud.github.io/help/best-practice/product/",
 	"title": "個別プロダクト",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " プロダクトベストプラクティス の一覧 "
 },
 {
 	"uri": "https://sbcloud.github.io/help/getting-started/compare/",
 	"title": "比較",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " ここではAWS、Azure、GCPとの比較を記載します "
 },
 {
 	"uri": "https://sbcloud.github.io/help/faq/slb/",
@@ -123,7 +123,7 @@
 	"title": "Infrastructure as Codeの実践",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " Alibaba CloudにおけるInfrastructure as Codeの実践 "
 },
 {
 	"uri": "https://sbcloud.github.io/help/faq/rds/",

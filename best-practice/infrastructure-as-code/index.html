@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-06-26T07:24:50 UTC">
+<meta name="revised" content="2019-06-27T01:44:50 UTC">
 <title>Infrastructure as Codeの実践 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -82,34 +82,6 @@
             アカウント登録
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
-    </li>
-    <li data-nav-id="/help/getting-started/product/" class="dd-item
-        ">
-      <div>
-      <a href="/help/getting-started/product/">主要プロダクトの紹介</a><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-    </li>
-    <li data-nav-id="/help/getting-started/compare/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/help/getting-started/compare/">比較</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/help/getting-started/compare/vs-jp-cn/" class="dd-item">
-        <div>
-          <a href="/help/getting-started/compare/vs-jp-cn/">
-            中国と日本におけるサービス一覧
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/getting-started/compare/vs-aws-gcp-azure/" class="dd-item">
-        <div>
-          <a href="/help/getting-started/compare/vs-aws-gcp-azure/">
-            他社クラウドサービスとの比較一覧
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
     </li>
         </ul>
     </li>
@@ -335,47 +307,7 @@
 
 
 
-<div class="extra-pagination inner">
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 1</span>
-	
-</nav>
-
-</div>
-
-
-   <article class="post best-practice">
-    <header class="post-header">
-        <h2 class="post-title"><a href="/help/best-practice/infrastructure-as-code/terraform/">Terraform</a></h2>
-    </header>
-    <section class="post-excerpt">
-        <p>本章では Terraform の基本、使い方を学びます。 簡単なWebサーバを立ち上げながら、Terraformの流れや中身を確認します。
-3.1 ディレクトリ・ファイル構成 Terraformのファイルの拡張子は *.tf です。 実行時、同じディレクトリの *.tf ファイルがマージされますので、以下3ファイルに分けてそれぞれの用途・目的に応じた記載・運用がベターです。
-main.tf … モジュールが内包するリソース、データソースなどの定義 outputs.tf … モジュールが出力するAttributeの定義 variables.tf … モジュールが受け取る変数の定義  main.tf には どのプロパイダを使うかを記載します。 階層化は任意ですが、.tfから別のフォルダの.tfに記載されてる変数を取り出すためにルートディレクトリを指定することがありますのでそこは注意が必要です。apply (=実行) にて分離実行することも可能です。
-├── main.tf ├── output.tf ├── variables.tf │ ├── region │├── VPC ││├── main.tf ││├── output.tf ││└── variables.tf ││ │├── ECS ││├── main.tf ││├── output.tf ││└── variables.tf ・ ・ ・  RAMなど他者へ渡したくない情報がある場合、別途設定ファイル（ terraform.confing など）へ記載し、実行時は -var-file引数で 設定ファイルを読み取り実行することができます。
-▼リスト 3.1.1 設定ファイル terraform.confing の中身
-access_key = &quot;xxxxxxxxxxxxxxxxxx&quot; secret_key = &quot;xxxxxxxxxxxxxxxxxx&quot; region = &quot;ap-northeast-1&quot; zone = &quot;ap-northeast-1a&quot;  記載した設定ファイルterraform. <a class="read-more" href="/help/best-practice/infrastructure-as-code/terraform/">&raquo;</a></p>
-    </section>
-    <footer class=" footline" >
-         
-        
-
-        
-        
-
-    </footer>
-</article>
-
-
-<div style="margin-bottom:2rem"></div>
-
-<nav class="pagination" role="navigation">
-	
-	<span class="page-number">Page 1 of 1</span>
-	
-</nav>
-
+<h1 id="alibaba-cloudにおけるinfrastructure-as-codeの実践">Alibaba CloudにおけるInfrastructure as Codeの実践</h1>
 
 
 
@@ -399,14 +331,14 @@ access_key = &quot;xxxxxxxxxxxxxxxxxx&quot; secret_key = &quot;xxxxxxxxxxxxxxxxx
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 05/06/2019
+        <i class='fa fa-calendar'></i>  05/06/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/infrastructure-as-code/_index.md" target="blank"><i class="fa fa-code-fork"></i>
-        Improve this page</a>
+        </a>
     </div>
     
   </div>
@@ -416,7 +348,7 @@ access_key = &quot;xxxxxxxxxxxxxxxxxx&quot; secret_key = &quot;xxxxxxxxxxxxxxxxx
 
 
   
-    Create a content/_footer.md file to customize the footer content
+    
   
 
 
