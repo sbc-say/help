@@ -1,48 +1,46 @@
 # SBC Technical Reference
 
 ## 1. Getting Started
-### Registration
-* Create Account
-* Real Name Registration
+### アカウント登録  
+* アカウント新規作成  
+* 本人認証申請
 
-### Basic Information
+### 主要プロダクト紹介
 * ECS
-   - Product Outline
-   - Comparison with AWS/Azure/GCP
 * SLB
 * VPC
 * RDS
 * OSS
 * Express Connect 
 
-### 2. Best Practice by Product
+### 2. Best Practice
+* 導入アドバイザリ
+* アーキテクチャ (構成図)
+* コスト管理
+* Infrastructure as Code
+
+#### 個別プロダクト
 * Anti-DDoS
 * Real-Time Compute
 * Block chain
 
-## 3. Advisories
-* Introduction Advisory
-* Design Diagrams ("構成図")
-* Cost Management
-* IaC
-* Security Guide
 
-## 4. Scenarios
-### Web Application
+## 4. ユースケース別シナリオ
+### Webアプリケーション
 * Java Springboot
 * Python Django
 
 ### CI/CD
 * Kubernetes with Terraform
 
-### Data Analysis
+### Data分析
 * Data-V
 * DWH
 
-###  Migration
-* Migration from On-Premises
-* Migration from Other Cloud
-* Co-Existing with Other Cloud
+###  移行
+* オンプレミスからの移行
+* 他のクラウドからの移行
+* マルチクラウドへの移行
 
 ## 4. FAQ
 * ECS
