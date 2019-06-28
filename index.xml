@@ -12,6 +12,117 @@
     
     
     <item>
+      <title>アーキテクチャ</title>
+      <link>https://sbcloud.github.io/help/best-practice/architecture/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/architecture/</guid>
+      <description> Architecture Diagrams </description>
+    </item>
+    
+    <item>
+      <title>Anti-DDoS</title>
+      <link>https://sbcloud.github.io/help/best-practice/product/anti-ddos/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/product/anti-ddos/</guid>
+      <description>Anti-DDoS Basicについて foo
+Anti-DDoS Proについて bar
+Anti-DDoS Premiumについて Anti-DDoS Premiumの活用方法ついては以下のSlideShareを参照ください。
+https:// hogehoge.com</description>
+    </item>
+    
+    <item>
+      <title>Terraform 01章</title>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_01/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_01/</guid>
+      <description>Anti-DDoS Basicについて foo
+Anti-DDoS Proについて bar
+Anti-DDoS Premiumについて Anti-DDoS Premiumの活用方法ついては以下のSlideShareを参照ください。
+https:// hogehoge.com</description>
+    </item>
+    
+    <item>
+      <title>料金体系</title>
+      <link>https://sbcloud.github.io/help/best-practice/pricing/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/pricing/</guid>
+      <description> Architecture Diagrams </description>
+    </item>
+    
+    <item>
+      <title>RAM</title>
+      <link>https://sbcloud.github.io/help/best-practice/product/ram/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/product/ram/</guid>
+      <description>AAlibabaCloudはどのサービスを利用・操作するにしろ権限が必要です。 Terraformで作成したリソースサービスにも他ユーザが操作できるように権限アタッチが必要になります。 本章では、AlibabaCloudサービスに対する権限付与の方法を学びます。
+5.1 Alibaba CloudのRAMについて RAM（Resource Access Management）はユーザーID の管理とアクセス制御、権限管理のためのサービスです。 RAMを使用することで、ユーザーアカウント (従業員、システム、アプリケーションなど) を作成および管理し、Alibaba Cloud アカウントのリソースに対してそのユーザーアカウントが所有する操作権限を制御できます。Terraformによるリソースを実行するときはRAMで実行権限が必須です。
+5.2 RAMロールとRAMユーザーの違い ・RAMロールは仮想ID であり、固定のIDは持っていますが、ID認証情報アクセスキーを持ちません。 ・RAMユーザは、固定のIDとID認証アクセスキーを持つ実際のIDであり、一般的には、特定のユーザーまたはアプリケーションに対応します。
+graph LR; A(&amp;#34;ポリシーサービスに&amp;lt;br&amp;gt;対する権限&amp;#34;)-.-&amp;gt;B(&amp;#34;RAMポリシーを&amp;lt;br&amp;gt;ロールにアタッチ&amp;#34;) A(&amp;#34;ポリシーサービスに&amp;lt;br&amp;gt;対する権限&amp;#34;)-.-&amp;gt;C(&amp;#34;RAMポリシーを&amp;lt;br&amp;gt;ユーザにアタッチ&amp;#34;) B(&amp;#34;RAMポリシーを&amp;lt;br&amp;gt;ロールにアタッチ&amp;#34;)-.-&amp;gt;D(&amp;#34;ロール(役割)&amp;#34;) C(&amp;#34;RAMポリシーを&amp;lt;br&amp;gt;ユーザにアタッチ&amp;#34;)-.-&amp;gt;E(&amp;#34;ユーザ(人)&amp;#34;) D(&amp;#34;ロール(役割)&amp;#34;)-.-&amp;gt;F(&amp;#34;ロール(役割)を&amp;lt;br&amp;gt;エンティティ(ECSインスタンスなど）にアタッチ&amp;#34;) A(&amp;#34;ポリシーサービスに&amp;lt;br&amp;gt;対する権限&amp;#34;)-.-&amp;gt;G(&amp;#34;RAMポリシーを&amp;lt;br&amp;gt;グループにアタッチ&amp;#34;) G(&amp;#34;RAMポリシーを&amp;lt;br&amp;gt;グループにアタッチ&amp;#34;)-.-&amp;gt;H(&amp;#34;グループ（ユーザの集まり）&amp;#34;) graph TD A[お正月] --|お年玉をゲット| B(買い物に行くよ) B -- C{どれにしようかな} C --|これかな| D[iTunes Card] C --|これかな| E[iPhone XS Max] C --|ま まさか| F[fa:fa-car The CLS Coupé]  RAMロールは権限が付与された実際のユーザーが引き受ける必要があります。ロールを引き受けると実際のユーザーはこのRAMロールの一時セキュリティトークンを受け取ります。これにより、この一時セキュリティトークンを使用して、ロールに許可されているリソースにアクセスできます。
+普段の利用時はRAMユーザで管理・運用していくのがベストプラクティスですが、Terraform利用時は基本的にAdministratorAccessが必要となります。
+5.3 ポリシー 権限はポリシーで定義します。ポリシーでは「実行可能なアクション」や「操作可能なリソース」を指定でき、柔軟に権限が設定できます。
+5.3.1 ポリシードキュメント ポリシードキュメントはJSON形式で管理しており、リスト5.3.1.1のようにまとめます。 ▼リスト 5.3.1.1 JSON 形式のポリシードキュメント
+{ &amp;quot;Statement&amp;quot;: [ { &amp;quot;Action&amp;quot;: &amp;quot;*&amp;quot;, &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;, &amp;quot;Resource&amp;quot;: &amp;quot;*&amp;quot; } ], &amp;quot;Version&amp;quot;: &amp;quot;1&amp;quot; }  ポリシードキュメントでは、次のような要素を記述します。 * Effect - 許可する場合はAllow、許可しない場合はDeny * Resource - AlibabaCloudの操作可能なリソース・許可されたオブジェクトはなにかを指定します。たとえば ”ユーザAがリソースSampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、ResourceはSampleBucket です。 * Action - AlibabaCloudの各種サービスでどんな操作が実行できるか。サービスを個別指定することも可能。たとえば ”ユーザAがリソースSampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、ActionはGetBucket です。 * Condition - 権限付与が有効になる条件です。たとえば、”ユーザAが2018年12月31日より前にリソース SampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、Conditionは 2018年12月31日より前 です。</description>
+    </item>
+    
+    <item>
+      <title>Terraform 02章</title>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_02/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_02/</guid>
+      <description>Anti-DDoS Basicについて foo
+Anti-DDoS Proについて bar
+Anti-DDoS Premiumについて Anti-DDoS Premiumの活用方法ついては以下のSlideShareを参照ください。
+https:// hogehoge.com</description>
+    </item>
+    
+    <item>
+      <title>セキュリティ</title>
+      <link>https://sbcloud.github.io/help/best-practice/security/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/security/</guid>
+      <description> Security </description>
+    </item>
+    
+    <item>
+      <title>Terraform 3章</title>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_03/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_03/</guid>
+      <description>本章では Terraform の基本、使い方を学びます。 簡単なWebサーバを立ち上げながら、Terraformの流れや中身を確認します。
+3.1 ディレクトリ・ファイル構成 Terraformのファイルの拡張子は *.tf です。 実行時、同じディレクトリの *.tf ファイルがマージされますので、以下3ファイルに分けてそれぞれの用途・目的に応じた記載・運用がベターです。
+main.tf … モジュールが内包するリソース、データソースなどの定義 outputs.tf … モジュールが出力するAttributeの定義 variables.tf … モジュールが受け取る変数の定義  main.tf には どのプロパイダを使うかを記載します。 階層化は任意ですが、.tfから別のフォルダの.tfに記載されてる変数を取り出すためにルートディレクトリを指定することがありますのでそこは注意が必要です。apply (=実行) にて分離実行することも可能です。
+├── main.tf ├── output.tf ├── variables.tf │ ├── region │├── VPC ││├── main.tf ││├── output.tf ││└── variables.tf ││ │├── ECS ││├── main.tf ││├── output.tf ││└── variables.tf ・ ・ ・  RAMなど他者へ渡したくない情報がある場合、別途設定ファイル（ terraform.confing など）へ記載し、実行時は -var-file引数で 設定ファイルを読み取り実行することができます。
+▼リスト 3.1.1 設定ファイル terraform.confing の中身
+access_key = &amp;quot;xxxxxxxxxxxxxxxxxx&amp;quot; secret_key = &amp;quot;xxxxxxxxxxxxxxxxxx&amp;quot; region = &amp;quot;ap-northeast-1&amp;quot; zone = &amp;quot;ap-northeast-1a&amp;quot;  記載した設定ファイルterraform.</description>
+    </item>
+    
+    <item>
+      <title>Terraform 4章</title>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_04/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_04/</guid>
+      <description>4章</description>
+    </item>
+    
+    <item>
+      <title>Terraform 5章</title>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_05/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_05/</guid>
+      <description>5章</description>
+    </item>
+    
+    <item>
       <title>アカウント登録</title>
       <link>https://sbcloud.github.io/help/getting-started/registration/</link>
       <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
@@ -21,12 +132,21 @@
     </item>
     
     <item>
-      <title>アーキテクチャ</title>
-      <link>https://sbcloud.github.io/help/best-practice/architecture/</link>
+      <title>ウェブアプリケーション</title>
+      <link>https://sbcloud.github.io/help/scenarios/web-application/java-springboot/</link>
       <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/architecture/</guid>
-      <description> Architecture Diagrams </description>
+      <guid>https://sbcloud.github.io/help/scenarios/web-application/java-springboot/</guid>
+      <description> ここではWebApplicationを中心に記載します </description>
+    </item>
+    
+    <item>
+      <title>ウェブアプリケーション</title>
+      <link>https://sbcloud.github.io/help/scenarios/web-application/python-django/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenarios/web-application/python-django/</guid>
+      <description> ここではWebApplicationを中心に記載します </description>
     </item>
     
     <item>
@@ -61,16 +181,80 @@ Q. チケット起票の推奨記載内容について 下記内容に近いコ�
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
-      <description>   大項目 中項目 小項目     Getting Started (10) 一覧 (10)     アカウント登録 (100)     比較 (200) 一覧 (200)     国際アカウントvs中国アカウント (1000)     Alibaba vs AWS vs Azure vs GCP (2000)    主要プロダクト (300) 一覧 (300)     ECS (1000)     RDS (2000)     SLB (3000)     OSS (4000)     VPC (5000)     ExpressConnect (6000)   ベストプラクティス (20) 一覧 (20)     アーキテクチャ (100)     コスト体系 (200)     セキュリティ (300)     プロダクト (400) 一覧 (400)     RAM (1000)     Anti-DDoS (2000)    Infrastructure as Code (500) 一覧 (500)     Terraform１章 (1000)     Terraform2章 (2000)     Terraform3章 (3000)     Terraform4章 (4000)   ユースベース別シナリオ (30) 一覧 (30)     Webアプリケーション (100) 一覧 (100)     Java Springboot (1000)     Python Django (2000)    CI/CD (200) 一覧 (200)     E-commerce site with Terraform (1000)    Data-Analysis (300) 一覧 (300)     some technical reference for Data-V (1000)   よくある質問 (40) 一覧 (40)     アカウント (100)     ECS (100)     RDS (200)     SLB (300)     OSS (400)     VPC (500)     コスト (600)     アカウント (700)    About (90) 一覧 (90)     サイトマップ (100)     </description>
+      <description>トップページ         Getting Started     アカウント登録   比較国際アカウントvs中国アカウント
+Alibaba vs AWS vs Azure vs GCP比較   主要プロダクトECS
+RDS
+SLB
+OSS
+VPC
+ExpressConnect       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM
+Anti-DDoS   Infrastructure as CodeTerraform 1章
+Terraform 2章
+Terraform 3章
+Terraform 4章</description>
     </item>
     
     <item>
-      <title>セキュリティ</title>
-      <link>https://sbcloud.github.io/help/best-practice/security/</link>
+      <title>CI/CD</title>
+      <link>https://sbcloud.github.io/help/scenarios/ci-cd/e-commerce-w-terraform/</link>
       <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/security/</guid>
-      <description> Security </description>
+      <guid>https://sbcloud.github.io/help/scenarios/ci-cd/e-commerce-w-terraform/</guid>
+      <description> ここではCI/CDの実践構成を記載します </description>
+    </item>
+    
+    <item>
+      <title>主要プロダクトの紹介</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/ecs/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/ecs/</guid>
+      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
+    </item>
+    
+    <item>
+      <title>主要プロダクトの紹介</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/express-connect/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/express-connect/</guid>
+      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
+    </item>
+    
+    <item>
+      <title>主要プロダクトの紹介</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/oss/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/oss/</guid>
+      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
+    </item>
+    
+    <item>
+      <title>主要プロダクトの紹介</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/rds/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/rds/</guid>
+      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
+    </item>
+    
+    <item>
+      <title>主要プロダクトの紹介</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/slb/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/slb/</guid>
+      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
+    </item>
+    
+    <item>
+      <title>主要プロダクトの紹介</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/vpc/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/vpc/</guid>
+      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
     </item>
     
     <item>
@@ -92,6 +276,15 @@ Q. ECSのデフォルトタイムゾーンについて リージョンに関わ�
 なお、カスタムイメージのタイムゾーンはイメージ作成した際のものとなりますが、初回ECS作成直後でも中国ローカル時間になりますので、個別に時間自動同期（NTP）設定が必要となります。
 Q. スナップショット取得時の性能影響について スナップショットの作成時は、ストレージのIO性能（最大10%低下）に影響します。 通常、稼働中のサービスへの影響はないと想定されますが、ストレージIOが少ない時間帯での取得を勧めします。
 Q. 購入可能な従量課金インスタンスの上限について 従量課金でのECSインスタンス購入上限は、vCPU数により制限されています。従量課金型ECSインスタンスの購入は各リージョン「50vCPU」までとなっております。 例）お客様が1台のECSに対して4vCPUで利用する場合は、12台の従量課金ECSを購入することができます。</description>
+    </item>
+    
+    <item>
+      <title>データ分析の例を記載</title>
+      <link>https://sbcloud.github.io/help/scenarios/data-v/example/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenarios/data-v/example/</guid>
+      <description> ここではデータ分析の手法を記載します </description>
     </item>
     
     <item>
@@ -144,6 +337,29 @@ Q. RDSリリース後のバックアップ提供について RDSのリリース�
     </item>
     
     <item>
+      <title>VPC</title>
+      <link>https://sbcloud.github.io/help/faq/vpc/</link>
+      <pubDate>Thu, 04 Apr 2019 15:32:14 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/faq/vpc/</guid>
+      <description>一般仕様 Q. RDSのトラフィック料金について RDS現在トラフィック（インバウンド、アウトバウンド含む）料金は無料です。
+Q. sysadminの権限提供について インスタンスの安定性とセキュリティを保証するために、RDS for SQL Server では、sysadmin 権限を提供しておりません。
+RDSの制限詳細は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/26141.htm
+Q. カスタマイズ可能なパラメーターについて RDSはマネジメントサービスのため、カスタマイズ可能なパラメーターはRDSコンソールのパラメーターの設定ページに表示されているパラメーターのみとなります。
+Q. RDSのストレージ容量の拡張方法について RDSのストレージ容量は下記メニューから拡張することができます。 コンソール &amp;gt; RDS &amp;gt; インスタンスの「詳細」&amp;gt; 設定を変更する &amp;gt; 容量
+Q. ホワイトリストの設定方法について RDSにはホワイトリストを利用してアクセスIPを制限することができます。
+RDSのホワイトリストの設定は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/43186.html
+Q. インターネットアドレスとイントラネットアドレスの違いについて RDSにインターネットアドレスとイントラネットアドレスがあります。
+イントラネットアドレスは同じVPC内のインスタンスのみアクセスすることができます。 インターネットアドレスはインターネットからアクセスすることができます。
+Q. VPCとVswitchの変更方法について RDS作成後のVPCとVSwitchの変更を対応していません。既存RDSのバックアップからVPCとVSwitchを指定して新規RDSを作成することになります。
+バックアップ Q. バックアップ取得時の性能影響について RDSのバックアップはスレーブインスタンスから取得するため、取得時にスレーブインスタンスへ影響がありますが、マスターインスタンスの性能に影響がありません。
+Q. RDSバックアップの保存先について RDSバックアップはアーキテクチャ上にOSS上に保存されますが、お客様のOSS領域ではありませんので、ダウンロードする際には、RDSコンソールからとなります。
+Q. リカバリ時に指定可能な時刻について バックアップからリカバリ時に希望時刻を指定することができます。 指定可能の時刻は最初のフルバックアップ時刻から現時刻の間となります。
+Q. RDSリリース後のバックアップ提供について RDSのリリースに伴い、バックアップもリリースされます。RDSのバックアップをお客様のOSSに移管する機能は現在ありません。必要な場合、リリース前にRDSコンソールからダウンロードする必要があります。
+マルチゾーン Q. マルチゾーンの確認方法について 下記メニューからマスターインスタンスとスレーブインスタンスの所在ゾーンを確認することができます。 コンソール &amp;gt; RDS &amp;gt; インスタンス &amp;gt; インスタンスの可用性 &amp;gt; マスターノード ID/スレーブノード ID</description>
+    </item>
+    
+    <item>
       <title>OSS</title>
       <link>https://sbcloud.github.io/help/faq/oss/</link>
       <pubDate>Thu, 04 Apr 2019 15:33:15 +0900</pubDate>
@@ -166,10 +382,10 @@ Q. 同名ファイルを入れ替え後の即時反映について OSS上に同�
     
     <item>
       <title>料金</title>
-      <link>https://sbcloud.github.io/help/faq/cost/</link>
+      <link>https://sbcloud.github.io/help/faq/price/</link>
       <pubDate>Wed, 03 Apr 2019 15:31:09 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/faq/cost/</guid>
+      <guid>https://sbcloud.github.io/help/faq/price/</guid>
       <description>料金 Q. マイクロチャージの仕様について クレジットカードをご登録またはご追加の際に、マイクロチャージというクレジットカードの有効性を確認するプロセスにより、少額の課金（通常は100円以内）が発生します。 該当課金は、AlibabaCloudから24時間以内にカードに払い戻ししますが、カード発行会社により、ご利用のカードに対する払い戻しをご確認いただけるまでに 30 日程度を要する場合があります。
 実際にAlibabaCloudが領収してないため、請求書の発行はできかねます。 また、カード会社の請求締切日により、カード会社からお客様に請求してから翌月に返金する可能性もあります。詳細はカード会社にお問合せください。
 Q. コンソールに表示される月の使用金額と実際請求額の差分について コンソールに表示される月の使用金額と実際の請求額に差分が発生する場合があります。これは、従量課金インスタンス料金の合計方法によるものです。
@@ -194,36 +410,6 @@ Q. インスタンス自動更新失敗後の動作について 自動更新設�
 該当インスタンスに対する課金が3回とも失敗した場合、インスタンスが15日目に停止され、30日目にリリースされます。
 Q. 自動更新OFFの状態で有効期限切れ後の更新方法について 自動更新OFFの状態で有効期限を迎えた後、該当インスタンスの自動更新をONに設定することができませんので、先に手動更新する必要があります。 有効期間内の場合、自動更新をONに設定することができます。
 Q. サブスクリプションインスタンスの削除方法について 年単位または月単位のサブスクリプションで課金されるインスタンスは、お客様ご自身で削除またはリリースすることはできません。期限切れた日から15日後インスタンスが停止され、30日後は自動的にリリースされます。</description>
-    </item>
-    
-    <item>
-      <title>RAM</title>
-      <link>https://sbcloud.github.io/help/best-practice/product/ram/</link>
-      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/best-practice/product/ram/</guid>
-      <description>AAlibabaCloudはどのサービスを利用・操作するにしろ権限が必要です。 Terraformで作成したリソースサービスにも他ユーザが操作できるように権限アタッチが必要になります。 本章では、AlibabaCloudサービスに対する権限付与の方法を学びます。
-5.1 Alibaba CloudのRAMについて RAM（Resource Access Management）はユーザーID の管理とアクセス制御、権限管理のためのサービスです。 RAMを使用することで、ユーザーアカウント (従業員、システム、アプリケーションなど) を作成および管理し、Alibaba Cloud アカウントのリソースに対してそのユーザーアカウントが所有する操作権限を制御できます。Terraformによるリソースを実行するときはRAMで実行権限が必須です。
-5.2 RAMロールとRAMユーザーの違い ・RAMロールは仮想ID であり、固定のIDは持っていますが、ID認証情報アクセスキーを持ちません。 ・RAMユーザは、固定のIDとID認証アクセスキーを持つ実際のIDであり、一般的には、特定のユーザーまたはアプリケーションに対応します。
-graph LR; A(&amp;#34;ポリシーサービスに&amp;lt;br&amp;gt;対する権限&amp;#34;)-.-&amp;gt;B(&amp;#34;RAMポリシーを&amp;lt;br&amp;gt;ロールにアタッチ&amp;#34;) A(&amp;#34;ポリシーサービスに&amp;lt;br&amp;gt;対する権限&amp;#34;)-.-&amp;gt;C(&amp;#34;RAMポリシーを&amp;lt;br&amp;gt;ユーザにアタッチ&amp;#34;) B(&amp;#34;RAMポリシーを&amp;lt;br&amp;gt;ロールにアタッチ&amp;#34;)-.-&amp;gt;D(&amp;#34;ロール(役割)&amp;#34;) C(&amp;#34;RAMポリシーを&amp;lt;br&amp;gt;ユーザにアタッチ&amp;#34;)-.-&amp;gt;E(&amp;#34;ユーザ(人)&amp;#34;) D(&amp;#34;ロール(役割)&amp;#34;)-.-&amp;gt;F(&amp;#34;ロール(役割)を&amp;lt;br&amp;gt;エンティティ(ECSインスタンスなど）にアタッチ&amp;#34;) A(&amp;#34;ポリシーサービスに&amp;lt;br&amp;gt;対する権限&amp;#34;)-.-&amp;gt;G(&amp;#34;RAMポリシーを&amp;lt;br&amp;gt;グループにアタッチ&amp;#34;) G(&amp;#34;RAMポリシーを&amp;lt;br&amp;gt;グループにアタッチ&amp;#34;)-.-&amp;gt;H(&amp;#34;グループ（ユーザの集まり）&amp;#34;) graph TD A[お正月] --|お年玉をゲット| B(買い物に行くよ) B -- C{どれにしようかな} C --|これかな| D[iTunes Card] C --|これかな| E[iPhone XS Max] C --|ま まさか| F[fa:fa-car The CLS Coupé]  RAMロールは権限が付与された実際のユーザーが引き受ける必要があります。ロールを引き受けると実際のユーザーはこのRAMロールの一時セキュリティトークンを受け取ります。これにより、この一時セキュリティトークンを使用して、ロールに許可されているリソースにアクセスできます。
-普段の利用時はRAMユーザで管理・運用していくのがベストプラクティスですが、Terraform利用時は基本的にAdministratorAccessが必要となります。
-5.3 ポリシー 権限はポリシーで定義します。ポリシーでは「実行可能なアクション」や「操作可能なリソース」を指定でき、柔軟に権限が設定できます。
-5.3.1 ポリシードキュメント ポリシードキュメントはJSON形式で管理しており、リスト5.3.1.1のようにまとめます。 ▼リスト 5.3.1.1 JSON 形式のポリシードキュメント
-{ &amp;quot;Statement&amp;quot;: [ { &amp;quot;Action&amp;quot;: &amp;quot;*&amp;quot;, &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;, &amp;quot;Resource&amp;quot;: &amp;quot;*&amp;quot; } ], &amp;quot;Version&amp;quot;: &amp;quot;1&amp;quot; }  ポリシードキュメントでは、次のような要素を記述します。 * Effect - 許可する場合はAllow、許可しない場合はDeny * Resource - AlibabaCloudの操作可能なリソース・許可されたオブジェクトはなにかを指定します。たとえば ”ユーザAがリソースSampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、ResourceはSampleBucket です。 * Action - AlibabaCloudの各種サービスでどんな操作が実行できるか。サービスを個別指定することも可能。たとえば ”ユーザAがリソースSampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、ActionはGetBucket です。 * Condition - 権限付与が有効になる条件です。たとえば、”ユーザAが2018年12月31日より前にリソース SampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、Conditionは 2018年12月31日より前 です。</description>
-    </item>
-    
-    <item>
-      <title>Terraform</title>
-      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/</link>
-      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/</guid>
-      <description>本章では Terraform の基本、使い方を学びます。 簡単なWebサーバを立ち上げながら、Terraformの流れや中身を確認します。
-3.1 ディレクトリ・ファイル構成 Terraformのファイルの拡張子は *.tf です。 実行時、同じディレクトリの *.tf ファイルがマージされますので、以下3ファイルに分けてそれぞれの用途・目的に応じた記載・運用がベターです。
-main.tf … モジュールが内包するリソース、データソースなどの定義 outputs.tf … モジュールが出力するAttributeの定義 variables.tf … モジュールが受け取る変数の定義  main.tf には どのプロパイダを使うかを記載します。 階層化は任意ですが、.tfから別のフォルダの.tfに記載されてる変数を取り出すためにルートディレクトリを指定することがありますのでそこは注意が必要です。apply (=実行) にて分離実行することも可能です。
-├── main.tf ├── output.tf ├── variables.tf │ ├── region │├── VPC ││├── main.tf ││├── output.tf ││└── variables.tf ││ │├── ECS ││├── main.tf ││├── output.tf ││└── variables.tf ・ ・ ・  RAMなど他者へ渡したくない情報がある場合、別途設定ファイル（ terraform.confing など）へ記載し、実行時は -var-file引数で 設定ファイルを読み取り実行することができます。
-▼リスト 3.1.1 設定ファイル terraform.confing の中身
-access_key = &amp;quot;xxxxxxxxxxxxxxxxxx&amp;quot; secret_key = &amp;quot;xxxxxxxxxxxxxxxxxx&amp;quot; region = &amp;quot;ap-northeast-1&amp;quot; zone = &amp;quot;ap-northeast-1a&amp;quot;  記載した設定ファイルterraform.</description>
     </item>
     
     <item>
@@ -252,15 +438,12 @@ AlibabaCloudのサービスiconはこちらからダウンロードになりま�
     </item>
     
     <item>
-      <title>Anti-DDoS</title>
-      <link>https://sbcloud.github.io/help/best-practice/product/anti-ddos/</link>
+      <title>Terraform n章</title>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_0n/</link>
       <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/product/anti-ddos/</guid>
-      <description>Anti-DDoS Basicについて foo
-Anti-DDoS Proについて bar
-Anti-DDoS Premiumについて Anti-DDoS Premiumの活用方法ついては以下のSlideShareを参照ください。
-https:// hogehoge.com</description>
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_0n/</guid>
+      <description>6章</description>
     </item>
     
     <item>

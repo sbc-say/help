@@ -12,17 +12,68 @@
     
     
     <item>
-      <title>Terraform</title>
-      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/</link>
+      <title>Terraform 01章</title>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_01/</link>
       <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/</guid>
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_01/</guid>
+      <description>Anti-DDoS Basicについて foo
+Anti-DDoS Proについて bar
+Anti-DDoS Premiumについて Anti-DDoS Premiumの活用方法ついては以下のSlideShareを参照ください。
+https:// hogehoge.com</description>
+    </item>
+    
+    <item>
+      <title>Terraform 02章</title>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_02/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_02/</guid>
+      <description>Anti-DDoS Basicについて foo
+Anti-DDoS Proについて bar
+Anti-DDoS Premiumについて Anti-DDoS Premiumの活用方法ついては以下のSlideShareを参照ください。
+https:// hogehoge.com</description>
+    </item>
+    
+    <item>
+      <title>Terraform 3章</title>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_03/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_03/</guid>
       <description>本章では Terraform の基本、使い方を学びます。 簡単なWebサーバを立ち上げながら、Terraformの流れや中身を確認します。
 3.1 ディレクトリ・ファイル構成 Terraformのファイルの拡張子は *.tf です。 実行時、同じディレクトリの *.tf ファイルがマージされますので、以下3ファイルに分けてそれぞれの用途・目的に応じた記載・運用がベターです。
 main.tf … モジュールが内包するリソース、データソースなどの定義 outputs.tf … モジュールが出力するAttributeの定義 variables.tf … モジュールが受け取る変数の定義  main.tf には どのプロパイダを使うかを記載します。 階層化は任意ですが、.tfから別のフォルダの.tfに記載されてる変数を取り出すためにルートディレクトリを指定することがありますのでそこは注意が必要です。apply (=実行) にて分離実行することも可能です。
 ├── main.tf ├── output.tf ├── variables.tf │ ├── region │├── VPC ││├── main.tf ││├── output.tf ││└── variables.tf ││ │├── ECS ││├── main.tf ││├── output.tf ││└── variables.tf ・ ・ ・  RAMなど他者へ渡したくない情報がある場合、別途設定ファイル（ terraform.confing など）へ記載し、実行時は -var-file引数で 設定ファイルを読み取り実行することができます。
 ▼リスト 3.1.1 設定ファイル terraform.confing の中身
 access_key = &amp;quot;xxxxxxxxxxxxxxxxxx&amp;quot; secret_key = &amp;quot;xxxxxxxxxxxxxxxxxx&amp;quot; region = &amp;quot;ap-northeast-1&amp;quot; zone = &amp;quot;ap-northeast-1a&amp;quot;  記載した設定ファイルterraform.</description>
+    </item>
+    
+    <item>
+      <title>Terraform 4章</title>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_04/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_04/</guid>
+      <description>4章</description>
+    </item>
+    
+    <item>
+      <title>Terraform 5章</title>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_05/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_05/</guid>
+      <description>5章</description>
+    </item>
+    
+    <item>
+      <title>Terraform n章</title>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_0n/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_0n/</guid>
+      <description>6章</description>
     </item>
     
   </channel>

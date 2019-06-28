@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>データ分析 on テクニカルリファレンス</title>
+    <link>https://sbcloud.github.io/help/scenarios/data-v/</link>
+    <description>Recent content in データ分析 on テクニカルリファレンス</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Wed, 05 Jun 2019 12:30:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://sbcloud.github.io/help/scenarios/data-v/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>データ分析の例を記載</title>
+      <link>https://sbcloud.github.io/help/scenarios/data-v/example/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenarios/data-v/example/</guid>
+      <description> ここではデータ分析の手法を記載します </description>
+    </item>
+    
+  </channel>
+</rss>

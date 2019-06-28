@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>CI/CD</title>
+      <link>https://sbcloud.github.io/help/scenarios/ci-cd/e-commerce-w-terraform/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenarios/ci-cd/e-commerce-w-terraform/</guid>
+      <description> ここではCI/CDの実践構成を記載します </description>
+    </item>
+    
+    <item>
       <title>K8s</title>
       <link>https://sbcloud.github.io/help/scenarios/ci-cd/k8s/</link>
       <pubDate>Mon, 13 May 2019 16:20:40 +0900</pubDate>

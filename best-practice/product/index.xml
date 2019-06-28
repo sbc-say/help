@@ -12,6 +12,18 @@
     
     
     <item>
+      <title>Anti-DDoS</title>
+      <link>https://sbcloud.github.io/help/best-practice/product/anti-ddos/</link>
+      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/product/anti-ddos/</guid>
+      <description>Anti-DDoS Basicについて foo
+Anti-DDoS Proについて bar
+Anti-DDoS Premiumについて Anti-DDoS Premiumの活用方法ついては以下のSlideShareを参照ください。
+https:// hogehoge.com</description>
+    </item>
+    
+    <item>
       <title>RAM</title>
       <link>https://sbcloud.github.io/help/best-practice/product/ram/</link>
       <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
@@ -25,18 +37,6 @@ graph LR; A(&amp;#34;ポリシーサービスに&amp;lt;br&amp;gt;対する権�
 5.3 ポリシー 権限はポリシーで定義します。ポリシーでは「実行可能なアクション」や「操作可能なリソース」を指定でき、柔軟に権限が設定できます。
 5.3.1 ポリシードキュメント ポリシードキュメントはJSON形式で管理しており、リスト5.3.1.1のようにまとめます。 ▼リスト 5.3.1.1 JSON 形式のポリシードキュメント
 { &amp;quot;Statement&amp;quot;: [ { &amp;quot;Action&amp;quot;: &amp;quot;*&amp;quot;, &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;, &amp;quot;Resource&amp;quot;: &amp;quot;*&amp;quot; } ], &amp;quot;Version&amp;quot;: &amp;quot;1&amp;quot; }  ポリシードキュメントでは、次のような要素を記述します。 * Effect - 許可する場合はAllow、許可しない場合はDeny * Resource - AlibabaCloudの操作可能なリソース・許可されたオブジェクトはなにかを指定します。たとえば ”ユーザAがリソースSampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、ResourceはSampleBucket です。 * Action - AlibabaCloudの各種サービスでどんな操作が実行できるか。サービスを個別指定することも可能。たとえば ”ユーザAがリソースSampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、ActionはGetBucket です。 * Condition - 権限付与が有効になる条件です。たとえば、”ユーザAが2018年12月31日より前にリソース SampleBucketに対してGetBucket操作を実行できる” という権限付与ポリシーの場合、Conditionは 2018年12月31日より前 です。</description>
-    </item>
-    
-    <item>
-      <title>Anti-DDoS</title>
-      <link>https://sbcloud.github.io/help/best-practice/product/anti-ddos/</link>
-      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/best-practice/product/anti-ddos/</guid>
-      <description>Anti-DDoS Basicについて foo
-Anti-DDoS Proについて bar
-Anti-DDoS Premiumについて Anti-DDoS Premiumの活用方法ついては以下のSlideShareを参照ください。
-https:// hogehoge.com</description>
     </item>
     
   </channel>

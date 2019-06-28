@@ -11,5 +11,59 @@
 	<atom:link href="https://sbcloud.github.io/help/getting-started/product/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>主要プロダクトの紹介</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/ecs/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/ecs/</guid>
+      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
+    </item>
+    
+    <item>
+      <title>主要プロダクトの紹介</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/express-connect/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/express-connect/</guid>
+      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
+    </item>
+    
+    <item>
+      <title>主要プロダクトの紹介</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/oss/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/oss/</guid>
+      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
+    </item>
+    
+    <item>
+      <title>主要プロダクトの紹介</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/rds/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/rds/</guid>
+      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
+    </item>
+    
+    <item>
+      <title>主要プロダクトの紹介</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/slb/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/slb/</guid>
+      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
+    </item>
+    
+    <item>
+      <title>主要プロダクトの紹介</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/vpc/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/vpc/</guid>
+      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
+    </item>
+    
   </channel>
 </rss>

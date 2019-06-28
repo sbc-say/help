@@ -3,12 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sbcloud.github.io/help/best-practice/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/getting-started/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/</loc>
+    <loc>https://sbcloud.github.io/help/best-practice/architecture/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/product/anti-ddos/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_01/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/pricing/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/product/ram/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_02/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/security/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -18,8 +53,28 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_03/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/faq/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/product/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_04/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_05/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
   </url>
   
   <url>
@@ -32,12 +87,17 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/architecture/</loc>
+    <loc>https://sbcloud.github.io/help/scenarios/web-application/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/scenarios/web-application/</loc>
+    <loc>https://sbcloud.github.io/help/scenarios/web-application/java-springboot/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenarios/web-application/python-django/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -56,7 +116,7 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/security/</loc>
+    <loc>https://sbcloud.github.io/help/scenarios/ci-cd/e-commerce-w-terraform/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -66,17 +126,47 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/getting-started/product/ecs/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/getting-started/product/express-connect/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/getting-started/product/oss/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/getting-started/product/rds/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/getting-started/product/slb/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/getting-started/product/vpc/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/faq/ecs/</loc>
     <lastmod>2019-04-04T15:31:42+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/scenarios/data-analysis/</loc>
+    <loc>https://sbcloud.github.io/help/scenarios/data-v/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/product/</loc>
+    <loc>https://sbcloud.github.io/help/scenarios/data-v/example/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -101,23 +191,18 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/faq/vpc/</loc>
+    <lastmod>2019-04-04T15:32:14+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/faq/oss/</loc>
     <lastmod>2019-04-04T15:33:15+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/faq/cost/</loc>
+    <loc>https://sbcloud.github.io/help/faq/price/</loc>
     <lastmod>2019-04-03T15:31:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/product/ram/</loc>
-    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/</loc>
-    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
   </url>
   
   <url>
@@ -131,14 +216,14 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/product/anti-ddos/</loc>
-    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_0n/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
   </url>
   
   <url>
