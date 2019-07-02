@@ -51,16 +51,12 @@ https:// hogehoge.com</description>
       
       <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
       <description>トップページ         Getting Started     アカウント登録   比較国際アカウントvs中国アカウント
-Alibaba vs AWS vs Azure vs GCP比較   主要プロダクトECS
-RDS
-SLB
-OSS
-VPC
-ExpressConnect       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM
+Alibaba vs AWS vs Azure vs GCP比較   主要プロダクトECS       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM
 Anti-DDoS   Infrastructure as CodeTerraform 1章
 Terraform 2章
 Terraform 3章
-Terraform 4章</description>
+Terraform 4章
+Terraform 5章       ユースベース別シナリオ     WebアプリケーションJava Springboot</description>
     </item>
     
     <item>
@@ -142,6 +138,16 @@ access_key = &amp;quot;xxxxxxxxxxxxxxxxxx&amp;quot; secret_key = &amp;quot;xxxxx
     </item>
     
     <item>
+      <title>Elastic Compute Service</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/ecs/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/ecs/</guid>
+      <description> 本ページの意義 ECSの基本情報は公式ドキュメントをご確認ください。 公式ドキュメントには記載されていないが、日本市場にとって有益な情報を記載いたします。
+リージョン別で利用可能なECSインスタンスタイプ一覧 </description>
+    </item>
+    
+    <item>
       <title>アカウント登録</title>
       <link>https://sbcloud.github.io/help/getting-started/registration/</link>
       <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
@@ -204,61 +210,6 @@ Q. チケット起票の推奨記載内容について 下記内容に近いコ�
     </item>
     
     <item>
-      <title>Elastic Compute Service</title>
-      <link>https://sbcloud.github.io/help/getting-started/product/ecs/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/getting-started/product/ecs/</guid>
-      <description> 本ページの意義 ECSの基本情報は公式ドキュメントをご確認ください。 公式ドキュメントには記載されていないが、日本市場にとって有益な情報を記載いたします。
-リージョン別で利用可能なECSインスタンスタイプ一覧 </description>
-    </item>
-    
-    <item>
-      <title>主要プロダクトの紹介</title>
-      <link>https://sbcloud.github.io/help/getting-started/product/express-connect/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/getting-started/product/express-connect/</guid>
-      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
-    </item>
-    
-    <item>
-      <title>主要プロダクトの紹介</title>
-      <link>https://sbcloud.github.io/help/getting-started/product/oss/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/getting-started/product/oss/</guid>
-      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
-    </item>
-    
-    <item>
-      <title>主要プロダクトの紹介</title>
-      <link>https://sbcloud.github.io/help/getting-started/product/rds/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/getting-started/product/rds/</guid>
-      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
-    </item>
-    
-    <item>
-      <title>主要プロダクトの紹介</title>
-      <link>https://sbcloud.github.io/help/getting-started/product/slb/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/getting-started/product/slb/</guid>
-      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
-    </item>
-    
-    <item>
-      <title>主要プロダクトの紹介</title>
-      <link>https://sbcloud.github.io/help/getting-started/product/vpc/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/getting-started/product/vpc/</guid>
-      <description> ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します </description>
-    </item>
-    
-    <item>
       <title>ECS</title>
       <link>https://sbcloud.github.io/help/faq/ecs/</link>
       <pubDate>Thu, 04 Apr 2019 15:31:42 +0900</pubDate>
@@ -277,6 +228,15 @@ Q. ECSのデフォルトタイムゾーンについて リージョンに関わ�
 なお、カスタムイメージのタイムゾーンはイメージ作成した際のものとなりますが、初回ECS作成直後でも中国ローカル時間になりますので、個別に時間自動同期（NTP）設定が必要となります。
 Q. スナップショット取得時の性能影響について スナップショットの作成時は、ストレージのIO性能（最大10%低下）に影響します。 通常、稼働中のサービスへの影響はないと想定されますが、ストレージIOが少ない時間帯での取得を勧めします。
 Q. 購入可能な従量課金インスタンスの上限について 従量課金でのECSインスタンス購入上限は、vCPU数により制限されています。従量課金型ECSインスタンスの購入は各リージョン「50vCPU」までとなっております。 例）お客様が1台のECSに対して4vCPUで利用する場合は、12台の従量課金ECSを購入することができます。</description>
+    </item>
+    
+    <item>
+      <title>Server Load Balancer</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/slb/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/slb/</guid>
+      <description> ここではServer Load Balancerの説明を紹介します </description>
     </item>
     
     <item>

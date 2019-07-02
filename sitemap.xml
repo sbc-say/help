@@ -91,6 +91,11 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/getting-started/product/ecs/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/getting-started/registration/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
@@ -126,43 +131,18 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/getting-started/product/ecs/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/getting-started/product/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/getting-started/product/express-connect/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/getting-started/product/oss/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/getting-started/product/rds/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/getting-started/product/slb/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/getting-started/product/vpc/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://sbcloud.github.io/help/faq/ecs/</loc>
     <lastmod>2019-04-04T15:31:42+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/getting-started/product/slb/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>

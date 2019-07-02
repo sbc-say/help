@@ -32,7 +32,7 @@
 	"title": "サイトマップ",
 	"tags": [],
 	"description": "",
-	"content": "   トップページ         Getting Started     アカウント登録   比較国際アカウントvs中国アカウント\nAlibaba vs AWS vs Azure vs GCP比較   主要プロダクトECS\nRDS\nSLB\nOSS\nVPC\nExpressConnect       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM\nAnti-DDoS   Infrastructure as CodeTerraform 1章\nTerraform 2章\nTerraform 3章\nTerraform 4章\nTerraform 5章       ユースベース別シナリオ     WebアプリケーションJava Springboot\nPython Django   CI/CDE-commerce site with Terraform   Data-AnalysisSome technical reference for Data-V       よくある質問     ECS   RDS   SLB   OSS   VPC   料金   アカウント       About SBC Technical Reference     サイトマップ    "
+	"content": "   トップページ         Getting Started     アカウント登録   比較国際アカウントvs中国アカウント\nAlibaba vs AWS vs Azure vs GCP比較   主要プロダクトECS       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM\nAnti-DDoS   Infrastructure as CodeTerraform 1章\nTerraform 2章\nTerraform 3章\nTerraform 4章\nTerraform 5章       ユースベース別シナリオ     WebアプリケーションJava Springboot\nPython Django   CI/CDE-commerce site with Terraform   Data-AnalysisSome technical reference for Data-V       よくある質問     ECS   RDS   SLB   OSS   VPC   料金   アカウント       About SBC Technical Reference     サイトマップ    "
 },
 {
 	"uri": "https://sbcloud.github.io/help/best-practice/",
@@ -123,7 +123,14 @@
 	"title": "About SBC Technical Reference",
 	"tags": [],
 	"description": "",
-	"content": "   大項目 中項目 小項目     About (90) 一覧 (90)     [サイトマップ]/help/about/sitemap/ (100)     "
+	"content": "   大項目 中項目 小項目     About (90) 一覧 (90)     "
+},
+{
+	"uri": "https://sbcloud.github.io/help/getting-started/product/ecs/",
+	"title": "Elastic Compute Service",
+	"tags": [],
+	"description": "",
+	"content": " 本ページの意義 ECSの基本情報は公式ドキュメントをご確認ください。 公式ドキュメントには記載されていないが、日本市場にとって有益な情報を記載いたします。\nリージョン別で利用可能なECSインスタンスタイプ一覧 "
 },
 {
 	"uri": "https://sbcloud.github.io/help/getting-started/registration/",
@@ -175,13 +182,6 @@
 	"content": " ここではCI/CDの実践構成を記載します "
 },
 {
-	"uri": "https://sbcloud.github.io/help/getting-started/product/ecs/",
-	"title": "Elastic Compute Service",
-	"tags": [],
-	"description": "",
-	"content": " 本ページの意義 ECSの基本情報は公式ドキュメントをご確認ください。 公式ドキュメントには記載されていないが、日本市場にとって有益な情報を記載いたします。\nリージョン別で利用可能なECSインスタンスタイプ一覧 "
-},
-{
 	"uri": "https://sbcloud.github.io/help/getting-started/product/",
 	"title": "主要プロダクトの紹介",
 	"tags": [],
@@ -189,46 +189,18 @@
 	"content": " プロダクト別の活用リンク一覧 主要プロダクト\n   製品名 情報種別 URL     ECS 公式ドキュメント https://jp.alibabacloud.com/help/product/25365.htm   RDS 公式ドキュメント https://jp.alibabacloud.com/help/product/26090.htm   SLB 公式ドキュメント https://jp.alibabacloud.com/help/product/27537.htm   VPC 公式ドキュメント https://jp.alibabacloud.com/help/product/27706.htm   ExpressConnect 公式ドキュメント https://jp.alibabacloud.com/help/product/27782.htm   CloudMonitor 公式ドキュメント https://jp.alibabacloud.com/help/product/28572.htm   OSS 公式ドキュメント https://jp.alibabacloud.com/help/product/31815.htm   RAM 公式ドキュメント https://jp.alibabacloud.com/help/product/28625.htm    人気のプロダクト\n   製品名 情報種別 URL     Container Service for Kubernetes 公式ドキュメント https://jp.alibabacloud.com/help/product/25365.htm   MaxCompute 公式ドキュメント https://jp.alibabacloud.com/help/product/25365.htm   Realtime Compute 公式ドキュメント https://jp.alibabacloud.com/help/product/45029.htm   Image Search 公式ドキュメント https://jp.alibabacloud.com/help/product/66413.htm   Anti-DDoS 公式ドキュメント https://jp.alibabacloud.com/help/product/28396.htm    "
 },
 {
-	"uri": "https://sbcloud.github.io/help/getting-started/product/express-connect/",
-	"title": "主要プロダクトの紹介",
-	"tags": [],
-	"description": "",
-	"content": " ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します "
-},
-{
-	"uri": "https://sbcloud.github.io/help/getting-started/product/oss/",
-	"title": "主要プロダクトの紹介",
-	"tags": [],
-	"description": "",
-	"content": " ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します "
-},
-{
-	"uri": "https://sbcloud.github.io/help/getting-started/product/rds/",
-	"title": "主要プロダクトの紹介",
-	"tags": [],
-	"description": "",
-	"content": " ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します "
-},
-{
-	"uri": "https://sbcloud.github.io/help/getting-started/product/slb/",
-	"title": "主要プロダクトの紹介",
-	"tags": [],
-	"description": "",
-	"content": " ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します "
-},
-{
-	"uri": "https://sbcloud.github.io/help/getting-started/product/vpc/",
-	"title": "主要プロダクトの紹介",
-	"tags": [],
-	"description": "",
-	"content": " ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します "
-},
-{
 	"uri": "https://sbcloud.github.io/help/faq/ecs/",
 	"title": "ECS",
 	"tags": [],
 	"description": "",
 	"content": " 一般仕様 Q. アベイラビリティゾーン（AZ）識別文字と実際のロケーションに関するマッピング仕様について Alibaba Cloudでは、アベイラビリティゾーン（AZ）識別文字と実際のロケーションのマッピングは、全てのアカウントで共通しています。\n（注：AWSにおいては、アカウント毎に個別にマップされます。 https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-regions-availability-zones.html 『リソースがリージョンの複数のアベイラビリティーゾーンに分散するように、アベイラビリティーゾーンは各 AWS アカウントの名前に個別にマップされます。たとえば、ご使用の AWS アカウントのアベイラビリティーゾーン us-east-1a は別の AWS アカウントのアベイラビリティーゾーン us-east-1a と同じ場所にはない可能性があります。』）\nQ. 1つのアカウント/リージョン配下のECS購入台数制限について 従量課金でのECSインスタンス購入上限は、vCPU数により制限されています。従量課金型ECSインスタンスの購入は各リージョン「50vCPU」までとなっております。 例）お客様が1台のECSに対して4vCPUで利用する場合は、12台の従量課金ECSを購入することができます。\nなお、サブスクリプション型ECSの場合は、購入上限数を設けておりません。\nQ. サブスクリプションECSのライフサイクルについて サブスクリプションインスタンスの期間を更新しない、また更新失敗で有効期限切れとなった場合、そのインスタンスはライフサイクルに入ります。\n期間切れから〜15日まで：通常稼働 15日から〜30日まで：インスタンス停止 30日：インスタンスリリース（削除）\nQ. RDSCALとクライアントCALの必要性について Alibaba Cloud が提供する Windows 仮想サーバーにて、RDS CALとクライアントCALの必要性は下記のとおりです。\nAlibaba Cloud が提供する Windows 仮想サーバーの CAL ライセンスについて、リモートデスクトップユーザーのRDS CALはデフォルト2本付きです。 3本以上が必要な場合、お客様にてご購入いただく必要があります。\nクライアントCALについて、Alibaba Cloud は Microsoft 社と SPLA 契約しているため、Alibaba Cloud が提供する Windows 仮想サーバーは、別途クライアントCALを購入することなくご利用いただけます。\nQ. ECSのデフォルトタイムゾーンについて リージョンに関わらず、ECSインスタンスのデフォルトタイムゾーンは、中国時間（UTC+8）になります。\nなお、カスタムイメージのタイムゾーンはイメージ作成した際のものとなりますが、初回ECS作成直後でも中国ローカル時間になりますので、個別に時間自動同期（NTP）設定が必要となります。\nQ. スナップショット取得時の性能影響について スナップショットの作成時は、ストレージのIO性能（最大10%低下）に影響します。 通常、稼働中のサービスへの影響はないと想定されますが、ストレージIOが少ない時間帯での取得を勧めします。\nQ. 購入可能な従量課金インスタンスの上限について 従量課金でのECSインスタンス購入上限は、vCPU数により制限されています。従量課金型ECSインスタンスの購入は各リージョン「50vCPU」までとなっております。 例）お客様が1台のECSに対して4vCPUで利用する場合は、12台の従量課金ECSを購入することができます。\nなお、サブスクリプション型ECSの場合は、購入上限数を設けておりません。\nQ. 25番ポートの制限について Alibaba Cloud では、MTAとしてメール送信（25 番ポートの外部接続）することが制限されております。\nMUAとして、外部SMTPの25番ポートを利用する場合のみ、宛先をご指定いただいての部分的解除は可能です。\n25番ポートの制限は下記のドキュメントをご参照ください。 https://jp.aliyun.com/help/doc-detail/49123.htm\nQ. ICP必要性の判断方法について 中国本土にサーバを設置し、ウェブサービス提供する場合は、ICPライセンスが必要になります。\nICPライセンスを申請する前提として、中国国内に法人を持つ必要があります。該当する場合、弊社パートナーによりICP申請支援も可能ですので、チケットでご連絡ください。\nなお、香港リージョンではICPは必要がございません。ICP の取得が困難な場合、香港リージョンのご利用をご検討ください。\nQ. インスタンススペックのアップグレード方法について サブスクリプションECSのアップグレード手順は以下のドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/25438.htm\nない、スターターパッケージとして購入されたECSはアップグレードできません。\n（注：操作上はアップグレードできてしまいますが、スターターパッケージの特典（データ転送量付で低価格）を得ることはできなくなります。）\nネットワーク Q. VPCとVswitchの変更方法について ECSを作成後、そのECSのVPCとVswitchは変更できません。 変更する必要がある場合、そのECSのカスタムイメージ作成、その後、希望のVPCとVswitchを選択しECSを新規作成することになります。\nQ. VPCで指定可能なCIDRブロックについて VPCのIP CIDRは10.0.0.0/8、172.16.0.0/12及び192.168.0.0/16から選択いただく必要があります。 コンソールから上記3つしか作成できませんが、APIを利用した場合、上記CIDRのサブCIDRを指定することができます。\nAPIでのVPC作成は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/35737.html\nQ. EIPとパブリックIPの違いについて ECSでは、インターネット通信用に「パブリックIP」と「EIP」を利用できます。\nECS購入時に「パブリック IP の割り当て」にチェックを入れインスタンスを作成すると「パブリックIP」が付与されます。 このパブリックIP付きのECSを削除した場合、パブリックIPも同時に削除されます。ECSを削除後、IPアドレスに関する料金は発生することがありません。\nECS購入時に「パブリック IP の割り当て」にチェックを入れずにインスタンスを作成すると「パブリックIP」が付与されません。 この場合、別途「EIP」を購入・用意しECSにバインドして使用する必要があります。 EIPをバインドしたECSを削除しても、EIPは自動的に削除されません。不要になったEIPは、お客様自身で削除する必要があります。また、インスタンスにバインドされていないEIPは、そのインスタンス保有料金が発生します。\nQ. EIPとパブリックIPの帯域幅の変更方法について EIPとパブリックIPの帯域幅の変更方法は下記となります。\nEIPの帯域幅の変更方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/27769.htm\nパブリックIPの帯域幅は変更することができませんが、パブリックIPをEIPに変更することができます。 このため、パブリックIPをEIPに変更後に帯域幅の変更が可能となります。\nパブリックIPをEIPへの変更する方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/faq-detail/68010.html\nQ. プライベートIPの変更方法について ECSのプライベートIPを同じVswitch内の空きIPに限って変更することができます。\nプライベートIPの変更方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/27733.html\nQ. インバウンドとアウトバウンド帯域幅の制限値について ECSのインバウンドとアウトバウンド帯域幅の制限値は下記となります。\n■アウトバウンド ・サブスクリプションインスタンスの場合：最大ピーク帯域幅は 200 Mbpsです。 ・従量課金インスタンスの場合：最大ピーク帯域幅は 100 Mbpsです。 上記範囲内に設定することができます。\nECSのネットワークインターフェースが対応する場合、チケット申請により最大800 Mbpsまで引き上げ可能です。\n■インバウンド アウトバウンドが100 Mbps以下の場合：最大ピーク帯域幅は 100 Mbpsです。 アウトバウンドが100 Mbps以上の場合：最大ピーク帯域幅はアウトバウンドの帯域幅と同じです。\nインバウンド制限値の指定、及び引き上げをすることはできません。\nイメージ Q. イメージのインポート方法について インポートする方法は下記ドキュメントをご参照ください。\n◎イメージのインポート https://jp.alibabacloud.com/help/doc-detail/25464.html ドキュメント内「前提条件」にご注意ください\n◎イメージをインポートする際の注意事項 https://jp.alibabacloud.com/help/doc-detail/48226.htm\nQ. クラウド移転ツールについて Alibaba Cloud 移行ツールのご利用により、物理的なデスクトップおよびサーバを変換したり、 ECS への仮想マシン、クラウドホストを移行することができます。\n詳細については、下記ドキュメントをご参照ください。\n◎Alibaba Cloud 移行ツールとは https://jp.alibabacloud.com/help/doc-detail/62349.html\n◎クラウド移行ツールを使用してAlibaba Cloudへの移行 https://jp.alibabacloud.com/help/doc-detail/62394.htm\n◎イメージをインポートする際の注意事項 https://jp.alibabacloud.com/help/doc-detail/48226.htm\nQ. イメージのエクスポート方法について イメージのエクスポート機能を利用するには、制限解除申請が必要です。事前にチケット起票して申請ください。\nイメージエクスポートの利用方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/58181.html\nQ. イメージのリージョン間コピー方法について 日本サイトでは現在、制限解除の申請なしでリージョン間のイメージコピーすることができます。\nイメージコピーの利用方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/25462.html\nディスク Q. システムディスクとデータディスクの違いについて システムディスクとデータディスクには下記の違いがあります。\n■ECSへのアタッチ数 システムディスク：必ず1台 データディスク：0台から最大16台まで\n■ECSへのアタッチ/デタッチ可否 システムディスク：デタッチ不可 データディスク：自由にアタッチ/デタッチ可能（但し、サブスクリプションECSと同時購入のクラウドディスクは対象外）、他のECSにも再利用可能\n■ディスクのリリース システムディスク：ECSのリリースに伴いリリースされる データディスク：独自にリリース可能（ECSのリリースに依存しない）\nQ. クラウドディスクの拡張方法について クラウドディスクはディスクタイプにより拡張方法が異なります。\n■システムディスク 稼働中のシステムディスクを直接拡張することはできません。拡張するには、システムディスクを交換する必要があり、ディスク交換時にサイズを指定することができます。 なお、システムディスク交換により、ディスク内のデータは失なわれます。このため、既存ディスクのイメージ作成、このイメージを元にシステムディスクを交換（ディスクの再作成）を行います。 システムディスクの交換方法は、下記のドキュメントをご参照ください。\n◎システムディスク交換 https://jp.alibabacloud.com/help/doc-detail/50134.html\n■データディスク データディスクの拡張方法は下記メニューからできます。 コンソール \u0026gt; ECS \u0026gt; クラウドディスク \u0026gt; ディスクの「詳細」\u0026gt; ディスクのサイズ拡張\nVNC Q. VNCで一部記号入力できない事象について コンソールのVNCを利用する場合に、キーボードのレイアウトにより特殊記号の入力が正確に認識されない事象がありますが、現在回避策がありません。\nコンソールのVNC以外のRDPやSSHを利用してログインする場合、上記事象が発生しませんので、特殊記号をご利用することができます。\nQ. VNCパスワードとECSパスワードの違いと再設定方法について VNCパスワードとECSパスワードの違いと再設定方法は下記となります。\n■VNCパスワード コンソールのVNC接続を利用時のパスワードとなります。初回VNCを利用時にデフォルトパスワードが表示されます。 パスワードの変更はVNCコンソールからできます。変更後のパスワードは即時反映され、再起動は不要となります。\n■ECSパスワード ECSのパスワードはOSのパスワードとなります。ECS作成時に該当パスワードが指定されます。 ECSパスワードの変更は下記メニューからできます。パスワード変更後に、新しいパスワード有効にするには、ECSインスタンスの再起動が必要です。\n◎操作手順 コンソール \u0026gt; ECS \u0026gt; インスタンス \u0026gt; インスタンスの「詳細」\u0026gt; パスワード及びキー \u0026gt; パスワードのリセット\nセキュリティグループ Q. インバウンドとアウトバウンドのデフォルト動作について セキュリティグループにルールを設定しなかった場合、デフォルトでは以下のような動作となります。\nアウトバウンド方向のトラフィック：全て許可 インバウンド方向のトラフィック：全て拒否\nなお、ECS新規作成時に併せて作成されるセキュリティグループののデフォルトルールでは、22番ポート、3389ポート、またはICMPのポートが「0.0.0.0/0」で【許可】されていることがあります。\nQ. 同じセキュリティグループ内のアクセス制限について 同一セキュリティグループに所属する複数のECS間は、セキュリティグループの制限を受けず全部トラフィック通信可能となります。\nQ. セキュリティグルールの適用順位について ECSが複数セキュリティグループに所属する場合、全セキュリティグループルールが同時に適用されます。 しかし、ルール間に競合があった場合、Priorityの値が小さい（＝優先度が高い）方が優先されます。 また、Priorityが同じで競合したルールの場合は、【拒否】が優先されます。\n"
+},
+{
+	"uri": "https://sbcloud.github.io/help/getting-started/product/slb/",
+	"title": "Server Load Balancer",
+	"tags": [],
+	"description": "",
+	"content": " ここではServer Load Balancerの説明を紹介します "
 },
 {
 	"uri": "https://sbcloud.github.io/help/scenarios/data-v/",

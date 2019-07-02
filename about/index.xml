@@ -17,16 +17,12 @@
       
       <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
       <description>トップページ         Getting Started     アカウント登録   比較国際アカウントvs中国アカウント
-Alibaba vs AWS vs Azure vs GCP比較   主要プロダクトECS
-RDS
-SLB
-OSS
-VPC
-ExpressConnect       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM
+Alibaba vs AWS vs Azure vs GCP比較   主要プロダクトECS       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM
 Anti-DDoS   Infrastructure as CodeTerraform 1章
 Terraform 2章
 Terraform 3章
-Terraform 4章</description>
+Terraform 4章
+Terraform 5章       ユースベース別シナリオ     WebアプリケーションJava Springboot</description>
     </item>
     
   </channel>
