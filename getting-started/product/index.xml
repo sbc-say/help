@@ -17,7 +17,7 @@
       <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
       
       <guid>https://sbcloud.github.io/help/getting-started/product/ecs/</guid>
-      <description>ap-northeast-1    instanceTypeFamily instanceType vCPU  メモリ  物理プロセッサ クロック速度 イントラネット帯域幅 パケット転送速度  GPU/FPGA  ローカルストレージ  OS 従量課金 サブスクリプション サブスクリプション     ecs.c5 ecs.c5.large 2 vCPU 4 GiB Intel Xeon(Skylake) Platinum 8163 2.5 GHz 1 Gbps 300,000 PPS - - linux ￥ 9.8 JPY /時間 ¥ 5170.00 JPY /月 ¥ 52734.00 JPY /年   ecs.c5 ecs.c5.large 2 vCPU 4 GiB Intel Xeon(Skylake) Platinum 8163 2.</description>
+      <description>ap-northeast-1    instanceType vCPU  メモリ  イントラネット帯域幅 パケット転送速度  GPU/FPGA  ローカルストレージ  OS 従量課金 サブスクリプション サブスクリプション     ecs.c5.large 2 vCPU 4 GiB 1 Gbps 300,000 PPS - - linux ￥ 9.8 JPY /時間 ¥ 5170.00 JPY /月 ¥ 52734.00 JPY /年   ecs.c5.large 2 vCPU 4 GiB 1 Gbps 300,000 PPS - - windows ￥ 17.7 JPY /時間 ¥ 10710.00 JPY /月 ¥ 109242.</description>
     </item>
     
   </channel>
