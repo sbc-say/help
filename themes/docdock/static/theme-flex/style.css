@@ -727,7 +727,10 @@ ul.children.children-card {
 
 /*# sourceMappingURL=style.css.map */
 
+table {
+    width: 500px;
+}
+
 tr, td, th {
-    word-break: break-all;
-    font-size: 10px;
+    white-space:nowrap;
 }
