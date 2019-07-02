@@ -67,14 +67,5 @@ access_key = &amp;quot;xxxxxxxxxxxxxxxxxx&amp;quot; secret_key = &amp;quot;xxxxx
       <description>5章</description>
     </item>
     
-    <item>
-      <title>Terraform n章</title>
-      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_0n/</link>
-      <pubDate>Wed, 15 May 2019 10:37:37 +0900</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_0n/</guid>
-      <description>6章</description>
-    </item>
-    
   </channel>
 </rss>

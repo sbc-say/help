@@ -3,7 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://sbcloud.github.io/help/getting-started/cloud-users/vs-aws-gcp-azure/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/getting-started/product/ecs/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/getting-started/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/getting-started/registration/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -27,6 +42,11 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/getting-started/product/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/best-practice/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
@@ -44,6 +64,16 @@
   <url>
     <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_02/</loc>
     <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/getting-started/cloud-users/vs-jp-cn/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/getting-started/cloud-users/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
@@ -91,21 +121,6 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/getting-started/cloud-users/vs-aws-gcp-azure/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/getting-started/product/ecs/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/getting-started/registration/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/scenarios/web-application/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
@@ -136,23 +151,8 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/getting-started/product/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/getting-started/cloud-users/vs-jp-cn/</loc>
-    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/faq/ecs/</loc>
     <lastmod>2019-04-04T15:31:42+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/getting-started/cloud-users/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
@@ -194,11 +194,6 @@
     <loc>https://sbcloud.github.io/help/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_0n/</loc>
-    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
   </url>
   
   <url>
