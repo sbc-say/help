@@ -1,7 +1,7 @@
 +++
 title= "中国と日本におけるサービス一覧"
 date= 2019-05-15T10:37:37+09:00
-weight= 200
+weight= 20
 draft= false
 +++
 
