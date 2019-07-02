@@ -16,8 +16,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
-      <description>トップページ         Getting Started     アカウント登録   プロダクト紹介ECS   AWS/Azure/GCPユーザ向け中国と日本におけるサービス一覧
-AWS/Azure/GCPとのサービス一覧比較       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM
+      <description>トップページ         Getting Started     アカウント登録   プロダクト紹介ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較
+中国と日本におけるサービス一覧       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM
 Anti-DDoS   Infrastructure as CodeTerraform 1章
 Terraform 2章
 Terraform 3章
