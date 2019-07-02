@@ -12,7 +12,7 @@ weight = 10
 |:------:|  
 |[アカウント登録]({{%relref "getting-started/registration.md" %}})|
 |<details><summary>[比較]({{%relref "getting-started/compare/_index.md" %}})</summary>[国際アカウントvs中国アカウント]({{%relref "getting-started/compare/vs-jp-cn.md" %}})<br>[Alibaba vs AWS vs Azure vs GCP比較]({{%relref "getting-started/compare/vs-aws-gcp-azure.md" %}})</details>|
-|<details><summary>[主要プロダクト]({{%relref "getting-started/product/_index.md" %}})</summary>[ECS]({{%relref "getting-started/product/ecs.md" %}})<br>[RDS]({{%relref "getting-started/product/rds.md" %}})<br>[SLB]({{%relref "getting-started/product/slb.md" %}})<br>[OSS]({{%relref "getting-started/product/oss.md" %}})<br>[VPC]({{%relref "getting-started/product/vpc.md" %}})<br>[ExpressConnect]({{%relref "getting-started/product/express-connect.md" %}})</details>|
+|<details><summary>[主要プロダクト]({{%relref "getting-started/product/_index.md" %}})</summary>[ECS]({{%relref "getting-started/product/ecs.md" %}})</details>|
  
 |[ベストプラクティス]({{%relref "best-practice/_index.md" %}})|
 |:------:|

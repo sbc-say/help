@@ -1,8 +1,8 @@
 +++
-title = "主要プロダクトの紹介"
+title = "Express Connect"
 description = ""
-weight = 200
+weight = 500
 date= 2019-06-05T12:30:18+08:00
-draft= false
+draft= true
 +++
-## ここではECS、RDS、SLB、OSS、ExpressConnectの説明を紹介します
+## ここではExpress Connectの説明を紹介します
