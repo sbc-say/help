@@ -5,6 +5,10 @@ weight= 200
 draft= false
 +++
 
+# Alibaba Cloudで中国リージョンではどんなサービスがあるか
+AWS/Azure/GCPとAlibaba Cloudとの最大の違いの一つとして、中国リージョンにおける提供サービスの多さが挙げられます。
+ここでは、中国リージョンで利用可能なAlibaba Cloudサービス一覧を、Alibaba Cloudの日本リージョンと併せて記載いたします。
+
 | カテゴリ | カテゴリ_日本語訳 | 中国版_サービス名 | 中国版_サービス名_日本語翻訳 |中国版_コメント_日本訳 | 国際版_サービス名 | 国際版_コメント_日本訳 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 云服务器 | クラウドサーバー | [云服务器 ECS](https://www.aliyun.com/product/ecs) | クラウドサーバーECS | セキュアからインメモリ、アドバンストからエントリーレベルのクラウドサーバーまで |  [Elastic Compute Service](https://www.alibabacloud.com/product/ecs) | Alibaba Cloud Elastic Compute Service（ECS）は、高速なメモリと最新のIntel CPUを提供して、クラウドアプリケーションに電力を供給し、低遅延でより速い結果を達成するのに役立ちます。 すべてのECSインスタンスには、DDoS攻撃やトロイの木馬攻撃からデータやアプリケーションを保護するためのDDoS対策保護が付属しています。 | [Elastic Compute Service](https://jp.alibabacloud.com/product/ecs) | Elastic Compute Service（ECS）とはAlibaba Cloud Elastic Compute Service (ECS) は、信頼性と拡張性に優れた分散コンピューティングリソースをオンデマンドで提供するオンラインコンピューティングサービスです。ECS を使用すると、クラウドコンピューティング環境を完全に制御できます。ECS では、コンピューティングリソースを即座にデプロイし、ビジネスや Web アプリケーションのニーズにリアルタイムで対応できます。Alibaba Cloud はハイメモリおよび高性能な Intel CPU を使用することで高速な仮想サーバーを実現します。 |

@@ -1,5 +1,5 @@
 +++
-title = "AWS/Azure/GCPとのサービス一覧比較"
+title = "AWS/Azure/GCPとのサービス比較"
 description = ""
 weight = 100
 date= 2019-06-05T12:30:18+08:00
