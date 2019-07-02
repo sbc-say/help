@@ -188,7 +188,7 @@ body {
 
 html {
   font-family: 'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', '游ゴシック', 'YuGothic', Meiryo, sans-serif;
-  font-size: 14px; }
+  font-size: 13px; }
 
 body {
   background-color: #fff;
@@ -729,4 +729,5 @@ ul.children.children-card {
 
 tr, td, th {
     word-break: break-all;
+    font-size: 10px;
 }
