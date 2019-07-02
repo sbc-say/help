@@ -45,6 +45,25 @@ https:// hogehoge.com</description>
     </item>
     
     <item>
+      <title>サイトマップ</title>
+      <link>https://sbcloud.github.io/help/about/sitemap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
+      <description>トップページ         Getting Started     アカウント登録   比較国際アカウントvs中国アカウント
+Alibaba vs AWS vs Azure vs GCP比較   主要プロダクトECS
+RDS
+SLB
+OSS
+VPC
+ExpressConnect       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM
+Anti-DDoS   Infrastructure as CodeTerraform 1章
+Terraform 2章
+Terraform 3章
+Terraform 4章</description>
+    </item>
+    
+    <item>
       <title>料金体系</title>
       <link>https://sbcloud.github.io/help/best-practice/pricing/</link>
       <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
@@ -173,25 +192,6 @@ Q. サポートセンターの対応範囲について サポートセンター�
 Q. チケット起票の推奨記載内容について 下記内容に近いコンテンツを提供することで、よりスムーズにサポートを受けることができます。
 現象　概要 どのような現象が発生しているか。具体的に　例: ・エラーが発生した　(要 具体的なエラーメッセージ、実施した手順)、 ・通信できない、応答しない、つながらない、反応しない、動かない、アクセスできない (要　どこからどこに、コマンドと結果、関連インスタンスのパラメータ) ・意図したものが表示されない、意図しないものが表示される (要　意図したもの、意図しなかったもの、参照ドキュメント) ・意図通りに動かない　(要　期待される動き、実際の動き)
 [How]　現象の根拠、現象の因果関係 現象を「トラブル」とする客観的な根拠。　例: ・Web管理コンソール画面、サービスのログ、ECS仮想マシン内のシステムログ、 ・コマンドの実行ログ 補足: ・リモートデスクトップ接続なのか、SSH接続なのか、VNC接続なのか ・再現性はあるか。ログオフ、再起動等をしても再現するか。 ・同様のインスタンス等の環境を作成しても再現するか。 ・リージョン等が異なっても再現するか。 ・実施した手順　※現象が発生した手順だけでなく、しなかった手順も分かると有効です</description>
-    </item>
-    
-    <item>
-      <title>サイトマップ</title>
-      <link>https://sbcloud.github.io/help/about/sitemap/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
-      <description>トップページ         Getting Started     アカウント登録   比較国際アカウントvs中国アカウント
-Alibaba vs AWS vs Azure vs GCP比較   主要プロダクトECS
-RDS
-SLB
-OSS
-VPC
-ExpressConnect       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM
-Anti-DDoS   Infrastructure as CodeTerraform 1章
-Terraform 2章
-Terraform 3章
-Terraform 4章</description>
     </item>
     
     <item>

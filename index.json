@@ -1,12 +1,5 @@
 [
 {
-	"uri": "https://sbcloud.github.io/help/best-practice/",
-	"title": "ベストプラクティス",
-	"tags": [],
-	"description": "",
-	"content": " Links for Best Practices This page provides the links below.\n"
-},
-{
 	"uri": "https://sbcloud.github.io/help/getting-started/",
 	"title": "Getting Started",
 	"tags": [],
@@ -33,6 +26,20 @@
 	"tags": [],
 	"description": "",
 	"content": " Anti-DDoS Basicについて foo\nAnti-DDoS Proについて bar\nAnti-DDoS Premiumについて Anti-DDoS Premiumの活用方法ついては以下のSlideShareを参照ください。\nhttps:// hogehoge.com\n"
+},
+{
+	"uri": "https://sbcloud.github.io/help/about/sitemap/",
+	"title": "サイトマップ",
+	"tags": [],
+	"description": "",
+	"content": "   トップページ         Getting Started     アカウント登録   比較国際アカウントvs中国アカウント\nAlibaba vs AWS vs Azure vs GCP比較   主要プロダクトECS\nRDS\nSLB\nOSS\nVPC\nExpressConnect       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM\nAnti-DDoS   Infrastructure as CodeTerraform 1章\nTerraform 2章\nTerraform 3章\nTerraform 4章\nTerraform 5章       ユースベース別シナリオ     WebアプリケーションJava Springboot\nPython Django   CI/CDE-commerce site with Terraform   Data-AnalysisSome technical reference for Data-V       よくある質問     ECS   RDS   SLB   OSS   VPC   料金   アカウント       About SBC Technical Reference     サイトマップ    "
+},
+{
+	"uri": "https://sbcloud.github.io/help/best-practice/",
+	"title": "ベストプラクティス",
+	"tags": [],
+	"description": "",
+	"content": " Links for Best Practices This page provides the links below.\n"
 },
 {
 	"uri": "https://sbcloud.github.io/help/best-practice/pricing/",
@@ -98,6 +105,13 @@
 	"content": "4章\n"
 },
 {
+	"uri": "https://sbcloud.github.io/help/best-practice/infrastructure-as-code/",
+	"title": "Infrastructure as Codeの実践",
+	"tags": [],
+	"description": "",
+	"content": " Alibaba CloudにおけるInfrastructure as Codeの実践 "
+},
+{
 	"uri": "https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_05/",
 	"title": "Terraform 5章",
 	"tags": [],
@@ -145,13 +159,6 @@
 	"tags": [],
 	"description": "",
 	"content": " アカウント Q. TOTP認証利用できなくなった時の対応方法について バインドしている携帯電話を紛失したり、TOTP認証アプリケーションを削除する等、何らかの理由で認証が行えなくなった場合、バインド解除を申請することができます。\n申請方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/faq-detail/54827.html\nQ. メールアドレスの変更方法について ログインに使用するメールアドレス（ログインアカウント）は変更することができます。\n変更方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/52915.html\nQ. クレジットカードの変更方法について アカウントには最低1枚のクレジットカードを登録する必要があります。 このため、クレジットカードの変更は、以下の手順で操作します。\n①新しいカードを追加 ②既存カードを削除\n変更方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/50107.html\nQ. アカウント登録氏名（社名）の変更方法について アカウントにクレジットカードを追加・有効化完了後は、コンソールから登録名（個人：姓名、法人：会社名）を変更することができません。 変更が必要な場合、チケット起票してサポートセンターに連絡する必要があります。\nなお、法人アカウントの「担当者名（連絡先情報の姓名）」はコンソールにログイン後、下記リンクにて変更できます。（チケットを起票する必要はありません。） https://myaccount.aliyun.com/account/complete-profile#/content\nQ. コンソール自動ログアウトの仕様について 操作の有無に関係なく、コンソールにログインしてから3時間経過すると、タイムアウトでセッションが切れ、自動的にログアウトされます。\nQ. サポートセンターの対応範囲について サポートセンターの対応範囲は下記となります。\n■サービスに関する問い合わせ ・プロダクトの概要/価格 ・ご購入内容/ご利用料金 ・お支払い方法/請求全般 ・アカウント関連\n■プロダクトに関する問い合わせ ・使い方/操作方法の説明 ・トラブルシュート ・障害対応 ※コンソール/API/SDKを含む\n下記内容は範囲外となります。 ・お客様が導入されたアプリケーションソフトウェアのトラブルシュート ・OSのパッチ適用 ・データベースチューニング\nサポートセンターの詳細は下記をご参照ください。 https://jp.alibabacloud.com/support/after-sales\nQ. チケット起票の推奨記載内容について 下記内容に近いコンテンツを提供することで、よりスムーズにサポートを受けることができます。\n現象　概要 どのような現象が発生しているか。具体的に　例: ・エラーが発生した　(要 具体的なエラーメッセージ、実施した手順)、 ・通信できない、応答しない、つながらない、反応しない、動かない、アクセスできない (要　どこからどこに、コマンドと結果、関連インスタンスのパラメータ) ・意図したものが表示されない、意図しないものが表示される (要　意図したもの、意図しなかったもの、参照ドキュメント) ・意図通りに動かない　(要　期待される動き、実際の動き)\n[How]　現象の根拠、現象の因果関係 現象を「トラブル」とする客観的な根拠。　例: ・Web管理コンソール画面、サービスのログ、ECS仮想マシン内のシステムログ、 ・コマンドの実行ログ 補足: ・リモートデスクトップ接続なのか、SSH接続なのか、VNC接続なのか ・再現性はあるか。ログオフ、再起動等をしても再現するか。 ・同様のインスタンス等の環境を作成しても再現するか。 ・リージョン等が異なっても再現するか。 ・実施した手順　※現象が発生した手順だけでなく、しなかった手順も分かると有効です\n　★「現象 概要」とリンクしているか、チェック\n[When]　現象の発生日時、頻度 発生は、いつ(JST/CST)、何回、定期的か不規則か、今でも継続しているか、時間経過で変化するか その他の条件下: ・CPU、ネットワークが高負荷時 ・特定のインスタンスが\n[Where]、[Which]　現象の発生場所の特定、またはその範囲の局所化 どのサービス、どのリージョン、どのAZ、どのインスタンス どのセグメント、など どこからアクセスしたか ※現象が発生するケースだけでなく、発生しないケースも分かると有効です\n[Who]　現象が発生した際に操作していたアカウント だれでログインしたか、RAMであれば権限定義も　代理店系 ※現象が発生するユーザだけでなく、発生しないユーザも分かると有効です\nその他、提供いただきたい情報 システム構成図、ネットワーク構成図、プロダクト関連図、パラメータシート 参照した手順、資料、ドキュメント\n本トラブルのゴール 何をもって解決とするか。例: ・xxx から xxx にpingを送信して応答があること ・ECSインスタンス購入画面において購入が完了しインスタンスが作成されること\n　※ゴール達成時はチケットをクローズいただき、もし追加で質問やトラブルがある場合は 別のチケットを起票するようにお願いします。\n　★「現象 概要」とリンクしているか、チェック\nご留意事項: ・すべての情報が揃っていないと問合せ拒否、というわけではない。 現時点の視野内の情報を元に切り分けの支援も必要。 ただし、情報が少ない場合は、「再現待ち」などの案内も検討する。\n・いただいた情報をもとに〜 (情報の提供漏れは顧客の不利益、という意味) ・状況説明、環境説明は、チケット内で説明を完結させるようお願いします。 以前のチケットに記載の内容も省略しないようお願いします。 ・関連するインスタンス等は、極力、削除せず保存しておいてください。 ・一つのチケットに複数の現象やトラブルを記載しないようにお願いします。 ・一つのチケットに複数のAlibabaCloudプロダクトの質問を記載しないようにお願いします。 プロダクトごとに分割して記載をするようにお願いします。 ・同じお客様でも異なるアカウントに関する質問はお受けできません。 ・解決策は唯一解ではなく他に最適解がある可能性があります。 また、サポートセンターからパラメータの例をご案内することがありますが、 実際の環境への適用は、影響範囲等を考慮の上、自己責任で実施願います。\n・AlibabaCloudプロダクト内の障害については、原則として詳細なご説明はいたしかねます。 ・性能指標については、原則として公開しておりません。 要件となる性能については、お客様の環境や処理内容等に依存し、誤誘導になりかねず、 お客様自身で測定いただきフィットアンドギャップいただくことをおすすめします。 ・メンテナンスの過去の実績や履歴は公開しておりません。 これらの情報を元に今後のメンテナンスの予測をすることは困難であり、 ついてはメンテナンス時の状況を考慮したシステム設計をおすすめします。\n"
-},
-{
-	"uri": "https://sbcloud.github.io/help/about/sitemap/",
-	"title": "サイトマップ",
-	"tags": [],
-	"description": "",
-	"content": "   トップページ         Getting Started     アカウント登録   比較国際アカウントvs中国アカウント\nAlibaba vs AWS vs Azure vs GCP比較   主要プロダクトECS\nRDS\nSLB\nOSS\nVPC\nExpressConnect       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM\nAnti-DDoS   Infrastructure as CodeTerraform 1章\nTerraform 2章\nTerraform 3章\nTerraform 4章\nTerraform 5章       ユースベース別シナリオ     WebアプリケーションJava Springboot\nPython Django   CI/CDE-commerce site with Terraform   Data-AnalysisSome technical reference for Data-V       よくある質問     ECS   RDS   SLB   OSS   VPC   料金   アカウント       About SBC Technical Reference     サイトマップ    "
 },
 {
 	"uri": "https://sbcloud.github.io/help/scenarios/ci-cd/",
@@ -250,13 +257,6 @@
 	"tags": [],
 	"description": "",
 	"content": " 一般仕様 Q. レイヤー4とレイヤー7のSLBの違いについて SLBはレイヤ4 (TCP、UDP)およびレイヤ7(HTTP、HTTPS)を提供しています。\nレイヤ 4 SLB は、ロードバランシングを実現するために keepalived のオープンソースソフトウェアの Linux 仮想サーバー（ LVS ）を使用し、クラウドコンピューティングの要件に応じて、いくつかのカスタマイズを行っています。 レイヤ 7 SLB は、ロードバランシングを実現するために Tengine を使用しています。 Tengine、Nginx に基づいて Web サーバープロジェクトは、多量トラフィックのウェブサイトに対応する機能を追加しています。\nQ. SLBのアクセスログについて SLBのレイヤ7のアクセスログは提供しています。\nアクセスログの取得は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85974.htm\nQ. SLBのスペック変更方法と業務影響について コンソールにて、SLBのスペック変更をオンラインで実施することができます。また、トラフィックが流れている状態でAPIよりSLBのスペックを変更することもできます。\nただし、スペックを変更している時に、SLBサービスが中断されることあります。スペックの変更が完了になると、SLBが自動的に再開します。\nなお、SLBのスペック変更は「パフォーマンス専有型」から「パフォーマンス専有型」へのインスタンススペック変更、もしくは、「パフォーマンス共通型」から「パフォーマンス専有型」へのインスタンススペック変更となります。「パフォーマンス専有型」から「パフォーマンス共通型」へのスペック変更はできません。\nスペックの変更は下記のドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85942.htm\nQ. VServerグループとマスタースレーブグループの違いについて Vserverグループを利用した場合、ディレクトリ転送機能を利用できます。 転送設定されてないディレクトリの場合、デフォルトバックエンドサーバーに分散されます。\nデフォルトグループまたは、Vserverグループにて重みを0に設定してもマスタースレーブ構成になりませんので、マスタースレーブグループを利用する必要があります。\nVServerグループは下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85964.htm マスタースレーブグループは下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85965.htm\nQ. サードパーティ証明書のアップロード方法について SLBにサードパーティ証明書をアップロードすることができます。\nアップロード方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85971.htm\nQ. SLB関連の各API のスロットリング上限について SLBでは、AccessKey１つあたりのAPI呼び出し回数を１日に5000回まで制限されます。\nServer Load Balancer プロダクトの制限をご参照ください。 https://jp.alibabacloud.com/help/doc-detail/32459.htm\nネットワーク Q. パブリックSLBとプライベートSLBの違いについて パブリックSLBはインターネットからのリクエストを受け取るため、パブリックIPアドレスを提供しています。AlibabaCloudの仕様として、パブリックSLBがVPC内にあるバックエンドECSと通信できますが、該当VPCのプライベートIPアドレスを持っていません。\nプライベートSLBはパブリックIPアドレスを提供しておらず、Alibaba Cloud イントラネットからのリクエストのみ受信できます。AlibabaCloudの仕様として、プライベートSLBはVPCのプライベートIPを持っています。 なお、プライベートSLBにEIPを付与することにより、パブリックSLBとして機能することもできます。\nQ. パブリックSLBとバックエンドECS間の通信仕様について パブリックSLBとバックエンドECS間はプロクシ通信となります。該当通信は、ECSのセキュリティグループで遮断できない仕様となります。\nSLBのアーキテクチャは下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/27544.htm\nQ. パブリックIPとプライベートIP付きSLBの作成方法について パブリックSLBにプライベートIPがない仕様に対して、プライベートIPとパブリックIP両方が必要の場合、プライベートSLBにEIPをバインド機能を利用して実現できます。\n作成手順 1. 先にイントラネット型のSLBを作成します。 2. 作成したSLBにEIPをバインドします。\nQ. ホワイトリストとブラックリストについて SLBはホワイトリストとブラックリスト方式でアクセスを制御しています。\nホワイトリストとブラックリストの設定方法は下記のドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/85979.htm\nQ. SLBのインバウンド/アウトバウンド帯域幅について SLBのインターネット通信帯域幅はコンソール上で表示されている値に準じます。\n日本リージョン：インバウンド: 1024Mbps、アウトバウンド: 1024Mbps 中国リージョン：インバウンド: 5120Mbps、アウトバウンド: 5120Mbps\nQ. 証明書をSLB側とECS側に設置の違いについて 証明書の設置場所により、SSL通信空間は違います。\n証明書をSLB側に設置：　クライアント \u0026mdash;\u0026gt; SLB の間の通信はHTTPSで行います。(SLB\u0026ndash;\u0026gt;ECSはHTTPで行います。) 証明書をECS側に設置： SLB \u0026mdash;\u0026gt; バックエンドECS の間の通信はHTTPSで行います。\nなお、証明書をSLB側に設置した場合、SLBとECS間にHTTP通信のみ設定可能な仕様になります。\nQ. TCP over SSLの対応について 日本サイトのSLB現在レイヤー4のTCP over SSLを対応していません。SSL通信が必要な場合、\u0008レイヤー7のHTTPSを利用する必要があります。\n負荷分散 Q. ラウンドロビン利用時に分散されない事象について SLBの仕様上、セッションの保持時間内に再度SLBアクセスを実施すると 保持されているセッションにアクセスするため、 重みと剥離してアクセスが偏ったことがあります。\n実際にセッションの切り替えを確認する方法は下記となります。 ・リスナー設定（HTTP）の場合 リスナー設定で「セッションの保持」を無効にし、リロードすることで確認できます。 ・リスナー設定（TCP）の場合 リスナー設定の「接続タイムアウト」で最小値の10秒と設定し、10秒以上の間隔でリロードすることで確認できます。\nQ. バックエンドECSの重み設定について SLBのバックエンドECSの重みの仕組みは下記となります。\n例えば ECS インスタンス A の重みを 10 に設定し、ECS インスタンス B の重みを 100 に設定した場合、インスタンス A には総アクセス数の 10/(10+100)％ が転送され、インスタンス B は 100/(10+100)％ が転送されます。\nQ. APIでVserverグループ追加時の引数書き方について APIでVServerグループを操作する際に、引数に「\\」を利用する必要がります。\n■バックエンドサーバを追加 aliyun slb AddBackendServers \u0026ndash;RegionId ap-northeast-1 \u0026ndash;LoadBalancerId SLB_ID \u0026ndash;BackendServers [{\\\u0026ldquo;ServerId\\\u0026rdquo;:\\\u0026ldquo;instance_ID\\\u0026rdquo;\\,\\\u0026ldquo;Weight\\\u0026rdquo;:\\\u0026ldquo;100\\\u0026ldquo;}]\n■バックエンドサーバを削除 aliyun slb RemoveBackendServers \u0026ndash;LoadBalancerId SLB_ID \u0026ndash;BackendServers [{\\\u0026ldquo;ServerId\\\u0026rdquo;:\\\u0026ldquo;instance_ID\\\u0026rdquo;}]\nQ. SLBの相互認証について SLBでは相互認証のアクセス方式に対応しています。\n相互認証の設定方法は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/54508.htm\nなお、SLBの仕様では現在失効リストに対応していません。\nQ. SLBを利用したsorryサーバーの実装方法について SLB自体はsorryサーバーの実装に対応していませんが、DNSの機能GTM(Global Traffic Management)を利用すれば、Sorryサーバーの切り替えを実現することができます。\nGTMの概要は下記ドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/86630.htm\nヘルスチェック Q. SLBのヘルスチェック頻度の仕様について SLBヘルスチェックの頻度はコンソール上で設定可能です。設定方法は以下のドキュメントを参照してください。 https://jp.alibabacloud.com/help/doc-detail/85959.htm\nなお、監視の信頼性を向上するため、複数台の監視サーバーから同時にヘルスチェックするような仕様となっています。コンソール上のヘルスチェック間隔設定は、1台の監視サーバーに対する設定値となりますので、結果的には、設定値より多いチェックが発生してしています。\nQ. SLBのヘルスチェック用CIDRブロックについて SLBのヘルスチェック用CIDRは下記となります。 ・100.64.0.0./10\nヘルスチェックは下記のドキュメントをご参照ください。 https://jp.alibabacloud.com/help/doc-detail/55205.htm\n"
-},
-{
-	"uri": "https://sbcloud.github.io/help/best-practice/infrastructure-as-code/",
-	"title": "Infrastructure as Codeの実践",
-	"tags": [],
-	"description": "",
-	"content": " Alibaba CloudにおけるInfrastructure as Codeの実践 "
 },
 {
 	"uri": "https://sbcloud.github.io/help/faq/rds/",

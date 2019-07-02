@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/getting-started/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
@@ -25,6 +20,15 @@
   <url>
     <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_01/</loc>
     <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/about/sitemap/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
@@ -73,6 +77,11 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_05/</loc>
     <lastmod>2019-05-15T10:37:37+09:00</lastmod>
   </url>
@@ -104,10 +113,6 @@
   <url>
     <loc>https://sbcloud.github.io/help/faq/account/</loc>
     <lastmod>2019-04-03T15:31:09+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/about/sitemap/</loc>
   </url>
   
   <url>
@@ -178,11 +183,6 @@
   <url>
     <loc>https://sbcloud.github.io/help/faq/slb/</loc>
     <lastmod>2019-04-04T15:32:45+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
