@@ -11,8 +11,8 @@ weight = 10
 |[Getting Started]({{%relref "getting-started/_index.md" %}})|
 |:------:|  
 |[アカウント登録]({{%relref "getting-started/registration.md" %}})|
-|<details><summary>[比較]({{%relref "getting-started/compare/_index.md" %}})</summary>[国際アカウントvs中国アカウント]({{%relref "getting-started/compare/vs-jp-cn.md" %}})<br>[Alibaba vs AWS vs Azure vs GCP比較]({{%relref "getting-started/compare/vs-aws-gcp-azure.md" %}})</details>|
-|<details><summary>[主要プロダクト]({{%relref "getting-started/product/_index.md" %}})</summary>[ECS]({{%relref "getting-started/product/ecs.md" %}})</details>|
+|<details><summary>[プロダクト紹介]({{%relref "getting-started/product/_index.md" %}})</summary>[ECS]({{%relref "getting-started/product/ecs.md" %}})</details>|
+|<details><summary>[AWS/Azure/GCPユーザ向け]({{%relref "getting-started/cloud-users/_index.md" %}})</summary>[中国と日本におけるサービス一覧]({{%relref "getting-started/cloud-users/vs-jp-cn.md" %}})<br>[AWS/Azure/GCPとのサービス一覧比較]({{%relref "getting-started/cloud-users/vs-aws-gcp-azure.md" %}})</details>|
  
 |[ベストプラクティス]({{%relref "best-practice/_index.md" %}})|
 |:------:|
