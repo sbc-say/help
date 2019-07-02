@@ -726,3 +726,7 @@ ul.children.children-card {
     margin-right: -1rem; } }
 
 /*# sourceMappingURL=style.css.map */
+
+tr, td, th {
+    word-break: break-all;
+}
