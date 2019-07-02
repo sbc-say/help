@@ -4,11 +4,9 @@ date= 2019-05-15T10:37:37+09:00
 weight= 1000
 draft= false
 +++
-#### 云计算基础（Cloud Essentials）：云基础产品体系完整度全球领先，基础产品及功能持续投入建设，源源不断的通过新技术提高企业云上的计算、运维、开发和管理能力。
-#### Cloud Essentials：クラウドベースの製品システムの中核は世界をリードし、基本的な製品と機能は構築され続けています新しいテクノロジーは、エンタープライズクラウドのコンピューティング、運用と保守、開発および管理機能を向上させるために使用されます。
 
-| カテゴリ | カテゴリ_日本語訳 | 中国版_サービス名 | 中国版_サービス名_日本語翻訳 |中国版_コメント_日本訳 | 国際版_サービス名 | 国際版_コメント_日本訳 | 日本版_サービス名 | 日本版_コメント |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| カテゴリ | カテゴリ_日本語訳 | 中国版_サービス名 | 中国版_サービス名_日本語翻訳 |中国版_コメント_日本訳 | 国際版_サービス名 | 国際版_コメント_日本訳 |
+| --- | --- | --- | --- | --- | --- | --- |
 | 云服务器 | クラウドサーバー | [云服务器 ECS](https://www.aliyun.com/product/ecs) | クラウドサーバーECS | セキュアからインメモリ、アドバンストからエントリーレベルのクラウドサーバーまで |  [Elastic Compute Service](https://www.alibabacloud.com/product/ecs) | Alibaba Cloud Elastic Compute Service（ECS）は、高速なメモリと最新のIntel CPUを提供して、クラウドアプリケーションに電力を供給し、低遅延でより速い結果を達成するのに役立ちます。 すべてのECSインスタンスには、DDoS攻撃やトロイの木馬攻撃からデータやアプリケーションを保護するためのDDoS対策保護が付属しています。 | [Elastic Compute Service](https://jp.alibabacloud.com/product/ecs) | Elastic Compute Service（ECS）とはAlibaba Cloud Elastic Compute Service (ECS) は、信頼性と拡張性に優れた分散コンピューティングリソースをオンデマンドで提供するオンラインコンピューティングサービスです。ECS を使用すると、クラウドコンピューティング環境を完全に制御できます。ECS では、コンピューティングリソースを即座にデプロイし、ビジネスや Web アプリケーションのニーズにリアルタイムで対応できます。Alibaba Cloud はハイメモリおよび高性能な Intel CPU を使用することで高速な仮想サーバーを実現します。 |
 | 云服务器 | クラウドサーバー | [弹性裸金属服务器（神龙）](https://www.aliyun.com/product/ebm) | 柔軟なベアメタルサーバー（Shenlong） | 仮想マシンの柔軟性と物理マシンの高性能、安全な物理的分離、正確な配信、クラウド製品の完全な互換性 |  [ECS Bare Metal Instance](https://www.alibabacloud.com/product/ebm) | Alibaba Cloudが独自に開発した次世代の仮想化テクノロジに基づいたECS Bare Metal Instanceは、仮想サーバーの弾力性と物理サーバーの高性能で包括的な機能の両方を備えています。 その前身と比較して、これらのインスタンスの次世代仮想化テクノロジは、標準のElastic Compute Service（ECS）およびネスト化された仮想化テクノロジをサポートする点で優れています。 これにより、物理サーバーと同じユーザーエクスペリエンスを提供しながら、一般的なECSの弾力性を維持することができます。 | [ECS Bare Metal Instance](https://jp.alibabacloud.com/product/ebm) | Alibaba Cloud が独自に開発した次世代仮想化技術により、ECS Bare Metal Instance は、仮想サーバーの柔軟性と、物理サーバーの高性能で包括的な機能を両方兼ね備えています。これまでの技術に比べて、標準の Elastic Compute Service (ECS) 仮想化技術およびネストされた仮想化技術 (Nested Virtualization) への対応に優れています。これにより、物理サーバーと同じパフォーマンスを提供しながら ECS の柔軟性を維持できます。 |
 | 云服务器 | クラウドサーバー | [轻量应用服务器](https://www.aliyun.com/product/swas) | 軽量アプリケーションサーバー | 迅速に構築および管理が容易な軽量クラウドサーバー |  [Simple Application Server](https://www.alibabacloud.com/product/swas) | Simple Application Serverは、スタンドアロンアプリケーションシナリオ用の新世代コンピューティングサービスです。 ワンクリックのアプリケーション展開を提供し、ドメイン名解決、Webサイトの公開、セキュリティ、Oなどのオールインワンサービスをサポートします。 | []() |  |
