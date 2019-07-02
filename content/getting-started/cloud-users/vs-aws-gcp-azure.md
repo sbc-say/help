@@ -1,7 +1,7 @@
 +++
-title = "他社クラウドサービスとの比較一覧"
+title = "AWS/Azure/GCPとの比較一覧"
 description = ""
-weight = 2000
+weight = 100
 date= 2019-06-05T12:30:18+08:00
 draft= false
 +++
@@ -12,7 +12,7 @@ AlibabaCloudというクラウドサービスにて2019年5月現在、中国版
 [AlibabaCloudのサービスiconはこちら](https://www.iconfont.cn/plus/user/detail?&uid=41718)からダウンロードになります
 https://www.iconfont.cn/plus/user/detail?&uid=41718
 
-### 他クラウドサービスとの比較について
+### AWS/Azure/GCPとの比較について
 ※ AlibabaCloud公式によるAWSとの比較は[こちらを参照](https://help.aliyun.com/document_detail/65455.html)。
 https://help.aliyun.com/document_detail/65455.html
 
