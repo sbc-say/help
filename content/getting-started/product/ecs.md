@@ -1,10 +1,10 @@
-+++
-title = "ECSの使用可能なRegion/Spec/Price紹介"
-description = ""
-weight = 10
-date= 2019-06-05T12:30:18+08:00
-draft= false
-+++
+---
+title: "ECSの使用可能なRegion/Spec/Price紹介"
+description: "Alibaba CloudのECSで使用可能なRegion/Spec/Priceを紹介します"
+date: 2019-06-05T12:30:18+08:00
+weight: 10
+draft: false
+---
 
 ### ap-northeast-1
 |instanceType|vCPU |メモリ |イントラネット帯域幅|パケット転送速度 |GPU/FPGA |ローカルストレージ |OS|従量課金|サブスクリプション|サブスクリプション|
