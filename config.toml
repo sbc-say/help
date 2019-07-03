@@ -9,7 +9,7 @@ staticDir = ["static", "static2"]
 pygmentsCodeFences = true
 pygmentsStyle = "monokailight"
 
-googleAnalytics = "UA-123-45"
+googleAnalytics = "GTM-P4CXTW"
 
 defaultContentLanguage = "ja"
 defaultContentLanguageInSubdir= false
