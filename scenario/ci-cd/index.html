@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-07-03T11:50:08 UTC">
-<title> :: テクニカルリファレンス</title>
+<title>CI/CD :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -57,7 +57,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
   </head>
-  <body data-url="/help/best-practice/infrastructure-as-code/16/old/container_registry/">
+  <body data-url="/help/scenario/ci-cd/">
     
       <header>
   <div class="logo">
@@ -153,11 +153,10 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
+    <li data-nav-id="/help/best-practice/" class="dd-item haschildren
         ">
       <div>
-      <a href="/help/best-practice/">ベストプラクティス</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/">ベストプラクティス</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/advisory/" class="dd-item">
@@ -181,11 +180,10 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/help/best-practice/infrastructure-as-code/" class="dd-item parent haschildren
+    <li data-nav-id="/help/best-practice/infrastructure-as-code/" class="dd-item haschildren
         ">
       <div>
-      <a href="/help/best-practice/infrastructure-as-code/">Infrastructure as Codeの実践</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/infrastructure-as-code/">Infrastructure as Codeの実践</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/infrastructure-as-code/02/how_to_use_terraform/" class="dd-item">
@@ -363,7 +361,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/best-practice/infrastructure-as-code/16/old/container_registry/" class="dd-item active">
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/16/old/container_registry/" class="dd-item">
         <div>
           <a href="/help/best-practice/infrastructure-as-code/16/old/container_registry/">
             
@@ -381,13 +379,14 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/scenario/" class="dd-item haschildren
+    <li data-nav-id="/help/scenario/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/scenario/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/scenario/">ユースケース別シナリオ</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/help/scenario/ci-cd/" class="dd-item
+    <li data-nav-id="/help/scenario/ci-cd/" class="dd-item parent active
         ">
       <div>
       <a href="/help/scenario/ci-cd/">CI/CD</a><i class="fa fa-circle-thin read-icon"></i>
@@ -504,12 +503,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-
-
-
- <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/infrastructure-as-code/'>Infrastructure as Codeの実践</a> > 
-
- 
+ <a href='/help/'></a> > <a href='/help/scenario/'>ユースケース別シナリオ</a> > CI/CD
 
  
 
@@ -526,10 +520,14 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <option value="/help/getting-started/" >
    Getting Started</option>
     <option value="/help/best-practice/" >
-   ベストプラクティス</option> 
-  
+   ベストプラクティス</option>
     <option value="/help/scenario/" >
-   ユースケース別シナリオ</option>
+   ユースケース別シナリオ</option> 
+    <option value="/help/scenario/ci-cd/"  selected>
+  - 
+   CI/CD</option> 
+  
+  
     <option value="/help/faq/" >
    よくある質問</option>
     <option value="/help/about/" >
@@ -541,49 +539,22 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       </center>
     </div>
 
-    <h1></h1>
+    <h1>CI/CD</h1>
 
     
     
     
-    
 
-<h1 id="第18章">第18章</h1>
+<p>ここではCI/CDの実践構成を記載します</p>
 
-<h2 id="alibabacloud-container-registryについて">AlibabaCloud Container Registryについて</h2>
-
-<p>&nbsp; 第6章までは Terraformのインストール方法、コード記載方法、実行方法を説明しました。第7章-第18章はユーザ各自でコード作成、応用ができるよう、AlibabaCloudの基本プロダクトサービスの説明を通じて解説します。</p>
-
-<ul>
-<li>第7章：AlibabaCloud VPC</li>
-<li>第8章：AlibabaCloud ECS</li>
-<li>第9章：AlibabaCloud NW関連（EIP/HTTP/DNS）</li>
-<li>第10章：AlibabaCloud SLB</li>
-<li>第11章：AlibabaCloud AutoScale</li>
-<li>第12章：AlibabaCloud OSS</li>
-<li>第13章：AlibabaCloud RDS</li>
-<li>第14章：AlibabaCloud RAM</li>
-<li>第15章：AlibabaCloud Container Clustor</li>
-<li>第16章：AlibabaCloud Kubernetes</li>
-<li>第17章：AlibabaCloud Kubernetes Managed</li>
-<li><strong>第18章：AlibabaCloud Container Registry</strong></li>
-</ul>
-
-<p>各章それぞれサンプルを交えて説明します。</p>
-
-<p><br></p>
-
-<h3 id="18-1-container-registry">18.1 Container Registry</h3>
-
-<p>&nbsp; Terraformのコード構成要素、コードの構成文の書き方です。Terraformの利用ガイドラインに沿って記載してみてください。Terraformのバージョンによっては書き方が異なる場合がありますので、注意が必要です。</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/best-practice/infrastructure-as-code/16/old/container_clustor/" title=""> <i class="fa fa-chevron-left"></i><label></label></a>
-    <a class="nav nav-next" href="/help/best-practice/infrastructure-as-code/16/old/kubernetes_managed/" title="" style="margin-right: 0px;"><label></label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/scenario/" title="ユースケース別シナリオ"> <i class="fa fa-chevron-left"></i><label>ユースケース別シナリオ</label></a>
+    <a class="nav nav-next" href="/help/faq/" title="よくある質問" style="margin-right: 0px;"><label>よくある質問</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -597,10 +568,14 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     
 
     
+    <div class="date">
+        <i class='fa fa-calendar'></i>  13/05/2019
+    </div>
+    
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/infrastructure-as-code/16/old/Container_Registry.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/content/scenario/ci-cd/_index.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     
