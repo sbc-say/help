@@ -21,6 +21,13 @@
 	"content": " Links for basic manuals "
 },
 {
+	"uri": "https://sbcloud.github.io/help/scenarios/web-application/java-springboot/",
+	"title": "Java: Springboot",
+	"tags": [],
+	"description": "",
+	"content": " ここではWebApplicationを中心に記載します "
+},
+{
 	"uri": "https://sbcloud.github.io/help/getting-started/registration/",
 	"title": "アカウント登録",
 	"tags": [],
@@ -33,6 +40,13 @@
 	"tags": [],
 	"description": "",
 	"content": " Architecture Diagrams "
+},
+{
+	"uri": "https://sbcloud.github.io/help/scenarios/web-application/",
+	"title": "ウェブアプリケーション",
+	"tags": [],
+	"description": "",
+	"content": " ここではWebApplicationを中心に記載します "
 },
 {
 	"uri": "https://sbcloud.github.io/help/best-practice/product/anti-ddos/",
@@ -56,11 +70,18 @@
 	"content": "   トップページ         Getting Started     アカウント登録   プロダクト紹介ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較\n中国と日本におけるサービス一覧       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM\nAnti-DDoS   Infrastructure as CodeTerraform 1章\nTerraform 2章\nTerraform 3章\nTerraform 4章\nTerraform 5章       ユースベース別シナリオ     WebアプリケーションJava Springboot\nPython Django   CI/CDE-commerce site with Terraform   Data-AnalysisSome technical reference for Data-V       よくある質問     ECS   RDS   SLB   OSS   VPC   料金   アカウント       About SBC Technical Reference     サイトマップ    "
 },
 {
+	"uri": "https://sbcloud.github.io/help/scenarios/web-application/python-django/",
+	"title": "Python: Django",
+	"tags": [],
+	"description": "",
+	"content": " ここではWebApplicationを中心に記載します "
+},
+{
 	"uri": "https://sbcloud.github.io/help/getting-started/product/",
 	"title": "プロダクトの紹介",
 	"tags": [],
-	"description": "",
-	"content": " 頻繁に利用されるプロダクトの活用リンク一覧\n主要プロダクト    製品名 コンテンツテーマ URL     ECS プロダクト紹介 公式ドキュメント    クイックスタート 公式ドキュメント   RDS プロダクト紹介 公式ドキュメント   SLB プロダクト紹介 公式ドキュメント   VPC プロダクト紹介 公式ドキュメント   ExpressConnect プロダクト紹介 公式ドキュメント   CloudMonitor プロダクト紹介 公式ドキュメント   OSS プロダクト紹介 公式ドキュメント    人気のプロダクト    製品名 コンテンツテーマ URL     Container Service for Kubernetes プロダクト紹介 公式ドキュメント   MaxCompute プロダクト紹介 公式ドキュメント   Realtime Compute プロダクト紹介 公式ドキュメント   Image Search プロダクト紹介 公式ドキュメント   Anti-DDoS プロダクト紹介 公式ドキュメント    "
+	"description": "Alibaba Cloudで頻繁に利用されるプロダクトの活用リンク一覧を記載します",
+	"content": " 頻繁に利用されるプロダクトの活用リンク一覧を記載します。\n主要プロダクト    製品名 コンテンツテーマ URL     ECS プロダクト紹介 公式ドキュメント    クイックスタート 公式ドキュメント   RDS プロダクト紹介 公式ドキュメント   SLB プロダクト紹介 公式ドキュメント   VPC プロダクト紹介 公式ドキュメント   ExpressConnect プロダクト紹介 公式ドキュメント   CloudMonitor プロダクト紹介 公式ドキュメント   OSS プロダクト紹介 公式ドキュメント    人気のプロダクト    製品名 コンテンツテーマ URL     Container Service for Kubernetes プロダクト紹介 公式ドキュメント   MaxCompute プロダクト紹介 公式ドキュメント   Realtime Compute プロダクト紹介 公式ドキュメント   Image Search プロダクト紹介 公式ドキュメント   Anti-DDoS プロダクト紹介 公式ドキュメント    "
 },
 {
 	"uri": "https://sbcloud.github.io/help/best-practice/",
@@ -166,27 +187,6 @@
 	"tags": [],
 	"description": "",
 	"content": "   大項目 中項目 小項目     About (90) 一覧 (90)     "
-},
-{
-	"uri": "https://sbcloud.github.io/help/scenarios/web-application/",
-	"title": "ウェブアプリケーション",
-	"tags": [],
-	"description": "",
-	"content": " ここではWebApplicationを中心に記載します "
-},
-{
-	"uri": "https://sbcloud.github.io/help/scenarios/web-application/java-springboot/",
-	"title": "ウェブアプリケーション",
-	"tags": [],
-	"description": "",
-	"content": " ここではWebApplicationを中心に記載します "
-},
-{
-	"uri": "https://sbcloud.github.io/help/scenarios/web-application/python-django/",
-	"title": "ウェブアプリケーション",
-	"tags": [],
-	"description": "",
-	"content": " ここではWebApplicationを中心に記載します "
 },
 {
 	"uri": "https://sbcloud.github.io/help/faq/account/",

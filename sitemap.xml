@@ -18,12 +18,22 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/scenarios/web-application/java-springboot/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/getting-started/registration/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://sbcloud.github.io/help/best-practice/architecture/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenarios/web-application/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
@@ -39,6 +49,11 @@
   
   <url>
     <loc>https://sbcloud.github.io/help/about/sitemap/</loc>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenarios/web-application/python-django/</loc>
+    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>
@@ -118,21 +133,6 @@
   
   <url>
     <loc>https://sbcloud.github.io/help/about/</loc>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenarios/web-application/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenarios/web-application/java-springboot/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenarios/web-application/python-django/</loc>
-    <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
   
   <url>

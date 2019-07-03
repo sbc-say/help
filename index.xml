@@ -37,6 +37,15 @@ AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの�
     </item>
     
     <item>
+      <title>Java: Springboot</title>
+      <link>https://sbcloud.github.io/help/scenarios/web-application/java-springboot/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenarios/web-application/java-springboot/</guid>
+      <description> ここではWebApplicationを中心に記載します </description>
+    </item>
+    
+    <item>
       <title>アカウント登録</title>
       <link>https://sbcloud.github.io/help/getting-started/registration/</link>
       <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
@@ -96,6 +105,15 @@ Terraform 2章
 Terraform 3章
 Terraform 4章
 Terraform 5章       ユースベース別シナリオ     WebアプリケーションJava Springboot</description>
+    </item>
+    
+    <item>
+      <title>Python: Django</title>
+      <link>https://sbcloud.github.io/help/scenarios/web-application/python-django/</link>
+      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenarios/web-application/python-django/</guid>
+      <description> ここではWebApplicationを中心に記載します </description>
     </item>
     
     <item>
@@ -184,24 +202,6 @@ access_key = &amp;quot;xxxxxxxxxxxxxxxxxx&amp;quot; secret_key = &amp;quot;xxxxx
       
       <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform_05/</guid>
       <description>5章</description>
-    </item>
-    
-    <item>
-      <title>ウェブアプリケーション</title>
-      <link>https://sbcloud.github.io/help/scenarios/web-application/java-springboot/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/scenarios/web-application/java-springboot/</guid>
-      <description> ここではWebApplicationを中心に記載します </description>
-    </item>
-    
-    <item>
-      <title>ウェブアプリケーション</title>
-      <link>https://sbcloud.github.io/help/scenarios/web-application/python-django/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/scenarios/web-application/python-django/</guid>
-      <description> ここではWebApplicationを中心に記載します </description>
     </item>
     
     <item>
