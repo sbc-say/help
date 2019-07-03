@@ -723,55 +723,5 @@ resource &amp;quot;alicloud_cs_kubernetes&amp;quot; &amp;quot;main&amp;quot; { n
 17.1 Kubernetes Managed &amp;nbsp; Terraformのコード構成要素、コードの構成文の書き方です。Terraformの利用ガイドラインに沿って記載してみてください。Terraformのバージョンによっては書き方が異なる場合がありますので、注意が必要です。</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/coming_soon/25/multi-az_kubernetes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/coming_soon/25/multi-az_kubernetes/</guid>
-      <description>第25章 example: Multi-AZ Kubernetes &amp;nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第27章はTerraformのサンプルコードを交えて解説します。
- 17章 example: ssh踏み台サーバ 18章 example: SLB設定サンプル 19章 example: RDS設定サンプル 20章 example: kubernetes設定サンプル 21章 example: Webアプリケーション 22章 example: 高速コンテンツ配信 23章 example: オートスケーリング 24章 example: KubernetesによるコンテナでWordPress作成 25章 example: Multi-AZ Kubernetes 26章 example: DevOpsによるWebアプリケーション 27章 example: ECサイト構築  
-25.1 Multi-AZ Kubernetes &amp;nbsp; Txxxxxx
-https://www.alibabacloud.com/blog/594492
-https://github.com/kin-alibaba/terraform-kubernetes
-/Users/hironobu.ohara/Dev/terraform-kubernetes
-ターゲット環境 当社のターゲットインフラストラクチャは次のとおりです。
- 2つのアベイラビリティーゾーンに1つのマルチAZ Kubernetesクラスター（最大3つのゾーンをサポート） 2つのServer Load Balancerインスタンスを持つ2つの可用性ゾーンにまたがる3つのKubernetesマスターノード 2つのアベイラビリティーゾーンにまたがる3つのKubernetesワーカーノード Docker HubからDockerイメージをダウンロードするための1つのNATゲートウェイインスタンス Nginx Ingress Controller用の1つのサーバーロードバランサ（SLB）インスタンス 1 Kubernetes ServiceはAlibaba Cloud ApsaraDB RDS for MySQL（RDS）に接続するサンプルWebアプリケーションを提供します。 1 Alibaba CloudのDNSレコードがKubernetesサービスにバインドされます  Terraform - コードとしてのインフラストラクチャ Terraformにより、ターゲット環境を記述してから、その環境のライフサイクルを管理することができます。この場合、Terraformファイルは、変数が各「config」ファイルに外部化される管理を容易にするために複数のファイルにモジュール化されます。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/coming_soon/26/devops-web-application/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/coming_soon/26/devops-web-application/</guid>
-      <description>第26章 example: DevOpsによるWebアプリケーション &amp;nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第27章はTerraformのサンプルコードを交えて解説します。
- 17章 example: ssh踏み台サーバ 18章 example: SLB設定サンプル 19章 example: RDS設定サンプル 20章 example: kubernetes設定サンプル 21章 example: Webアプリケーション 22章 example: 高速コンテンツ配信 23章 example: オートスケーリング 24章 example: KubernetesによるコンテナでWordPress作成 25章 example: Multi-AZ Kubernetes 26章 example: DevOpsによるWebアプリケーション 27章 example: ECサイト構築  
-26.1 DevOpsによるWebアプリケーション &amp;nbsp;
-main.tf
-variable &amp;quot;access_key&amp;quot; { type = &amp;quot;string&amp;quot; default = &amp;quot;XXXXX&amp;quot; } variable &amp;quot;secret_key&amp;quot; { type = &amp;quot;string&amp;quot; default = &amp;quot;XXXXX&amp;quot; } variable &amp;quot;region&amp;quot; { type = &amp;quot;string&amp;quot; default = &amp;quot;ap-southeast-2&amp;quot; } variable &amp;quot;vswitch&amp;quot; { type = &amp;quot;string&amp;quot; default = &amp;quot;XXX-XXXXX&amp;quot; } variable &amp;quot;sgroups&amp;quot; { type = &amp;quot;list&amp;quot; default = [ &amp;quot;XX-XXXXX&amp;quot; ] } variable &amp;quot;name&amp;quot; { type = &amp;quot;string&amp;quot; default = &amp;quot;multi-tenant&amp;quot; } variable &amp;quot;password&amp;quot; { type = &amp;quot;string&amp;quot; default = &amp;quot;Test1234!</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/coming_soon/28/solution/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/coming_soon/28/solution/</guid>
-      <description>第27章 ソリューション &amp;nbsp; ここまで紹介したサンプルのうち、以下ソリューションを満たす方法があります。
-woocommerce Magento
-https://blog.universe-web.jp/443/ https://blog.universe-web.jp/4044/
-
-27.1 無料で使えるEC2テンプレートサイト &amp;nbsp;
-
-27.2 terraformの設定方法：Woo Commerce &amp;nbsp;
-
-27.3 terraformの設定方法：Magento &amp;nbsp;
-
-27.4 terraformの設定方法：Magento &amp;nbsp;
-main.tf
-variable &amp;quot;access_key&amp;quot; { type = &amp;quot;string&amp;quot; default = &amp;quot;XXXXX&amp;quot; } variable &amp;quot;secret_key&amp;quot; { type = &amp;quot;string&amp;quot; default = &amp;quot;XXXXX&amp;quot; } variable &amp;quot;region&amp;quot; { type = &amp;quot;string&amp;quot; default = &amp;quot;ap-southeast-2&amp;quot; } variable &amp;quot;vswitch&amp;quot; { type = &amp;quot;string&amp;quot; default = &amp;quot;XXX-XXXXX&amp;quot; } variable &amp;quot;sgroups&amp;quot; { type = &amp;quot;list&amp;quot; default = [ &amp;quot;XX-XXXXX&amp;quot; ] } variable &amp;quot;name&amp;quot; { type = &amp;quot;string&amp;quot; default = &amp;quot;multi-tenant&amp;quot; } variable &amp;quot;password&amp;quot; { type = &amp;quot;string&amp;quot; default = &amp;quot;Test1234!</description>
-    </item>
-    
   </channel>
 </rss>
