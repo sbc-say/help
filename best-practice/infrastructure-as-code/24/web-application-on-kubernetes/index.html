@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SB Cloud&nbsp;テクニカルリファレンス</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-07-03T11:12:28 UTC">
+<title>Terraform 24章 example: KubernetesによるコンテナでWordPress作成 :: テクニカルリファレンス</title>
+<link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
+<link href="/help/css/font-awesome.min.css" rel="stylesheet">
+<link href="/help/css/nucleus.css" rel="stylesheet">
+<link href="/help/theme-flex/style.css" rel="stylesheet">
+
+	<link href="/help/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/help/css/bootstrap.min.css">
+<script src="/help/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/sbcloud.github.io\/help\/";
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GTM-P4CXTW', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" id="mierucajs">
+window.__fid = window.__fid || [];__fid.push([317537360]);
+(function() {
+function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
+setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
+})();
+</script>
+
+
+
+<meta name="description" content="">
+
+        
+
+
+<link href="/help/css/custom.css"  rel="stylesheet">
+
+
+    
+  </head>
+  <body data-url="/help/best-practice/infrastructure-as-code/24/web-application-on-kubernetes/">
+    
+      <header>
+  <div class="logo">
+    <a href="https://sbcloud.github.io/help/" style="vertical-align: baseline;">
+   <img src="https://sbcloud.github.io/help//img/sbcloud_logo.png" class="noshadow" alt="">
+<a class="baselink" href="https://sbcloud.github.io/help/" style="font-size:24px">
+    テクニカルリファレンス
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+
+<nav class="shortcuts">
+    <li>
+        <span class="searchbox">
+            <input data-search-input id="search-by" type="text" placeholder="検索">
+        </span>
+        <script type="text/javascript" src="/help/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/help/js/auto-complete.js"></script>
+        <link href="/help/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+            
+            var baseurl = "https:\/\/sbcloud.github.io\/help\/";
+            
+        </script>
+        <script type="text/javascript" src="/help/js/search.js"></script>
+    </li>
+            <li class="" role="">
+                <a href="https://github.com/sbcloud/help"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+        </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/">Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/registration/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/registration/">
+            アカウント登録
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/getting-started/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/product/">プロダクトの紹介</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/product/links/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/links/">
+            プロダクト資料のリンク一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/product/ecs-by-region/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/ecs-by-region/">
+            ECSの使用可能なRegion/Spec/Price紹介
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/getting-started/cloud-users/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/cloud-users/vs-aws-gcp-azure/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/vs-aws-gcp-azure/">
+            サービスラインナップ比較
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/cloud-users/services-in-cn/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/services-in-cn/">
+            中国リージョンのサービス一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/advisory/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/advisory/">
+            アドバイザリ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/architecture/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/architecture/">
+            アーキテクチャのパターン
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/pricing/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/pricing/">
+            料金体系
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/best-practice/infrastructure-as-code/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/infrastructure-as-code/">Infrastructure as Codeの実践</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/02/how_to_use_terraform/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/02/how_to_use_terraform/">
+            Terraform 02章 Terraformとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/03/install/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/03/install/">
+            Terraform 03章 Install
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/04/sample_project/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/04/sample_project/">
+            Terraform 04章 サンプルプロジェクト
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/05/run_terraforom/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/05/run_terraforom/">
+            Terraform 05章 Terraformを実行しょう
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/06/program_syntax/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/06/program_syntax/">
+            Terraform 06章 Terraform文法について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/07/docker/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/07/docker/">
+            Terraform 07章 dockerについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/08/module/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/08/module/">
+            Terraform 08章 moduleについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/09/vpc/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/09/vpc/">
+            Terraform 09章 VPC
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/10/ecs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/10/ecs/">
+            Terraform 10章 ECS、EIP
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/11/slb/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/11/slb/">
+            Terraform 11章 SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/12/autoscale/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/12/autoscale/">
+            Terraform 12章 AutoScale
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/13/oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/13/oss/">
+            Terraform 13章 OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/14/rds/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/14/rds/">
+            Terraform 14章 RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/15/ram/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/15/ram/">
+            Terraform 15章 RAM
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/16/kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/16/kubernetes/">
+            Terraform 16章 Kubernetes
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/17/bastion-server/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/17/bastion-server/">
+            Terraform 17章 example: ssh踏み台サーバ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/18/slb-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/18/slb-setting-sample/">
+            Terraform 18章 example: SLB設定サンプル
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/19/rds-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/19/rds-setting-sample/">
+            Terraform 19章 example: RDS設定サンプル
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/20/kubernetes-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/20/kubernetes-setting-sample/">
+            Terraform 20章 example: kubernetes設定サンプル
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/21/web-application/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/21/web-application/">
+            Terraform 21章 example: Webアプリケーション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/22/accelerated-content-delivery/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/22/accelerated-content-delivery/">
+            Terraform 22章 example: 高速コンテンツ配信
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/23/auto-scaling/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/23/auto-scaling/">
+            Terraform 23章 example: オートスケーリング
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/24/web-application-on-kubernetes/" class="dd-item active">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/24/web-application-on-kubernetes/">
+            Terraform 24章 example: KubernetesによるコンテナでWordPress作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/25/ec-site-sample/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/25/ec-site-sample/">
+            Terraform 25章 example: MagentoでECサイト構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/16/old/container_clustor/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/16/old/container_clustor/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/16/old/container_registry/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/16/old/container_registry/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/16/old/kubernetes_managed/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/16/old/kubernetes_managed/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/coming_soon/25/multi-az_kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/coming_soon/25/multi-az_kubernetes/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/coming_soon/26/devops-web-application/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/coming_soon/26/devops-web-application/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/coming_soon/28/solution/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/coming_soon/28/solution/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/faq/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/faq/">よくある質問</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/faq/ecs/" class="dd-item">
+        <div>
+          <a href="/help/faq/ecs/">
+            ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/oss/" class="dd-item">
+        <div>
+          <a href="/help/faq/oss/">
+            OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
+        <div>
+          <a href="/help/faq/slb/">
+            SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/rds/" class="dd-item">
+        <div>
+          <a href="/help/faq/rds/">
+            RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/vpc/" class="dd-item">
+        <div>
+          <a href="/help/faq/vpc/">
+            VPC
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/account/" class="dd-item">
+        <div>
+          <a href="/help/faq/account/">
+            アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/about/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/about/">About SBC Technical Reference</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/about/sitemap/" class="dd-item">
+        <div>
+          <a href="/help/about/sitemap/">
+            サイトマップ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+<a class="github-button" href="https://github.com/sbcloud/help/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download SBC Technical Reference on GitHub">Download</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help" data-icon="octicon-star" data-show-count="false" aria-label="Star SBC Technical Reference on GitHub">Star</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork SBC Technical Reference on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    </section>
+  </aside>
+  <section class="page">
+
+    <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span id="sidebar-toggle-span">
+          <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+            <i class="fa fa-bars"></i>
+          </a>
+        </span>
+        <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+        <span class="links">
+        
+
+
+
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/infrastructure-as-code/'>Infrastructure as Codeの実践</a> > Terraform 24章 example: KubernetesによるコンテナでWordPress作成
+
+ 
+
+ 
+
+ 
+
+
+        </span>
+    </div>
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/help/getting-started/" >
+   Getting Started</option>
+    <option value="/help/best-practice/" >
+   ベストプラクティス</option> 
+  
+    <option value="/help/faq/" >
+   よくある質問</option>
+    <option value="/help/about/" >
+   About SBC Technical Reference</option>
+
+
+
+        </select>
+      </center>
+    </div>
+
+    <h1>Terraform 24章 example: KubernetesによるコンテナでWordPress作成</h1>
+
+    
+    
+    
+    
+
+<h1 id="第24章">第24章</h1>
+
+<h2 id="example-kubernetesによるコンテナでwordpress作成">example: KubernetesによるコンテナでWordPress作成</h2>
+
+<p>&nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。</p>
+
+<ul>
+<li><a href="docs/17/Bastion-Server.md">17章 example: ssh踏み台サーバ</a></li>
+<li><a href="docs/18/SLB-Setting-Sample.md">18章 example: SLB設定サンプル</a></li>
+<li><a href="docs/19/RDS-Setting-Sample.md">19章 example: RDS設定サンプル</a></li>
+<li><a href="docs/20/Kubernetes-Setting-Sample.md">20章 example: kubernetes設定サンプル</a></li>
+<li><a href="docs/21/Web-Application.md">21章 example: Webアプリケーション</a></li>
+<li><a href="docs/22/Accelerated-Content-Delivery.md">22章 example: 高速コンテンツ配信</a></li>
+<li><a href="docs/23/Auto-Scaling.md">23章 example: オートスケーリング</a></li>
+<li><strong><a href="docs/24/Web-Application-on-Kubernetes.md">24章 example: KubernetesによるコンテナでWordPress作成</a></strong></li>
+<li><a href="docs/25/EC-Site-Sample.md">25章 example: ECサイト構築</a></li>
+</ul>
+
+<p><br></p>
+
+<h3 id="24-1-kubernetesによるコンテナでwordpress作成">24.1 KubernetesによるコンテナでWordPress作成</h3>
+
+<p>&nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。
+1. AlibabaCloudでKubernetesクラスターを生成
+1. kube_configを環境変数にて設定
+1. KubernetesクラスターのローカルボリュームにてWordPressとMySQLをインストール</p>
+
+<p>こちらは<a href="https://github.com/terraform-providers/terraform-provider-alicloud/tree/master/examples/kubernetes-wordpress">AlibabaCloud Terraformのサンプル集</a>を通じての紹介になります。</p>
+
+<h3 id="24-2-kubernetesでクラスタ生成">24.2 Kubernetesでクラスタ生成</h3>
+
+<p>&nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。</p>
+
+<p><br>
+&nbsp; TerraformでWebアプリケーションを作ってみます。step1のゴール構成図は以下の通りです。</p>
+
+<p><img src="image/24.1.png" alt="図 24.1" /></p>
+
+<p><br>
+ソースは以下になります。サンプルソースは[こちら]()にあります。</p>
+
+<p><br>
+main.tf</p>
+
+<pre><code>provider &quot;alicloud&quot; {
+  access_key = &quot;${var.access_key}&quot;
+  secret_key = &quot;${var.secret_key}&quot;
+  region = &quot;${var.region}&quot;
+}
+
+resource &quot;alicloud_vpc&quot; &quot;vpc&quot; {
+  name = &quot;${var.project_name}-vpc&quot;
+  cidr_block = &quot;192.168.1.0/24&quot;
+  description = &quot;Enable Web-App on k8s vpc&quot;  
+}
+
+resource &quot;alicloud_vswitch&quot; &quot;vsw&quot; {
+  name = &quot;${var.project_name}-vswitch&quot;  
+  vpc_id            = &quot;${alicloud_vpc.vpc.id}&quot;
+  cidr_block        = &quot;192.168.1.0/28&quot;
+  availability_zone = &quot;${var.zone}&quot;
+  description = &quot;Enable Web-App on k8s vswitch&quot;  
+}
+
+resource &quot;alicloud_cs_kubernetes&quot; &quot;k8s&quot; {
+  name                  = &quot;${var.project_name}-k8s&quot;  
+  vswitch_ids           = [&quot;${alicloud_vswitch.vsw.id}&quot;]
+  availability_zone     = &quot;${var.zone}&quot;
+  new_nat_gateway       = true
+  master_instance_types  = [&quot;ecs.xn4.small&quot;]
+  worker_instance_types  = [&quot;ecs.xn4.small&quot;]
+  worker_numbers        = [2]
+  master_disk_size      = 40
+  worker_disk_size      = 100
+  password              = &quot;${var.k8s_password}&quot;
+  pod_cidr              = &quot;172.20.0.0/16&quot;
+  service_cidr          = &quot;172.21.0.0/20&quot;
+  enable_ssh            = true
+  install_cloud_monitor = true
+}
+
+</code></pre>
+
+<p><br>
+variables.tf</p>
+
+<pre><code>variable &quot;access_key&quot; {}
+variable &quot;secret_key&quot; {}
+variable &quot;region&quot; {}
+variable &quot;zone&quot; {}
+variable &quot;project_name&quot; {}
+variable &quot;k8s_password&quot; {}
+
+variable &quot;wordpress_version&quot; {}
+variable &quot;mysql_version&quot; {}
+variable &quot;mysql_password&quot; {}
+
+</code></pre>
+
+<p><br>
+output.tf</p>
+
+<pre><code>output &quot;cluster_id&quot; {
+  value = [&quot;${alicloud_cs_kubernetes.k8s.*.id}&quot;]
+}
+output &quot;worker_nodes&quot; {
+  value = [&quot;${alicloud_cs_kubernetes.k8s.*.worker_nodes}&quot;]
+}
+output &quot;master_nodes&quot; {
+  value = [&quot;${alicloud_cs_kubernetes.k8s.*.master_nodes}&quot;]
+}
+</code></pre>
+
+<p><br>
+confing.tfvars</p>
+
+<pre><code>access_key = &quot;LTAI9V3rQftxI2TJ&quot;
+secret_key = &quot;JA0psSnhsd8TaMWhZDeEtP1mWSpA8q&quot;
+region = &quot;ap-northeast-1&quot;
+zone = &quot;ap-northeast-1a&quot;
+project_name = &quot;Web-App-on-k8s-for-Terraform&quot;
+k8s_password = &quot;!Password2019&quot;
+
+wordpress_version = &quot;5.2.2&quot;
+mysql_version = &quot;5.7&quot;
+mysql_password = &quot;!Password2019&quot;
+
+</code></pre>
+
+<p>&nbsp; ソースの準備ができたら実行します。</p>
+
+<pre><code>terraform init
+terraform play -var-file=&quot;confing.tfvars&quot;
+terraform apply -var-file=&quot;confing.tfvars&quot;
+</code></pre>
+
+<p><br>
+これで問題なく実行できたら、cluster_id、worker_nodes、master_nodesが表示され、こうしてkubernetesクラスター操作、管理ができます。</p>
+
+<p><br></p>
+
+<p><img src="image/24.2.png" alt="図 24.2" /></p>
+
+<p><br></p>
+
+<h3 id="24-3-kube-configを環境変数にて設定">24.3 kube_configを環境変数にて設定</h3>
+
+<p>&nbsp; 先ほどはKubernetesクラスタを作成しました。このクラスタを使ってwordpressを作成するため、Kubernetesコマンドラインクライアントである <code>kubectl</code> を使用します。<code>kubectl</code>はk8sクラスタのAPIサーバーと通信するためのコマンドラインツールです。</p>
+
+<ol>
+<li>最新の<a href="https://github.com/kubernetes/kubernetes">kubectl</a>をダウンロードします。</li>
+<li><a href="https://github.com/kubernetes/kubernetes">kubectl</a>のインストールおよび設定をします。
+kubectlの<a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">インストール方法はこちらを参照</a>してください。</li>
+<li>クラスターの資格情報を設定します。設定方法は<a href="https://jp.alibabacloud.com/help/doc-detail/53755.htm">こちらを参照</a>してください。</li>
+</ol>
+
+<p><img src="image/24.3.png" alt="図 24.3" /></p>
+
+<h3 id="24-4-kubernetesクラスタにてwordpressインストール">24.4 KubernetesクラスタにてWordpressインストール</h3>
+
+<p>&nbsp; これでKubernetesクラスタのkube_configを環境変数にて設定しました。今度はTerraform on Kubernetesを使ってubernetesクラスタにてWordPressを入れます。ゴールの構成図は以下の通りです。</p>
+
+<p><img src="image/24.4.png" alt="図 24.4" /></p>
+
+<p><br>
+ソースは以下になります。サンプルソースは[こちら]()にあります。</p>
+
+<p><br>
+confing.tfvars</p>
+
+<pre><code>project_name = &quot;Web-App-on-k8s-for-Terraform&quot;
+wordpress_version = &quot;5.2.2&quot;
+mysql_version = &quot;5.7&quot;
+mysql_password = &quot;!Password2019&quot;
+</code></pre>
+
+<p><br>
+variables.tf</p>
+
+<pre><code>variable &quot;project_name&quot; {}
+variable &quot;wordpress_version&quot; {}
+variable &quot;mysql_version&quot; {}
+variable &quot;mysql_password&quot; {}
+
+</code></pre>
+
+<p><br>
+mysql.tf</p>
+
+<pre><code>resource &quot;kubernetes_service&quot; &quot;mysql&quot; {
+  metadata {
+    name = &quot;wordpress-mysql&quot;
+
+    labels {
+      app = &quot;wordpress&quot;
+    }
+  }
+
+  spec {
+    port {
+      port = 3306
+    }
+
+    selector {
+      app  = &quot;wordpress&quot;
+      tier = &quot;${kubernetes_replication_controller.mysql.spec.0.selector.tier}&quot;
+    }
+
+    cluster_ip = &quot;None&quot;
+  }
+}
+
+resource &quot;kubernetes_persistent_volume_claim&quot; &quot;mysql&quot; {
+  metadata {
+    name = &quot;mysql-pv-claim&quot;
+
+    labels {
+      app = &quot;wordpress&quot;
+    }
+  }
+
+  spec {
+    access_modes = [&quot;ReadWriteOnce&quot;]
+
+    resources {
+      requests {
+        storage = &quot;20Gi&quot;
+      }
+    }
+
+    volume_name = &quot;${kubernetes_persistent_volume.mysql.metadata.0.name}&quot;
+  }
+}
+
+resource &quot;kubernetes_secret&quot; &quot;mysql&quot; {
+  metadata {
+    name = &quot;mysql-pass&quot;
+  }
+
+  data {
+    password = &quot;${var.mysql_password}&quot;
+  }
+}
+
+resource &quot;kubernetes_replication_controller&quot; &quot;mysql&quot; {
+  metadata {
+    name = &quot;wordpress-mysql&quot;
+
+    labels {
+      app = &quot;wordpress&quot;
+    }
+  }
+
+  spec {
+    selector {
+      app  = &quot;wordpress&quot;
+      tier = &quot;mysql&quot;
+    }
+
+    template {
+      container {
+        image = &quot;mysql:${var.mysql_version}&quot;
+        name  = &quot;mysql&quot;
+
+        env {
+          name = &quot;MYSQL_ROOT_PASSWORD&quot;
+
+          value_from {
+            secret_key_ref {
+              name = &quot;${kubernetes_secret.mysql.metadata.0.name}&quot;
+              key  = &quot;password&quot;
+            }
+          }
+        }
+
+        port {
+          container_port = 3306
+          name           = &quot;mysql&quot;
+        }
+
+        volume_mount {
+          name       = &quot;mysql-persistent-storage&quot;
+          mount_path = &quot;/var/lib/mysql&quot;
+        }
+      }
+
+      volume {
+        name = &quot;mysql-persistent-storage&quot;
+
+        persistent_volume_claim {
+          claim_name = &quot;${kubernetes_persistent_volume_claim.mysql.metadata.0.name}&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+
+<p><br>
+wordpress.tf</p>
+
+<pre><code>resource &quot;kubernetes_service&quot; &quot;wordpress&quot; {
+  metadata {
+    name = &quot;wordpress&quot;
+
+    labels {
+      app = &quot;wordpress&quot;
+    }
+  }
+
+  spec {
+    port {
+      port = 80
+    }
+
+    selector {
+      app  = &quot;wordpress&quot;
+      tier = &quot;${kubernetes_replication_controller.wordpress.spec.0.selector.tier}&quot;
+    }
+
+    type = &quot;LoadBalancer&quot;
+  }
+}
+
+resource &quot;kubernetes_persistent_volume_claim&quot; &quot;wordpress&quot; {
+  metadata {
+    name = &quot;wp-pv-claim&quot;
+
+    labels {
+      app = &quot;wordpress&quot;
+    }
+  }
+
+  spec {
+    access_modes = [&quot;ReadWriteOnce&quot;]
+
+    resources {
+      requests {
+        storage = &quot;20Gi&quot;
+      }
+    }
+
+    volume_name = &quot;${kubernetes_persistent_volume.wordpress.metadata.0.name}&quot;
+  }
+}
+
+resource &quot;kubernetes_replication_controller&quot; &quot;wordpress&quot; {
+  metadata {
+    name = &quot;wordpress&quot;
+
+    labels {
+      app = &quot;wordpress&quot;
+    }
+  }
+
+  spec {
+    selector {
+      app  = &quot;wordpress&quot;
+      tier = &quot;frontend&quot;
+    }
+
+    template {
+      container {
+        image = &quot;wordpress:${var.wordpress_version}-apache&quot;
+        name  = &quot;wordpress&quot;
+
+        env {
+          name  = &quot;WORDPRESS_DB_HOST&quot;
+          value = &quot;wordpress-mysql&quot;
+        }
+
+        env {
+          name = &quot;WORDPRESS_DB_PASSWORD&quot;
+
+          value_from {
+            secret_key_ref {
+              name = &quot;${kubernetes_secret.mysql.metadata.0.name}&quot;
+              key  = &quot;password&quot;
+            }
+          }
+        }
+
+        port {
+          container_port = 80
+          name           = &quot;wordpress&quot;
+        }
+
+        volume_mount {
+          name       = &quot;wordpress-persistent-storage&quot;
+          mount_path = &quot;/var/www/html&quot;
+        }
+      }
+
+      volume {
+        name = &quot;wordpress-persistent-storage&quot;
+
+        persistent_volume_claim {
+          claim_name = &quot;${kubernetes_persistent_volume_claim.wordpress.metadata.0.name}&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+
+<p><br>
+localvolumes.tf</p>
+
+<pre><code>provider &quot;kubernetes&quot; {}
+
+resource &quot;kubernetes_persistent_volume&quot; &quot;mysql&quot; {
+  metadata {
+    name = &quot;local-pv-mysql&quot;
+
+    labels {
+      type = &quot;local&quot;
+    }
+  }
+
+  spec {
+    capacity {
+      storage = &quot;20Gi&quot;
+    }
+
+    access_modes = [&quot;ReadWriteOnce&quot;]
+
+    persistent_volume_source {
+      host_path {
+        path = &quot;/tmp/data/pv-mysql&quot;
+      }
+    }
+  }
+}
+
+resource &quot;kubernetes_persistent_volume&quot; &quot;wordpress&quot; {
+  metadata {
+    name = &quot;local-pv-wordpress&quot;
+
+    labels {
+      type = &quot;local&quot;
+    }
+  }
+
+  spec {
+    capacity {
+      storage = &quot;20Gi&quot;
+    }
+
+    access_modes = [&quot;ReadWriteOnce&quot;]
+
+    persistent_volume_source {
+      host_path {
+        path = &quot;/tmp/data/pv-wordpress&quot;
+      }
+    }
+  }
+}
+</code></pre>
+
+<p><br>
+output.tf</p>
+
+<pre><code>output &quot;slb_ip&quot; {
+  value = &quot;${kubernetes_service.wordpress.load_balancer_ingress.0.ip}&quot;
+}
+</code></pre>
+
+<p><br>
+&nbsp; ソースの準備ができたら実行します。</p>
+
+<pre><code>terraform init
+terraform play -var-file=&quot;confing.tfvars&quot;
+terraform apply -var-file=&quot;confing.tfvars&quot;
+</code></pre>
+
+<p><br>
+これで完了です。問題なく実行できたら、SLBのIPが表示されます。</p>
+
+<p><br></p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/help/best-practice/infrastructure-as-code/23/auto-scaling/" title="Terraform 23章 example: オートスケーリング"> <i class="fa fa-chevron-left"></i><label>Terraform 23章 example: オートスケーリング</label></a>
+    <a class="nav nav-next" href="/help/best-practice/infrastructure-as-code/25/ec-site-sample/" title="Terraform 25章 example: MagentoでECサイト構築" style="margin-right: 0px;"><label>Terraform 25章 example: MagentoでECサイト構築</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i>  01/07/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/infrastructure-as-code/24/Web-Application-on-Kubernetes.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/help/js/clipboard.min.js"></script>
+
+<link href="/help/css/featherlight.min.css" rel="stylesheet">
+<script src="/help/js/featherlight.min.js"></script>
+
+
+
+<script src="/help/theme-flex/script.js"></script>
+
+<link href="/help/mermaid/mermaid.css" type="text/css" rel="stylesheet" />
+<script src="/help/mermaid/mermaid.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

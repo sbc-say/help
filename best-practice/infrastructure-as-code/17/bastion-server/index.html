@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SB Cloud&nbsp;テクニカルリファレンス</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-07-03T11:12:28 UTC">
+<title>Terraform 17章 example: ssh踏み台サーバ :: テクニカルリファレンス</title>
+<link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
+<link href="/help/css/font-awesome.min.css" rel="stylesheet">
+<link href="/help/css/nucleus.css" rel="stylesheet">
+<link href="/help/theme-flex/style.css" rel="stylesheet">
+
+	<link href="/help/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/help/css/bootstrap.min.css">
+<script src="/help/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/sbcloud.github.io\/help\/";
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GTM-P4CXTW', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" id="mierucajs">
+window.__fid = window.__fid || [];__fid.push([317537360]);
+(function() {
+function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
+setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
+})();
+</script>
+
+
+
+<meta name="description" content="">
+
+        
+
+
+<link href="/help/css/custom.css"  rel="stylesheet">
+
+
+    
+  </head>
+  <body data-url="/help/best-practice/infrastructure-as-code/17/bastion-server/">
+    
+      <header>
+  <div class="logo">
+    <a href="https://sbcloud.github.io/help/" style="vertical-align: baseline;">
+   <img src="https://sbcloud.github.io/help//img/sbcloud_logo.png" class="noshadow" alt="">
+<a class="baselink" href="https://sbcloud.github.io/help/" style="font-size:24px">
+    テクニカルリファレンス
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+
+<nav class="shortcuts">
+    <li>
+        <span class="searchbox">
+            <input data-search-input id="search-by" type="text" placeholder="検索">
+        </span>
+        <script type="text/javascript" src="/help/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/help/js/auto-complete.js"></script>
+        <link href="/help/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+            
+            var baseurl = "https:\/\/sbcloud.github.io\/help\/";
+            
+        </script>
+        <script type="text/javascript" src="/help/js/search.js"></script>
+    </li>
+            <li class="" role="">
+                <a href="https://github.com/sbcloud/help"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+        </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/">Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/registration/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/registration/">
+            アカウント登録
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/getting-started/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/product/">プロダクトの紹介</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/product/links/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/links/">
+            プロダクト資料のリンク一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/product/ecs-by-region/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/ecs-by-region/">
+            ECSの使用可能なRegion/Spec/Price紹介
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/getting-started/cloud-users/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/cloud-users/vs-aws-gcp-azure/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/vs-aws-gcp-azure/">
+            サービスラインナップ比較
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/cloud-users/services-in-cn/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/services-in-cn/">
+            中国リージョンのサービス一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/advisory/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/advisory/">
+            アドバイザリ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/architecture/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/architecture/">
+            アーキテクチャのパターン
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/pricing/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/pricing/">
+            料金体系
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/best-practice/infrastructure-as-code/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/infrastructure-as-code/">Infrastructure as Codeの実践</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/02/how_to_use_terraform/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/02/how_to_use_terraform/">
+            Terraform 02章 Terraformとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/03/install/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/03/install/">
+            Terraform 03章 Install
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/04/sample_project/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/04/sample_project/">
+            Terraform 04章 サンプルプロジェクト
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/05/run_terraforom/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/05/run_terraforom/">
+            Terraform 05章 Terraformを実行しょう
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/06/program_syntax/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/06/program_syntax/">
+            Terraform 06章 Terraform文法について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/07/docker/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/07/docker/">
+            Terraform 07章 dockerについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/08/module/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/08/module/">
+            Terraform 08章 moduleについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/09/vpc/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/09/vpc/">
+            Terraform 09章 VPC
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/10/ecs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/10/ecs/">
+            Terraform 10章 ECS、EIP
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/11/slb/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/11/slb/">
+            Terraform 11章 SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/12/autoscale/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/12/autoscale/">
+            Terraform 12章 AutoScale
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/13/oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/13/oss/">
+            Terraform 13章 OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/14/rds/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/14/rds/">
+            Terraform 14章 RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/15/ram/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/15/ram/">
+            Terraform 15章 RAM
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/16/kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/16/kubernetes/">
+            Terraform 16章 Kubernetes
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/17/bastion-server/" class="dd-item active">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/17/bastion-server/">
+            Terraform 17章 example: ssh踏み台サーバ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/18/slb-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/18/slb-setting-sample/">
+            Terraform 18章 example: SLB設定サンプル
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/19/rds-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/19/rds-setting-sample/">
+            Terraform 19章 example: RDS設定サンプル
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/20/kubernetes-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/20/kubernetes-setting-sample/">
+            Terraform 20章 example: kubernetes設定サンプル
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/21/web-application/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/21/web-application/">
+            Terraform 21章 example: Webアプリケーション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/22/accelerated-content-delivery/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/22/accelerated-content-delivery/">
+            Terraform 22章 example: 高速コンテンツ配信
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/23/auto-scaling/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/23/auto-scaling/">
+            Terraform 23章 example: オートスケーリング
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/24/web-application-on-kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/24/web-application-on-kubernetes/">
+            Terraform 24章 example: KubernetesによるコンテナでWordPress作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/25/ec-site-sample/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/25/ec-site-sample/">
+            Terraform 25章 example: MagentoでECサイト構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/16/old/container_clustor/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/16/old/container_clustor/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/16/old/container_registry/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/16/old/container_registry/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/16/old/kubernetes_managed/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/16/old/kubernetes_managed/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/coming_soon/25/multi-az_kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/coming_soon/25/multi-az_kubernetes/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/coming_soon/26/devops-web-application/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/coming_soon/26/devops-web-application/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/coming_soon/28/solution/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/coming_soon/28/solution/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/faq/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/faq/">よくある質問</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/faq/ecs/" class="dd-item">
+        <div>
+          <a href="/help/faq/ecs/">
+            ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/oss/" class="dd-item">
+        <div>
+          <a href="/help/faq/oss/">
+            OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
+        <div>
+          <a href="/help/faq/slb/">
+            SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/rds/" class="dd-item">
+        <div>
+          <a href="/help/faq/rds/">
+            RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/vpc/" class="dd-item">
+        <div>
+          <a href="/help/faq/vpc/">
+            VPC
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/account/" class="dd-item">
+        <div>
+          <a href="/help/faq/account/">
+            アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/about/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/about/">About SBC Technical Reference</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/about/sitemap/" class="dd-item">
+        <div>
+          <a href="/help/about/sitemap/">
+            サイトマップ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+<a class="github-button" href="https://github.com/sbcloud/help/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download SBC Technical Reference on GitHub">Download</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help" data-icon="octicon-star" data-show-count="false" aria-label="Star SBC Technical Reference on GitHub">Star</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork SBC Technical Reference on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    </section>
+  </aside>
+  <section class="page">
+
+    <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span id="sidebar-toggle-span">
+          <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+            <i class="fa fa-bars"></i>
+          </a>
+        </span>
+        <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+        <span class="links">
+        
+
+
+
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/infrastructure-as-code/'>Infrastructure as Codeの実践</a> > Terraform 17章 example: ssh踏み台サーバ
+
+ 
+
+ 
+
+ 
+
+
+        </span>
+    </div>
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/help/getting-started/" >
+   Getting Started</option>
+    <option value="/help/best-practice/" >
+   ベストプラクティス</option> 
+      <option value="/help/best-practice/advisory/" >- アドバイザリ</option>
+      <option value="/help/best-practice/architecture/" >- アーキテクチャのパターン</option>
+      <option value="/help/best-practice/pricing/" >- 料金体系</option>
+    <option value="/help/best-practice/infrastructure-as-code/" >
+  - 
+   Infrastructure as Codeの実践</option> 
+      <option value="/help/best-practice/infrastructure-as-code/02/how_to_use_terraform/" >-- Terraform 02章 Terraformとは</option>
+      <option value="/help/best-practice/infrastructure-as-code/03/install/" >-- Terraform 03章 Install</option>
+      <option value="/help/best-practice/infrastructure-as-code/04/sample_project/" >-- Terraform 04章 サンプルプロジェクト</option>
+      <option value="/help/best-practice/infrastructure-as-code/05/run_terraforom/" >-- Terraform 05章 Terraformを実行しょう</option>
+      <option value="/help/best-practice/infrastructure-as-code/06/program_syntax/" >-- Terraform 06章 Terraform文法について</option>
+      <option value="/help/best-practice/infrastructure-as-code/07/docker/" >-- Terraform 07章 dockerについて</option>
+      <option value="/help/best-practice/infrastructure-as-code/08/module/" >-- Terraform 08章 moduleについて</option>
+      <option value="/help/best-practice/infrastructure-as-code/09/vpc/" >-- Terraform 09章 VPC</option>
+      <option value="/help/best-practice/infrastructure-as-code/10/ecs/" >-- Terraform 10章 ECS、EIP</option>
+      <option value="/help/best-practice/infrastructure-as-code/11/slb/" >-- Terraform 11章 SLB</option>
+      <option value="/help/best-practice/infrastructure-as-code/12/autoscale/" >-- Terraform 12章 AutoScale</option>
+      <option value="/help/best-practice/infrastructure-as-code/13/oss/" >-- Terraform 13章 OSS</option>
+      <option value="/help/best-practice/infrastructure-as-code/14/rds/" >-- Terraform 14章 RDS</option>
+      <option value="/help/best-practice/infrastructure-as-code/15/ram/" >-- Terraform 15章 RAM</option>
+      <option value="/help/best-practice/infrastructure-as-code/16/kubernetes/" >-- Terraform 16章 Kubernetes</option>
+      <option value="/help/best-practice/infrastructure-as-code/17/bastion-server/"  selected>-- Terraform 17章 example: ssh踏み台サーバ</option>
+      <option value="/help/best-practice/infrastructure-as-code/18/slb-setting-sample/" >-- Terraform 18章 example: SLB設定サンプル</option>
+      <option value="/help/best-practice/infrastructure-as-code/19/rds-setting-sample/" >-- Terraform 19章 example: RDS設定サンプル</option>
+      <option value="/help/best-practice/infrastructure-as-code/20/kubernetes-setting-sample/" >-- Terraform 20章 example: kubernetes設定サンプル</option>
+      <option value="/help/best-practice/infrastructure-as-code/21/web-application/" >-- Terraform 21章 example: Webアプリケーション</option>
+      <option value="/help/best-practice/infrastructure-as-code/22/accelerated-content-delivery/" >-- Terraform 22章 example: 高速コンテンツ配信</option>
+      <option value="/help/best-practice/infrastructure-as-code/23/auto-scaling/" >-- Terraform 23章 example: オートスケーリング</option>
+      <option value="/help/best-practice/infrastructure-as-code/24/web-application-on-kubernetes/" >-- Terraform 24章 example: KubernetesによるコンテナでWordPress作成</option>
+      <option value="/help/best-practice/infrastructure-as-code/25/ec-site-sample/" >-- Terraform 25章 example: MagentoでECサイト構築</option>
+      <option value="/help/best-practice/infrastructure-as-code/16/old/container_clustor/" >-- </option>
+      <option value="/help/best-practice/infrastructure-as-code/16/old/container_registry/" >-- </option>
+      <option value="/help/best-practice/infrastructure-as-code/16/old/kubernetes_managed/" >-- </option>
+      <option value="/help/best-practice/infrastructure-as-code/coming_soon/25/multi-az_kubernetes/" >-- </option>
+      <option value="/help/best-practice/infrastructure-as-code/coming_soon/26/devops-web-application/" >-- </option>
+      <option value="/help/best-practice/infrastructure-as-code/coming_soon/28/solution/" >-- </option>
+  
+  
+    <option value="/help/faq/" >
+   よくある質問</option>
+    <option value="/help/about/" >
+   About SBC Technical Reference</option>
+
+
+
+        </select>
+      </center>
+    </div>
+
+    <h1>Terraform 17章 example: ssh踏み台サーバ</h1>
+
+    
+    
+    
+    
+
+<h1 id="第17章">第17章</h1>
+
+<h2 id="example-ssh踏み台サーバ">example: ssh踏み台サーバ</h2>
+
+<p>&nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。</p>
+
+<ul>
+<li><strong><a href="docs/17/Bastion-Server.md">17章 example: ssh踏み台サーバ</a></strong></li>
+<li><a href="docs/18/SLB-Setting-Sample.md">18章 example: SLB設定サンプル</a></li>
+<li><a href="docs/19/RDS-Setting-Sample.md">19章 example: RDS設定サンプル</a></li>
+<li><a href="docs/20/Kubernetes-Setting-Sample.md">20章 example: kubernetes設定サンプル</a></li>
+<li><a href="docs/21/Web-Application.md">21章 example: Webアプリケーション</a></li>
+<li><a href="docs/22/Accelerated-Content-Delivery.md">22章 example: 高速コンテンツ配信</a></li>
+<li><a href="docs/23/Auto-Scaling.md">23章 example: オートスケーリング</a></li>
+<li><a href="docs/24/Web-Application-on-Kubernetes.md">24章 example: KubernetesによるコンテナでWordPress作成</a></li>
+<li><a href="docs/25/EC-Site-Sample.md">25章 example: ECサイト構築</a></li>
+</ul>
+
+<p><br></p>
+
+<h3 id="17-1-ssh踏み台サーバ">17.1 ssh踏み台サーバ</h3>
+
+<p>&nbsp; Terraformで踏み台サーバ、本番サーバを作ってみます。ゴールの構成図は以下の通りです。</p>
+
+<p><img src="image/17.1.png" alt="図 17.1.1" />
+<br>
+ソースは以下になります。サンプルソースは[こちら]()にあります。</p>
+
+<p>main.tf</p>
+
+<pre><code>provider &quot;alicloud&quot; {
+  access_key = &quot;${var.access_key}&quot;
+  secret_key = &quot;${var.secret_key}&quot;
+  region = &quot;${var.region}&quot;
+}
+
+resource &quot;alicloud_vpc&quot; &quot;vpc&quot; {
+  name = &quot;${var.project_name}-vpc&quot;
+  cidr_block = &quot;192.168.1.0/24&quot;
+  description = &quot;Enable Bastion-Server vpc&quot;  
+}
+
+resource &quot;alicloud_vswitch&quot; &quot;vsw&quot; {
+  name = &quot;${var.project_name}-vswitch&quot;  
+  vpc_id            = &quot;${alicloud_vpc.vpc.id}&quot;
+  cidr_block        = &quot;192.168.1.0/28&quot;
+  availability_zone = &quot;${var.zone}&quot;
+  description = &quot;Enable Bastion-Server vswitch&quot;  
+}
+
+# SSH踏み台専用
+resource &quot;alicloud_security_group&quot; &quot;sg_bastion_server&quot; {
+  name   = &quot;${var.project_name}_Bastion_Server&quot;
+  description = &quot;Enable SSH access via port 22&quot;  
+  vpc_id = &quot;${alicloud_vpc.vpc.id}&quot;
+}
+
+resource &quot;alicloud_security_group_rule&quot; &quot;allow_ssh&quot; {
+  type              = &quot;ingress&quot;
+  ip_protocol       = &quot;tcp&quot;
+  nic_type          = &quot;intranet&quot;
+  policy            = &quot;accept&quot;
+  port_range        = &quot;22/22&quot;
+  priority          = 1
+  security_group_id = &quot;${alicloud_security_group.sg_bastion_server.id}&quot;
+  cidr_ip           = &quot;0.0.0.0/0&quot;
+}
+
+resource &quot;alicloud_instance&quot; &quot;ECS_instance_for_Bastion_Server&quot; {
+  instance_name   = &quot;${var.project_name}-Bastion-Server-ECS-instance&quot;
+  host_name       = &quot;${var.project_name}-Bastion-Server-ECS-instance&quot;
+  instance_type   = &quot;ecs.xn4.small&quot;
+  image_id        = &quot;centos_7_04_64_20G_alibase_201701015.vhd&quot;
+  system_disk_category = &quot;cloud_efficiency&quot;
+  security_groups = [&quot;${alicloud_security_group.sg_bastion_server.id}&quot;]
+  availability_zone = &quot;${var.zone}&quot;
+  vswitch_id = &quot;${alicloud_vswitch.vsw.id}&quot;
+  password = &quot;!Bastion2019&quot;
+  internet_max_bandwidth_out = 5
+}
+
+# 実行サーバ専用
+resource &quot;alicloud_security_group&quot; &quot;sg_production_server&quot; {
+  name   = &quot;${var.project_name}_Production_Server&quot;
+  description = &quot;Marker security group for Production server&quot;
+  vpc_id = &quot;${alicloud_vpc.vpc.id}&quot;
+}
+
+resource &quot;alicloud_security_group_rule&quot; &quot;allow_http&quot; {
+  type              = &quot;ingress&quot;
+  ip_protocol       = &quot;tcp&quot;
+  nic_type          = &quot;intranet&quot;
+  policy            = &quot;accept&quot;
+  port_range        = &quot;80/80&quot;
+  priority          = 1
+  security_group_id = &quot;${alicloud_security_group.sg_production_server.id}&quot;
+  cidr_ip           = &quot;0.0.0.0/0&quot;
+}
+
+# 実行サーバへssh接続はssh踏み台サーバのみ許容する
+resource &quot;alicloud_security_group_rule&quot; &quot;allow_ssh_for_Bastion&quot; {
+  type              = &quot;ingress&quot;
+  ip_protocol       = &quot;tcp&quot;
+  nic_type          = &quot;intranet&quot;
+  policy            = &quot;accept&quot;
+  port_range        = &quot;22/22&quot;
+  priority          = 1
+  security_group_id = &quot;${alicloud_security_group.sg_production_server.id}&quot;
+  cidr_ip           = &quot;${alicloud_instance.ECS_instance_for_Bastion_Server.public_ip}&quot; 
+}
+
+resource &quot;alicloud_instance&quot; &quot;ECS_instance_for_Production_Server&quot; {
+  instance_name   = &quot;${var.project_name}-Production-Server-ECS-instance&quot;
+  host_name   = &quot;${var.project_name}-Production-Server-ECS-instance&quot;
+  instance_type   = &quot;ecs.n4.small&quot;
+  image_id        = &quot;centos_7_04_64_20G_alibase_201701015.vhd&quot;
+  system_disk_category = &quot;cloud_efficiency&quot;
+  security_groups = [&quot;${alicloud_security_group.sg_production_server.id}&quot;]
+  availability_zone = &quot;${var.zone}&quot;
+  vswitch_id = &quot;${alicloud_vswitch.vsw.id}&quot;
+  internet_max_bandwidth_out = 5
+  password = &quot;!Production2019&quot;  
+  user_data = &quot;${file(&quot;provisioning.sh&quot;)}&quot;
+}
+</code></pre>
+
+<p><br>
+variables.tf</p>
+
+<pre><code>variable &quot;access_key&quot; {}
+variable &quot;secret_key&quot; {}
+variable &quot;region&quot; {}
+variable &quot;zone&quot; {}
+variable &quot;project_name&quot; {}
+</code></pre>
+
+<p><br>
+output.tf</p>
+
+<pre><code>output &quot;Bastion-Server-ECS_instance_ip&quot; {
+  value = &quot;${alicloud_instance.ECS_instance_for_Bastion_Server.*.public_ip}&quot;
+}
+
+output &quot;Production-Server-ECS_instance_ip&quot; {
+  value = &quot;${alicloud_instance.ECS_instance_for_Production_Server.*.public_ip}&quot;
+}
+</code></pre>
+
+<p><br>
+confing.tfvars</p>
+
+<pre><code>access_key = &quot;xxxxxxxxxxxxxxxxx&quot;
+secret_key = &quot;xxxxxxxxxxxxxxxxx&quot;
+region = &quot;ap-northeast-1&quot;
+zone = &quot;ap-northeast-1a&quot;
+project_name = &quot;Bastion-Server-for-Terraform&quot;
+</code></pre>
+
+<p><br>
+provisioning.sh</p>
+
+<pre><code>#!/bin/sh
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+</code></pre>
+
+<p><br></p>
+
+<h3 id="17-2-実行">17.2 実行</h3>
+
+<p>&nbsp; ソースの準備ができたら実行します。</p>
+
+<pre><code>terraform init
+terraform play -var-file=&quot;confing.tfvars&quot;
+terraform apply -var-file=&quot;confing.tfvars&quot;
+</code></pre>
+
+<p><img src="image/17.2.1.png" alt="図 17.2.1" />
+<br>
+これで問題なく実行できたら、踏み台サーバと本番サーバそれぞれのPublic IPが表示されます。
+<img src="image/17.2.2.png" alt="図 17.2.2" />
+<br></p>
+
+<p>実際にssh制限してるかチェックしてみます。踏み台サーバのIPアドレスが<code>47.74.54.92</code>、本番サーバのIPアドレスが<code>47.74.52.85</code>です。
+<img src="image/17.2.3.png" alt="図 17.2.3" />
+<br></p>
+
+<p>本番サーバにsshログインは出来ず、ssh踏み台サーバにsshログインできました。
+それでは本番サーバに踏み台サーバからsshログインしてみます。
+<img src="image/17.2.4.png" alt="図 17.2.4" />
+ログインできました。これで本番サーバに対し外部からssh接続不可といったセキュアな運用ができます。</p>
+
+<p>&lt;!&ndash;</p>
+
+<p><br></p>
+
+<h3 id="17-3-ssh踏み台サーバ-with-ossへのロギング">17.3 ssh踏み台サーバ with OSSへのロギング</h3>
+
+<p>&nbsp; Terraformで踏み台サーバ、本番サーバを作りました。今度はOSSへのロギング付きバージョンを作ってみます。
+全てのSSH接続は、セキュリティ観点上 OSSのssh-logsバケットにて記録されます。
+ゴールの構成図は以下の通りです。</p>
+
+<p><img src="image/17.3.png" alt="図 17.3" />
+<br>
+ソースは以下になります。サンプルソースは[こちら]()にあります。</p>
+
+<blockquote>
+</blockquote>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/help/best-practice/infrastructure-as-code/16/kubernetes/" title="Terraform 16章 Kubernetes"> <i class="fa fa-chevron-left"></i><label>Terraform 16章 Kubernetes</label></a>
+    <a class="nav nav-next" href="/help/best-practice/infrastructure-as-code/18/slb-setting-sample/" title="Terraform 18章 example: SLB設定サンプル" style="margin-right: 0px;"><label>Terraform 18章 example: SLB設定サンプル</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i>  01/07/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/infrastructure-as-code/17/Bastion-Server.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/help/js/clipboard.min.js"></script>
+
+<link href="/help/css/featherlight.min.css" rel="stylesheet">
+<script src="/help/js/featherlight.min.js"></script>
+
+
+
+<script src="/help/theme-flex/script.js"></script>
+
+<link href="/help/mermaid/mermaid.css" type="text/css" rel="stylesheet" />
+<script src="/help/mermaid/mermaid.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
