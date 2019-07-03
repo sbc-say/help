@@ -1,8 +1,10 @@
-+++
-title = "About SBC Technical Reference"
-description = ""
-weight = 90
-+++
+---
+title: "About SBC Technical Reference"
+description: ""
+date: 2019-04-03T15:31:09+09:00
+weight: 90
+draft: false
+---
 
 |大項目|中項目|小項目|
 |:------:|:-----:|:------:|

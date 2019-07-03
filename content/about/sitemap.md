@@ -18,8 +18,8 @@ draft: false
 |[ベストプラクティス]({{%relref "best-practice/_index.md" %}})|
 |:------:|
 |[アドバイザリ]({{%relref "best-practice/advisory.md" %}})|
-|[アーキテクチャ]({{%relref "best-practice/architecture.md" %}})|
-|[コスト体系]({{%relref "best-practice/pricing.md" %}})|
+|[アーキテクチャのパターン]({{%relref "best-practice/architecture.md" %}})|
+|[料金体系]({{%relref "best-practice/pricing.md" %}})|
 |<details><summary>[Infrastructure as Code]({{%relref "best-practice/infrastructure-as-code/_index.md" %}})</summary>[Terraform 1章]({{%relref "best-practice/infrastructure-as-code/terraform_01.md" %}})<br>[Terraform 2章]({{%relref "best-practice/infrastructure-as-code/terraform_02.md" %}})<br>[Terraform 3章]({{%relref "best-practice/infrastructure-as-code/terraform_03.md" %}})<br>[Terraform 4章]({{%relref "best-practice/infrastructure-as-code/terraform_04.md" %}})<br>[Terraform 5章]({{%relref "best-practice/infrastructure-as-code/terraform_05.md" %}})</details>|
 
 |[よくある質問]({{%relref "faq/_index.md" %}})
