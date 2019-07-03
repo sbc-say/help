@@ -1,7 +1,8 @@
 ---
 title: "OSS"
+description: ""
 date: 2019-04-04T15:33:15+09:00
-weight: 500
+weight: 20
 draft: false
 ---
 

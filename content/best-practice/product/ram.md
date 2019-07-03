@@ -1,10 +1,10 @@
 ---
 title: "RAM"
 date: 2019-05-15T10:37:37+09:00
-weight: 20
-draft: false
+weight: 10
+draft: true
 ---
-AAlibabaCloudはどのサービスを利用・操作するにしろ権限が必要です。
+AlibabaCloudはどのサービスを利用・操作するにしろ権限が必要です。
 Terraformで作成したリソースサービスにも他ユーザが操作できるように権限アタッチが必要になります。
 本章では、AlibabaCloudサービスに対する権限付与の方法を学びます。
 

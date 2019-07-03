@@ -7,25 +7,12 @@ draft: false
 ---
 AlibabaCloudというクラウドサービスにて2019年5月現在、中国版、国際版、日本版の３つのサービスが展開されているので、それぞれのサービス比較をまとめてみました。
 
-[AlibabaCloudのサービスiconはこちら](https://www.iconfont.cn/plus/user/detail?&uid=41718)からダウンロードになります
-https://www.iconfont.cn/plus/user/detail?&uid=41718
-
 ### AWS/Azure/GCPとの比較について
-※ AlibabaCloud公式によるAWSとの比較は[こちらを参照](https://help.aliyun.com/document_detail/65455.html)。
+※ AlibabaCloud公式によるAWSとの比較は[こちら](https://help.aliyun.com/document_detail/65455.html)を参照。
 https://help.aliyun.com/document_detail/65455.html
 
-※ AlibabaCloud公式によるAzureとの比較は[こちらを参照](https://help.aliyun.com/document_detail/74242.html)。
+※ AlibabaCloud公式によるAzureとの比較は[こちら](https://help.aliyun.com/document_detail/74242.html)を参照。
 https://help.aliyun.com/document_detail/74242.html
-
-以降、GCP、AzureはAWSをベースに割り当ててみました。こちら@hayao_k 様のqitta記事も参考になりました。
-参考：[AWS/Azure/GCPサービス比較 2019.05](https://qiita.com/hayao_k/items/906ac1fba9e239e08ae8)
-https://qiita.com/hayao_k/items/906ac1fba9e239e08ae8
-
-参考：AWS to Azure services comparison
-https://docs.microsoft.com/ja-jp/azure/architecture/aws-professional/services
-
-参考：AWS プロフェッショナルのための Google Cloud Platform
-https://cloud.google.com/docs/compare/aws
 
 
 ## コンピューティング（弹性计算）

@@ -1,9 +1,8 @@
-+++
-title = "よくある質問"
-description = ""
-weight = 40
-date= 2019-06-05T12:30:18+08:00
-draft= false
-+++
-# よくある質問
-##
+---
+title: "よくある質問"
+description: ""
+date: 2019-05-13T16:20:40+09:00
+weight: 40
+draft: false
+---
+よくある質問

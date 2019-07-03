@@ -1,9 +1,10 @@
-+++
-title = "サイトマップ"
-description = ""
-weight = 10
-+++
-
+---
+title: "サイトマップ"
+description: ""
+date: 2019-05-13T16:20:40+09:00
+weight: 10
+draft: false
+---
 
 [トップページ]({{%relref "_index.md" %}})|
 |:------:|
@@ -12,21 +13,14 @@ weight = 10
 |:------:|  
 |[アカウント登録]({{%relref "getting-started/registration.md" %}})|
 |<details><summary>[プロダクト紹介]({{%relref "getting-started/product/_index.md" %}})</summary>[ECS]({{%relref "getting-started/product/ecs.md" %}})</details>|
-|<details><summary>[AWS/Azure/GCPユーザ向け]({{%relref "getting-started/cloud-users/_index.md" %}})</summary>[AWS/Azure/GCPとのサービス比較]({{%relref "getting-started/cloud-users/vs-aws-gcp-azure.md" %}})<br>[中国と日本におけるサービス一覧]({{%relref "getting-started/cloud-users/vs-jp-cn.md" %}})</details>|
+|<details><summary>[AWS/Azure/GCPユーザ向け]({{%relref "getting-started/cloud-users/_index.md" %}})</summary>[AWS/Azure/GCPとのサービス比較]({{%relref "getting-started/cloud-users/vs-aws-gcp-azure.md" %}})<br>[中国と日本におけるサービス一覧]({{%relref "getting-started/cloud-users/services-in-cn.md" %}})</details>|
  
 |[ベストプラクティス]({{%relref "best-practice/_index.md" %}})|
 |:------:|
+|[アドバイザリ]({{%relref "best-practice/advisory.md" %}})|
 |[アーキテクチャ]({{%relref "best-practice/architecture.md" %}})|
 |[コスト体系]({{%relref "best-practice/pricing.md" %}})|
-|[セキュリティ]({{%relref "best-practice/security.md" %}})|
-|<details><summary>[プロダクト]({{%relref "best-practice/product/_index.md" %}})</summary>[RAM]({{%relref "best-practice/product/ram.md" %}})<br>[Anti-DDoS]({{%relref "best-practice/product/anti-ddos.md" %}})</details>|
 |<details><summary>[Infrastructure as Code]({{%relref "best-practice/infrastructure-as-code/_index.md" %}})</summary>[Terraform 1章]({{%relref "best-practice/infrastructure-as-code/terraform_01.md" %}})<br>[Terraform 2章]({{%relref "best-practice/infrastructure-as-code/terraform_02.md" %}})<br>[Terraform 3章]({{%relref "best-practice/infrastructure-as-code/terraform_03.md" %}})<br>[Terraform 4章]({{%relref "best-practice/infrastructure-as-code/terraform_04.md" %}})<br>[Terraform 5章]({{%relref "best-practice/infrastructure-as-code/terraform_05.md" %}})</details>|
-
- [ユースベース別シナリオ]({{%relref "scenarios/_index.md" %}})|
-|:------:|
-|<details><summary>[Webアプリケーション]({{%relref "scenarios/web-application/_index.md" %}})</summary>[Java Springboot]({{%relref "scenarios/web-application/java-springboot.md" %}})<br>[Python Django]({{%relref "scenarios/web-application/python-django.md" %}})</details>|
-|<details><summary>[CI/CD]({{%relref "scenarios/ci-cd/_index.md" %}})</summary>[E-commerce site with Terraform]({{%relref "scenarios/ci-cd/e-commerce-w-terraform.md" %}})</details>|
-|<details><summary>[Data-Analysis]({{%relref "scenarios/data-v/_index.md" %}})</summary>[Some technical reference for Data-V]({{%relref "scenarios/data-v/example.md" %}})</details>|
 
 |[よくある質問]({{%relref "faq/_index.md" %}})
 |:------:|
