@@ -6,6 +6,7 @@
     <description>Recent content in About SBC Technical Reference on テクニカルリファレンス</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <lastBuildDate>Wed, 03 Apr 2019 15:31:09 +0900</lastBuildDate>
     
 	<atom:link href="https://sbcloud.github.io/help/about/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,16 +14,15 @@
     <item>
       <title>サイトマップ</title>
       <link>https://sbcloud.github.io/help/about/sitemap/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 13 May 2019 16:20:40 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
-      <description>トップページ         Getting Started     アカウント登録   プロダクト紹介ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較
-中国と日本におけるサービス一覧       ベストプラクティス     アーキテクチャ   コスト体系   セキュリティ   プロダクトRAM
-Anti-DDoS   Infrastructure as CodeTerraform 1章
+      <description>   トップページ         Getting Started     アカウント登録   プロダクト紹介ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較
+中国と日本におけるサービス一覧       ベストプラクティス     アドバイザリ   アーキテクチャのパターン   料金体系   Infrastructure as CodeTerraform 1章
 Terraform 2章
 Terraform 3章
 Terraform 4章
-Terraform 5章       ユースベース別シナリオ     WebアプリケーションJava Springboot</description>
+Terraform 5章       よくある質問     ECS   RDS   SLB   OSS   VPC   料金   アカウント       About SBC Technical Reference     サイトマップ    </description>
     </item>
     
   </channel>

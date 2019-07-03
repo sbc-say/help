@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-03T05:11:24 UTC">
+<meta name="revised" content="2019-07-03T07:27:51 UTC">
 <title>ECS :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -135,10 +135,10 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/getting-started/cloud-users/vs-jp-cn/" class="dd-item">
+      <li data-nav-id="/help/getting-started/cloud-users/services-in-cn/" class="dd-item">
         <div>
-          <a href="/help/getting-started/cloud-users/vs-jp-cn/">
-            中国と日本におけるサービス一覧
+          <a href="/help/getting-started/cloud-users/services-in-cn/">
+            中国リージョンのサービス一覧
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -152,10 +152,17 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       <a href="/help/best-practice/">ベストプラクティス</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/help/best-practice/advisory/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/advisory/">
+            アドバイザリ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/help/best-practice/architecture/" class="dd-item">
         <div>
           <a href="/help/best-practice/architecture/">
-            アーキテクチャ
+            アーキテクチャのパターン
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -165,35 +172,6 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
             料金体系
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
-    </li>
-      <li data-nav-id="/help/best-practice/security/" class="dd-item">
-        <div>
-          <a href="/help/best-practice/security/">
-            セキュリティ
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-    <li data-nav-id="/help/best-practice/product/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/help/best-practice/product/">個別プロダクト</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/help/best-practice/product/anti-ddos/" class="dd-item">
-        <div>
-          <a href="/help/best-practice/product/anti-ddos/">
-            Anti-DDoS
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/best-practice/product/ram/" class="dd-item">
-        <div>
-          <a href="/help/best-practice/product/ram/">
-            RAM
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
     </li>
     <li data-nav-id="/help/best-practice/infrastructure-as-code/" class="dd-item haschildren
         ">
@@ -240,80 +218,6 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/scenarios/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/help/scenarios/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-    <li data-nav-id="/help/scenarios/web-application/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/help/scenarios/web-application/">ウェブアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/help/scenarios/web-application/java-springboot/" class="dd-item">
-        <div>
-          <a href="/help/scenarios/web-application/java-springboot/">
-            Java: Springboot
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/scenarios/web-application/python-django/" class="dd-item">
-        <div>
-          <a href="/help/scenarios/web-application/python-django/">
-            Python: Django
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/help/scenarios/ci-cd/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/help/scenarios/ci-cd/">CI/CD</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/help/scenarios/ci-cd/e-commerce-w-terraform/" class="dd-item">
-        <div>
-          <a href="/help/scenarios/ci-cd/e-commerce-w-terraform/">
-            CI/CD
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/scenarios/ci-cd/k8s/" class="dd-item">
-        <div>
-          <a href="/help/scenarios/ci-cd/k8s/">
-            K8s
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/scenarios/ci-cd/k9s/" class="dd-item">
-        <div>
-          <a href="/help/scenarios/ci-cd/k9s/">
-            K9s
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/help/scenarios/data-v/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/help/scenarios/data-v/">データ分析</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/help/scenarios/data-v/example/" class="dd-item">
-        <div>
-          <a href="/help/scenarios/data-v/example/">
-            データ分析の例を記載
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
-        </ul>
-    </li>
     <li data-nav-id="/help/faq/" class="dd-item parent haschildren
         ">
       <div>
@@ -321,17 +225,17 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/faq/account/" class="dd-item">
-        <div>
-          <a href="/help/faq/account/">
-            アカウント
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
       <li data-nav-id="/help/faq/ecs/" class="dd-item active">
         <div>
           <a href="/help/faq/ecs/">
             ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/oss/" class="dd-item">
+        <div>
+          <a href="/help/faq/oss/">
+            OSS
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -356,17 +260,17 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/faq/oss/" class="dd-item">
-        <div>
-          <a href="/help/faq/oss/">
-            OSS
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
       <li data-nav-id="/help/faq/price/" class="dd-item">
         <div>
           <a href="/help/faq/price/">
             料金
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/account/" class="dd-item">
+        <div>
+          <a href="/help/faq/account/">
+            アカウント
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -442,17 +346,15 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
    Getting Started</option>
     <option value="/help/best-practice/" >
    ベストプラクティス</option>
-    <option value="/help/scenarios/" >
-   ユースケース別シナリオ</option>
     <option value="/help/faq/" >
    よくある質問</option> 
-      <option value="/help/faq/account/" >- アカウント</option>
       <option value="/help/faq/ecs/"  selected>- ECS</option>
+      <option value="/help/faq/oss/" >- OSS</option>
       <option value="/help/faq/slb/" >- SLB</option>
       <option value="/help/faq/rds/" >- RDS</option>
       <option value="/help/faq/vpc/" >- VPC</option>
-      <option value="/help/faq/oss/" >- OSS</option>
       <option value="/help/faq/price/" >- 料金</option>
+      <option value="/help/faq/account/" >- アカウント</option>
   
     <option value="/help/about/" >
    About SBC Technical Reference</option>
@@ -737,8 +639,8 @@ ECSパスワードの変更は下記メニューからできます。パスワ�
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/faq/account/" title="アカウント"> <i class="fa fa-chevron-left"></i><label>アカウント</label></a>
-    <a class="nav nav-next" href="/help/faq/slb/" title="SLB" style="margin-right: 0px;"><label>SLB</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/faq/" title="よくある質問"> <i class="fa fa-chevron-left"></i><label>よくある質問</label></a>
+    <a class="nav nav-next" href="/help/faq/oss/" title="OSS" style="margin-right: 0px;"><label>OSS</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -753,14 +655,14 @@ ECSパスワードの変更は下記メニューからできます。パスワ�
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  04/04/2019
+        <i class='fa fa-calendar'></i> Last update on 04/04/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/faq/ecs.md" target="blank"><i class="fa fa-code-fork"></i>
-        </a>
+        Improve this page</a>
     </div>
     
   </div>
@@ -770,7 +672,7 @@ ECSパスワードの変更は下記メニューからできます。パスワ�
 
 
   
-    
+    Create a content/_footer.md file to customize the footer content
   
 
 
