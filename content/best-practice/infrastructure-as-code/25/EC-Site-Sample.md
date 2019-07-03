@@ -387,9 +387,9 @@ magento_auth_private_key = "xxxxxxxxxxxxxxxx"
 
 magento_auth_user = "admin"
 magento_auth_password = "admin123"
-magento_auth_email = "hironobu.ohara@g.softbank.co.jp"
-magento_auth_firstname = "Ohara"
-magento_auth_lastname = "Hironobu"
+magento_auth_email = "xxxxxxx@hoge.com"
+magento_auth_firstname = "foo"
+magento_auth_lastname = "bar"
 
 domain_url = "localhost"
 
