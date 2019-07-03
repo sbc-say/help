@@ -6,7 +6,6 @@ date= 2019-06-05T12:30:18+08:00
 draft= false
 +++
 
-# AlibabaCloudでどんなサービスがあるか
 AlibabaCloudというクラウドサービスにて2019年5月現在、中国版、国際版、日本版の３つのサービスが展開されているので、それぞれのサービス比較をまとめてみました。
 
 [AlibabaCloudのサービスiconはこちら](https://www.iconfont.cn/plus/user/detail?&uid=41718)からダウンロードになります

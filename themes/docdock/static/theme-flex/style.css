@@ -727,10 +727,12 @@ ul.children.children-card {
 
 /*# sourceMappingURL=style.css.map */
 
-table {
-    width: 500px;
-}
+/* not working */
+/*table {
+    table-layout: fixed;
+    width: 800px;
+}*/
 
 tr, td, th {
-    white-space:nowrap;
+    word-break:break-word;
 }
