@@ -1,11 +1,10 @@
-+++
-title = "AWS/Azure/GCPとのサービス比較"
-description = ""
-weight = 10
-date= 2019-06-05T12:30:18+08:00
-draft= false
-+++
-
+---
+title: "サービスラインナップ比較"
+description: "Alibaba CloudとAWS、GCP、Azureのサービスラインアップの比較を記載します"
+date: 2019-06-05T12:30:18+08:00
+weight: 10
+draft: false
+---
 AlibabaCloudというクラウドサービスにて2019年5月現在、中国版、国際版、日本版の３つのサービスが展開されているので、それぞれのサービス比較をまとめてみました。
 
 [AlibabaCloudのサービスiconはこちら](https://www.iconfont.cn/plus/user/detail?&uid=41718)からダウンロードになります
