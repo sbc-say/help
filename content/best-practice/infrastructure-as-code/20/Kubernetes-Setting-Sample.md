@@ -96,8 +96,8 @@ output "master_nodes" {
 <br>
 confing.tfvars
 ```
-access_key = "LTAI9V3rQftxI2TJ"
-secret_key = "JA0psSnhsd8TaMWhZDeEtP1mWSpA8q"
+access_key = "xxxxxxxxxxxxxxxxxx"
+secret_key = "xxxxxxxxxxxxxxxxxx"
 region = "ap-northeast-1"
 zone = "ap-northeast-1a"
 project_name = "Kubernetes-Sample-for-Terraform"

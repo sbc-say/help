@@ -146,7 +146,7 @@ resource "alicloud_eip_association" "eip_ecs_association" {
 https://www.terraform.io/docs/providers/alicloud/r/dns.html
 
 
- ->
+ -->
 
 
 
