@@ -11,5 +11,154 @@
 	<atom:link href="https://sbcloud.github.io/help/scenario/ci-cd/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Terraform 17章 example: ssh踏み台サーバ</title>
+      <link>https://sbcloud.github.io/help/scenario/ci-cd/bastion-server/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenario/ci-cd/bastion-server/</guid>
+      <description>第17章 example: ssh踏み台サーバ &amp;nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
+ 17章 example: ssh踏み台サーバ 18章 example: SLB設定サンプル 19章 example: RDS設定サンプル 20章 example: kubernetes設定サンプル 21章 example: Webアプリケーション 22章 example: 高速コンテンツ配信 23章 example: オートスケーリング 24章 example: KubernetesによるコンテナでWordPress作成 25章 example: ECサイト構築  
+17.1 ssh踏み台サーバ &amp;nbsp; Terraformで踏み台サーバ、本番サーバを作ってみます。ゴールの構成図は以下の通りです。
+ソースは以下になります。サンプルソースは[こちら]()にあります。
+main.tf
+provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.region}&amp;quot; } resource &amp;quot;alicloud_vpc&amp;quot; &amp;quot;vpc&amp;quot; { name = &amp;quot;${var.project_name}-vpc&amp;quot; cidr_block = &amp;quot;192.168.1.0/24&amp;quot; description = &amp;quot;Enable Bastion-Server vpc&amp;quot; } resource &amp;quot;alicloud_vswitch&amp;quot; &amp;quot;vsw&amp;quot; { name = &amp;quot;${var.</description>
+    </item>
+    
+    <item>
+      <title>Terraform 18章 example: SLB設定サンプル</title>
+      <link>https://sbcloud.github.io/help/scenario/ci-cd/slb-setting-sample/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenario/ci-cd/slb-setting-sample/</guid>
+      <description>第18章 example: SLB設定サンプル &amp;nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
+ 17章 example: ssh踏み台サーバ 18章 example: SLB設定サンプル 19章 example: RDS設定サンプル 20章 example: kubernetes設定サンプル 21章 example: Webアプリケーション 22章 example: 高速コンテンツ配信 23章 example: オートスケーリング 24章 example: KubernetesによるコンテナでWordPress作成 25章 example: ECサイト構築  
+18.1 SLB設定サンプル &amp;nbsp; Terraformで踏み台サーバ、本番サーバを作ってみます。ゴールの構成図は以下の通りです。
+ソースは以下になります。サンプルソースは[こちら]()にあります。
+main.tf
+provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.region}&amp;quot; } resource &amp;quot;alicloud_vpc&amp;quot; &amp;quot;vpc&amp;quot; { name = &amp;quot;${var.project_name}-vpc&amp;quot; cidr_block = &amp;quot;192.168.1.0/24&amp;quot; description = &amp;quot;Enable SLB-Setteing-Sample vpc&amp;quot; } resource &amp;quot;alicloud_vswitch&amp;quot; &amp;quot;vsw&amp;quot; { name = &amp;quot;${var.</description>
+    </item>
+    
+    <item>
+      <title>Terraform 19章 example: RDS設定サンプル</title>
+      <link>https://sbcloud.github.io/help/scenario/ci-cd/rds-setting-sample/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenario/ci-cd/rds-setting-sample/</guid>
+      <description>第19章 example: RDS設定サンプル &amp;nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
+ 17章 example: ssh踏み台サーバ 18章 example: SLB設定サンプル 19章 example: RDS設定サンプル 20章 example: kubernetes設定サンプル 21章 example: Webアプリケーション 22章 example: 高速コンテンツ配信 23章 example: オートスケーリング 24章 example: KubernetesによるコンテナでWordPress作成 25章 example: ECサイト構築  
+19.1 SLB設定サンプル &amp;nbsp; Terraformで踏み台サーバ、本番サーバを作ってみます。ゴールの構成図は以下の通りです。
+なおECSからRDS for MySQLへへ接続するためのdocker-compose.ymlファイルは以下の通りです。 
+ソースは以下になります。サンプルソースは[こちら]()にあります。
+main.tf
+provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.region}&amp;quot; } resource &amp;quot;alicloud_vpc&amp;quot; &amp;quot;vpc&amp;quot; { name = &amp;quot;${var.project_name}-vpc&amp;quot; cidr_block = &amp;quot;192.168.1.0/24&amp;quot; description = &amp;quot;Enable RDS Setting Sample vpc&amp;quot; } resource &amp;quot;alicloud_vswitch&amp;quot; &amp;quot;vsw&amp;quot; { name = &amp;quot;${var.</description>
+    </item>
+    
+    <item>
+      <title>Terraform 20章 example: kubernetes設定サンプル</title>
+      <link>https://sbcloud.github.io/help/scenario/ci-cd/kubernetes-setting-sample/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenario/ci-cd/kubernetes-setting-sample/</guid>
+      <description>第20章 example: kubernetes設定サンプル &amp;nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
+ 17章 example: ssh踏み台サーバ 18章 example: SLB設定サンプル 19章 example: RDS設定サンプル 20章 example: kubernetes設定サンプル 21章 example: Webアプリケーション 22章 example: 高速コンテンツ配信 23章 example: オートスケーリング 24章 example: KubernetesによるコンテナでWordPress作成 25章 example: ECサイト構築  
+20.1 kubernetes設定サンプル &amp;nbsp; 簡単なkuberntesクラスターを作ってみます。シングルゾーンによるクラスタでの作成になります。ゴールの構成図は以下の通りです。
+
+ソースは以下になります。サンプルソースは[こちら]()にあります。
+
+main.tf
+provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.region}&amp;quot; } resource &amp;quot;alicloud_vpc&amp;quot; &amp;quot;vpc&amp;quot; { name = &amp;quot;${var.project_name}-vpc&amp;quot; cidr_block = &amp;quot;192.168.1.0/24&amp;quot; description = &amp;quot;Enable k8s-Sample vpc&amp;quot; } resource &amp;quot;alicloud_vswitch&amp;quot; &amp;quot;vsw&amp;quot; { name = &amp;quot;${var.</description>
+    </item>
+    
+    <item>
+      <title>Terraform 21章 example: Webアプリケーション</title>
+      <link>https://sbcloud.github.io/help/scenario/ci-cd/web-application/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenario/ci-cd/web-application/</guid>
+      <description>第21章 example: Webアプリケーション &amp;nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
+ 17章 example: ssh踏み台サーバ 18章 example: SLB設定サンプル 19章 example: RDS設定サンプル 20章 example: kubernetes設定サンプル 21章 example: Webアプリケーション 22章 example: 高速コンテンツ配信 23章 example: オートスケーリング 24章 example: KubernetesによるコンテナでWordPress作成 25章 example: ECサイト構築  
+21.1 Webアプリケーション &amp;nbsp; こちらはAlibabaCloud公式サイトにあるソリューション構築例を通じての紹介になります。IDCなどデータセンターにて、スケーラブルで世界規模で利用可能なWebアプリケーションを開発および展開するのは、多くの手作業から工数がかかり、またトラフィックに応じてリソースの効率さが悪くなってしまう課題があります。しかしAlibabaCloudで構築すると、それらの課題が払拭されます。それだけでなく、上に、投資収益率（ROI）も向上するメリットがあります。
+ すぐに着手できる配置構成 必要な分だけリソースを提供（オンデマンドサーバープロビジョニング） 単一障害点（SPOF）なし 多重層のセキュリティ保護あり  
+&amp;nbsp; TerraformでWebアプリケーションを作ってみます。ゴールの構成図は以下の通りです。
+
+ソースは以下になります。サンプルソースは[こちら]()にあります。
+
+main.tf
+provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.region}&amp;quot; } resource &amp;quot;alicloud_vpc&amp;quot; &amp;quot;default&amp;quot; { name = &amp;quot;${var.</description>
+    </item>
+    
+    <item>
+      <title>Terraform 22章 example: 高速コンテンツ配信</title>
+      <link>https://sbcloud.github.io/help/scenario/ci-cd/accelerated-content-delivery/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenario/ci-cd/accelerated-content-delivery/</guid>
+      <description>第22章 example: 高速コンテンツ配信 &amp;nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
+ 17章 example: ssh踏み台サーバ 18章 example: SLB設定サンプル 19章 example: RDS設定サンプル 20章 example: kubernetes設定サンプル 21章 example: Webアプリケーション 22章 example: 高速コンテンツ配信 23章 example: オートスケーリング 24章 example: KubernetesによるコンテナでWordPress作成 25章 example: ECサイト構築  
+22.1 高速コンテンツ配信 &amp;nbsp; こちらはAlibabaCloud公式サイトにあるソリューション構築例を通じての紹介になります。従来のWebアプリケーションアーキテクチャでは、Webアプリケーションが大量のリクエストトラフィックを受け取ると、サーバーが過負荷になり、サイトが遅くなったりサーバーがクラッシュしたりする可能性があります。また地理的に異なる場所に分散していると、コンテンツが1か所から配信されるため、待ち時間の問題が発生する可能性があります。そのためにWebアプリケーションは高速でコンテンツ配信することが望ましいです。
+ グローバル配信が可能 静的および動的コンテンツのアクセラレーション 待ち時間の短縮などパフォーマンス改善  
+&amp;nbsp; TerraformでWebアプリケーションを作ってみます。ゴールの構成図は以下の通りです。
+
+ソースは以下になります。サンプルソースは[こちら]()にあります。
+
+main.tf
+provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.region}&amp;quot; } resource &amp;quot;alicloud_vpc&amp;quot; &amp;quot;default&amp;quot; { name = &amp;quot;${var.</description>
+    </item>
+    
+    <item>
+      <title>Terraform 23章 example: オートスケーリング</title>
+      <link>https://sbcloud.github.io/help/scenario/ci-cd/auto-scaling/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenario/ci-cd/auto-scaling/</guid>
+      <description>第23章 example: オートスケーリング &amp;nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
+ 17章 example: ssh踏み台サーバ 18章 example: SLB設定サンプル 19章 example: RDS設定サンプル 20章 example: kubernetes設定サンプル 21章 example: Webアプリケーション 22章 example: 高速コンテンツ配信 23章 example: オートスケーリング 24章 example: KubernetesによるコンテナでWordPress作成 25章 example: ECサイト構築  
+23.1 オートスケーリング &amp;nbsp; こちらはAlibabaCloud公式サイトにあるソリューション構築例を通じての紹介になります。
+プロビジョニング済みのECSインスタンスをメインとするWebアプリケーションにて、予測が難しいトラフィックニーズに応じて、必要なECSインスタンス台数を増減してくれます。これにより、アプリケーションを止めることなく稼働し続けることが出来ます。同時にリソースに応じた需要増/減から必要なコスト管理も実現出来ます。
+ アプリケーションの稼働時間・堅牢性向上 サーバーの自動プロビジョニング ニーズに応じたコスト管理  
+&amp;nbsp; TerraformでWebアプリケーションを作ってみます。ゴールの構成図は以下の通りです。
+
+ソースは以下になります。サンプルソースは[こちら]()にあります。
+
+main.tf
+provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.region}&amp;quot; } resource &amp;quot;alicloud_vpc&amp;quot; &amp;quot;default&amp;quot; { name = &amp;quot;${var.</description>
+    </item>
+    
+    <item>
+      <title>Terraform 24章 example: KubernetesによるコンテナでWordPress作成</title>
+      <link>https://sbcloud.github.io/help/scenario/ci-cd/web-application-on-kubernetes/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenario/ci-cd/web-application-on-kubernetes/</guid>
+      <description>第24章 example: KubernetesによるコンテナでWordPress作成 &amp;nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
+ 17章 example: ssh踏み台サーバ 18章 example: SLB設定サンプル 19章 example: RDS設定サンプル 20章 example: kubernetes設定サンプル 21章 example: Webアプリケーション 22章 example: 高速コンテンツ配信 23章 example: オートスケーリング 24章 example: KubernetesによるコンテナでWordPress作成 25章 example: ECサイト構築  
+24.1 KubernetesによるコンテナでWordPress作成 &amp;nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。 1. AlibabaCloudでKubernetesクラスターを生成 1. kube_configを環境変数にて設定 1. KubernetesクラスターのローカルボリュームにてWordPressとMySQLをインストール
+こちらはAlibabaCloud Terraformのサンプル集を通じての紹介になります。
+24.2 Kubernetesでクラスタ生成 &amp;nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。
+
+&amp;nbsp; TerraformでWebアプリケーションを作ってみます。step1のゴール構成図は以下の通りです。
+
+ソースは以下になります。サンプルソースは[こちら]()にあります。
+
+main.tf
+provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.</description>
+    </item>
+    
+    <item>
+      <title>Terraform 25章 example: MagentoでECサイト構築</title>
+      <link>https://sbcloud.github.io/help/scenario/ci-cd/ec-site-sample/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/scenario/ci-cd/ec-site-sample/</guid>
+      <description>第25章 example: MagentoでECサイト構築 &amp;nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第25章はTerraformのサンプルコードを交えて解説します。
+ 17章 example: ssh踏み台サーバ 18章 example: SLB設定サンプル 19章 example: RDS設定サンプル 20章 example: kubernetes設定サンプル 21章 example: Webアプリケーション 22章 example: 高速コンテンツ配信 23章 example: オートスケーリング 24章 example: KubernetesによるコンテナでWordPress作成 25章 example: ECサイト構築  
+25.1 ECサイト &amp;nbsp; インターネットを通じて自社商品を販売、宣伝するのにおすすめなのが、ECサイトを作るという方法です。ECは Electronic Commerce（電子商取引）の略です。 ECサイトの一つとして、オープンソースの電子商取引アプリケーション MagentoとWoo Commerce を使った構築方法がメインとなっています。Magento、もしくはWoo Commerce を使用すると、コーディングを一切行わなくてもオンラインストアをすばやく設定できます。それだけでなく多くの拡張機能、プラグイン、そしてテーマでカスタマイズすることもできます。今回は AlibabaCloud上にて高可用性アーキテクチャでMagento Community EditionをIaCで自動実装してみます。
+ Magento Woo Commerce   
+ちなみに、Amazonや楽天のように一つのWebサイトに複数の商店の商品やサービスがまとまっているものはオンラインモールといい、オープンソースのオンラインショッピング Webサイト管理システム EC-CUBEなどの方法があります。
+ EC-CUBE   
+25.2 ECサイトMagentoの構築について &amp;nbsp; ECサイト MagentoをTerraformを使って一発で構築してみます。ゴールの構成図は以下の通りです。 ソースは以下になります。サンプルソースは[こちら]()にあります。</description>
+    </item>
+    
   </channel>
 </rss>

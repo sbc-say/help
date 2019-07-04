@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SB Cloud&nbsp;テクニカルリファレンス</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-07-04T08:24:11 UTC">
+<title>Terraform文法について :: テクニカルリファレンス</title>
+<link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
+<link href="/help/css/font-awesome.min.css" rel="stylesheet">
+<link href="/help/css/nucleus.css" rel="stylesheet">
+<link href="/help/theme-flex/style.css" rel="stylesheet">
+
+	<link href="/help/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/help/css/bootstrap.min.css">
+<script src="/help/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/sbcloud.github.io\/help\/";
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GTM-P4CXTW', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" id="mierucajs">
+window.__fid = window.__fid || [];__fid.push([317537360]);
+(function() {
+function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
+setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
+})();
+</script>
+
+
+
+<meta name="description" content="Alibaba Cloudでも用いられるTerraformの文法を説明します">
+
+        
+
+
+<link href="/help/css/custom.css"  rel="stylesheet">
+
+
+    
+  </head>
+  <body data-url="/help/best-practice/infrastructure-as-code/terraform/05/program-syntax/">
+    
+      <header>
+  <div class="logo">
+    <a href="https://sbcloud.github.io/help/" style="vertical-align: baseline;">
+   <img src="https://sbcloud.github.io/help//img/sbcloud_logo.png" class="noshadow" alt="">
+<a class="baselink" href="https://sbcloud.github.io/help/" style="font-size:24px">
+    テクニカルリファレンス
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+
+<nav class="shortcuts">
+    <li>
+        <span class="searchbox">
+            <input data-search-input id="search-by" type="text" placeholder="検索">
+        </span>
+        <script type="text/javascript" src="/help/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/help/js/auto-complete.js"></script>
+        <link href="/help/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+            
+            var baseurl = "https:\/\/sbcloud.github.io\/help\/";
+            
+        </script>
+        <script type="text/javascript" src="/help/js/search.js"></script>
+    </li>
+            <li class="" role="">
+                <a href="https://github.com/sbcloud/help"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+        </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/">Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/registration/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/registration/">
+            アカウント登録
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/getting-started/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/product/">プロダクトの紹介</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/product/links/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/links/">
+            プロダクト資料のリンク一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/product/ecs-by-region/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/ecs-by-region/">
+            ECSの使用可能なRegion/Spec/Price紹介
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/getting-started/cloud-users/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/cloud-users/vs-aws-gcp-azure/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/vs-aws-gcp-azure/">
+            サービスラインナップ比較
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/cloud-users/services-in-cn/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/services-in-cn/">
+            中国リージョンのサービス一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/advisory/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/advisory/">
+            アドバイザリ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/architecture/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/architecture/">
+            アーキテクチャのパターン
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/pricing/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/pricing/">
+            料金体系
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/best-practice/infrastructure-as-code/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/infrastructure-as-code/">Infrastructure as Codeの実践</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/infrastructure-as-code/terraform/">Terraform</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/01/how-to-use/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/01/how-to-use/">
+            Terraformとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/02/install/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/02/install/">
+            インストール
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/03/sample-project/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/03/sample-project/">
+            サンプルプロジェクトの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/04/run-terraforom/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/04/run-terraforom/">
+            サンプルプロジェクトの実行
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/05/program-syntax/" class="dd-item active">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/05/program-syntax/">
+            Terraform文法について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/06/docker/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/06/docker/">
+            Dockerについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/07/module/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/07/module/">
+            Moduleについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/08/vpc/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/08/vpc/">
+            VPCの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/09/ecs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/09/ecs/">
+            ECS、EIPの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/10/slb/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/10/slb/">
+            SLBの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/11/autoscale/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/11/autoscale/">
+            AutoScalingの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/12/oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/12/oss/">
+            OSSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/13/rds/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/13/rds/">
+            RDSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/14/ram/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/14/ram/">
+            RAMの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/15/kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/infrastructure-as-code/terraform/15/kubernetes/">
+            Kubernetesの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/scenario/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/scenario/ci-cd/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/ci-cd/">CI/CD</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/scenario/ci-cd/bastion-server/" class="dd-item">
+        <div>
+          <a href="/help/scenario/ci-cd/bastion-server/">
+            Terraform 17章 example: ssh踏み台サーバ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/ci-cd/slb-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/ci-cd/slb-setting-sample/">
+            Terraform 18章 example: SLB設定サンプル
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/ci-cd/rds-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/ci-cd/rds-setting-sample/">
+            Terraform 19章 example: RDS設定サンプル
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/ci-cd/kubernetes-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/ci-cd/kubernetes-setting-sample/">
+            Terraform 20章 example: kubernetes設定サンプル
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/ci-cd/web-application/" class="dd-item">
+        <div>
+          <a href="/help/scenario/ci-cd/web-application/">
+            Terraform 21章 example: Webアプリケーション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/ci-cd/accelerated-content-delivery/" class="dd-item">
+        <div>
+          <a href="/help/scenario/ci-cd/accelerated-content-delivery/">
+            Terraform 22章 example: 高速コンテンツ配信
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/ci-cd/auto-scaling/" class="dd-item">
+        <div>
+          <a href="/help/scenario/ci-cd/auto-scaling/">
+            Terraform 23章 example: オートスケーリング
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/ci-cd/web-application-on-kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/scenario/ci-cd/web-application-on-kubernetes/">
+            Terraform 24章 example: KubernetesによるコンテナでWordPress作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/ci-cd/ec-site-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/ci-cd/ec-site-sample/">
+            Terraform 25章 example: MagentoでECサイト構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/faq/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/faq/">よくある質問</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/faq/ecs/" class="dd-item">
+        <div>
+          <a href="/help/faq/ecs/">
+            ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/oss/" class="dd-item">
+        <div>
+          <a href="/help/faq/oss/">
+            OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
+        <div>
+          <a href="/help/faq/slb/">
+            SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/rds/" class="dd-item">
+        <div>
+          <a href="/help/faq/rds/">
+            RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/vpc/" class="dd-item">
+        <div>
+          <a href="/help/faq/vpc/">
+            VPC
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/account/" class="dd-item">
+        <div>
+          <a href="/help/faq/account/">
+            アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/about/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/about/">About SBC Technical Reference</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/about/sitemap/" class="dd-item">
+        <div>
+          <a href="/help/about/sitemap/">
+            サイトマップ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+<a class="github-button" href="https://github.com/sbcloud/help/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download SBC Technical Reference on GitHub">Download</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help" data-icon="octicon-star" data-show-count="false" aria-label="Star SBC Technical Reference on GitHub">Star</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork SBC Technical Reference on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    </section>
+  </aside>
+  <section class="page">
+
+    <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span id="sidebar-toggle-span">
+          <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+            <i class="fa fa-bars"></i>
+          </a>
+        </span>
+        <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+        <span class="links">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/infrastructure-as-code/'>Infrastructure as Codeの実践</a> > <a href='/help/best-practice/infrastructure-as-code/terraform/'>Terraform</a> > Terraform文法について
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+        </span>
+    </div>
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/help/getting-started/" >
+   Getting Started</option>
+    <option value="/help/best-practice/" >
+   ベストプラクティス</option> 
+      <option value="/help/best-practice/advisory/" >- アドバイザリ</option>
+      <option value="/help/best-practice/architecture/" >- アーキテクチャのパターン</option>
+      <option value="/help/best-practice/pricing/" >- 料金体系</option>
+    <option value="/help/best-practice/infrastructure-as-code/" >
+  - 
+   Infrastructure as Codeの実践</option> 
+    <option value="/help/best-practice/infrastructure-as-code/terraform/" >
+  -- 
+   Terraform</option> 
+      <option value="/help/best-practice/infrastructure-as-code/terraform/01/how-to-use/" >--- Terraformとは</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/02/install/" >--- インストール</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/03/sample-project/" >--- サンプルプロジェクトの作成</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/04/run-terraforom/" >--- サンプルプロジェクトの実行</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/05/program-syntax/"  selected>--- Terraform文法について</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/06/docker/" >--- Dockerについて</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/07/module/" >--- Moduleについて</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/08/vpc/" >--- VPCの作成</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/09/ecs/" >--- ECS、EIPの作成</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/10/slb/" >--- SLBの作成</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/11/autoscale/" >--- AutoScalingの作成</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/12/oss/" >--- OSSの作成</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/13/rds/" >--- RDSの作成</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/14/ram/" >--- RAMの作成</option>
+      <option value="/help/best-practice/infrastructure-as-code/terraform/15/kubernetes/" >--- Kubernetesの作成</option>
+  
+  
+  
+    <option value="/help/scenario/" >
+   ユースケース別シナリオ</option>
+    <option value="/help/faq/" >
+   よくある質問</option>
+    <option value="/help/about/" >
+   About SBC Technical Reference</option>
+
+
+
+        </select>
+      </center>
+    </div>
+
+    <h1>Terraform文法について</h1>
+
+    
+    
+    
+    
+
+<p>&nbsp; 前章は 簡単なWebサーバを立ち上げるというサンプルプロジェクトを実行しました。うち、Terraformには様々な記載文法がありますので、把握した方がいい部分だけ説明します。</p>
+
+<p><br></p>
+
+<h3 id="1-configuration-syntax">1. Configuration Syntax</h3>
+
+<p>&nbsp; Terraformのコード構成要素、コードの構成文の書き方です。Terraformの利用ガイドラインに沿って記載してみてください。Terraformのバージョンによっては書き方が異なる場合がありますので、注意が必要です。</p>
+
+<pre><code># project_nameを宣言
+variable &quot;project_name&quot; {
+}
+
+
+/* alicloud_vpcを設定
+　 変数project_nameを呼び出す  */
+resource &quot;alicloud_vpc&quot; &quot;vpc&quot; {
+  name = &quot;${var.project_name}-vpc&quot;
+  cidr_block = &quot;192.168.1.0/24&quot;
+}
+
+</code></pre>
+
+<ul>
+<li>単一行コメントは<code>#</code>をつけます。</li>
+<li>複数行コメントは<code>/*</code>と<code>*/</code>で囲みます。</li>
+<li>文字列は二重引用符で囲みます。</li>
+<li>文字列は<code>${}</code>を使って他の構文や値を補間できます。 <code>${var.foo}</code>。</li>
+<li>数字は10進数で扱います。数字の前に英数字を付けると、例えば0xでも16進数として扱われます。</li>
+<li>ブール値が使え、true、falseのどれかになります。</li>
+<li>プリミティブ型のリストは角括弧（[]）で作成できます。例：<code>[&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;]</code></li>
+<li>マップは中括弧（{}）とコロン（:） で作成できます。例：<code>{ &quot;foo&quot;: &quot;bar&quot;, &quot;bar&quot;: &quot;baz&quot; }</code>  キーが数字で始まっていない限り、キーでは引用符を省略できます。その場合は、引用符が必要です。単一行マップでは、キーと値のペアの間にコンマが必要です。複数行マップではキーと値のペアの間の改行で十分です。</li>
+</ul>
+
+<p><a href="https://www.terraform.io/docs/configuration-0-11/syntax.html">他、構成文の書き方</a>もありますが、ひとまずは上記のを抑えれば大抵問題ないです。</p>
+
+<p><br></p>
+
+<h3 id="2-interpolation-syntax">2. Interpolation Syntax</h3>
+
+<p>&nbsp; 変数・関数・属性など、コード補充機能です。</p>
+
+<ul>
+<li><p>ユーザ文字列変数
+var.接頭辞とそれに続く変数名を使用します。たとえば<code>${var.foo}</code> で foo変数値を補間します。</p></li>
+
+<li><p>ユーザーマップ変数
+構文は<code>var.MAP[&quot;KEY&quot;]</code>です。たとえば<code>${var.amis[&quot;us-east-1&quot;]}</code> でマップ変数<code>us-east-1</code>、内キーの値<code>amis</code>を取得します。</p></li>
+
+<li><p>ユーザリスト変数
+構文は<code>${var.LIST}</code>です。たとえば<code>${var.subnets}</code> で<code>subnetsリストの値</code>をリストとして取得します。リスト要素をindexで返すこともできます。例：<code>${var.subnets[idx]}</code>。</p></li>
+
+<li><p>リソース自身の属性
+構文はself.ATTRIBUTEです。たとえば<code>${self.private_ip}</code> でそのリソースの<code>private_ip</code>を取得します。</p></li>
+
+<li><p>他のリソースの属性
+構文は<code>TYPE.NAME.ATTRIBUTE</code>です。たとえば<code>${aws_instance.web.id}</code>という名前の<code>aws_instance</code>リソースからweb属性のIDを取得できます。リソースにcount属性セットがある場合は、0から始まるインデックスを使用して個々の属性にアクセスできます。例：<code>${aws_instance.web.0.id}</code>。 splat構文を使ってすべての属性のリストを取得することもできます。例：<code>${aws_instance.web.*.id}</code>。</p></li>
+
+<li><p>データソースの属性
+構文は<code>data.TYPE.NAME.ATTRIBUTE</code>です。たとえば<code>${data.aws_ami.ubuntu.id}</code>なら<code>aws_ami</code>というデータソースから<code>ubuntu</code>属性の<code>id</code>を取得します。データソースに属性セットがある場合は、のようにゼロから始まるインデックスを使用して個々の属性にアクセスできます。例：<code>${data.aws_subnet.example.0.cidr_block}</code>。 splat構文を使ってすべての属性のリストを取得することもできます。例：<code>${data.aws_subnet.example.*.cidr_block}</code></p></li>
+
+<li><p>モジュールからの出力
+構文は<code>MODULE.NAME.OUTPUT</code>です。たとえば<code>${module.foo.bar}</code>の場合、<code>foo</code>というモジュールの<code>bar</code>を取得します。</p></li>
+
+<li><p>カウント情報
+構文は<code>count.FIELD</code>です。たとえば<code>${count.index}</code>の場合、<code>count</code>毎のインデックスらリソースを取得します。</p></li>
+</ul>
+
+<p>その他、<a href="https://www.terraform.io/docs/configuration-0-11/interpolation.html">補充機能はTerraformバージョンごとに色々追加されていますので、最新版はこちらを参照</a>してみてください。</p>
+
+<p><br></p>
+
+<h3 id="3-外部変数">3. 外部変数</h3>
+
+<p>&nbsp; 上記にも記述しましたが、RAMなどの情報を他ユーザへ渡したくない場合、別途設定ファイル <code>confing.tfvars</code> へ記載します。例えば以下の別途設定ファイル <code>confing.tfvars</code>、および実行ファイル <code>main.tf</code> があるとします。</p>
+
+<p>▼ 別途設定ファイル <code>confing.tfvars</code> の中身</p>
+
+<pre><code>access_key = &quot;xxxxxxxxxxxxxxxxxx&quot;
+secret_key = &quot;xxxxxxxxxxxxxxxxxx&quot;
+region = &quot;ap-northeast-1&quot;
+zone = &quot;ap-northeast-1a&quot;
+</code></pre>
+
+<p>▼ 実行ファイル <code>main.tf</code> の中身</p>
+
+<pre><code>variable &quot;access_key&quot; {}
+variable &quot;secret_key&quot; {}
+variable &quot;region&quot; {}
+variable &quot;zone&quot; {}
+
+provider &quot;alicloud&quot; {
+  access_key = &quot;${var.access_key}&quot;
+  secret_key = &quot;${var.secret_key}&quot;
+  region = &quot;${var.region}&quot;
+}
+</code></pre>
+
+<p>これをコマンド実行時に「 -var-file=&rdquo;&lt;ファイル名&gt;&ldquo;」引数オプションで設定ファイルを外部変数・リンクし実行します。</p>
+
+<pre><code>$ terraform plan -var-file=&quot;confing.tfvars&quot;
+</code></pre>
+
+<p>すると、RAMなどアカウント情報を別ファイルに残したまま、リソース作成されます。</p>
+
+<p><br></p>
+
+<h3 id="4-ローカル値">4 ローカル値</h3>
+
+<p>&nbsp; <code>locals</code>を使うとローカル変数が定義できます。<code>locals</code>で囲んだ変数を宣言することで、ローカル変数を使うことができます。</p>
+
+<p>▼ ローカル変数の定義</p>
+
+<pre><code>locals {
+   select_instance_type = &quot;ecs.n4.small&quot;
+}
+
+resource &quot;alicloud_instance&quot; &quot;ECS_instance&quot; {
+  instance_name   = &quot;ECS_instance_for_terraform&quot;
+  host_name       = &quot;ECS_instance_for_terraform&quot;
+  instance_type   = var.select_instance_type
+  image_id        = &quot;centos_7_04_64_20G_alibase_201701015.vhd&quot;
+  system_disk_category = &quot;cloud_efficiency&quot;
+  security_groups = [&quot;${alicloud_security_group.sg.id}&quot;]
+  availability_zone = &quot;${var.zone}&quot;
+  vswitch_id = &quot;${alicloud_vswitch.vsw.id}&quot;
+}
+</code></pre>
+
+<p><br></p>
+
+<h3 id="5-アウトプット">5. アウトプット</h3>
+
+<p>&nbsp; <code>output</code>を使うとアウトプットが定義できます。定義すると、apply実行時にターミナルで値を確認したり、リソース・モジュールから値を取得できます。</p>
+
+<p>▼ アウトプット値の定義</p>
+
+<pre><code>resource &quot;alicloud_instance&quot; &quot;ECS_instance&quot; {
+  instance_name   = &quot;ECS_instance_for_terraform&quot;
+  host_name       = &quot;ECS_instance_for_terraform&quot;
+  instance_type   = &quot;ecs.n4.small&quot;
+  image_id        = &quot;centos_7_04_64_20G_alibase_201701015.vhd&quot;
+  system_disk_category = &quot;cloud_efficiency&quot;
+  security_groups = [&quot;${alicloud_security_group.sg.id}&quot;]
+  availability_zone = &quot;${var.zone}&quot;
+  vswitch_id = &quot;${alicloud_vswitch.vsw.id}&quot;
+}
+
+output &quot;ECS_instance_id&quot; {
+  value = alicloud_instance.ECS_instance.instance_type
+}
+</code></pre>
+
+<p>applyすると、実行結果の最後に、作成されたインスタンスの type が出力されます。</p>
+
+<pre><code>$ terraform apply
+.....
+Outputs:
+ecs.n4.small
+</code></pre>
+
+<p><br></p>
+
+<h3 id="6-条件分岐">6. 条件分岐</h3>
+
+<p>&nbsp; Terraformは条件分岐が使えます。先に<code>variable</code>変数を記載したあと、resource構文にて<code>variable</code>変数を選定します。例えば環境に応じてインスタンスタイプを切り替えたい場合は、以下のように書きます。</p>
+
+<p>▼ 条件分岐の記載方法</p>
+
+<pre><code>variable &quot;instance_pattern&quot; {}
+
+resource &quot;alicloud_instance&quot; &quot;ECS_instance&quot; {
+  instance_name   = &quot;ECS_instance_for_terraform&quot;
+  host_name       = &quot;ECS_instance_for_terraform&quot;
+  instance_type   = var.instance_pattern == &quot;dev&quot; ? &quot;ecs.n4.small&quot; : &quot;ecs.n4.2xlarge&quot;
+  image_id        = &quot;centos_7_04_64_20G_alibase_201701015.vhd&quot;
+  system_disk_category = &quot;cloud_efficiency&quot;
+  security_groups = [&quot;${alicloud_security_group.sg.id}&quot;]
+  availability_zone = &quot;${var.zone}&quot;
+  vswitch_id = &quot;${alicloud_vswitch.vsw.id}&quot;
+}
+</code></pre>
+
+<p>そのあと、実行するときは引数でenv変数を指定することで、条件分岐してくれます。</p>
+
+<pre><code>$ terraform plan -var-file=&quot;confing.tfvars&quot; -var 'instance_pattern=dev'
+$ terraform apply -var-file=&quot;confing.tfvars&quot; -var 'instance_pattern=production'
+</code></pre>
+
+<p><br></p>
+
+<h3 id="7-組み込み関数">7. 組み込み関数</h3>
+
+<p>&nbsp; Terraformからリソースを作成するときに、例えばApacheによるWebサーバを立ち上げたい場合、ECS起動後、Apacheのインストール、Webサーバ立ち上げ（httpd.service start）をする必要があります。
+これらの処理を組み込み関数として、<code>user_data</code>にて外部ファイル（shell）を読み取りユーザデータとして設定することができます。</p>
+
+<p>▼ Webサーバのインストールスクリプト<code>install.sh</code></p>
+
+<pre><code>#!/bin/bash -ex
+wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+rpm -ivh mysql-community-release-el7-5.noarch.rpm
+yum -y install mysql-server httpd php php-mysql unzip
+systemctl enable httpd
+systemctl enable mysqld
+systemctl start httpd
+systemctl start mysqld
+USER=&quot;root&quot;
+DATABASE=&quot;wordpress&quot;
+mysql -u $USER &lt;&lt; EOF 
+CREATE DATABASE $DATABASE; 
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost' IDENTIFIED BY 'qweqwe123!';
+EOF
+if [ ! -f /var/www/html/latest.tar.gz ]; then
+cd /var/www/html
+wget -c http://wordpress.org/latest.tar.gz
+tar -xzvf latest.tar.gz
+mv wordpress/* /var/www/html/
+chown -R apache.apache /var/www/html/
+chmod -R 755 /var/www/html/
+fi
+</code></pre>
+
+<p>これをuser_dataに入れて実行すると、install.shファイルを読み込み、Apacheをインストール、Webサーバを立ち上げてくれます。</p>
+
+<p>▼ Webサーバのインストールスクリプトを読み込み、Webサーバを立ち上げてくれます</p>
+
+<pre><code>resource &quot;alicloud_instance&quot; &quot;ECS_instance&quot; {
+  instance_name   = &quot;ECS_instance_for_terraform&quot;
+  host_name       = &quot;ECS_instance_for_terraform&quot;
+  instance_type   = var.instance_pattern == &quot;dev&quot; ? &quot;ecs.n4.small&quot; : &quot;ecs.n4.2xlarge&quot;
+  image_id        = &quot;centos_7_04_64_20G_alibase_201701015.vhd&quot;
+  system_disk_category = &quot;cloud_efficiency&quot;
+  security_groups = [&quot;${alicloud_security_group.sg.id}&quot;]
+  availability_zone = &quot;${var.zone}&quot;
+  vswitch_id = &quot;${alicloud_vswitch.vsw.id}&quot;
+  user_data     = file(&quot;./install.sh&quot;)
+}
+</code></pre>
+
+<p><br></p>
+
+<h3 id="8-countによる複数のリソース作成">8. Countによる複数のリソース作成</h3>
+
+<p>&nbsp; Terraformからリソースを作成するときに、同じ構成を複数台作成したい場合は、Countメタ変数を使うことで複数台作成することができます。</p>
+
+<pre><code>resource &quot;alicloud_instance&quot; &quot;ECS_instance&quot; {
+  instance_name   = &quot;ECS_instance_for_terraform&quot;
+  host_name       = &quot;ECS_instance_for_terraform&quot;
+  instance_type   = var.instance_pattern == &quot;dev&quot; ? &quot;ecs.n4.small&quot; : &quot;ecs.n4.2xlarge&quot;
+  image_id        = &quot;centos_7_04_64_20G_alibase_201701015.vhd&quot;
+  system_disk_category = &quot;cloud_efficiency&quot;
+  security_groups = [&quot;${alicloud_security_group.sg.id}&quot;]
+  availability_zone = &quot;${var.zone}&quot;
+  vswitch_id = &quot;${alicloud_vswitch.vsw.id}&quot;
+  user_data     = file(&quot;./install.sh&quot;)
+}
+</code></pre>
+
+<p><br>
+またCountを使えば、Map形式で複数宣言してる変数からkeyを指定して処理することもできます。</p>
+
+<pre><code>variable &quot;cidr_block_ips&quot; {
+  default = {
+    &quot;0&quot; = &quot;192.168.1.0/24&quot;
+    &quot;1&quot; = &quot;192.168.2.0/24&quot;
+    &quot;2&quot; = &quot;192.168.3.0/24&quot;
+  }
+}
+
+resource &quot;alicloud_vpc&quot; &quot;vpc&quot; {
+  count = &quot;3&quot;
+  cidr_block = &quot;${lookup(var.cidr_block_ips, count.index)}&quot;
+  ・・・
+}
+</code></pre>
+
+<p><br>
+配列もCountを使って処理することもできます。</p>
+
+<pre><code>variable &quot;ecs_name&quot; {
+  default = [&quot;Web&quot;, &quot;App&quot;, &quot;Log&quot;]
+}
+
+resource &quot;alicloud_instance&quot; &quot;ECS_instance&quot; {
+  count = &quot;3&quot;
+  instance_name   = &quot;ECS_instance-${var.ecs_name[count.index]}&quot;
+　 ・・・
+}
+</code></pre>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/help/best-practice/infrastructure-as-code/terraform/04/run-terraforom/" title="サンプルプロジェクトの実行"> <i class="fa fa-chevron-left"></i><label>サンプルプロジェクトの実行</label></a>
+    <a class="nav nav-next" href="/help/best-practice/infrastructure-as-code/terraform/06/docker/" title="Dockerについて" style="margin-right: 0px;"><label>Dockerについて</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i> Last update on 01/07/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/infrastructure-as-code/terraform/05/program-syntax.md" target="blank"><i class="fa fa-code-fork"></i>
+        Improve this page</a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    Create a content/_footer.md file to customize the footer content
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/help/js/clipboard.min.js"></script>
+
+<link href="/help/css/featherlight.min.css" rel="stylesheet">
+<script src="/help/js/featherlight.min.js"></script>
+
+
+
+<script src="/help/theme-flex/script.js"></script>
+
+<link href="/help/mermaid/mermaid.css" type="text/css" rel="stylesheet" />
+<script src="/help/mermaid/mermaid.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

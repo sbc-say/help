@@ -3,122 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/02/how_to_use_terraform/</loc>
+    <loc>https://sbcloud.github.io/help/scenario/ci-cd/bastion-server/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/03/install/</loc>
+    <loc>https://sbcloud.github.io/help/scenario/ci-cd/slb-setting-sample/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/04/sample_project/</loc>
+    <loc>https://sbcloud.github.io/help/scenario/ci-cd/rds-setting-sample/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/05/run_terraforom/</loc>
+    <loc>https://sbcloud.github.io/help/scenario/ci-cd/kubernetes-setting-sample/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/06/program_syntax/</loc>
+    <loc>https://sbcloud.github.io/help/scenario/ci-cd/web-application/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/07/docker/</loc>
+    <loc>https://sbcloud.github.io/help/scenario/ci-cd/accelerated-content-delivery/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/08/module/</loc>
+    <loc>https://sbcloud.github.io/help/scenario/ci-cd/auto-scaling/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/09/vpc/</loc>
+    <loc>https://sbcloud.github.io/help/scenario/ci-cd/web-application-on-kubernetes/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/10/ecs/</loc>
+    <loc>https://sbcloud.github.io/help/scenario/ci-cd/ec-site-sample/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/11/slb/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/12/autoscale/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/13/oss/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/14/rds/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/15/ram/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/16/kubernetes/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/17/bastion-server/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/18/slb-setting-sample/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/19/rds-setting-sample/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/20/kubernetes-setting-sample/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/21/web-application/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/22/accelerated-content-delivery/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/23/auto-scaling/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/24/web-application-on-kubernetes/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/25/ec-site-sample/</loc>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/01/how-to-use/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
@@ -148,6 +78,11 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/about/sitemap/</loc>
     <lastmod>2019-05-13T16:20:40+09:00</lastmod>
   </url>
@@ -160,6 +95,11 @@
   <url>
     <loc>https://sbcloud.github.io/help/getting-started/product/ecs-by-region/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/02/install/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
   <url>
@@ -193,6 +133,11 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/03/sample-project/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/getting-started/cloud-users/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
   </url>
@@ -213,6 +158,11 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/04/run-terraforom/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/faq/</loc>
     <lastmod>2019-05-13T16:20:40+09:00</lastmod>
   </url>
@@ -228,6 +178,11 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/05/program-syntax/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/</loc>
     <lastmod>2019-05-15T10:37:37+09:00</lastmod>
   </url>
@@ -238,8 +193,33 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/06/docker/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/07/module/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/08/vpc/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/09/ecs/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/about/</loc>
     <lastmod>2019-04-03T15:31:09+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/10/slb/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
   <url>
@@ -248,23 +228,33 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/11/autoscale/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/12/oss/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/13/rds/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/14/ram/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/15/kubernetes/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/16/old/container_clustor/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/16/old/container_registry/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/16/old/kubernetes_managed/</loc>
     <priority>0</priority>
   </url>
   
