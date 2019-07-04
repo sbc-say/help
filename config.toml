@@ -5,7 +5,9 @@ DefaultContentLanguage = "en"
 title = "テクニカルリファレンス"
 theme = "docdock"
 publishDir = "docs"
-staticDir = ["static", "static2"]
+staticDir = ["static"]
+staticDir2 = "content"
+
 pygmentsCodeFences = true
 pygmentsStyle = "monokailight"
 
