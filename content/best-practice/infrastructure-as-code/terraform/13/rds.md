@@ -75,9 +75,4 @@ https://www.terraform.io/docs/providers/alicloud/r/db_instance.html
 
 以下にRDSの実際のサンプルを入れていますので、こちらも参照してみてください。
 
-[18章 example: RDS設定サンプル](docs/18/RDS-Setting-Sample.md)
-
-
-
-
-
+[example: RDSの構築と設定]({{% relref "scenario/terraform/rds-setting-sample.md" %}})

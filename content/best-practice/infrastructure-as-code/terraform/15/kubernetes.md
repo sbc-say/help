@@ -177,10 +177,7 @@ https://www.terraform.io/docs/providers/alicloud/r/cs_managed_kubernetes.html
 <br>
 以下にKubernetesの実際のサンプルを入れていますので、こちらも参照してみてください。
 
-[example: kubernetes設定サンプル](docs/20/Kubernetes-Setting-Sample.md)
-
-
-
+[example: Kubernetesの構築と設定]({{% relref "scenario/terraform/kubernetes-setting-sample.md" %}})
 
 
 

@@ -1,46 +1,30 @@
 ---
-title: "Terraform 25章 example: MagentoでECサイト構築"
+title: " MagentoでECサイト構築"
 date: 2019-07-01T00:00:00+09:00
-weight: 10
+description: "Terraformを用いて、Alibaba Cloud上でMagentoのECサイト構築作成方法を紹介します"
+weight: 240
 draft: false
 ---
 
-# 第25章
-## example: MagentoでECサイト構築
-
-&nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第25章はTerraformのサンプルコードを交えて解説します。
-
-* [17章 example: ssh踏み台サーバ](docs/17/Bastion-Server.md)
-* [18章 example: SLB設定サンプル](docs/18/SLB-Setting-Sample.md)
-* [19章 example: RDS設定サンプル](docs/19/RDS-Setting-Sample.md)
-* [20章 example: kubernetes設定サンプル](docs/20/Kubernetes-Setting-Sample.md)
-* [21章 example: Webアプリケーション](docs/21/Web-Application.md)
-* [22章 example: 高速コンテンツ配信](docs/22/Accelerated-Content-Delivery.md)
-* [23章 example: オートスケーリング](docs/23/Auto-Scaling.md)
-* [24章 example: KubernetesによるコンテナでWordPress作成](docs/24/Web-Application-on-Kubernetes.md)
-* **[25章 example: ECサイト構築](docs/25/EC-Site-Sample.md)**
-
-
-<br>
-### 25.1 ECサイト
 &nbsp; インターネットを通じて自社商品を販売、宣伝するのにおすすめなのが、ECサイトを作るという方法です。ECは Electronic Commerce（電子商取引）の略です。
 ECサイトの一つとして、オープンソースの電子商取引アプリケーション `Magento`と`Woo Commerce` を使った構築方法がメインとなっています。`Magento`、もしくは`Woo Commerce` を使用すると、コーディングを一切行わなくてもオンラインストアをすばやく設定できます。それだけでなく多くの拡張機能、プラグイン、そしてテーマでカスタマイズすることもできます。今回は AlibabaCloud上にて高可用性アーキテクチャで`Magento Community Edition`をIaCで自動実装してみます。
 
 * [Magento](https://magento.com/)
 * [Woo Commerce](https://woocommerce.com)
-![図 25.1](../../../static/image/25.1.png)
-![図 25.2](../../../static/image/25.2.png)
+![図 1](/help/image/25.1.png)
+![図 2](/help/image/25.2.png)
 
 <br>
 ちなみに、Amazonや楽天のように一つのWebサイトに複数の商店の商品やサービスがまとまっているものはオンラインモールといい、オープンソースのオンラインショッピング Webサイト管理システム `EC-CUBE`などの方法があります。
 
 * [EC-CUBE](https://www.ec-cube.net/)
-![図 25.3](../../../static/image/25.3.png)
+![図 3](/help/image/25.3.png)
 
 <br>
-### 25.2 ECサイトMagentoの構築について
+### ECサイトMagentoの構築について
 &nbsp; ECサイト MagentoをTerraformを使って一発で構築してみます。ゴールの構成図は以下の通りです。
-![図 25.4](image/25.4.png)
+
+![図 4](/help/image/25.4.png)
 <br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。
 
@@ -53,31 +37,44 @@ ECサイトの一つとして、オープンソースの電子商取引アプリ
 * ECSインスタンス１台にてMySQL、PHP、Magentoを入れる方法もあります。軽量でスモールスタートする場合、こちらも是非参照ください。
   https://www.alibabacloud.com/help/doc-detail/50704.html
 
-
-
 <br>
 
 STEP1: Magentoを利用するにあたり、アカウント発行が必要です。
-<br> 1.[Magentoサイト](https://magento.com/)に入ります。
-![図 25.5](../../../static/image/25.5.png)
-<br> 2.初回のみユーザ登録をします。
-![図 25.6](../../../static/image/25.6.png)
-<br> 3.ユーザ登録で必要なフィールドを記載します。
-![図 25.7](../../../static/image/25.7.png)
-<br> 4.設定が終わったらTopページに戻り、プロフィールのページを選定します。
-![図 25.8](../../../static/image/25.8.png)
-<br> 5.Access Keyを選定します。
-![図 25.9](../../../static/image/25.9.png)
-<br> 6.新規でAccess Keyを発行します。
-![図 25.10](../../../static/image/25.10.png)
-<br> 7.Access Keyは用途ごとに使い分けられてるため、ここでPJ名など案件名を記載します。
-![図 25.11](../../../static/image/25.11.png)
-<br> 8.これでMagento作成に必要なKey２種類の発行完了です。こちらは後々必要になるのでメモを残してください。
-![図 25.12](../../../static/image/25.12.png)
+<br>
 
+1.[Magentoサイト](https://magento.com/)に入ります。
+![図 5](/help/image/25.5.png)
+<br>
 
+2.初回のみユーザ登録をします。
+![図 6](/help/image/25.6.png)
+<br>
+
+3.ユーザ登録で必要なフィールドを記載します。
+![図 7](/help/image/25.7.png)
+<br>
+
+4.設定が終わったらTopページに戻り、プロフィールのページを選定します。
+![図 8](/help/image/25.8.png)
+<br>
+
+5.Access Keyを選定します。
+![図 9](/help/image/25.9.png)
+<br>
+
+6.新規でAccess Keyを発行します。
+![図 10](/help/image/25.10.png)
+<br>
+
+7.Access Keyは用途ごとに使い分けられてるため、ここでPJ名など案件名を記載します。
+![図 11](/help/image/25.11.png)
+<br>
+
+8.これでMagento作成に必要なKey２種類の発行完了です。こちらは後々必要になるのでメモを残してください。
+![図 12](/help/image/25.12.png)
 
 main.tf
+
 ```
 provider "alicloud" {
   access_key = "${var.access_key}"
@@ -342,8 +339,10 @@ data "template_file" "user_data" {
 }
 
 ```
+
 <br>
 confing.tfvars
+
 ```
 access_key = "xxxxxxxxxxxxxxxx"
 secret_key = "xxxxxxxxxxxxxxxx"
@@ -398,8 +397,10 @@ domain_url = "localhost"
 
 
 ```
+
 <br>
 variables.tf
+
 ```
 variable "access_key" {}
 variable "secret_key" {}
@@ -447,8 +448,10 @@ variable "magento_auth_firstname" {}
 variable "magento_auth_lastname" {}
 variable "domain_url" {}
 ```
+
 <br>
 output.tf
+
 ```
 output "slb_web_public_ip" {
   value = "${alicloud_slb.web.address}"
@@ -472,8 +475,10 @@ output "rds_host_ip" {
 
 
 ```
+
 <br>
 provisioning.sh
+
 ```
 #!/bin/bash
 
@@ -605,6 +610,7 @@ bin/magento setup:install --backend-frontname="adminlogin" \
 
 <br>
 これでmagentoへログインできます。
-![図 25.13](image/25.13.png)
+
+![図 13](/help/image/25.13.png)
 
 

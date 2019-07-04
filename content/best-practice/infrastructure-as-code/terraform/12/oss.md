@@ -204,5 +204,5 @@ https://www.terraform.io/docs/providers/alicloud/r/oss_bucket.html
 <br>
 以下にOSSの実際のサンプルを入れていますので、こちらも参照してみてください。
 
-[example: Webアプリケーション](docs/20/Web-Application.md)
+[example: Webアプリケーションの構築]({{% relref "scenario/terraform/web-application.md" %}})
 

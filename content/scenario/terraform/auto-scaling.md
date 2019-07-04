@@ -1,43 +1,31 @@
 ---
-title: "Terraform 22章 example: 高速コンテンツ配信"
+title: "オートスケーリングの実現"
 date: 2019-07-01T00:00:00+09:00
-weight: 10
+description: "Terraformを用いて、Alibaba Cloud上でオートスケーリングの作成方法を紹介します"
+weight: 220
 draft: false
 ---
 
-# 第22章
-## example: 高速コンテンツ配信
+&nbsp; こちらはAlibabaCloud公式サイトにある[ソリューション構築例](http://alicloud-common.oss-ap-southeast-1.aliyuncs.com/Updated_Materials/One%20Pager%20-%20Auto%20Scaling.pdf?spm=a3c0i.8269155.598512.5.26b5718fXnIJCz&file=One%20Pager%20-%20Auto%20Scaling.pdf)を通じての紹介になります。
 
-&nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
+プロビジョニング済みのECSインスタンスをメインとするWebアプリケーションにて、予測が難しいトラフィックニーズに応じて、必要なECSインスタンス台数を増減してくれます。これにより、アプリケーションを止めることなく稼働し続けることが出来ます。同時にリソースに応じた需要増/減から必要なコスト管理も実現出来ます。
 
-* [17章 example: ssh踏み台サーバ](docs/17/Bastion-Server.md)
-* [18章 example: SLB設定サンプル](docs/18/SLB-Setting-Sample.md)
-* [19章 example: RDS設定サンプル](docs/19/RDS-Setting-Sample.md)
-* [20章 example: kubernetes設定サンプル](docs/20/Kubernetes-Setting-Sample.md)
-* [21章 example: Webアプリケーション](docs/21/Web-Application.md)
-* **[22章 example: 高速コンテンツ配信](docs/22/Accelerated-Content-Delivery.md)**
-* [23章 example: オートスケーリング](docs/23/Auto-Scaling.md)
-* [24章 example: KubernetesによるコンテナでWordPress作成](docs/24/Web-Application-on-Kubernetes.md)
-* [25章 example: ECサイト構築](docs/25/EC-Site-Sample.md)
 
-<br>
-### 22.1 高速コンテンツ配信
-&nbsp; こちらはAlibabaCloud公式サイトにある[ソリューション構築例](http://alicloud-common.oss-ap-southeast-1.aliyuncs.com/Updated_Materials/One%20Pager%20-%20Accelerated%20Content%20Delivery.pdf?spm=a3c0i.119421.598505.5.36d24d19T41MGd&file=One%20Pager%20-%20Accelerated%20Content%20Delivery.pdf)を通じての紹介になります。従来のWebアプリケーションアーキテクチャでは、Webアプリケーションが大量のリクエストトラフィックを受け取ると、サーバーが過負荷になり、サイトが遅くなったりサーバーがクラッシュしたりする可能性があります。また地理的に異なる場所に分散していると、コンテンツが1か所から配信されるため、待ち時間の問題が発生する可能性があります。そのためにWebアプリケーションは高速でコンテンツ配信することが望ましいです。
-
-* グローバル配信が可能
-* 静的および動的コンテンツのアクセラレーション
-* 待ち時間の短縮などパフォーマンス改善
+* アプリケーションの稼働時間・堅牢性向上
+* サーバーの自動プロビジョニング
+* ニーズに応じたコスト管理
 
 <br>
 &nbsp; TerraformでWebアプリケーションを作ってみます。ゴールの構成図は以下の通りです。
 
-![図 22.1](../../../static/image/22.1.png)
+![図 1](/help/image/23.1.png)
 
 <br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。
 
 <br>
 main.tf
+
 ```
 provider "alicloud" {
   access_key = "${var.access_key}"
@@ -73,6 +61,33 @@ resource "alicloud_vswitch" "db" {
   vpc_id            = "${alicloud_vpc.default.id}"
   cidr_block        = "192.168.3.0/24"
   availability_zone = "${var.zone}"
+}
+
+resource "alicloud_ess_scaling_group" "web" {
+  scaling_group_name = "${var.solution_name}-ess-web"
+  min_size           = "${var.web_instance_min_count}"
+  max_size           = "${var.web_instance_max_count}"
+  removal_policies   = ["OldestInstance", "NewestInstance"]
+  loadbalancer_ids   = ["${alicloud_slb.web.id}"]
+  vswitch_ids       = ["${alicloud_vswitch.web.id}"]
+}
+
+resource "alicloud_ess_scaling_configuration" "web" {
+  scaling_group_id           = "${alicloud_ess_scaling_group.web.id}"
+  image_id                   = "${var.web_instance_image_id}"
+  instance_type              = "${var.web_instance_type}"
+  scaling_configuration_name = "scaling-configuration-web"
+  system_disk_category       = "cloud_efficiency"
+  security_group_id          = "${alicloud_security_group.web.id}"
+  active                     = true
+}
+
+resource "alicloud_ess_scaling_rule" "web" {
+  scaling_rule_name = "${var.solution_name}-ess-rule-web"
+  scaling_group_id  = "${alicloud_ess_scaling_group.web.id}"
+  adjustment_type   = "TotalCapacity"
+  adjustment_value  = 2
+  cooldown          = 60
 }
 
 resource "alicloud_instance" "web" {
@@ -172,6 +187,33 @@ resource "alicloud_instance" "app" {
   user_data                  = "${var.app_instance_user_data}"
 }
 
+resource "alicloud_ess_scaling_group" "app" {
+  scaling_group_name = "${var.solution_name}-ess-app"
+  min_size           = "${var.app_instance_min_count}"
+  max_size           = "${var.app_instance_max_count}"
+  removal_policies   = ["OldestInstance", "NewestInstance"]
+  loadbalancer_ids   = ["${alicloud_slb.app.id}"]
+  vswitch_ids       = ["${alicloud_vswitch.app.id}"]
+}
+
+resource "alicloud_ess_scaling_configuration" "app" {
+  scaling_group_id           = "${alicloud_ess_scaling_group.app.id}"
+  image_id                   = "${var.app_instance_image_id}"
+  instance_type              = "${var.app_instance_type}"
+  scaling_configuration_name = "scaling-configuration-app"
+  system_disk_category       = "cloud_efficiency"
+  security_group_id          = "${alicloud_security_group.app.id}"
+  active                     = true
+}
+
+resource "alicloud_ess_scaling_rule" "app" {
+  scaling_rule_name = "${var.solution_name}-ess-rule-app"
+  scaling_group_id  = "${alicloud_ess_scaling_group.app.id}"
+  adjustment_type   = "TotalCapacity"
+  adjustment_value  = 2
+  cooldown          = 60
+}
+
 resource "alicloud_slb" "app" {
   name        = "${var.app_layer_name}-slb"
   internet    = false
@@ -248,6 +290,7 @@ resource "alicloud_db_connection" "default" {
 
 <br>
 variables.tf
+
 ```
 variable "access_key" {}
 variable "secret_key" {}
@@ -281,8 +324,10 @@ variable "db_engine_version" {}
 variable "db_instance_type" {}
 variable "db_instance_storage" {}
 ```
+
 <br>
 confing.tfvars
+
 ```
 access_key = "xxxxxxxxxxxxxxxx"
 secret_key = "xxxxxxxxxxxxxxxx"
@@ -316,8 +361,10 @@ db_engine_version = "5.7"
 db_instance_type = "rds.mysql.s1.small"
 db_instance_storage = 10
 ```
+
 <br>
 output.tf
+
 ```
 output "slb_web_public_ip" {
   value = "${alicloud_slb.web.address}"
@@ -335,8 +382,10 @@ output "rds_host" {
   value = "${alicloud_db_instance.db_instance.connection_string}"
 }
 ```
+
 <br>
 provisioning.sh
+
 ```
 #!/bin/sh
 yum install -y httpd
@@ -344,9 +393,9 @@ systemctl start httpd
 systemctl enable httpd
 ```
 
-
 <br>
-### 22.2 実行
+
+### 実行
 &nbsp; ソースの準備ができたら実行します。
 
 ```

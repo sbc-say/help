@@ -1,34 +1,17 @@
 ---
-title: "Terraform 19章 example: RDS設定サンプル"
+title: "RDSの構築と設定"
 date: 2019-07-01T00:00:00+09:00
-weight: 10
+description: "Terraformを用いて、Alibaba Cloud上でRDSを作成します"
+weight: 180
 draft: false
 ---
 
-# 第19章
-## example: RDS設定サンプル
+&nbsp; TerraformでデータベースサービスであるRDSを作ってみます。ゴールの構成図は以下の通りです。
 
-&nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
-
-* [17章 example: ssh踏み台サーバ](docs/17/Bastion-Server.md)
-* [18章 example: SLB設定サンプル](docs/18/SLB-Setting-Sample.md)
-* **[19章 example: RDS設定サンプル](docs/19/RDS-Setting-Sample.md)**
-* [20章 example: kubernetes設定サンプル](docs/20/Kubernetes-Setting-Sample.md)
-* [21章 example: Webアプリケーション](docs/21/Web-Application.md)
-* [22章 example: 高速コンテンツ配信](docs/22/Accelerated-Content-Delivery.md)
-* [23章 example: オートスケーリング](docs/23/Auto-Scaling.md)
-* [24章 example: KubernetesによるコンテナでWordPress作成](docs/24/Web-Application-on-Kubernetes.md)
-* [25章 example: ECサイト構築](docs/25/EC-Site-Sample.md)
-
-
-<br>
-### 19.1 SLB設定サンプル
-&nbsp; Terraformで踏み台サーバ、本番サーバを作ってみます。ゴールの構成図は以下の通りです。
-
-![図 19.1.1](../../../static/image/19.1.1.png)
+![図 1](/help/image/19.1.1.png)
 
 なおECSからRDS for MySQLへへ接続するためのdocker-compose.ymlファイルは以下の通りです。
-![図 19.1.2](../../../static/image/19.1.2.png)
+![図 2](/help/image/19.1.2.png)
 
 <br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。
@@ -161,6 +144,7 @@ resource "alicloud_slb_attachment" "default" {
 
 <br>
 variables.tf
+
 ```
 variable "access_key" {}
 variable "secret_key" {}
@@ -175,6 +159,7 @@ variable "db_password" {}
 
 <br>
 output.tf
+
 ```
 output "ECS_instance_ip" {
   value = "${alicloud_instance.ECS_instance.*.public_ip}"
@@ -189,6 +174,7 @@ output "rds_host" {
 
 <br>
 confing.tfvars
+
 ```
 access_key = "xxxxxxxxxxxxxxxxxxxx"
 secret_key = "xxxxxxxxxxxxxxxxxxxx"
@@ -203,6 +189,7 @@ db_password = "!Password2019"
 
 <br>
 provisioning.sh
+
 ```
 #!/bin/sh
 export MYSQL_HOST='rds-sample.mysql.japan.rds.aliyuncs.com'
@@ -246,7 +233,8 @@ docker-compose up -d
 ```
 
 <br>
-### 19.2 実行
+
+### 実行
 &nbsp; ソースの準備ができたら実行します。
 
 ```

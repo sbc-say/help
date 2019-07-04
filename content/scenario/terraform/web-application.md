@@ -1,27 +1,11 @@
 ---
-title: "Terraform 21章 example: Webアプリケーション"
+title: "Webアプリケーションの構築"
 date: 2019-07-01T00:00:00+09:00
-weight: 10
+description: "Terraformを用いて、Alibaba Cloud上でWebアプリケーションの構築します"
+weight: 200
 draft: false
 ---
 
-# 第21章
-## example: Webアプリケーション
-
-&nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
-
-* [17章 example: ssh踏み台サーバ](docs/17/Bastion-Server.md)
-* [18章 example: SLB設定サンプル](docs/18/SLB-Setting-Sample.md)
-* [19章 example: RDS設定サンプル](docs/19/RDS-Setting-Sample.md)
-* [20章 example: kubernetes設定サンプル](docs/20/Kubernetes-Setting-Sample.md)
-* **[21章 example: Webアプリケーション](docs/21/Web-Application.md)**
-* [22章 example: 高速コンテンツ配信](docs/22/Accelerated-Content-Delivery.md)
-* [23章 example: オートスケーリング](docs/23/Auto-Scaling.md)
-* [24章 example: KubernetesによるコンテナでWordPress作成](docs/24/Web-Application-on-Kubernetes.md)
-* [25章 example: ECサイト構築](docs/25/EC-Site-Sample.md)
-
-<br>
-### 21.1 Webアプリケーション
 &nbsp; こちらはAlibabaCloud公式サイトにある[ソリューション構築例](http://alicloud-common.oss-ap-southeast-1.aliyuncs.com/Alibaba%20Cloud%20Solution%20Infrastructure%20-%20Web%20Application%20Hosting.pdf?spm=a3c0i.119411.598501.1.3dda20d7Kxc64r&file=Alibaba%20Cloud%20Solution%20Infrastructure%20-%20Web%20Application%20Hosting.pdf)を通じての紹介になります。IDCなどデータセンターにて、スケーラブルで世界規模で利用可能なWebアプリケーションを開発および展開するのは、多くの手作業から工数がかかり、またトラフィックに応じてリソースの効率さが悪くなってしまう課題があります。しかしAlibabaCloudで構築すると、それらの課題が払拭されます。それだけでなく、上に、投資収益率（ROI）も向上するメリットがあります。
 
 * すぐに着手できる配置構成
@@ -32,13 +16,15 @@ draft: false
 <br>
 &nbsp; TerraformでWebアプリケーションを作ってみます。ゴールの構成図は以下の通りです。
 
-![図 21.1](../../../static/image/21.1.png)
+![図 1](/help/image/21.1.png)
 
 <br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。
 
 <br>
+
 main.tf
+
 ```
 provider "alicloud" {
   access_key = "${var.access_key}"
@@ -227,6 +213,7 @@ resource "alicloud_db_connection" "default" {
 
 <br>
 variables.tf
+
 ```
 variable "access_key" {}
 variable "secret_key" {}
@@ -260,8 +247,10 @@ variable "db_engine_version" {}
 variable "db_instance_type" {}
 variable "db_instance_storage" {}
 ```
+
 <br>
 confing.tfvars
+
 ```
 access_key = "xxxxxxxxxxxxxxxx"
 secret_key = "xxxxxxxxxxxxxxxx"
@@ -296,8 +285,10 @@ db_engine_version = "5.7"
 db_instance_type = "rds.mysql.s1.small"
 db_instance_storage = 10
 ```
+
 <br>
 output.tf
+
 ```
 output "slb_web_public_ip" {
   value = "${alicloud_slb.web.address}"
@@ -317,9 +308,9 @@ output "rds_host" {
 
 ```
 
-
 <br>
 provisioning.sh
+
 ```
 #!/bin/sh
 yum install -y httpd
@@ -328,7 +319,8 @@ systemctl enable httpd
 ```
 
 <br>
-### 21.2 実行
+
+### 実行
 &nbsp; ソースの準備ができたら実行します。
 
 ```

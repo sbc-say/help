@@ -1,34 +1,14 @@
 ---
-title: "Terraform 18章 example: SLB設定サンプル"
+title: "SLBの構築と設定"
 date: 2019-07-01T00:00:00+09:00
-weight: 10
+description: "Terraformを用いて、Alibaba Cloud上でSLBを作成します"
+weight: 170
 draft: false
 ---
 
+&nbsp; TerraformでロードバランサーであるSLBの構築と設計行ってみます。ゴールの構成図は以下の通りです。
 
-# 第18章
-## example: SLB設定サンプル
-
-&nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
-
-
-* [17章 example: ssh踏み台サーバ](docs/17/Bastion-Server.md)
-* **[18章 example: SLB設定サンプル](docs/18/SLB-Setting-Sample.md)**
-* [19章 example: RDS設定サンプル](docs/19/RDS-Setting-Sample.md)
-* [20章 example: kubernetes設定サンプル](docs/20/Kubernetes-Setting-Sample.md)
-* [21章 example: Webアプリケーション](docs/21/Web-Application.md)
-* [22章 example: 高速コンテンツ配信](docs/22/Accelerated-Content-Delivery.md)
-* [23章 example: オートスケーリング](docs/23/Auto-Scaling.md)
-* [24章 example: KubernetesによるコンテナでWordPress作成](docs/24/Web-Application-on-Kubernetes.md)
-* [25章 example: ECサイト構築](docs/25/EC-Site-Sample.md)
-
-
-<br>
-### 18.1 SLB設定サンプル
-&nbsp; Terraformで踏み台サーバ、本番サーバを作ってみます。ゴールの構成図は以下の通りです。
-
-
-![図 18.1.1](../../../static/image/18.1.png)
+![図 1](/help/image/18.1.png)
 <br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。
 
@@ -110,6 +90,7 @@ resource "alicloud_slb_attachment" "slb_attachment" {
 
 <br>
 variables.tf
+
 ```
 variable "access_key" {}
 variable "secret_key" {}
@@ -121,6 +102,7 @@ variable "ecs_password" {}
 
 <br>
 output.tf
+
 ```
 output "ECS_instance_ip" {
   value = "${alicloud_instance.ECS_instance.*.public_ip}"
@@ -132,6 +114,7 @@ output "slb_ip" {
 
 <br>
 confing.tfvars
+
 ```
 access_key = "xxxxxxxxxxxxxxxx"
 secret_key = "xxxxxxxxxxxxxxxx"
@@ -143,6 +126,7 @@ ecs_password = "!Password2019"
 
 <br>
 provisioning.sh
+
 ```
 #!/bin/sh
 yum install -y httpd
@@ -152,7 +136,8 @@ systemctl enable httpd
 
 
 <br>
-### 17.2 実行
+
+### 実行
 &nbsp; ソースの準備ができたら実行します。
 
 ```

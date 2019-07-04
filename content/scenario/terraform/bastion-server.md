@@ -1,32 +1,14 @@
 ---
-title: "Terraform 17章 example: ssh踏み台サーバ"
+title: "SSH踏み台サーバの作成"
 date: 2019-07-01T00:00:00+09:00
-weight: 10
+description: "Terraformを用いて、Alibaba Cloud上でssh踏み台サーバの作成方法を紹介します"
+weight: 160
 draft: false
 ---
 
-# 第17章
-## example: ssh踏み台サーバ
-
-&nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
-
-
-* **[17章 example: ssh踏み台サーバ](docs/17/Bastion-Server.md)**
-* [18章 example: SLB設定サンプル](docs/18/SLB-Setting-Sample.md)
-* [19章 example: RDS設定サンプル](docs/19/RDS-Setting-Sample.md)
-* [20章 example: kubernetes設定サンプル](docs/20/Kubernetes-Setting-Sample.md)
-* [21章 example: Webアプリケーション](docs/21/Web-Application.md)
-* [22章 example: 高速コンテンツ配信](docs/22/Accelerated-Content-Delivery.md)
-* [23章 example: オートスケーリング](docs/23/Auto-Scaling.md)
-* [24章 example: KubernetesによるコンテナでWordPress作成](docs/24/Web-Application-on-Kubernetes.md)
-* [25章 example: ECサイト構築](docs/25/EC-Site-Sample.md)
-
-
-<br>
-### 17.1 ssh踏み台サーバ
 &nbsp; Terraformで踏み台サーバ、本番サーバを作ってみます。ゴールの構成図は以下の通りです。
 
-![図 17.1.1](/help/image/17.1.png)
+![図 1](/help/image/17.1.png)
 <br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。
 
@@ -170,7 +152,8 @@ systemctl start httpd
 systemctl enable httpd
 ```
 <br>
-### 17.2 実行
+
+### 実行
 &nbsp; ソースの準備ができたら実行します。
 
 ```
@@ -179,19 +162,19 @@ terraform play -var-file="confing.tfvars"
 terraform apply -var-file="confing.tfvars"
 ```
 
-![図 17.2.1](help/image/17.2.1.png)
+![図 2](/help/image/17.2.1.png)
 <br>
 これで問題なく実行できたら、踏み台サーバと本番サーバそれぞれのPublic IPが表示されます。
-![図 17.2.2](image/17.2.2.png)
+![図 3](/help/image/17.2.2.png)
 <br>
 
 実際にssh制限してるかチェックしてみます。踏み台サーバのIPアドレスが`47.74.54.92`、本番サーバのIPアドレスが`47.74.52.85`です。
-![図 17.2.3](image/17.2.3.png)
+![図 4](/help/image/17.2.3.png)
 <br>
 
 本番サーバにsshログインは出来ず、ssh踏み台サーバにsshログインできました。
 それでは本番サーバに踏み台サーバからsshログインしてみます。
-![図 17.2.4](image/17.2.4.png)
+![図 5](/help/image/17.2.4.png)
 ログインできました。これで本番サーバに対し外部からssh接続不可といったセキュアな運用ができます。
 
 

@@ -1,27 +1,11 @@
 ---
-title: "Terraform 24章 example: KubernetesによるコンテナでWordPress作成"
+title: "KubernetesによるコンテナでWordPress作成"
 date: 2019-07-01T00:00:00+09:00
-weight: 10
+description: "Terraformを用いて、Alibaba Cloud上でKubernetesによるWordPress作成方法を紹介します"
+weight: 230
 draft: false
 ---
 
-# 第24章
-## example: KubernetesによるコンテナでWordPress作成
-
-&nbsp; 第8章までは Terraformのインストール方法、コード記載方法、実行方法、第9章-第16章はAlibabaCloudの基本プロダクトサービスの説明をしました。第17章-第24章はTerraformのサンプルコードを交えて解説します。
-
-* [17章 example: ssh踏み台サーバ](docs/17/Bastion-Server.md)
-* [18章 example: SLB設定サンプル](docs/18/SLB-Setting-Sample.md)
-* [19章 example: RDS設定サンプル](docs/19/RDS-Setting-Sample.md)
-* [20章 example: kubernetes設定サンプル](docs/20/Kubernetes-Setting-Sample.md)
-* [21章 example: Webアプリケーション](docs/21/Web-Application.md)
-* [22章 example: 高速コンテンツ配信](docs/22/Accelerated-Content-Delivery.md)
-* [23章 example: オートスケーリング](docs/23/Auto-Scaling.md)
-* **[24章 example: KubernetesによるコンテナでWordPress作成](docs/24/Web-Application-on-Kubernetes.md)**
-* [25章 example: ECサイト構築](docs/25/EC-Site-Sample.md)
-
-<br>
-### 24.1 KubernetesによるコンテナでWordPress作成
 &nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。
 1. AlibabaCloudでKubernetesクラスターを生成
 1. kube_configを環境変数にて設定
@@ -31,14 +15,14 @@ draft: false
 こちらは[AlibabaCloud Terraformのサンプル集](https://github.com/terraform-providers/terraform-provider-alicloud/tree/master/examples/kubernetes-wordpress)を通じての紹介になります。
 
 
-### 24.2 Kubernetesでクラスタ生成
+### Kubernetesでクラスタ生成
 &nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。
 
 
 <br>
 &nbsp; TerraformでWebアプリケーションを作ってみます。step1のゴール構成図は以下の通りです。
 
-![図 24.1](../../../static/image/24.1.png)
+![図 1](/help/image/24.1.png)
 
 <br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。
@@ -46,6 +30,7 @@ draft: false
 
 <br>
 main.tf
+
 ```
 provider "alicloud" {
   access_key = "${var.access_key}"
@@ -88,6 +73,7 @@ resource "alicloud_cs_kubernetes" "k8s" {
 
 <br>
 variables.tf
+
 ```
 variable "access_key" {}
 variable "secret_key" {}
@@ -104,6 +90,7 @@ variable "mysql_password" {}
 
 <br>
 output.tf
+
 ```
 output "cluster_id" {
   value = ["${alicloud_cs_kubernetes.k8s.*.id}"]
@@ -118,6 +105,7 @@ output "master_nodes" {
 
 <br>
 confing.tfvars
+
 ```
 access_key = "xxxxxxxxxxxxxxxx"
 secret_key = "xxxxxxxxxxxxxxxx"
@@ -148,10 +136,10 @@ terraform apply -var-file="confing.tfvars"
 <br>
 
 
-![図 24.2](image/24.2.png)
+![図 2](/help/image/24.2.png)
 
 <br>
-### 24.3 kube_configを環境変数にて設定
+### kube_configを環境変数にて設定
 &nbsp; 先ほどはKubernetesクラスタを作成しました。このクラスタを使ってwordpressを作成するため、Kubernetesコマンドラインクライアントである `kubectl` を使用します。`kubectl`はk8sクラスタのAPIサーバーと通信するためのコマンドラインツールです。
 
 
@@ -161,25 +149,21 @@ kubectlの[インストール方法はこちらを参照](https://kubernetes.io/
 3. クラスターの資格情報を設定します。設定方法は[こちらを参照](https://jp.alibabacloud.com/help/doc-detail/53755.htm)してください。
 
 
-![図 24.3](image/24.3.png)
+![図 3](/help/image/24.3.png)
 
 
 
-### 24.4 KubernetesクラスタにてWordpressインストール
+### KubernetesクラスタにてWordpressインストール
 &nbsp; これでKubernetesクラスタのkube_configを環境変数にて設定しました。今度はTerraform on Kubernetesを使ってubernetesクラスタにてWordPressを入れます。ゴールの構成図は以下の通りです。
 
-![図 24.4](image/24.4.png)
+![図 4](/help/image/24.4.png)
 
 <br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。
 
-
-
-
-
-
 <br>
 confing.tfvars
+
 ```
 project_name = "Web-App-on-k8s-for-Terraform"
 wordpress_version = "5.2.2"
@@ -189,6 +173,7 @@ mysql_password = "!Password2019"
 
 <br>
 variables.tf
+
 ```
 variable "project_name" {}
 variable "wordpress_version" {}
@@ -200,6 +185,7 @@ variable "mysql_password" {}
 
 <br>
 mysql.tf
+
 ```
 resource "kubernetes_service" "mysql" {
   metadata {
@@ -312,6 +298,7 @@ resource "kubernetes_replication_controller" "mysql" {
 
 <br>
 wordpress.tf
+
 ```
 resource "kubernetes_service" "wordpress" {
   metadata {
@@ -420,6 +407,7 @@ resource "kubernetes_replication_controller" "wordpress" {
 
 <br>
 localvolumes.tf
+
 ```
 provider "kubernetes" {}
 
@@ -474,6 +462,7 @@ resource "kubernetes_persistent_volume" "wordpress" {
 
 <br>
 output.tf
+
 ```
 output "slb_ip" {
   value = "${kubernetes_service.wordpress.load_balancer_ingress.0.ip}"

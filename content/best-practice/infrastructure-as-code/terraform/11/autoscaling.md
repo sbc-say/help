@@ -93,7 +93,7 @@ alicloud_ess_scaling_configurationはAutoScalingを設定するパラメータ�
 https://www.terraform.io/docs/providers/alicloud/r/ess_scaling_configuration.html
 
 #### **alicloud_ess_scaling_rule**
-AutoScaleのルールリソースを設定するパラメータです。
+AutoScalingのルールリソースを設定するパラメータです。
 * `scaling_group_id` - （必須）スケーリングルールのスケーリンググループのID。
 * `adjustment_type` - （必須）スケーリングルールの調整モード。
 * `adjustment_value` - （必須）スケーリングルールの調整値。
@@ -103,5 +103,5 @@ AutoScaleのルールリソースを設定するパラメータです。
 <br>
 以下にAutoScalingの実際のサンプルを入れていますので、こちらも参照してみてください。
 
-[example: オートスケーリング](docs/22/Auto-Scaling.md)
+[example: オートスケーリング]({{%relref "scenario/terraform/auto-scaling.md" %}})
 

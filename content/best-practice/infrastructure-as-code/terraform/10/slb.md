@@ -110,4 +110,4 @@ alicloud_slb_attachmentはバックエンド・サーバーグループ(ECSイ�
 <br>
 以下にSLBの実際の構築サンプルを入れていますので、こちらも参照してみてください。
 
-[example: SLB設定サンプル](docs/17/SLB-Setting-Sample.md)
+[example: SLBの構築と設定]({{% relref "scenario/terraform/slb-setting-sample.md" %}})
