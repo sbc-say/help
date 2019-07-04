@@ -18,7 +18,6 @@ draft: false
 |[ベストプラクティス]({{%relref "best-practice/_index.md" %}})|
 |:------:|
 |[アドバイザリ]({{%relref "best-practice/advisory.md" %}})|
-|[アーキテクチャのパターン]({{%relref "best-practice/architecture.md" %}})|
 |[料金体系]({{%relref "best-practice/pricing.md" %}})|
 |<details><summary>[Infrastructure as Code]({{%relref "best-practice/infrastructure-as-code/_index.md" %}})</summary></details>|
 
