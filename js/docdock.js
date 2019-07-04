@@ -82,7 +82,9 @@ jQuery(document).ready(function () {
         var content = $(element).html().replace(/&amp;/g, '&');
         $(element).parent().replaceWith('<div class="mermaid" align="center">' + content + '</div>');
     });
+
 });
+
 
 
 
