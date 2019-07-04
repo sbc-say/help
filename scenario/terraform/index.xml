@@ -49,7 +49,7 @@ provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}
     </item>
     
     <item>
-      <title>kubernetesの構築と設定</title>
+      <title>Kubernetesの構築と設定</title>
       <link>https://sbcloud.github.io/help/scenario/terraform/kubernetes-setting-sample/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
       

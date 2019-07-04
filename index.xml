@@ -97,7 +97,7 @@ AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの�
       <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
       <description>   トップページ         Getting Started     アカウント登録   プロダクト紹介プロダクト資料のリンク一覧
 ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較
-中国と日本におけるサービス一覧       ベストプラクティス     アドバイザリ   アーキテクチャのパターン   料金体系   Infrastructure as Code       よくある質問     ECS   RDS   SLB   OSS   VPC   料金   アカウント       About SBC Technical Reference     サイトマップ    </description>
+中国と日本におけるサービス一覧       ベストプラクティス     アドバイザリ   料金体系   Infrastructure as Code       よくある質問     ECS   RDS   SLB   OSS   VPC   料金   アカウント       About SBC Technical Reference     サイトマップ    </description>
     </item>
     
     <item>
@@ -145,16 +145,6 @@ $ brew install tfenv $ tfenv --version tfenv 0.6.0  完了したら、インス�
 $ tfenv list-remote 0.12.0-beta1 0.11.13 ・・・  最新の安定バージョンかつAlibabaCloud Terraform対応は 0.11.13です。0.11.13を次のようにインストールします。
 $ tfenv install 0.11.13  terraformには .terraform-versionというファイルがあり、こちらにバージョンを記述すると、そのバージョンを自動的にインストールできます。
 $ echo 0.11.13 &amp;gt; .</description>
-    </item>
-    
-    <item>
-      <title>アーキテクチャのパターン</title>
-      <link>https://sbcloud.github.io/help/best-practice/architecture/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/best-practice/architecture/</guid>
-      <description> Architecture Patterns
-既存のMDで上書きいただく　 </description>
     </item>
     
     <item>
@@ -578,7 +568,7 @@ provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}
     </item>
     
     <item>
-      <title>kubernetesの構築と設定</title>
+      <title>Kubernetesの構築と設定</title>
       <link>https://sbcloud.github.io/help/scenario/terraform/kubernetes-setting-sample/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
       

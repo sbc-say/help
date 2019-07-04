@@ -1,5 +1,5 @@
 ---
-title: "kubernetesの構築と設定"
+title: "Kubernetesの構築と設定"
 date: 2019-07-01T00:00:00+09:00
 description: "Terraformを用いて、Alibaba Cloud上でkubernetesを作成します"
 weight: 190
