@@ -3,51 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://sbcloud.github.io/help/scenario/ci-cd/bastion-server/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenario/ci-cd/slb-setting-sample/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenario/ci-cd/rds-setting-sample/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenario/ci-cd/kubernetes-setting-sample/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenario/ci-cd/web-application/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenario/ci-cd/accelerated-content-delivery/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenario/ci-cd/auto-scaling/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenario/ci-cd/web-application-on-kubernetes/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/scenario/ci-cd/ec-site-sample/</loc>
-    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/01/how-to-use/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
@@ -148,6 +103,11 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/scenario/terraform/</loc>
+    <lastmod>2019-05-13T16:20:40+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/scenario/</loc>
     <lastmod>2019-05-13T16:20:40+09:00</lastmod>
   </url>
@@ -228,7 +188,7 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/11/autoscale/</loc>
+    <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/11/autoscaling/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   
@@ -249,6 +209,51 @@
   
   <url>
     <loc>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/15/kubernetes/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenario/terraform/bastion-server/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenario/terraform/slb-setting-sample/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenario/terraform/rds-setting-sample/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenario/terraform/kubernetes-setting-sample/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenario/terraform/web-application/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenario/terraform/accelerated-content-delivery/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenario/terraform/auto-scaling/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenario/terraform/web-application-on-kubernetes/</loc>
+    <lastmod>2019-07-01T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/scenario/terraform/ec-site-sample/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
   

@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-04T08:24:11 UTC">
+<meta name="revised" content="2019-07-04T10:01:29 UTC">
 <title>Infrastructure as Codeの実践 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -264,9 +264,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/11/autoscale/" class="dd-item">
+      <li data-nav-id="/help/best-practice/infrastructure-as-code/terraform/11/autoscaling/" class="dd-item">
         <div>
-          <a href="/help/best-practice/infrastructure-as-code/terraform/11/autoscale/">
+          <a href="/help/best-practice/infrastructure-as-code/terraform/11/autoscaling/">
             AutoScalingの作成
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
@@ -311,72 +311,78 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       <a href="/help/scenario/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/help/scenario/ci-cd/" class="dd-item haschildren
+    <li data-nav-id="/help/scenario/ci-cd/" class="dd-item
         ">
       <div>
-      <a href="/help/scenario/ci-cd/">CI/CD</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/scenario/ci-cd/">CI/CD</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/help/scenario/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/terraform/">terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/scenario/ci-cd/bastion-server/" class="dd-item">
+      <li data-nav-id="/help/scenario/terraform/bastion-server/" class="dd-item">
         <div>
-          <a href="/help/scenario/ci-cd/bastion-server/">
-            Terraform 17章 example: ssh踏み台サーバ
+          <a href="/help/scenario/terraform/bastion-server/">
+            SSH踏み台サーバの作成
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/scenario/ci-cd/slb-setting-sample/" class="dd-item">
+      <li data-nav-id="/help/scenario/terraform/slb-setting-sample/" class="dd-item">
         <div>
-          <a href="/help/scenario/ci-cd/slb-setting-sample/">
-            Terraform 18章 example: SLB設定サンプル
+          <a href="/help/scenario/terraform/slb-setting-sample/">
+            SLBの構築と設定
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/scenario/ci-cd/rds-setting-sample/" class="dd-item">
+      <li data-nav-id="/help/scenario/terraform/rds-setting-sample/" class="dd-item">
         <div>
-          <a href="/help/scenario/ci-cd/rds-setting-sample/">
-            Terraform 19章 example: RDS設定サンプル
+          <a href="/help/scenario/terraform/rds-setting-sample/">
+            RDSの構築と設定
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/scenario/ci-cd/kubernetes-setting-sample/" class="dd-item">
+      <li data-nav-id="/help/scenario/terraform/kubernetes-setting-sample/" class="dd-item">
         <div>
-          <a href="/help/scenario/ci-cd/kubernetes-setting-sample/">
-            Terraform 20章 example: kubernetes設定サンプル
+          <a href="/help/scenario/terraform/kubernetes-setting-sample/">
+            kubernetesの構築と設定
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/scenario/ci-cd/web-application/" class="dd-item">
+      <li data-nav-id="/help/scenario/terraform/web-application/" class="dd-item">
         <div>
-          <a href="/help/scenario/ci-cd/web-application/">
-            Terraform 21章 example: Webアプリケーション
+          <a href="/help/scenario/terraform/web-application/">
+            Webアプリケーションの構築
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/scenario/ci-cd/accelerated-content-delivery/" class="dd-item">
+      <li data-nav-id="/help/scenario/terraform/accelerated-content-delivery/" class="dd-item">
         <div>
-          <a href="/help/scenario/ci-cd/accelerated-content-delivery/">
-            Terraform 22章 example: 高速コンテンツ配信
+          <a href="/help/scenario/terraform/accelerated-content-delivery/">
+            高速コンテンツ配信の実現
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/scenario/ci-cd/auto-scaling/" class="dd-item">
+      <li data-nav-id="/help/scenario/terraform/auto-scaling/" class="dd-item">
         <div>
-          <a href="/help/scenario/ci-cd/auto-scaling/">
-            Terraform 23章 example: オートスケーリング
+          <a href="/help/scenario/terraform/auto-scaling/">
+            オートスケーリングの実現
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/scenario/ci-cd/web-application-on-kubernetes/" class="dd-item">
+      <li data-nav-id="/help/scenario/terraform/web-application-on-kubernetes/" class="dd-item">
         <div>
-          <a href="/help/scenario/ci-cd/web-application-on-kubernetes/">
-            Terraform 24章 example: KubernetesによるコンテナでWordPress作成
+          <a href="/help/scenario/terraform/web-application-on-kubernetes/">
+            KubernetesによるコンテナでWordPress作成
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/scenario/ci-cd/ec-site-sample/" class="dd-item">
+      <li data-nav-id="/help/scenario/terraform/ec-site-sample/" class="dd-item">
         <div>
-          <a href="/help/scenario/ci-cd/ec-site-sample/">
-            Terraform 25章 example: MagentoでECサイト構築
+          <a href="/help/scenario/terraform/ec-site-sample/">
+             MagentoでECサイト構築
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -565,14 +571,14 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 15/05/2019
+        <i class='fa fa-calendar'></i>  15/05/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/infrastructure-as-code/_index.md" target="blank"><i class="fa fa-code-fork"></i>
-        Improve this page</a>
+        </a>
     </div>
     
   </div>
@@ -582,7 +588,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
   
-    Create a content/_footer.md file to customize the footer content
+    
   
 
 

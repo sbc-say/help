@@ -176,10 +176,10 @@ image_idの種類や取得方法は後述します。 ・system_disk_category - 
     
     <item>
       <title>AutoScalingの作成</title>
-      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/11/autoscale/</link>
+      <link>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/11/autoscaling/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/11/autoscale/</guid>
+      <guid>https://sbcloud.github.io/help/best-practice/infrastructure-as-code/terraform/11/autoscaling/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるAutoscalingの作成方法を解説します。
 1. AutoScaling &amp;nbsp; Auto Scaling はECSリソースの容量を自動的にスケールイン/スケールアウト調整してくれます。 ※ESSとは、SDK名やパッケージ名で用いられるAuto Scalingの略称です。（Elastic Scaling Service）
 
