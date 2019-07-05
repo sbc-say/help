@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-05T10:44:31 UTC">
+<meta name="revised" content="2019-07-05T11:09:39 UTC">
 <title>SSH踏み台サーバの作成 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -545,12 +545,13 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h3 id="17-1-ssh踏み台サーバ">17.1 ssh踏み台サーバ</h3>
 
-<p>&nbsp; 踏み台サーバーとは、インターネットに直接繋がないサーバーをSSHで接続するために経由されるサーバーのことです。踏み台サーバを使うことで、以下のメリットがあります。</p>
+<p>&nbsp; クラウド上にてEC2やOSS、RDSなどにて個人情報や外部流出したくないしたくない危険なファイルがある場合、インターネットら外部からメインサーバが見える状態は極力避けたいです。それを防ぐために様々な手段がありますが、費用対効果の高いネットワーク構造として踏み台サーバを作る方法があります。踏み台サーバーとは、インターネットに直接繋がないサーバーをSSHで接続するために経由される、セキュリティ層の役割を満たすことができるサーバーのことです。踏み台サーバを使うことで、以下のメリットがあります。</p>
 
 <ul>
 <li>実行用など本番に使う各サーバに直接アクセスできないため、外部からの侵入リスクを軽減できる。</li>
 <li>PublicIPを実行用など本番に使う各サーバに割る必要がないため、運用における負荷を軽減できる。</li>
-<li>踏み台サーバから実行用など本番に使う各サーバへのログを残せるため、不正操作を防げれる。</li>
+<li>踏み台サーバから実行用など本番に使う各サーバへのログを残せるため、不正操作を防げれる。
+<br></li>
 </ul>
 
 <p>構成としては以下の図通りになります。</p>
@@ -1395,14 +1396,14 @@ Welcome to Alibaba Cloud Elastic Compute Service !
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 07/01/2019
+        <i class='fa fa-calendar'></i>  07/01/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/scenario/terraform/bastion-server.md" target="blank"><i class="fa fa-code-fork"></i>
-        Improve this page</a>
+        </a>
     </div>
     
   </div>
