@@ -29,7 +29,7 @@ draft: false
 
 ネットワーク構成:
 |リソース|リソース名|パラメータ|必須|設定値|内容|
-|---|---|---|---|---|---|
+|:------:|:------:|:------:|:------:|:------:|:------:|
 |alicloud_vpc|vpc|name|任意|${var.project_name}-vpc| VPC の名称。この例の場合、`Bastion-Server-for-Terraform-vpc` として表示されます。 |
 ||vpc|cidr_block|必須|192.168.1.0/24| VPC の CIDR ブロック |
 ||vpc|description|任意|Enable Bastion-Server vpc| VPC の説明。 |
