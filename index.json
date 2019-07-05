@@ -127,7 +127,7 @@
 },
 {
 	"uri": "https://sbcloud.github.io/help/scenario/terraform/",
-	"title": "terraform",
+	"title": "Terraform",
 	"tags": [],
 	"description": "",
 	"content": "ここではCI/CDの実践構成を記載します\n"
