@@ -24,7 +24,7 @@
 
     {{ if not .Page.Lastmod.IsZero }}
     <div class="date">
-        <i class='fa fa-calendar'></i> {{T "last-update-on"}} {{ .Page.Lastmod.Format "02/01/2006" }}
+        <i class='fa fa-calendar'></i> {{T "last-update-on"}} {{ .Page.Lastmod.Format "01/02/2006" }}
     </div>
     {{end}}
 
@@ -45,7 +45,7 @@
   {{ if .Site.GetPage "page" "_footer.md" }}
     {{(.Site.GetPage "page" "_footer.md").Content}}
   {{else}}
-    {{ T "create-footer-md" }}
+    <!-- {{ T "create-footer-md" }}  -->
   {{end}}
 {{end}}
 
