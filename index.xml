@@ -550,10 +550,14 @@ resource &amp;quot;alicloud_cs_kubernetes&amp;quot; &amp;quot;main&amp;quot; { n
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/bastion-server/</guid>
-      <description>&amp;nbsp; Terraformで踏み台サーバ、本番サーバを作ってみます。ゴールの構成図は以下の通りです。
-ソースは以下になります。サンプルソースは[こちら]()にあります。
-main.tf
-provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.region}&amp;quot; } resource &amp;quot;alicloud_vpc&amp;quot; &amp;quot;vpc&amp;quot; { name = &amp;quot;${var.project_name}-vpc&amp;quot; cidr_block = &amp;quot;192.168.1.0/24&amp;quot; description = &amp;quot;Enable Bastion-Server vpc&amp;quot; } resource &amp;quot;alicloud_vswitch&amp;quot; &amp;quot;vsw&amp;quot; { name = &amp;quot;${var.project_name}-vswitch&amp;quot; vpc_id = &amp;quot;${alicloud_vpc.vpc.id}&amp;quot; cidr_block = &amp;quot;192.168.1.0/28&amp;quot; availability_zone = &amp;quot;${var.zone}&amp;quot; description = &amp;quot;Enable Bastion-Server vswitch&amp;quot; } # SSH踏み台専用 resource &amp;quot;alicloud_security_group&amp;quot; &amp;quot;sg_bastion_server&amp;quot; { name = &amp;quot;${var.project_name}_Bastion_Server&amp;quot; description = &amp;quot;Enable SSH access via port 22&amp;quot; vpc_id = &amp;quot;${alicloud_vpc.</description>
+      <description>17.1 ssh踏み台サーバ &amp;nbsp; 踏み台サーバーとは、インターネットに直接繋がないサーバーをSSHで接続するために経由されるサーバーのことです。踏み台サーバを使うことで、以下のメリットがあります。
+ 実行用など本番に使う各サーバに直接アクセスできないため、外部からの侵入リスクを軽減できる。 PublicIPを実行用など本番に使う各サーバに割る必要がないため、運用における負荷を軽減できる。 踏み台サーバから実行用など本番に使う各サーバへのログを残せるため、不正操作を防げれる。  構成としては以下の図通りになります。
+
+&amp;nbsp; Terraformで踏み台サーバ、本番サーバを作ってみます。ゴールの構成図は以下の通りです。
+それぞれのパラメータは以下の通りです。
+
+ネットワーク構成: |リソース|リソース名|パラメータ|必須|設定値|内容| |&amp;mdash;|&amp;mdash;|&amp;mdash;|&amp;mdash;|&amp;mdash;|&amp;mdash;| |alicloud_vpc|vpc|name|任意|${var.project_name}-vpc| VPC の名称。この例の場合、Bastion-Server-for-Terraform-vpc として表示されます。 | ||vpc|cidr_block|必須|192.168.1.0/24| VPC の CIDR ブロック | ||vpc|description|任意|Enable Bastion-Server vpc| VPC の説明。 | |alicloud_vswitch|vsw|name|任意|${var.project_name}-vswitch| vswitch の名称。この例の場合、Bastion-Server-for-Terraform-vswitch として表示されます。 | ||vsw|vpc_id|必須|${alicloud_vpc.vpc.id}| アタッチするVPCのID | ||vsw|cidr_block|必須|192.168.1.0/28| vswitch の CIDR ブロック | ||vsw|availability_zone|必須|${var.zone}| 使用するアベイラビリティゾーン | ||vsw|description|任意|Enable Bastion-Server vswitch| vswitch の説明。 |
+SSH踏み台専用セキュリティグループ構成: |リソース|リソース名|パラメータ|必須|設定値|内容| |&amp;mdash;|&amp;mdash;|&amp;mdash;|&amp;mdash;|&amp;mdash;|&amp;mdash;| |alicloud_security_group|sg_bastion_server|name|任意|${var.project_name}_Bastion_Server| セキュリティグループ の名称。この例の場合、Bastion-Server-for-Terraform_Bastion_Server として表示されます。 | ||sg_bastion_server|vpc_id|必須|${alicloud_vpc.vpc.id}| アタッチするVPCのID | ||sg_bastion_server|description|任意|Enable SSH access via port 22| セキュリティグループ の説明。 | |alicloud_security_group_rule|allow_ssh|type|必須|ingress| セキュリティグループのタイプ。 ingress（受信） かegress（送信） のいずれかになります。 | ||allow_ssh|ip_protocol|必須|tcp| 通信プロトコル。 tcp, udp, icmp, gre, all のいずれかになります。| ||allow_ssh|nic_type|必須|intranet| ネットワークタイプ。 internet か intranet のいずれかになります。 | ||allow_ssh|policy|必須|accept| 許可ポリシー。 acceptか drop のいずれかになります。 | ||allow_ssh|port_range|必須|22&amp;frasl;22| 通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。 | ||allow_ssh|priority|必須|1| 許可ポリシーの優先順位。 | ||allow_ssh|security_group_id|必須|${alicloud_security_group.</description>
     </item>
     
     <item>
