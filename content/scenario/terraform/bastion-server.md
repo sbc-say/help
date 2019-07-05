@@ -29,8 +29,9 @@ draft: false
 
 ネットワーク構成:
 
+
 |リソース|リソース名|パラメータ|必須|設定値|内容|
-|:------:|:------:|:------:|:------:|:------:|:------:|
+|---|---|---|---|---|---|
 |alicloud_vpc|vpc|name|任意|${var.project_name}-vpc| VPC の名称。この例の場合、`Bastion-Server-for-Terraform-vpc` として表示されます。 |
 ||vpc|cidr_block|必須|192.168.1.0/24| VPC の CIDR ブロック |
 ||vpc|description|任意|Enable Bastion-Server vpc| VPC の説明。 |
@@ -43,7 +44,6 @@ draft: false
 
 
 SSH踏み台専用セキュリティグループ構成:
-
 
 
 |リソース|リソース名|パラメータ|必須|設定値|内容|
@@ -64,7 +64,6 @@ SSH踏み台専用セキュリティグループ構成:
 SSH踏み台専用EC2構成:
 
 
-
 |リソース|リソース名|パラメータ|必須|設定値|内容|
 |---|---|---|---|---|---|
 |alicloud_instance|ECS_instance_for_Bastion_Server|instance_name|任意|${var.project_name}-Bastion-Server-ECS-instance| EC インスタンスの名称。この例の場合、`Bastion-Server-for-Terraform-Bastion-Server-ECS-instance` として表示されます。 |
@@ -80,7 +79,6 @@ SSH踏み台専用EC2構成:
 
 
 実行サーバ専用セキュリティグループ構成:
-
 
 
 |リソース|リソース名|パラメータ|必須|設定値|内容|
@@ -107,6 +105,8 @@ SSH踏み台専用EC2構成:
 
 
 実行サーバ専用EC2構成:
+
+
 |リソース|リソース名|パラメータ|必須|設定値|内容|
 |---|---|---|---|---|---|
 |alicloud_instance|ECS_instance_for_Production_Server|instance_name|必須|${var.project_name}-Production-Server-ECS-instance| EC インスタンスの名称。この例の場合、`Bastion-Server-for-Terraform-Bastion-Server-ECS-instance` として表示されます。 |
@@ -275,33 +275,43 @@ terraform play -var-file="confing.tfvars"
 terraform apply -var-file="confing.tfvars"
 ```
 
-![図 2](/help/image/17.2.1.png)
-<br>
-これで問題なく実行できたら、踏み台サーバと本番サーバそれぞれのPublic IPが表示されます。
-![図 3](/help/image/17.2.2.png)
-<br>
 
-実際にssh制限してるかチェックしてみます。踏み台サーバのIPアドレスが`47.74.54.92`、本番サーバのIPアドレスが`47.74.52.85`です。
-![図 4](/help/image/17.2.3.png)
-<br>
+実際にssh制限してるかチェックしてみます。踏み台サーバのIPアドレスが`47.74.2.180`、本番サーバのIPアドレスが`47.74.23.29`です。
+```
+$ ssh root@47.74.23.29
+ssh: connect to host 47.74.23.29 port 22: Operation timed out
+$ 
+$ ssh root@47.74.2.180
+The authenticity of host '47.74.2.180 (47.74.2.180)' can't be established.
+ECDSA key fingerprint is SHA256:nBrjlX0/9UZy5KTzt+41rVNwtZDghpdE6wTf9EQhr68.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '47.74.2.180' (ECDSA) to the list of known hosts.
+root@47.74.2.180's password: 
 
+Welcome to Alibaba Cloud Elastic Compute Service !
+
+[root@Bastion-Server-for-Terraform-Bastion-Server-ECS-instance ~]# 
+```
+<br>
 本番サーバにsshログインは出来ず、ssh踏み台サーバにsshログインできました。
 それでは本番サーバに踏み台サーバからsshログインしてみます。
-![図 5](/help/image/17.2.4.png)
+
+```
+[root@Bastion-Server-for-Terraform-Bastion-Server-ECS-instance ~]# ssh root@47.74.23.29
+The authenticity of host '47.74.23.29 (47.74.23.29)' can't be established.
+ECDSA key fingerprint is SHA256:83on9BQWoTV1mDRgImz+1ChiiASDQnwo58SFIK6kWlU.
+ECDSA key fingerprint is MD5:72:06:09:c4:33:c5:03:de:1b:20:19:40:a2:28:d6:7f.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '47.74.23.29' (ECDSA) to the list of known hosts.
+root@47.74.23.29's password: 
+
+Welcome to Alibaba Cloud Elastic Compute Service !
+
+[root@Bastion-Server-for-Terraform-Production-Server-ECS-instance ~]# 
+```
+<br>
 ログインできました。これで本番サーバに対し外部からssh接続不可といったセキュアな運用ができます。
-
-
-<!--
-
 <br>
-### 17.3 ssh踏み台サーバ with OSSへのロギング
-&nbsp; Terraformで踏み台サーバ、本番サーバを作りました。今度はOSSへのロギング付きバージョンを作ってみます。
-全てのSSH接続は、セキュリティ観点上 OSSのssh-logsバケットにて記録されます。
-ゴールの構成図は以下の通りです。
 
-![図 17.3](/help/image/17.3.png)
-<br>
-ソースは以下になります。サンプルソースは[こちら]()にあります。
 
--->
 
