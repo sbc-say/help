@@ -28,6 +28,7 @@ draft: false
 <br>
 
 ネットワーク構成:
+
 |リソース|リソース名|パラメータ|必須|設定値|内容|
 |:------:|:------:|:------:|:------:|:------:|:------:|
 |alicloud_vpc|vpc|name|任意|${var.project_name}-vpc| VPC の名称。この例の場合、`Bastion-Server-for-Terraform-vpc` として表示されます。 |
@@ -40,7 +41,11 @@ draft: false
 ||vsw|description|任意|Enable Bastion-Server vswitch| vswitch の説明。 |
 
 
+
 SSH踏み台専用セキュリティグループ構成:
+
+
+
 |リソース|リソース名|パラメータ|必須|設定値|内容|
 |---|---|---|---|---|---|
 |alicloud_security_group|sg_bastion_server|name|任意|${var.project_name}_Bastion_Server| セキュリティグループ の名称。この例の場合、`Bastion-Server-for-Terraform_Bastion_Server` として表示されます。 |
@@ -57,6 +62,9 @@ SSH踏み台専用セキュリティグループ構成:
 
 
 SSH踏み台専用EC2構成:
+
+
+
 |リソース|リソース名|パラメータ|必須|設定値|内容|
 |---|---|---|---|---|---|
 |alicloud_instance|ECS_instance_for_Bastion_Server|instance_name|任意|${var.project_name}-Bastion-Server-ECS-instance| EC インスタンスの名称。この例の場合、`Bastion-Server-for-Terraform-Bastion-Server-ECS-instance` として表示されます。 |
@@ -72,6 +80,9 @@ SSH踏み台専用EC2構成:
 
 
 実行サーバ専用セキュリティグループ構成:
+
+
+
 |リソース|リソース名|パラメータ|必須|設定値|内容|
 |---|---|---|---|---|---|
 |alicloud_security_group|sg_production_server|name|任意|${var.project_name}_Production_Server| セキュリティグループ の名称。この例の場合、`Bastion-Server-for-Terraform_Production_Server` として表示されます。 |
