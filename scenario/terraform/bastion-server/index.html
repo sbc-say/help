@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-05T10:31:38 UTC">
+<meta name="revised" content="2019-07-05T10:34:09 UTC">
 <title>SSH踏み台サーバの作成 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -113,6 +113,20 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       <a href="/help/getting-started/product/">プロダクトの紹介</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/help/getting-started/product/links/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/links/">
+            プロダクト資料のリンク一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/product/ecs-by-region/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/ecs-by-region/">
+            ECSの使用可能なRegion/Spec/Price紹介
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/help/getting-started/cloud-users/" class="dd-item haschildren
@@ -553,69 +567,505 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <p><br></p>
 
-<p>ネットワーク構成:
-|リソース|リソース名|パラメータ|必須|設定値|内容|
-|:&mdash;&mdash;:|:&mdash;&mdash;:|:&mdash;&mdash;:|:&mdash;&mdash;:|:&mdash;&mdash;:|:&mdash;&mdash;:|
-|alicloud_vpc|vpc|name|任意|${var.project_name}-vpc| VPC の名称。この例の場合、<code>Bastion-Server-for-Terraform-vpc</code> として表示されます。 |
-||vpc|cidr_block|必須|192.168.1.0/24| VPC の CIDR ブロック |
-||vpc|description|任意|Enable Bastion-Server vpc| VPC の説明。 |
-|alicloud_vswitch|vsw|name|任意|${var.project_name}-vswitch| vswitch の名称。この例の場合、<code>Bastion-Server-for-Terraform-vswitch</code> として表示されます。 |
-||vsw|vpc_id|必須|${alicloud_vpc.vpc.id}| アタッチするVPCのID |
-||vsw|cidr_block|必須|192.168.1.0/28| vswitch の CIDR ブロック |
-||vsw|availability_zone|必須|${var.zone}| 使用するアベイラビリティゾーン |
-||vsw|description|任意|Enable Bastion-Server vswitch| vswitch の説明。 |</p>
+<p>ネットワーク構成:</p>
 
-<p>SSH踏み台専用セキュリティグループ構成:
-|リソース|リソース名|パラメータ|必須|設定値|内容|
-|&mdash;|&mdash;|&mdash;|&mdash;|&mdash;|&mdash;|
-|alicloud_security_group|sg_bastion_server|name|任意|${var.project_name}_Bastion_Server| セキュリティグループ の名称。この例の場合、<code>Bastion-Server-for-Terraform_Bastion_Server</code> として表示されます。 |
-||sg_bastion_server|vpc_id|必須|${alicloud_vpc.vpc.id}| アタッチするVPCのID |
-||sg_bastion_server|description|任意|Enable SSH access via port 22| セキュリティグループ の説明。 |
-|alicloud_security_group_rule|allow_ssh|type|必須|ingress| セキュリティグループのタイプ。 <code>ingress</code>（受信） か<code>egress</code>（送信） のいずれかになります。 |
-||allow_ssh|ip_protocol|必須|tcp| 通信プロトコル。 <code>tcp</code>, <code>udp</code>, <code>icmp</code>, <code>gre</code>, <code>all</code> のいずれかになります。|
-||allow_ssh|nic_type|必須|intranet| ネットワークタイプ。 <code>internet</code> か <code>intranet</code> のいずれかになります。 |
-||allow_ssh|policy|必須|accept| 許可ポリシー。 <code>accept</code>か <code>drop</code> のいずれかになります。 |
-||allow_ssh|port_range|必須|<sup>22</sup>&frasl;<sub>22</sub>| 通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。 |
-||allow_ssh|priority|必須|1| 許可ポリシーの優先順位。 |
-||allow_ssh|security_group_id|必須|${alicloud_security_group.sg_bastion_server.id}| アタッチするセキュリティグループのID |
-||allow_ssh|cidr_ip|任意|0.0.0.0/0| ターゲットとなるIPアドレス。デフォルトは「0.0.0.0/0」。値が「0.0.0.0/0」の場合は無制限状態となります。 |</p>
+<table>
+<thead>
+<tr>
+<th align="center">リソース</th>
+<th align="center">リソース名</th>
+<th align="center">パラメータ</th>
+<th align="center">必須</th>
+<th align="center">設定値</th>
+<th align="center">内容</th>
+</tr>
+</thead>
 
-<p>SSH踏み台専用EC2構成:
-|リソース|リソース名|パラメータ|必須|設定値|内容|
-|&mdash;|&mdash;|&mdash;|&mdash;|&mdash;|&mdash;|
-|alicloud_instance|ECS_instance_for_Bastion_Server|instance_name|任意|${var.project_name}-Bastion-Server-ECS-instance| EC インスタンスの名称。この例の場合、<code>Bastion-Server-for-Terraform-Bastion-Server-ECS-instance</code> として表示されます。 |
-||ECS_instance_for_Bastion_Server|host_name|任意|${var.project_name}-Bastion-Server-ECS-instance| EC インスタンスのHost名称。この例の場合、<code>Bastion-Server-for-Terraform-Bastion-Server-ECS-instance</code> として表示されます。 |
-||ECS_instance_for_Bastion_Server|instance_type|必須|ecs.xn4.small| EC インスタンスのタイプ。今回は <code>ecs.xn4.small</code> を選定します。 |
-||ECS_instance_for_Bastion_Server|image_id|必須|centos_7_04_64_20G_alibase_201701015.vhd| EC インスタンスのImageID。今回は <code>centos_7_04_64_20G_alibase_201701015.vhd</code> を選定します。 |
-||ECS_instance_for_Bastion_Server|system_disk_category|任意|cloud_efficiency| EC インスタンスのディスクタイプ。デフォルトは cloud_efficiency です。 |
-||ECS_instance_for_Bastion_Server|security_groups|必須|&ldquo;${alicloud_security_group.sg_bastion_server.id}&ldquo;|アタッチするセキュリティグループのID |
-||ECS_instance_for_Bastion_Server|availability_zone|必須|${var.zone}| 使用するアベイラビリティゾーン |
-||ECS_instance_for_Bastion_Server|vswitch_id|必須|${alicloud_vswitch.vsw.id}| アタッチするVSwitchのID |
-||ECS_instance_for_Bastion_Server|password|任意|&ldquo;!Bastion2019&rdquo;| EC インスタンスのログインパスワード。記載したくない場合は<code>confing.tfvars</code>にて記載することをお勧めします。 |
-||ECS_instance_for_Bastion_Server|internet_max_bandwidth_out|任意|5| パブリックネットワークへの最大帯域幅。デフォルトは0ですが、0より大きい値を入れるとパブリックIPアドレスがアタッチされます。 |</p>
+<tbody>
+<tr>
+<td align="center">alicloud_vpc</td>
+<td align="center">vpc</td>
+<td align="center">name</td>
+<td align="center">任意</td>
+<td align="center">${var.project_name}-vpc</td>
+<td align="center">VPC の名称。この例の場合、<code>Bastion-Server-for-Terraform-vpc</code> として表示されます。</td>
+</tr>
 
-<p>実行サーバ専用セキュリティグループ構成:
-|リソース|リソース名|パラメータ|必須|設定値|内容|
-|&mdash;|&mdash;|&mdash;|&mdash;|&mdash;|&mdash;|
-|alicloud_security_group|sg_production_server|name|任意|${var.project_name}_Production_Server| セキュリティグループ の名称。この例の場合、<code>Bastion-Server-for-Terraform_Production_Server</code> として表示されます。 |
-||sg_production_server|vpc_id|必須|${alicloud_vpc.vpc.id}| アタッチするVPCのID |
-||sg_production_server|description|任意|Marker security group for Production server| セキュリティグループ の説明。 |
-|alicloud_security_group_rule|allow_http|type|ingress|必須| セキュリティグループのタイプ。 <code>ingress</code>（受信） か<code>egress</code>（送信） のいずれかになります。 |
-||allow_http|ip_protocol|tcp|必須| 通信プロトコル。 <code>tcp</code>, <code>udp</code>, <code>icmp</code>, <code>gre</code>, <code>all</code> のいずれかになります。|
-||allow_http|nic_type|intranet|必須| ネットワークタイプ。 <code>internet</code> か <code>intranet</code> のいずれかになります。 |
-||allow_http|policy|accept|必須| 許可ポリシー。 <code>accept</code>か <code>drop</code> のいずれかになります。 |
-||allow_http|port_range|必須|<sup>80</sup>&frasl;<sub>80</sub>| 通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。 |
-||allow_http|priority|必須|1| 許可ポリシーの優先順位。 |
-||allow_http|security_group_id|必須|${alicloud_security_group.sg_production_server.id}| アタッチするセキュリティグループのID |
-||allow_http|cidr_ip|任意|0.0.0.0/0| ターゲットとなるIPアドレス。デフォルトは「0.0.0.0/0」。値が「0.0.0.0/0」の場合は無制限状態となります。 |
-||allow_ssh_for_Bastion|type|必須|ingress| セキュリティグループのタイプ。 <code>ingress</code>（受信） か<code>egress</code>（送信） のいずれかになります。 |
-||allow_ssh_for_Bastion|ip_protocol|必須|tcp| 通信プロトコル。 <code>tcp</code>, <code>udp</code>, <code>icmp</code>, <code>gre</code>, <code>all</code> のいずれかになります。|
-||allow_ssh_for_Bastion|nic_type|必須|intranet| ネットワークタイプ。 <code>internet</code> か <code>intranet</code> のいずれかになります。 |
-||allow_ssh_for_Bastion|policy|必須|accept| 許可ポリシー。 <code>accept</code>か <code>drop</code> のいずれかになります。 |
-||allow_ssh_for_Bastion|port_range|必須|<sup>22</sup>&frasl;<sub>22</sub>| 通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。 |
-||allow_ssh_for_Bastion|priority|必須|1| 許可ポリシーの優先順位。 |
-||allow_ssh_for_Bastion|security_group_id|必須|${alicloud_security_group.sg_production_server.id}| アタッチするセキュリティグループのID |
-||allow_ssh_for_Bastion|cidr_ip|任意|${alicloud_instance.ECS_instance_for_Bastion_Server.public_ip}| SSH踏み台専用サーバのみからのPort22でアクセスを許容します。 |</p>
+<tr>
+<td align="center"></td>
+<td align="center">vpc</td>
+<td align="center">cidr_block</td>
+<td align="center">必須</td>
+<td align="center">192.168.1.0/24</td>
+<td align="center">VPC の CIDR ブロック</td>
+</tr>
+
+<tr>
+<td align="center"></td>
+<td align="center">vpc</td>
+<td align="center">description</td>
+<td align="center">任意</td>
+<td align="center">Enable Bastion-Server vpc</td>
+<td align="center">VPC の説明。</td>
+</tr>
+
+<tr>
+<td align="center">alicloud_vswitch</td>
+<td align="center">vsw</td>
+<td align="center">name</td>
+<td align="center">任意</td>
+<td align="center">${var.project_name}-vswitch</td>
+<td align="center">vswitch の名称。この例の場合、<code>Bastion-Server-for-Terraform-vswitch</code> として表示されます。</td>
+</tr>
+
+<tr>
+<td align="center"></td>
+<td align="center">vsw</td>
+<td align="center">vpc_id</td>
+<td align="center">必須</td>
+<td align="center">${alicloud_vpc.vpc.id}</td>
+<td align="center">アタッチするVPCのID</td>
+</tr>
+
+<tr>
+<td align="center"></td>
+<td align="center">vsw</td>
+<td align="center">cidr_block</td>
+<td align="center">必須</td>
+<td align="center">192.168.1.0/28</td>
+<td align="center">vswitch の CIDR ブロック</td>
+</tr>
+
+<tr>
+<td align="center"></td>
+<td align="center">vsw</td>
+<td align="center">availability_zone</td>
+<td align="center">必須</td>
+<td align="center">${var.zone}</td>
+<td align="center">使用するアベイラビリティゾーン</td>
+</tr>
+
+<tr>
+<td align="center"></td>
+<td align="center">vsw</td>
+<td align="center">description</td>
+<td align="center">任意</td>
+<td align="center">Enable Bastion-Server vswitch</td>
+<td align="center">vswitch の説明。</td>
+</tr>
+</tbody>
+</table>
+
+<p>SSH踏み台専用セキュリティグループ構成:</p>
+
+<table>
+<thead>
+<tr>
+<th>リソース</th>
+<th>リソース名</th>
+<th>パラメータ</th>
+<th>必須</th>
+<th>設定値</th>
+<th>内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>alicloud_security_group</td>
+<td>sg_bastion_server</td>
+<td>name</td>
+<td>任意</td>
+<td>${var.project_name}_Bastion_Server</td>
+<td>セキュリティグループ の名称。この例の場合、<code>Bastion-Server-for-Terraform_Bastion_Server</code> として表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>sg_bastion_server</td>
+<td>vpc_id</td>
+<td>必須</td>
+<td>${alicloud_vpc.vpc.id}</td>
+<td>アタッチするVPCのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>sg_bastion_server</td>
+<td>description</td>
+<td>任意</td>
+<td>Enable SSH access via port 22</td>
+<td>セキュリティグループ の説明。</td>
+</tr>
+
+<tr>
+<td>alicloud_security_group_rule</td>
+<td>allow_ssh</td>
+<td>type</td>
+<td>必須</td>
+<td>ingress</td>
+<td>セキュリティグループのタイプ。 <code>ingress</code>（受信） か<code>egress</code>（送信） のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>ip_protocol</td>
+<td>必須</td>
+<td>tcp</td>
+<td>通信プロトコル。 <code>tcp</code>, <code>udp</code>, <code>icmp</code>, <code>gre</code>, <code>all</code> のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>nic_type</td>
+<td>必須</td>
+<td>intranet</td>
+<td>ネットワークタイプ。 <code>internet</code> か <code>intranet</code> のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>policy</td>
+<td>必須</td>
+<td>accept</td>
+<td>許可ポリシー。 <code>accept</code>か <code>drop</code> のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>port_range</td>
+<td>必須</td>
+<td><sup>22</sup>&frasl;<sub>22</sub></td>
+<td>通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>priority</td>
+<td>必須</td>
+<td>1</td>
+<td>許可ポリシーの優先順位。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>security_group_id</td>
+<td>必須</td>
+<td>${alicloud_security_group.sg_bastion_server.id}</td>
+<td>アタッチするセキュリティグループのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>cidr_ip</td>
+<td>任意</td>
+<td>0.0.0.0/0</td>
+<td>ターゲットとなるIPアドレス。デフォルトは「0.0.0.0/0」。値が「0.0.0.0/0」の場合は無制限状態となります。</td>
+</tr>
+</tbody>
+</table>
+
+<p>SSH踏み台専用EC2構成:</p>
+
+<table>
+<thead>
+<tr>
+<th>リソース</th>
+<th>リソース名</th>
+<th>パラメータ</th>
+<th>必須</th>
+<th>設定値</th>
+<th>内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>alicloud_instance</td>
+<td>ECS_instance_for_Bastion_Server</td>
+<td>instance_name</td>
+<td>任意</td>
+<td>${var.project_name}-Bastion-Server-ECS-instance</td>
+<td>EC インスタンスの名称。この例の場合、<code>Bastion-Server-for-Terraform-Bastion-Server-ECS-instance</code> として表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance_for_Bastion_Server</td>
+<td>host_name</td>
+<td>任意</td>
+<td>${var.project_name}-Bastion-Server-ECS-instance</td>
+<td>EC インスタンスのHost名称。この例の場合、<code>Bastion-Server-for-Terraform-Bastion-Server-ECS-instance</code> として表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance_for_Bastion_Server</td>
+<td>instance_type</td>
+<td>必須</td>
+<td>ecs.xn4.small</td>
+<td>EC インスタンスのタイプ。今回は <code>ecs.xn4.small</code> を選定します。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance_for_Bastion_Server</td>
+<td>image_id</td>
+<td>必須</td>
+<td>centos_7_04_64_20G_alibase_201701015.vhd</td>
+<td>EC インスタンスのImageID。今回は <code>centos_7_04_64_20G_alibase_201701015.vhd</code> を選定します。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance_for_Bastion_Server</td>
+<td>system_disk_category</td>
+<td>任意</td>
+<td>cloud_efficiency</td>
+<td>EC インスタンスのディスクタイプ。デフォルトは cloud_efficiency です。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance_for_Bastion_Server</td>
+<td>security_groups</td>
+<td>必須</td>
+<td>&rdquo;${alicloud_security_group.sg_bastion_server.id}&rdquo;</td>
+<td>アタッチするセキュリティグループのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance_for_Bastion_Server</td>
+<td>availability_zone</td>
+<td>必須</td>
+<td>${var.zone}</td>
+<td>使用するアベイラビリティゾーン</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance_for_Bastion_Server</td>
+<td>vswitch_id</td>
+<td>必須</td>
+<td>${alicloud_vswitch.vsw.id}</td>
+<td>アタッチするVSwitchのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance_for_Bastion_Server</td>
+<td>password</td>
+<td>任意</td>
+<td>&rdquo;!Bastion2019&rdquo;</td>
+<td>EC インスタンスのログインパスワード。記載したくない場合は<code>confing.tfvars</code>にて記載することをお勧めします。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance_for_Bastion_Server</td>
+<td>internet_max_bandwidth_out</td>
+<td>任意</td>
+<td>5</td>
+<td>パブリックネットワークへの最大帯域幅。デフォルトは0ですが、0より大きい値を入れるとパブリックIPアドレスがアタッチされます。</td>
+</tr>
+</tbody>
+</table>
+
+<p>実行サーバ専用セキュリティグループ構成:</p>
+
+<table>
+<thead>
+<tr>
+<th>リソース</th>
+<th>リソース名</th>
+<th>パラメータ</th>
+<th>必須</th>
+<th>設定値</th>
+<th>内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>alicloud_security_group</td>
+<td>sg_production_server</td>
+<td>name</td>
+<td>任意</td>
+<td>${var.project_name}_Production_Server</td>
+<td>セキュリティグループ の名称。この例の場合、<code>Bastion-Server-for-Terraform_Production_Server</code> として表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>sg_production_server</td>
+<td>vpc_id</td>
+<td>必須</td>
+<td>${alicloud_vpc.vpc.id}</td>
+<td>アタッチするVPCのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>sg_production_server</td>
+<td>description</td>
+<td>任意</td>
+<td>Marker security group for Production server</td>
+<td>セキュリティグループ の説明。</td>
+</tr>
+
+<tr>
+<td>alicloud_security_group_rule</td>
+<td>allow_http</td>
+<td>type</td>
+<td>ingress</td>
+<td>必須</td>
+<td>セキュリティグループのタイプ。 <code>ingress</code>（受信） か<code>egress</code>（送信） のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>ip_protocol</td>
+<td>tcp</td>
+<td>必須</td>
+<td>通信プロトコル。 <code>tcp</code>, <code>udp</code>, <code>icmp</code>, <code>gre</code>, <code>all</code> のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>nic_type</td>
+<td>intranet</td>
+<td>必須</td>
+<td>ネットワークタイプ。 <code>internet</code> か <code>intranet</code> のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>policy</td>
+<td>accept</td>
+<td>必須</td>
+<td>許可ポリシー。 <code>accept</code>か <code>drop</code> のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>port_range</td>
+<td>必須</td>
+<td><sup>80</sup>&frasl;<sub>80</sub></td>
+<td>通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>priority</td>
+<td>必須</td>
+<td>1</td>
+<td>許可ポリシーの優先順位。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>security_group_id</td>
+<td>必須</td>
+<td>${alicloud_security_group.sg_production_server.id}</td>
+<td>アタッチするセキュリティグループのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>cidr_ip</td>
+<td>任意</td>
+<td>0.0.0.0/0</td>
+<td>ターゲットとなるIPアドレス。デフォルトは「0.0.0.0/0」。値が「0.0.0.0/0」の場合は無制限状態となります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh_for_Bastion</td>
+<td>type</td>
+<td>必須</td>
+<td>ingress</td>
+<td>セキュリティグループのタイプ。 <code>ingress</code>（受信） か<code>egress</code>（送信） のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh_for_Bastion</td>
+<td>ip_protocol</td>
+<td>必須</td>
+<td>tcp</td>
+<td>通信プロトコル。 <code>tcp</code>, <code>udp</code>, <code>icmp</code>, <code>gre</code>, <code>all</code> のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh_for_Bastion</td>
+<td>nic_type</td>
+<td>必須</td>
+<td>intranet</td>
+<td>ネットワークタイプ。 <code>internet</code> か <code>intranet</code> のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh_for_Bastion</td>
+<td>policy</td>
+<td>必須</td>
+<td>accept</td>
+<td>許可ポリシー。 <code>accept</code>か <code>drop</code> のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh_for_Bastion</td>
+<td>port_range</td>
+<td>必須</td>
+<td><sup>22</sup>&frasl;<sub>22</sub></td>
+<td>通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh_for_Bastion</td>
+<td>priority</td>
+<td>必須</td>
+<td>1</td>
+<td>許可ポリシーの優先順位。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh_for_Bastion</td>
+<td>security_group_id</td>
+<td>必須</td>
+<td>${alicloud_security_group.sg_production_server.id}</td>
+<td>アタッチするセキュリティグループのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh_for_Bastion</td>
+<td>cidr_ip</td>
+<td>任意</td>
+<td>${alicloud_instance.ECS_instance_for_Bastion_Server.public_ip}</td>
+<td>SSH踏み台専用サーバのみからのPort22でアクセスを許容します。</td>
+</tr>
+</tbody>
+</table>
 
 <p>実行サーバ専用EC2構成:
 |リソース|リソース名|パラメータ|必須|設定値|内容|
