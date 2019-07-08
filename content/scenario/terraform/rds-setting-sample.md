@@ -10,7 +10,7 @@ draft: false
 
 ![図 1](/help/image/19.1.1.png)
 
-なおECSからRDS for MySQLへへ接続するためのdocker-compose.ymlファイルは以下の通りです。
+ECSからRDS for MySQLへへ接続するためのdocker-compose.ymlファイルは以下の通りです。
 ![図 2](/help/image/19.1.2.png)
 
 <br>
@@ -74,7 +74,7 @@ resource "alicloud_db_connection" "default" {
 }
 
 
-resource "alicloud_security_group" "sg_server" {
+resource "alicloud_security_group" "sg" {
   name   = "${var.project_name}_security_group"
   description = "Enable RDS Setting Sample security group"  
   vpc_id = "${alicloud_vpc.vpc.id}"
@@ -87,7 +87,7 @@ resource "alicloud_security_group_rule" "allow_ssh" {
   policy            = "accept"
   port_range        = "22/22"
   priority          = 1
-  security_group_id = "${alicloud_security_group.sg_server.id}"
+  security_group_id = "${alicloud_security_group.sg.id}"
   cidr_ip           = "0.0.0.0/0"
 }
 
@@ -98,13 +98,13 @@ resource "alicloud_security_group_rule" "allow_http" {
   policy            = "accept"
   port_range        = "80/80"
   priority          = 1
-  security_group_id = "${alicloud_security_group.sg_server.id}"
+  security_group_id = "${alicloud_security_group.sg.id}"
   cidr_ip           = "0.0.0.0/0"
 }
 
 resource "alicloud_instance" "ECS_instance" {
-  instance_name   = "${var.project_name}-SLB-Setting-Sample"
-  host_name       = "${var.project_name}-SLB-Setting-Sample"
+  instance_name   = "${var.project_name}-ECS-instance"
+  host_name   = "${var.project_name}-ECS-instance" 
   instance_type   = "ecs.xn4.small"
   image_id        = "centos_7_04_64_20G_alibase_201701015.vhd"
   system_disk_category = "cloud_efficiency"
@@ -117,7 +117,7 @@ resource "alicloud_instance" "ECS_instance" {
 }
 
 resource "alicloud_slb" "default" {
-  name = "${var.project_name}-SLB"
+  name = "${var.project_name}-slb"
   vswitch_id = "${alicloud_vswitch.vsw.id}"
   internet = true
   internet_charge_type = "paybytraffic"  
