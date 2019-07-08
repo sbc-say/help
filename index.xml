@@ -583,9 +583,9 @@ resource &amp;quot;alicloud_cs_kubernetes&amp;quot; &amp;quot;main&amp;quot; { n
       <guid>https://sbcloud.github.io/help/scenario/terraform/rds-setting-sample/</guid>
       <description>&amp;nbsp; TerraformでデータベースサービスであるRDSを作ってみます。ゴールの構成図は以下の通りです。
 またECSからRDS for MySQLへ接続するためにdocker-composeを使います。docker-composeはコンテナオーケストレーションの一つで、環境構築を再現するのが楽になる手法です。docker-compose.ymlファイルは以下の通りです。
-それぞれのパラメータは以下の通りです。
+version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysql_host environment: - MYSQL_HOST=&#39;rds-sample.mysql.japan.rds.aliyuncs.com&#39; - MYSQL_DATABASE=&#39;rds_setting_sample&#39; - MYSQL_USER=&#39;test_user&#39; - MYSQL_PASSWORD=&#39;!Password2019&#39; - TZ=&#39;Asia/Tokyo&#39; command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci volumes: - ./docker/db/data:/var/lib/mysql - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf - ./docker/db/sql:/docker-entrypoint-initdb.d ports: - 3306:3306  それぞれのパラメータは以下の通りです。
 ネットワーク構成:
-   リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、RDS-Sample-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.168.1.0/24 VPC の CIDR ブロック    vpc description 任意 Enable SLB-Setteing-Sample vpc VPC の説明。   alicloud_vswitch vsw name 任意 ${var.project_name}-vswitch vswitch の名称。この例の場合、RDS-Sample-for-Terraform-vswitch として表示されます。    vsw vpc_id 必須 ${alicloud_vpc.vpc.id} アタッチするVPCのID    vsw cidr_block 必須 192.</description>
+   リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、RDS-Sample-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.</description>
     </item>
     
     <item>

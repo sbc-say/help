@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-08T06:49:32 UTC">
+<meta name="revised" content="2019-07-08T06:54:52 UTC">
 <title>RDSの構築 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -549,7 +549,26 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <p>またECSからRDS for MySQLへ接続するためにdocker-composeを使います。docker-composeはコンテナオーケストレーションの一つで、環境構築を再現するのが楽になる手法です。docker-compose.ymlファイルは以下の通りです。</p>
 
-<p><img src="/help/image/19.1.2.png" alt="図 2" /></p>
+<pre><code>version: '3'
+services:
+  # MySQL
+  db:
+    image: mysql:5.7
+    container_name: mysql_host
+    environment:
+     - MYSQL_HOST='rds-sample.mysql.japan.rds.aliyuncs.com'
+     - MYSQL_DATABASE='rds_setting_sample'
+     - MYSQL_USER='test_user'
+     - MYSQL_PASSWORD='!Password2019'
+     - TZ='Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/db/sql:/docker-entrypoint-initdb.d
+    ports:
+    - 3306:3306
+</code></pre>
 
 <p>それぞれのパラメータは以下の通りです。</p>
 

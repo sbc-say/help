@@ -13,7 +13,27 @@ draft: false
 
 またECSからRDS for MySQLへ接続するためにdocker-composeを使います。docker-composeはコンテナオーケストレーションの一つで、環境構築を再現するのが楽になる手法です。docker-compose.ymlファイルは以下の通りです。
 
-![図 2](/help/image/19.1.2.png)
+```
+version: '3'
+services:
+  # MySQL
+  db:
+    image: mysql:5.7
+    container_name: mysql_host
+    environment:
+     - MYSQL_HOST='rds-sample.mysql.japan.rds.aliyuncs.com'
+     - MYSQL_DATABASE='rds_setting_sample'
+     - MYSQL_USER='test_user'
+     - MYSQL_PASSWORD='!Password2019'
+     - TZ='Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./docker/db/data:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/db/sql:/docker-entrypoint-initdb.d
+    ports:
+    - 3306:3306
+ ```
 
 それぞれのパラメータは以下の通りです。
 
