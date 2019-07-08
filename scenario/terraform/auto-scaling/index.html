@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-08T09:54:26 UTC">
+<meta name="revised" content="2019-07-08T09:55:19 UTC">
 <title>オートスケーリングの実現 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -113,20 +113,6 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       <a href="/help/getting-started/product/">プロダクトの紹介</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/getting-started/product/links/" class="dd-item">
-        <div>
-          <a href="/help/getting-started/product/links/">
-            プロダクト資料のリンク一覧
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/getting-started/product/ecs-by-region/" class="dd-item">
-        <div>
-          <a href="/help/getting-started/product/ecs-by-region/">
-            ECSの使用可能なRegion/Spec/Price紹介
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
         </ul>
     </li>
     <li data-nav-id="/help/getting-started/cloud-users/" class="dd-item haschildren
@@ -869,18 +855,89 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>${var.web_layer_name}-${count.index}</td>
 <td>ECSインスタンスの名称。</td>
 </tr>
+
+<tr>
+<td></td>
+<td>web</td>
+<td>host_name</td>
+<td>任意</td>
+<td>${var.web_layer_name}-${count.index}</td>
+<td>ECSインスタンスのHost名称。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>web</td>
+<td>instance_type</td>
+<td>必須</td>
+<td>${var.web_instance_type}</td>
+<td>ECSインスタンスのタイプ。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>web</td>
+<td>image_id</td>
+<td>必須</td>
+<td>${var.web_instance_image_id}</td>
+<td>ECSインスタンスのImageID。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>web</td>
+<td>security_groups</td>
+<td>必須</td>
+<td>${alicloud_security_group.web.id}</td>
+<td>アタッチするセキュリティグループのID。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>web</td>
+<td>availability_zone</td>
+<td>必須</td>
+<td>${var.zone}</td>
+<td>使用するアベイラビリティゾーン。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>web</td>
+<td>vswitch_id</td>
+<td>必須</td>
+<td>${alicloud_vswitch.web.id}</td>
+<td>アタッチするVSwitchのID。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>web</td>
+<td>password</td>
+<td>任意</td>
+<td>${var.ecs_password}</td>
+<td>EC インスタンスのログインパスワード。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>web</td>
+<td>internet_max_bandwidth_out</td>
+<td>任意</td>
+<td>20</td>
+<td>パブリックネットワークへの最大帯域幅。デフォルトは0ですが、0より大きい値を入れるとパブリックIPアドレスがアタッチされます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>web</td>
+<td>user_data</td>
+<td>任意</td>
+<td>${var.web_instance_user_data}</td>
+<td>ECSインスタンス起動後に実行するshell内容もしくはファイル名。</td>
+</tr>
 </tbody>
 </table>
-
-<p>||web|host_name|任意| ${var.web_layer_name}-${count.index}|ECSインスタンスのHost名称。|
-||web|instance_type|必須|${var.web_instance_type}|ECSインスタンスのタイプ。|
-||web|image_id|必須|${var.web_instance_image_id}|ECSインスタンスのImageID。|
-||web|security_groups|必須|${alicloud_security_group.web.id}|アタッチするセキュリティグループのID。|
-||web|availability_zone|必須|${var.zone}|使用するアベイラビリティゾーン。|
-||web|vswitch_id|必須|${alicloud_vswitch.web.id}|アタッチするVSwitchのID。|
-||web|password|任意|${var.ecs_password}|EC インスタンスのログインパスワード。|
-||web|internet_max_bandwidth_out|任意|20|パブリックネットワークへの最大帯域幅。デフォルトは0ですが、0より大きい値を入れるとパブリックIPアドレスがアタッチされます。|
-||web|user_data|任意|${var.web_instance_user_data}|ECSインスタンス起動後に実行するshell内容もしくはファイル名。|</p>
 
 <p>WebのSLB構成:</p>
 
@@ -1186,19 +1243,112 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 </tbody>
 </table>
 
-<p>AppのECSインスタンスセキュリティグループ構成:
-|リソース|リソース名|パラメータ|必須|設定値|内容|
-|&mdash;|&mdash;|&mdash;|&mdash;|&mdash;|&mdash;|
-|alicloud_security_group|app|name|任意|${var.app_layer_name}-sg|セキュリティグループ の名称。この例の場合、app-server_sgとして表示されます。|
-||app|vpc_id|必須|${alicloud_vpc.vpc.id}|アタッチするVPCのID|
-|alicloud_security_group_rule|allow_app_access|type|必須|ingress|セキュリティグループのタイプ。 ingress（受信） かegress（送信） のいずれかになります。|
-||allow_app_access|ip_protocol|必須|tcp|通信プロトコル。 tcp, udp, icmp, gre, all のいずれかになります。|
-||allow_app_access|nic_type|必須|intranet|ネットワークタイプ。 internet か intranet のいずれかになります。|
-||allow_app_access|policy|必須|accept|許可ポリシー。 acceptか drop のいずれかになります。|
-||allow_app_access|port_range|必須|${var.app_instance_port}/${var.app_instance_port}|通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。この場合、80/80になります。|
-||allow_app_access|priority|必須|1|許可ポリシーの優先順位。|
-||allow_app_access|security_group_id|必須|${alicloud_security_group.app.id}|アタッチするセキュリティグループのID|
-||allow_app_access|cidr_ip|任意|0.0.0.0/0|ターゲットとなるIPアドレス。デフォルトは「0.0.0.0/0」。値が「0.0.0.0/0」の場合は無制限状態となります。|</p>
+<p>AppのECSインスタンスセキュリティグループ構成:</p>
+
+<table>
+<thead>
+<tr>
+<th>リソース</th>
+<th>リソース名</th>
+<th>パラメータ</th>
+<th>必須</th>
+<th>設定値</th>
+<th>内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>alicloud_security_group</td>
+<td>app</td>
+<td>name</td>
+<td>任意</td>
+<td>${var.app_layer_name}-sg</td>
+<td>セキュリティグループ の名称。この例の場合、app-server_sgとして表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>app</td>
+<td>vpc_id</td>
+<td>必須</td>
+<td>${alicloud_vpc.vpc.id}</td>
+<td>アタッチするVPCのID</td>
+</tr>
+
+<tr>
+<td>alicloud_security_group_rule</td>
+<td>allow_app_access</td>
+<td>type</td>
+<td>必須</td>
+<td>ingress</td>
+<td>セキュリティグループのタイプ。 ingress（受信） かegress（送信） のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_app_access</td>
+<td>ip_protocol</td>
+<td>必須</td>
+<td>tcp</td>
+<td>通信プロトコル。 tcp, udp, icmp, gre, all のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_app_access</td>
+<td>nic_type</td>
+<td>必須</td>
+<td>intranet</td>
+<td>ネットワークタイプ。 internet か intranet のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_app_access</td>
+<td>policy</td>
+<td>必須</td>
+<td>accept</td>
+<td>許可ポリシー。 acceptか drop のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_app_access</td>
+<td>port_range</td>
+<td>必須</td>
+<td>${var.app_instance_port}/${var.app_instance_port}</td>
+<td>通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。この場合、80/80になります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_app_access</td>
+<td>priority</td>
+<td>必須</td>
+<td>1</td>
+<td>許可ポリシーの優先順位。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_app_access</td>
+<td>security_group_id</td>
+<td>必須</td>
+<td>${alicloud_security_group.app.id}</td>
+<td>アタッチするセキュリティグループのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_app_access</td>
+<td>cidr_ip</td>
+<td>任意</td>
+<td>0.0.0.0/0</td>
+<td>ターゲットとなるIPアドレス。デフォルトは「0.0.0.0/0」。値が「0.0.0.0/0」の場合は無制限状態となります。</td>
+</tr>
+</tbody>
+</table>
 
 <p>AppのECSインスタンス構成:</p>
 
@@ -2319,14 +2469,14 @@ terraform apply -var-file=&quot;confing.tfvars&quot;
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  07/01/2019
+        <i class='fa fa-calendar'></i> Last update on 07/01/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/scenario/terraform/auto-scaling.md" target="blank"><i class="fa fa-code-fork"></i>
-        </a>
+        Improve this page</a>
     </div>
     
   </div>

@@ -72,7 +72,6 @@ WebのECSインスタンス構成:
 |リソース|リソース名|パラメータ|必須|設定値|内容|
 |---|---|---|---|---|---|
 |alicloud_instance|app|instance_name|任意| ${var.web_layer_name}-${count.index}|ECSインスタンスの名称。|
-
 ||web|host_name|任意| ${var.web_layer_name}-${count.index}|ECSインスタンスのHost名称。|
 ||web|instance_type|必須|${var.web_instance_type}|ECSインスタンスのタイプ。|
 ||web|image_id|必須|${var.web_instance_image_id}|ECSインスタンスのImageID。|
@@ -130,6 +129,8 @@ WebのAutoScaling構成:
 
 
 AppのECSインスタンスセキュリティグループ構成:
+
+
 |リソース|リソース名|パラメータ|必須|設定値|内容|
 |---|---|---|---|---|---|
 |alicloud_security_group|app|name|任意|${var.app_layer_name}-sg|セキュリティグループ の名称。この例の場合、app-server_sgとして表示されます。|
