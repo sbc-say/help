@@ -91,10 +91,10 @@ SSH踏み台専用EC2構成:
 |alicloud_security_group|sg_production_server|name|任意|${var.project_name}_Production_Server| セキュリティグループ の名称。この例の場合、`Bastion-Server-for-Terraform_Production_Server` として表示されます。 |
 ||sg_production_server|vpc_id|必須|${alicloud_vpc.vpc.id}| アタッチするVPCのID |
 ||sg_production_server|description|任意|Marker security group for Production server| セキュリティグループ の説明。 |
-|alicloud_security_group_rule|allow_http|type|ingress|必須| セキュリティグループのタイプ。 `ingress`（受信） か`egress`（送信） のいずれかになります。 |
-||allow_http|ip_protocol|tcp|必須| 通信プロトコル。 `tcp`, `udp`, `icmp`, `gre`, `all` のいずれかになります。|
-||allow_http|nic_type|intranet|必須| ネットワークタイプ。 `internet` か `intranet` のいずれかになります。 |
-||allow_http|policy|accept|必須| 許可ポリシー。 `accept`か `drop` のいずれかになります。 |
+|alicloud_security_group_rule|allow_http|type|必須|ingress| セキュリティグループのタイプ。 `ingress`（受信） か`egress`（送信） のいずれかになります。 |
+||allow_http|ip_protocol|必須|tcp| 通信プロトコル。 `tcp`, `udp`, `icmp`, `gre`, `all` のいずれかになります。|
+||allow_http|nic_type|必須|intranet| ネットワークタイプ。 `internet` か `intranet` のいずれかになります。 |
+||allow_http|policy|必須|accept| 許可ポリシー。 `accept`か `drop` のいずれかになります。 |
 ||allow_http|port_range|必須|80/80| 通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。 |
 ||allow_http|priority|必須|1| 許可ポリシーの優先順位。 |
 ||allow_http|security_group_id|必須|${alicloud_security_group.sg_production_server.id}| アタッチするセキュリティグループのID |
