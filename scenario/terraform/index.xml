@@ -35,9 +35,9 @@
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/slb-setting-sample/</guid>
       <description>&amp;nbsp; TerraformでロードバランサーであるSLBの構築と設計行ってみます。ゴールの構成図は以下の通りです。
-ソースは以下になります。サンプルソースは[こちら]()にあります。
-main.tf
-provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.region}&amp;quot; } resource &amp;quot;alicloud_vpc&amp;quot; &amp;quot;vpc&amp;quot; { name = &amp;quot;${var.project_name}-vpc&amp;quot; cidr_block = &amp;quot;192.168.1.0/24&amp;quot; description = &amp;quot;Enable SLB-Setteing-Sample vpc&amp;quot; } resource &amp;quot;alicloud_vswitch&amp;quot; &amp;quot;vsw&amp;quot; { name = &amp;quot;${var.project_name}-vswitch&amp;quot; vpc_id = &amp;quot;${alicloud_vpc.vpc.id}&amp;quot; cidr_block = &amp;quot;192.168.1.0/28&amp;quot; availability_zone = &amp;quot;${var.zone}&amp;quot; description = &amp;quot;Enable SLB-Setteing-Sample vswitch&amp;quot; } resource &amp;quot;alicloud_security_group&amp;quot; &amp;quot;sg&amp;quot; { name = &amp;quot;${var.project_name}_sg&amp;quot; description = &amp;quot;Marker security group for SLB-Setteing-Sample&amp;quot; vpc_id = &amp;quot;${alicloud_vpc.</description>
+それぞれのパラメータは以下の通りです。
+ネットワーク構成:
+   リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、SLB-Sample-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.168.1.0/24 VPC の CIDR ブロック    vpc description 任意 Enable SLB-Setteing-Sample vpc VPC の説明。   alicloud_vswitch vsw name 任意 ${var.project_name}-vswitch vswitch の名称。この例の場合、SLB-Sample-for-Terraform-vswitch として表示されます。    vsw vpc_id 必須 ${alicloud_vpc.vpc.id} アタッチするVPCのID    vsw cidr_block 必須 192.</description>
     </item>
     
     <item>
