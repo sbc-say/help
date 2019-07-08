@@ -134,11 +134,6 @@ terraform apply -var-file="confing.tfvars"
 これで問題なく実行できたら、cluster_id、worker_nodes、master_nodesが表示され、こうしてkubernetesクラスター操作、管理ができます。
 
 <br>
-
-
-![図 2](/help/image/24.2.png)
-
-<br>
 ### kube_configを環境変数にて設定
 &nbsp; 先ほどはKubernetesクラスタを作成しました。このクラスタを使ってwordpressを作成するため、Kubernetesコマンドラインクライアントである `kubectl` を使用します。`kubectl`はk8sクラスタのAPIサーバーと通信するためのコマンドラインツールです。
 
