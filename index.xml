@@ -576,7 +576,7 @@ resource &amp;quot;alicloud_cs_kubernetes&amp;quot; &amp;quot;main&amp;quot; { n
     </item>
     
     <item>
-      <title>RDSの構築と設定</title>
+      <title>RDSの構築</title>
       <link>https://sbcloud.github.io/help/scenario/terraform/rds-setting-sample/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
       
