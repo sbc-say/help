@@ -625,11 +625,9 @@ provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}
       <description>&amp;nbsp; こちらはAlibabaCloud公式サイトにあるソリューション構築例を通じての紹介になります。従来のWebアプリケーションアーキテクチャでは、Webアプリケーションが大量のリクエストトラフィックを受け取ると、サーバーが過負荷になり、サイトが遅くなったりサーバーがクラッシュしたりする可能性があります。また地理的に異なる場所に分散していると、コンテンツが1か所から配信されるため、待ち時間の問題が発生する可能性があります。そのためにWebアプリケーションは高速でコンテンツ配信することが望ましいです。
  グローバル配信が可能 静的および動的コンテンツのアクセラレーション 待ち時間の短縮などパフォーマンス改善  
 &amp;nbsp; TerraformでWebアプリケーションを作ってみます。ゴールの構成図は以下の通りです。
-
-ソースは以下になります。サンプルソースは[こちら]()にあります。
-
-main.tf
-provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.region}&amp;quot; } resource &amp;quot;alicloud_vpc&amp;quot; &amp;quot;default&amp;quot; { name = &amp;quot;${var.project_name}-vpc&amp;quot; cidr_block = &amp;quot;192.168.0.0/16&amp;quot; description = &amp;quot;VPC for ${var.project_name}&amp;quot; } resource &amp;quot;alicloud_vswitch&amp;quot; &amp;quot;web&amp;quot; { name = &amp;quot;${var.project_name}-web-vswitch&amp;quot; description = &amp;quot;Enable Web-Application web vswitch&amp;quot; vpc_id = &amp;quot;${alicloud_vpc.default.id}&amp;quot; cidr_block = &amp;quot;192.168.1.0/24&amp;quot; availability_zone = &amp;quot;${var.zone}&amp;quot; } resource &amp;quot;alicloud_vswitch&amp;quot; &amp;quot;app&amp;quot; { name = &amp;quot;${var.</description>
+それぞれのパラメータは以下の通りです。
+ネットワーク構成:
+   リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、Accelerated-Content-Delivery-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.168.0.0/16 VPC の CIDR ブロック    vpc description 任意 VPC for ${var.project_name} VPC の説明。この場合VPC for Accelerated-Content-Delivery-for-Terraform として表示されます。   alicloud_vswitch web name 任意 ${var.project_name}-web-vswitch vswitch の名称。この例の場合、Accelerated-Content-Delivery-for-Terraform-web-vswitch として表示されます。    web vpc_id 必須 ${alicloud_vpc.</description>
     </item>
     
     <item>
