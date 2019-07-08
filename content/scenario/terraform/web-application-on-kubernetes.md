@@ -24,6 +24,46 @@ draft: false
 
 ![図 1](/help/image/24.1.png)
 
+
+それぞれのパラメータは以下の通りです。
+
+
+ネットワーク構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_vpc|vpc|name|任意|${var.project_name}-vpc|VPC の名称。この例の場合、RDS-Sample-for-Terraform-vpc として表示されます。|
+||vpc|cidr_block|必須|192.168.1.0/24|VPC の CIDR ブロック|
+||vpc|description|任意|Enable k8s-Setteing-Sample vpc|VPC の説明。|
+|alicloud_vswitch|vsw|name|任意|${var.project_name}-vswitch|vswitch の名称。この例の場合、RDS-Sample-for-Terraform-vswitch として表示されます。|
+||vsw|vpc_id|必須|${alicloud_vpc.vpc.id}|アタッチするVPCのID|
+||vsw|cidr_block|必須|192.168.1.0/28|vswitch の CIDR ブロック|
+||vsw|availability_zone|必須|${var.zone}|使用するアベイラビリティゾーン|
+||vsw|description|任意|Enable k8s-Sample vswitch|vswitch の説明。|
+
+
+kubernetesクラスター構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_cs_kubernetes|k8s|name|任意|${var.project_name}-k8s|kubernetesクラスター名称|
+||k8s|vswitch_ids|必須|"${alicloud_vswitch.vsw.id}"|アタッチするVSwitchのID。|
+||k8s|availability_zone|必須|${var.zone}|使用するアベイラビリティゾーン|
+||k8s|new_nat_gateway|任意|true|kubernetesクラスタの作成中に新しいNATゲートウェイを作成するかどうか。デフォルトはtrue。|
+||k8s|master_instance_types|必須| ["ecs.xn4.small"]|マスターノードのインスタンスタイプ。|
+||k8s|worker_instance_types|必須| ["ecs.xn4.small"]|ワーカーノードのインスタンスタイプ。|
+||k8s|worker_numbers|任意|[2]|ワーカーノードの台数。|
+||k8s|master_disk_size|任意|40|マスターノードのシステムディスクサイズ。|
+||k8s|worker_disk_size|任意|100|ワーカーノードのシステムディスクサイズ。|
+||k8s|password|任意|"${var.k8s_password}"|クラスタノードのsshログインパスワード。|
+||k8s|pod_cidr|任意|"172.20.0.0/16"|ポッドネットワークのCIDRブロック。|
+||k8s|service_cidr|任意|"172.21.0.0/20"|サービスネットワークのCIDRブロック。|
+||k8s|enable_ssh|任意|true|SSHログインを許可するか。デフォルトはfalse。|
+||k8s|install_cloud_monitor|任意|true|クラウドモニタをkubernetesノードにインストールするかどうか。|
+
+
 <br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。
 
