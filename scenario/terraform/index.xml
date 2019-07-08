@@ -121,11 +121,9 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
 Kubernetesでクラスタ生成 &amp;nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。
 
 &amp;nbsp; TerraformでWebアプリケーションを作ってみます。step1のゴール構成図は以下の通りです。
-
-ソースは以下になります。サンプルソースは[こちら]()にあります。
-
-main.tf
-provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.region}&amp;quot; } resource &amp;quot;alicloud_vpc&amp;quot; &amp;quot;vpc&amp;quot; { name = &amp;quot;${var.project_name}-vpc&amp;quot; cidr_block = &amp;quot;192.168.1.0/24&amp;quot; description = &amp;quot;Enable Web-App on k8s vpc&amp;quot; } resource &amp;quot;alicloud_vswitch&amp;quot; &amp;quot;vsw&amp;quot; { name = &amp;quot;${var.project_name}-vswitch&amp;quot; vpc_id = &amp;quot;${alicloud_vpc.vpc.id}&amp;quot; cidr_block = &amp;quot;192.168.1.0/28&amp;quot; availability_zone = &amp;quot;${var.zone}&amp;quot; description = &amp;quot;Enable Web-App on k8s vswitch&amp;quot; } resource &amp;quot;alicloud_cs_kubernetes&amp;quot; &amp;quot;k8s&amp;quot; { name = &amp;quot;${var.</description>
+それぞれのパラメータは以下の通りです。
+ネットワーク構成:
+   リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、RDS-Sample-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.168.1.0/24 VPC の CIDR ブロック    vpc description 任意 Enable k8s-Setteing-Sample vpc VPC の説明。   alicloud_vswitch vsw name 任意 ${var.project_name}-vswitch vswitch の名称。この例の場合、RDS-Sample-for-Terraform-vswitch として表示されます。    vsw vpc_id 必須 ${alicloud_vpc.</description>
     </item>
     
     <item>
