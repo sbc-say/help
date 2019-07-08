@@ -567,10 +567,12 @@ resource &amp;quot;alicloud_cs_kubernetes&amp;quot; &amp;quot;main&amp;quot; { n
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/slb-setting-sample/</guid>
-      <description>&amp;nbsp; TerraformでロードバランサーであるSLBの構築と設計行ってみます。ゴールの構成図は以下の通りです。
+      <description>SLBの構築と設定 &amp;nbsp; SLB（Server Load Balancer）は、外部インターネット、もしくは内部イントラネットからパブリックIPまたはプライベートIPへ届くインバウンドトラフィックを予め設定したSLBの転送ルールに従って、複数のECSインスタンス間のインバウンドトラフィックを分散および制御し、アプリケーションの可用性を高めるサービスです。SLBを使うことで、以下のメリットがあります。
+ 高可用性・・・完全冗長モードとして障害や災害時でもで稼働します。 スケーラブル・・・サービスニーズに合わせて必要な台数分へサーバを増減します。 費用対効果・・・必要なリソースの分だけ使用なので、通常の負荷分散ハードウェアと比べてコスト削減します。 セキュリティ・・・SLBはトラフィックを分散するだけでなくHTTP Flood攻撃やSYN Flood攻撃など、最大5GbitsのDDoS攻撃から防御できます。  SLBのより詳しい詳細はこちらを参照ください。
+&amp;nbsp; TerraformでロードバランサーであるSLBの構築と設計行ってみます。ゴールの構成図は以下の通りです。
 それぞれのパラメータは以下の通りです。
 ネットワーク構成:
-   リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、SLB-Sample-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.168.1.0/24 VPC の CIDR ブロック    vpc description 任意 Enable SLB-Setteing-Sample vpc VPC の説明。   alicloud_vswitch vsw name 任意 ${var.project_name}-vswitch vswitch の名称。この例の場合、SLB-Sample-for-Terraform-vswitch として表示されます。    vsw vpc_id 必須 ${alicloud_vpc.vpc.id} アタッチするVPCのID    vsw cidr_block 必須 192.</description>
+   リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、SLB-Sample-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.168.1.0/24 VPC の CIDR ブロック    vpc description 任意 Enable SLB-Setteing-Sample vpc VPC の説明。   alicloud_vswitch vsw name 任意 ${var.project_name}-vswitch vswitch の名称。この例の場合、SLB-Sample-for-Terraform-vswitch として表示されます。    vsw vpc_id 必須 ${alicloud_vpc.</description>
     </item>
     
     <item>
