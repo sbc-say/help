@@ -71,15 +71,15 @@ SSH踏み台専用EC2構成:
 
 |リソース|リソース名|パラメータ|必須|設定値|内容|
 |---|---|---|---|---|---|
-|alicloud_instance|ECS_instance_for_Bastion_Server|instance_name|任意|${var.project_name}-Bastion-Server-ECS-instance| EC インスタンスの名称。この例の場合、`Bastion-Server-for-Terraform-Bastion-Server-ECS-instance` として表示されます。 |
-||ECS_instance_for_Bastion_Server|host_name|任意|${var.project_name}-Bastion-Server-ECS-instance| EC インスタンスのHost名称。この例の場合、`Bastion-Server-for-Terraform-Bastion-Server-ECS-instance` として表示されます。 |
-||ECS_instance_for_Bastion_Server|instance_type|必須|ecs.xn4.small| EC インスタンスのタイプ。今回は `ecs.xn4.small` を選定します。 |
-||ECS_instance_for_Bastion_Server|image_id|必須|centos_7_04_64_20G_alibase_201701015.vhd| EC インスタンスのImageID。今回は `centos_7_04_64_20G_alibase_201701015.vhd` を選定します。 |
-||ECS_instance_for_Bastion_Server|system_disk_category|任意|cloud_efficiency| EC インスタンスのディスクタイプ。デフォルトは cloud_efficiency です。 |
+|alicloud_instance|ECS_instance_for_Bastion_Server|instance_name|任意|${var.project_name}-Bastion-Server-ECS-instance| ECSインスタンスの名称。この例の場合、`Bastion-Server-for-Terraform-Bastion-Server-ECS-instance` として表示されます。 |
+||ECS_instance_for_Bastion_Server|host_name|任意|${var.project_name}-Bastion-Server-ECS-instance| ECSインスタンスのHost名称。この例の場合、`Bastion-Server-for-Terraform-Bastion-Server-ECS-instance` として表示されます。 |
+||ECS_instance_for_Bastion_Server|instance_type|必須|ecs.xn4.small| ECSインスタンスのタイプ。今回は `ecs.xn4.small` を選定します。 |
+||ECS_instance_for_Bastion_Server|image_id|必須|centos_7_04_64_20G_alibase_201701015.vhd| ECSインスタンスのImageID。今回は `centos_7_04_64_20G_alibase_201701015.vhd` を選定します。 |
+||ECS_instance_for_Bastion_Server|system_disk_category|任意|cloud_efficiency| ECSインスタンスのディスクタイプ。デフォルトは cloud_efficiency です。 |
 ||ECS_instance_for_Bastion_Server|security_groups|必須|"${alicloud_security_group.sg_bastion_server.id}"|アタッチするセキュリティグループのID |
 ||ECS_instance_for_Bastion_Server|availability_zone|必須|${var.zone}| 使用するアベイラビリティゾーン |
 ||ECS_instance_for_Bastion_Server|vswitch_id|必須|${alicloud_vswitch.vsw.id}| アタッチするVSwitchのID |
-||ECS_instance_for_Bastion_Server|password|任意|"!Bastion2019"| EC インスタンスのログインパスワード。記載したくない場合は`confing.tfvars`にて記載することをお勧めします。 |
+||ECS_instance_for_Bastion_Server|password|任意|"!Bastion2019"| ECSインスタンスのログインパスワード。記載したくない場合は`confing.tfvars`にて記載することをお勧めします。 |
 ||ECS_instance_for_Bastion_Server|internet_max_bandwidth_out|任意|5| パブリックネットワークへの最大帯域幅。デフォルトは0ですが、0より大きい値を入れるとパブリックIPアドレスがアタッチされます。 |
 
 
@@ -114,15 +114,15 @@ SSH踏み台専用EC2構成:
 
 |リソース|リソース名|パラメータ|必須|設定値|内容|
 |---|---|---|---|---|---|
-|alicloud_instance|ECS_instance_for_Production_Server|instance_name|必須|${var.project_name}-Production-Server-ECS-instance| EC インスタンスの名称。この例の場合、`Bastion-Server-for-Terraform-Bastion-Server-ECS-instance` として表示されます。 |
-||ECS_instance_for_Production_Server|host_name|必須|${var.project_name}-Production-Server-ECS-instance| EC インスタンスのHost名称。この例の場合、`Bastion-Server-for-Terraform-Bastion-Server-ECS-instance` として表示されます。 |
-||ECS_instance_for_Production_Server|instance_type|必須|ecs.xn4.small| EC インスタンスのタイプ。今回は `ecs.xn4.small` を選定します。 |
-||ECS_instance_for_Production_Server|image_id|必須|centos_7_04_64_20G_alibase_201701015.vhd| EC インスタンスのImageID。今回は `centos_7_04_64_20G_alibase_201701015.vhd` を選定します。 |
-||ECS_instance_for_Production_Server|system_disk_category|必須|cloud_efficiency| EC インスタンスのディスクタイプ。デフォルトは cloud_efficiency です。 |
+|alicloud_instance|ECS_instance_for_Production_Server|instance_name|必須|${var.project_name}-Production-Server-ECS-instance| ECSインスタンスの名称。この例の場合、`Bastion-Server-for-Terraform-Bastion-Server-ECS-instance` として表示されます。 |
+||ECS_instance_for_Production_Server|host_name|必須|${var.project_name}-Production-Server-ECS-instance| ECSインスタンスのHost名称。この例の場合、`Bastion-Server-for-Terraform-Bastion-Server-ECS-instance` として表示されます。 |
+||ECS_instance_for_Production_Server|instance_type|必須|ecs.xn4.small| ECSインスタンスのタイプ。今回は `ecs.xn4.small` を選定します。 |
+||ECS_instance_for_Production_Server|image_id|必須|centos_7_04_64_20G_alibase_201701015.vhd| ECSインスタンスのImageID。今回は `centos_7_04_64_20G_alibase_201701015.vhd` を選定します。 |
+||ECS_instance_for_Production_Server|system_disk_category|必須|cloud_efficiency| ECSインスタンスのディスクタイプ。デフォルトは cloud_efficiency です。 |
 ||ECS_instance_for_Production_Server|security_groups|必須|"${alicloud_security_group.sg_production_server.id}"|アタッチするセキュリティグループのID |
 ||ECS_instance_for_Production_Server|availability_zone|必須|${var.zone}| 使用するアベイラビリティゾーン |
 ||ECS_instance_for_Production_Server|vswitch_id|必須|${alicloud_vswitch.vsw.id}| アタッチするVSwitchのID |
-||ECS_instance_for_Production_Server|password|任意|"!Production2019"| EC インスタンスのログインパスワード。記載したくない場合は`confing.tfvars`にて記載することをお勧めします。 |
+||ECS_instance_for_Production_Server|password|任意|"!Production2019"| ECSインスタンスのログインパスワード。記載したくない場合は`confing.tfvars`にて記載することをお勧めします。 |
 ||ECS_instance_for_Production_Server|internet_max_bandwidth_out|任意|5| パブリックネットワークへの最大帯域幅。デフォルトは0ですが、0より大きい値を入れるとパブリックIPアドレスがアタッチされます。 |
 ||ECS_instance_for_Production_Server|user_data|任意|${file("provisioning.sh")}| ECSインスタンス起動直後に実行するためのユーザー定義データ。 |
 

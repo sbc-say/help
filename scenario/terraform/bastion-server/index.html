@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-08T00:48:40 UTC">
+<meta name="revised" content="2019-07-08T04:18:15 UTC">
 <title>SSH踏み台サーバの作成 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -796,7 +796,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>instance_name</td>
 <td>任意</td>
 <td>${var.project_name}-Bastion-Server-ECS-instance</td>
-<td>EC インスタンスの名称。この例の場合、<code>Bastion-Server-for-Terraform-Bastion-Server-ECS-instance</code> として表示されます。</td>
+<td>ECSインスタンスの名称。この例の場合、<code>Bastion-Server-for-Terraform-Bastion-Server-ECS-instance</code> として表示されます。</td>
 </tr>
 
 <tr>
@@ -805,7 +805,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>host_name</td>
 <td>任意</td>
 <td>${var.project_name}-Bastion-Server-ECS-instance</td>
-<td>EC インスタンスのHost名称。この例の場合、<code>Bastion-Server-for-Terraform-Bastion-Server-ECS-instance</code> として表示されます。</td>
+<td>ECSインスタンスのHost名称。この例の場合、<code>Bastion-Server-for-Terraform-Bastion-Server-ECS-instance</code> として表示されます。</td>
 </tr>
 
 <tr>
@@ -814,7 +814,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>instance_type</td>
 <td>必須</td>
 <td>ecs.xn4.small</td>
-<td>EC インスタンスのタイプ。今回は <code>ecs.xn4.small</code> を選定します。</td>
+<td>ECSインスタンスのタイプ。今回は <code>ecs.xn4.small</code> を選定します。</td>
 </tr>
 
 <tr>
@@ -823,7 +823,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>image_id</td>
 <td>必須</td>
 <td>centos_7_04_64_20G_alibase_201701015.vhd</td>
-<td>EC インスタンスのImageID。今回は <code>centos_7_04_64_20G_alibase_201701015.vhd</code> を選定します。</td>
+<td>ECSインスタンスのImageID。今回は <code>centos_7_04_64_20G_alibase_201701015.vhd</code> を選定します。</td>
 </tr>
 
 <tr>
@@ -832,7 +832,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>system_disk_category</td>
 <td>任意</td>
 <td>cloud_efficiency</td>
-<td>EC インスタンスのディスクタイプ。デフォルトは cloud_efficiency です。</td>
+<td>ECSインスタンスのディスクタイプ。デフォルトは cloud_efficiency です。</td>
 </tr>
 
 <tr>
@@ -868,7 +868,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>password</td>
 <td>任意</td>
 <td>&rdquo;!Bastion2019&rdquo;</td>
-<td>EC インスタンスのログインパスワード。記載したくない場合は<code>confing.tfvars</code>にて記載することをお勧めします。</td>
+<td>ECSインスタンスのログインパスワード。記載したくない場合は<code>confing.tfvars</code>にて記載することをお勧めします。</td>
 </tr>
 
 <tr>
@@ -1091,7 +1091,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>instance_name</td>
 <td>必須</td>
 <td>${var.project_name}-Production-Server-ECS-instance</td>
-<td>EC インスタンスの名称。この例の場合、<code>Bastion-Server-for-Terraform-Bastion-Server-ECS-instance</code> として表示されます。</td>
+<td>ECSインスタンスの名称。この例の場合、<code>Bastion-Server-for-Terraform-Bastion-Server-ECS-instance</code> として表示されます。</td>
 </tr>
 
 <tr>
@@ -1100,7 +1100,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>host_name</td>
 <td>必須</td>
 <td>${var.project_name}-Production-Server-ECS-instance</td>
-<td>EC インスタンスのHost名称。この例の場合、<code>Bastion-Server-for-Terraform-Bastion-Server-ECS-instance</code> として表示されます。</td>
+<td>ECSインスタンスのHost名称。この例の場合、<code>Bastion-Server-for-Terraform-Bastion-Server-ECS-instance</code> として表示されます。</td>
 </tr>
 
 <tr>
@@ -1109,7 +1109,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>instance_type</td>
 <td>必須</td>
 <td>ecs.xn4.small</td>
-<td>EC インスタンスのタイプ。今回は <code>ecs.xn4.small</code> を選定します。</td>
+<td>ECSインスタンスのタイプ。今回は <code>ecs.xn4.small</code> を選定します。</td>
 </tr>
 
 <tr>
@@ -1118,7 +1118,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>image_id</td>
 <td>必須</td>
 <td>centos_7_04_64_20G_alibase_201701015.vhd</td>
-<td>EC インスタンスのImageID。今回は <code>centos_7_04_64_20G_alibase_201701015.vhd</code> を選定します。</td>
+<td>ECSインスタンスのImageID。今回は <code>centos_7_04_64_20G_alibase_201701015.vhd</code> を選定します。</td>
 </tr>
 
 <tr>
@@ -1127,7 +1127,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>system_disk_category</td>
 <td>必須</td>
 <td>cloud_efficiency</td>
-<td>EC インスタンスのディスクタイプ。デフォルトは cloud_efficiency です。</td>
+<td>ECSインスタンスのディスクタイプ。デフォルトは cloud_efficiency です。</td>
 </tr>
 
 <tr>
@@ -1163,7 +1163,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>password</td>
 <td>任意</td>
 <td>&rdquo;!Production2019&rdquo;</td>
-<td>EC インスタンスのログインパスワード。記載したくない場合は<code>confing.tfvars</code>にて記載することをお勧めします。</td>
+<td>ECSインスタンスのログインパスワード。記載したくない場合は<code>confing.tfvars</code>にて記載することをお勧めします。</td>
 </tr>
 
 <tr>
