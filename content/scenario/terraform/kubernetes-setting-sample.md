@@ -34,7 +34,7 @@ kubernetesクラスター構成:
 
 |リソース|リソース名|パラメータ|必須|設定値|内容|
 |---|---|---|---|---|---|
-|alicloud_cs_kubernetes|k8s|name||||
+|alicloud_cs_kubernetes|k8s|name|任意|${var.project_name}-k8s|kubernetesクラスター名称|
 ||k8s|vswitch_ids|必須|"${alicloud_vswitch.vsw.id}"|アタッチするVSwitchのID。|
 ||k8s|availability_zone|必須|${var.zone}|使用するアベイラビリティゾーン|
 ||k8s|new_nat_gateway|任意|true|kubernetesクラスタの作成中に新しいNATゲートウェイを作成するかどうか。デフォルトはtrue。|
