@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-08T06:34:37 UTC">
+<meta name="revised" content="2019-07-08T06:49:32 UTC">
 <title>Kubernetesの構築と設定 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -303,6 +303,78 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+    <li data-nav-id="/help/scenario/terraform/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/scenario/terraform/">Terraform</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/scenario/terraform/bastion-server/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/bastion-server/">
+            SSH踏み台サーバの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/slb-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/slb-setting-sample/">
+            SLBの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/rds-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/rds-setting-sample/">
+            RDSの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/kubernetes-setting-sample/" class="dd-item active">
+        <div>
+          <a href="/help/scenario/terraform/kubernetes-setting-sample/">
+            Kubernetesの構築と設定
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application/">
+            Webアプリケーションの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/accelerated-content-delivery/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/accelerated-content-delivery/">
+            高速コンテンツ配信の実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/auto-scaling/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/auto-scaling/">
+            オートスケーリングの実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application-on-kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application-on-kubernetes/">
+            KubernetesによるコンテナでWordPress作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/ec-site-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/ec-site-sample/">
+             MagentoでECサイト構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
         </ul>
     </li>
     <li data-nav-id="/help/faq/" class="dd-item haschildren
@@ -475,6 +547,240 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <p><img src="/help/image/20.1.png" alt="図 1" /></p>
 
+<p>それぞれのパラメータは以下の通りです。</p>
+
+<p>ネットワーク構成:</p>
+
+<table>
+<thead>
+<tr>
+<th>リソース</th>
+<th>リソース名</th>
+<th>パラメータ</th>
+<th>必須</th>
+<th>設定値</th>
+<th>内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>alicloud_vpc</td>
+<td>vpc</td>
+<td>name</td>
+<td>任意</td>
+<td>${var.project_name}-vpc</td>
+<td>VPC の名称。この例の場合、RDS-Sample-for-Terraform-vpc として表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>vpc</td>
+<td>cidr_block</td>
+<td>必須</td>
+<td>192.168.1.0/24</td>
+<td>VPC の CIDR ブロック</td>
+</tr>
+
+<tr>
+<td></td>
+<td>vpc</td>
+<td>description</td>
+<td>任意</td>
+<td>Enable k8s-Setteing-Sample vpc</td>
+<td>VPC の説明。</td>
+</tr>
+
+<tr>
+<td>alicloud_vswitch</td>
+<td>vsw</td>
+<td>name</td>
+<td>任意</td>
+<td>${var.project_name}-vswitch</td>
+<td>vswitch の名称。この例の場合、RDS-Sample-for-Terraform-vswitch として表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>vsw</td>
+<td>vpc_id</td>
+<td>必須</td>
+<td>${alicloud_vpc.vpc.id}</td>
+<td>アタッチするVPCのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>vsw</td>
+<td>cidr_block</td>
+<td>必須</td>
+<td>192.168.1.0/28</td>
+<td>vswitch の CIDR ブロック</td>
+</tr>
+
+<tr>
+<td></td>
+<td>vsw</td>
+<td>availability_zone</td>
+<td>必須</td>
+<td>${var.zone}</td>
+<td>使用するアベイラビリティゾーン</td>
+</tr>
+
+<tr>
+<td></td>
+<td>vsw</td>
+<td>description</td>
+<td>任意</td>
+<td>Enable k8s-Sample vswitch</td>
+<td>vswitch の説明。</td>
+</tr>
+</tbody>
+</table>
+
+<p>kubernetesクラスター構成:</p>
+
+<table>
+<thead>
+<tr>
+<th>リソース</th>
+<th>リソース名</th>
+<th>パラメータ</th>
+<th>必須</th>
+<th>設定値</th>
+<th>内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>alicloud_cs_kubernetes</td>
+<td>k8s</td>
+<td>name</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>vswitch_ids</td>
+<td>必須</td>
+<td>&rdquo;${alicloud_vswitch.vsw.id}&rdquo;</td>
+<td>アタッチするVSwitchのID。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>availability_zone</td>
+<td>必須</td>
+<td>${var.zone}</td>
+<td>使用するアベイラビリティゾーン</td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>new_nat_gateway</td>
+<td>任意</td>
+<td>true</td>
+<td>kubernetesクラスタの作成中に新しいNATゲートウェイを作成するかどうか。デフォルトはtrue。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>master_instance_types</td>
+<td>必須</td>
+<td>[&ldquo;ecs.xn4.small&rdquo;]</td>
+<td>マスターノードのインスタンスタイプ。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>worker_instance_types</td>
+<td>必須</td>
+<td>[&ldquo;ecs.xn4.small&rdquo;]</td>
+<td>ワーカーノードのインスタンスタイプ。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>worker_numbers</td>
+<td>任意</td>
+<td>[2]</td>
+<td>ワーカーノードの台数。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>master_disk_size</td>
+<td>任意</td>
+<td>40</td>
+<td>マスターノードのシステムディスクサイズ。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>worker_disk_size</td>
+<td>任意</td>
+<td>100</td>
+<td>ワーカーノードのシステムディスクサイズ。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>password</td>
+<td>任意</td>
+<td>&rdquo;${var.k8s_password}&rdquo;</td>
+<td>クラスタノードのsshログインパスワード。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>pod_cidr</td>
+<td>任意</td>
+<td>&ldquo;172.20.0.0/16&rdquo;</td>
+<td>ポッドネットワークのCIDRブロック。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>service_cidr</td>
+<td>任意</td>
+<td>&ldquo;172.21.0.0/20&rdquo;</td>
+<td>サービスネットワークのCIDRブロック。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>enable_ssh</td>
+<td>任意</td>
+<td>true</td>
+<td>SSHログインを許可するか。デフォルトはfalse。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>k8s</td>
+<td>install_cloud_monitor</td>
+<td>任意</td>
+<td>true</td>
+<td>クラウドモニタをkubernetesノードにインストールするかどうか。</td>
+</tr>
+</tbody>
+</table>
+
 <p><br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。</p>
 
@@ -597,14 +903,14 @@ terraform apply -var-file=&quot;confing.tfvars&quot;
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  07/01/2019
+        <i class='fa fa-calendar'></i> Last update on 07/01/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/scenario/terraform/kubernetes-setting-sample.md" target="blank"><i class="fa fa-code-fork"></i>
-        </a>
+        Improve this page</a>
     </div>
     
   </div>
