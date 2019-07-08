@@ -18,6 +18,201 @@ draft: false
 
 ![図 1](/help/image/21.1.png)
 
+それぞれのパラメータは以下の通りです。
+
+
+ネットワーク構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_vpc|vpc|name|任意|${var.project_name}-vpc|VPC の名称。この例の場合、Accelerated-Content-Delivery-for-Terraform-vpc として表示されます。|
+||vpc|cidr_block|必須|192.168.0.0/16|VPC の CIDR ブロック|
+||vpc|description|任意|VPC for ${var.project_name}|VPC の説明。この場合VPC for Accelerated-Content-Delivery-for-Terraform として表示されます。|
+|alicloud_vswitch|web|name|任意|${var.project_name}-web-vswitch    |vswitch の名称。この例の場合、Accelerated-Content-Delivery-for-Terraform-web-vswitch として表示されます。|
+||web|vpc_id|必須|${alicloud_vpc.vpc.id}|アタッチするVPCのID|
+||web|cidr_block|必須|192.168.1.0/24|vswitch の CIDR ブロック|
+||web|availability_zone|必須|${var.zone}|使用するアベイラビリティゾーン|
+||web|description|任意|Enable Web-Application web vswitch|vswitch の説明。|
+|alicloud_vswitch|app|name|任意|${var.project_name}-app-vswitch    |vswitch の名称。この例の場合、Accelerated-Content-Delivery-for-Terraform-app-vswitch として表示されます。|
+||app|vpc_id|必須|${alicloud_vpc.vpc.id}|アタッチするVPCのID|
+||app|cidr_block|必須|192.168.2.0/24|vswitch の CIDR ブロック|
+||app|availability_zone|必須|${var.zone}|使用するアベイラビリティゾーン|
+||app|description|任意|Enable Web-Application app vswitch|vswitch の説明。|
+|alicloud_vswitch|db|name|任意|${var.project_name}--db-vswitch    |vswitch の名称。この例の場合、Accelerated-Content-Delivery-for-Terraform-db-vswitch として表示されます。|
+||db|vpc_id|必須|${alicloud_vpc.vpc.id}|アタッチするVPCのID|
+||db|cidr_block|必須|192.168.3.0/24|vswitch の CIDR ブロック|
+||db|availability_zone|必須|${var.zone}|使用するアベイラビリティゾーン|
+||db|description|任意|Enable Web-Application db vswitch|vswitch の説明。|
+
+
+WebのECSインスタンスセキュリティグループ構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_security_group|web|name|任意|${var.web_layer_name}-sg|セキュリティグループ の名称。この例の場合、web-server_sgとして表示されます。|
+||web|vpc_id|必須|${alicloud_vpc.vpc.id}|アタッチするVPCのID|
+|alicloud_security_group_rule|allow_web_access|type|必須|ingress|セキュリティグループのタイプ。 ingress（受信） かegress（送信） のいずれかになります。|
+||allow_web_access|ip_protocol|必須|tcp|通信プロトコル。 tcp, udp, icmp, gre, all のいずれかになります。|
+||allow_web_access|nic_type|必須|intranet|ネットワークタイプ。 internet か intranet のいずれかになります。|
+||allow_web_access|policy|必須|accept|許可ポリシー。 acceptか drop のいずれかになります。|
+||allow_web_access|port_range|必須|${var.web_instance_port}/${var.web_instance_port}|通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。この場合、80/80になります。|
+||allow_web_access|priority|必須|1|許可ポリシーの優先順位。|
+||allow_web_access|security_group_id|必須|${alicloud_security_group.web.id}|アタッチするセキュリティグループのID|
+||allow_web_access|cidr_ip|任意|0.0.0.0/0|ターゲットとなるIPアドレス。デフォルトは「0.0.0.0/0」。値が「0.0.0.0/0」の場合は無制限状態となります。|
+
+
+WebのECSインスタンス構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_instance|app|instance_name|任意| ${var.web_layer_name}-${count.index}|ECSインスタンスの名称。|
+||web|host_name|任意| ${var.web_layer_name}-${count.index}|ECSインスタンスのHost名称。|
+||web|instance_type|必須|${var.web_instance_type}|ECSインスタンスのタイプ。|
+||web|image_id|必須|${var.web_instance_image_id}|ECSインスタンスのImageID。|
+||web|security_groups|必須|${alicloud_security_group.web.id}|アタッチするセキュリティグループのID。|
+||web|availability_zone|必須|${var.zone}|使用するアベイラビリティゾーン。|
+||web|vswitch_id|必須|${alicloud_vswitch.web.id}|アタッチするVSwitchのID。|
+||web|password|任意|${var.ecs_password}|EC インスタンスのログインパスワード。|
+||web|internet_max_bandwidth_out|任意|20|パブリックネットワークへの最大帯域幅。デフォルトは0ですが、0より大きい値を入れるとパブリックIPアドレスがアタッチされます。|
+||web|user_data|任意|${var.web_instance_user_data}|ECSインスタンス起動後に実行するshell内容もしくはファイル名。|
+
+
+
+WebのSLB構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_slb|web|name|任意|${var.web_layer_name}-slb|SLBの名称。|
+||web|vswitch_id|任意|${alicloud_vswitch.web.id}|アタッチするVSwitchのID。|
+||web|internet|必須|true|SLB addressのインターネットタイプ。Trueのインターネットにするか、falseのイントラネットいずれかになります。|
+||web|internet_charge_type|必須|paybytraffic|インターネットチェンジタイプ。PayByBandwidth、PayByTrafficのいずれかになります。|
+|alicloud_slb_listener|web_listener|load_balancer_id|必須|${alicloud_slb.web.id}|新しいリスナーを起動するために使用されるロードバランサID。|
+||web_listener|backend_port|必須|${var.web_instance_port}|Server Load Balancerインスタンスバックエンドが使用するポート。|
+||web_listener|frontend_port|必須|${var.web_instance_port}|Server Load Balancerインスタンスフロントエンドが使用するポート。|
+||web_listener|health_check_type|任意|tcp|ヘルスチェックが使用するポート。health_check_typeの代わりに使用することも可能です。|
+||web_listener|protocol|必須|http|使用するプロトコル。http、https、tcp、udpのいずれかになります。|
+||web_listener|bandwidth|任意|5|Listenerの最大帯域幅。|
+|alicloud_slb_attachment|web|load_balancer_id|必須|${alicloud_slb.web.id}|ロードバランサID。|
+||web|instance_ids|必須|${alicloud_instance.web.*.id}|アタッチするECSインスタンスID。|
+
+
+AppのECSインスタンスセキュリティグループ構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_security_group|app|name|任意|${var.app_layer_name}-sg|セキュリティグループ の名称。この例の場合、app-server_sgとして表示されます。|
+||app|vpc_id|必須|${alicloud_vpc.vpc.id}|アタッチするVPCのID|
+|alicloud_security_group_rule|allow_app_access|type|必須|ingress|セキュリティグループのタイプ。 ingress（受信） かegress（送信） のいずれかになります。|
+||allow_app_access|ip_protocol|必須|tcp|通信プロトコル。 tcp, udp, icmp, gre, all のいずれかになります。|
+||allow_app_access|nic_type|必須|intranet|ネットワークタイプ。 internet か intranet のいずれかになります。|
+||allow_app_access|policy|必須|accept|許可ポリシー。 acceptか drop のいずれかになります。|
+||allow_app_access|port_range|必須|${var.app_instance_port}/${var.app_instance_port}|通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。この場合、80/80になります。|
+||allow_app_access|priority|必須|1|許可ポリシーの優先順位。|
+||allow_app_access|security_group_id|必須|${alicloud_security_group.app.id}|アタッチするセキュリティグループのID|
+||allow_app_access|cidr_ip|任意|0.0.0.0/0|ターゲットとなるIPアドレス。デフォルトは「0.0.0.0/0」。値が「0.0.0.0/0」の場合は無制限状態となります。|
+
+
+AppのECSインスタンス構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_instance|app|instance_name|任意| ${var.app_layer_name}-${count.index}|ECSインスタンスの名称。|
+||app|host_name|任意| ${var.app_layer_name}-${count.index}|ECSインスタンスのHost名称。|
+||app|instance_type|必須|${var.app_instance_type}|ECSインスタンスのタイプ。|
+||app|image_id|必須|${var.app_instance_image_id}|ECSインスタンスのImageID。|
+||app|security_groups|必須|${alicloud_security_group.app.id}|アタッチするセキュリティグループのID。|
+||app|availability_zone|必須|${var.zone}|使用するアベイラビリティゾーン。|
+||app|vswitch_id|必須|${alicloud_vswitch.app.id}|アタッチするVSwitchのID。|
+||app|password|任意|${var.ecs_password}|EC インスタンスのログインパスワード。|
+||app|internet_max_bandwidth_out|任意|5|パブリックネットワークへの最大帯域幅。デフォルトは0ですが、0より大きい値を入れるとパブリックIPアドレスがアタッチされます。|
+||app|user_data|任意|${var.app_instance_user_data}|ECSインスタンス起動後に実行するshell内容もしくはファイル名。|
+
+
+AppのSLB構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_slb|app|name|任意|${var.app_layer_name}-slb|SLBの名称。|
+||app|vswitch_id|任意|${alicloud_vswitch.web.id}|アタッチするVSwitchのID。|
+||app|internet|必須|false|SLB addressのインターネットタイプ。Trueのインターネットにするか、falseのイントラネットいずれかになります。|
+||app|internet_charge_type|必須|paybytraffic|インターネットチェンジタイプ。PayByBandwidth、PayByTrafficのいずれかになります。|
+|alicloud_slb_listener|app_listener|load_balancer_id|必須|${alicloud_slb.app.id}|新しいリスナーを起動するために使用されるロードバランサID。|
+||app_listener|backend_port|必須|${var.web_instance_port}|Server Load Balancerインスタンスバックエンドが使用するポート。|
+||app_listener|frontend_port|必須|${var.web_instance_port}|Server Load Balancerインスタンスフロントエンドが使用するポート。|
+||app_listener|health_check_type|任意|tcp|ヘルスチェックが使用するポート。health_check_typeの代わりに使用することも可能です。|
+||app_listener|protocol|必須|tcp|使用するプロトコル。http、https、tcp、udpのいずれかになります。|
+||app_listener|bandwidth|任意|5|Listenerの最大帯域幅。|
+|alicloud_slb_attachment|app|load_balancer_id|必須|${alicloud_slb.app.id}|ロードバランサID。|
+||app|instance_ids|必須|${alicloud_instance.app.*.id}|アタッチするECSインスタンスID。|
+
+
+AppのAutoScaling構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_ess_scaling_group|app|scaling_group_name|任意|${var.solution_name}-ess-app|スケーリンググループ名称。|
+||app|min_size|必須|${var.app_instance_min_count}|ECSインスタンスのスケーリング最小数。|
+||app|max_size|必須|${var.app_instance_max_count}|ECSインスタンスのスケーリング最大数。|
+||app|removal_policies|必須|OldestInstance, NewestInstance|スケーリング削除ポリシー。OldestInstance、NewestInstance、OldestScalingConfigurationのどれかと組み合わせて選定になります。|
+||app|loadbalancer_ids|任意|${alicloud_slb.app.id}|SLBを利用する場合、アタッチするSLBインスタンスID。|
+||app|vswitch_ids|必須|${alicloud_vswitch.app.id}|アタッチするVSwitchのID。|
+|alicloud_ess_scaling_configuration|app|scaling_group_id|必須|${alicloud_ess_scaling_group.app.id}|アタッチするスケーリンググループのID。|
+||app|image_id|必須|${var.app_instance_image_id}|ECSインスタンスのImageID。|
+||app|instance_type|任意|${var.app_instance_type}|ECSインスタンスのリソースタイプ。|
+||app|scaling_configuration_name|任意|scaling-configuration-app|スケジュール済みタスクに表示される名称。デフォルト値はScalingConfigurationIdです。|
+||app|system_disk_category|任意|cloud_efficiency|システムディスクのカテゴリ。|
+||app|security_group_id|任意|${alicloud_security_group.app.id}|アタッチするセキュリティグループのID|
+||app|active|任意|true|現在のスケーリング設定をアクティブにするか。|
+|alicloud_ess_scaling_rule|app|scaling_rule_name|必須|${var.solution_name}-ess-rule-app|スケールルールに表示される名称。|
+||app|scaling_group_id|必須|${alicloud_ess_scaling_group.app.id}|スケーリンググループのID。|
+||app|adjustment_type|必須|TotalCapacity|スケーリングルールの調整モード。QuantityChangeInCapacity、PercentChangeInCapacity、TotalCapacityのいずれかになります。|
+||app|adjustment_value|任意|2|スケーリングルールの調整値。|
+||app|cooldown|任意|60|スケーリングルールのクールダウン時間。|
+
+
+RDS構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_db_instance|db_instance|engine|必須|${var.db_engine}|データベースタイプ。MySQL、SQLServer、PostgreSQL、PPASのいずれかになります。|
+||db_instance|engine_version|必須|${var.db_engine_version}|データベースのバージョン。|
+||db_instance|instance_type|必須|${var.db_instance_type}|DBインスタンスタイプ。|
+||db_instance|instance_storage|必須|${var.db_instance_storage}|DBインスタンスのストレージ領域。|
+||db_instance|vswitch_id|必須|${alicloud_vswitch.db.id}|アタッチするVSwitchのID。|
+||db_instance|security_ips|任意|10.0.2.0/24|データベースへのアクセスが許可されているIPアドレスのリスト。|
+|alicloud_db_database|default|name|必須|${var.db_layer_name}|RDSの名称。この例の場合、RDS-Sample-for-Terraform として表示されます。|
+||default|instance_id|必須|${alicloud_db_instance.db_instance.id}|データベースを実行するインスタンスのID。|
+||default|character_set|必須|utf8|文字セット。|
+|alicloud_db_account|default|instance_id|必須|${alicloud_db_instance.db_instance.id}|データベースを実行するインスタンスのID。|
+||default|name|必須|${var.db_user}|運用アカウント名。|
+||default|password|必須|${var.db_password}|運用アカウント名に対するパスワード。|
+|alicloud_db_account_privilege|default|instance_id|必須|${alicloud_db_instance.db_instance.id}|データベースを実行するインスタンスのID。|
+||default|account_name|必須|${alicloud_db_account.default.name}|運用アカウント名。|
+||default|db_names|必須|${alicloud_db_database.default.name}|データベース名。|
+||default|privilege|必須|ReadWrite|アクセス権限。ReadOnly、ReadWriteのいずれかになります。|
+|alicloud_db_connection|default|instance_id|必須|${alicloud_db_instance.db_instance.id}|データベースを実行するインスタンスのID。|
+||default|connection_prefix|必須|alicloud-database|インターネット接続プレフィックス。|
+||default|port|任意|3306|インターネット接続ポート。|
+
+
+OSS構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_oss_bucket|oss|bucket|任意|${var.project_name}-bucket|バケットの名称。|
+||oss|acl|任意|private|アクセス制御リスト（ACL）の権限設定。|
+
+
 <br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。
 

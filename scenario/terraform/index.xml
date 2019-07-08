@@ -76,11 +76,9 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
       <description>&amp;nbsp; こちらはAlibabaCloud公式サイトにあるソリューション構築例を通じての紹介になります。IDCなどデータセンターにて、スケーラブルで世界規模で利用可能なWebアプリケーションを開発および展開するのは、多くの手作業から工数がかかり、またトラフィックに応じてリソースの効率さが悪くなってしまう課題があります。しかしAlibabaCloudで構築すると、それらの課題が払拭されます。それだけでなく、上に、投資収益率（ROI）も向上するメリットがあります。
  すぐに着手できる配置構成 必要な分だけリソースを提供（オンデマンドサーバープロビジョニング） 単一障害点（SPOF）なし 多重層のセキュリティ保護あり  
 &amp;nbsp; TerraformでWebアプリケーションを作ってみます。ゴールの構成図は以下の通りです。
-
-ソースは以下になります。サンプルソースは[こちら]()にあります。
-
-main.tf
-provider &amp;quot;alicloud&amp;quot; { access_key = &amp;quot;${var.access_key}&amp;quot; secret_key = &amp;quot;${var.secret_key}&amp;quot; region = &amp;quot;${var.region}&amp;quot; } resource &amp;quot;alicloud_vpc&amp;quot; &amp;quot;default&amp;quot; { name = &amp;quot;${var.project_name}-vpc&amp;quot; cidr_block = &amp;quot;192.168.0.0/16&amp;quot; description = &amp;quot;VPC for ${var.project_name}&amp;quot; } resource &amp;quot;alicloud_vswitch&amp;quot; &amp;quot;web&amp;quot; { name = &amp;quot;${var.project_name}-web-vswitch&amp;quot; description = &amp;quot;Enable Web-Application web vswitch&amp;quot; vpc_id = &amp;quot;${alicloud_vpc.default.id}&amp;quot; cidr_block = &amp;quot;192.168.1.0/24&amp;quot; availability_zone = &amp;quot;${var.zone}&amp;quot; } resource &amp;quot;alicloud_vswitch&amp;quot; &amp;quot;app&amp;quot; { name = &amp;quot;${var.</description>
+それぞれのパラメータは以下の通りです。
+ネットワーク構成:
+   リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、Accelerated-Content-Delivery-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.168.0.0/16 VPC の CIDR ブロック    vpc description 任意 VPC for ${var.project_name} VPC の説明。この場合VPC for Accelerated-Content-Delivery-for-Terraform として表示されます。   alicloud_vswitch web name 任意 ${var.project_name}-web-vswitch vswitch の名称。この例の場合、Accelerated-Content-Delivery-for-Terraform-web-vswitch として表示されます。    web vpc_id 必須 ${alicloud_vpc.</description>
     </item>
     
     <item>
