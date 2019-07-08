@@ -10,8 +10,120 @@ draft: false
 
 ![図 1](/help/image/19.1.1.png)
 
-ECSからRDS for MySQLへへ接続するためのdocker-compose.ymlファイルは以下の通りです。
+
+またECSからRDS for MySQLへ接続するためにdocker-composeを使います。docker-composeはコンテナオーケストレーションの一つで、環境構築を再現するのが楽になる手法です。docker-compose.ymlファイルは以下の通りです。
+
 ![図 2](/help/image/19.1.2.png)
+
+それぞれのパラメータは以下の通りです。
+
+
+ネットワーク構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_vpc|vpc|name|任意|${var.project_name}-vpc|VPC の名称。この例の場合、RDS-Sample-for-Terraform-vpc として表示されます。|
+||vpc|cidr_block|必須|192.168.1.0/24|VPC の CIDR ブロック|
+||vpc|description|任意|Enable SLB-Setteing-Sample vpc|VPC の説明。|
+|alicloud_vswitch|vsw|name|任意|${var.project_name}-vswitch|vswitch の名称。この例の場合、RDS-Sample-for-Terraform-vswitch として表示されます。|
+||vsw|vpc_id|必須|${alicloud_vpc.vpc.id}|アタッチするVPCのID|
+||vsw|cidr_block|必須|192.168.1.0/28|vswitch の CIDR ブロック|
+||vsw|availability_zone|必須|${var.zone}|使用するアベイラビリティゾーン|
+||vsw|description|任意|Enable RDS-Setteing-Sample vswitch|vswitch の説明。|
+
+
+ECSインスタンスセキュリティグループ構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_security_group|sg|name|任意|${var.project_name}_sg"|セキュリティグループ の名称。この例の場合、RDS-Sample-for-Terraform_sgとして表示されます。|
+||sg|vpc_id|必須|${alicloud_vpc.vpc.id}|アタッチするVPCのID|
+||sg|description|任意|Enable SSH access via port 22|セキュリティグループ の説明。|
+|alicloud_security_group_rule|allow_http|type|必須|ingress|セキュリティグループのタイプ。 ingress（受信） かegress（送信） のいずれかになります。|
+||allow_http|ip_protocol|必須|tcp|通信プロトコル。 tcp, udp, icmp, gre, all のいずれかになります。|
+||allow_http|nic_type|必須|intranet|ネットワークタイプ。 internet か intranet のいずれかになります。|
+||allow_http|policy|必須|accept|許可ポリシー。 acceptか drop のいずれかになります。|
+||allow_http|port_range|必須|80⁄80|通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。|
+||allow_http|priority|必須|1|許可ポリシーの優先順位。|
+||allow_http|security_group_id|必須|${alicloud_security_group.sg.id}|アタッチするセキュリティグループのID|
+||allow_http|cidr_ip|任意|0.0.0.0/0|ターゲットとなるIPアドレス。デフォルトは「0.0.0.0/0」。値が「0.0.0.0/0」の場合は無制限状態となります。|
+||allow_ssh|type|必須|ingress|セキュリティグループのタイプ。 ingress（受信） かegress（送信） のいずれかになります。|
+||allow_ssh|ip_protocol|必須|tcp|通信プロトコル。 tcp, udp, icmp, gre, all のいずれかになります。|
+||allow_ssh|nic_type|必須|intranet|ネットワークタイプ。 internet か intranet のいずれかになります。|
+||allow_ssh|policy|必須|accept|許可ポリシー。 acceptか drop のいずれかになります。|
+||allow_ssh|port_range|必須|22/22|通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。|
+||allow_ssh|priority|必須|1|許可ポリシーの優先順位。|
+||allow_ssh|security_group_id|必須|${alicloud_security_group.sg.id}|アタッチするセキュリティグループのID|
+||allow_ssh|cidr_ip|任意|0.0.0.0/0|ターゲットとなるIPアドレス。デフォルトは「0.0.0.0/0」。値が「0.0.0.0/0」の場合は無制限状態となります。|
+
+
+ECSインスタンス構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_instance|ECS_instance|instance_name|任意|${var.project_name}-ECS-instance|ECSインスタンスの名称。この例の場合、RDS-Sample-for-Terraform-ECS-instance として表示されます。|
+||ECS_instance|host_name|任意|${var.project_name}-ECS-instance|ECSインスタンスのHost名称。この例の場合、RDS-Sample-for-Terraform-ECS-instance として表示されます。|
+||ECS_instance|instance_type|必須|ecs.xn4.small|ECSインスタンスのタイプ。今回は ecs.xn4.smallを選定します。|
+||ECS_instance|image_id|必須|centos_7_04_64_20G_alibase_201701015.vhd|ECSインスタンスのImageID。今回は centos_7_04_64_20G_alibase_201701015.vhd を選定します。|
+||ECS_instance|system_disk_category|任意|cloud_efficiency|ECSインスタンスのディスクタイプ。デフォルトは cloud_efficiency です。|
+||ECS_instance|security_groups|必須|”${alicloud_security_group.sg.id}”|アタッチするセキュリティグループのID|
+||ECS_instance|availability_zone|必須|${var.zone}|使用するアベイラビリティゾーン|
+||ECS_instance|vswitch_id|必須|${alicloud_vswitch.vsw.id}|アタッチするVSwitchのID。|
+||ECS_instance|password|任意|"${var.ecs_password}"|EC インスタンスのログインパスワード。|
+||ECS_instance|internet_max_bandwidth_out|任意|20|パブリックネットワークへの最大帯域幅。デフォルトは0ですが、0より大きい値を入れるとパブリックIPアドレスがアタッチされます。|
+||ECS_instance|user_data|任意|"${file("provisioning.sh")}"|ECSインスタンス起動後に実行するshell内容もしくはファイル名。今回はprovisioning.shにて記載しています。|
+
+
+SLB構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_slb|default|name|任意|"${var.project_name}-slb"|SLBの名称。この例の場合、RDS-Sample-for-Terraform-slb として表示されます。|
+||default|vswitch_id|任意| "${alicloud_vswitch.vsw.id}"|アタッチするVSwitchのID。|
+||default|internet|必須|true|SLB addressのインターネットタイプ。Trueのインターネットにするか、falseのイントラネットいずれかになります。|
+||default|internet_charge_type|必須|paybytraffic|インターネットチェンジタイプ。PayByBandwidth、PayByTrafficのいずれかになります。|
+|alicloud_slb_listener|http|load_balancer_id|必須| "${alicloud_slb.slb.id}"|新しいリスナーを起動するために使用されるロードバランサID。|
+||http|backend_port|必須|80|Server Load Balancerインスタンスバックエンドが使用するポート。|
+||http|frontend_port|必須|80|Server Load Balancerインスタンスフロントエンドが使用するポート。|
+||http|health_check_connect_port|任意|80|ヘルスチェックが使用するポート。health_check_typeの代わりに使用することも可能です。|
+||http|protocol|必須|"http"|使用するプロトコル。http、https、tcp、udpのいずれかになります。|
+||http|bandwidth|任意|10|Listenerの最大帯域幅。|
+||http|sticky_session|任意|"on"|セッション持続性を有効にするかどうか。on、offのいずれかになります。|
+||http|sticky_session_type|任意|"insert"|Cookieを処理するためのタイプ。insertかserverのいずれかになります。|
+||http|cookie|任意|"slblistenercookie"|サーバに設定されているクッキー。|
+||http|cookie_timeout|任意|86400|クッキーのタイムアウト時間。|
+|alicloud_slb_attachment|slb_attachment|load_balancer_id|必須|"${alicloud_slb.slb.id}"|ロードバランサID。|
+||slb_attachment|instance_ids|必須|"${alicloud_instance.ECS_instance.*.id}"|アタッチするECSインスタンスID。|
+
+
+
+RDS構成:
+
+
+|リソース|リソース名|パラメータ|必須|設定値|内容|
+|---|---|---|---|---|---|
+|alicloud_db_instance|db_instance|engine|必須|"MySQL"|データベースタイプ。MySQL、SQLServer、PostgreSQL、PPASのいずれかになります。|
+||db_instance|engine_version|必須|"5.7"|データベースのバージョン。|
+||db_instance|instance_type|必須|"rds.mysql.t1.small"|DBインスタンスタイプ。|
+||db_instance|instance_storage|必須|5|DBインスタンスのストレージ領域。|
+||db_instance|vswitch_id|必須|"${alicloud_vswitch.vsw.id}"|アタッチするVSwitchのID。|
+|alicloud_db_database|default|name|必須|"${var.database_name}"|RDSの名称。この例の場合、RDS-Sample-for-Terraform として表示されます。|
+||default|instance_id|必須|"${alicloud_db_instance.db_instance.id}"|データベースを実行するインスタンスのID。|
+||default|character_set|必須|"utf8"|文字セット。|
+|alicloud_db_account|default|instance_id|必須|"${alicloud_db_instance.db_instance.id}"|データベースを実行するインスタンスのID。|
+||default|name|必須|"${var.db_user}"|運用アカウント名。|
+||default|password|必須|"${var.db_password}"|運用アカウント名に対するパスワード。|
+|alicloud_db_account_privilege|default|instance_id|必須|"${alicloud_db_instance.db_instance.id}"|データベースを実行するインスタンスのID。|
+||default|account_name|必須|"${alicloud_db_account.default.name}"|運用アカウント名。|
+||default|db_names|必須|"${alicloud_db_database.default.name}"|データベース名。|
+||default|privilege|必須|"ReadWrite"|アクセス権限。ReadOnly、ReadWriteのいずれかになります。|
+|alicloud_db_connection|default|instance_id|必須|"${alicloud_db_instance.db_instance.id}"|データベースを実行するインスタンスのID。|
+||default|connection_prefix|必須|"rds-sample"|インターネット接続プレフィックス。|
+||default|port|任意|"3306"|インターネット接続ポート。|
 
 <br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。
@@ -69,7 +181,7 @@ resource "alicloud_db_account_privilege" "default" {
 
 resource "alicloud_db_connection" "default" {
   instance_id = "${alicloud_db_instance.db_instance.id}"
-  connection_prefix = "slb-sample"
+  connection_prefix = "rds-sample"
   port = "3306"
 }
 
