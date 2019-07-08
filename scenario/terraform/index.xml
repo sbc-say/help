@@ -29,12 +29,12 @@
     </item>
     
     <item>
-      <title>SLBの構築</title>
+      <title>SLBの構築と設定</title>
       <link>https://sbcloud.github.io/help/scenario/terraform/slb-setting-sample/</link>
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/slb-setting-sample/</guid>
-      <description>SLBの構築 &amp;nbsp; SLB（Server Load Balancer）は、外部インターネット、もしくは内部イントラネットからパブリックIPまたはプライベートIPへ届くインバウンドトラフィックを予め設定したSLBの転送ルールに従って、複数のECSインスタンス間のインバウンドトラフィックを分散および制御し、アプリケーションの可用性を高めるサービスです。SLBを使うことで、以下のメリットがあります。
+      <description>SLBの構築と設定 &amp;nbsp; SLB（Server Load Balancer）は、外部インターネット、もしくは内部イントラネットからパブリックIPまたはプライベートIPへ届くインバウンドトラフィックを予め設定したSLBの転送ルールに従って、複数のECSインスタンス間のインバウンドトラフィックを分散および制御し、アプリケーションの可用性を高めるサービスです。SLBを使うことで、以下のメリットがあります。
  高可用性・・・完全冗長モードとして障害や災害時でもで稼働します。 スケーラブル・・・サービスニーズに合わせて必要な台数分へサーバを増減します。 費用対効果・・・必要なリソースの分だけ使用なので、通常の負荷分散ハードウェアと比べてコスト削減します。 セキュリティ・・・SLBはトラフィックを分散するだけでなくHTTP Flood攻撃やSYN Flood攻撃など、最大5GbitsのDDoS攻撃から防御できます。  SLBのより詳しい詳細はこちらを参照ください。
 &amp;nbsp; TerraformでSLBを使ったECSインスタンスを作成してみます。ゴールの構成図は以下の通りです。
 それぞれのパラメータは以下の通りです。
