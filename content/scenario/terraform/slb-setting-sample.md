@@ -18,7 +18,7 @@ draft: false
 SLBのより詳しい詳細は[こちらを参照](https://jp.alibabacloud.com/help/doc-detail/27539.htm)ください。
 
 
-&nbsp; TerraformでロードバランサーであるSLBの構築と設計行ってみます。ゴールの構成図は以下の通りです。
+&nbsp; TerraformでSLBを使ったECSインスタンスを作成してみます。ゴールの構成図は以下の通りです。
 
 ![図 1](/help/image/18.1.png)
 <br>
