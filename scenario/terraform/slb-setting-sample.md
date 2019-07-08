@@ -1,12 +1,12 @@
 ---
-title: "SLBの構築と設定"
+title: "SLBの構築"
 date: 2019-07-01T00:00:00+09:00
 description: "Terraformを用いて、Alibaba Cloud上でSLBを作成します"
 weight: 170
 draft: false
 ---
 
-### SLBの構築と設定
+### SLBの構築
 &nbsp; SLB（Server Load Balancer）は、外部インターネット、もしくは内部イントラネットからパブリックIPまたはプライベートIPへ届くインバウンドトラフィックを予め設定したSLBの転送ルールに従って、複数のECSインスタンス間のインバウンドトラフィックを分散および制御し、アプリケーションの可用性を高めるサービスです。SLBを使うことで、以下のメリットがあります。
 
 * 高可用性・・・完全冗長モードとして障害や災害時でもで稼働します。
@@ -18,7 +18,7 @@ draft: false
 SLBのより詳しい詳細は[こちらを参照](https://jp.alibabacloud.com/help/doc-detail/27539.htm)ください。
 
 
-&nbsp; TerraformでロードバランサーであるSLBの構築と設計行ってみます。ゴールの構成図は以下の通りです。
+&nbsp; TerraformでSLBを使ったECSインスタンスを作成してみます。ゴールの構成図は以下の通りです。
 
 ![図 1](/help/image/18.1.png)
 <br>
