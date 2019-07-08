@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-08T05:53:44 UTC">
+<meta name="revised" content="2019-07-08T06:33:58 UTC">
 <title>RDSの構築と設定 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -205,66 +205,17 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/scenario/terraform/bastion-server/" class="dd-item">
+      <li data-nav-id="/help/getting-started/cloud-users/vs-aws-gcp-azure/" class="dd-item">
         <div>
-          <a href="/help/scenario/terraform/bastion-server/">
-            SSH踏み台サーバの作成
+          <a href="/help/getting-started/cloud-users/vs-aws-gcp-azure/">
+            サービスラインナップ比較
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/scenario/terraform/slb-setting-sample/" class="dd-item">
+      <li data-nav-id="/help/getting-started/cloud-users/services-in-cn/" class="dd-item">
         <div>
-          <a href="/help/scenario/terraform/slb-setting-sample/">
-            SLBの構築
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/scenario/terraform/rds-setting-sample/" class="dd-item active">
-        <div>
-          <a href="/help/scenario/terraform/rds-setting-sample/">
-            RDSの構築と設定
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/scenario/terraform/kubernetes-setting-sample/" class="dd-item">
-        <div>
-          <a href="/help/scenario/terraform/kubernetes-setting-sample/">
-            Kubernetesの構築と設定
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/scenario/terraform/web-application/" class="dd-item">
-        <div>
-          <a href="/help/scenario/terraform/web-application/">
-            Webアプリケーションの構築
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/scenario/terraform/accelerated-content-delivery/" class="dd-item">
-        <div>
-          <a href="/help/scenario/terraform/accelerated-content-delivery/">
-            高速コンテンツ配信の実現
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/scenario/terraform/auto-scaling/" class="dd-item">
-        <div>
-          <a href="/help/scenario/terraform/auto-scaling/">
-            オートスケーリングの実現
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/scenario/terraform/web-application-on-kubernetes/" class="dd-item">
-        <div>
-          <a href="/help/scenario/terraform/web-application-on-kubernetes/">
-            KubernetesによるコンテナでWordPress作成
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/scenario/terraform/ec-site-sample/" class="dd-item">
-        <div>
-          <a href="/help/scenario/terraform/ec-site-sample/">
-             MagentoでECサイト構築
+          <a href="/help/getting-started/cloud-users/services-in-cn/">
+            中国リージョンのサービス一覧
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -442,8 +393,744 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <p><img src="/help/image/19.1.1.png" alt="図 1" /></p>
 
-<p>ECSからRDS for MySQLへへ接続するためのdocker-compose.ymlファイルは以下の通りです。
-<img src="/help/image/19.1.2.png" alt="図 2" /></p>
+<p>またECSからRDS for MySQLへ接続するためにdocker-composeを使います。docker-composeはコンテナオーケストレーションの一つで、環境構築を再現するのが楽になる手法です。docker-compose.ymlファイルは以下の通りです。</p>
+
+<p><img src="/help/image/19.1.2.png" alt="図 2" /></p>
+
+<p>それぞれのパラメータは以下の通りです。</p>
+
+<p>ネットワーク構成:</p>
+
+<table>
+<thead>
+<tr>
+<th>リソース</th>
+<th>リソース名</th>
+<th>パラメータ</th>
+<th>必須</th>
+<th>設定値</th>
+<th>内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>alicloud_vpc</td>
+<td>vpc</td>
+<td>name</td>
+<td>任意</td>
+<td>${var.project_name}-vpc</td>
+<td>VPC の名称。この例の場合、RDS-Sample-for-Terraform-vpc として表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>vpc</td>
+<td>cidr_block</td>
+<td>必須</td>
+<td>192.168.1.0/24</td>
+<td>VPC の CIDR ブロック</td>
+</tr>
+
+<tr>
+<td></td>
+<td>vpc</td>
+<td>description</td>
+<td>任意</td>
+<td>Enable SLB-Setteing-Sample vpc</td>
+<td>VPC の説明。</td>
+</tr>
+
+<tr>
+<td>alicloud_vswitch</td>
+<td>vsw</td>
+<td>name</td>
+<td>任意</td>
+<td>${var.project_name}-vswitch</td>
+<td>vswitch の名称。この例の場合、RDS-Sample-for-Terraform-vswitch として表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>vsw</td>
+<td>vpc_id</td>
+<td>必須</td>
+<td>${alicloud_vpc.vpc.id}</td>
+<td>アタッチするVPCのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>vsw</td>
+<td>cidr_block</td>
+<td>必須</td>
+<td>192.168.1.0/28</td>
+<td>vswitch の CIDR ブロック</td>
+</tr>
+
+<tr>
+<td></td>
+<td>vsw</td>
+<td>availability_zone</td>
+<td>必須</td>
+<td>${var.zone}</td>
+<td>使用するアベイラビリティゾーン</td>
+</tr>
+
+<tr>
+<td></td>
+<td>vsw</td>
+<td>description</td>
+<td>任意</td>
+<td>Enable RDS-Setteing-Sample vswitch</td>
+<td>vswitch の説明。</td>
+</tr>
+</tbody>
+</table>
+
+<p>ECSインスタンスセキュリティグループ構成:</p>
+
+<table>
+<thead>
+<tr>
+<th>リソース</th>
+<th>リソース名</th>
+<th>パラメータ</th>
+<th>必須</th>
+<th>設定値</th>
+<th>内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>alicloud_security_group</td>
+<td>sg</td>
+<td>name</td>
+<td>任意</td>
+<td>${var.project_name}_sg&rdquo;</td>
+<td>セキュリティグループ の名称。この例の場合、RDS-Sample-for-Terraform_sgとして表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>sg</td>
+<td>vpc_id</td>
+<td>必須</td>
+<td>${alicloud_vpc.vpc.id}</td>
+<td>アタッチするVPCのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>sg</td>
+<td>description</td>
+<td>任意</td>
+<td>Enable SSH access via port 22</td>
+<td>セキュリティグループ の説明。</td>
+</tr>
+
+<tr>
+<td>alicloud_security_group_rule</td>
+<td>allow_http</td>
+<td>type</td>
+<td>必須</td>
+<td>ingress</td>
+<td>セキュリティグループのタイプ。 ingress（受信） かegress（送信） のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>ip_protocol</td>
+<td>必須</td>
+<td>tcp</td>
+<td>通信プロトコル。 tcp, udp, icmp, gre, all のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>nic_type</td>
+<td>必須</td>
+<td>intranet</td>
+<td>ネットワークタイプ。 internet か intranet のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>policy</td>
+<td>必須</td>
+<td>accept</td>
+<td>許可ポリシー。 acceptか drop のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>port_range</td>
+<td>必須</td>
+<td><sup>80</sup>&frasl;<sub>80</sub></td>
+<td>通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>priority</td>
+<td>必須</td>
+<td>1</td>
+<td>許可ポリシーの優先順位。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>security_group_id</td>
+<td>必須</td>
+<td>${alicloud_security_group.sg.id}</td>
+<td>アタッチするセキュリティグループのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_http</td>
+<td>cidr_ip</td>
+<td>任意</td>
+<td>0.0.0.0/0</td>
+<td>ターゲットとなるIPアドレス。デフォルトは「0.0.0.0/0」。値が「0.0.0.0/0」の場合は無制限状態となります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>type</td>
+<td>必須</td>
+<td>ingress</td>
+<td>セキュリティグループのタイプ。 ingress（受信） かegress（送信） のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>ip_protocol</td>
+<td>必須</td>
+<td>tcp</td>
+<td>通信プロトコル。 tcp, udp, icmp, gre, all のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>nic_type</td>
+<td>必須</td>
+<td>intranet</td>
+<td>ネットワークタイプ。 internet か intranet のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>policy</td>
+<td>必須</td>
+<td>accept</td>
+<td>許可ポリシー。 acceptか drop のいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>port_range</td>
+<td>必須</td>
+<td><sup>22</sup>&frasl;<sub>22</sub></td>
+<td>通信プロトコルのポート範囲。値が「- 1/-1」の場合は無効になります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>priority</td>
+<td>必須</td>
+<td>1</td>
+<td>許可ポリシーの優先順位。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>security_group_id</td>
+<td>必須</td>
+<td>${alicloud_security_group.sg.id}</td>
+<td>アタッチするセキュリティグループのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>allow_ssh</td>
+<td>cidr_ip</td>
+<td>任意</td>
+<td>0.0.0.0/0</td>
+<td>ターゲットとなるIPアドレス。デフォルトは「0.0.0.0/0」。値が「0.0.0.0/0」の場合は無制限状態となります。</td>
+</tr>
+</tbody>
+</table>
+
+<p>ECSインスタンス構成:</p>
+
+<table>
+<thead>
+<tr>
+<th>リソース</th>
+<th>リソース名</th>
+<th>パラメータ</th>
+<th>必須</th>
+<th>設定値</th>
+<th>内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>alicloud_instance</td>
+<td>ECS_instance</td>
+<td>instance_name</td>
+<td>任意</td>
+<td>${var.project_name}-ECS-instance</td>
+<td>ECSインスタンスの名称。この例の場合、RDS-Sample-for-Terraform-ECS-instance として表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance</td>
+<td>host_name</td>
+<td>任意</td>
+<td>${var.project_name}-ECS-instance</td>
+<td>ECSインスタンスのHost名称。この例の場合、RDS-Sample-for-Terraform-ECS-instance として表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance</td>
+<td>instance_type</td>
+<td>必須</td>
+<td>ecs.xn4.small</td>
+<td>ECSインスタンスのタイプ。今回は ecs.xn4.smallを選定します。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance</td>
+<td>image_id</td>
+<td>必須</td>
+<td>centos_7_04_64_20G_alibase_201701015.vhd</td>
+<td>ECSインスタンスのImageID。今回は centos_7_04_64_20G_alibase_201701015.vhd を選定します。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance</td>
+<td>system_disk_category</td>
+<td>任意</td>
+<td>cloud_efficiency</td>
+<td>ECSインスタンスのディスクタイプ。デフォルトは cloud_efficiency です。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance</td>
+<td>security_groups</td>
+<td>必須</td>
+<td>”${alicloud_security_group.sg.id}”</td>
+<td>アタッチするセキュリティグループのID</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance</td>
+<td>availability_zone</td>
+<td>必須</td>
+<td>${var.zone}</td>
+<td>使用するアベイラビリティゾーン</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance</td>
+<td>vswitch_id</td>
+<td>必須</td>
+<td>${alicloud_vswitch.vsw.id}</td>
+<td>アタッチするVSwitchのID。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance</td>
+<td>password</td>
+<td>任意</td>
+<td>&rdquo;${var.ecs_password}&rdquo;</td>
+<td>EC インスタンスのログインパスワード。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance</td>
+<td>internet_max_bandwidth_out</td>
+<td>任意</td>
+<td>20</td>
+<td>パブリックネットワークへの最大帯域幅。デフォルトは0ですが、0より大きい値を入れるとパブリックIPアドレスがアタッチされます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>ECS_instance</td>
+<td>user_data</td>
+<td>任意</td>
+<td>&rdquo;${file(&ldquo;provisioning.sh&rdquo;)}&rdquo;</td>
+<td>ECSインスタンス起動後に実行するshell内容もしくはファイル名。今回はprovisioning.shにて記載しています。</td>
+</tr>
+</tbody>
+</table>
+
+<p>SLB構成:</p>
+
+<table>
+<thead>
+<tr>
+<th>リソース</th>
+<th>リソース名</th>
+<th>パラメータ</th>
+<th>必須</th>
+<th>設定値</th>
+<th>内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>alicloud_slb</td>
+<td>default</td>
+<td>name</td>
+<td>任意</td>
+<td>&rdquo;${var.project_name}-slb&rdquo;</td>
+<td>SLBの名称。この例の場合、RDS-Sample-for-Terraform-slb として表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>default</td>
+<td>vswitch_id</td>
+<td>任意</td>
+<td>&rdquo;${alicloud_vswitch.vsw.id}&rdquo;</td>
+<td>アタッチするVSwitchのID。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>default</td>
+<td>internet</td>
+<td>必須</td>
+<td>true</td>
+<td>SLB addressのインターネットタイプ。Trueのインターネットにするか、falseのイントラネットいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>default</td>
+<td>internet_charge_type</td>
+<td>必須</td>
+<td>paybytraffic</td>
+<td>インターネットチェンジタイプ。PayByBandwidth、PayByTrafficのいずれかになります。</td>
+</tr>
+
+<tr>
+<td>alicloud_slb_listener</td>
+<td>http</td>
+<td>load_balancer_id</td>
+<td>必須</td>
+<td>&rdquo;${alicloud_slb.slb.id}&rdquo;</td>
+<td>新しいリスナーを起動するために使用されるロードバランサID。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>http</td>
+<td>backend_port</td>
+<td>必須</td>
+<td>80</td>
+<td>Server Load Balancerインスタンスバックエンドが使用するポート。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>http</td>
+<td>frontend_port</td>
+<td>必須</td>
+<td>80</td>
+<td>Server Load Balancerインスタンスフロントエンドが使用するポート。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>http</td>
+<td>health_check_connect_port</td>
+<td>任意</td>
+<td>80</td>
+<td>ヘルスチェックが使用するポート。health_check_typeの代わりに使用することも可能です。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>http</td>
+<td>protocol</td>
+<td>必須</td>
+<td>&ldquo;http&rdquo;</td>
+<td>使用するプロトコル。http、https、tcp、udpのいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>http</td>
+<td>bandwidth</td>
+<td>任意</td>
+<td>10</td>
+<td>Listenerの最大帯域幅。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>http</td>
+<td>sticky_session</td>
+<td>任意</td>
+<td>&ldquo;on&rdquo;</td>
+<td>セッション持続性を有効にするかどうか。on、offのいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>http</td>
+<td>sticky_session_type</td>
+<td>任意</td>
+<td>&ldquo;insert&rdquo;</td>
+<td>Cookieを処理するためのタイプ。insertかserverのいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>http</td>
+<td>cookie</td>
+<td>任意</td>
+<td>&ldquo;slblistenercookie&rdquo;</td>
+<td>サーバに設定されているクッキー。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>http</td>
+<td>cookie_timeout</td>
+<td>任意</td>
+<td>86400</td>
+<td>クッキーのタイムアウト時間。</td>
+</tr>
+
+<tr>
+<td>alicloud_slb_attachment</td>
+<td>slb_attachment</td>
+<td>load_balancer_id</td>
+<td>必須</td>
+<td>&rdquo;${alicloud_slb.slb.id}&rdquo;</td>
+<td>ロードバランサID。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>slb_attachment</td>
+<td>instance_ids</td>
+<td>必須</td>
+<td>&rdquo;${alicloud_instance.ECS_instance.*.id}&rdquo;</td>
+<td>アタッチするECSインスタンスID。</td>
+</tr>
+</tbody>
+</table>
+
+<p>RDS構成:</p>
+
+<table>
+<thead>
+<tr>
+<th>リソース</th>
+<th>リソース名</th>
+<th>パラメータ</th>
+<th>必須</th>
+<th>設定値</th>
+<th>内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>alicloud_db_instance</td>
+<td>db_instance</td>
+<td>engine</td>
+<td>必須</td>
+<td>&ldquo;MySQL&rdquo;</td>
+<td>データベースタイプ。MySQL、SQLServer、PostgreSQL、PPASのいずれかになります。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>db_instance</td>
+<td>engine_version</td>
+<td>必須</td>
+<td>&ldquo;5.7&rdquo;</td>
+<td>データベースのバージョン。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>db_instance</td>
+<td>instance_type</td>
+<td>必須</td>
+<td>&ldquo;rds.mysql.t1.small&rdquo;</td>
+<td>DBインスタンスタイプ。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>db_instance</td>
+<td>instance_storage</td>
+<td>必須</td>
+<td>5</td>
+<td>DBインスタンスのストレージ領域。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>db_instance</td>
+<td>vswitch_id</td>
+<td>必須</td>
+<td>&rdquo;${alicloud_vswitch.vsw.id}&rdquo;</td>
+<td>アタッチするVSwitchのID。</td>
+</tr>
+
+<tr>
+<td>alicloud_db_database</td>
+<td>default</td>
+<td>name</td>
+<td>必須</td>
+<td>&rdquo;${var.database_name}&rdquo;</td>
+<td>RDSの名称。この例の場合、RDS-Sample-for-Terraform として表示されます。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>default</td>
+<td>instance_id</td>
+<td>必須</td>
+<td>&rdquo;${alicloud_db_instance.db_instance.id}&rdquo;</td>
+<td>データベースを実行するインスタンスのID。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>default</td>
+<td>character_set</td>
+<td>必須</td>
+<td>&ldquo;utf8&rdquo;</td>
+<td>文字セット。</td>
+</tr>
+
+<tr>
+<td>alicloud_db_account</td>
+<td>default</td>
+<td>instance_id</td>
+<td>必須</td>
+<td>&rdquo;${alicloud_db_instance.db_instance.id}&rdquo;</td>
+<td>データベースを実行するインスタンスのID。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>default</td>
+<td>name</td>
+<td>必須</td>
+<td>&rdquo;${var.db_user}&rdquo;</td>
+<td>運用アカウント名。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>default</td>
+<td>password</td>
+<td>必須</td>
+<td>&rdquo;${var.db_password}&rdquo;</td>
+<td>運用アカウント名に対するパスワード。</td>
+</tr>
+
+<tr>
+<td>alicloud_db_account_privilege</td>
+<td>default</td>
+<td>instance_id</td>
+<td>必須</td>
+<td>&rdquo;${alicloud_db_instance.db_instance.id}&rdquo;</td>
+<td>データベースを実行するインスタンスのID。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>default</td>
+<td>account_name</td>
+<td>必須</td>
+<td>&rdquo;${alicloud_db_account.default.name}&rdquo;</td>
+<td>運用アカウント名。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>default</td>
+<td>db_names</td>
+<td>必須</td>
+<td>&rdquo;${alicloud_db_database.default.name}&rdquo;</td>
+<td>データベース名。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>default</td>
+<td>privilege</td>
+<td>必須</td>
+<td>&ldquo;ReadWrite&rdquo;</td>
+<td>アクセス権限。ReadOnly、ReadWriteのいずれかになります。</td>
+</tr>
+
+<tr>
+<td>alicloud_db_connection</td>
+<td>default</td>
+<td>instance_id</td>
+<td>必須</td>
+<td>&rdquo;${alicloud_db_instance.db_instance.id}&rdquo;</td>
+<td>データベースを実行するインスタンスのID。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>default</td>
+<td>connection_prefix</td>
+<td>必須</td>
+<td>&ldquo;rds-sample&rdquo;</td>
+<td>インターネット接続プレフィックス。</td>
+</tr>
+
+<tr>
+<td></td>
+<td>default</td>
+<td>port</td>
+<td>任意</td>
+<td>&ldquo;3306&rdquo;</td>
+<td>インターネット接続ポート。</td>
+</tr>
+</tbody>
+</table>
 
 <p><br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。</p>
@@ -501,7 +1188,7 @@ resource &quot;alicloud_db_account_privilege&quot; &quot;default&quot; {
 
 resource &quot;alicloud_db_connection&quot; &quot;default&quot; {
   instance_id = &quot;${alicloud_db_instance.db_instance.id}&quot;
-  connection_prefix = &quot;slb-sample&quot;
+  connection_prefix = &quot;rds-sample&quot;
   port = &quot;3306&quot;
 }
 
