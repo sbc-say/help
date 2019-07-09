@@ -365,7 +365,8 @@ article section.page {
       margin: 0 !important;
       vertical-align: bottom; }
   article section.page code {
-    font-family: 'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', '游ゴシック', 'YuGothic', Meiryo, sans-serif; }
+    font-family: "Courier New", Consolas, monospace;
+  }
   article section.page p > code,
   article section.page li code,
   article section.page table code {
