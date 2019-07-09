@@ -1,5 +1,7 @@
 # SBC Technical Reference
 
+[![CircleCI](https://circleci.com/gh/sbcloud/help.svg?style=svg)](https://circleci.com/gh/sbcloud/help)
+
 # Install
 ## Macでのインストール
 1. Golangのインストール:  
