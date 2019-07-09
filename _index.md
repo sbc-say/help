@@ -25,7 +25,7 @@
 * Block chain
 
 
-## 4. ユースケース別シナリオ
+## 3. ユースケース別シナリオ
 ### Webアプリケーション
 * Java Springboot
 * Python Django
@@ -49,7 +49,6 @@
 * RDS
 * OSS
 * Account Management
-
 
 
 
