@@ -9,17 +9,6 @@ draft: false
 &nbsp; ここまではTerraformのインストール方法、コード記載方法、実行方法を説明しました。  
 ここからはユーザ各自でコード作成、応用ができるよう、AlibabaCloudの基本プロダクトサービスの説明を通じて解説します。
 
-* [AlibabaCloud VPC]()
-* [AlibabaCloud ECS、EIP]()
-* [AlibabaCloud SLB]()
-* [AlibabaCloud AutoScale]()
-* [AlibabaCloud OSS]()
-* [AlibabaCloud RDS]()
-* [AlibabaCloud RAM]()
-* [AlibabaCloud Kubernetes]()
-
-それぞれサンプルを交えて説明します。
-
 ### 1. VPC
 &nbsp; VPCは、Alibaba Cloudに設置されたプライベートネットワークです。 VPCはAlibaba Cloudの他のアカウントを含む仮想ネットワークと論理的に分離されています。
 
@@ -61,7 +50,7 @@ VPCコンポーネントは以下のような構成図になります。
 
 ### 3. VPCのTerraformについて
 &nbsp; 本題、VPC、VSwitch作成に移ります。VPCリソースを実行すると、VPC構築のためにrouterとroute_tableを自動的に作成されます。まずは以下の構成図通り、簡単なソースを作ってみます。
-![図 3](image/9.3.png)
+![図 3](/help/image/9.3.png)
 
 この構成図を満たすVPC、VSwitch を作成するコードです。
 ```
@@ -329,7 +318,7 @@ resource "alicloud_security_group_rule" "outbound_all" {
 &nbsp; VPCのベストプラクティスとして、VPCとVSwitchを作成する前に、目的や特定のビジネスに応じてVPCとVSwitchの数量とCIDRブロックを設計する必要があります。
 
 
-![図 9.2](image/9.8.jpg)
+![図 9.2](/help/image/9.8.jpg)
 ```
 resource "alicloud_vpc" "vpc" {
   name = "ECS_instance_for_terraform-vpc"
@@ -358,7 +347,7 @@ resource "alicloud_security_group_rule" "allow_http" {
   cidr_ip           = "0.0.0.0/0"
 }
 ```
-![図 9.3](image/9.9.jpg)
+![図 9.3](/help/image/9.9.jpg)
 ```
 resource "alicloud_vpc" "vpc" {
   name = "ECS_instance_for_terraform-vpc"
@@ -387,7 +376,7 @@ resource "alicloud_security_group_rule" "allow_http" {
   cidr_ip           = "0.0.0.0/0"
 }
 ```
-![図 9.4](image/9.10.jpg)
+![図 9.4](/help/image/9.10.jpg)
 ```
 resource "alicloud_vpc" "vpc" {
   name = "ECS_instance_for_terraform-vpc"
@@ -416,7 +405,7 @@ resource "alicloud_security_group_rule" "allow_http" {
   cidr_ip           = "0.0.0.0/0"
 }
 ```
-![図 9.5](image/9.5.jpg)
+![図 9.5](/help/image/9.5.jpg)
 
 ```
 resource "alicloud_vpc" "vpc" {

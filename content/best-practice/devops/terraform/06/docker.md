@@ -105,12 +105,12 @@ terraform version
 <br>
 実行内容、結果はこのようになります。
 
-![図 4](image/7.3.png)
+![図 4](/help/image/7.3.png)
 
 <br>
 あとはいつもの通りに `terraform init` や `terraform plan` 、 `terraform apply` を実行するだけです。（docker環境、terraform version 0.10.1での実行になります。）
 
-![図 5](image/7.4.png)
+![図 5](/help/image/7.4.png)
 <br>
 
 docker環境を終了する場合は`exit`を入力するだけです。
