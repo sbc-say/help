@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-12T04:41:54 UTC">
+<meta name="revised" content="2019-07-12T06:46:14 UTC">
 <title>VPCの作成 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -385,55 +385,6 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       <a href="/help/faq/">よくある質問</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/faq/ecs/" class="dd-item">
-        <div>
-          <a href="/help/faq/ecs/">
-            ECS
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/faq/oss/" class="dd-item">
-        <div>
-          <a href="/help/faq/oss/">
-            OSS
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/faq/slb/" class="dd-item">
-        <div>
-          <a href="/help/faq/slb/">
-            SLB
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/faq/rds/" class="dd-item">
-        <div>
-          <a href="/help/faq/rds/">
-            RDS
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/faq/vpc/" class="dd-item">
-        <div>
-          <a href="/help/faq/vpc/">
-            VPC
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/faq/price/" class="dd-item">
-        <div>
-          <a href="/help/faq/price/">
-            料金
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-      <li data-nav-id="/help/faq/account/" class="dd-item">
-        <div>
-          <a href="/help/faq/account/">
-            アカウント
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
         </ul>
     </li>
     <li data-nav-id="/help/about/" class="dd-item haschildren
@@ -565,19 +516,6 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <p>&nbsp; ここまではTerraformのインストール方法、コード記載方法、実行方法を説明しました。<br />
 ここからはユーザ各自でコード作成、応用ができるよう、AlibabaCloudの基本プロダクトサービスの説明を通じて解説します。</p>
 
-<ul>
-<li>[AlibabaCloud VPC]()</li>
-<li>[AlibabaCloud ECS、EIP]()</li>
-<li>[AlibabaCloud SLB]()</li>
-<li>[AlibabaCloud AutoScale]()</li>
-<li>[AlibabaCloud OSS]()</li>
-<li>[AlibabaCloud RDS]()</li>
-<li>[AlibabaCloud RAM]()</li>
-<li>[AlibabaCloud Kubernetes]()</li>
-</ul>
-
-<p>それぞれサンプルを交えて説明します。</p>
-
 <h3 id="1-vpc">1. VPC</h3>
 
 <p>&nbsp; VPCは、Alibaba Cloudに設置されたプライベートネットワークです。 VPCはAlibaba Cloudの他のアカウントを含む仮想ネットワークと論理的に分離されています。</p>
@@ -667,7 +605,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <h3 id="3-vpcのterraformについて">3. VPCのTerraformについて</h3>
 
 <p>&nbsp; 本題、VPC、VSwitch作成に移ります。VPCリソースを実行すると、VPC構築のためにrouterとroute_tableを自動的に作成されます。まずは以下の構成図通り、簡単なソースを作ってみます。
-<img src="image/9.3.png" alt="図 3" /></p>
+<img src="/help/image/9.3.png" alt="図 3" /></p>
 
 <p>この構成図を満たすVPC、VSwitch を作成するコードです。</p>
 
@@ -1059,7 +997,7 @@ resource &quot;alicloud_security_group_rule&quot; &quot;outbound_all&quot; {
 &nbsp; VPCのベストプラクティスとして、VPCとVSwitchを作成する前に、目的や特定のビジネスに応じてVPCとVSwitchの数量とCIDRブロックを設計する必要があります。
 
 
-![図 9.2](image/9.8.jpg)
+![図 9.2](/help/image/9.8.jpg)
 ```
 resource "alicloud_vpc" "vpc" {
   name = "ECS_instance_for_terraform-vpc"
@@ -1088,7 +1026,7 @@ resource "alicloud_security_group_rule" "allow_http" {
   cidr_ip           = "0.0.0.0/0"
 }
 ```
-![図 9.3](image/9.9.jpg)
+![図 9.3](/help/image/9.9.jpg)
 ```
 resource "alicloud_vpc" "vpc" {
   name = "ECS_instance_for_terraform-vpc"
@@ -1117,7 +1055,7 @@ resource "alicloud_security_group_rule" "allow_http" {
   cidr_ip           = "0.0.0.0/0"
 }
 ```
-![図 9.4](image/9.10.jpg)
+![図 9.4](/help/image/9.10.jpg)
 ```
 resource "alicloud_vpc" "vpc" {
   name = "ECS_instance_for_terraform-vpc"
@@ -1146,7 +1084,7 @@ resource "alicloud_security_group_rule" "allow_http" {
   cidr_ip           = "0.0.0.0/0"
 }
 ```
-![図 9.5](image/9.5.jpg)
+![図 9.5](/help/image/9.5.jpg)
 
 ```
 resource "alicloud_vpc" "vpc" {

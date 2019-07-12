@@ -127,7 +127,6 @@ Deploy Docker Image to Alibaba Cloud Container Service: CI/CD Automation on Cont
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/08/vpc/</guid>
       <description>&amp;nbsp; ここまではTerraformのインストール方法、コード記載方法、実行方法を説明しました。
 ここからはユーザ各自でコード作成、応用ができるよう、AlibabaCloudの基本プロダクトサービスの説明を通じて解説します。
- [AlibabaCloud VPC]() [AlibabaCloud ECS、EIP]() [AlibabaCloud SLB]() [AlibabaCloud AutoScale]() [AlibabaCloud OSS]() [AlibabaCloud RDS]() [AlibabaCloud RAM]() [AlibabaCloud Kubernetes]()  それぞれサンプルを交えて説明します。
 1. VPC &amp;nbsp; VPCは、Alibaba Cloudに設置されたプライベートネットワークです。 VPCはAlibaba Cloudの他のアカウントを含む仮想ネットワークと論理的に分離されています。
 &amp;nbsp; VPCはAlibaba Cloud でお客様専用のプライベートネットワークです。 CIDRというIPアドレス範囲の指定で経路、ルートテーブルとネットワークゲートウェイの設定など、VPCを完全に制御できます。VPC環境があることで、ECS、RDS、SLBなど外部インターネットからアクセスしないAlibaba Cloudリソースを使用することができます。
 &amp;nbsp; システムをセキュアにするため、パブリックネットワークには必要最小限のリソースのみ配置し、それ以外はプライベートネットワークに置くのがベストプラクティスです。
