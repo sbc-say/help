@@ -1,4 +1,3 @@
-version: 2
 jobs:
   build:
     docker:
@@ -33,16 +32,23 @@ jobs:
             --request POST
             --data "{\"cards\":[{\"header\":{\"title\":\"Build ${CIRCLE_BUILD_NUM} passed.\",\"subtitle\":\"${CIRCLE_PROJECT_REPONAME}\",\"imageUrl\":\"https://png.pngtree.com/svg/20170510/success_404253.png\",\"imageStyle\":\"IMAGE\"},\"sections\":[{\"widgets\":[{\"keyValue\":{\"topLabel\":\"${CIRCLE_TAG}\",\"content\":\"${CIRCLE_SHA1}\"}}]},{\"widgets\":[{\"buttons\":[{\"textButton\":{\"text\":\"DETAILS\",\"onClick\":{\"openLink\":{\"url\":\"${CIRCLE_BUILD_URL}\"}}}}]}]}]}]}"
             $DINGTALK_WEBHOOK_URL
-  - deploy:
-      branches:
-        only:
-          - master
-      docker:
-        - image: cibuilds/hugo:latest
-      working_directory: ~/hugo
+  deploy:
+    branches:
+      only:
+        - master
+    docker:
+      - image: cibuilds/hugo:latest
+    working_directory: ~/hugo
       steps:
-        - run:
+      - run:
           name: Deploy to GitHub Pages
           command: |
             chmod +x ./.circleci/deploy.sh
             sh ./.circleci/deploy.sh
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy
+
