@@ -1,8 +1,10 @@
 ### Checklist
 - [ ] `hugo server` command works fine locally.
-- [ ] I've updated the changelog.md.
-- [ ] In Japanse, it is written in "ですます調."
-- [ ] Table layout is fine as its preview
+- [ ] I've updated [CHANGELOG.md](CHANGELOG.md).
+- [ ] I've updated [_index.md](content/_index.md).
+- [ ] I've updated [_index.md](content/_index.md).
+- [ ] In Japanse, it is written in "ですます調 && have "。" in end"
+- [ ] Table layout is same as its preview.
 
 ### Motivation and Context
 
