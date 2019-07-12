@@ -24,3 +24,11 @@ https://gohugo.io/getting-started/installing/#linuxbrew-linux
 ## Hugoの仕組みの理解
 Hugoのレイアウトとコンテントの関係
 https://ousttrue.github.io/hugo/hugo_layout/
+
+
+# CircleCIノウハウ
+1. 下記エラーが出た際には、Rebuildすれば多分問題ない（7月12日1回発生）  
+`fatal error: concurrent map read and map write`  
+ https://circleci.com/gh/sbcloud/help/118
+ からの  
+ https://circleci.com/gh/sbcloud/help/119
