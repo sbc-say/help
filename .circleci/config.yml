@@ -39,7 +39,7 @@ jobs:
     docker:
       - image: cibuilds/hugo:latest
     working_directory: ~/hugo
-      steps:
+    steps:
       - run:
           name: Deploy to GitHub Pages
           command: |
