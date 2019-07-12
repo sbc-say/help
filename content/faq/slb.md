@@ -1,6 +1,6 @@
 ---
 title: "SLB"
-description: ""
+description: "Alibaba CloudのSLBに関するよくある質問を紹介します。"
 date: 2019-04-04T15:32:45+09:00
 weight: 30
 draft: false
