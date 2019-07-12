@@ -116,7 +116,7 @@
 	"title": "AWS/Azure/GCPユーザ向け",
 	"tags": [],
 	"description": "AWS/Azure/GCPに詳しいユーザがAlibaba Cloudを利用する上で有益な情報を紹介します",
-	"content": "ここではAWS、Azure、GCPとの比較を記載します\n"
+	"content": ""
 },
 {
 	"uri": "https://sbcloud.github.io/help/best-practice/pricing/",
@@ -347,7 +347,7 @@
 	"title": "",
 	"tags": [],
 	"description": "",
-	"content": " SBC Technical Reference 1. Getting Started アカウント登録  アカウント新規作成\n 本人認証申請  主要プロダクト紹介  ECS SLB VPC RDS OSS Express Connect  2. Best Practice  導入アドバイザリ アーキテクチャ (構成図) コスト管理 Infrastructure as Code  個別プロダクト  Anti-DDoS Real-Time Compute Block chain  3. ユースケース別シナリオ Webアプリケーション  Java Springboot Python Django  CI/CD  Kubernetes with Terraform  Data分析  Data-V DWH  移行  オンプレミスからの移行 他のクラウドからの移行 マルチクラウドへの移行  4. FAQ  ECS SLB VPC RDS OSS Account Management  "
+	"content": " SBC Technical Reference 1. Getting Started  アカウント登録 プロダクトの紹介 AWS/Azure/GCPユーザ向け  2. ベストプラクティス  アドバイザリ 料金体系 DevOps  3. ユースケース別シナリオ  Terraform  4. よくある質問  ECS RDS SLB OSS VPC 料金 アカウント  "
 },
 {
 	"uri": "https://sbcloud.github.io/help/categories/",

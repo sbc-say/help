@@ -1,54 +1,23 @@
 # SBC Technical Reference
 
-## 1. Getting Started
-### アカウント登録  
-* アカウント新規作成  
-* 本人認証申請
+## [1. Getting Started]({{%relref "getting-started/_index.md" %}})
+* [アカウント登録]({{%relref "getting-started/registration.md" %}})
+* [プロダクトの紹介]({{%relref "getting-started/product/_index.md" %}})
+* [AWS/Azure/GCPユーザ向け]({{%relref "getting-started/cloud-users/_index.md" %}})
 
-### 主要プロダクト紹介
-* ECS
-* SLB
-* VPC
-* RDS
-* OSS
-* Express Connect 
+### [2. ベストプラクティス]({{%relref "best-practice/_index.md" %}})
+* [アドバイザリ]({{%relref "best-practice/advisory.md" %}})
+* [料金体系]({{%relref "best-practice/pricing.md" %}})
+* [DevOps]({{%relref "best-practice/devops/_index.md" %}})
 
-### 2. Best Practice
-* 導入アドバイザリ
-* アーキテクチャ (構成図)
-* コスト管理
-* Infrastructure as Code
+## [3. ユースケース別シナリオ]({{%relref "scenario/_index.md" %}})
+* [Terraform]({{%relref "scenario/terraform/_index.md" %}})
 
-#### 個別プロダクト
-* Anti-DDoS
-* Real-Time Compute
-* Block chain
-
-
-## 3. ユースケース別シナリオ
-### Webアプリケーション
-* Java Springboot
-* Python Django
-
-### CI/CD
-* Kubernetes with Terraform
-
-### Data分析
-* Data-V
-* DWH
-
-###  移行
-* オンプレミスからの移行
-* 他のクラウドからの移行
-* マルチクラウドへの移行
-
-## 4. FAQ
-* ECS
-* SLB
-* VPC
-* RDS
-* OSS
-* Account Management
-
-
-
+## [4. よくある質問]({{%relref "faq/_index.md" %}})
+* [ECS]({{%relref "faq/ecs.md" %}})
+* [RDS]({{%relref "faq/rds.md" %}})
+* [SLB]({{%relref "faq/slb.md" %}})
+* [OSS]({{%relref "faq/oss.md" %}})
+* [VPC]({{%relref "faq/vpc.md" %}})
+* [料金]({{%relref "faq/price.md" %}})
+* [アカウント]({{%relref "faq/account.md" %}})
