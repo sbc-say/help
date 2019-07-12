@@ -1,0 +1,26 @@
+<ul>
+  {{ range .Pages }}
+    <li>
+        <a href="{{ .RelPermalink }}">
+            {{ .Title }}
+        </a>
+    </li>
+    {{ .Description }}
+    <br>
+    <br>
+    {{ end }}
+    {{ with .CurrentSection }}
+    {{ range .Sections }}
+    <li>
+        <a href="{{ .RelPermalink }}">
+            {{ .Title }}
+        </a>
+    </li>
+    {{ .Description }}
+    <br>
+    <br>
+
+{{ end }}
+{{ end }}
+
+</ul>
