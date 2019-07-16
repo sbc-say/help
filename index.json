@@ -136,8 +136,8 @@
 	"uri": "https://sbcloud.github.io/help/scenario/terraform/",
 	"title": "Terraform",
 	"tags": [],
-	"description": "ここではCI/CDの実践構成を記載します",
-	"content": ""
+	"description": "AlibabaCloudにおけるTerraformの実践例を記載します",
+	"content": "Terraformのバージョン情報は以下の記事を参照ください。 https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/\n"
 },
 {
 	"uri": "https://sbcloud.github.io/help/faq/slb/",
