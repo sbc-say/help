@@ -60,7 +60,18 @@ jobs:
     executor:
       name: default
     steps:
+      - run:
+          name: Update enviroment
+          command: apk update && apk add git
+      - run:
+          name: Hugo version
+          command: echo "$(hugo version)"
       - checkout
+      - run:
+          name: Building blog pages
+          command: |
+            HUGO_ENV=production hugo -v
+            hugo
       - run:
           name: Deploy to GitHub Pages
           command: |
