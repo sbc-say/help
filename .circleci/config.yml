@@ -31,14 +31,13 @@ jobs:
             "{
                 \"msgtype\": \"link\",
                 \"link\": {
-                    \"text\": \"${CIRCLE_TAG} ${CIRCLE_PROJECT_REPONAME}\",
+                    \"text\": \"SBC Technical Reference auto build failed. Click me for further information\",
                     \"title\": \"Oops. Build ${CIRCLE_BUILD_NUM} failed.\",
                     \"picUrl\": \"https://png.pngtree.com/svg/20170406/icon_failed__1325447.png\",
                     \"messageUrl\": \"${CIRCLE_BUILD_URL}\"
                 }
             }"
             $DINGTALK_WEBHOOK_URL
-
 
       - run:
           name: Chat Notification Success
@@ -50,7 +49,7 @@ jobs:
             "{
                 \"msgtype\": \"link\",
                 \"link\": {
-                    \"text\": \"${CIRCLE_TAG} ${CIRCLE_PROJECT_REPONAME}\",
+                    \"text\": \"SBC Technical Reference auto built successfully. Click me for further information\",
                     \"title\": \"Build ${CIRCLE_BUILD_NUM} passed.\",
                     \"picUrl\": \"https://png.pngtree.com/svg/20170510/success_404253.png\",
                     \"messageUrl\": \"${CIRCLE_BUILD_URL}\"
@@ -67,6 +66,43 @@ jobs:
           command: |
             chmod +x ./.circleci/deploy.sh
             sh ./.circleci/deploy.sh
+      - run:
+          name: Chat Notification Fail
+          when: on_fail
+          command: >
+            curl --header "Content-Type: application/json"
+            --request POST
+            --data
+            "{
+                \"msgtype\": \"link\",
+                \"link\": {
+                    \"text\": \"SBC Technical Reference update deploy to production failed.
+                     Click me for further information\",
+                    \"title\": \"Oops. Build ${CIRCLE_BUILD_NUM} failed.\",
+                    \"picUrl\": \"https://png.pngtree.com/svg/20170406/icon_failed__1325447.png\",
+                    \"messageUrl\": \"${CIRCLE_BUILD_URL}\"
+                }
+            }"
+            $DINGTALK_WEBHOOK_URL
+
+      - run:
+          name: Chat Notification Success
+          when: on_success
+          command: >
+            curl --header "Content-Type: application/json"
+            --request POST
+            --data
+            "{
+                \"msgtype\": \"link\",
+                \"link\": {
+                    \"text\": \"SBC Technical Reference update successfully deployed to production.
+                     Click me for further information\",
+                    \"title\": \"Build ${CIRCLE_BUILD_NUM} passed.\",
+                    \"picUrl\": \"https://png.pngtree.com/svg/20170510/success_404253.png\",
+                    \"messageUrl\": \"${CIRCLE_BUILD_URL}\"
+                }
+            }"
+            $DINGTALK_WEBHOOK_URL
 
 workflows:
   test-and-deploy:
