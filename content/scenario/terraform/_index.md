@@ -8,7 +8,7 @@ draft: false
 <!-- descriptionがコンテンツの前に表示されます -->
 
 <!-- コンテンツを書くときはこの下に記載ください -->
-Terraformのバージョン情報は以下の記事を参照ください。
+Terraformのバージョン情報は以下の記事を参照ください。  
 https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/
 
 
