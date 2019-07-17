@@ -3,7 +3,7 @@ executors:
   default:
     working_directory: ~/hugo
     docker:
-      - image: cibuilds/hugo:0.55.6
+      - image: cibuilds/hugo:0.54
 jobs:
   test-job:
     executor:
