@@ -18,6 +18,5 @@
 * [RDS]({{%relref "faq/rds.md" %}})
 * [SLB]({{%relref "faq/slb.md" %}})
 * [OSS]({{%relref "faq/oss.md" %}})
-* [VPC]({{%relref "faq/vpc.md" %}})
 * [料金]({{%relref "faq/price.md" %}})
 * [アカウント]({{%relref "faq/account.md" %}})
