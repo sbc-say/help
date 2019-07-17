@@ -69,10 +69,11 @@ jobs:
           command: echo "$(hugo version)"
       - checkout
       - run:
+          name: Sleep a little
+          command: sleep 5
+      - run:
           name: Building blog pages
-          command: |
-            HUGO_ENV=production hugo -v
-            hugo
+          command: hugo
       - run:
           name: Deploy to GitHub Pages
           command: |
