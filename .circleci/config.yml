@@ -3,7 +3,7 @@ executors:
   default:
     working_directory: ~/hugo
     docker:
-      - image: cibuilds/hugo:0.55.6
+      - image: cibuilds/hugo:0.54
 jobs:
   test-job:
     executor:
@@ -72,11 +72,9 @@ jobs:
           name: Sleep a little
           command: sleep 5
       - run:
-          name: Building blog pages
-          command: hugo
-      - run:
           name: Deploy to GitHub Pages
           command: |
+            hugo
             chmod +x ./.circleci/deploy.sh
             sh ./.circleci/deploy.sh
       - run:
