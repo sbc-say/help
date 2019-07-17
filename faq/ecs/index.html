@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-17T03:17:53 UTC">
+<meta name="revised" content="2019-07-17T07:20:05 UTC">
 <title>ECS :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -47,7 +47,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-<meta name="description" content="Alibaba CloudのECSに関するよくある質問を紹介します。">
+<meta name="description" content="">
 
         
 
@@ -517,267 +517,401 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     
     
 
-<h2 id="一般仕様">一般仕様</h2>
+<h4 id="一般仕様">一般仕様</h4>
 
-<h4 id="q-アベイラビリティゾーン-az-識別文字と実際のロケーションに関するマッピング仕様について">Q. アベイラビリティゾーン（AZ）識別文字と実際のロケーションに関するマッピング仕様について</h4>
+<div class="panel panel-default">
+	<div class="panel-heading">アベイラビリティゾーン（AZ）識別文字と実際のロケーションに関するマッピング仕様について</div>
+	<div class="panel-body"><p>Alibaba Cloudでは、アベイラビリティゾーン（AZ）識別文字と実際のロケーションのマッピングは、全てのアカウントで共通しています。</p>
 
-<p>Alibaba Cloudでは、アベイラビリティゾーン（AZ）識別文字と実際のロケーションのマッピングは、全てのアカウントで共通しています。</p>
+<div class="notices info" ><p><a href="https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">AWSにおいては、アカウント毎に個別にマップされます。</a> 仕様が異なるのでご注意ください。</p>
+</div>
+</div>
+	
+</div>
 
-<p>（注：AWSにおいては、アカウント毎に個別にマップされます。
-<a href="https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-regions-availability-zones.html">https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-regions-availability-zones.html</a>
-『リソースがリージョンの複数のアベイラビリティーゾーンに分散するように、アベイラビリティーゾーンは各 AWS アカウントの名前に個別にマップされます。たとえば、ご使用の AWS アカウントのアベイラビリティーゾーン us-east-1a は別の AWS アカウントのアベイラビリティーゾーン us-east-1a と同じ場所にはない可能性があります。』）</p>
 
-<h4 id="q-1つのアカウント-リージョン配下のecs購入台数制限について">Q. 1つのアカウント/リージョン配下のECS購入台数制限について</h4>
+<div class="panel panel-default">
+	<div class="panel-heading">1つのアカウント/リージョン配下のECS購入台数制限について</div>
+	<div class="panel-body"><p>従量課金でのECSインスタンス購入上限は、vCPU数により制限されています。従量課金型ECSインスタンスの購入は各リージョン「50vCPU」までとなっております。なお、サブスクリプション型ECSの場合は、購入上限数を設けておりません。</p>
 
-<p>従量課金でのECSインスタンス購入上限は、vCPU数により制限されています。従量課金型ECSインスタンスの購入は各リージョン「50vCPU」までとなっております。
-例）お客様が1台のECSに対して4vCPUで利用する場合は、12台の従量課金ECSを購入することができます。</p>
+<div class="notices tip" ><p>例）お客様が1台のECSに対して4vCPUで利用する場合は、12台の従量課金ECSを購入することができます。</p>
+</div>
+</div>
+	
+</div>
 
-<p>なお、サブスクリプション型ECSの場合は、購入上限数を設けておりません。</p>
 
-<h4 id="q-サブスクリプションecsのライフサイクルについて">Q. サブスクリプションECSのライフサイクルについて</h4>
+<div class="panel panel-default">
+	<div class="panel-heading">サブスクリプションECSのライフサイクルについて</div>
+	<div class="panel-body"><p>サブスクリプションインスタンスの期間を更新しない、また更新失敗で有効期限切れとなった場合、そのインスタンスはライフサイクルに入ります。</p>
 
-<p>サブスクリプションインスタンスの期間を更新しない、また更新失敗で有効期限切れとなった場合、そのインスタンスはライフサイクルに入ります。</p>
+<div class="notices tip" ><p>例）
+期間切れから〜15日まで：通常稼働<br>
+15日から〜30日まで：インスタンス停止<br>
+30日：インスタンスリリース（削除）<br></p>
+</div>
+</div>
+	
+</div>
 
-<p>期間切れから〜15日まで：通常稼働
-15日から〜30日まで：インスタンス停止
-30日：インスタンスリリース（削除）</p>
 
-<h4 id="q-rdscalとクライアントcalの必要性について">Q. RDSCALとクライアントCALの必要性について</h4>
+<div class="panel panel-default">
+	<div class="panel-heading">RDSCALとクライアントCALの必要性について</div>
+	<div class="panel-body"><p>Alibaba Cloud が提供する Windows 仮想サーバーにて、RDS CALとクライアントCALの必要性は下記のとおりです。<br></p>
 
-<p>Alibaba Cloud が提供する Windows 仮想サーバーにて、RDS CALとクライアントCALの必要性は下記のとおりです。</p>
-
-<p>Alibaba Cloud が提供する Windows 仮想サーバーの CAL ライセンスについて、リモートデスクトップユーザーのRDS CALはデフォルト2本付きです。
-3本以上が必要な場合、お客様にてご購入いただく必要があります。</p>
+<p>Alibaba Cloud が提供する Windows 仮想サーバーの CAL ライセンスについて、リモートデスクトップユーザーのRDS CALはデフォルト2本付きです。3本以上が必要な場合、お客様にてご購入いただく必要があります。<br></p>
 
 <p>クライアントCALについて、Alibaba Cloud は Microsoft 社と SPLA 契約しているため、Alibaba Cloud が提供する Windows 仮想サーバーは、別途クライアントCALを購入することなくご利用いただけます。</p>
+</div>
+	
+</div>
 
-<h4 id="q-ecsのデフォルトタイムゾーンについて">Q. ECSのデフォルトタイムゾーンについて</h4>
 
-<p>リージョンに関わらず、ECSインスタンスのデフォルトタイムゾーンは、中国時間（UTC+8）になります。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">ECSのデフォルトタイムゾーンについて</div>
+	<div class="panel-body"><p>リージョンに関わらず、ECSインスタンスのデフォルトタイムゾーンは、中国時間（UTC+8）になります。<br></p>
 
 <p>なお、カスタムイメージのタイムゾーンはイメージ作成した際のものとなりますが、初回ECS作成直後でも中国ローカル時間になりますので、個別に時間自動同期（NTP）設定が必要となります。</p>
+</div>
+	
+</div>
 
-<h4 id="q-スナップショット取得時の性能影響について">Q. スナップショット取得時の性能影響について</h4>
 
-<p>スナップショットの作成時は、ストレージのIO性能（最大10%低下）に影響します。
-通常、稼働中のサービスへの影響はないと想定されますが、ストレージIOが少ない時間帯での取得を勧めします。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">スナップショット取得時の性能影響について</div>
+	<div class="panel-body"><p>スナップショットの作成時は、ストレージのIO性能（最大10%低下）に影響します。</p>
 
-<h4 id="q-購入可能な従量課金インスタンスの上限について">Q. 購入可能な従量課金インスタンスの上限について</h4>
+<div class="notices info" ><p>通常、稼働中のサービスへの影響はないと想定されますが、ストレージIOが少ない時間帯での取得を勧めします。</p>
+</div>
+</div>
+	
+</div>
 
-<p>従量課金でのECSインスタンス購入上限は、vCPU数により制限されています。従量課金型ECSインスタンスの購入は各リージョン「50vCPU」までとなっております。
-例）お客様が1台のECSに対して4vCPUで利用する場合は、12台の従量課金ECSを購入することができます。</p>
 
-<p>なお、サブスクリプション型ECSの場合は、購入上限数を設けておりません。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">購入可能な従量課金インスタンスの上限について</div>
+	<div class="panel-body"><p>従量課金でのECSインスタンス購入上限は、vCPU数により制限されています。従量課金型ECSインスタンスの購入は各リージョン「50vCPU」までとなっております。なお、サブスクリプション型ECSの場合は、購入上限数を設けておりません。</p>
 
-<h4 id="q-25番ポートの制限について">Q. 25番ポートの制限について</h4>
+<div class="notices tip" ><p>例）お客様が1台のECSに対して4vCPUで利用する場合は、12台の従量課金ECSを購入することができます。</p>
+</div>
+</div>
+	
+</div>
 
-<p>Alibaba Cloud では、MTAとしてメール送信（25 番ポートの外部接続）することが制限されております。</p>
 
-<p>MUAとして、外部SMTPの25番ポートを利用する場合のみ、宛先をご指定いただいての部分的解除は可能です。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">25番ポートの制限について</div>
+	<div class="panel-body"><p>Alibaba Cloud では、MTAとしてメール送信（25 番ポートの外部接続）することが制限されております。<br></p>
 
-<p>25番ポートの制限は下記のドキュメントをご参照ください。
-<a href="https://jp.aliyun.com/help/doc-detail/49123.htm">https://jp.aliyun.com/help/doc-detail/49123.htm</a></p>
+<p>MUAとして、外部SMTPの25番ポートを利用する場合のみ、宛先をご指定いただいての部分的解除は可能です。<br></p>
 
-<h4 id="q-icp必要性の判断方法について">Q. ICP必要性の判断方法について</h4>
+<div class="notices note" ><p>25番ポートの制限は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/49123.htm">https://jp.alibabacloud.com/help/doc-detail/49123.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<p>中国本土にサーバを設置し、ウェブサービス提供する場合は、ICPライセンスが必要になります。</p>
 
-<p>ICPライセンスを申請する前提として、中国国内に法人を持つ必要があります。該当する場合、弊社パートナーによりICP申請支援も可能ですので、チケットでご連絡ください。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">ICP必要性の判断方法について</div>
+	<div class="panel-body"><p>中国本土にサーバを設置し、ウェブサービス提供する場合は、ICPライセンスが必要になります。<br></p>
+
+<p>ICPライセンスを申請する前提として、中国国内に法人を持つ必要があります。該当する場合、弊社パートナーによりICP申請支援も可能ですので、チケットでご連絡ください。<br></p>
 
 <p>なお、香港リージョンではICPは必要がございません。ICP の取得が困難な場合、香港リージョンのご利用をご検討ください。</p>
+</div>
+	
+</div>
 
-<h4 id="q-インスタンススペックのアップグレード方法について">Q. インスタンススペックのアップグレード方法について</h4>
 
-<p>サブスクリプションECSのアップグレード手順は以下のドキュメントをご参照ください。
-<a href="https://jp.alibabacloud.com/help/doc-detail/25438.htm">https://jp.alibabacloud.com/help/doc-detail/25438.htm</a></p>
+<div class="panel panel-default">
+	<div class="panel-heading">インスタンススペックのアップグレード方法について</div>
+	<div class="panel-body"><p>サブスクリプション、または従量課金ECSのスペックをアップグレードすることは可能です。<br>
+なお、スターターパッケージとして購入されたECSはアップグレードできません。</p>
 
-<p>ない、スターターパッケージとして購入されたECSはアップグレードできません。</p>
+<div class="notices note" ><p>サブスクリプションECSのアップグレードは下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/25438.htm">https://jp.alibabacloud.com/help/doc-detail/25438.htm</a>
+<br><br>
+従量課金ECSのアップグレードは下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/60051.htm">https://jp.alibabacloud.com/help/doc-detail/60051.htm</a></p>
+</div>
 
-<p>（注：操作上はアップグレードできてしまいますが、スターターパッケージの特典（データ転送量付で低価格）を得ることはできなくなります。）</p>
+<div class="notices warning" ><p>スターターパッケージの場合、操作上はアップグレードできてしまいますが、スターターパッケージの特典（データ転送量付で低価格）を得ることはできなくなります。）</p>
+</div>
+</div>
+	
+</div>
 
-<h2 id="ネットワーク">ネットワーク</h2>
 
-<h4 id="q-vpcとvswitchの変更方法について">Q. VPCとVswitchの変更方法について</h4>
+<p><br></p>
 
-<p>ECSを作成後、そのECSのVPCとVswitchは変更できません。
+<h4 id="ネットワーク関連">ネットワーク関連</h4>
+
+<div class="panel panel-default">
+	<div class="panel-heading">VPCとVswitchの変更方法について</div>
+	<div class="panel-body"><p>ECSを作成後、そのECSのVPCとVswitchは変更できません。<br>
 変更する必要がある場合、そのECSのカスタムイメージ作成、その後、希望のVPCとVswitchを選択しECSを新規作成することになります。</p>
+</div>
+	
+</div>
 
-<h4 id="q-vpcで指定可能なcidrブロックについて">Q. VPCで指定可能なCIDRブロックについて</h4>
 
-<p>VPCのIP CIDRは10.0.0.0/8、172.16.0.0/12及び192.168.0.0/16から選択いただく必要があります。
+<div class="panel panel-default">
+	<div class="panel-heading">VPCで指定可能なCIDRブロックについて</div>
+	<div class="panel-body"><p>VPCのIP CIDRは<code>10.0.0.0/8</code>、<code>172.16.0.0/12</code>及び<code>192.168.0.0/16</code>から選択いただく必要があります。<br>
 コンソールから上記3つしか作成できませんが、APIを利用した場合、上記CIDRのサブCIDRを指定することができます。</p>
 
-<p>APIでのVPC作成は下記ドキュメントをご参照ください。
+<div class="notices note" ><p>APIでのVPC作成は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/35737.html">https://jp.alibabacloud.com/help/doc-detail/35737.html</a></p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-eipとパブリックipの違いについて">Q. EIPとパブリックIPの違いについて</h4>
 
-<p>ECSでは、インターネット通信用に「パブリックIP」と「EIP」を利用できます。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">EIPとパブリックIPの違いについて</div>
+	<div class="panel-body"><p>ECSでは、インターネット通信用に「パブリックIP」と「EIP」を利用できます。<br></p>
 
-<p>ECS購入時に「パブリック IP の割り当て」にチェックを入れインスタンスを作成すると「パブリックIP」が付与されます。
-このパブリックIP付きのECSを削除した場合、パブリックIPも同時に削除されます。ECSを削除後、IPアドレスに関する料金は発生することがありません。</p>
+<p>ECS購入時に「パブリック IP の割り当て」にチェックを入れインスタンスを作成すると「パブリックIP」が付与されます。<br>
+このパブリックIP付きのECSを削除した場合、パブリックIPも同時に削除されます。ECSを削除後、IPアドレスに関する料金は発生することがありません。<br></p>
 
-<p>ECS購入時に「パブリック IP の割り当て」にチェックを入れずにインスタンスを作成すると「パブリックIP」が付与されません。
-この場合、別途「EIP」を購入・用意しECSにバインドして使用する必要があります。
+<p>ECS購入時に「パブリック IP の割り当て」にチェックを入れずにインスタンスを作成すると「パブリックIP」が付与されません。<br>
+この場合、別途「EIP」を購入・用意しECSにバインドして使用する必要があります。<br>
 EIPをバインドしたECSを削除しても、EIPは自動的に削除されません。不要になったEIPは、お客様自身で削除する必要があります。また、インスタンスにバインドされていないEIPは、そのインスタンス保有料金が発生します。</p>
+</div>
+	
+</div>
 
-<h4 id="q-eipとパブリックipの帯域幅の変更方法について">Q. EIPとパブリックIPの帯域幅の変更方法について</h4>
 
-<p>EIPとパブリックIPの帯域幅の変更方法は下記となります。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">EIPとパブリックIPの帯域幅の変更方法について</div>
+	<div class="panel-body"><p>EIPの帯域幅を変更することはできます。<br></p>
 
-<p>EIPの帯域幅の変更方法は下記ドキュメントをご参照ください。
-<a href="https://jp.alibabacloud.com/help/doc-detail/27769.htm">https://jp.alibabacloud.com/help/doc-detail/27769.htm</a></p>
-
-<p>パブリックIPの帯域幅は変更することができませんが、パブリックIPをEIPに変更することができます。
+<p>パブリックIPの帯域幅は変更することができませんが、パブリックIPをEIPに変更することができます。<br>
 このため、パブリックIPをEIPに変更後に帯域幅の変更が可能となります。</p>
 
-<p>パブリックIPをEIPへの変更する方法は下記ドキュメントをご参照ください。
+<div class="notices note" ><p>EIPの帯域幅の変更方法は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/27769.htm">https://jp.alibabacloud.com/help/doc-detail/27769.htm</a>
+<br><br>
+パブリックIPをEIPへの変更する方法は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/faq-detail/68010.html">https://jp.alibabacloud.com/help/faq-detail/68010.html</a></p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-プライベートipの変更方法について">Q. プライベートIPの変更方法について</h4>
 
-<p>ECSのプライベートIPを同じVswitch内の空きIPに限って変更することができます。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">プライベートIPの変更方法について</div>
+	<div class="panel-body"><p>ECSのプライベートIPを同じVswitch内の空きIPに限って変更することができます。</p>
 
-<p>プライベートIPの変更方法は下記ドキュメントをご参照ください。
+<div class="notices note" ><p>プライベートIPの変更方法は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/27733.html">https://jp.alibabacloud.com/help/doc-detail/27733.html</a></p>
+</div>
 
-<h4 id="q-インバウンドとアウトバウンド帯域幅の制限値について">Q. インバウンドとアウトバウンド帯域幅の制限値について</h4>
+<div class="notices info" ><p>VSwitchの最初と最後の3つの IP アドレスはシステムに予約されて、指定することができません。</p>
 
-<p>ECSのインバウンドとアウトバウンド帯域幅の制限値は下記となります。</p>
+<p>例えば、VSwitchのCIDR範囲は<code>192.168.1.0/24</code>とします。その場合、システムに予約されるIPアドレスは<code>192.168.1.0</code>、<code>192.168.1.253</code>、 <code>192.168.1.254</code>、及び<code>192.168.1.255</code>となります。</p>
+</div>
+</div>
+	
+</div>
 
-<p>■アウトバウンド
-・サブスクリプションインスタンスの場合：最大ピーク帯域幅は 200 Mbpsです。
-・従量課金インスタンスの場合：最大ピーク帯域幅は 100 Mbpsです。
-上記範囲内に設定することができます。</p>
 
-<p>ECSのネットワークインターフェースが対応する場合、チケット申請により最大800 Mbpsまで引き上げ可能です。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">インバウンドとアウトバウンド帯域幅の制限値について</div>
+	<div class="panel-body"><p>ECSのインバウンドとアウトバウンド帯域幅の制限値は下記となります。<br><br></p>
 
-<p>■インバウンド
-アウトバウンドが100 Mbps以下の場合：最大ピーク帯域幅は 100 Mbpsです。
-アウトバウンドが100 Mbps以上の場合：最大ピーク帯域幅はアウトバウンドの帯域幅と同じです。</p>
+<p>アウトバウンド<br>
+・サブスクリプションインスタンスの場合：最大ピーク帯域幅は 200 Mbpsです。<br>
+・従量課金インスタンスの場合：最大ピーク帯域幅は 100 Mbpsです。<br><br></p>
+
+<p>上記範囲内に指定することができます。ECSのネットワークインターフェースが対応する場合、チケット申請により最大800 Mbpsまで引き上げ可能です。<br><br></p>
+
+<p>インバウンド<br>
+・アウトバウンドが100 Mbps以下の場合：最大ピーク帯域幅は 100 Mbpsです。<br>
+・アウトバウンドが100 Mbps以上の場合：最大ピーク帯域幅はアウトバウンドの帯域幅と同じです。<br><br></p>
 
 <p>インバウンド制限値の指定、及び引き上げをすることはできません。</p>
+</div>
+	
+</div>
 
-<h2 id="イメージ">イメージ</h2>
 
-<h4 id="q-イメージのインポート方法について">Q. イメージのインポート方法について</h4>
+<p><br></p>
 
-<p>インポートする方法は下記ドキュメントをご参照ください。</p>
+<h4 id="イメージ">イメージ</h4>
 
-<p>◎イメージのインポート
+<div class="panel panel-default">
+	<div class="panel-heading">イメージのインポート方法について</div>
+	<div class="panel-body"><p>基準に満たすイメージをAlibabaCloudにインポートすることができます。</p>
+
+<div class="notices note" ><p>イメージのインポート方法は下記のドキュメントをご参照ください。<br>
+※ドキュメント内「前提条件」にご注意ください<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/25464.html">https://jp.alibabacloud.com/help/doc-detail/25464.html</a>
-ドキュメント内「前提条件」にご注意ください</p>
-
-<p>◎イメージをインポートする際の注意事項
+<br><br>
+イメージをインポートする際の注意事項は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/48226.htm">https://jp.alibabacloud.com/help/doc-detail/48226.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-クラウド移転ツールについて">Q. クラウド移転ツールについて</h4>
 
-<p>Alibaba Cloud 移行ツールのご利用により、物理的なデスクトップおよびサーバを変換したり、
-ECS への仮想マシン、クラウドホストを移行することができます。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">クラウド移転ツールについて</div>
+	<div class="panel-body"><p>Alibaba Cloud 移行ツールのご利用により、物理的なデスクトップおよびサーバを変換したり、ECS への仮想マシン、クラウドホストを移行することができます。</p>
 
-<p>詳細については、下記ドキュメントをご参照ください。</p>
-
-<p>◎Alibaba Cloud 移行ツールとは
-<a href="https://jp.alibabacloud.com/help/doc-detail/62349.html">https://jp.alibabacloud.com/help/doc-detail/62349.html</a></p>
-
-<p>◎クラウド移行ツールを使用してAlibaba Cloudへの移行
-<a href="https://jp.alibabacloud.com/help/doc-detail/62394.htm">https://jp.alibabacloud.com/help/doc-detail/62394.htm</a></p>
-
-<p>◎イメージをインポートする際の注意事項
+<div class="notices note" ><p>Alibaba Cloud 移行ツールは下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/62349.html">https://jp.alibabacloud.com/help/doc-detail/62349.html</a>
+<br><br>
+クラウド移行ツールを使用してAlibaba Cloudへの移行は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/62394.htm">https://jp.alibabacloud.com/help/doc-detail/62394.htm</a>
+<br><br>
+イメージをインポートする際の注意事項は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/48226.htm">https://jp.alibabacloud.com/help/doc-detail/48226.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-イメージのエクスポート方法について">Q. イメージのエクスポート方法について</h4>
 
-<p>イメージのエクスポート機能を利用するには、制限解除申請が必要です。事前にチケット起票して申請ください。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">イメージのエクスポート方法について</div>
+	<div class="panel-body"><p>イメージのエクスポート機能を利用するには、制限解除申請が必要です。事前にチケット起票して申請ください。</p>
 
-<p>イメージエクスポートの利用方法は下記ドキュメントをご参照ください。
+<div class="notices note" ><p>イメージエクスポートの利用方法は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/58181.html">https://jp.alibabacloud.com/help/doc-detail/58181.html</a></p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-イメージのリージョン間コピー方法について">Q. イメージのリージョン間コピー方法について</h4>
 
-<p>日本サイトでは現在、制限解除の申請なしでリージョン間のイメージコピーすることができます。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">イメージのリージョン間コピー方法について</div>
+	<div class="panel-body"><p>日本サイトでは現在、制限解除の申請なしでリージョン間のイメージコピーすることができます。</p>
 
-<p>イメージコピーの利用方法は下記ドキュメントをご参照ください。
+<div class="notices note" ><p>イメージコピーの利用方法は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/25462.html">https://jp.alibabacloud.com/help/doc-detail/25462.html</a></p>
+</div>
+</div>
+	
+</div>
 
-<h2 id="ディスク">ディスク</h2>
 
-<h4 id="q-システムディスクとデータディスクの違いについて">Q. システムディスクとデータディスクの違いについて</h4>
+<p><br></p>
 
-<p>システムディスクとデータディスクには下記の違いがあります。</p>
+<h4 id="ディスク">ディスク</h4>
 
-<p>■ECSへのアタッチ数
-システムディスク：必ず1台
-データディスク：0台から最大16台まで</p>
+<div class="panel panel-default">
+	<div class="panel-heading">システムディスクとデータディスクの違いについて</div>
+	<div class="panel-body"><p>システムディスクとデータディスクには下記の違いがあります。<br><br></p>
 
-<p>■ECSへのアタッチ/デタッチ可否
-システムディスク：デタッチ不可
-データディスク：自由にアタッチ/デタッチ可能（但し、サブスクリプションECSと同時購入のクラウドディスクは対象外）、他のECSにも再利用可能</p>
+<p>ECSへのアタッチ数<br>
+・システムディスク：必ず1台<br>
+・データディスク：0台から最大16台まで<br><br></p>
 
-<p>■ディスクのリリース
-システムディスク：ECSのリリースに伴いリリースされる
-データディスク：独自にリリース可能（ECSのリリースに依存しない）</p>
+<p>ECSへのアタッチ/デタッチ可否<br>
+・システムディスク：デタッチ不可<br>
+・データディスク：自由にアタッチ/デタッチ可能（但し、サブスクリプションECSと同時購入のクラウドディスクは対象外）、他のECSにも再利用可能<br><br></p>
 
-<h4 id="q-クラウドディスクの拡張方法について">Q. クラウドディスクの拡張方法について</h4>
+<p>ディスクのリリース<br>
+・システムディスク：ECSのリリースに伴いリリースされる<br>
+・データディスク：独自にリリース可能（ECSのリリースに依存しない）</p>
+</div>
+	
+</div>
 
-<p>クラウドディスクはディスクタイプにより拡張方法が異なります。</p>
 
-<p>■システムディスク
-稼働中のシステムディスクを直接拡張することはできません。拡張するには、システムディスクを交換する必要があり、ディスク交換時にサイズを指定することができます。
-なお、システムディスク交換により、ディスク内のデータは失なわれます。このため、既存ディスクのイメージ作成、このイメージを元にシステムディスクを交換（ディスクの再作成）を行います。
-システムディスクの交換方法は、下記のドキュメントをご参照ください。</p>
+<p><div class="panel panel-default">
+	<div class="panel-heading">クラウドディスクの拡張方法について</div>
+	<div class="panel-body"><p>クラウドディスクはディスクタイプにより拡張方法が異なります。<br><br></p>
 
-<p>◎システムディスク交換
-<a href="https://jp.alibabacloud.com/help/doc-detail/50134.html">https://jp.alibabacloud.com/help/doc-detail/50134.html</a></p>
+<p>システムディスク<br>
+稼働中のシステムディスクを直接拡張することはできません。拡張するには、システムディスクを交換する必要があり、ディスク交換時にサイズを指定することができます。<br>
+なお、システムディスク交換により、ディスク内のデータは失なわれます。このため、既存ディスクのイメージ作成、このイメージを元にシステムディスクを交換（ディスクの再作成）を行います。<br><br></p>
 
-<p>■データディスク
-データディスクの拡張方法は下記メニューからできます。
+<p>データディスク<br>
+データディスクの拡張方法は下記メニューからできます。<br>
 コンソール &gt; ECS &gt; クラウドディスク &gt; ディスクの「詳細」&gt; ディスクのサイズ拡張</p>
 
-<h2 id="vnc">VNC</h2>
+<div class="notices note" ><p>システムディスクの交換方法は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/50134.html">https://jp.alibabacloud.com/help/doc-detail/50134.html</a></p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-vncで一部記号入力できない事象について">Q. VNCで一部記号入力できない事象について</h4>
+<br></p>
 
-<p>コンソールのVNCを利用する場合に、キーボードのレイアウトにより特殊記号の入力が正確に認識されない事象がありますが、現在回避策がありません。</p>
+<h4 id="vnc">VNC</h4>
+
+<div class="panel panel-default">
+	<div class="panel-heading">VNCで一部記号入力できない事象について</div>
+	<div class="panel-body"><p>コンソールのVNCを利用する場合に、キーボードのレイアウトにより特殊記号の入力が正確に認識されない事象がありますが、現在回避策がありません。<br></p>
 
 <p>コンソールのVNC以外のRDPやSSHを利用してログインする場合、上記事象が発生しませんので、特殊記号をご利用することができます。</p>
+</div>
+	
+</div>
 
-<h4 id="q-vncパスワードとecsパスワードの違いと再設定方法について">Q. VNCパスワードとECSパスワードの違いと再設定方法について</h4>
 
-<p>VNCパスワードとECSパスワードの違いと再設定方法は下記となります。</p>
+<p><div class="panel panel-default">
+	<div class="panel-heading">VNCパスワードとECSパスワードの違いと再設定方法について</div>
+	<div class="panel-body"><p>VNCパスワードとECSパスワードの違いと再設定方法は下記となります。<br><br></p>
 
-<p>■VNCパスワード
-コンソールのVNC接続を利用時のパスワードとなります。初回VNCを利用時にデフォルトパスワードが表示されます。
-パスワードの変更はVNCコンソールからできます。変更後のパスワードは即時反映され、再起動は不要となります。</p>
+<p>VNCパスワード<br>
+・コンソールのVNC接続を利用時のパスワードとなります。初回VNCを利用時にデフォルトパスワードが表示されます。<br>
+・パスワードの変更はVNCコンソールからできます。変更後のパスワードは即時反映され、再起動は不要となります。<br><br></p>
 
-<p>■ECSパスワード
-ECSのパスワードはOSのパスワードとなります。ECS作成時に該当パスワードが指定されます。
-ECSパスワードの変更は下記メニューからできます。パスワード変更後に、新しいパスワード有効にするには、ECSインスタンスの再起動が必要です。</p>
+<p>ECSパスワード<br>
+・ECSのパスワードはOSのパスワードとなります。ECS作成時に該当パスワードが指定されます。<br>
+・ECSパスワードの変更は下記メニューからできます。パスワード変更後に、新しいパスワード有効にするには、ECSインスタンスの再起動が必要です。<br><br></p>
 
-<p>◎操作手順
+<p>操作手順<br>
 コンソール &gt; ECS &gt; インスタンス &gt; インスタンスの「詳細」&gt; パスワード及びキー &gt; パスワードのリセット</p>
+</div>
+	
+</div>
 
-<h2 id="セキュリティグループ">セキュリティグループ</h2>
+<br></p>
 
-<h4 id="q-インバウンドとアウトバウンドのデフォルト動作について">Q. インバウンドとアウトバウンドのデフォルト動作について</h4>
+<h4 id="セキュリティグループ">セキュリティグループ</h4>
 
-<p>セキュリティグループにルールを設定しなかった場合、デフォルトでは以下のような動作となります。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">インバウンドとアウトバウンドのデフォルト動作について</div>
+	<div class="panel-body"><p>セキュリティグループにルールを設定しなかった場合、デフォルトでは以下のような動作となります。<br><br></p>
 
-<p>アウトバウンド方向のトラフィック：全て許可
+<p>アウトバウンド方向のトラフィック：全て許可<br>
 インバウンド方向のトラフィック：全て拒否</p>
 
-<p>なお、ECS新規作成時に併せて作成されるセキュリティグループののデフォルトルールでは、22番ポート、3389ポート、またはICMPのポートが「0.0.0.0/0」で【許可】されていることがあります。</p>
+<div class="notices info" ><p>ECS新規作成時に併せて作成されるセキュリティグループののデフォルトルールでは、22番ポート、3389ポート、またはICMPのポートが「0.0.0.0/0」で【許可】されていることがあります。</p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-同じセキュリティグループ内のアクセス制限について">Q. 同じセキュリティグループ内のアクセス制限について</h4>
 
-<p>同一セキュリティグループに所属する複数のECS間は、セキュリティグループの制限を受けず全部トラフィック通信可能となります。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">同じセキュリティグループ内のアクセス制限について</div>
+	<div class="panel-body"><p>同一セキュリティグループに所属する複数のECS間は、セキュリティグループの制限を受けず全部トラフィック通信可能となります。</p>
+</div>
+	
+</div>
 
-<h4 id="q-セキュリティグルールの適用順位について">Q. セキュリティグルールの適用順位について</h4>
 
-<p>ECSが複数セキュリティグループに所属する場合、全セキュリティグループルールが同時に適用されます。
-しかし、ルール間に競合があった場合、Priorityの値が小さい（＝優先度が高い）方が優先されます。
+<div class="panel panel-default">
+	<div class="panel-heading">セキュリティグルールの適用順位について</div>
+	<div class="panel-body"><p>ECSが複数セキュリティグループに所属する場合、全セキュリティグループルールが同時に適用されます。<br>
+しかし、ルール間に競合があった場合、Priorityの値が小さい（＝優先度が高い）方が優先されます。<br>
 また、Priorityが同じで競合したルールの場合は、【拒否】が優先されます。</p>
+</div>
+	
+</div>
+
 
 
     
@@ -800,7 +934,7 @@ ECSパスワードの変更は下記メニューからできます。パスワ�
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 04/04/2019
+        <i class='fa fa-calendar'></i> Last update on 07/10/2019
     </div>
     
 

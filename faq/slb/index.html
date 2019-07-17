@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-17T03:17:53 UTC">
+<meta name="revised" content="2019-07-17T07:20:05 UTC">
 <title>SLB :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -47,7 +47,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-<meta name="description" content="Alibaba CloudのSLBに関するよくある質問を紹介します。">
+<meta name="description" content="">
 
         
 
@@ -517,171 +517,267 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     
     
 
-<h2 id="一般仕様">一般仕様</h2>
+<h4 id="一般仕様">一般仕様</h4>
 
-<h4 id="q-レイヤー4とレイヤー7のslbの違いについて">Q. レイヤー4とレイヤー7のSLBの違いについて</h4>
+<div class="panel panel-default">
+	<div class="panel-heading">レイヤー4とレイヤー7のSLBの違いについて</div>
+	<div class="panel-body"><p>SLBはレイヤ4 (TCP、UDP)およびレイヤ7(HTTP、HTTPS)を提供しています。<br><br></p>
 
-<p>SLBはレイヤ4 (TCP、UDP)およびレイヤ7(HTTP、HTTPS)を提供しています。</p>
-
-<p>レイヤ 4 SLB は、ロードバランシングを実現するために keepalived のオープンソースソフトウェアの Linux 仮想サーバー（ LVS ）を使用し、クラウドコンピューティングの要件に応じて、いくつかのカスタマイズを行っています。
+<p>レイヤ 4 SLB は、ロードバランシングを実現するために keepalived のオープンソースソフトウェアの Linux 仮想サーバー（ LVS ）を使用し、クラウドコンピューティングの要件に応じて、いくつかのカスタマイズを行っています。<br>
 レイヤ 7 SLB は、ロードバランシングを実現するために Tengine を使用しています。 Tengine、Nginx に基づいて Web サーバープロジェクトは、多量トラフィックのウェブサイトに対応する機能を追加しています。</p>
+</div>
+	
+</div>
 
-<h4 id="q-slbのアクセスログについて">Q. SLBのアクセスログについて</h4>
 
-<p>SLBのレイヤ7のアクセスログは提供しています。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">SLBのアクセスログについて</div>
+	<div class="panel-body"><p>SLBのレイヤ7のアクセスログは提供しています。</p>
 
-<p>アクセスログの取得は下記ドキュメントをご参照ください。
+<div class="notices note" ><p>アクセスログの取得は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/85974.htm">https://jp.alibabacloud.com/help/doc-detail/85974.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-slbのスペック変更方法と業務影響について">Q. SLBのスペック変更方法と業務影響について</h4>
 
-<p>コンソールにて、SLBのスペック変更をオンラインで実施することができます。また、トラフィックが流れている状態でAPIよりSLBのスペックを変更することもできます。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">SLBのスペック変更方法と業務影響について</div>
+	<div class="panel-body"><p>コンソールにて、SLBのスペック変更をオンラインで実施することができます。また、トラフィックが流れている状態でAPIよりSLBのスペックを変更することもできます。<br></p>
 
 <p>ただし、スペックを変更している時に、SLBサービスが中断されることあります。スペックの変更が完了になると、SLBが自動的に再開します。</p>
 
-<p>なお、SLBのスペック変更は「パフォーマンス専有型」から「パフォーマンス専有型」へのインスタンススペック変更、もしくは、「パフォーマンス共通型」から「パフォーマンス専有型」へのインスタンススペック変更となります。「パフォーマンス専有型」から「パフォーマンス共通型」へのスペック変更はできません。</p>
+<div class="notices info" ><p>なお、SLBのスペック変更は「パフォーマンス専有型」から「パフォーマンス専有型」へのインスタンススペック変更、もしくは、「パフォーマンス共通型」から「パフォーマンス専有型」へのインスタンススペック変更となります。「パフォーマンス専有型」から「パフォーマンス共通型」へのスペック変更はできません。</p>
+</div>
 
-<p>スペックの変更は下記のドキュメントをご参照ください。
+<div class="notices note" ><p>スペックの変更は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/85942.htm">https://jp.alibabacloud.com/help/doc-detail/85942.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-vserverグループとマスタースレーブグループの違いについて">Q. VServerグループとマスタースレーブグループの違いについて</h4>
 
-<p>Vserverグループを利用した場合、ディレクトリ転送機能を利用できます。
-転送設定されてないディレクトリの場合、デフォルトバックエンドサーバーに分散されます。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">VServerグループとマスタースレーブグループの違いについて</div>
+	<div class="panel-body"><p>Vserverグループを利用した場合、ディレクトリ転送機能を利用できます。<br>
+転送設定されてないディレクトリの場合、デフォルトバックエンドサーバーに分散されます。<br><br></p>
 
 <p>デフォルトグループまたは、Vserverグループにて重みを0に設定してもマスタースレーブ構成になりませんので、マスタースレーブグループを利用する必要があります。</p>
 
-<p>VServerグループは下記ドキュメントをご参照ください。
-<a href="https://jp.alibabacloud.com/help/doc-detail/85964.htm">https://jp.alibabacloud.com/help/doc-detail/85964.htm</a>
-マスタースレーブグループは下記ドキュメントをご参照ください。
+<div class="notices note" ><p>VServerグループは下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/85964.htm">https://jp.alibabacloud.com/help/doc-detail/85964.htm</a><br><br>
+マスタースレーブグループは下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/85965.htm">https://jp.alibabacloud.com/help/doc-detail/85965.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-サードパーティ証明書のアップロード方法について">Q. サードパーティ証明書のアップロード方法について</h4>
 
-<p>SLBにサードパーティ証明書をアップロードすることができます。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">サードパーティ証明書のアップロード方法について</div>
+	<div class="panel-body"><p>SLBにサードパーティ証明書をアップロードすることができます。</p>
 
-<p>アップロード方法は下記ドキュメントをご参照ください。
+<div class="notices note" ><p>アップロード方法は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/85971.htm">https://jp.alibabacloud.com/help/doc-detail/85971.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-slb関連の各api-のスロットリング上限について">Q. SLB関連の各API のスロットリング上限について</h4>
 
-<p>SLBでは、AccessKey１つあたりのAPI呼び出し回数を１日に5000回まで制限されます。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">SLB関連の各API のスロットリング上限について</div>
+	<div class="panel-body"><p>SLBでは、AccessKey１つあたりのAPI呼び出し回数を１日に5000回まで制限されます。</p>
 
-<p>Server Load Balancer プロダクトの制限をご参照ください。
+<div class="notices note" ><p>Server Load Balancer プロダクトの制限は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/32459.htm">https://jp.alibabacloud.com/help/doc-detail/32459.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<h2 id="ネットワーク">ネットワーク</h2>
 
-<h4 id="q-パブリックslbとプライベートslbの違いについて">Q. パブリックSLBとプライベートSLBの違いについて</h4>
+<h4 id="ネットワーク">ネットワーク</h4>
 
-<p>パブリックSLBはインターネットからのリクエストを受け取るため、パブリックIPアドレスを提供しています。AlibabaCloudの仕様として、パブリックSLBがVPC内にあるバックエンドECSと通信できますが、該当VPCのプライベートIPアドレスを持っていません。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">パブリックSLBとプライベートSLBの違いについて</div>
+	<div class="panel-body"><p>パブリックSLBはインターネットからのリクエストを受け取るため、パブリックIPアドレスを提供しています。AlibabaCloudの仕様として、パブリックSLBがVPC内にあるバックエンドECSと通信できますが、該当VPCのプライベートIPアドレスを持っていません。<br><br></p>
 
 <p>プライベートSLBはパブリックIPアドレスを提供しておらず、Alibaba Cloud イントラネットからのリクエストのみ受信できます。AlibabaCloudの仕様として、プライベートSLBはVPCのプライベートIPを持っています。
 なお、プライベートSLBにEIPを付与することにより、パブリックSLBとして機能することもできます。</p>
+</div>
+	
+</div>
 
-<h4 id="q-パブリックslbとバックエンドecs間の通信仕様について">Q. パブリックSLBとバックエンドECS間の通信仕様について</h4>
 
-<p>パブリックSLBとバックエンドECS間はプロクシ通信となります。該当通信は、ECSのセキュリティグループで遮断できない仕様となります。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">パブリックSLBとバックエンドECS間の通信仕様について</div>
+	<div class="panel-body"><p>パブリックSLBとバックエンドECS間はプロクシ通信となります。該当通信は、ECSのセキュリティグループで遮断できない仕様となります。</p>
 
-<p>SLBのアーキテクチャは下記ドキュメントをご参照ください。
+<div class="notices note" ><p>SLBのアーキテクチャは下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/27544.htm">https://jp.alibabacloud.com/help/doc-detail/27544.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-パブリックipとプライベートip付きslbの作成方法について">Q. パブリックIPとプライベートIP付きSLBの作成方法について</h4>
 
-<p>パブリックSLBにプライベートIPがない仕様に対して、プライベートIPとパブリックIP両方が必要の場合、プライベートSLBにEIPをバインド機能を利用して実現できます。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">パブリックIPとプライベートIP付きSLBの作成方法について</div>
+	<div class="panel-body"><p>パブリックSLBにプライベートIPがない仕様に対して、プライベートIPとパブリックIP両方が必要の場合、プライベートSLBにEIPをバインド機能を利用して実現できます。<br><br></p>
 
-<p>作成手順
-1. 先にイントラネット型のSLBを作成します。
+<p>作成手順<br>
+1. 先にイントラネット型のSLBを作成します。<br>
 2. 作成したSLBにEIPをバインドします。</p>
+</div>
+	
+</div>
 
-<h4 id="q-ホワイトリストとブラックリストについて">Q. ホワイトリストとブラックリストについて</h4>
 
-<p>SLBはホワイトリストとブラックリスト方式でアクセスを制御しています。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">ホワイトリストとブラックリストについて</div>
+	<div class="panel-body"><p>SLBはホワイトリストとブラックリスト方式でアクセスを制御しています。</p>
 
-<p>ホワイトリストとブラックリストの設定方法は下記のドキュメントをご参照ください。
+<div class="notices note" ><p>ホワイトリストとブラックリストの設定方法は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/85979.htm">https://jp.alibabacloud.com/help/doc-detail/85979.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-slbのインバウンド-アウトバウンド帯域幅について">Q. SLBのインバウンド/アウトバウンド帯域幅について</h4>
 
-<p>SLBのインターネット通信帯域幅はコンソール上で表示されている値に準じます。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">SLBのインバウンド/アウトバウンド帯域幅について</div>
+	<div class="panel-body"><p>SLBのインターネット通信帯域幅はコンソール上で表示されている値に準じます。<br><br></p>
 
-<p>日本リージョン：インバウンド: 1024Mbps、アウトバウンド: 1024Mbps
+<p>日本リージョン：インバウンド: 1024Mbps、アウトバウンド: 1024Mbps<br>
 中国リージョン：インバウンド: 5120Mbps、アウトバウンド: 5120Mbps</p>
+</div>
+	
+</div>
 
-<h4 id="q-証明書をslb側とecs側に設置の違いについて">Q. 証明書をSLB側とECS側に設置の違いについて</h4>
 
-<p>証明書の設置場所により、SSL通信空間は違います。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">証明書をSLB側とECS側に設置の違いについて</div>
+	<div class="panel-body"><p>証明書の設置場所により、SSL通信空間は違います。<br><br></p>
 
-<p>証明書をSLB側に設置：　クライアント &mdash;&gt; SLB の間の通信はHTTPSで行います。(SLB&ndash;&gt;ECSはHTTPで行います。)
-証明書をECS側に設置： SLB &mdash;&gt; バックエンドECS の間の通信はHTTPSで行います。</p>
+<p>証明書をSLB側に設置：　クライアント &mdash;&gt; SLB の間の通信はHTTPSで行います。(SLB&ndash;&gt;ECSはHTTPで行います。)<br>
+証明書をECS側に設置： SLB &mdash;&gt; バックエンドECS の間の通信はHTTPSで行います。<br><br></p>
 
 <p>なお、証明書をSLB側に設置した場合、SLBとECS間にHTTP通信のみ設定可能な仕様になります。</p>
+</div>
+	
+</div>
 
-<h4 id="q-tcp-over-sslの対応について">Q. TCP over SSLの対応について</h4>
 
-<p>日本サイトのSLB現在レイヤー4のTCP over SSLを対応していません。SSL通信が必要な場合、レイヤー7のHTTPSを利用する必要があります。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">TCP over SSLの対応について</div>
+	<div class="panel-body"><p>日本サイトのSLB現在レイヤー4のTCP over SSLを対応していません。SSL通信が必要な場合、レイヤー7のHTTPSを利用する必要があります。</p>
+</div>
+	
+</div>
 
-<h2 id="負荷分散">負荷分散</h2>
 
-<h4 id="q-ラウンドロビン利用時に分散されない事象について">Q. ラウンドロビン利用時に分散されない事象について</h4>
+<h4 id="負荷分散">負荷分散</h4>
 
-<p>SLBの仕様上、セッションの保持時間内に再度SLBアクセスを実施すると 保持されているセッションにアクセスするため、
-重みと剥離してアクセスが偏ったことがあります。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">ラウンドロビン利用時に分散されない事象について</div>
+	<div class="panel-body"><p>SLBの仕様上、セッションの保持時間内に再度SLBアクセスを実施すると 保持されているセッションにアクセスするため、重みと剥離してアクセスが偏ったことがあります。<br><br></p>
 
-<p>実際にセッションの切り替えを確認する方法は下記となります。
-・リスナー設定（HTTP）の場合 　
-リスナー設定で「セッションの保持」を無効にし、リロードすることで確認できます。
-・リスナー設定（TCP）の場合 　
+<p>実際にセッションの切り替えを確認する方法は下記となります。<br>
+・リスナー設定（HTTP）の場合 　<br>
+リスナー設定で「セッションの保持」を無効にし、リロードすることで確認できます。<br>
+・リスナー設定（TCP）の場合 　<br>
 リスナー設定の「接続タイムアウト」で最小値の10秒と設定し、10秒以上の間隔でリロードすることで確認できます。</p>
+</div>
+	
+</div>
 
-<h4 id="q-バックエンドecsの重み設定について">Q. バックエンドECSの重み設定について</h4>
 
-<p>SLBのバックエンドECSの重みの仕組みは下記となります。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">バックエンドECSの重み設定について</div>
+	<div class="panel-body"><p>SLBのバックエンドECSの重みの仕組みは下記となります。</p>
 
-<p>例えば ECS インスタンス A の重みを 10 に設定し、ECS インスタンス B の重みを 100 に設定した場合、インスタンス A には総アクセス数の 10/(10+100)％ が転送され、インスタンス B は 100/(10+100)％ が転送されます。</p>
+<div class="notices tip" ><p>例えば ECS インスタンス A の重みを 10 に設定し、ECS インスタンス B の重みを 100 に設定した場合、インスタンス A には総アクセス数の 10/(10+100)％ が転送され、インスタンス B は 100/(10+100)％ が転送されます。</p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-apiでvserverグループ追加時の引数書き方について">Q. APIでVserverグループ追加時の引数書き方について</h4>
 
-<p>APIでVServerグループを操作する際に、引数に「\」を利用する必要がります。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">APIでVserverグループ追加時の引数書き方について</div>
+	<div class="panel-body"><p>APIでVServerグループを操作する際に、引数に「\」を利用する必要がります。</p>
 
-<p>■バックエンドサーバを追加
-aliyun slb AddBackendServers &ndash;RegionId ap-northeast-1 &ndash;LoadBalancerId SLB_ID &ndash;BackendServers [{\&ldquo;ServerId\&rdquo;:\&ldquo;instance_ID\&rdquo;\,\&ldquo;Weight\&rdquo;:\&ldquo;100\&ldquo;}]</p>
+<div class="notices tip" ><p>■バックエンドサーバを追加<br>
+aliyun slb AddBackendServers &ndash;RegionId ap-northeast-1 &ndash;LoadBalancerId SLB_ID &ndash;BackendServers [{\&ldquo;ServerId\&rdquo;:\&ldquo;instance_ID\&rdquo;\,\&ldquo;Weight\&rdquo;:\&ldquo;100\&ldquo;}]<br><br></p>
 
-<p>■バックエンドサーバを削除
+<p>■バックエンドサーバを削除<br>
 aliyun slb RemoveBackendServers &ndash;LoadBalancerId SLB_ID &ndash;BackendServers [{\&ldquo;ServerId\&rdquo;:\&ldquo;instance_ID\&rdquo;}]</p>
+</div>
+</div>
+	
+</div>
 
-<h4 id="q-slbの相互認証について">Q. SLBの相互認証について</h4>
 
-<p>SLBでは相互認証のアクセス方式に対応しています。</p>
+<div class="panel panel-default">
+	<div class="panel-heading">SLBの相互認証について</div>
+	<div class="panel-body"><p>SLBでは相互認証のアクセス方式に対応しています。</p>
 
-<p>相互認証の設定方法は下記ドキュメントをご参照ください。
+<div class="notices info" ><p>なお、SLBの仕様では現在失効リストに対応していません。</p>
+</div>
+
+<div class="notices note" ><p>相互認証の設定方法は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/54508.htm">https://jp.alibabacloud.com/help/doc-detail/54508.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<p>なお、SLBの仕様では現在失効リストに対応していません。</p>
 
-<h4 id="q-slbを利用したsorryサーバーの実装方法について">Q. SLBを利用したsorryサーバーの実装方法について</h4>
+<div class="panel panel-default">
+	<div class="panel-heading">SLBを利用したsorryサーバーの実装方法について</div>
+	<div class="panel-body"><p>SLB自体はsorryサーバーの実装に対応していませんが、DNSの機能GTM(Global Traffic Management)を利用すれば、Sorryサーバーの切り替えを実現することができます。</p>
 
-<p>SLB自体はsorryサーバーの実装に対応していませんが、DNSの機能GTM(Global Traffic Management)を利用すれば、Sorryサーバーの切り替えを実現することができます。</p>
-
-<p>GTMの概要は下記ドキュメントをご参照ください。
+<div class="notices note" ><p>GTMの概要は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/86630.htm">https://jp.alibabacloud.com/help/doc-detail/86630.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<h2 id="ヘルスチェック">ヘルスチェック</h2>
 
-<h4 id="q-slbのヘルスチェック頻度の仕様について">Q. SLBのヘルスチェック頻度の仕様について</h4>
+<h4 id="ヘルスチェック">ヘルスチェック</h4>
 
-<p>SLBヘルスチェックの頻度はコンソール上で設定可能です。設定方法は以下のドキュメントを参照してください。
-<a href="https://jp.alibabacloud.com/help/doc-detail/85959.htm">https://jp.alibabacloud.com/help/doc-detail/85959.htm</a></p>
+<div class="panel panel-default">
+	<div class="panel-heading">SLBのヘルスチェック頻度の仕様について</div>
+	<div class="panel-body"><p>SLBヘルスチェックの頻度はコンソール上で設定可能です。<br><br></p>
 
 <p>なお、監視の信頼性を向上するため、複数台の監視サーバーから同時にヘルスチェックするような仕様となっています。コンソール上のヘルスチェック間隔設定は、1台の監視サーバーに対する設定値となりますので、結果的には、設定値より多いチェックが発生してしています。</p>
 
-<h4 id="q-slbのヘルスチェック用cidrブロックについて">Q. SLBのヘルスチェック用CIDRブロックについて</h4>
+<div class="notices note" ><p>設定方法は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/85959.htm">https://jp.alibabacloud.com/help/doc-detail/85959.htm</a></p>
+</div>
+</div>
+	
+</div>
 
-<p>SLBのヘルスチェック用CIDRは下記となります。
+
+<div class="panel panel-default">
+	<div class="panel-heading">SLBのヘルスチェック用CIDRブロックについて</div>
+	<div class="panel-body"><p>SLBのヘルスチェック用CIDRは下記となります。<br>
 ・100.64.0.0./10</p>
 
-<p>ヘルスチェックは下記のドキュメントをご参照ください。
+<div class="notices note" ><p>ヘルスチェックは下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/55205.htm">https://jp.alibabacloud.com/help/doc-detail/55205.htm</a></p>
+</div>
+</div>
+	
+</div>
+
 
 
     
@@ -704,7 +800,7 @@ aliyun slb RemoveBackendServers &ndash;LoadBalancerId SLB_ID &ndash;BackendServe
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 04/04/2019
+        <i class='fa fa-calendar'></i> Last update on 07/15/2019
     </div>
     
 
