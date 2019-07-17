@@ -72,7 +72,7 @@ MUAとして、外部SMTPの25番ポートを利用する場合のみ、宛先�
 
 {{% notice note %}}
 25番ポートの制限は下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/49123.htm](https://jp.alibabacloud.com/help/doc-detail/49123.htm)
+https://jp.alibabacloud.com/help/doc-detail/49123.htm
 {{% /notice %}}
 {{%/panel%}}
 
@@ -90,10 +90,10 @@ ICPライセンスを申請する前提として、中国国内に法人を持�
 
 {{% notice note %}}
 サブスクリプションECSのアップグレードは下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/25438.htm](https://jp.alibabacloud.com/help/doc-detail/25438.htm)
+https://jp.alibabacloud.com/help/doc-detail/25438.htm
 <br><br>
 従量課金ECSのアップグレードは下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/60051.htm](https://jp.alibabacloud.com/help/doc-detail/60051.htm)
+https://jp.alibabacloud.com/help/doc-detail/60051.htm
 {{% /notice %}}
 
 {{% notice warning %}}
@@ -114,7 +114,7 @@ VPCのIP CIDRは`10.0.0.0/8`、`172.16.0.0/12`及び`192.168.0.0/16`から選択
 
 {{% notice note %}}
 APIでのVPC作成は下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/35737.html](https://jp.alibabacloud.com/help/doc-detail/35737.html)
+https://jp.alibabacloud.com/help/doc-detail/35737.html
 {{% /notice %}}
 {{%/panel%}}
 
@@ -137,10 +137,10 @@ EIPの帯域幅を変更することはできます。<br>
 
 {{% notice note %}}
 EIPの帯域幅の変更方法は下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/27769.htm](https://jp.alibabacloud.com/help/doc-detail/27769.htm)
+https://jp.alibabacloud.com/help/doc-detail/27769.htm
 <br><br>
 パブリックIPをEIPへの変更する方法は下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/faq-detail/68010.html](https://jp.alibabacloud.com/help/faq-detail/68010.html)
+https://jp.alibabacloud.com/help/faq-detail/68010.html
 {{% /notice %}}
 {{%/panel%}}
 
@@ -149,7 +149,7 @@ ECSのプライベートIPを同じVswitch内の空きIPに限って変更する
 
 {{% notice note %}}
 プライベートIPの変更方法は下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/27733.html](https://jp.alibabacloud.com/help/doc-detail/27733.html)
+https://jp.alibabacloud.com/help/doc-detail/27733.html
 {{% /notice %}}
 
 {{% notice info %}}
@@ -183,10 +183,10 @@ ECSのインバウンドとアウトバウンド帯域幅の制限値は下記�
 {{% notice note %}}
 イメージのインポート方法は下記のドキュメントをご参照ください。<br>
 ※ドキュメント内「前提条件」にご注意ください<br>
-[https://jp.alibabacloud.com/help/doc-detail/25464.html](https://jp.alibabacloud.com/help/doc-detail/25464.html)
+https://jp.alibabacloud.com/help/doc-detail/25464.html
 <br><br>
 イメージをインポートする際の注意事項は下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/48226.htm](https://jp.alibabacloud.com/help/doc-detail/48226.htm)
+https://jp.alibabacloud.com/help/doc-detail/48226.htm
 {{% /notice %}}
 {{%/panel%}}
 
@@ -195,13 +195,13 @@ Alibaba Cloud 移行ツールのご利用により、物理的なデスクトッ
 
 {{% notice note %}}
 Alibaba Cloud 移行ツールは下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/62349.html](https://jp.alibabacloud.com/help/doc-detail/62349.html)
+https://jp.alibabacloud.com/help/doc-detail/62349.html
 <br><br>
 クラウド移行ツールを使用してAlibaba Cloudへの移行は下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/62394.htm](https://jp.alibabacloud.com/help/doc-detail/62394.htm)
+https://jp.alibabacloud.com/help/doc-detail/62394.htm
 <br><br>
 イメージをインポートする際の注意事項は下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/48226.htm](https://jp.alibabacloud.com/help/doc-detail/48226.htm)
+https://jp.alibabacloud.com/help/doc-detail/48226.htm
 {{% /notice %}}
 {{% /panel %}}
 
@@ -210,7 +210,7 @@ Alibaba Cloud 移行ツールは下記のドキュメントをご参照くださ
 
 {{% notice note %}}
 イメージエクスポートの利用方法は下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/58181.html](https://jp.alibabacloud.com/help/doc-detail/58181.html)
+https://jp.alibabacloud.com/help/doc-detail/58181.html
 {{% /notice %}}
 {{% /panel %}}
 
@@ -219,7 +219,7 @@ Alibaba Cloud 移行ツールは下記のドキュメントをご参照くださ
 
 {{% notice note %}}
 イメージコピーの利用方法は下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/25462.html](https://jp.alibabacloud.com/help/doc-detail/25462.html)
+https://jp.alibabacloud.com/help/doc-detail/25462.html
 {{% /notice %}}
 {{% /panel %}}
 
@@ -254,7 +254,7 @@ ECSへのアタッチ/デタッチ可否<br>
 
 {{% notice note %}}
 システムディスクの交換方法は下記のドキュメントをご参照ください。<br>
-[https://jp.alibabacloud.com/help/doc-detail/50134.html](https://jp.alibabacloud.com/help/doc-detail/50134.html)
+https://jp.alibabacloud.com/help/doc-detail/50134.html
 {{% /notice %}}
 {{% /panel %}}
 <br>
