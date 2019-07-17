@@ -72,11 +72,17 @@ jobs:
           name: Sleep a little
           command: sleep 5
       - run:
-          name: Deploy to GitHub Pages
+          name: Build Hugo contents
           command: |
             hugo
+      - run:
+          name: Sleep a little
+          command: sleep 5
+      - run:
+          name: Deploy to GitHub Pages
+          command: |
             chmod +x ./.circleci/deploy.sh
-            sh ./.circleci/deploy.sh
+            sh -x ./.circleci/deploy.sh
       - run:
           name: Chat Notification Fail
           when: on_fail
