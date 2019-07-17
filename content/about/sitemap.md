@@ -13,7 +13,7 @@ draft: false
 |:------:|  
 |[アカウント登録]({{%relref "getting-started/registration.md" %}})|
 |<details><summary>[プロダクト紹介]({{%relref "getting-started/product/_index.md" %}})</summary>[プロダクト資料のリンク一覧]({{%relref "getting-started/product/links.md" %}})<br>[ECS]({{%relref "getting-started/product/ecs-by-region.md" %}})</details>|
-|<details><summary>[AWS/Azure/GCPユーザ向け]({{%relref "getting-started/cloud-users/_index.md" %}})</summary>[AWS/Azure/GCPとのサービス比較]({{%relref "getting-started/cloud-users/vs-aws-gcp-azure.md" %}})<br>[中国と日本におけるサービス一覧]({{%relref "getting-started/cloud-users/services-in-cn.md" %}})</details>|
+|<details><summary>[AWS/Azure/GCPユーザ向け]({{%relref "getting-started/cloud-users/_index.md" %}})</summary>[AWS/Azure/GCPとのサービス比較]({{%relref "getting-started/cloud-users/vs-aws-gcp-azure.md" %}})</details>|
  
 |[ベストプラクティス]({{%relref "best-practice/_index.md" %}})|
 |:------:|
