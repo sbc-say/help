@@ -3,7 +3,7 @@ executors:
   default:
     working_directory: ~/hugo
     docker:
-      - image: cibuilds/hugo:0.55.2
+      - image: cibuilds/hugo:0.55.6
 jobs:
   test-job:
     executor:
@@ -17,10 +17,11 @@ jobs:
           command: echo "$(hugo version)"
       - checkout
       - run:
+          name: Sleep a little
+          command: sleep 5
+      - run:
           name: Building blog pages
-          command: |
-            HUGO_ENV=production hugo -v
-            hugo
+          command: hugo
       - run:
           name: Chat Notification Fail
           when: on_fail
