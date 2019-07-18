@@ -45,7 +45,6 @@
 ## 4. FAQ
 * ECS
 * SLB
-* VPC
 * RDS
 * OSS
 * Account Management
