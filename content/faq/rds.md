@@ -1,6 +1,6 @@
 ---
 title: "RDS"
-description: ""
+description:  "Alibaba CloudのRDSに関するよくある質問を紹介します。"
 date: 2019-07-15T15:32:14+09:00
 weight: 40
 draft: false

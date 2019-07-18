@@ -1,7 +1,7 @@
 ---
 title: "インストール"
 date: 2019-07-01T00:00:00+09:00
-description: "Alibaba Cloudでも用いられるTerraformのインストール手順を説明します"
+description: "Alibaba Cloudでも用いられるTerraformのインストール手順を説明します。"
 weight: 20
 draft: false
 ---
