@@ -11,8 +11,7 @@ ECSのベストプラクティス情報を以下のリンクよりダウンロ�
 [<button class="btn btn-primary">ECSのベストプラクティス情報をダウンロード</button>](http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download/pdf/DNA0011864658_ja-JP_jp_190625161850_public_fda053d3b3b12e4d3bd994047f8f644a.pdf?spm=a21mg.l28256.a3.118.764c58a75bASxs&file=DNA0011864658_ja-JP_jp_190625161850_public_fda053d3b3b12e4d3bd994047f8f644a.pdf)  
 
 また本PDFは以下の流れで記載しております。  
-<br>  
-
+  
 1 セキュリティ...........................................................................1  
 1.1 セキュリティグループのベストプラクティス (パート 2)........................................1  
 1.2 セキュリティグループのベストプラクティス (パート 3)........................................6  
@@ -55,6 +54,5 @@ ECSのベストプラクティス情報を以下のリンクよりダウンロ�
 10.5 Web クラスターのデプロイ....................................................................... 143  
 
 #### Alibaba Cloudのホームページでも同様の内容が確認できます。
-https://www.sbcloud.co.jp/document/account_registration
-
+https://resource.alibabacloud.com/whitepaper/a-guide-to-ecs-best-practices_839
 
