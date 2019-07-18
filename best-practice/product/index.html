@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-07-18T06:38:14 UTC">
-<title>よくある質問 :: テクニカルリファレンス</title>
+<title>個別プロダクト :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -47,7 +47,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-<meta name="description" content="Alibaba Cloudを利用する上でよくある質問を紹介します。">
+<meta name="description" content="Alibaba Cloudを活用する上でのベストプラクティスをプロダクト別に記載します。">
 
         
 
@@ -57,7 +57,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
   </head>
-  <body data-url="/help/faq/">
+  <body data-url="/help/best-practice/product/">
     
       <header>
 
@@ -147,10 +147,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/best-practice/">ベストプラクティス</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/advisory/" class="dd-item">
@@ -167,10 +168,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-    <li data-nav-id="/help/best-practice/product/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/product/" class="dd-item parent active haschildren
         ">
       <div>
-      <a href="/help/best-practice/product/">個別プロダクト</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/product/">個別プロダクト</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/product/ecs/" class="dd-item">
@@ -384,11 +386,10 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/faq/" class="dd-item parent active haschildren
+    <li data-nav-id="/help/faq/" class="dd-item haschildren
         ">
       <div>
-      <a href="/help/faq/">よくある質問</a>
-            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/faq/">よくある質問</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/faq/ecs/" class="dd-item">
@@ -484,7 +485,12 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
- <a href='/help/'></a> > よくある質問
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > 個別プロダクト
+
+ 
 
  
 
@@ -499,18 +505,22 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <option value="/help/getting-started/" >
    Getting Started</option>
     <option value="/help/best-practice/" >
-   ベストプラクティス</option>
+   ベストプラクティス</option> 
+      <option value="/help/best-practice/advisory/" >- アドバイザリ</option>
+      <option value="/help/best-practice/pricing/" >- 料金体系</option>
+    <option value="/help/best-practice/product/"  selected>
+  - 
+   個別プロダクト</option> 
+      <option value="/help/best-practice/product/ecs/" >-- ECS</option>
+  
+    <option value="/help/best-practice/devops/" >
+  - 
+   DevOps</option>
+  
     <option value="/help/scenario/" >
    ユースケース別シナリオ</option>
-    <option value="/help/faq/"  selected>
-   よくある質問</option> 
-      <option value="/help/faq/ecs/" >- ECS</option>
-      <option value="/help/faq/oss/" >- OSS</option>
-      <option value="/help/faq/slb/" >- SLB</option>
-      <option value="/help/faq/rds/" >- RDS</option>
-      <option value="/help/faq/price/" >- 料金</option>
-      <option value="/help/faq/account/" >- アカウント</option>
-  
+    <option value="/help/faq/" >
+   よくある質問</option>
     <option value="/help/about/" >
    About SBC Technical Reference</option>
 
@@ -520,12 +530,12 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       </center>
     </div>
 
-    <h1>よくある質問</h1>
+    <h1>個別プロダクト</h1>
 
     
     
     
-Alibaba Cloudを利用する上でよくある質問を紹介します。
+Alibaba Cloudを活用する上でのベストプラクティスをプロダクト別に記載します。
 <!-- descriptionがコンテンツの前に表示されます -->
 
 <!-- コンテンツを書くときはこの下に記載ください -->
@@ -535,56 +545,11 @@ Alibaba Cloudを利用する上でよくある質問を紹介します。
 <ul>
   
     <li>
-        <a href="/help/faq/ecs/">
+        <a href="/help/best-practice/product/ecs/">
             ECS
         </a>
     </li>
-    Alibaba CloudのECSに関するよくある質問を紹介します。
-    <br>
-    <br>
-    
-    <li>
-        <a href="/help/faq/oss/">
-            OSS
-        </a>
-    </li>
-    Alibaba CloudのOSSに関するよくある質問を紹介します。
-    <br>
-    <br>
-    
-    <li>
-        <a href="/help/faq/slb/">
-            SLB
-        </a>
-    </li>
-    Alibaba CloudのSLBに関するよくある質問を紹介します。
-    <br>
-    <br>
-    
-    <li>
-        <a href="/help/faq/rds/">
-            RDS
-        </a>
-    </li>
-    Alibaba CloudのRDSに関するよくある質問を紹介します。
-    <br>
-    <br>
-    
-    <li>
-        <a href="/help/faq/price/">
-            料金
-        </a>
-    </li>
-    Alibaba Cloudの料金に関するよくある質問を紹介します。
-    <br>
-    <br>
-    
-    <li>
-        <a href="/help/faq/account/">
-            アカウント
-        </a>
-    </li>
-    Alibaba Cloudのアカウント管理に関するよくある質問を紹介します。
+    Alibaba CloudのECSを活用する為のベストプラクティスを記載します。
     <br>
     <br>
     
@@ -598,8 +563,8 @@ Alibaba Cloudを利用する上でよくある質問を紹介します。
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/scenario/terraform/ec-site-sample/" title=" MagentoでECサイト構築"> <i class="fa fa-chevron-left"></i><label> MagentoでECサイト構築</label></a>
-    <a class="nav nav-next" href="/help/faq/ecs/" title="ECS" style="margin-right: 0px;"><label>ECS</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/best-practice/pricing/" title="料金体系"> <i class="fa fa-chevron-left"></i><label>料金体系</label></a>
+    <a class="nav nav-next" href="/help/best-practice/product/ecs/" title="ECS" style="margin-right: 0px;"><label>ECS</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -614,13 +579,13 @@ Alibaba Cloudを利用する上でよくある質問を紹介します。
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  05/13/2019
+        <i class='fa fa-calendar'></i>  06/05/2019
     </div>
     
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content/faq/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/product/_index.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     

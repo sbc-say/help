@@ -1,6 +1,6 @@
 ---
 title: "OSS"
-description: ""
+description: "Alibaba CloudのOSSに関するよくある質問を紹介します。"
 date: 2019-07-17T09:33:15+09:00
 weight: 20
 draft: false
