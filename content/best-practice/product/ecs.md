@@ -54,6 +54,5 @@ ECSのベストプラクティス情報を以下のリンクよりダウンロ�
 10.5 Web クラスターのデプロイ....................................................................... 143  
 
 #### Alibaba Cloudのホームページでも同様の内容が確認できます。
-https://www.sbcloud.co.jp/document/account_registration
-
+https://resource.alibabacloud.com/whitepaper/a-guide-to-ecs-best-practices_839
 
