@@ -1,7 +1,7 @@
 ---
 title: "Dockerについて"
 date: 2019-07-01T00:00:00+09:00
-description: "Alibaba Cloudでも用いられるTerraformをDockerを用いて実行します"
+description: "Alibaba Cloudでも用いられるTerraformをDockerを用いて実行します。"
 weight: 60
 draft: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: "アカウント"
-description: ""
+description: "Alibaba Cloudのアカウント管理に関するよくある質問を紹介します。"
 date: 2019-07-13T15:31:09+09:00
 weight: 100
 draft: false

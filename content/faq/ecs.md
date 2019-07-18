@@ -1,6 +1,6 @@
 ---
 title: "ECS"
-description: ""
+description: "Alibaba CloudのECSに関するよくある質問を紹介します。"
 date: 2019-07-10T15:31:42+09:00
 weight: 10
 draft: false

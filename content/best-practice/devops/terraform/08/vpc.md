@@ -1,7 +1,7 @@
 ---
 title: "VPCの作成"
 date: 2019-07-01T00:00:00+09:00
-description: "Terraformによる、Alibaba CloudのVPCリソース作成方法を紹介します"
+description: "Terraformによる、Alibaba CloudのVPCリソース作成方法を紹介します。"
 weight: 80
 draft: false
 ---
