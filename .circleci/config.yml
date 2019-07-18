@@ -93,9 +93,9 @@ jobs:
             "{
                 \"msgtype\": \"link\",
                 \"link\": {
-                    \"text\": \"SBC Technical Reference update deploy to production failed.
+                    \"text\": \"SBC Technical Reference deploy to production failed.
                      Click me for further information\",
-                    \"title\": \"Oops. Build ${CIRCLE_BUILD_NUM} failed.\",
+                    \"title\": \"Oops. Build ${CIRCLE_BUILD_NUM} failed and NOT deployed to production.\",
                     \"picUrl\": \"https://png.pngtree.com/svg/20170406/icon_failed__1325447.png\",
                     \"messageUrl\": \"${CIRCLE_BUILD_URL}\"
                 }
@@ -112,9 +112,9 @@ jobs:
             "{
                 \"msgtype\": \"link\",
                 \"link\": {
-                    \"text\": \"SBC Technical Reference update successfully deployed to production.
+                    \"text\": \"SBC Technical Reference successfully deployed to production.
                      Click me for further information\",
-                    \"title\": \"Build ${CIRCLE_BUILD_NUM} passed.\",
+                    \"title\": \"Build ${CIRCLE_BUILD_NUM} passed and DEPLOYED to PRODUCTION.\",
                     \"picUrl\": \"https://png.pngtree.com/svg/20170510/success_404253.png\",
                     \"messageUrl\": \"${CIRCLE_BUILD_URL}\"
                 }
