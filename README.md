@@ -17,3 +17,4 @@ This document gets updated along with four categories
 How to install and other knowledge is [here](content/hugo-konw-how.md)  
 Detailed Agenda is [here](content/_index.md)  
 Changelog is [here](CHANGELOG.md)
+
