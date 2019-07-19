@@ -11,20 +11,22 @@ ECサイトの一つとして、オープンソースの電子商取引アプリ
 
 * [Magento](https://magento.com/)
 * [Woo Commerce](https://woocommerce.com)
+
 ![図 1](/help/image/25.1.png)
-![図 2](/help/image/25.2.png)
 
 <br>
 ちなみに、Amazonや楽天のように一つのWebサイトに複数の商店の商品やサービスがまとまっているものはオンラインモールといい、オープンソースのオンラインショッピング Webサイト管理システム `EC-CUBE`などの方法があります。
 
 * [EC-CUBE](https://www.ec-cube.net/)
-![図 3](/help/image/25.3.png)
+
+![図 2](/help/image/25.2.png)
+
 
 <br>
 ### ECサイトMagentoの構築について
 &nbsp; ECサイト MagentoをTerraformを使って一発で構築してみます。ゴールの構成図は以下の通りです。
 
-![図 4](/help/image/25.4.png)
+![図 4](/help/image/25.3.png)
 <br>
 ソースは以下になります。サンプルソースは[こちら]()にあります。
 
@@ -72,6 +74,7 @@ STEP1: Magentoを利用するにあたり、アカウント発行が必要です
 
 8.これでMagento作成に必要なKey２種類の発行完了です。こちらは後々必要になるのでメモを残してください。
 ![図 12](/help/image/25.12.png)
+
 
 main.tf
 

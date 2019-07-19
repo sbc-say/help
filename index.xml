@@ -694,9 +694,9 @@ Kubernetesでクラスタ生成 &amp;nbsp; KubernetesによるコンテナでWor
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/ec-site-sample/</guid>
       <description>&amp;nbsp; インターネットを通じて自社商品を販売、宣伝するのにおすすめなのが、ECサイトを作るという方法です。ECは Electronic Commerce（電子商取引）の略です。 ECサイトの一つとして、オープンソースの電子商取引アプリケーション MagentoとWoo Commerce を使った構築方法がメインとなっています。Magento、もしくはWoo Commerce を使用すると、コーディングを一切行わなくてもオンラインストアをすばやく設定できます。それだけでなく多くの拡張機能、プラグイン、そしてテーマでカスタマイズすることもできます。今回は AlibabaCloud上にて高可用性アーキテクチャでMagento Community EditionをIaCで自動実装してみます。
- Magento Woo Commerce   
+ Magento Woo Commerce  
 ちなみに、Amazonや楽天のように一つのWebサイトに複数の商店の商品やサービスがまとまっているものはオンラインモールといい、オープンソースのオンラインショッピング Webサイト管理システム EC-CUBEなどの方法があります。
- EC-CUBE   
+ EC-CUBE  
 ECサイトMagentoの構築について &amp;nbsp; ECサイト MagentoをTerraformを使って一発で構築してみます。ゴールの構成図は以下の通りです。
 ソースは以下になります。サンプルソースは[こちら]()にあります。
 
