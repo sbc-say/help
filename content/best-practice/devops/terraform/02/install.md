@@ -1,7 +1,7 @@
 ---
 title: "インストール"
 date: 2019-07-01T00:00:00+09:00
-description: "Alibaba Cloudでも用いられるTerraformのインストール手順を説明します"
+description: "Alibaba Cloudでも用いられるTerraformのインストール手順を説明します。"
 weight: 20
 draft: false
 ---
@@ -9,7 +9,7 @@ draft: false
 本章は Terraform のインストール方法を学びます。  
 
 > ※ Mac/Linuxでのインストール方法になります。Windows版でのTerraform導入方法は別途記載予定です。
-> ※ Terraformバージョン違いを防止するために[こちらのDockerファイル](https://hub.docker.com/r/hashicorp/terraform/)を使った使用方法がありますが、こちらも別途記載予定です。
+> ※ Terraformバージョン違いを防止するためにtfenvで管理をする方法がありますが、これとは別に [Docker](https://hub.docker.com/r/hashicorp/terraform/)を使った方法もありますので参考にしてください。
 
 ### 1. Homebrew
 &nbsp; Terraformは前章で説明した通り、[HashiCorp](https://www.hashicorp.com/)社がオープンソースとして展開してるツールです。基本的にはバージョンアップに 追従しやすい tfenv の利用を推奨しますが、お試しであればHomebrew も手軽です。
@@ -57,6 +57,7 @@ $ tfenv install
 チームなど複数メンバーでの開発/運用の場合は、このファイルをリポジトリに含めましょう。
 そうすれば、チームメンバが「tfenv install」コマンドを実行するだけでバージョンを統一できます。
 <br>
+
 ### 3. クレデンシャル
 &nbsp; TerraformでAlibabaCloudを扱うにはAccessKeysとSecretKeyが必要です。
 AlibabaCloudコンソールにあるResource Access Management (RAM) でAccessKeysとSecretKeyを発行しましょう。

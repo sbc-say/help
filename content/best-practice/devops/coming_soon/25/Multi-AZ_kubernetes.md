@@ -44,7 +44,7 @@ https://github.com/kin-alibaba/terraform-kubernetes
 1. 1 Kubernetes ServiceはAlibaba Cloud ApsaraDB RDS for MySQL（RDS）に接続するサンプルWebアプリケーションを提供します。
 1. 1 Alibaba CloudのDNSレコードがKubernetesサービスにバインドされます
 
-![図 24.1](image/d24.1.png)
+![図 24.1](/help/image/d24.1.png)
 
 Terraform - コードとしてのインフラストラクチャ
 Terraformにより、ターゲット環境を記述してから、その環境のライフサイクルを管理することができます。この場合、Terraformファイルは、変数が各「config」ファイルに外部化される管理を容易にするために複数のファイルにモジュール化されます。

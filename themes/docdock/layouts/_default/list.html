@@ -1,17 +1,5 @@
 {{ define "main" }}
-<p>セクション一覧</p>
-<ul>
-  {{ range .Pages }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
-  {{ end }}
-
-{{ with .CurrentSection }}
-    {{ range .Sections }}
-      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    {{ end }}
-{{ end }}
-
-
-</ul>
-
+{{ .Description }}
+{{ .Content }}
+{{ partial "section-list.html" . }}
 {{end}}

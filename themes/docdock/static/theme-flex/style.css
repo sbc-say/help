@@ -309,7 +309,6 @@ article section.page {
     margin: 3rem 0rem;
     font-family: 'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', '游ゴシック', 'YuGothic', Meiryo, sans-serif;
     text-align: center;
-    text-transform: uppercase;
     color: #060606;
     font-weight: 200;
     font-size: 3.25rem;
@@ -329,7 +328,6 @@ article section.page {
       padding: 0.25rem 0.75rem; }
     article section.page table th {
       padding: 0.5rem;
-      text-transform: uppercase;
       vertical-align: middle;
       text-align: center;
       font-weight: 800;

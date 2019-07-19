@@ -1,7 +1,7 @@
 ---
 title: "Terraform文法について"
 date: 2019-07-01T00:00:00+09:00
-description: "Alibaba Cloudでも用いられるTerraformの文法を説明します"
+description: "Alibaba Cloudでも用いられるTerraformの文法を説明します。"
 weight: 50
 draft: false
 ---

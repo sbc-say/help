@@ -19,10 +19,10 @@ draft: false
 
 |リソース|リソース名|パラメータ|必須|設定値|内容|
 |---|---|---|---|---|---|
-|alicloud_vpc|vpc|name|任意|${var.project_name}-vpc|VPC の名称。この例の場合、RDS-Sample-for-Terraform-vpc として表示されます。|
+|alicloud_vpc|vpc|name|任意|${var.project_name}-vpc|VPC の名称。この例の場合、Kubernetes-Sample-for-Terraform-vpc として表示されます。|
 ||vpc|cidr_block|必須|192.168.1.0/24|VPC の CIDR ブロック|
 ||vpc|description|任意|Enable k8s-Setteing-Sample vpc|VPC の説明。|
-|alicloud_vswitch|vsw|name|任意|${var.project_name}-vswitch|vswitch の名称。この例の場合、RDS-Sample-for-Terraform-vswitch として表示されます。|
+|alicloud_vswitch|vsw|name|任意|${var.project_name}-vswitch|vswitch の名称。この例の場合、Kubernetes-Sample-for-Terraform-vswitch として表示されます。|
 ||vsw|vpc_id|必須|${alicloud_vpc.vpc.id}|アタッチするVPCのID|
 ||vsw|cidr_block|必須|192.168.1.0/28|vswitch の CIDR ブロック|
 ||vsw|availability_zone|必須|${var.zone}|使用するアベイラビリティゾーン|
@@ -51,7 +51,7 @@ kubernetesクラスター構成:
 
 
 <br>
-ソースは以下になります。サンプルソースは[こちら]()にあります。
+ソースは以下になります。
 
 <br>
 main.tf
@@ -139,6 +139,7 @@ k8s_password = "!Password2019"
 provisioning.sh
 
 ```
+# 今回はprovisioning.shを使用しないため、空白です
 ```
 <br>
 ### 実行

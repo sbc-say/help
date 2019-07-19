@@ -1,24 +1,13 @@
 ---
 title: "VPCの作成"
 date: 2019-07-01T00:00:00+09:00
-description: "Terraformによる、Alibaba CloudのVPCリソース作成方法を紹介します"
+description: "Terraformによる、Alibaba CloudのVPCリソース作成方法を紹介します。"
 weight: 80
 draft: false
 ---
 
 &nbsp; ここまではTerraformのインストール方法、コード記載方法、実行方法を説明しました。  
 ここからはユーザ各自でコード作成、応用ができるよう、AlibabaCloudの基本プロダクトサービスの説明を通じて解説します。
-
-* [AlibabaCloud VPC]()
-* [AlibabaCloud ECS、EIP]()
-* [AlibabaCloud SLB]()
-* [AlibabaCloud AutoScale]()
-* [AlibabaCloud OSS]()
-* [AlibabaCloud RDS]()
-* [AlibabaCloud RAM]()
-* [AlibabaCloud Kubernetes]()
-
-それぞれサンプルを交えて説明します。
 
 ### 1. VPC
 &nbsp; VPCは、Alibaba Cloudに設置されたプライベートネットワークです。 VPCはAlibaba Cloudの他のアカウントを含む仮想ネットワークと論理的に分離されています。
@@ -35,9 +24,7 @@ draft: false
 &nbsp; VPCは、CIDRブロック、VRouter、及びVSwitchで構成されます。
 
 ・CIDRブロック・・・IPアドレスの空間を指定することで通信経路を出す設定情報。プライベートIPアドレス範囲をCIDR（Classless Inter-Domain Routing）ブロックの形式で指定する必要があります。
-
 ・VRouter・・・VPCのハブ。VPC内の各VSwitchを接続でき、ゲートウェイとしてもVPCを他のネットワークに接続することもできます。
-
 ・VSwitch・・・VPCの基本的なネットワークデバイス、様々なクラウド製品インスタンスに接続するために使用されます。
 
 VPCコンポーネントは以下のような構成図になります。
@@ -61,7 +48,7 @@ VPCコンポーネントは以下のような構成図になります。
 
 ### 3. VPCのTerraformについて
 &nbsp; 本題、VPC、VSwitch作成に移ります。VPCリソースを実行すると、VPC構築のためにrouterとroute_tableを自動的に作成されます。まずは以下の構成図通り、簡単なソースを作ってみます。
-![図 3](image/9.3.png)
+![図 3](/help/image/9.3.png)
 
 この構成図を満たすVPC、VSwitch を作成するコードです。
 ```
@@ -80,11 +67,13 @@ resource "alicloud_vswitch" "vsw" {
 
 #### **alicloud_vpc**
 上記で記載したリソース以外にオプション（任意）でパラメータや構成を指定することもできます。
+
 * `cidr_block` - （必須）VPCのCIDRブロック。VPCのIPv4アドレスの範囲をCIDR形式(XX.XX.XX.XX/XX)で、cidr_blockに指定します。そのため、[VPCピアリング](https://docs.alicloud.amazon.com/ja_jp/vpc/latest/peering/what-is-vpc-peering.html)なども考慮し て、最初にきちんと設計する必要があります。後からの変更も不可です。
 * `name` - （オプション）VPCの名前。デフォルトはnullです。
 * `description` - （オプション）VPCの説明。デフォルトはnullです。
 
 このリソースを実行することにより、以下の属性情報が出力されます。
+
 * `id` - VPCのID。
 * `cidr_block` - VPCのCIDRブロック。
 * `name` - VPCの名前。
@@ -102,6 +91,7 @@ VPC_SWITCHも上記で記載したリソース以外にオプション（任意�
 * `description` - （オプション）スイッチの説明。デフォルトはnullです。
 
 このalicloud_vswitchリソースを実行することにより、以下の属性情報が出力されます。
+
 * `id` - スイッチのID。
 * `availability_zone` - スイッチのAvailabilityZone。
 * `cidr_block` - スイッチのCIDRブロック。
@@ -157,12 +147,14 @@ resource "alicloud_route_table_attachment" "foo" {
 
 #### **alicloud_route_entry**
 alicloud_route_entryの必須パラメータは以下の通りです。
+
 * `route_table_id` - （必須）ルートテーブルのID。
 * `destination_cidrblock` - （必須）RouteEntryのターゲットネットワークセグメント。
 * `nexthop_type` - （必須）ネクストホップタイプ
 * `nexthop_id` - （必須）ルートエントリのネクストホップ。ECSインスタンスIDまたはVPCルータインターフェイスID。
 
 このalicloud_route_entryリソースを実行することにより、以下の属性情報が出力されます。
+
 * `router_id` - Vpcに接続されている仮想ルータのID。
 * `route_table_id` - ルートテーブルのID。
 * `destination_cidrblock` - RouteEntryのターゲットネットワークセグメント。
@@ -171,19 +163,23 @@ alicloud_route_entryの必須パラメータは以下の通りです。
 
 #### **alicloud_route_table**
 alicloud_route_tableの入力パラメータは以下の通りです。
+
 * `vpc_id` - （必須）ルートテーブルのvpc_id、フィールドは変更できません。
 * `name` - （任意）ルートテーブルの名前。
 * `description` - （任意）ルートテーブルインスタンスの説明。
 
 このalicloud_route_tableリソースを実行することにより、以下の属性情報が出力されます。
+
 * `id` - ルートテーブルインスタンスIDのID。
 
 #### **route_table_attachment**
 route_table_attachmentの入力パラメータは以下の通りです。
+
 * `vswitch_id` - （必須）ルートテーブル添付のvswitch_id、フィールドは変更できません。
 * `route_table_id` - （必須）ルートテーブル添付のroute_table_id。フィールドは変更できません。
 
 このroute_table_attachmentリソースを実行することにより、以下の属性情報が出力されます。
+
 * `id` - ルートテーブルのIDとアタッチしたvswitchのID。形式は<route_table_id>:<vswitch_id>で出力されます。
 
 
@@ -329,7 +325,7 @@ resource "alicloud_security_group_rule" "outbound_all" {
 &nbsp; VPCのベストプラクティスとして、VPCとVSwitchを作成する前に、目的や特定のビジネスに応じてVPCとVSwitchの数量とCIDRブロックを設計する必要があります。
 
 
-![図 9.2](image/9.8.jpg)
+![図 9.2](/help/image/9.8.jpg)
 ```
 resource "alicloud_vpc" "vpc" {
   name = "ECS_instance_for_terraform-vpc"
@@ -358,7 +354,7 @@ resource "alicloud_security_group_rule" "allow_http" {
   cidr_ip           = "0.0.0.0/0"
 }
 ```
-![図 9.3](image/9.9.jpg)
+![図 9.3](/help/image/9.9.jpg)
 ```
 resource "alicloud_vpc" "vpc" {
   name = "ECS_instance_for_terraform-vpc"
@@ -387,7 +383,7 @@ resource "alicloud_security_group_rule" "allow_http" {
   cidr_ip           = "0.0.0.0/0"
 }
 ```
-![図 9.4](image/9.10.jpg)
+![図 9.4](/help/image/9.10.jpg)
 ```
 resource "alicloud_vpc" "vpc" {
   name = "ECS_instance_for_terraform-vpc"
@@ -416,7 +412,7 @@ resource "alicloud_security_group_rule" "allow_http" {
   cidr_ip           = "0.0.0.0/0"
 }
 ```
-![図 9.5](image/9.5.jpg)
+![図 9.5](/help/image/9.5.jpg)
 
 ```
 resource "alicloud_vpc" "vpc" {

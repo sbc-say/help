@@ -1,7 +1,7 @@
 ---
 title: "Terraformとは"
 date: 2019-07-01T00:00:00+09:00
-description: "Alibaba Cloudでも用いられるTerraformの概要を説明します"
+description: "Alibaba Cloudでも用いられるTerraformの概要を説明します。"
 weight: 10
 draft: false
 ---

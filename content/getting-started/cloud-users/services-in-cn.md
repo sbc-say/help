@@ -3,7 +3,7 @@ title: "中国リージョンのサービス一覧"
 description: "Alibaba Cloudの中国リージョンと日本リージョンのサービスラインアップの比較を記載します"
 date: 2019-06-05T12:30:18+08:00
 weight: 20
-draft: false
+draft: true
 ---
 AWS/Azure/GCPとAlibaba Cloudとの最大の違いの一つとして、中国リージョンにおける提供サービスの多さが挙げられます。
 ここでは、中国リージョンで利用可能なAlibaba Cloudサービス一覧を、Alibaba Cloudの日本リージョンと併せて記載いたします。

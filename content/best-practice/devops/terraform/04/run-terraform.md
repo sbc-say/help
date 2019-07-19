@@ -1,7 +1,7 @@
 ---
 title: "サンプルプロジェクトの実行"
 date: 2019-07-01T00:00:00+09:00
-description: "Terraformを実際に実行してAlibaba Cloudのリソースを作成します"
+description: "Terraformを実際に実行してAlibaba Cloudのリソースを作成します。"
 weight: 40
 draft: false
 ---
@@ -112,6 +112,7 @@ can't guarantee that exactly these actions will be performed if
 削除や変更など逆の場合は「-」マークが表示されます。これは後述します。
 <br>
 
+
 ### 3. terraform apply
 今度はリソースを実行、「terraform apply」コマンドを実行します。このコマンドでは、改めてplan結果が表示され、本当に実行していいか確認が行われます。
 こちらもRAMなどの情報を別途設定ファイル`confing.tfvars`へ記載した場合は以下のコマンドで実行します。
@@ -141,6 +142,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ![図 2](/help/image/5.1.png)
 ▲ AlibabaCloud ECSコンソールでもECS作成を確認
 <br>
+
 
 ### 4. リソースの設定変更
 上記のリソースの作成に成功したら、今度は構成を変更してみましょう。やり方は以下の通りにタグを追加します。

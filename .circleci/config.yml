@@ -1,12 +1,13 @@
-version: 2
-jobs:
-  build:
-    branches:
-      only:
-        - master
-    docker:
-      - image: cibuilds/hugo:latest
+version: 2.1 # executorsのみ2.1の機能を使っていますが、それ以外は2.0の機能です
+executors:
+  default:
     working_directory: ~/hugo
+    docker:
+      - image: cibuilds/hugo:0.54
+jobs:
+  test-job:
+    executor:
+      name: default
     steps:
       - run:
           name: Update enviroment
@@ -16,29 +17,118 @@ jobs:
           command: echo "$(hugo version)"
       - checkout
       - run:
+          name: Sleep a little
+          command: sleep 5
+      - run:
           name: Building blog pages
-          command: |
-            HUGO_ENV=production hugo -v
-            hugo
-      - deploy:
-          name: Deploy to GitHub Pages
-          command: |
-            chmod +x ./.circleci/deploy.sh
-            sh ./.circleci/deploy.sh
-
+          command: hugo
       - run:
           name: Chat Notification Fail
           when: on_fail
           command: >
             curl --header "Content-Type: application/json"
             --request POST
-            --data "{\"cards\":[{\"header\":{\"title\":\"Oops. Build ${CIRCLE_BUILD_NUM} failed.\",\"subtitle\":\"${CIRCLE_PROJECT_REPONAME}\",\"imageUrl\":\"https://png.pngtree.com/svg/20170406/icon_failed__1325447.png\",\"imageStyle\":\"IMAGE\"},\"sections\":[{\"widgets\":[{\"keyValue\":{\"topLabel\":\"${CIRCLE_TAG}\",\"content\":\"${CIRCLE_SHA1}\"}}]},{\"widgets\":[{\"buttons\":[{\"textButton\":{\"text\":\"DETAILS\",\"onClick\":{\"openLink\":{\"url\":\"${CIRCLE_BUILD_URL}\"}}}}]}]}]}]}"
+            --data
+            "{
+                \"msgtype\": \"link\",
+                \"link\": {
+                    \"text\": \"SBC Technical Reference auto build failed. Click me for further information\",
+                    \"title\": \"Oops. Build ${CIRCLE_BUILD_NUM} failed.\",
+                    \"picUrl\": \"https://png.pngtree.com/svg/20170406/icon_failed__1325447.png\",
+                    \"messageUrl\": \"${CIRCLE_BUILD_URL}\"
+                }
+            }"
             $DINGTALK_WEBHOOK_URL
+
       - run:
           name: Chat Notification Success
           when: on_success
           command: >
             curl --header "Content-Type: application/json"
             --request POST
-            --data "{\"cards\":[{\"header\":{\"title\":\"Build ${CIRCLE_BUILD_NUM} passed.\",\"subtitle\":\"${CIRCLE_PROJECT_REPONAME}\",\"imageUrl\":\"https://png.pngtree.com/svg/20170510/success_404253.png\",\"imageStyle\":\"IMAGE\"},\"sections\":[{\"widgets\":[{\"keyValue\":{\"topLabel\":\"${CIRCLE_TAG}\",\"content\":\"${CIRCLE_SHA1}\"}}]},{\"widgets\":[{\"buttons\":[{\"textButton\":{\"text\":\"DETAILS\",\"onClick\":{\"openLink\":{\"url\":\"${CIRCLE_BUILD_URL}\"}}}}]}]}]}]}"
+            --data
+            "{
+                \"msgtype\": \"link\",
+                \"link\": {
+                    \"text\": \"SBC Technical Reference auto built successfully. Click me for further information\",
+                    \"title\": \"Build ${CIRCLE_BUILD_NUM} passed.\",
+                    \"picUrl\": \"https://png.pngtree.com/svg/20170510/success_404253.png\",
+                    \"messageUrl\": \"${CIRCLE_BUILD_URL}\"
+                }
+            }"
             $DINGTALK_WEBHOOK_URL
+  deploy-job:
+    executor:
+      name: default
+    steps:
+      - run:
+          name: Update enviroment
+          command: apk update && apk add git
+      - run:
+          name: Hugo version
+          command: echo "$(hugo version)"
+      - checkout
+      - run:
+          name: Sleep a little
+          command: sleep 5
+      - run:
+          name: Build Hugo contents
+          command: |
+            hugo
+      - run:
+          name: Sleep a little
+          command: sleep 5
+      - run:
+          name: Deploy to GitHub Pages
+          command: |
+            chmod +x ./.circleci/deploy.sh
+            sh -x ./.circleci/deploy.sh
+      - run:
+          name: Chat Notification Fail
+          when: on_fail
+          command: >
+            curl --header "Content-Type: application/json"
+            --request POST
+            --data
+            "{
+                \"msgtype\": \"link\",
+                \"link\": {
+                    \"text\": \"SBC Technical Reference deploy to production failed.
+                     Click me for further information\",
+                    \"title\": \"Oops. Build ${CIRCLE_BUILD_NUM} failed and NOT deployed to production.\",
+                    \"picUrl\": \"https://png.pngtree.com/svg/20170406/icon_failed__1325447.png\",
+                    \"messageUrl\": \"${CIRCLE_BUILD_URL}\"
+                }
+            }"
+            $DINGTALK_WEBHOOK_URL
+
+      - run:
+          name: Chat Notification Success
+          when: on_success
+          command: >
+            curl --header "Content-Type: application/json"
+            --request POST
+            --data
+            "{
+                \"msgtype\": \"link\",
+                \"link\": {
+                    \"text\": \"SBC Technical Reference successfully deployed to production.
+                     Click me for further information\",
+                    \"title\": \"Build ${CIRCLE_BUILD_NUM} passed and DEPLOYED to PRODUCTION.\",
+                    \"picUrl\": \"https://png.pngtree.com/svg/20170510/success_404253.png\",
+                    \"messageUrl\": \"${CIRCLE_BUILD_URL}\"
+                }
+            }"
+            $DINGTALK_WEBHOOK_URL
+
+workflows:
+  test-and-deploy:
+    jobs:
+      - test-job
+      - deploy-job:
+          requires:
+            - test-job
+          filters:
+            branches:
+              only:
+                - master

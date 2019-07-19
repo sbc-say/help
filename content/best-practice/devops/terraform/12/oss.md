@@ -1,7 +1,7 @@
 ---
 title: "OSSの作成"
 date: 2019-07-01T00:00:00+09:00
-description: "Terraformによる、Alibaba CloudのObject Storage Serviceリソース作成方法を紹介します"
+description: "Terraformによる、Alibaba CloudのObject Storage Serviceリソース作成方法を紹介します。"
 weight: 120
 draft: false
 ---
@@ -16,6 +16,7 @@ AlibabaCloudの基本プロダクトサービスであるObject Storage Service�
 ### 2. コンポーネント
 &nbsp; OSSはTerraform モジュールを使用して、バケットとオブジェクトを管理できます。
 例として、
+
 * バケット管理機能
 * バケットの作成
 * バケットの ACL を設定
@@ -44,6 +45,7 @@ resource "alicloud_oss_bucket" "bucket-acl"{
 }
 ```
 #### **alicloud_oss_bucket**
+
 * `bucket` - （オプション）バケットの名前。
 * `acl` - （任意）ACL。デフォルトは "private"。
 
