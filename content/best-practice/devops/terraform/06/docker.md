@@ -20,6 +20,7 @@ draft: false
 
 ### 2. dockerのTerraform位置について
 &nbsp; Terraformによるdockerの利用は大きく2パターンあります。
+
 * 1.Terraformのバージョン違いなど環境差分を抑えつつ実行する場合
 * 2.Terraformで新規作成した各種リソースの接続設定をする場合
 * 3.CI/CD:継続的インテグレーションと継続的デリバリーをする場合
@@ -83,7 +84,24 @@ resource "alicloud_vpc" "vpc" {
 <br>
 これで準備完了です。構成はこの通りになります。
 
-![図 3](/help/image/7.2.png)
+```
+$ pwd
+/Users/hironobu.ohara/Desktop/terraform-docker
+$ ls
+total 8
+drwxr-xr-x   3 hironobu.ohara  staff    96B  7 19 11:43 .
+drwx------@ 54 hironobu.ohara  staff   1.7K  7 19 11:43 ..
+-rw-r--r--   1 hironobu.ohara  staff   147B  7 19 11:31 main.tf
+$ cat main.tf 
+provider "alicloud" {
+  region = "ap-northeast-1"
+}
+
+resource "alicloud_vpc" "vpc" {
+  name = "docker-test-vpc"
+  cidr_block = "192.168.1.0/24"
+}
+```
 <br>
 
 次にTerraformをdocker上で起動します。
