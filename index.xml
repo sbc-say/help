@@ -405,16 +405,17 @@ $ terraform plan -var-file=&amp;quot;confing.tfvars&amp;quot; Refreshing Terrafo
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/06/docker/</guid>
-      <description>&amp;nbsp; 前章までは Terraformのインストール方法、Terraformの文法、実行方法を説明しました。しかしこれらはTerraform v0.11.13前提での話なので、Terraformのバージョンが違うことで挙動が異なってしまうこともあります。Terraformでよく使うメソッドが急に廃止、、というのもよくあります。それを防ぐためにdockerを使ったインストール、利用する方法があります。dockerはパッケージングを行うための技術です。 *注：Terraformのバージョン食い違いは基本的にtfenvでカバーできます。詳しくは3章 Install &amp;amp; dockerを参照してください
+      <description>&amp;nbsp; 前章までは Terraformのインストール方法、Terraformの文法、実行方法を説明しました。しかしこれらはTerraform v0.11.13前提での話なので、Terraformのバージョンが違うことで挙動が異なってしまうこともあります。Terraformでよく使うメソッドが急に廃止、、というのもよくあります。それを防ぐためにdockerを使ったインストール、利用する方法があります。dockerはパッケージングを行うための技術です。
+*注：Terraformのバージョン食い違いは基本的にtfenvでカバーできます。詳しくは3章 Install &amp;amp; dockerを参照してください
 
-1. dockerについて &amp;nbsp; dockerはOS・ミドルウェア・ファイルシステム全体をイメージという単位で取り扱い、まるごとやりとり出来るツールです。また、イメージの配布やバージョン管理も可能です。メリットとして、手軽に同じ環境を何人のユーザ・ユーザ・他のマシンでも手に入れることができ、即座に同環境を再現（ CI (Continuous Integration) 継続的インテグレーションと CD (Continuous Delivery) 継続的デリバリー ）することができます。 また、dockerによるTerraformのインストールのみならず、docker Imageを使った既存のプロダクトリソースをそのまま導入することも可能です。（docker Imageとは、dockerコンテナを作成する際に必要となるファイルシステムです。）
+1. dockerについて &amp;nbsp; dockerはOS・ミドルウェア・ファイルシステム全体をイメージという単位で取り扱い、まるごとやりとり出来るツールです。また、イメージの配布やバージョン管理も可能です。メリットとして、手軽に同じ環境を何人のユーザ・ユーザ・他のマシンでも手に入れることができ、即座に同環境を再現（ CI (Continuous Integration) 継続的インテグレーションと CD (Continuous Delivery) 継続的デリバリー ）することができます。 また、dockerはTerraformで大きく３つの役割があり、Terraformのインストールや実行環境の再現、各種リソースの接続設定、docker Imageを使った既存のプロダクトリソースをそのまま導入することが可能です。（docker Imageとは、dockerコンテナを作成する際に必要となるファイルシステムです。）
 
-2. dockerのTerraform位置について &amp;nbsp; Terraformによるdockerの利用は大きく2パターンあります。 * Terraformのバージョン違いなど環境差分を抑えつつ実行する場合 * CI/CD:継続的インテグレーションと継続的デリバリーをする場合
-&amp;nbsp; 前者はバージョン固定や実行環境を汚さずに使用するメリットがあります。様々な環境でterraformを使用したい場合は直接terraformコマンドをインストールせず、バージョン管理が可能なツール(tfenv)を使用してインストールすルことを勧めます。 &amp;nbsp; 後者に関しては、dockerのImageファイルをdocker hub（リポジトリ）へ保存することで、新規ECSや各種アプリケーション、Webサイトを立ち上げる時、docker hub（リポジトリ）から対象のDocker ImageファイルをPullしそのまま実行することで、どの環境でも継続CI/CDを実現することができます。
-本ガイドラインはTerraformをメインとしてるため、ここにCI/CDや方法は載せませんが、やり方は以下サイトを参照してみてください。（近日中に日本語で手順方法を載せる予定）
+2. dockerのTerraform位置について &amp;nbsp; Terraformによるdockerの利用は大きく2パターンあります。 * 1.Terraformのバージョン違いなど環境差分を抑えつつ実行する場合 * 2.Terraformで新規作成した各種リソースの接続設定をする場合 * 3.CI/CD:継続的インテグレーションと継続的デリバリーをする場合
+ざっくりですがこんなイメージです。 &amp;nbsp; 1はバージョン固定や実行環境を汚さずに使用するメリットがあります。様々な環境でterraformを使用したい場合は直接terraformコマンドをインストールせず、バージョン管理が可能なツール(tfenv)を使用してインストールすルことを勧めます。 &amp;nbsp; 2はTerraformで新規作成したリソースに対し、docker-compose.yml ファイルを使ってアプリケーションの環境を設定します。こちらは公式サイトにて説明がありますので参考にしてください。 http://docs.docker.jp/compose/overview.html
+&amp;nbsp; 3は、dockerのImageファイルをdocker hub（リポジトリ）へ保存することで、新規ECSや各種アプリケーション、Webサイトを立ち上げる時、docker hub（リポジトリ）から対象のDocker ImageファイルをPullしそのまま実行することで、どの環境でも継続CI/CDを実現することができます。
+本章はTerraformをメインとしてるため、ここにCI/CDや方法は載せませんが、やり方は以下サイトを参照してみてください。（近日中にCI/CD手法を載せる予定です）
 Dockerize App and Push to Container Registry: CI/CD Automation on Container Service (1)
-Continuous Deployment Automation on Alibaba Cloud: CI/CD Automation on Container Service (2)
-Deploy Docker Image to Alibaba Cloud Container Service: CI/CD Automation on Container Service (3)</description>
+Continuous Deployment Automation on Alibaba Cloud: CI/CD Automation on Container Service (2)</description>
     </item>
     
     <item>
