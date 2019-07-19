@@ -370,6 +370,7 @@ article section.page {
   article section.page table code {
     padding: 0 0.25rem; }
   article section.page pre {
+    width: 60%;
     background-color: #eee;
     border-radius: .2rem;
     color: #444;
