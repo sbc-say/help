@@ -19,7 +19,6 @@ ECサイトの一つとして、オープンソースの電子商取引アプリ
 
 * [EC-CUBE](https://www.ec-cube.net/)
 
-![図 2](/help/image/25.2.png)
 
 
 <br>
@@ -483,78 +482,53 @@ output "rds_host_ip" {
 provisioning.sh
 
 ```
-#!/bin/bash
+#!/bin/sh
+export MYSQL_HOST='magento2.mysql.japan.rds.aliyuncs.com'
+export MYSQL_DATABASE='magento2_sample'
+export MYSQL_USER='test_user'
+export MYSQL_PASSWORD='!Password2019'
 
-apt-get update
+sudo yum install -y yum-utils
+sudo yum install composer unzip mysql
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum makecache fast
+sudo yum install docker-ce
+curl -L https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
+sudo systemctl enable docker
+sudo systemctl start docker
 
-yum -y install epel-release
-yum -y install nginx net-tools
-yum -y install unzip
-systemctl start nginx
-systemctl enable nginx
-rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-yum -y install php70w-fpm php70w-mcrypt php70w-curl php70w-cli php70w-mysql php70w-gd php70w-xsl php70w-json php70w-intl php70w-pear php70w-devel php70w-mbstring php70w-zip php70w-soap
-mkdir -p /var/lib/php/session/
-chown -R nginx:nginx /var/lib/php/session/
-systemctl start php-fpm
-systemctl enable php-fpm
+sudo gpasswd -a $USER docker
+sudo systemctl restart docker
 
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/bin --filename=composer
-cd /var/www/
-wget https://github.com/magento/magento2/archive/2.1.zip
+echo "version: '3'" >> docker-compose.yml
+echo "services:" >> docker-compose.yml
+echo "  # MySQL" >> docker-compose.yml
+echo "  db:" >> docker-compose.yml
+echo "    image: mysql:5.7" >> docker-compose.yml
+echo "    container_name: mysql_host" >> docker-compose.yml
+echo "    environment:" >> docker-compose.yml
+echo "     - MYSQL_HOST=db_host" >> docker-compose.yml
+echo "     - MYSQL_DATABASE=db_name" >> docker-compose.yml
+echo "     - MYSQL_USER=db_user" >> docker-compose.yml
+echo "     - MYSQL_PASSWORD=db_password" >> docker-compose.yml
+echo "     - TZ='Asia/Tokyo'" >> docker-compose.yml
+echo "    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci" >> docker-compose.yml
+echo "    volumes:" >> docker-compose.yml
+echo "      - ./docker/db/data:/var/lib/mysql" >> docker-compose.yml
+echo "      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf" >> docker-compose.yml
+echo "      - ./docker/db/sql:/docker-entrypoint-initdb.d" >> docker-compose.yml
+echo "    ports:" >> docker-compose.yml
+echo "    - 3306:3306" >> docker-compose.yml
+sed -i "s/=db_host/='$MYSQL_HOST'/g" docker-compose.yml
+sed -i "s/=db_name/='$MYSQL_DATABASE'/g" docker-compose.yml
+sed -i "s/=db_user/='$MYSQL_USER'/g" docker-compose.yml
+sed -i "s/=db_password/='$MYSQL_PASSWORD'/g" docker-compose.yml
 
-unzip 2.1.zip
-mv magento2-2.1 magento2
-cd magento2
-composer install -v
+sudo service docker start
+docker-compose up -d
 
-cd /etc/nginx/
-vim conf.d/magento.conf
-----
-upstream fastcgi_backend {
-        server  unix:/run/php/php-fpm.sock;
-}
- 
-server {
- 
-        listen 80;
-        server_name magento.hakase-labs.com;
-        set $MAGE_ROOT /var/www/magento2;
-        set $MAGE_MODE developer;
-        include /var/www/magento2/nginx.conf.sample;
-}
-----
-nginx -t
-systemctl restart nginx
-
-
-
-
-
-]
-
-
-
-
-
-
-
-
-
-
-yum install -y nginx php7.0-mcrypt php7.0-fpm php7.0-curl php7.0-mysql \
-  php7.0-cli php7.0-xsl php7.0-json php7.0-intl php7.0-dev php-pear php7.0-mbstring \
-  php7.0-common php7.0-zip php7.0-gd php-soap curl libcurl3
-
-
-curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer >> /var/log/bootstrap.log 2>&1
-composer config http-basic.repo.magento.com ${MAGENTO_AUTH_PUBLIC_KEY} ${MAGENTO_AUTH_PRIVATE_KEY} >> /var/log/bootstrap.log 2>&1
-composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition /var/www/magento2 >> /var/log/bootstrap.log 2>&1
-composer create-project --repository=https://repo.magento.com/ magento/project-community-edition /var/www/magento2 >> /var/log/bootstrap.log 2>&1
-
-https://repo.magento.com/magento/project-community-edition
-chown -R www-data:www-data /var/www/magento2 
 
 cat > /etc/nginx/sites-available/magento << EOF
 upstream fastcgi_backend {
@@ -589,8 +563,6 @@ systemctl restart nginx
 --admin-email=${MAGENTO_ADMIN_EMAIL} \
 --admin-firstname=${MAGENTO_ADMIN_FIRSTNAME} \
 --admin-lastname=${MAGENTO_ADMIN_LASTNAME} >> /var/log/bootstrap.log 2>&1
-
-
 
 bin/magento setup:install --backend-frontname="adminlogin" \
 --key="234923058412cc6ae7f42f9afb15032f" \

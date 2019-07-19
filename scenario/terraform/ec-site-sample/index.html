@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T11:32:57 UTC">
+<meta name="revised" content="2019-07-19T11:34:35 UTC">
 <title> MagentoでECサイト構築 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -569,8 +569,6 @@ ECサイトの一つとして、オープンソースの電子商取引アプリ
 <li><a href="https://www.ec-cube.net/">EC-CUBE</a></li>
 </ul>
 
-<p><img src="/help/image/25.2.png" alt="図 2" /></p>
-
 <p><br></p>
 
 <h3 id="ecサイトmagentoの構築について">ECサイトMagentoの構築について</h3>
@@ -1032,78 +1030,53 @@ output &quot;rds_host_ip&quot; {
 <p><br>
 provisioning.sh</p>
 
-<pre><code>#!/bin/bash
+<pre><code>#!/bin/sh
+export MYSQL_HOST='magento2.mysql.japan.rds.aliyuncs.com'
+export MYSQL_DATABASE='magento2_sample'
+export MYSQL_USER='test_user'
+export MYSQL_PASSWORD='!Password2019'
 
-apt-get update
+sudo yum install -y yum-utils
+sudo yum install composer unzip mysql
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum makecache fast
+sudo yum install docker-ce
+curl -L https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
+sudo systemctl enable docker
+sudo systemctl start docker
 
-yum -y install epel-release
-yum -y install nginx net-tools
-yum -y install unzip
-systemctl start nginx
-systemctl enable nginx
-rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-yum -y install php70w-fpm php70w-mcrypt php70w-curl php70w-cli php70w-mysql php70w-gd php70w-xsl php70w-json php70w-intl php70w-pear php70w-devel php70w-mbstring php70w-zip php70w-soap
-mkdir -p /var/lib/php/session/
-chown -R nginx:nginx /var/lib/php/session/
-systemctl start php-fpm
-systemctl enable php-fpm
+sudo gpasswd -a $USER docker
+sudo systemctl restart docker
 
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/bin --filename=composer
-cd /var/www/
-wget https://github.com/magento/magento2/archive/2.1.zip
+echo &quot;version: '3'&quot; &gt;&gt; docker-compose.yml
+echo &quot;services:&quot; &gt;&gt; docker-compose.yml
+echo &quot;  # MySQL&quot; &gt;&gt; docker-compose.yml
+echo &quot;  db:&quot; &gt;&gt; docker-compose.yml
+echo &quot;    image: mysql:5.7&quot; &gt;&gt; docker-compose.yml
+echo &quot;    container_name: mysql_host&quot; &gt;&gt; docker-compose.yml
+echo &quot;    environment:&quot; &gt;&gt; docker-compose.yml
+echo &quot;     - MYSQL_HOST=db_host&quot; &gt;&gt; docker-compose.yml
+echo &quot;     - MYSQL_DATABASE=db_name&quot; &gt;&gt; docker-compose.yml
+echo &quot;     - MYSQL_USER=db_user&quot; &gt;&gt; docker-compose.yml
+echo &quot;     - MYSQL_PASSWORD=db_password&quot; &gt;&gt; docker-compose.yml
+echo &quot;     - TZ='Asia/Tokyo'&quot; &gt;&gt; docker-compose.yml
+echo &quot;    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci&quot; &gt;&gt; docker-compose.yml
+echo &quot;    volumes:&quot; &gt;&gt; docker-compose.yml
+echo &quot;      - ./docker/db/data:/var/lib/mysql&quot; &gt;&gt; docker-compose.yml
+echo &quot;      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf&quot; &gt;&gt; docker-compose.yml
+echo &quot;      - ./docker/db/sql:/docker-entrypoint-initdb.d&quot; &gt;&gt; docker-compose.yml
+echo &quot;    ports:&quot; &gt;&gt; docker-compose.yml
+echo &quot;    - 3306:3306&quot; &gt;&gt; docker-compose.yml
+sed -i &quot;s/=db_host/='$MYSQL_HOST'/g&quot; docker-compose.yml
+sed -i &quot;s/=db_name/='$MYSQL_DATABASE'/g&quot; docker-compose.yml
+sed -i &quot;s/=db_user/='$MYSQL_USER'/g&quot; docker-compose.yml
+sed -i &quot;s/=db_password/='$MYSQL_PASSWORD'/g&quot; docker-compose.yml
 
-unzip 2.1.zip
-mv magento2-2.1 magento2
-cd magento2
-composer install -v
+sudo service docker start
+docker-compose up -d
 
-cd /etc/nginx/
-vim conf.d/magento.conf
-----
-upstream fastcgi_backend {
-        server  unix:/run/php/php-fpm.sock;
-}
- 
-server {
- 
-        listen 80;
-        server_name magento.hakase-labs.com;
-        set $MAGE_ROOT /var/www/magento2;
-        set $MAGE_MODE developer;
-        include /var/www/magento2/nginx.conf.sample;
-}
-----
-nginx -t
-systemctl restart nginx
-
-
-
-
-
-]
-
-
-
-
-
-
-
-
-
-
-yum install -y nginx php7.0-mcrypt php7.0-fpm php7.0-curl php7.0-mysql \
-  php7.0-cli php7.0-xsl php7.0-json php7.0-intl php7.0-dev php-pear php7.0-mbstring \
-  php7.0-common php7.0-zip php7.0-gd php-soap curl libcurl3
-
-
-curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer &gt;&gt; /var/log/bootstrap.log 2&gt;&amp;1
-composer config http-basic.repo.magento.com ${MAGENTO_AUTH_PUBLIC_KEY} ${MAGENTO_AUTH_PRIVATE_KEY} &gt;&gt; /var/log/bootstrap.log 2&gt;&amp;1
-composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition /var/www/magento2 &gt;&gt; /var/log/bootstrap.log 2&gt;&amp;1
-composer create-project --repository=https://repo.magento.com/ magento/project-community-edition /var/www/magento2 &gt;&gt; /var/log/bootstrap.log 2&gt;&amp;1
-
-https://repo.magento.com/magento/project-community-edition
-chown -R www-data:www-data /var/www/magento2 
 
 cat &gt; /etc/nginx/sites-available/magento &lt;&lt; EOF
 upstream fastcgi_backend {
@@ -1138,8 +1111,6 @@ systemctl restart nginx
 --admin-email=${MAGENTO_ADMIN_EMAIL} \
 --admin-firstname=${MAGENTO_ADMIN_FIRSTNAME} \
 --admin-lastname=${MAGENTO_ADMIN_LASTNAME} &gt;&gt; /var/log/bootstrap.log 2&gt;&amp;1
-
-
 
 bin/magento setup:install --backend-frontname=&quot;adminlogin&quot; \
 --key=&quot;234923058412cc6ae7f42f9afb15032f&quot; \
@@ -1186,14 +1157,14 @@ bin/magento setup:install --backend-frontname=&quot;adminlogin&quot; \
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  07/01/2019
+        <i class='fa fa-calendar'></i> Last update on 07/01/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/scenario/terraform/ec-site-sample.md" target="blank"><i class="fa fa-code-fork"></i>
-        </a>
+        Improve this page</a>
     </div>
     
   </div>
