@@ -181,8 +181,8 @@ worker_nodes = [
         map[private_ip:192.168.1.9 id:i-6we756j83yg6rsnuzc3o name:worker-k8s-for-cs-cfdaeda40f6b9426e833f6cfc059b3d20]
     ]
 ]
-$
-$
+
+
 ```
 <br>
 
