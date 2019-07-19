@@ -240,7 +240,7 @@ resource "alicloud_instance" "ECS_instance" {
   instance_type   = "ecs.xn4.small"
   image_id        = "centos_7_04_64_20G_alibase_201701015.vhd"
   system_disk_category = "cloud_efficiency"
-  security_groups = ["${alicloud_security_group.sg_server.id}"]
+  security_groups = ["${alicloud_security_group.sg.id}"]
   availability_zone = "${var.zone}"
   vswitch_id = "${alicloud_vswitch.vsw.id}"
   password = "${var.ecs_password}"
@@ -272,6 +272,17 @@ resource "alicloud_slb_attachment" "default" {
   load_balancer_id = "${alicloud_slb.default.id}"
   instance_ids = ["${alicloud_instance.ECS_instance.id}"]
 }
+
+data "template_file" "user_data" {
+  template = "${file("provisioning.sh")}"
+  vars {
+    DB_HOST_IP = "${alicloud_db_connection.default.0.ip_address}"
+    DB_NAME = "${var.database_name}"
+    DB_USER = "${var.db_user}"
+    DB_PASSWORD = "${var.db_password}"
+  }
+}
+
 ```
 
 <br>
@@ -324,12 +335,12 @@ provisioning.sh
 
 ```
 #!/bin/sh
-export MYSQL_HOST='rds-sample.mysql.japan.rds.aliyuncs.com'
-export MYSQL_DATABASE='rds_setting_sample'
-export MYSQL_USER='test_user'
-export MYSQL_PASSWORD='!Password2019'
+export MYSQL_HOST=DB_HOST_IP
+export MYSQL_DATABASE=DB_NAME
+export MYSQL_USER=MYSQL_USER
+export MYSQL_PASSWORD=DB_PASSWORD
 
-sudo yum install -y yum-utils
+sudo yum install -y yum-utils unzip mysql
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo yum makecache fast
 sudo yum install docker-ce
@@ -362,6 +373,7 @@ sed -i "s/=db_password/='$MYSQL_PASSWORD'/g" docker-compose.yml
 
 sudo service docker start
 docker-compose up -d
+
 ```
 
 <br>
@@ -376,7 +388,59 @@ terraform apply -var-file="confing.tfvars"
 ```
 <br>
 これで完了です。問題なく実行できたら、ECSとSLBそれぞれのIP、DBのhostが表示されます。
+DBのhostはECSから手動接続するにあたり必要なのでメモを残してください。
 
+```
+alicloud_db_account_privilege.default: Creation complete after 2m29s (ID: rm-e9b9hkm8u33h8cd3x:test_user:ReadWrite)
+alicloud_db_connection.default: Creation complete after 2m32s (ID: rm-e9b9hkm8u33h8cd3x:rds-sample)
+data.template_file.user_data: Refreshing state...
+
+Apply complete! Resources: 14 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+ECS_instance_ip = [
+    47.74.52.124
+]
+rds_host = rm-e9b9hkm8u33h8cd3x.mysql.japan.rds.aliyuncs.com
+slb_ip = 47.74.1.41
+$ 
+```
 <br>
 
+それではECSに入り、RDSへ接続してみます。先ほどのDB host名が必要になります。
 
+```
+$ ssh root@47.74.52.124
+The authenticity of host '47.74.52.124 (47.74.52.124)' can't be established.
+ECDSA key fingerprint is SHA256:XaQ96OPhtGZQPyQXlYin5qF+cqxS2Arle41wTqkOinE.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '47.74.52.124' (ECDSA) to the list of known hosts.
+root@47.74.52.124's password: 
+
+Welcome to Alibaba Cloud Elastic Compute Service !
+
+[root@RDS-Setting-Sample-for-Terraform-ECS-instance ~]# 
+[root@RDS-Setting-Sample-for-Terraform-ECS-instance ~]# mysql --version
+mysql  Ver 15.1 Distrib 5.5.60-MariaDB, for Linux (x86_64) using readline 5.1
+[root@RDS-Setting-Sample-for-Terraform-ECS-instance ~]# 
+[root@RDS-Setting-Sample-for-Terraform-ECS-instance ~]# 
+[root@RDS-Setting-Sample-for-Terraform-ECS-instance ~]# mysql -u test_user -p -h rm-e9b9hkm8u33h8cd3x.mysql.japan.rds.aliyuncs.com
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 51312248
+Server version: 5.5.18.1 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> 
+MySQL [(none)]> exit;
+Bye
+[root@RDS-Setting-Sample-for-Terraform-ECS-instance ~]# 
+
+```
+無事MySQLへ接続できたことを確認できました。
+
+<br>
