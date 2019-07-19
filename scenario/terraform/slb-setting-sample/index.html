@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T09:46:14 UTC">
+<meta name="revised" content="2019-07-19T10:10:36 UTC">
 <title>SLBの構築 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -1082,7 +1082,7 @@ resource &quot;alicloud_slb&quot; &quot;default&quot; {
 }
 
 resource &quot;alicloud_slb_listener&quot; &quot;tcp_http&quot; {
-  load_balancer_id = &quot;${alicloud_slb.slb.id}&quot;
+  load_balancer_id = &quot;${alicloud_slb.default.id}&quot;
   backend_port = &quot;80&quot;
   frontend_port = &quot;80&quot;
   protocol = &quot;tcp&quot;
@@ -1091,7 +1091,7 @@ resource &quot;alicloud_slb_listener&quot; &quot;tcp_http&quot; {
 }
 
 resource &quot;alicloud_slb_attachment&quot; &quot;slb_attachment&quot; {
-  load_balancer_id = &quot;${alicloud_slb.slb.id}&quot;
+  load_balancer_id = &quot;${alicloud_slb.default.id}&quot;
   instance_ids = [&quot;${alicloud_instance.ECS_instance_for_SLB_Sample.*.id}&quot;]
 }
 </code></pre>
@@ -1111,7 +1111,7 @@ variable &quot;ecs_password&quot; {}
 output.tf</p>
 
 <pre><code>output &quot;ECS_instance_ip&quot; {
-  value = &quot;${alicloud_instance.ECS_instance.*.public_ip}&quot;
+  value = &quot;${alicloud_instance.ECS_instance_for_SLB_Sample.*.public_ip}&quot;
 }
 output &quot;slb_ip&quot; {
   value = &quot;${alicloud_slb.default.address}&quot;
@@ -1151,6 +1151,32 @@ terraform apply -var-file=&quot;confing.tfvars&quot;
 
 <p><br>
 これで完了です。問題なく実行できたら、ECSとSLBのIPが表示されます。</p>
+
+<pre><code>alicloud_instance.ECS_instance_for_SLB_Sample.0: Still creating... (40s elapsed)
+alicloud_instance.ECS_instance_for_SLB_Sample.1: Still creating... (40s elapsed)
+alicloud_instance.ECS_instance_for_SLB_Sample[1]: Creation complete after 46s (ID: i-6web68sjtatfqyq2mdd7)
+alicloud_instance.ECS_instance_for_SLB_Sample.0: Still creating... (50s elapsed)
+alicloud_instance.ECS_instance_for_SLB_Sample[0]: Creation complete after 59s (ID: i-6we4hecn7bodqns4pode)
+alicloud_slb_attachment.slb_attachment: Creating...
+  backend_servers:         &quot;&quot; =&gt; &quot;&lt;computed&gt;&quot;
+  instance_ids.#:          &quot;0&quot; =&gt; &quot;2&quot;
+  instance_ids.3313383734: &quot;&quot; =&gt; &quot;i-6web68sjtatfqyq2mdd7&quot;
+  instance_ids.3330124408: &quot;&quot; =&gt; &quot;i-6we4hecn7bodqns4pode&quot;
+  load_balancer_id:        &quot;&quot; =&gt; &quot;lb-e9b8zcx2zwr5y423dlrjh&quot;
+  weight:                  &quot;&quot; =&gt; &quot;100&quot;
+alicloud_slb_attachment.slb_attachment: Creation complete after 3s (ID: lb-e9b8zcx2zwr5y423dlrjh)
+
+Apply complete! Resources: 9 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+ECS_instance_ip = [
+    47.74.6.63,
+    47.74.11.111
+]
+slb_ip = 47.245.35.115
+$ 
+</code></pre>
 
 <p><br></p>
 
