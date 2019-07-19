@@ -34,7 +34,7 @@
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/</guid>
       <description>本章は Terraform のインストール方法を学びます。
- ※ Mac/Linuxでのインストール方法になります。Windows版でのTerraform導入方法は別途記載予定です。 ※ Terraformバージョン違いを防止するためにこちらのDockerファイルを使った使用方法がありますが、こちらも別途記載予定です。
+ ※ Mac/Linuxでのインストール方法になります。Windows版でのTerraform導入方法は別途記載予定です。 ※ Terraformバージョン違いを防止するためにtfenvで管理をする方法がありますが、これとは別に Dockerを使った方法もありますので参考にしてください。
  1. Homebrew &amp;nbsp; Terraformは前章で説明した通り、HashiCorp社がオープンソースとして展開してるツールです。基本的にはバージョンアップに 追従しやすい tfenv の利用を推奨しますが、お試しであればHomebrew も手軽です。 macOS の場合は次のように、Homebrew を使ってインストールできます。
 $ brew install terraform $ terraform --version Terraform v0.11.13  
 2. tfenv tfenvは Terraformのバージョン管理マネージャです。 tfenvを使うことで、異なるバージョンのTerraformを差異なく利用できます。
