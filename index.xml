@@ -555,8 +555,8 @@ resource &amp;quot;alicloud_ess_scaling_group&amp;quot; &amp;quot;scaling&amp;qu
       <description>AlibabaCloudの基本プロダクトサービスであるObject Storage Serviceの作成方法を解説します。
 1. OSS &amp;nbsp; Object Storage Service （OSS）は、クラウド内の任意の量のデータの保存、バックアップ、およびアーカイブを可能にするストレージサービスです。
 
-2. コンポーネント &amp;nbsp; OSSはTerraform モジュールを使用して、バケットとオブジェクトを管理できます。 例として、 * バケット管理機能 * バケットの作成 * バケットの ACL を設定 * バケットに CORS (Cross-Origin Resource Sharing) を設定 * バケットのログ記録を設定 * バケットの静的 Web サイトホスティングを設定 * バケットのリファラを設定 * バケットのライフサイクルルールを設定 * オブジェクト管理機能 * オブジェクトをアップロード * オブジェクトのサーバー側の暗号化を設定 * オブジェクトに ACL を設定 * オブジェクトメタを設定
-などが上げられます。
+2. コンポーネント &amp;nbsp; OSSはTerraform モジュールを使用して、バケットとオブジェクトを管理できます。 例として、
+ バケット管理機能 バケットの作成 バケットの ACL を設定 バケットに CORS (Cross-Origin Resource Sharing) を設定 バケットのログ記録を設定 バケットの静的 Web サイトホスティングを設定 バケットのリファラを設定 バケットのライフサイクルルールを設定 オブジェクト管理機能 オブジェクトをアップロード オブジェクトのサーバー側の暗号化を設定 オブジェクトに ACL を設定 オブジェクトメタを設定  などが上げられます。
 
 3. OSSのTerraformについて &amp;nbsp; 本題、OSS作成に移ります。プライベートバケットを作成するという簡単なソースを作ってみます。
 resource &amp;quot;alicloud_oss_bucket&amp;quot; &amp;quot;bucket-acl&amp;quot;{ bucket = &amp;quot;bucket-170309-acl&amp;quot; acl = &amp;quot;private&amp;quot; }  alicloud_oss_bucket  bucket - （オプション）バケットの名前。 acl - （任意）ACL。デフォルトは &amp;ldquo;private&amp;rdquo;。  他、OSSに関してはalicloud_oss_bucketだけで色々なリソース作成が可能です。例えば以下の例があります。</description>

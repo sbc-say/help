@@ -16,6 +16,7 @@ AlibabaCloudの基本プロダクトサービスであるObject Storage Service�
 ### 2. コンポーネント
 &nbsp; OSSはTerraform モジュールを使用して、バケットとオブジェクトを管理できます。
 例として、
+
 * バケット管理機能
 * バケットの作成
 * バケットの ACL を設定
@@ -44,6 +45,7 @@ resource "alicloud_oss_bucket" "bucket-acl"{
 }
 ```
 #### **alicloud_oss_bucket**
+
 * `bucket` - （オプション）バケットの名前。
 * `acl` - （任意）ACL。デフォルトは "private"。
 
