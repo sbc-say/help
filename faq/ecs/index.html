@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T08:16:20 UTC">
+<meta name="revised" content="2019-07-19T08:38:12 UTC">
 <title>ECS :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -405,13 +405,6 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/faq/slb/" class="dd-item">
-        <div>
-          <a href="/help/faq/slb/">
-            SLB
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
       <li data-nav-id="/help/faq/rds/" class="dd-item">
         <div>
           <a href="/help/faq/rds/">
@@ -419,10 +412,10 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/faq/price/" class="dd-item">
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
         <div>
-          <a href="/help/faq/price/">
-            料金
+          <a href="/help/faq/slb/">
+            SLB
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -430,6 +423,20 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
         <div>
           <a href="/help/faq/account/">
             アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/support/" class="dd-item">
+        <div>
+          <a href="/help/faq/support/">
+            サポート
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -511,10 +518,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
    よくある質問</option> 
       <option value="/help/faq/ecs/"  selected>- ECS</option>
       <option value="/help/faq/oss/" >- OSS</option>
-      <option value="/help/faq/slb/" >- SLB</option>
       <option value="/help/faq/rds/" >- RDS</option>
-      <option value="/help/faq/price/" >- 料金</option>
+      <option value="/help/faq/slb/" >- SLB</option>
       <option value="/help/faq/account/" >- アカウント</option>
+      <option value="/help/faq/support/" >- サポート</option>
+      <option value="/help/faq/price/" >- 料金</option>
   
     <option value="/help/about/" >
    About SBC Technical Reference</option>
@@ -532,8 +540,65 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     
     
 
+<h4 id="index">目次</h4>
+
+<ul>
+<li>一般仕様
+
+<ul>
+<li><a href="#アベイラビリティゾーン（AZ）識別文字と実際のロケーションに関するマッピング仕様について">アベイラビリティゾーン（AZ）識別文字と実際のロケーションに関するマッピング仕様について</a></li>
+<li><a href="#1つのアカウント/リージョン配下のECS購入台数制限について">1つのアカウント/リージョン配下のECS購入台数制限について</a></li>
+<li><a href="#サブスクリプションECSのライフサイクルについて">サブスクリプションECSのライフサイクルについて</a></li>
+<li><a href="#RDSCALとクライアントCALの必要性について">RDSCALとクライアントCALの必要性について</a></li>
+<li><a href="#ECSのデフォルトタイムゾーンについて">ECSのデフォルトタイムゾーンについて</a></li>
+<li><a href="#スナップショット取得時の性能影響について">スナップショット取得時の性能影響について</a></li>
+<li><a href="#購入可能な従量課金インスタンスの上限について">購入可能な従量課金インスタンスの上限について</a></li>
+<li><a href="#25番ポートの制限について">25番ポートの制限について</a></li>
+<li><a href="#ICP必要性の判断方法について">ICP必要性の判断方法について</a></li>
+<li><a href="#インスタンススペックのアップグレード方法について">インスタンススペックのアップグレード方法について</a></li>
+</ul></li>
+<li>ネットワーク
+
+<ul>
+<li><a href="#VPCとVswitchの変更方法について">VPCとVswitchの変更方法について</a></li>
+<li><a href="#VPCで指定可能なCIDRブロックについて">VPCで指定可能なCIDRブロックについて</a></li>
+<li><a href="#EIPとパブリックIPの違いについて">EIPとパブリックIPの違いについて</a></li>
+<li><a href="#EIPとパブリックIPの帯域幅の変更方法について">EIPとパブリックIPの帯域幅の変更方法について</a></li>
+<li><a href="#プライベートIPの変更方法について">プライベートIPの変更方法について</a></li>
+<li><a href="#インバウンドとアウトバウンド帯域幅の制限値について">インバウンドとアウトバウンド帯域幅の制限値について</a></li>
+</ul></li>
+<li>イメージ
+
+<ul>
+<li><a href="#イメージのインポート方法について">イメージのインポート方法について</a></li>
+<li><a href="#クラウド移転ツールについて">クラウド移転ツールについて</a></li>
+<li><a href="#イメージのエクスポート方法について">イメージのエクスポート方法について</a></li>
+<li><a href="#イメージのリージョン間コピー方法について">イメージのリージョン間コピー方法について</a></li>
+</ul></li>
+<li>ディスク
+
+<ul>
+<li><a href="#システムディスクとデータディスクの違いについて">システムディスクとデータディスクの違いについて</a></li>
+<li><a href="#クラウドディスクの拡張方法について">クラウドディスクの拡張方法について</a></li>
+</ul></li>
+<li>VNC
+
+<ul>
+<li><a href="#VNCで一部記号入力できない事象について">VNCで一部記号入力できない事象について</a></li>
+<li><a href="#VNCパスワードとECSパスワードの違いと再設定方法について">VNCパスワードとECSパスワードの違いと再設定方法について</a></li>
+</ul></li>
+<li>セキュリティグループ
+
+<ul>
+<li><a href="#インバウンドとアウトバウンドのデフォルト動作について">インバウンドとアウトバウンドのデフォルト動作について</a></li>
+<li><a href="#同じセキュリティグループ内のアクセス制限について">同じセキュリティグループ内のアクセス制限について</a></li>
+<li><a href="#セキュリティグルールの適用順位について">セキュリティグルールの適用順位について</a></li>
+</ul></li>
+</ul>
+
 <h4 id="一般仕様">一般仕様</h4>
 
+<p><h4 id="アベイラビリティゾーン（AZ）識別文字と実際のロケーションに関するマッピング仕様について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">アベイラビリティゾーン（AZ）識別文字と実際のロケーションに関するマッピング仕様について</div>
 	<div class="panel-body"><p>Alibaba Cloudでは、アベイラビリティゾーン（AZ）識別文字と実際のロケーションのマッピングは、全てのアカウントで共通しています。</p>
@@ -544,7 +609,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="1つのアカウント/リージョン配下のECS購入台数制限について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">1つのアカウント/リージョン配下のECS購入台数制限について</div>
 	<div class="panel-body"><p>従量課金でのECSインスタンス購入上限は、vCPU数により制限されています。従量課金型ECSインスタンスの購入は各リージョン「50vCPU」までとなっております。なお、サブスクリプション型ECSの場合は、購入上限数を設けておりません。</p>
@@ -555,7 +622,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="サブスクリプションECSのライフサイクルについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">サブスクリプションECSのライフサイクルについて</div>
 	<div class="panel-body"><p>サブスクリプションインスタンスの期間を更新しない、また更新失敗で有効期限切れとなった場合、そのインスタンスはライフサイクルに入ります。</p>
@@ -569,7 +638,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="RDSCALとクライアントCALの必要性について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">RDSCALとクライアントCALの必要性について</div>
 	<div class="panel-body"><p>Alibaba Cloud が提供する Windows 仮想サーバーにて、RDS CALとクライアントCALの必要性は下記のとおりです。<br></p>
@@ -581,7 +652,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="ECSのデフォルトタイムゾーンについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">ECSのデフォルトタイムゾーンについて</div>
 	<div class="panel-body"><p>リージョンに関わらず、ECSインスタンスのデフォルトタイムゾーンは、中国時間（UTC+8）になります。<br></p>
@@ -591,7 +664,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="スナップショット取得時の性能影響について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">スナップショット取得時の性能影響について</div>
 	<div class="panel-body"><p>スナップショットの作成時は、ストレージのIO性能（最大10%低下）に影響します。</p>
@@ -602,7 +677,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="購入可能な従量課金インスタンスの上限について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">購入可能な従量課金インスタンスの上限について</div>
 	<div class="panel-body"><p>従量課金でのECSインスタンス購入上限は、vCPU数により制限されています。従量課金型ECSインスタンスの購入は各リージョン「50vCPU」までとなっております。なお、サブスクリプション型ECSの場合は、購入上限数を設けておりません。</p>
@@ -613,7 +690,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="25番ポートの制限について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">25番ポートの制限について</div>
 	<div class="panel-body"><p>Alibaba Cloud では、MTAとしてメール送信（25 番ポートの外部接続）することが制限されております。<br></p>
@@ -627,7 +706,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="ICP必要性の判断方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">ICP必要性の判断方法について</div>
 	<div class="panel-body"><p>中国本土にサーバを設置し、ウェブサービス提供する場合は、ICPライセンスが必要になります。<br></p>
@@ -639,7 +720,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="インスタンススペックのアップグレード方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">インスタンススペックのアップグレード方法について</div>
 	<div class="panel-body"><p>サブスクリプション、または従量課金ECSのスペックをアップグレードすることは可能です。<br>
@@ -658,11 +741,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
-<p><br></p>
+<h4 id="ネットワーク">ネットワーク</h4>
 
-<h4 id="ネットワーク関連">ネットワーク関連</h4>
-
+<p><h4 id="VPCとVswitchの変更方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">VPCとVswitchの変更方法について</div>
 	<div class="panel-body"><p>ECSを作成後、そのECSのVPCとVswitchは変更できません。<br>
@@ -671,7 +754,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="VPCで指定可能なCIDRブロックについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">VPCで指定可能なCIDRブロックについて</div>
 	<div class="panel-body"><p>VPCのIP CIDRは<code>10.0.0.0/8</code>、<code>172.16.0.0/12</code>及び<code>192.168.0.0/16</code>から選択いただく必要があります。<br>
@@ -684,7 +769,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="EIPとパブリックIPの違いについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">EIPとパブリックIPの違いについて</div>
 	<div class="panel-body"><p>ECSでは、インターネット通信用に「パブリックIP」と「EIP」を利用できます。<br></p>
@@ -699,7 +786,9 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="EIPとパブリックIPの帯域幅の変更方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">EIPとパブリックIPの帯域幅の変更方法について</div>
 	<div class="panel-body"><p>EIPの帯域幅を変更することはできます。<br></p>
@@ -717,7 +806,9 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="プライベートIPの変更方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">プライベートIPの変更方法について</div>
 	<div class="panel-body"><p>ECSのプライベートIPを同じVswitch内の空きIPに限って変更することができます。</p>
@@ -734,7 +825,9 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="インバウンドとアウトバウンド帯域幅の制限値について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">インバウンドとアウトバウンド帯域幅の制限値について</div>
 	<div class="panel-body"><p>ECSのインバウンドとアウトバウンド帯域幅の制限値は下記となります。<br><br></p>
@@ -754,11 +847,11 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
-
-<p><br></p>
+<a href="#index">[⬆ 目次へ]</a></p>
 
 <h4 id="イメージ">イメージ</h4>
 
+<p><h4 id="イメージのインポート方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">イメージのインポート方法について</div>
 	<div class="panel-body"><p>基準に満たすイメージをAlibabaCloudにインポートすることができます。</p>
@@ -774,7 +867,9 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="クラウド移転ツールについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">クラウド移転ツールについて</div>
 	<div class="panel-body"><p>Alibaba Cloud 移行ツールのご利用により、物理的なデスクトップおよびサーバを変換したり、ECS への仮想マシン、クラウドホストを移行することができます。</p>
@@ -792,7 +887,9 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="イメージのエクスポート方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">イメージのエクスポート方法について</div>
 	<div class="panel-body"><p>イメージのエクスポート機能を利用するには、制限解除申請が必要です。事前にチケット起票して申請ください。</p>
@@ -804,7 +901,9 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="イメージのリージョン間コピー方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">イメージのリージョン間コピー方法について</div>
 	<div class="panel-body"><p>日本サイトでは現在、制限解除の申請なしでリージョン間のイメージコピーすることができます。</p>
@@ -816,11 +915,11 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
-
-<p><br></p>
+<a href="#index">[⬆ 目次へ]</a></p>
 
 <h4 id="ディスク">ディスク</h4>
 
+<p><h4 id="システムディスクとデータディスクの違いについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">システムディスクとデータディスクの違いについて</div>
 	<div class="panel-body"><p>システムディスクとデータディスクには下記の違いがあります。<br><br></p>
@@ -840,8 +939,10 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
-<p><div class="panel panel-default">
+<p><h4 id="クラウドディスクの拡張方法について"></h4>
+<div class="panel panel-default">
 	<div class="panel-heading">クラウドディスクの拡張方法について</div>
 	<div class="panel-body"><p>クラウドディスクはディスクタイプにより拡張方法が異なります。<br><br></p>
 
@@ -860,10 +961,11 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
-<br></p>
+<a href="#index">[⬆ 目次へ]</a></p>
 
 <h4 id="vnc">VNC</h4>
 
+<p><h4 id="VNCで一部記号入力できない事象について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">VNCで一部記号入力できない事象について</div>
 	<div class="panel-body"><p>コンソールのVNCを利用する場合に、キーボードのレイアウトにより特殊記号の入力が正確に認識されない事象がありますが、現在回避策がありません。<br></p>
@@ -873,8 +975,10 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
-<p><div class="panel panel-default">
+<p><h4 id="VNCパスワードとECSパスワードの違いと再設定方法について"></h4>
+<div class="panel panel-default">
 	<div class="panel-heading">VNCパスワードとECSパスワードの違いと再設定方法について</div>
 	<div class="panel-body"><p>VNCパスワードとECSパスワードの違いと再設定方法は下記となります。<br><br></p>
 
@@ -892,10 +996,11 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
-<br></p>
+<a href="#index">[⬆ 目次へ]</a></p>
 
 <h4 id="セキュリティグループ">セキュリティグループ</h4>
 
+<p><h4 id="インバウンドとアウトバウンドのデフォルト動作について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">インバウンドとアウトバウンドのデフォルト動作について</div>
 	<div class="panel-body"><p>セキュリティグループにルールを設定しなかった場合、デフォルトでは以下のような動作となります。<br><br></p>
@@ -909,7 +1014,9 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="同じセキュリティグループ内のアクセス制限について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">同じセキュリティグループ内のアクセス制限について</div>
 	<div class="panel-body"><p>同一セキュリティグループに所属する複数のECS間は、セキュリティグループの制限を受けず全部トラフィック通信可能となります。</p>
@@ -917,7 +1024,9 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="セキュリティグルールの適用順位について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">セキュリティグルールの適用順位について</div>
 	<div class="panel-body"><p>ECSが複数セキュリティグループに所属する場合、全セキュリティグループルールが同時に適用されます。<br>
@@ -927,6 +1036,7 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
 
     
@@ -949,14 +1059,14 @@ EIPをバインドしたECSを削除しても、EIPは自動的に削除され�
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  07/10/2019
+        <i class='fa fa-calendar'></i> Last update on 07/19/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/faq/ecs.md" target="blank"><i class="fa fa-code-fork"></i>
-        </a>
+        Improve this page</a>
     </div>
     
   </div>

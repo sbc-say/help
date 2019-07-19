@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T08:16:20 UTC">
+<meta name="revised" content="2019-07-19T08:38:12 UTC">
 <title>OSS :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -405,13 +405,6 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/faq/slb/" class="dd-item">
-        <div>
-          <a href="/help/faq/slb/">
-            SLB
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
       <li data-nav-id="/help/faq/rds/" class="dd-item">
         <div>
           <a href="/help/faq/rds/">
@@ -419,10 +412,10 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/faq/price/" class="dd-item">
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
         <div>
-          <a href="/help/faq/price/">
-            料金
+          <a href="/help/faq/slb/">
+            SLB
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -430,6 +423,20 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
         <div>
           <a href="/help/faq/account/">
             アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/support/" class="dd-item">
+        <div>
+          <a href="/help/faq/support/">
+            サポート
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -511,10 +518,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
    よくある質問</option> 
       <option value="/help/faq/ecs/" >- ECS</option>
       <option value="/help/faq/oss/"  selected>- OSS</option>
-      <option value="/help/faq/slb/" >- SLB</option>
       <option value="/help/faq/rds/" >- RDS</option>
-      <option value="/help/faq/price/" >- 料金</option>
+      <option value="/help/faq/slb/" >- SLB</option>
       <option value="/help/faq/account/" >- アカウント</option>
+      <option value="/help/faq/support/" >- サポート</option>
+      <option value="/help/faq/price/" >- 料金</option>
   
     <option value="/help/about/" >
    About SBC Technical Reference</option>
@@ -532,11 +540,46 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     
     
 
+<h4 id="index">目次</h4>
+
+<ul>
+<li>一般仕様
+
+<ul>
+<li><a href="#中国東部1のOSSを利用しなくても課金される事象について">中国東部1のOSSを利用しなくても課金される事象について</a></li>
+<li><a href="#標準、IA、アーカイブの違いについて">標準、IA、アーカイブの違いについて</a></li>
+<li><a href="#クロスリージョンレプリケーションの利用制限について">クロスリージョンレプリケーションの利用制限について</a></li>
+<li><a href="#パケット間のファイル複製方法について">パケット間のファイル複製方法について</a></li>
+<li><a href="#5G以上のファイルのアップロード方法について">5G以上のファイルのアップロード方法について</a></li>
+<li><a href="#同名ファイルを入れ替え後の即時反映について">同名ファイルを入れ替え後の即時反映について</a></li>
+<li><a href="#プライベート/パブリックエンドポイントの違いについて">プライベート/パブリックエンドポイントの違いについて</a></li>
+<li><a href="#OSSのアクセスログの取得方法について">OSSのアクセスログの取得方法について</a></li>
+<li><a href="#OSSのイメージ/ビデオ処理の利用方法について">OSSのイメージ/ビデオ処理の利用方法について</a></li>
+</ul></li>
+<li>製品連携
+
+<ul>
+<li><a href="#OSSをディスクとしてマウントする方法について">OSSをディスクとしてマウントする方法について</a></li>
+<li><a href="#FunctionComputeのトリガーとして利用方法について">FunctionComputeのトリガーとして利用方法について</a></li>
+<li><a href="#CDNでOSS静的サイトの公開方法について">CDNでOSS静的サイトの公開方法について</a></li>
+<li><a href="#OSSに静的サイトを設置した場合のICP必要性について">OSSに静的サイトを設置した場合のICP必要性について</a></li>
+<li><a href="#OSSにインターネット経由で接続する際のFQDNについて">OSSにインターネット経由で接続する際のFQDNについて</a></li>
+</ul></li>
+<li>権限
+
+<ul>
+<li><a href="#RAMユーザー対象にバケットアクセス権限の制御方法について">RAMユーザー対象にバケットアクセス権限の制御方法について</a></li>
+<li><a href="#OSS公開してもディレクトリにアクセスできない事象について">OSS公開してもディレクトリにアクセスできない事象について</a></li>
+<li><a href="#RAMユーザー利用時のBucketList権限の必要性について">RAMユーザー利用時のBucketList権限の必要性について</a></li>
+</ul></li>
+</ul>
+
 <h4 id="一般仕様">一般仕様</h4>
 
+<p><h4 id="中国東部1のOSSを利用しなくても課金される事象について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">中国東部1のOSSを利用しなくても課金される事象について</div>
-	<div class="panel-body"><p>OSSコンソールでのパケット操作は実質上にAPIで実行されています。<br></p>
+	<div class="panel-body"><p>OSSコンソールでのパケット操作は実質上にAPIで実行されています。</p>
 
 <p><code>GetBucket</code>などのようなパケットを特定しないに操作以外、共通な属性を取得するようなリクエストを実行された場合、デフォルトで<code>中国東部１</code>リージョンのエンドポイントが利用される仕様となります。</p>
 
@@ -546,11 +589,13 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="標準、IA、アーカイブの違いについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">標準、IA、アーカイブの違いについて</div>
-	<div class="panel-body"><p>標準ストレージと比較する場合、低頻度アクセスストレージに保存したファイルを30日以内、アーカイブストレージは60日以内に削除した場合、料金がかかります。<br>
-そして、アーカイブストレージからファイルを取り出す場合、解凍時間が必要となります。<br><br></p>
+	<div class="panel-body"><p>標準ストレージと比較する場合、低頻度アクセスストレージに保存したファイルを30日以内、アーカイブストレージは60日以内に削除した場合、料金がかかります。
+そして、アーカイブストレージからファイルを取り出す場合、解凍時間が必要となります。</p>
 
 <div class="notices tip" ><p>標準ストレージ<br>
 高パフォーマンス、高信頼性、高可用性を実現する OSS インスタンス<br>
@@ -577,7 +622,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="クロスリージョンレプリケーションの利用制限について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">クロスリージョンレプリケーションの利用制限について</div>
 	<div class="panel-body"><p>クロスリージョンレプリケーションは対応していますが、中国本土リージョン間、またはアメリカ東部、西部間のみとなります。その以外のリージョンでは、現状中間サーバーを経由する必要があります。</p>
@@ -589,13 +636,15 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="パケット間のファイル複製方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">パケット間のファイル複製方法について</div>
 	<div class="panel-body"><p>下記の前提条件であれば、OSSBrowserを利用してコピー/移動することが可能です。<br>
 ・同じリージョンの別バケット間のコピー/移動<br>
 ・標準パケットからアーカイブパケットへのコピー/移動<br>
-※アーカイブパケットから標準パケットへのコピー/移動も可能ですが、事前にアーカイブファイルを解凍する必要があります。 一括解凍機能がないため、多数ファイルの場合、手間かかります。<br><br></p>
+※アーカイブパケットから標準パケットへのコピー/移動も可能ですが、事前にアーカイブファイルを解凍する必要があります。一括解凍機能がないため、多数ファイルの場合、手間かかります。<br></p>
 
 <p>手順は下記となります。<br>
 ・ソースパケットのルートディレクトリにて全ファイルを選択し、「コピー」または「移動」をクリック<br>
@@ -607,7 +656,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="5G以上のファイルのアップロード方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">5G以上のファイルのアップロード方法について</div>
 	<div class="panel-body"><p>コンソールからアップロード可能のファイルサイズは5GBまでなります。5GB以上のファイルをアップロードする場合、APIまたはSDKを利用する必要があります。</p>
@@ -619,7 +670,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="同名ファイルを入れ替え後の即時反映について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">同名ファイルを入れ替え後の即時反映について</div>
 	<div class="panel-body"><p>OSS上に同名ファイルを入れ替え後に即時全ノードに反映することを保証していません。一定期間内に入れ替え前のファイルが取り出させる可能性があります。</p>
@@ -630,7 +683,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="プライベート/パブリックエンドポイントの違いについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">プライベート/パブリックエンドポイントの違いについて</div>
 	<div class="panel-body"><p>プライベートエンドポイントは同じリージョン内のインスタンスのみアクセス可能ですが、セキュリティ性が高く、トラフィック料金がかかりません。<br>
@@ -639,59 +694,68 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="OSSのアクセスログの取得方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">OSSのアクセスログの取得方法について</div>
 	<div class="panel-body"><p>OSSのアクセスログはLogServiceに転送することが可能です。</p>
 
 <div class="notices note" ><p>ログ転送方法は下記のドキュメントをご参照ください。<br>
-<a href="https://jp.alibabacloud.com/help/doc-detail/29002.htm">https://jp.alibabacloud.com/help/doc-detail/29002.htm</a><br><br>
-OSSのアクセスログの取得方法は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/29002.htm">https://jp.alibabacloud.com/help/doc-detail/29002.htm</a><br></p>
+
+<p>OSSのアクセスログの取得方法は下記のドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/31900.htm">https://jp.alibabacloud.com/help/doc-detail/31900.htm</a></p>
 </div>
 </div>
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="OSSのイメージ/ビデオ処理の利用方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">OSSのイメージ/ビデオ処理の利用方法について</div>
-	<div class="panel-body"><p>OSSのイメージ/ビデオ処理機能により、お客様は好きなイメージ処理(リサイズなど)内容を「スタイル」として保存することができます。その後、保存した「スタイル」を適応することで、任意の画像にイメージ処理を実施することができます。イメージ処理を適応した画像をOSSに保存したい場合は、適応画像のURLより別途、ローカルに保存いただき、再度OSSにアップロードいただく必要があります。<br><br></p>
+	<div class="panel-body"><p>OSSのイメージ/ビデオ処理機能により、お客様は好きなイメージ処理(リサイズなど)内容を「スタイル」として保存することができます。その後、保存した「スタイル」を適応することで、任意の画像にイメージ処理を実施することができます。イメージ処理を適応した画像をOSSに保存したい場合は、適応画像のURLより別途、ローカルに保存いただき、再度OSSにアップロードいただく必要があります。<br></p>
 
-<p>また、OSSでは動画のフレームキャプチャー機能も実装されております。動画から任意のフレームを取得して、画像のリサイズ及び保存形式を設定することができます。ただし、上記で作成した画像は自動で保存されないため、手動でローカル上に保存する必要があります。また、上記機能で動画ファイルのサムネイル自動生成はできず、以下の例のように画像URLに対して操作を指定する必要がございます。<br><br></p>
+<p>また、OSSでは動画のフレームキャプチャー機能も実装されております。動画から任意のフレームを取得して、画像のリサイズ及び保存形式を設定することができます。ただし、上記で作成した画像は自動で保存されないため、手動でローカル上に保存する必要があります。また、上記機能で動画ファイルのサムネイル自動生成はできず、以下の例のように画像URLに対して操作を指定する必要がございます。<br></p>
 
 <p>OSSに保存されている画像、動画にイメージ処理を実施した場合、処理を適応した画像URLにアクセスすることで処理結果画像を取得できます。その際に、OSSのファイルURLの有効期間を設定する必要がありますのでご認識いただければと存じます。画像にイメージ処理を適応した画像URLを利用する場合、この有効期間がサムネイルの利用時間となります。</p>
 
 <div class="notices tip" ><p>例： 下記の条件で動画から画像を取得します。<br>
 対象のBucketドメイン名：a-image-demo.oss-cn-qingdao.aliyuncs.com <br>
-対象Bucketに保存された動画ファイル：demo.mp4<br><br></p>
+対象Bucketに保存された動画ファイル：demo.mp4<br></p>
 
 <p>①動画の7秒目の映像を画像として取得します。 <br>
 ②取得した画像のサイズを「800×600」にします。 <br>
 ③エクスポートした画像の形式をjpgにします。 <br>
 ④画像取得モードをfastにします。(fastは7秒目の直前のフレームを取得します。)<br>
 <a href="http://a-image-demo.oss-cn-qingdao.aliyuncs.com/demo.mp4?x-oss-process=video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast">http://a-image-demo.oss-cn-qingdao.aliyuncs.com/demo.mp4?x-oss-process=video/snapshot,t_7000,f_jpg,w_800,h_600,m_fast</a> <br>
-※こちらは、サンプルです。<br><br></p>
+※こちらは、サンプルです。<br></p>
 
-<p>上記利用した引数についてvideo/snapshotは操作内容と操作名で、動画処理の場合は、上記リンクのように動画ファイル名の後に?x-oss-process=video/snapshotと記載いただき、パラメータ指定を行なっていいただく必要がございます。<br><br></p>
+<p>上記利用した引数についてvideo/snapshotは操作内容と操作名で、動画処理の場合は、上記リンクのように動画ファイル名の後に?x-oss-process=video/snapshotと記載いただき、パラメータ指定を行なっていいただく必要がございます。<br></p>
 
 <p>t スクリーンショット時間(単位ms) w 画像の横サイズ（Pixel単位） h 画像の高サイズ（Pixel単位） m 画像の取得モード（fast） f 画像のフォーマット（jpg,png）</p>
 </div>
 
 <div class="notices note" ><p>OSSイメージ処理機能は下記ドキュメントをご参照ください。<br>
-<a href="https://jp.alibabacloud.com/help/doc-detail/31873.htm">https://jp.alibabacloud.com/help/doc-detail/31873.htm</a><br><br>
-OSSイメージ処理手順は下記ドキュメントをご参照ください。<br>
-<a href="https://jp.alibabacloud.com/help/doc-detail/44686.htm">https://jp.alibabacloud.com/help/doc-detail/44686.htm</a><br><br>
-URLの有効期間の詳細は下記ドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/31873.htm">https://jp.alibabacloud.com/help/doc-detail/31873.htm</a><br></p>
+
+<p>OSSイメージ処理手順は下記ドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/44686.htm">https://jp.alibabacloud.com/help/doc-detail/44686.htm</a><br></p>
+
+<p>URLの有効期間の詳細は下記ドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/31912.htm">https://jp.alibabacloud.com/help/doc-detail/31912.htm</a></p>
 </div>
 </div>
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
 <h4 id="製品連携">製品連携</h4>
 
+<p><h4 id="OSSをディスクとしてマウントする方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">OSSをディスクとしてマウントする方法について</div>
 	<div class="panel-body"><p>OSSFSツールを利用し、LinuxシステムでAlibaba Cloud OSSバケットをローカルファイルにマウントできます。<br>
@@ -704,7 +768,9 @@ URLの有効期間の詳細は下記ドキュメントをご参照ください�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="FunctionComputeのトリガーとして利用方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">FunctionComputeのトリガーとして利用方法について</div>
 	<div class="panel-body"><p>OSSのイベントをFcunctionComputeのトリガーに設定することができます。</p>
@@ -720,21 +786,26 @@ URLの有効期間の詳細は下記ドキュメントをご参照ください�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="CDNでOSS静的サイトの公開方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">CDNでOSS静的サイトの公開方法について</div>
 	<div class="panel-body"><p>CDNのオリジンサイトをOSSに構築された静的サイトに指定することができません。</p>
 
 <div class="notices note" ><p>OSSで静的サイト構築方法は下記ドキュメントをご参照ください。<br>
-<a href="https://jp.alibabacloud.com/help/doc-detail/67323.htm">https://jp.alibabacloud.com/help/doc-detail/67323.htm</a><br><br>
-CDNのオリジンサイト指定方法は下記ドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/67323.htm">https://jp.alibabacloud.com/help/doc-detail/67323.htm</a></p>
+
+<p>CDNのオリジンサイト指定方法は下記ドキュメントをご参照ください。<br>
 <a href="https://jp.alibabacloud.com/help/doc-detail/57589.htm">https://jp.alibabacloud.com/help/doc-detail/57589.htm</a></p>
 </div>
 </div>
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="OSSに静的サイトを設置した場合のICP必要性について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">OSSに静的サイトを設置した場合のICP必要性について</div>
 	<div class="panel-body"><p>中国本土リージョンのOSSを利用し、所有するドメインとバインドし、静的サイトを公開する場合、該当ドメインは事前にICPを取得する必要です。OSSが提供するドメインを利用する場合、ICPを取得する必要がありません。</p>
@@ -742,7 +813,9 @@ CDNのオリジンサイト指定方法は下記ドキュメントをご参照�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="OSSにインターネット経由で接続する際のFQDNについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">OSSにインターネット経由で接続する際のFQDNについて</div>
 	<div class="panel-body"><p>API、SDK、またはOSS-browserを利用する場合、OSSへのアクセスにつきましては、OSSコンソールで表示される「エンドポイント（東京リージョンは oss-ap-northeast-1.aliyuncs.com）」
@@ -756,23 +829,31 @@ Alibaba CloudアカウントでOSSコンソールにログイン後、該当バ�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
 <h4 id="権限">権限</h4>
 
+<p><h4 id="RAMユーザー対象にバケットアクセス権限の制御方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">RAMユーザー対象にバケットアクセス権限の制御方法について</div>
 	<div class="panel-body"><p>下記のようなカスタマイズポリシーを作成し、RAMユーザに適用することで、バケットごとに制御することが可能です。</p>
 
-<div class="notices tip" ><p>{ “Statement”: [ {<br>
-　　 “Effect”: “Allow”,<br>
-　　 “Action”: “oss:ListBuckets”,<br>
-　　 “Resource”: “acs:oss:*:*:*” },<br>
-　　 { “Action”: “oss:*”,<br>
-　　　 “Effect”: “Allow”,<br>
-　　　 “Resource”: [ “acs:oss:*:*:<bucketname>”,<br>
-　　　 “acs:oss:*:*:<bucketname>/*” ]<br>
-    } ],<br>
-    “Version”: “1” }</p>
+<div class="notices tip" ><pre><code>{
+  &quot;Statement&quot;: [
+  {
+    &quot;Effect&quot;: &quot;Allow&quot;,
+    &quot;Action&quot;: &quot;oss:ListBuckets&quot;,
+    &quot;Resource&quot;: &quot;acs:oss:\*:\*:\*&quot; },
+  {
+    &quot;Action&quot;: &quot;oss:\*&quot;,
+    &quot;Effect&quot;: &quot;Allow&quot;,
+    &quot;Resource&quot;: [ &quot;acs:oss:\*:\*:&lt;bucketname&gt;&quot;,
+    &quot;acs:oss:\*:\*:&lt;bucketname&gt;/\*&quot; ]
+  }
+  ],
+  &quot;Version&quot;: &quot;1&quot;
+}
+</code></pre>
 </div>
 
 <div class="notices note" ><p>カスタマイズポリシーは下記ドキュメントをご参照ください。<br>
@@ -782,7 +863,9 @@ Alibaba CloudアカウントでOSSコンソールにログイン後、該当バ�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="OSS公開してもディレクトリにアクセスできない事象について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">OSS公開してもディレクトリにアクセスできない事象について</div>
 	<div class="panel-body"><p>OSSパケットはフォルダのように見えますが、構造上にオブジェクト方式となります。<br>
@@ -791,21 +874,26 @@ Alibaba CloudアカウントでOSSコンソールにログイン後、該当バ�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="RAMユーザー利用時のBucketList権限の必要性について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">RAMユーザー利用時のBucketList権限の必要性について</div>
 	<div class="panel-body"><p>RAMユーザーに指定パケットのフル権限を付与した場合、バケット内のオブジェクトの操作に支障がありませんが、OSSコントロールから該当パケットを確認することができません。<br>
 コンソールで確認するために、別途全パケットを参照する権限ListBucketsが必要です。また、ListBuckets権限には対象パケットの指定ができなく、全表示/全非表示しかできません。</p>
 
-<div class="notices tip" ><p>権限ポリシーには、以下のような部分を設定する必要です。<br><br>
-　　 “Effect”: “Allow”,<br>
-　　 “Action”: “oss:ListBuckets”,<br>
-　 　“Resource”: “acs:oss:*:*:*”</p>
+<div class="notices tip" ><p>権限ポリシーには、以下のような部分を設定する必要です。</p>
+
+<pre><code>&quot;Effect&quot;: &quot;Allow&quot;,
+&quot;Action&quot;: &quot;oss:ListBuckets&quot;,
+&quot;Resource&quot;: &quot;acs:oss:\*:\*:\*&quot;
+</code></pre>
 </div>
 </div>
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
 
     
@@ -813,7 +901,7 @@ Alibaba CloudアカウントでOSSコンソールにログイン後、該当バ�
         <div class="chevrons">
     <div id="navigation">
 <a class="nav nav-prev" href="/help/faq/ecs/" title="ECS"> <i class="fa fa-chevron-left"></i><label>ECS</label></a>
-    <a class="nav nav-next" href="/help/faq/slb/" title="SLB" style="margin-right: 0px;"><label>SLB</label><i class="fa fa-chevron-right"></i></a></div>
+    <a class="nav nav-next" href="/help/faq/rds/" title="RDS" style="margin-right: 0px;"><label>RDS</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -828,14 +916,14 @@ Alibaba CloudアカウントでOSSコンソールにログイン後、該当バ�
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  07/17/2019
+        <i class='fa fa-calendar'></i> Last update on 07/19/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/faq/oss.md" target="blank"><i class="fa fa-code-fork"></i>
-        </a>
+        Improve this page</a>
     </div>
     
   </div>

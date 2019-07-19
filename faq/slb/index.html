@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T08:16:20 UTC">
+<meta name="revised" content="2019-07-19T08:38:12 UTC">
 <title>SLB :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -405,13 +405,6 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/faq/slb/" class="dd-item active">
-        <div>
-          <a href="/help/faq/slb/">
-            SLB
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
       <li data-nav-id="/help/faq/rds/" class="dd-item">
         <div>
           <a href="/help/faq/rds/">
@@ -419,10 +412,10 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/faq/price/" class="dd-item">
+      <li data-nav-id="/help/faq/slb/" class="dd-item active">
         <div>
-          <a href="/help/faq/price/">
-            料金
+          <a href="/help/faq/slb/">
+            SLB
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -430,6 +423,20 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
         <div>
           <a href="/help/faq/account/">
             アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/support/" class="dd-item">
+        <div>
+          <a href="/help/faq/support/">
+            サポート
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -511,10 +518,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
    よくある質問</option> 
       <option value="/help/faq/ecs/" >- ECS</option>
       <option value="/help/faq/oss/" >- OSS</option>
-      <option value="/help/faq/slb/"  selected>- SLB</option>
       <option value="/help/faq/rds/" >- RDS</option>
-      <option value="/help/faq/price/" >- 料金</option>
+      <option value="/help/faq/slb/"  selected>- SLB</option>
       <option value="/help/faq/account/" >- アカウント</option>
+      <option value="/help/faq/support/" >- サポート</option>
+      <option value="/help/faq/price/" >- 料金</option>
   
     <option value="/help/about/" >
    About SBC Technical Reference</option>
@@ -532,8 +540,50 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     
     
 
+<h4 id="index">目次</h4>
+
+<ul>
+<li>一般仕様
+
+<ul>
+<li><a href="#レイヤー4とレイヤー7のSLBの違いについて">レイヤー4とレイヤー7のSLBの違いについて</a></li>
+<li><a href="#SLBのアクセスログについて">SLBのアクセスログについて</a></li>
+<li><a href="#SLBのスペック変更方法と業務影響について">SLBのスペック変更方法と業務影響について</a></li>
+<li><a href="#VServerグループとマスタースレーブグループの違いについて">VServerグループとマスタースレーブグループの違いについて</a></li>
+<li><a href="#サードパーティ証明書のアップロード方法について">サードパーティ証明書のアップロード方法について</a></li>
+<li><a href="#SLB関連の各APIのスロットリング上限について">SLB関連の各APIのスロットリング上限について</a></li>
+</ul></li>
+<li>ネットワーク
+
+<ul>
+<li><a href="#パブリックSLBとプライベートSLBの違いについて">パブリックSLBとプライベートSLBの違いについて</a></li>
+<li><a href="#パブリックSLBとバックエンドECS間の通信仕様について">パブリックSLBとバックエンドECS間の通信仕様について</a></li>
+<li><a href="#パブリックIPとプライベートIP付きSLBの作成方法について">パブリックIPとプライベートIP付きSLBの作成方法について</a></li>
+<li><a href="#ホワイトリストとブラックリストについて">ホワイトリストとブラックリストについて</a></li>
+<li><a href="#SLBのインバウンド/アウトバウンド帯域幅について">SLBのインバウンド/アウトバウンド帯域幅について</a></li>
+<li><a href="#証明書をSLB側とECS側に設置の違いについて">証明書をSLB側とECS側に設置の違いについて</a></li>
+<li><a href="#TCP over SSLの対応について">TCP over SSLの対応について</a></li>
+</ul></li>
+<li>負荷分散
+
+<ul>
+<li><a href="#ラウンドロビン利用時に分散されない事象について">ラウンドロビン利用時に分散されない事象について</a></li>
+<li><a href="#バックエンドECSの重み設定について">バックエンドECSの重み設定について</a></li>
+<li><a href="#APIでVserverグループ追加時の引数書き方について">APIでVserverグループ追加時の引数書き方について</a></li>
+<li><a href="#SLBの相互認証について">SLBの相互認証について</a></li>
+<li><a href="#SLBを利用したsorryサーバーの実装方法について">SLBを利用したsorryサーバーの実装方法について</a></li>
+</ul></li>
+<li>ヘルスチェック
+
+<ul>
+<li><a href="#SLBのヘルスチェック頻度の仕様について">SLBのヘルスチェック頻度の仕様について</a></li>
+<li><a href="#SLBのヘルスチェック用CIDRブロックについて">SLBのヘルスチェック用CIDRブロックについて</a></li>
+</ul></li>
+</ul>
+
 <h4 id="一般仕様">一般仕様</h4>
 
+<p><h4 id="レイヤー4とレイヤー7のSLBの違いについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">レイヤー4とレイヤー7のSLBの違いについて</div>
 	<div class="panel-body"><p>SLBはレイヤ4 (TCP、UDP)およびレイヤ7(HTTP、HTTPS)を提供しています。<br><br></p>
@@ -544,7 +594,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="SLBのアクセスログについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">SLBのアクセスログについて</div>
 	<div class="panel-body"><p>SLBのレイヤ7のアクセスログは提供しています。</p>
@@ -556,7 +608,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="SLBのスペック変更方法と業務影響について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">SLBのスペック変更方法と業務影響について</div>
 	<div class="panel-body"><p>コンソールにて、SLBのスペック変更をオンラインで実施することができます。また、トラフィックが流れている状態でAPIよりSLBのスペックを変更することもできます。<br></p>
@@ -573,7 +627,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="VServerグループとマスタースレーブグループの違いについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">VServerグループとマスタースレーブグループの違いについて</div>
 	<div class="panel-body"><p>Vserverグループを利用した場合、ディレクトリ転送機能を利用できます。<br>
@@ -590,7 +646,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="サードパーティ証明書のアップロード方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">サードパーティ証明書のアップロード方法について</div>
 	<div class="panel-body"><p>SLBにサードパーティ証明書をアップロードすることができます。</p>
@@ -602,9 +660,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="SLB関連の各APIのスロットリング上限について"></h4>
 <div class="panel panel-default">
-	<div class="panel-heading">SLB関連の各API のスロットリング上限について</div>
+	<div class="panel-heading">SLB関連の各APIのスロットリング上限について</div>
 	<div class="panel-body"><p>SLBでは、AccessKey１つあたりのAPI呼び出し回数を１日に5000回まで制限されます。</p>
 
 <div class="notices note" ><p>Server Load Balancer プロダクトの制限は下記のドキュメントをご参照ください。<br>
@@ -614,9 +674,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
 <h4 id="ネットワーク">ネットワーク</h4>
 
+<p><h4 id="パブリックSLBとプライベートSLBの違いについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">パブリックSLBとプライベートSLBの違いについて</div>
 	<div class="panel-body"><p>パブリックSLBはインターネットからのリクエストを受け取るため、パブリックIPアドレスを提供しています。AlibabaCloudの仕様として、パブリックSLBがVPC内にあるバックエンドECSと通信できますが、該当VPCのプライベートIPアドレスを持っていません。<br><br></p>
@@ -627,7 +689,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="パブリックSLBとバックエンドECS間の通信仕様について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">パブリックSLBとバックエンドECS間の通信仕様について</div>
 	<div class="panel-body"><p>パブリックSLBとバックエンドECS間はプロクシ通信となります。該当通信は、ECSのセキュリティグループで遮断できない仕様となります。</p>
@@ -639,7 +703,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="パブリックIPとプライベートIP付きSLBの作成方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">パブリックIPとプライベートIP付きSLBの作成方法について</div>
 	<div class="panel-body"><p>パブリックSLBにプライベートIPがない仕様に対して、プライベートIPとパブリックIP両方が必要の場合、プライベートSLBにEIPをバインド機能を利用して実現できます。<br><br></p>
@@ -651,7 +717,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="ホワイトリストとブラックリストについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">ホワイトリストとブラックリストについて</div>
 	<div class="panel-body"><p>SLBはホワイトリストとブラックリスト方式でアクセスを制御しています。</p>
@@ -663,7 +731,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="SLBのインバウンド/アウトバウンド帯域幅について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">SLBのインバウンド/アウトバウンド帯域幅について</div>
 	<div class="panel-body"><p>SLBのインターネット通信帯域幅はコンソール上で表示されている値に準じます。<br><br></p>
@@ -674,7 +744,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="証明書をSLB側とECS側に設置の違いについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">証明書をSLB側とECS側に設置の違いについて</div>
 	<div class="panel-body"><p>証明書の設置場所により、SSL通信空間は違います。<br><br></p>
@@ -687,7 +759,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="TCP over SSLの対応について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">TCP over SSLの対応について</div>
 	<div class="panel-body"><p>日本サイトのSLB現在レイヤー4のTCP over SSLを対応していません。SSL通信が必要な場合、レイヤー7のHTTPSを利用する必要があります。</p>
@@ -695,9 +769,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
 <h4 id="負荷分散">負荷分散</h4>
 
+<p><h4 id="ラウンドロビン利用時に分散されない事象について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">ラウンドロビン利用時に分散されない事象について</div>
 	<div class="panel-body"><p>SLBの仕様上、セッションの保持時間内に再度SLBアクセスを実施すると 保持されているセッションにアクセスするため、重みと剥離してアクセスが偏ったことがあります。<br><br></p>
@@ -711,7 +787,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="バックエンドECSの重み設定について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">バックエンドECSの重み設定について</div>
 	<div class="panel-body"><p>SLBのバックエンドECSの重みの仕組みは下記となります。</p>
@@ -722,7 +800,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="APIでVserverグループ追加時の引数書き方について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">APIでVserverグループ追加時の引数書き方について</div>
 	<div class="panel-body"><p>APIでVServerグループを操作する際に、引数に「\」を利用する必要がります。</p>
@@ -737,7 +817,9 @@ aliyun slb RemoveBackendServers &ndash;LoadBalancerId SLB_ID &ndash;BackendServe
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="SLBの相互認証について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">SLBの相互認証について</div>
 	<div class="panel-body"><p>SLBでは相互認証のアクセス方式に対応しています。</p>
@@ -752,7 +834,9 @@ aliyun slb RemoveBackendServers &ndash;LoadBalancerId SLB_ID &ndash;BackendServe
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="SLBを利用したsorryサーバーの実装方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">SLBを利用したsorryサーバーの実装方法について</div>
 	<div class="panel-body"><p>SLB自体はsorryサーバーの実装に対応していませんが、DNSの機能GTM(Global Traffic Management)を利用すれば、Sorryサーバーの切り替えを実現することができます。</p>
@@ -764,9 +848,11 @@ aliyun slb RemoveBackendServers &ndash;LoadBalancerId SLB_ID &ndash;BackendServe
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
 <h4 id="ヘルスチェック">ヘルスチェック</h4>
 
+<p><h4 id="SLBのヘルスチェック頻度の仕様について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">SLBのヘルスチェック頻度の仕様について</div>
 	<div class="panel-body"><p>SLBヘルスチェックの頻度はコンソール上で設定可能です。<br><br></p>
@@ -780,7 +866,9 @@ aliyun slb RemoveBackendServers &ndash;LoadBalancerId SLB_ID &ndash;BackendServe
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="SLBのヘルスチェック用CIDRブロックについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">SLBのヘルスチェック用CIDRブロックについて</div>
 	<div class="panel-body"><p>SLBのヘルスチェック用CIDRは下記となります。<br>
@@ -793,14 +881,15 @@ aliyun slb RemoveBackendServers &ndash;LoadBalancerId SLB_ID &ndash;BackendServe
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/faq/oss/" title="OSS"> <i class="fa fa-chevron-left"></i><label>OSS</label></a>
-    <a class="nav nav-next" href="/help/faq/rds/" title="RDS" style="margin-right: 0px;"><label>RDS</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/faq/rds/" title="RDS"> <i class="fa fa-chevron-left"></i><label>RDS</label></a>
+    <a class="nav nav-next" href="/help/faq/account/" title="アカウント" style="margin-right: 0px;"><label>アカウント</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -815,14 +904,14 @@ aliyun slb RemoveBackendServers &ndash;LoadBalancerId SLB_ID &ndash;BackendServe
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  07/15/2019
+        <i class='fa fa-calendar'></i> Last update on 07/19/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/faq/slb.md" target="blank"><i class="fa fa-code-fork"></i>
-        </a>
+        Improve this page</a>
     </div>
     
   </div>

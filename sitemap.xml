@@ -8,11 +8,6 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/faq/ecs/</loc>
-    <lastmod>2019-07-10T15:31:42+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/best-practice/devops/terraform/01/how-to-use/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
@@ -58,11 +53,6 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/faq/oss/</loc>
-    <lastmod>2019-07-17T09:33:15+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
@@ -75,11 +65,6 @@
   <url>
     <loc>https://sbcloud.github.io/help/best-practice/</loc>
     <lastmod>2019-06-05T12:30:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/faq/slb/</loc>
-    <lastmod>2019-07-15T15:32:45+09:00</lastmod>
   </url>
   
   <url>
@@ -108,11 +93,6 @@
   </url>
   
   <url>
-    <loc>https://sbcloud.github.io/help/faq/rds/</loc>
-    <lastmod>2019-07-15T15:32:14+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://sbcloud.github.io/help/best-practice/devops/terraform/04/run-terraform/</loc>
     <lastmod>2019-07-01T00:00:00+09:00</lastmod>
   </url>
@@ -125,11 +105,6 @@
   <url>
     <loc>https://sbcloud.github.io/help/faq/</loc>
     <lastmod>2019-05-13T16:20:40+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://sbcloud.github.io/help/faq/price/</loc>
-    <lastmod>2019-07-15T15:31:09+09:00</lastmod>
   </url>
   
   <url>
@@ -168,8 +143,38 @@
   </url>
   
   <url>
+    <loc>https://sbcloud.github.io/help/faq/ecs/</loc>
+    <lastmod>2019-07-19T15:30:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/faq/oss/</loc>
+    <lastmod>2019-07-19T15:30:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/faq/rds/</loc>
+    <lastmod>2019-07-19T15:30:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/faq/slb/</loc>
+    <lastmod>2019-07-19T15:30:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://sbcloud.github.io/help/faq/account/</loc>
-    <lastmod>2019-07-13T15:31:09+09:00</lastmod>
+    <lastmod>2019-07-19T15:30:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/faq/support/</loc>
+    <lastmod>2019-07-19T15:30:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://sbcloud.github.io/help/faq/price/</loc>
+    <lastmod>2019-07-19T15:30:00+09:00</lastmod>
   </url>
   
   <url>

@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T08:16:20 UTC">
+<meta name="revised" content="2019-07-19T08:38:12 UTC">
 <title>RDS :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -405,13 +405,6 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/faq/slb/" class="dd-item">
-        <div>
-          <a href="/help/faq/slb/">
-            SLB
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
       <li data-nav-id="/help/faq/rds/" class="dd-item active">
         <div>
           <a href="/help/faq/rds/">
@@ -419,10 +412,10 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/faq/price/" class="dd-item">
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
         <div>
-          <a href="/help/faq/price/">
-            料金
+          <a href="/help/faq/slb/">
+            SLB
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -430,6 +423,20 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
         <div>
           <a href="/help/faq/account/">
             アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/support/" class="dd-item">
+        <div>
+          <a href="/help/faq/support/">
+            サポート
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -511,10 +518,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
    よくある質問</option> 
       <option value="/help/faq/ecs/" >- ECS</option>
       <option value="/help/faq/oss/" >- OSS</option>
-      <option value="/help/faq/slb/" >- SLB</option>
       <option value="/help/faq/rds/"  selected>- RDS</option>
-      <option value="/help/faq/price/" >- 料金</option>
+      <option value="/help/faq/slb/" >- SLB</option>
       <option value="/help/faq/account/" >- アカウント</option>
+      <option value="/help/faq/support/" >- サポート</option>
+      <option value="/help/faq/price/" >- 料金</option>
   
     <option value="/help/about/" >
    About SBC Technical Reference</option>
@@ -532,8 +540,46 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     
     
 
+<h4 id="index">目次</h4>
+
+<ul>
+<li>一般仕様
+
+<ul>
+<li><a href="#RDSのトラフィック料金について">RDSのトラフィック料金について</a></li>
+<li><a href="#sysadminの権限提供について">sysadminの権限提供について</a></li>
+<li><a href="#カスタマイズ可能なパラメーターについて">カスタマイズ可能なパラメーターについて</a></li>
+<li><a href="#RDSのストレージ容量の拡張方法について">RDSのストレージ容量の拡張方法について</a></li>
+<li><a href="#ホワイトリストの設定方法について">ホワイトリストの設定方法について</a></li>
+<li><a href="#インターネットアドレスとイントラネットアドレスの違いについて">インターネットアドレスとイントラネットアドレスの違いについて</a></li>
+<li><a href="#VPCとVswitchの変更方法について">VPCとVswitchの変更方法について</a></li>
+</ul></li>
+<li>バックアップ
+
+<ul>
+<li><a href="#バックアップ取得時の性能影響について">バックアップ取得時の性能影響について</a></li>
+<li><a href="#RDSバックアップの保存先について">RDSバックアップの保存先について</a></li>
+<li><a href="#リカバリ時に指定可能な時刻について">リカバリ時に指定可能な時刻について</a></li>
+<li><a href="#RDSリリース後のバックアップ提供について">RDSリリース後のバックアップ提供について</a></li>
+</ul></li>
+<li>マルチゾーン
+
+<ul>
+<li><a href="#マルチゾーンの確認方法について">マルチゾーンの確認方法について</a></li>
+<li><a href="#マルチゾーンの切り替え方法について">マルチゾーンの切り替え方法について</a></li>
+<li><a href="#レプリカのマルチゾーン対応について">レプリカのマルチゾーン対応について</a></li>
+</ul></li>
+<li>暗号化
+
+<ul>
+<li><a href="#保存データの暗号化方法について">保存データの暗号化方法について</a></li>
+<li><a href="#SSLを利用するデータ転送方法について">SSLを利用するデータ転送方法について</a></li>
+</ul></li>
+</ul>
+
 <h4 id="一般仕様">一般仕様</h4>
 
+<p><h4 id="RDSのトラフィック料金について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">RDSのトラフィック料金について</div>
 	<div class="panel-body"><p>RDS現在トラフィック（インバウンド、アウトバウンド含む）料金は無料です。</p>
@@ -541,7 +587,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="sysadminの権限提供について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">sysadminの権限提供について</div>
 	<div class="panel-body"><p>インスタンスの安定性とセキュリティを保証するために、RDS for SQL Server では、sysadmin 権限を提供しておりません。</p>
@@ -553,7 +601,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="カスタマイズ可能なパラメーターについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">カスタマイズ可能なパラメーターについて</div>
 	<div class="panel-body"><p>RDSはマネジメントサービスのため、カスタマイズ可能なパラメーターはRDSコンソールのパラメーターの設定ページに表示されているパラメーターのみとなります。</p>
@@ -561,7 +611,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="RDSのストレージ容量の拡張方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">RDSのストレージ容量の拡張方法について</div>
 	<div class="panel-body"><p>RDSのストレージ容量は下記メニューから拡張することができます。</p>
@@ -572,7 +624,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="ホワイトリストの設定方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">ホワイトリストの設定方法について</div>
 	<div class="panel-body"><p>RDSにはホワイトリストを利用してアクセスIPを制限することができます。</p>
@@ -584,7 +638,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="インターネットアドレスとイントラネットアドレスの違いについて"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">インターネットアドレスとイントラネットアドレスの違いについて</div>
 	<div class="panel-body"><p>RDSにインターネットアドレスとイントラネットアドレスがあります。<br><br></p>
@@ -595,7 +651,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="VPCとVswitchの変更方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">VPCとVswitchの変更方法について</div>
 	<div class="panel-body"><p>RDS作成後のVPCとVSwitchの変更を対応していません。既存RDSのバックアップからVPCとVSwitchを指定して新規RDSを作成することになります。</p>
@@ -603,9 +661,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
 <h4 id="バックアップ">バックアップ</h4>
 
+<p><h4 id="バックアップ取得時の性能影響について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">バックアップ取得時の性能影響について</div>
 	<div class="panel-body"><p>RDSのバックアップはスレーブインスタンスから取得するため、取得時にスレーブインスタンスへ影響がありますが、マスターインスタンスの性能に影響がありません。</p>
@@ -613,7 +673,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="RDSバックアップの保存先について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">RDSバックアップの保存先について</div>
 	<div class="panel-body"><p>RDSバックアップはアーキテクチャ上にOSS上に保存されますが、お客様のOSS領域ではありませんので、ダウンロードする際には、RDSコンソールからとなります。</p>
@@ -621,7 +683,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="リカバリ時に指定可能な時刻について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">リカバリ時に指定可能な時刻について</div>
 	<div class="panel-body"><p>バックアップからリカバリ時に希望時刻を指定することができます。<br>
@@ -630,7 +694,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="RDSリリース後のバックアップ提供について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">RDSリリース後のバックアップ提供について</div>
 	<div class="panel-body"><p>RDSのリリースに伴い、バックアップもリリースされます。RDSのバックアップをお客様のOSSに移管する機能は現在ありません。必要な場合、リリース前にRDSコンソールからダウンロードする必要があります。</p>
@@ -638,9 +704,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
 <h4 id="マルチゾーン">マルチゾーン</h4>
 
+<p><h4 id="マルチゾーンの確認方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">マルチゾーンの確認方法について</div>
 	<div class="panel-body"><p>下記メニューからマスターインスタンスとスレーブインスタンスの所在ゾーンを確認することができます。</p>
@@ -651,7 +719,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="マルチゾーンの切り替え方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">マルチゾーンの切り替え方法について</div>
 	<div class="panel-body"><p>下記メニューからマスターインスタンスとスレーブインスタンスを切り替えることができます。マスターノード ID/スレーブノード IDにて切り替え前後のゾーンを確認することができます。</p>
@@ -662,7 +732,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="レプリカのマルチゾーン対応について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">レプリカのマルチゾーン対応について</div>
 	<div class="panel-body"><p>RDSのレプリカインスタンスは現在シングルゾーンのみ対応しています。</p>
@@ -670,9 +742,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
 <h4 id="暗号化">暗号化</h4>
 
+<p><h4 id="保存データの暗号化方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">保存データの暗号化方法について</div>
 	<div class="panel-body"><p>RDSのデータ暗号化TDEを対応しています。<br>
@@ -687,7 +761,9 @@ Key Management Serviceは下記のドキュメントをご参照ください。<
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="SSLを利用するデータ転送方法について"></h4>
 <div class="panel panel-default">
 	<div class="panel-heading">SSLを利用するデータ転送方法について</div>
 	<div class="panel-body"><p>RDSの通信暗号化にはSSLを対応しています。<br>
@@ -702,14 +778,15 @@ Alibaba Cloud Certificates Serviceは下記のドキュメントをご参照く�
 	
 </div>
 
+<a href="#index">[⬆ 目次へ]</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/faq/slb/" title="SLB"> <i class="fa fa-chevron-left"></i><label>SLB</label></a>
-    <a class="nav nav-next" href="/help/faq/price/" title="料金" style="margin-right: 0px;"><label>料金</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/faq/oss/" title="OSS"> <i class="fa fa-chevron-left"></i><label>OSS</label></a>
+    <a class="nav nav-next" href="/help/faq/slb/" title="SLB" style="margin-right: 0px;"><label>SLB</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -724,14 +801,14 @@ Alibaba Cloud Certificates Serviceは下記のドキュメントをご参照く�
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  07/15/2019
+        <i class='fa fa-calendar'></i> Last update on 07/19/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/faq/rds.md" target="blank"><i class="fa fa-code-fork"></i>
-        </a>
+        Improve this page</a>
     </div>
     
   </div>
