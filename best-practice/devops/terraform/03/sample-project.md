@@ -197,22 +197,15 @@ resource "alicloud_vpc" "vpc" {
 &nbsp; 上記で記載したリソース以外にオプション（任意）でパラメータや構成を指定することもできます。
 
 * `cidr_block` - （必須）VPCのCIDRブロック。この例では24bitまでをネットワーク部とする設定をしています。
-
 * `name` - （オプション）VPCの名前。デフォルトはnullです。
-
 * `description` - （オプション）VPCの説明。デフォルトはnullです。
 
-
-このリソースを実行することにより、以下のVPC属性情報が出力されます。
+&nbsp; このリソースを実行することにより、以下のVPC属性情報が出力されます。
 
 * `id` - VPCのID。
-
 * `cidr_block` - VPCのCIDRブロック。
-
 * `name` - VPCの名前。
-
 * `router_id` - VPC作成時にデフォルトで作成されたルータのID。
-
 * `route_table_id` - VPC作成時にデフォルトで作成されたルータのルートテーブルID。
 
 &nbsp; 詳しくは[AliCloudのterraform-VPCリファレンス](https://www.terraform.io/docs/providers/alicloud/r/vpc.html)を参照してください。
@@ -227,6 +220,7 @@ resource "alicloud_vswitch" "vsw" {
 }
 ```
 &nbsp; VPC_SWITCHも上記で記載したリソース以外にオプション（任意）でパラメータや構成を指定することもできます。
+
 * `availability_zone` - （必須）スイッチのAZ。
 * `vpc_id` - （必須）VPC ID。
 * `cidr_block` - （必須）スイッチのCIDR block。
@@ -234,6 +228,7 @@ resource "alicloud_vswitch" "vsw" {
 * `description` - （オプション）スイッチの説明。デフォルトはnullです。
 
 &nbsp; このリソースを実行することにより、以下のVPC_SWITCH属性情報が出力されます。
+
 * `id` - スイッチのID
 * `availability_zone` スイッチのAZ
 * `cidr_block` - スイッチのCIDRブロック
@@ -251,11 +246,13 @@ resource "alicloud_security_group" "sg" {
 }
 ```
 &nbsp; セキュリティグループも同様、上記で記載したリソース以外にオプション（任意）でパラメータや構成を指定することもできます。
+
 * `name` - （オプション）セキュリティグループの名前。デフォルトはnullです。
 * `description` - （オプション）セキュリティグループの説明。デフォルトはnullです。
 * `vpc_id` - （オプション）対象のVPC IDを指定します。
 
 &nbsp; このリソースを実行することにより、以下の属性情報が出力されます。
+
 * `id` - セキュリティグループのID
 * `name` - セキュリティグループの名前
 
