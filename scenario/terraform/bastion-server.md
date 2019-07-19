@@ -128,7 +128,7 @@ SSH踏み台専用EC2構成:
 
 
 <br>
-ソースは以下になります。サンプルソースは[こちら]()にあります。
+ソースは以下になります。
 
 main.tf
 ```
@@ -179,7 +179,7 @@ resource "alicloud_instance" "ECS_instance_for_Bastion_Server" {
   security_groups = ["${alicloud_security_group.sg_bastion_server.id}"]
   availability_zone = "${var.zone}"
   vswitch_id = "${alicloud_vswitch.vsw.id}"
-  password = "!Bastion2019"
+  password = "${var.ecs_bastion_server_password}"
   internet_max_bandwidth_out = 5
 }
 
@@ -223,7 +223,7 @@ resource "alicloud_instance" "ECS_instance_for_Production_Server" {
   availability_zone = "${var.zone}"
   vswitch_id = "${alicloud_vswitch.vsw.id}"
   internet_max_bandwidth_out = 5
-  password = "!Production2019"  
+  password = "${var.ecs_production_server_password}"
   user_data = "${file("provisioning.sh")}"
 }
 ```
@@ -237,6 +237,8 @@ variable "secret_key" {}
 variable "region" {}
 variable "zone" {}
 variable "project_name" {}
+variable "ecs_bastion_server_password" {}
+variable "ecs_production_server_password" {}
 ```
 <br>
 output.tf
@@ -259,6 +261,8 @@ secret_key = "xxxxxxxxxxxxxxxxx"
 region = "ap-northeast-1"
 zone = "ap-northeast-1a"
 project_name = "Bastion-Server-for-Terraform"
+ecs_bastion_server_password = "!Bastion2019"
+ecs_production_server_password = "!Production2019"
 ```
 <br>
 provisioning.sh
