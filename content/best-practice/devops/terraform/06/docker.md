@@ -8,7 +8,7 @@ draft: false
 
 &nbsp; 前章までは Terraformのインストール方法、Terraformの文法、実行方法を説明しました。しかしこれらは`Terraform v0.11.13`前提での話なので、Terraformのバージョンが違うことで挙動が異なってしまうこともあります。Terraformでよく使うメソッドが急に廃止、、というのもよくあります。それを防ぐためにdockerを使ったインストール、利用する方法があります。dockerはパッケージングを行うための技術です。
 
-**注：Terraformのバージョン食い違いは基本的に[tfenv](https://github.com/tfutils/tfenv)でカバーできます。詳しくは[3章 Install & docker](docs/3/install.md)を参照してください*
+**注：Terraformのバージョン食い違いは基本的に[tfenv](https://github.com/tfutils/tfenv)でカバーできます。詳しくは[インストール](docs/3/install.md)を参照してください*
 
 <br>
 
