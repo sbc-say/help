@@ -14,7 +14,6 @@ draft: false
 |[アカウント登録]({{%relref "getting-started/registration.md" %}})|
 |<details><summary>[プロダクト紹介]({{%relref "getting-started/product/_index.md" %}})</summary>[プロダクト資料のリンク一覧]({{%relref "getting-started/product/links.md" %}})<br>[ECS]({{%relref "getting-started/product/ecs-by-region.md" %}})</details>|
 |<details><summary>[AWS/Azure/GCPユーザ向け]({{%relref "getting-started/cloud-users/_index.md" %}})</summary>[AWS/Azure/GCPとのサービス比較]({{%relref "getting-started/cloud-users/vs-aws-gcp-azure.md" %}})</details>|
- 
 |[ベストプラクティス]({{%relref "best-practice/_index.md" %}})|
 |:------:|
 |[アドバイザリ]({{%relref "best-practice/advisory.md" %}})|
@@ -30,6 +29,7 @@ draft: false
 |[OSS]({{%relref "faq/oss.md" %}})|
 |[料金]({{%relref "faq/price.md" %}})|
 |[アカウント]({{%relref "faq/account.md" %}})|
+|[サポート]({{%relref "faq/support.md" %}})|
 
 |[About SBC Technical Reference]({{%relref "about/_index.md" %}})|
 |:------:|
