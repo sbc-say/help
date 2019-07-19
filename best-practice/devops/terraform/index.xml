@@ -95,7 +95,7 @@ $ terraform plan -var-file=&amp;quot;confing.tfvars&amp;quot; Refreshing Terrafo
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/06/docker/</guid>
       <description>&amp;nbsp; 前章までは Terraformのインストール方法、Terraformの文法、実行方法を説明しました。しかしこれらはTerraform v0.11.13前提での話なので、Terraformのバージョンが違うことで挙動が異なってしまうこともあります。Terraformでよく使うメソッドが急に廃止、、というのもよくあります。それを防ぐためにdockerを使ったインストール、利用する方法があります。dockerはパッケージングを行うための技術です。
-*注：Terraformのバージョン食い違いは基本的にtfenvでカバーできます。詳しくは3章 Install &amp;amp; dockerを参照してください
+*注：Terraformのバージョン食い違いは基本的にtfenvでカバーできます。詳しくはインストールを参照してください
 
 1. dockerについて &amp;nbsp; dockerはOS・ミドルウェア・ファイルシステム全体をイメージという単位で取り扱い、まるごとやりとり出来るツールです。また、イメージの配布やバージョン管理も可能です。メリットとして、手軽に同じ環境を何人のユーザ・ユーザ・他のマシンでも手に入れることができ、即座に同環境を再現（ CI (Continuous Integration) 継続的インテグレーションと CD (Continuous Delivery) 継続的デリバリー ）することができます。 また、dockerはTerraformで大きく３つの役割があり、Terraformのインストールや実行環境の再現、各種リソースの接続設定、docker Imageを使った既存のプロダクトリソースをそのまま導入することが可能です。（docker Imageとは、dockerコンテナを作成する際に必要となるファイルシステムです。）
 
