@@ -153,6 +153,37 @@ terraform apply -var-file="confing.tfvars"
 
 <br>
 これで問題なく実行できたら、cluster_id、worker_nodes、master_nodesが表示され、こうしてkubernetesクラスター操作、管理ができます。
+
+```
+alicloud_cs_kubernetes.k8s: Still creating... (25m10s elapsed)
+alicloud_cs_kubernetes.k8s: Still creating... (25m20s elapsed)
+alicloud_cs_kubernetes.k8s: Still creating... (25m30s elapsed)
+alicloud_cs_kubernetes.k8s: Still creating... (25m40s elapsed)
+alicloud_cs_kubernetes.k8s: Creation complete after 25m42s (ID: cfdaeda40f6b9426e833f6cfc059b3d20)
+
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+cluster_id = [
+    cfdaeda40f6b9426e833f6cfc059b3d20
+]
+master_nodes = [
+    [
+        map[id:i-6we4hecn7bodqrq6xsbx name:master-01-k8s-for-cs-cfdaeda40f6b9426e833f6cfc059b3d20 private_ip:192.168.1.5],
+        map[private_ip:192.168.1.6 id:i-6web68sjtatfr2o4uhca name:master-02-k8s-for-cs-cfdaeda40f6b9426e833f6cfc059b3d20],
+        map[id:i-6we8iuga202nxkttrj2b name:master-03-k8s-for-cs-cfdaeda40f6b9426e833f6cfc059b3d20 private_ip:192.168.1.7]
+    ]
+]
+worker_nodes = [
+    [
+        map[name:worker-k8s-for-cs-cfdaeda40f6b9426e833f6cfc059b3d20 id:i-6we756j83yg6rsnuzc3n private_ip:192.168.1.8],
+        map[private_ip:192.168.1.9 id:i-6we756j83yg6rsnuzc3o name:worker-k8s-for-cs-cfdaeda40f6b9426e833f6cfc059b3d20]
+    ]
+]
+$
+$
+```
 <br>
 
 
