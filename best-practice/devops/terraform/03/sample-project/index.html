@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T00:56:20 UTC">
+<meta name="revised" content="2019-07-19T01:01:51 UTC">
 <title>サンプルプロジェクトの作成 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -711,8 +711,9 @@ resource &quot;alicloud_instance&quot; &quot;ECS_instance&quot; {
 }
 </code></pre>
 
-<p>&nbsp; ユーザデータ <code>provisioning.sh</code> も以下のように作成します。ECS起動後、実行してくれる処理内容になります。
-▼ユーザデータ <code>provisioning.sh</code> の中身</p>
+<p>&nbsp; ユーザデータ <code>provisioning.sh</code> も以下のように作成します。ECS起動後、実行してくれる処理内容になります。</p>
+
+<p>▼ユーザデータ <code>provisioning.sh</code> の中身</p>
 
 <pre><code>#!/bin/sh
 yum install -y httpd
@@ -766,17 +767,29 @@ secret_key = &quot;${var.secret_key}&quot;
 }
 </code></pre>
 
-<p>&nbsp; 上記で記載したリソース以外にオプション（任意）でパラメータや構成を指定することもできます。
-* <code>cidr_block</code> - （必須）VPCのCIDRブロック。この例では24bitまでをネットワーク部とする設定をしています。
-* <code>name</code> - （オプション）VPCの名前。デフォルトはnullです。
-* <code>description</code> - （オプション）VPCの説明。デフォルトはnullです。</p>
+<p>&nbsp; 上記で記載したリソース以外にオプション（任意）でパラメータや構成を指定することもできます。</p>
 
-<p>このリソースを実行することにより、以下のVPC属性情報が出力されます。
-* <code>id</code> - VPCのID。
-* <code>cidr_block</code> - VPCのCIDRブロック。
-* <code>name</code> - VPCの名前。
-* <code>router_id</code> - VPC作成時にデフォルトで作成されたルータのID。
-* <code>route_table_id</code> - VPC作成時にデフォルトで作成されたルータのルートテーブルID。</p>
+<ul>
+<li><p><code>cidr_block</code> - （必須）VPCのCIDRブロック。この例では24bitまでをネットワーク部とする設定をしています。</p></li>
+
+<li><p><code>name</code> - （オプション）VPCの名前。デフォルトはnullです。</p></li>
+
+<li><p><code>description</code> - （オプション）VPCの説明。デフォルトはnullです。</p></li>
+</ul>
+
+<p>このリソースを実行することにより、以下のVPC属性情報が出力されます。</p>
+
+<ul>
+<li><p><code>id</code> - VPCのID。</p></li>
+
+<li><p><code>cidr_block</code> - VPCのCIDRブロック。</p></li>
+
+<li><p><code>name</code> - VPCの名前。</p></li>
+
+<li><p><code>router_id</code> - VPC作成時にデフォルトで作成されたルータのID。</p></li>
+
+<li><p><code>route_table_id</code> - VPC作成時にデフォルトで作成されたルータのルートテーブルID。</p></li>
+</ul>
 
 <p>&nbsp; 詳しくは<a href="https://www.terraform.io/docs/providers/alicloud/r/vpc.html">AliCloudのterraform-VPCリファレンス</a>を参照してください。</p>
 
@@ -962,14 +975,14 @@ secret_key = &quot;${var.secret_key}&quot;
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 07/01/2019
+        <i class='fa fa-calendar'></i>  07/01/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/devops/terraform/03/sample-project.md" target="blank"><i class="fa fa-code-fork"></i>
-        Improve this page</a>
+        </a>
     </div>
     
   </div>

@@ -145,6 +145,7 @@ resource "alicloud_instance" "ECS_instance" {
 ```
 
 &nbsp; ユーザデータ `provisioning.sh` も以下のように作成します。ECS起動後、実行してくれる処理内容になります。
+
 ▼ユーザデータ `provisioning.sh` の中身
 ```
 #!/bin/sh
@@ -194,15 +195,24 @@ resource "alicloud_vpc" "vpc" {
 }
 ```
 &nbsp; 上記で記載したリソース以外にオプション（任意）でパラメータや構成を指定することもできます。
+
 * `cidr_block` - （必須）VPCのCIDRブロック。この例では24bitまでをネットワーク部とする設定をしています。
+
 * `name` - （オプション）VPCの名前。デフォルトはnullです。
+
 * `description` - （オプション）VPCの説明。デフォルトはnullです。
 
+
 このリソースを実行することにより、以下のVPC属性情報が出力されます。
+
 * `id` - VPCのID。
+
 * `cidr_block` - VPCのCIDRブロック。
+
 * `name` - VPCの名前。
+
 * `router_id` - VPC作成時にデフォルトで作成されたルータのID。
+
 * `route_table_id` - VPC作成時にデフォルトで作成されたルータのルートテーブルID。
 
 &nbsp; 詳しくは[AliCloudのterraform-VPCリファレンス](https://www.terraform.io/docs/providers/alicloud/r/vpc.html)を参照してください。
