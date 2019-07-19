@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T03:50:51 UTC">
+<meta name="revised" content="2019-07-19T03:53:25 UTC">
 <title>Kubernetesの作成 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -620,34 +620,47 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h4 id="alicloud-cs-kubernetes"><strong>alicloud_cs_kubernetes</strong></h4>
 
-<p>・<code>name</code> - （オプション）kubernetesクラスタ名。
-・<code>name_prefix</code> - （オプション）kubernetesクラスタ名のプレフィックス。
-・<code>availability_zone</code> - （オプション）新しいkubernetesクラスタが配置されるゾーン。指定されていない場合はvswitch_idsを設定する必要あり。
-・<code>new_nat_gateway</code> - （オプション）kubernetesクラスタの作成中に新しいNATゲートウェイを作成するかどうか。
-・<code>master_instance_types</code> - （必須）マスターノードのインスタンスタイプ。
-・<code>worker_instance_types</code> - （必須）ワーカーノードのインスタンスタイプ。
-・<code>worker_number</code> - （必須）kubernetesクラスターのワーカーノード番号。デフォルトは3。
-・<code>password</code> - （オプション）sshログインクラスタノードのパスワード。
-・<code>cluster_network_type</code> - （必須）クラスタのネットワークタイプ。
-・<code>pod_cidr</code> - （オプション）ポッドネットワークのCIDRブロック。
-・<code>service_cidr</code> - （任意）サービスネットワークのCIDRブロック。
-・<code>enable_ssh</code> - （オプション）SSHログインkubernetesを許可するかどうか。デフォルトはfalse。
-・<code>install_cloud_monitor</code> - （オプション）kubernetesのノードにクラウドモニタをインストールするかどうか。</p>
+<ul>
+<li><code>name</code> - （オプション）kubernetesクラスタ名。</li>
+<li><code>name_prefix</code> - （オプション）kubernetesクラスタ名のプレフィックス。</li>
+<li><code>availability_zone</code> - （オプション）新しいkubernetesクラスタが配置されるゾーン。指定されていない場合はvswitch_idsを設定する必要あり。</li>
+<li><code>new_nat_gateway</code> - （オプション）kubernetesクラスタの作成中に新しいNATゲートウェイを作成するかどうか。</li>
+<li><code>master_instance_types</code> - （必須）マスターノードのインスタンスタイプ。</li>
+<li><code>worker_instance_types</code> - （必須）ワーカーノードのインスタンスタイプ。</li>
+<li><code>worker_number</code> - （必須）kubernetesクラスターのワーカーノード番号。デフォルトは3。</li>
+<li><code>password</code> - （オプション）sshログインクラスタノードのパスワード。</li>
+<li><code>cluster_network_type</code> - （必須）クラスタのネットワークタイプ。</li>
+<li><code>pod_cidr</code> - （オプション）ポッドネットワークのCIDRブロック。</li>
+<li><code>service_cidr</code> - （任意）サービスネットワークのCIDRブロック。</li>
+<li><code>enable_ssh</code> - （オプション）SSHログインkubernetesを許可するかどうか。デフォルトはfalse。</li>
+<li><code>install_cloud_monitor</code> - （オプション）kubernetesのノードにクラウドモニタをインストールするかどうか。</li>
+</ul>
 
-<p>alicloud_cs_kubernetesリソースを実行することにより、以下の属性情報が出力されます。
-・<code>id</code> - コンテナクラスタのID。
-・<code>name</code> - コンテナクラスタの名前。
-・<code>master_nodes</code> - クラスタマスターノードリスト。
-・<code>worker_nodes</code> - クラスタワーカーノードのリスト。
-・<code>connections</code> - kubernetesクラスタ接続情報。
-» ブロックノード
-・<code>name</code> - ノード名
-・<code>private_ip</code> - ノードのプライベートIPアドレス。
-» ブロック接続
-・<code>api_server_internet</code> - APIサーバーのインターネットエンドポイント。
-・<code>api_server_intranet</code> - APIサーバーイントラネットエンドポイント。
-・<code>master_public_ip</code> - マスターノードのSSH IPアドレス。
-・<code>service_domain</code> - サービスアクセスドメイン。</p>
+<p>alicloud_cs_kubernetesリソースを実行することにより、以下の属性情報が出力されます。</p>
+
+<ul>
+<li><code>id</code> - コンテナクラスタのID。</li>
+<li><code>name</code> - コンテナクラスタの名前。</li>
+<li><code>master_nodes</code> - クラスタマスターノードリスト。</li>
+<li><code>worker_nodes</code> - クラスタワーカーノードのリスト。</li>
+<li><code>connections</code> - kubernetesクラスタ接続情報。</li>
+</ul>
+
+<p>» ブロックノード</p>
+
+<ul>
+<li><code>name</code> - ノード名</li>
+<li><code>private_ip</code> - ノードのプライベートIPアドレス。</li>
+</ul>
+
+<p>» ブロック接続</p>
+
+<ul>
+<li><code>api_server_internet</code> - APIサーバーのインターネットエンドポイント。</li>
+<li><code>api_server_intranet</code> - APIサーバーイントラネットエンドポイント。</li>
+<li><code>master_public_ip</code> - マスターノードのSSH IPアドレス。</li>
+<li><code>service_domain</code> - サービスアクセスドメイン。</li>
+</ul>
 
 <p>他に入力パラメータ、出力パラメータがいくつかありますので、<a href="https://www.terraform.io/docs/providers/alicloud/r/cs_kubernetes.html">こちらも是非参照</a>してみてください。
 <a href="https://www.terraform.io/docs/providers/alicloud/r/cs_kubernetes.html">https://www.terraform.io/docs/providers/alicloud/r/cs_kubernetes.html</a></p>
@@ -689,50 +702,39 @@ resource &quot;alicloud_cs_managed_kubernetes&quot; &quot;k8s&quot; {
 
 <h4 id="alicloud-cs-managed-kubernetes"><strong>alicloud_cs_managed_kubernetes</strong></h4>
 
-<p>・<code>name</code> - （オプション）kubernetesクラスタ名。</p>
+<ul>
+<li><code>name</code> - （オプション）kubernetesクラスタ名。</li>
+<li><code>availability_zone</code> - （オプション）kubernetesクラスタが配置されるゾーン。</li>
+<li><code>new_nat_gateway</code> - （オプション）kubernetesクラスタの作成中に新しいNATゲートウェイを作成するかどうか。デフォルトはtrue。</li>
+<li><code>password</code> - （必須）sshログインクラスタノードのパスワード。</li>
+<li><code>pod_cidr</code> - （オプション）ポッドネットワークのCIDRブロック。</li>
+<li><code>service_cidr</code> - （任意）サービスネットワークのCIDRブロック。</li>
+<li><code>slb_internet_enabled</code> - （オプション）API Server用のインターネットロードバランサを作成するかどうか。デフォルトはfalse。</li>
+<li><code>install_cloud_monitor</code> - （オプション）kubernetesのノードにクラウドモニタをインストールするかどうか。</li>
+<li><code>worker_disk_category</code> - （オプション）ワーカーノードのシステムディスクカテゴリ。</li>
+<li><code>worker_numbers</code> - （必須）kubernetesクラスターのワーカーノード番号。</li>
+<li><code>worker_instance_types</code> - （必須）ワーカーノードのインスタンスタイプ。</li>
+</ul>
 
-<p>・<code>availability_zone</code> - （オプション）kubernetesクラスタが配置されるゾーン。</p>
+<p>alicloud_cs_managed_kubernetesリソースを実行することにより、以下の属性情報が出力されます。</p>
 
-<p>・<code>new_nat_gateway</code> - （オプション）kubernetesクラスタの作成中に新しいNATゲートウェイを作成するかどうか。デフォルトはtrue。</p>
+<ul>
+<li><code>name</code> - コンテナクラスタの名前。</li>
+<li><code>availability_zone</code> - アベイラビリティーゾーンのID。</li>
+<li><code>key_name</code> - sshログインクラスタノードのキーペア、最初にそれを作成する必要があります。</li>
+<li><code>worker_numbers</code> - 現在のコンテナクラスタ内のECSインスタンスノード番号。</li>
+<li><code>image_id</code> - ノードイメージのID。</li>
+<li><code>nat_gateway_id</code> - kubernetesクラスタを起動するために使用されるNATゲートウェイのID。</li>
+<li><code>worker_instance_types</code> - ワーカーノードのインスタンスタイプ。</li>
+</ul>
 
-<p>・<code>password</code> - （必須）sshログインクラスタノードのパスワード。</p>
+<p>» ブロックノード</p>
 
-<p>・<code>pod_cidr</code> - （オプション）ポッドネットワークのCIDRブロック。</p>
-
-<p>・<code>service_cidr</code> - （任意）サービスネットワークのCIDRブロック。</p>
-
-<p>・<code>slb_internet_enabled</code> - （オプション）API Server用のインターネットロードバランサ
-を作成するかどうか。デフォルトはfalse。</p>
-
-<p>・<code>install_cloud_monitor</code> - （オプション）kubernetesのノードにクラウドモニタをインストールするかどうか。</p>
-
-<p>・<code>worker_disk_category</code> - （オプション）ワーカーノードのシステムディスクカテゴリ。</p>
-
-<p>・<code>worker_numbers</code> - （必須）kubernetesクラスターのワーカーノード番号。</p>
-
-<p>・<code>worker_instance_types</code> - （必須）ワーカーノードのインスタンスタイプ。</p>
-
-<p>alicloud_cs_managed_kubernetesリソースを実行することにより、以下の属性情報が出力されます。
-・<code>name</code> - コンテナクラスタの名前。</p>
-
-<p>・<code>availability_zone</code> - アベイラビリティーゾーンのID。</p>
-
-<p>・<code>key_name</code> - sshログインクラスタノードのキーペア、最初にそれを作成する必要があります。</p>
-
-<p>・<code>worker_numbers</code> - 現在のコンテナクラスタ内のECSインスタンスノード番号。</p>
-
-<p>・<code>image_id</code> - ノードイメージのID。</p>
-
-<p>・<code>nat_gateway_id</code> - kubernetesクラスタを起動するために使用されるNATゲートウェイのID。</p>
-
-<p>・<code>worker_instance_types</code> - ワーカーノードのインスタンスタイプ。</p>
-
-<p>» ブロックノード
-・<code>id</code> - ノードのID</p>
-
-<p>・<code>name</code> - ノード名</p>
-
-<p>・<code>private_ip</code> - ノードのプライベートIPアドレス。</p>
+<ul>
+<li><code>id</code> - ノードのID</li>
+<li><code>name</code> - ノード名</li>
+<li><code>private_ip</code> - ノードのプライベートIPアドレス。</li>
+</ul>
 
 <p>他に入力パラメータ、出力パラメータがいくつかありますので、<a href="https://www.terraform.io/docs/providers/alicloud/r/cs_managed_kubernetes.html">こちらも是非参照</a>してみてください。
 <a href="https://www.terraform.io/docs/providers/alicloud/r/cs_managed_kubernetes.html">https://www.terraform.io/docs/providers/alicloud/r/cs_managed_kubernetes.html</a></p>
