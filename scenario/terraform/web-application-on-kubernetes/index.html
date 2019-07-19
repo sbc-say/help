@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T07:19:17 UTC">
+<meta name="revised" content="2019-07-19T07:38:11 UTC">
 <title>KubernetesによるコンテナでWordPress作成 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -545,12 +545,16 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     
     
 
-<p>&nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。
-1. AlibabaCloudでKubernetesクラスターを生成
-1. kube_configを環境変数にて設定
-1. KubernetesクラスターのローカルボリュームにてWordPressとMySQLをインストール</p>
+<p>&nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。</p>
 
-<p>こちらは<a href="https://github.com/terraform-providers/terraform-provider-alicloud/tree/master/examples/kubernetes-wordpress">AlibabaCloud Terraformのサンプル集</a>を通じての紹介になります。</p>
+<ol>
+<li>AlibabaCloudでKubernetesクラスターを生成</li>
+<li>kube_configを環境変数にて設定</li>
+<li>KubernetesクラスターのローカルボリュームにてWordPressとMySQLをインストール</li>
+</ol>
+
+<p><br>
+こちらは<a href="https://github.com/terraform-providers/terraform-provider-alicloud/tree/master/examples/kubernetes-wordpress">AlibabaCloud Terraformのサンプル集</a>を通じての紹介になります。</p>
 
 <h3 id="kubernetesでクラスタ生成">Kubernetesでクラスタ生成</h3>
 

@@ -719,7 +719,8 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
       <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/web-application-on-kubernetes/</guid>
-      <description>&amp;nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。 1. AlibabaCloudでKubernetesクラスターを生成 1. kube_configを環境変数にて設定 1. KubernetesクラスターのローカルボリュームにてWordPressとMySQLをインストール
+      <description>&amp;nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。
+ AlibabaCloudでKubernetesクラスターを生成 kube_configを環境変数にて設定 KubernetesクラスターのローカルボリュームにてWordPressとMySQLをインストール  
 こちらはAlibabaCloud Terraformのサンプル集を通じての紹介になります。
 Kubernetesでクラスタ生成 &amp;nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。
 
