@@ -124,7 +124,7 @@ Kubernetesでクラスタ生成 &amp;nbsp; KubernetesによるコンテナでWor
 &amp;nbsp; TerraformでWebアプリケーションを作ってみます。step1のゴール構成図は以下の通りです。
 それぞれのパラメータは以下の通りです。
 ネットワーク構成:
-   リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、RDS-Sample-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.168.1.0/24 VPC の CIDR ブロック    vpc description 任意 Enable k8s-Setteing-Sample vpc VPC の説明。   alicloud_vswitch vsw name 任意 ${var.project_name}-vswitch vswitch の名称。この例の場合、RDS-Sample-for-Terraform-vswitch として表示されます。    vsw vpc_id 必須 ${alicloud_vpc.</description>
+   リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、Web-App-on-k8s-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.168.1.0/24 VPC の CIDR ブロック    vpc description 任意 Enable k8s-Setteing-Sample vpc VPC の説明。   alicloud_vswitch vsw name 任意 ${var.project_name}-vswitch vswitch の名称。この例の場合、Web-App-on-k8s-for-Terraform-vswitch として表示されます。    vsw vpc_id 必須 ${alicloud_vpc.</description>
     </item>
     
     <item>

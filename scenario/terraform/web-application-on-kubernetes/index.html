@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T07:38:11 UTC">
+<meta name="revised" content="2019-07-19T07:43:51 UTC">
 <title>KubernetesによるコンテナでWordPress作成 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -588,7 +588,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>name</td>
 <td>任意</td>
 <td>${var.project_name}-vpc</td>
-<td>VPC の名称。この例の場合、RDS-Sample-for-Terraform-vpc として表示されます。</td>
+<td>VPC の名称。この例の場合、Web-App-on-k8s-for-Terraform-vpc として表示されます。</td>
 </tr>
 
 <tr>
@@ -615,7 +615,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>name</td>
 <td>任意</td>
 <td>${var.project_name}-vswitch</td>
-<td>vswitch の名称。この例の場合、RDS-Sample-for-Terraform-vswitch として表示されます。</td>
+<td>vswitch の名称。この例の場合、Web-App-on-k8s-for-Terraform-vswitch として表示されます。</td>
 </tr>
 
 <tr>
@@ -800,7 +800,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 </table>
 
 <p><br>
-ソースは以下になります。サンプルソースは[こちら]()にあります。</p>
+ソースは以下になります。</p>
 
 <p><br>
 main.tf</p>
