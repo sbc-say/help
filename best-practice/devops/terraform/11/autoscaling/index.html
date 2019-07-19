@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T03:46:20 UTC">
+<meta name="revised" content="2019-07-19T03:47:39 UTC">
 <title>AutoScalingの作成 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -632,38 +632,47 @@ resource &quot;alicloud_ess_scaling_rule&quot; &quot;rule&quot; {
 
 <h4 id="alicloud-ess-scaling-group"><strong>alicloud_ess_scaling_group</strong></h4>
 
-<p>同じアプリケーションシナリオを持つECSインスタンスにてAutoScalingグループリソースを提供するために必要なパラメータです。グループ内のECSインスタンスの最大数と最小数、関連付けられたSLB、RDSインスタンス、およびその他の属性を定義します。
-* <code>min_size</code> - （必須）スケーリンググループ内のECSインスタンスの最小数。
-* <code>max_size</code> - （必須）スケーリンググループ内のECSインスタンスの最大数。
-* <code>scaling_group_name</code> - （オプション）スケーリンググループに表示される名前。
-* <code>vswitch_ids</code> - （オプション）ecsインスタンスが起動されるVSwitchのID。
-* <code>loadbalancer_ids</code> - （オプション）スケーリンググループでServer Load Balancerインスタンスが指定されている場合、スケーリンググループは自動的にそのECSインスタンスをServer Load Balancerインスタンスに接続します。
-* <code>removal_policies</code> - （オプション）RemovalPolicyは、複数の削除候補が存在する場合にスケーリンググループから削除するECSインスタンスを選択するために使用されます。</p>
+<p>同じアプリケーションシナリオを持つECSインスタンスにてAutoScalingグループリソースを提供するために必要なパラメータです。グループ内のECSインスタンスの最大数と最小数、関連付けられたSLB、RDSインスタンス、およびその他の属性を定義します。</p>
+
+<ul>
+<li><code>min_size</code> - （必須）スケーリンググループ内のECSインスタンスの最小数。</li>
+<li><code>max_size</code> - （必須）スケーリンググループ内のECSインスタンスの最大数。</li>
+<li><code>scaling_group_name</code> - （オプション）スケーリンググループに表示される名前。</li>
+<li><code>vswitch_ids</code> - （オプション）ecsインスタンスが起動されるVSwitchのID。</li>
+<li><code>loadbalancer_ids</code> - （オプション）スケーリンググループでServer Load Balancerインスタンスが指定されている場合、スケーリンググループは自動的にそのECSインスタンスをServer Load Balancerインスタンスに接続します。</li>
+<li><code>removal_policies</code> - （オプション）RemovalPolicyは、複数の削除候補が存在する場合にスケーリンググループから削除するECSインスタンスを選択するために使用されます。</li>
+</ul>
 
 <p>他に入力パラメータ、出力パラメータがいくつかありますので、<a href="https://www.terraform.io/docs/providers/alicloud/r/ess_scaling_group.html">こちらも是非参照</a>してみてください。
 <a href="https://www.terraform.io/docs/providers/alicloud/r/ess_scaling_group.html">https://www.terraform.io/docs/providers/alicloud/r/ess_scaling_group.html</a></p>
 
 <h4 id="alicloud-ess-scaling-configuration"><strong>alicloud_ess_scaling_configuration</strong></h4>
 
-<p>alicloud_ess_scaling_configurationはAutoScalingを設定するパラメータです。
-* <code>scaling_group_id</code> - （必須）スケーリングルールのスケーリンググループのID。
-* <code>image_id</code> - （オプション）ECSインスタンスのイメージID。
-* <code>instance_type</code> - （オプション）ECSインスタンスタイプ。
-* <code>active</code> - （オプション）指定されたスケーリンググループの現在のスケーリング設定をアクティブにするかどうか。デフォルトはfalse。
-* <code>enable</code> - （オプション）現在のスケーリング設定が属する指定されたスケーリンググループを有効にするかどうか。
-* <code>internet_max_bandwidth_in</code> - （オプション）パブリックネットワークからの最大着信帯域幅。
-* <code>internet_max_bandwidth_out</code> - （オプション）パブリックネットワークからの最大発信帯域幅。</p>
+<p>alicloud_ess_scaling_configurationはAutoScalingを設定するパラメータです。</p>
+
+<ul>
+<li><code>scaling_group_id</code> - （必須）スケーリングルールのスケーリンググループのID。</li>
+<li><code>image_id</code> - （オプション）ECSインスタンスのイメージID。</li>
+<li><code>instance_type</code> - （オプション）ECSインスタンスタイプ。</li>
+<li><code>active</code> - （オプション）指定されたスケーリンググループの現在のスケーリング設定をアクティブにするかどうか。デフォルトはfalse。</li>
+<li><code>enable</code> - （オプション）現在のスケーリング設定が属する指定されたスケーリンググループを有効にするかどうか。</li>
+<li><code>internet_max_bandwidth_in</code> - （オプション）パブリックネットワークからの最大着信帯域幅。</li>
+<li><code>internet_max_bandwidth_out</code> - （オプション）パブリックネットワークからの最大発信帯域幅。</li>
+</ul>
 
 <p>他に入力パラメータ、出力パラメータがいくつかありますので、<a href="https://www.terraform.io/docs/providers/alicloud/r/ess_scaling_configuration.html">こちらも是非参照</a>してみてください。
 <a href="https://www.terraform.io/docs/providers/alicloud/r/ess_scaling_configuration.html">https://www.terraform.io/docs/providers/alicloud/r/ess_scaling_configuration.html</a></p>
 
 <h4 id="alicloud-ess-scaling-rule"><strong>alicloud_ess_scaling_rule</strong></h4>
 
-<p>AutoScalingのルールリソースを設定するパラメータです。
-* <code>scaling_group_id</code> - （必須）スケーリングルールのスケーリンググループのID。
-* <code>adjustment_type</code> - （必須）スケーリングルールの調整モード。
-* <code>adjustment_value</code> - （必須）スケーリングルールの調整値。
-* <code>cooldown</code> - （オプション）スケーリングルールのクールダウン時間。</p>
+<p>AutoScalingのルールリソースを設定するパラメータです。</p>
+
+<ul>
+<li><code>scaling_group_id</code> - （必須）スケーリングルールのスケーリンググループのID。</li>
+<li><code>adjustment_type</code> - （必須）スケーリングルールの調整モード。</li>
+<li><code>adjustment_value</code> - （必須）スケーリングルールの調整値。</li>
+<li><code>cooldown</code> - （オプション）スケーリングルールのクールダウン時間。</li>
+</ul>
 
 <p><br>
 以下にAutoScalingの実際のサンプルを入れていますので、こちらも参照してみてください。</p>
@@ -691,14 +700,14 @@ resource &quot;alicloud_ess_scaling_rule&quot; &quot;rule&quot; {
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 07/01/2019
+        <i class='fa fa-calendar'></i>  07/01/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/devops/terraform/11/autoscaling.md" target="blank"><i class="fa fa-code-fork"></i>
-        Improve this page</a>
+        </a>
     </div>
     
   </div>

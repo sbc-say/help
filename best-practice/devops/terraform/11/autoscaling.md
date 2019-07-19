@@ -68,6 +68,7 @@ AutoScalingを作成する時は`alicloud_ess_scaling_group`、`alicloud_ess_sca
 
 #### **alicloud_ess_scaling_group**
 同じアプリケーションシナリオを持つECSインスタンスにてAutoScalingグループリソースを提供するために必要なパラメータです。グループ内のECSインスタンスの最大数と最小数、関連付けられたSLB、RDSインスタンス、およびその他の属性を定義します。
+
 * `min_size` - （必須）スケーリンググループ内のECSインスタンスの最小数。
 * `max_size` - （必須）スケーリンググループ内のECSインスタンスの最大数。
 * `scaling_group_name` - （オプション）スケーリンググループに表示される名前。
@@ -81,6 +82,7 @@ https://www.terraform.io/docs/providers/alicloud/r/ess_scaling_group.html
 
 #### **alicloud_ess_scaling_configuration**
 alicloud_ess_scaling_configurationはAutoScalingを設定するパラメータです。
+
 * `scaling_group_id` - （必須）スケーリングルールのスケーリンググループのID。
 * `image_id` - （オプション）ECSインスタンスのイメージID。
 * `instance_type` - （オプション）ECSインスタンスタイプ。
@@ -94,6 +96,7 @@ https://www.terraform.io/docs/providers/alicloud/r/ess_scaling_configuration.htm
 
 #### **alicloud_ess_scaling_rule**
 AutoScalingのルールリソースを設定するパラメータです。
+
 * `scaling_group_id` - （必須）スケーリングルールのスケーリンググループのID。
 * `adjustment_type` - （必須）スケーリングルールの調整モード。
 * `adjustment_value` - （必須）スケーリングルールの調整値。
