@@ -7,11 +7,12 @@ draft: false
 ---
 
 &nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。
+
 1. AlibabaCloudでKubernetesクラスターを生成
 1. kube_configを環境変数にて設定
 1. KubernetesクラスターのローカルボリュームにてWordPressとMySQLをインストール
 
-
+<br>
 こちらは[AlibabaCloud Terraformのサンプル集](https://github.com/terraform-providers/terraform-provider-alicloud/tree/master/examples/kubernetes-wordpress)を通じての紹介になります。
 
 
