@@ -118,6 +118,7 @@ resource "alicloud_eip_association" "eip_ecs_association" {
   instance_id   = "${alicloud_instance.ECS_instance.id}"
 }
 ```
+
 #### **alicloud_eip**
 
 ・`bandwidth` - EIPの帯域幅。デフォルト時は5Mbps。
