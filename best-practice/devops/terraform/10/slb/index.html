@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T03:44:14 UTC">
+<meta name="revised" content="2019-07-19T03:46:14 UTC">
 <title>SLBの作成 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -642,34 +642,46 @@ output &quot;slb_ip&quot; {
 
 <h4 id="alicloud-slb"><strong>alicloud_slb</strong></h4>
 
-<p>alicloud_slbはSLBを利用開始するために必要なパラメータです。
-* <code>name</code> - （オプション）SLBの名前。
-* <code>vswitch_id</code> - （必須）接続したいVSwitchのID。
-* <code>internet</code> - （オプション）trueの場合、SLB addressTypeはインターネットになり、falseはイントラネットになります。デフォルトはfalseです。</p>
+<p>alicloud_slbはSLBを利用開始するために必要なパラメータです。</p>
 
-<p>実行することにより、以下の属性情報が出力されます。
-* <code>address</code> - ロードバランサのIPアドレス。</p>
+<ul>
+<li><code>name</code> - （オプション）SLBの名前。</li>
+<li><code>vswitch_id</code> - （必須）接続したいVSwitchのID。</li>
+<li><code>internet</code> - （オプション）trueの場合、SLB addressTypeはインターネットになり、falseはイントラネットになります。デフォルトはfalseです。</li>
+</ul>
+
+<p>実行することにより、以下の属性情報が出力されます。</p>
+
+<ul>
+<li><code>address</code> - ロードバランサのIPアドレス。</li>
+</ul>
 
 <p>他に入力パラメータ、出力パラメータがいくつかありますので、<a href="https://www.terraform.io/docs/providers/alicloud/r/slb.html">こちらも是非参照</a>してみてください。
 <a href="https://www.terraform.io/docs/providers/alicloud/r/slb.html">https://www.terraform.io/docs/providers/alicloud/r/slb.html</a></p>
 
 <h4 id="alicloud-slb-listener"><strong>alicloud_slb_listener</strong></h4>
 
-<p>alicloud_slb_listenerはSLBのリスナーリソースを管理するパラメータです。
-* <code>load_balancer_id</code> - （必須）新しいリスナーを起動するために使用するSLBのID。
-* <code>frontend_port</code> - （必須）SLBが使用するフロントエンドのポート。
-* <code>backend_port</code> - （オプション）SLBが使用するバックエンドのポート。
-* <code>protocol</code> - （必須）待機する通信プロトコルタイプ。[http、https、tcp、udp]のいずれかを使用。
-* <code>bandwidth</code> - （任意）Listenerのピーク帯域幅。</p>
+<p>alicloud_slb_listenerはSLBのリスナーリソースを管理するパラメータです。</p>
+
+<ul>
+<li><code>load_balancer_id</code> - （必須）新しいリスナーを起動するために使用するSLBのID。</li>
+<li><code>frontend_port</code> - （必須）SLBが使用するフロントエンドのポート。</li>
+<li><code>backend_port</code> - （オプション）SLBが使用するバックエンドのポート。</li>
+<li><code>protocol</code> - （必須）待機する通信プロトコルタイプ。[http、https、tcp、udp]のいずれかを使用。</li>
+<li><code>bandwidth</code> - （任意）Listenerのピーク帯域幅。</li>
+</ul>
 
 <p>SLB_ListenerはSLBの心臓部でもあり、他に入力パラメータ、出力パラメータがいくつかありますので、<a href="https://www.terraform.io/docs/providers/alicloud/r/slb_listener.html">こちらも是非参照</a>してみてください。
 <a href="https://www.terraform.io/docs/providers/alicloud/r/slb_listener.html">https://www.terraform.io/docs/providers/alicloud/r/slb_listener.html</a></p>
 
 <h4 id="alicloud-slb-attachment"><strong>alicloud_slb_attachment</strong></h4>
 
-<p>alicloud_slb_attachmentはバックエンド・サーバーグループ(ECSインスタンス)をSLBに追加するパラメータです。
-* <code>load_balancer_id</code> - （必須）ロードバランサーのID。
-* <code>instance_ids</code> - （必須）SLBに追加されたバックエンドサーバーへのインスタンスIDのリスト。</p>
+<p>alicloud_slb_attachmentはバックエンド・サーバーグループ(ECSインスタンス)をSLBに追加するパラメータです。</p>
+
+<ul>
+<li><code>load_balancer_id</code> - （必須）ロードバランサーのID。</li>
+<li><code>instance_ids</code> - （必須）SLBに追加されたバックエンドサーバーへのインスタンスIDのリスト。</li>
+</ul>
 
 <p><br>
 以下にSLBの実際の構築サンプルを入れていますので、こちらも参照してみてください。</p>
@@ -697,14 +709,14 @@ output &quot;slb_ip&quot; {
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 07/01/2019
+        <i class='fa fa-calendar'></i>  07/01/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/devops/terraform/10/slb.md" target="blank"><i class="fa fa-code-fork"></i>
-        Improve this page</a>
+        </a>
     </div>
     
   </div>

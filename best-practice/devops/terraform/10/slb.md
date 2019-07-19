@@ -79,11 +79,13 @@ SLBを作成する時は`alicloud_slb`、`alicloud_slb_listener`、`alicloud_slb
 
 #### **alicloud_slb**
 alicloud_slbはSLBを利用開始するために必要なパラメータです。
+
 * `name` - （オプション）SLBの名前。
 * `vswitch_id` - （必須）接続したいVSwitchのID。 
 * `internet` - （オプション）trueの場合、SLB addressTypeはインターネットになり、falseはイントラネットになります。デフォルトはfalseです。
 
 実行することにより、以下の属性情報が出力されます。
+
 * `address` - ロードバランサのIPアドレス。
 
 他に入力パラメータ、出力パラメータがいくつかありますので、[こちらも是非参照](https://www.terraform.io/docs/providers/alicloud/r/slb.html)してみてください。
@@ -92,6 +94,7 @@ https://www.terraform.io/docs/providers/alicloud/r/slb.html
 
 #### **alicloud_slb_listener**
 alicloud_slb_listenerはSLBのリスナーリソースを管理するパラメータです。
+
 * `load_balancer_id` - （必須）新しいリスナーを起動するために使用するSLBのID。
 * `frontend_port` - （必須）SLBが使用するフロントエンドのポート。
 * `backend_port` - （オプション）SLBが使用するバックエンドのポート。
@@ -104,6 +107,7 @@ https://www.terraform.io/docs/providers/alicloud/r/slb_listener.html
 
 #### **alicloud_slb_attachment**
 alicloud_slb_attachmentはバックエンド・サーバーグループ(ECSインスタンス)をSLBに追加するパラメータです。
+
 * `load_balancer_id` - （必須）ロードバランサーのID。
 * `instance_ids` - （必須）SLBに追加されたバックエンドサーバーへのインスタンスIDのリスト。
 
