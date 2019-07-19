@@ -299,7 +299,7 @@ resource "alicloud_vswitch" "db" {
 }
 
 resource "alicloud_ess_scaling_group" "web" {
-  scaling_group_name = "${var.solution_name}-ess-web"
+  scaling_group_name = "${var.project_name}-ess-web"
   min_size           = "${var.web_instance_min_count}"
   max_size           = "${var.web_instance_max_count}"
   removal_policies   = ["OldestInstance", "NewestInstance"]
@@ -318,7 +318,7 @@ resource "alicloud_ess_scaling_configuration" "web" {
 }
 
 resource "alicloud_ess_scaling_rule" "web" {
-  scaling_rule_name = "${var.solution_name}-ess-rule-web"
+  scaling_rule_name = "${var.project_name}-ess-rule-web"
   scaling_group_id  = "${alicloud_ess_scaling_group.web.id}"
   adjustment_type   = "TotalCapacity"
   adjustment_value  = 2
@@ -423,7 +423,7 @@ resource "alicloud_instance" "app" {
 }
 
 resource "alicloud_ess_scaling_group" "app" {
-  scaling_group_name = "${var.solution_name}-ess-app"
+  scaling_group_name = "${var.project_name}-ess-app"
   min_size           = "${var.app_instance_min_count}"
   max_size           = "${var.app_instance_max_count}"
   removal_policies   = ["OldestInstance", "NewestInstance"]
@@ -442,7 +442,7 @@ resource "alicloud_ess_scaling_configuration" "app" {
 }
 
 resource "alicloud_ess_scaling_rule" "app" {
-  scaling_rule_name = "${var.solution_name}-ess-rule-app"
+  scaling_rule_name = "${var.project_name}-ess-rule-app"
   scaling_group_id  = "${alicloud_ess_scaling_group.app.id}"
   adjustment_type   = "TotalCapacity"
   adjustment_value  = 2
@@ -521,6 +521,7 @@ resource "alicloud_db_connection" "default" {
   connection_prefix = "alicloud-database"
   port = "3306"
 }
+
 ```
 
 <br>
@@ -538,6 +539,8 @@ variable "db_password" {}
 
 variable "web_layer_name" {}
 variable "web_instance_count" {}
+variable "web_instance_min_count" {}
+variable "web_instance_max_count" {}
 variable "web_availability_zone" {}
 variable "web_instance_type" {}
 variable "web_instance_port" {}
@@ -546,6 +549,8 @@ variable "web_instance_user_data" {}
 
 variable "app_layer_name" {}
 variable "app_instance_count" {}
+variable "app_instance_min_count" {}
+variable "app_instance_max_count" {}
 variable "app_availability_zone" {}
 variable "app_instance_type" {}
 variable "app_instance_port" {}
@@ -576,6 +581,8 @@ db_password = "!Password2019"
 web_layer_name = "web-server"
 web_availability_zone = "ap-northeast-1a"
 web_instance_count = 3
+web_instance_min_count = 1
+web_instance_max_count = 5
 web_instance_type = "ecs.sn1ne.large"
 web_instance_port = 80
 web_instance_image_id = "centos_7_06_64_20G_alibase_20190218.vhd"
@@ -584,6 +591,8 @@ web_instance_user_data = "${file("provisioning.sh")}"
 app_layer_name = "app-server"
 app_availability_zone = "ap-northeast-1a"
 app_instance_count = 3
+app_instance_min_count = 1
+app_instance_max_count = 5
 app_instance_type = "ecs.sn1ne.large"
 app_instance_port = 5000
 app_instance_image_id = "centos_7_06_64_20G_alibase_20190218.vhd"
