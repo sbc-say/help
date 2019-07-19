@@ -139,6 +139,7 @@ k8s_password = "!Password2019"
 provisioning.sh
 
 ```
+# 今回はprovisioning.shを使用しないため、空白です
 ```
 <br>
 ### 実行
