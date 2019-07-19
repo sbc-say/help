@@ -144,7 +144,7 @@
 	"title": "Terraform",
 	"tags": [],
 	"description": "AlibabaCloudにおけるTerraformの実践例を記載します",
-	"content": "Terraformのバージョン情報は以下の記事を参照ください。\nhttps://sbcloud.github.io/help/best-practice/devops/terraform/02/install/\n"
+	"content": "\u0026nbsp; 本章はゴールとなる構成図、完成像からTerraformを使ってリソースを作成します。 この実践例は初心者でもわかりやすいようにモジュールは非使用、main.tf、variables.tf、output.tf、confing.tfvars、provisioning.shの４つのファイルに分けて作成します。（kubernetesなど一部例外もありますし、provisioning.shが空白の事例もあります。）\nこのサンプルで実行したTerraformのバージョンはTerraform v0.11.13、tfenv 0.6.0になります。Terraformのバージョン情報は以下の記事を参照ください。\nhttps://sbcloud.github.io/help/best-practice/devops/terraform/02/install/\n\n実践例の実行方法の流れとしては、実行したいコードを空のディレクトリに保存（格納）し、コードを実行するだけです。なので他のプロジェクトの実行ファイル.tfと混ざらないように注意してください。\n\nコードを実行するときは confing.tfvars にて各自の個人情報を入力してください。\naccess_key = \u0026quot;xxxxxxxxxxxxxxxxx\u0026quot; secret_key = \u0026quot;xxxxxxxxxxxxxxxxx\u0026quot;  \nあとは3Stepのコマンドで実行できます。\nterraform init terraform play -var-file=\u0026quot;confing.tfvars\u0026quot; terraform apply -var-file=\u0026quot;confing.tfvars\u0026quot;  \nもし作成したリソースを削除、解放したい場合は、諸元となるソースコードを一切変更せずに このコマンドを実行します。\nterraform destroy -var-file=\u0026quot;confing.tfvars\u0026quot;  それではTerraformを使って誰でも簡単にAlibabaCloudによるリソース作成をしてみましょう。\n"
 },
 {
 	"uri": "https://sbcloud.github.io/help/faq/rds/",

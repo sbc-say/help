@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T01:01:51 UTC">
+<meta name="revised" content="2019-07-19T01:26:46 UTC">
 <title>Terraform :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -136,13 +136,6 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       <a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/getting-started/cloud-users/vs-aws-gcp-azure/" class="dd-item">
-        <div>
-          <a href="/help/getting-started/cloud-users/vs-aws-gcp-azure/">
-            サービスラインナップ比較
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
         </ul>
     </li>
         </ul>
@@ -543,8 +536,37 @@ AlibabaCloudにおけるTerraformの実践例を記載します
 
 <!-- コンテンツを書くときはこの下に記載ください -->
 
-<p>Terraformのバージョン情報は以下の記事を参照ください。<br />
-<a href="https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/">https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/</a></p>
+<p>&nbsp; 本章はゴールとなる構成図、完成像からTerraformを使ってリソースを作成します。 この実践例は初心者でもわかりやすいようにモジュールは非使用、<code>main.tf</code>、<code>variables.tf</code>、<code>output.tf</code>、<code>confing.tfvars</code>、<code>provisioning.sh</code>の４つのファイルに分けて作成します。（kubernetesなど一部例外もありますし、<code>provisioning.sh</code>が空白の事例もあります。）</p>
+
+<p>このサンプルで実行したTerraformのバージョンは<code>Terraform v0.11.13</code>、<code>tfenv 0.6.0</code>になります。Terraformのバージョン情報は以下の記事を参照ください。</p>
+
+<p><a href="https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/">https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/</a></p>
+
+<p><br>
+実践例の実行方法の流れとしては、実行したいコードを空のディレクトリに保存（格納）し、コードを実行するだけです。なので他のプロジェクトの実行ファイル<code>.tf</code>と混ざらないように注意してください。</p>
+
+<p><br>
+コードを実行するときは <code>confing.tfvars</code> にて各自の個人情報を入力してください。</p>
+
+<pre><code>access_key = &quot;xxxxxxxxxxxxxxxxx&quot;
+secret_key = &quot;xxxxxxxxxxxxxxxxx&quot;
+</code></pre>
+
+<p><br>
+あとは3Stepのコマンドで実行できます。</p>
+
+<pre><code>terraform init
+terraform play -var-file=&quot;confing.tfvars&quot;
+terraform apply -var-file=&quot;confing.tfvars&quot;
+</code></pre>
+
+<p><br>
+もし作成したリソースを削除、解放したい場合は、諸元となるソースコードを一切変更せずに このコマンドを実行します。</p>
+
+<pre><code>terraform destroy -var-file=&quot;confing.tfvars&quot;
+</code></pre>
+
+<p>それではTerraformを使って誰でも簡単にAlibabaCloudによるリソース作成をしてみましょう。</p>
 
 <!-- 配下タイトル一覧がコンテンツの後に表示されます -->
 
@@ -657,14 +679,14 @@ AlibabaCloudにおけるTerraformの実践例を記載します
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  05/13/2019
+        <i class='fa fa-calendar'></i> Last update on 05/13/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/scenario/terraform/_index.md" target="blank"><i class="fa fa-code-fork"></i>
-        </a>
+        Improve this page</a>
     </div>
     
   </div>
