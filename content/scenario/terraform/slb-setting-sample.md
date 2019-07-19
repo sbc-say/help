@@ -160,7 +160,7 @@ resource "alicloud_slb" "default" {
 }
 
 resource "alicloud_slb_listener" "tcp_http" {
-  load_balancer_id = "${alicloud_slb.slb.id}"
+  load_balancer_id = "${alicloud_slb.default.id}"
   backend_port = "80"
   frontend_port = "80"
   protocol = "tcp"
@@ -169,7 +169,7 @@ resource "alicloud_slb_listener" "tcp_http" {
 }
 
 resource "alicloud_slb_attachment" "slb_attachment" {
-  load_balancer_id = "${alicloud_slb.slb.id}"
+  load_balancer_id = "${alicloud_slb.default.id}"
   instance_ids = ["${alicloud_instance.ECS_instance_for_SLB_Sample.*.id}"]
 }
 ```
@@ -191,7 +191,7 @@ output.tf
 
 ```
 output "ECS_instance_ip" {
-  value = "${alicloud_instance.ECS_instance.*.public_ip}"
+  value = "${alicloud_instance.ECS_instance_for_SLB_Sample.*.public_ip}"
 }
 output "slb_ip" {
   value = "${alicloud_slb.default.address}"
@@ -235,6 +235,32 @@ terraform apply -var-file="confing.tfvars"
 <br>
 これで完了です。問題なく実行できたら、ECSとSLBのIPが表示されます。
 
-<br>
+```
+alicloud_instance.ECS_instance_for_SLB_Sample.0: Still creating... (40s elapsed)
+alicloud_instance.ECS_instance_for_SLB_Sample.1: Still creating... (40s elapsed)
+alicloud_instance.ECS_instance_for_SLB_Sample[1]: Creation complete after 46s (ID: i-6web68sjtatfqyq2mdd7)
+alicloud_instance.ECS_instance_for_SLB_Sample.0: Still creating... (50s elapsed)
+alicloud_instance.ECS_instance_for_SLB_Sample[0]: Creation complete after 59s (ID: i-6we4hecn7bodqns4pode)
+alicloud_slb_attachment.slb_attachment: Creating...
+  backend_servers:         "" => "<computed>"
+  instance_ids.#:          "0" => "2"
+  instance_ids.3313383734: "" => "i-6web68sjtatfqyq2mdd7"
+  instance_ids.3330124408: "" => "i-6we4hecn7bodqns4pode"
+  load_balancer_id:        "" => "lb-e9b8zcx2zwr5y423dlrjh"
+  weight:                  "" => "100"
+alicloud_slb_attachment.slb_attachment: Creation complete after 3s (ID: lb-e9b8zcx2zwr5y423dlrjh)
 
+Apply complete! Resources: 9 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+ECS_instance_ip = [
+    47.74.6.63,
+    47.74.11.111
+]
+slb_ip = 47.245.35.115
+$ 
+```
+
+<br>
 
