@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T07:44:59 UTC">
+<meta name="revised" content="2019-07-19T07:46:04 UTC">
 <title>Kubernetesの構築と設定 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -572,7 +572,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>name</td>
 <td>任意</td>
 <td>${var.project_name}-vpc</td>
-<td>VPC の名称。この例の場合、RDS-Sample-for-Terraform-vpc として表示されます。</td>
+<td>VPC の名称。この例の場合、Kubernetes-Sample-for-Terraform-vpc として表示されます。</td>
 </tr>
 
 <tr>
@@ -599,7 +599,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <td>name</td>
 <td>任意</td>
 <td>${var.project_name}-vswitch</td>
-<td>vswitch の名称。この例の場合、RDS-Sample-for-Terraform-vswitch として表示されます。</td>
+<td>vswitch の名称。この例の場合、Kubernetes-Sample-for-Terraform-vswitch として表示されます。</td>
 </tr>
 
 <tr>
@@ -784,7 +784,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 </table>
 
 <p><br>
-ソースは以下になります。サンプルソースは[こちら]()にあります。</p>
+ソースは以下になります。</p>
 
 <p><br>
 main.tf</p>
@@ -906,14 +906,14 @@ terraform apply -var-file=&quot;confing.tfvars&quot;
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 07/01/2019
+        <i class='fa fa-calendar'></i>  07/01/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/scenario/terraform/kubernetes-setting-sample.md" target="blank"><i class="fa fa-code-fork"></i>
-        Improve this page</a>
+        </a>
     </div>
     
   </div>

@@ -667,7 +667,7 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
       <description>&amp;nbsp; 簡単なkuberntesクラスターを作ってみます。シングルゾーンによるクラスタでの作成になります。ゴールの構成図は以下の通りです。
 それぞれのパラメータは以下の通りです。
 ネットワーク構成:
-   リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、RDS-Sample-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.168.1.0/24 VPC の CIDR ブロック    vpc description 任意 Enable k8s-Setteing-Sample vpc VPC の説明。   alicloud_vswitch vsw name 任意 ${var.project_name}-vswitch vswitch の名称。この例の場合、RDS-Sample-for-Terraform-vswitch として表示されます。    vsw vpc_id 必須 ${alicloud_vpc.vpc.id} アタッチするVPCのID    vsw cidr_block 必須 192.</description>
+   リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、Kubernetes-Sample-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.168.1.0/24 VPC の CIDR ブロック    vpc description 任意 Enable k8s-Setteing-Sample vpc VPC の説明。   alicloud_vswitch vsw name 任意 ${var.project_name}-vswitch vswitch の名称。この例の場合、Kubernetes-Sample-for-Terraform-vswitch として表示されます。    vsw vpc_id 必須 ${alicloud_vpc.vpc.id} アタッチするVPCのID    vsw cidr_block 必須 192.</description>
     </item>
     
     <item>
