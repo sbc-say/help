@@ -24,9 +24,7 @@ draft: false
 &nbsp; VPCは、CIDRブロック、VRouter、及びVSwitchで構成されます。
 
 ・CIDRブロック・・・IPアドレスの空間を指定することで通信経路を出す設定情報。プライベートIPアドレス範囲をCIDR（Classless Inter-Domain Routing）ブロックの形式で指定する必要があります。
-
 ・VRouter・・・VPCのハブ。VPC内の各VSwitchを接続でき、ゲートウェイとしてもVPCを他のネットワークに接続することもできます。
-
 ・VSwitch・・・VPCの基本的なネットワークデバイス、様々なクラウド製品インスタンスに接続するために使用されます。
 
 VPCコンポーネントは以下のような構成図になります。
@@ -69,11 +67,13 @@ resource "alicloud_vswitch" "vsw" {
 
 #### **alicloud_vpc**
 上記で記載したリソース以外にオプション（任意）でパラメータや構成を指定することもできます。
+
 * `cidr_block` - （必須）VPCのCIDRブロック。VPCのIPv4アドレスの範囲をCIDR形式(XX.XX.XX.XX/XX)で、cidr_blockに指定します。そのため、[VPCピアリング](https://docs.alicloud.amazon.com/ja_jp/vpc/latest/peering/what-is-vpc-peering.html)なども考慮し て、最初にきちんと設計する必要があります。後からの変更も不可です。
 * `name` - （オプション）VPCの名前。デフォルトはnullです。
 * `description` - （オプション）VPCの説明。デフォルトはnullです。
 
 このリソースを実行することにより、以下の属性情報が出力されます。
+
 * `id` - VPCのID。
 * `cidr_block` - VPCのCIDRブロック。
 * `name` - VPCの名前。
@@ -91,6 +91,7 @@ VPC_SWITCHも上記で記載したリソース以外にオプション（任意�
 * `description` - （オプション）スイッチの説明。デフォルトはnullです。
 
 このalicloud_vswitchリソースを実行することにより、以下の属性情報が出力されます。
+
 * `id` - スイッチのID。
 * `availability_zone` - スイッチのAvailabilityZone。
 * `cidr_block` - スイッチのCIDRブロック。
@@ -146,12 +147,14 @@ resource "alicloud_route_table_attachment" "foo" {
 
 #### **alicloud_route_entry**
 alicloud_route_entryの必須パラメータは以下の通りです。
+
 * `route_table_id` - （必須）ルートテーブルのID。
 * `destination_cidrblock` - （必須）RouteEntryのターゲットネットワークセグメント。
 * `nexthop_type` - （必須）ネクストホップタイプ
 * `nexthop_id` - （必須）ルートエントリのネクストホップ。ECSインスタンスIDまたはVPCルータインターフェイスID。
 
 このalicloud_route_entryリソースを実行することにより、以下の属性情報が出力されます。
+
 * `router_id` - Vpcに接続されている仮想ルータのID。
 * `route_table_id` - ルートテーブルのID。
 * `destination_cidrblock` - RouteEntryのターゲットネットワークセグメント。
@@ -160,19 +163,23 @@ alicloud_route_entryの必須パラメータは以下の通りです。
 
 #### **alicloud_route_table**
 alicloud_route_tableの入力パラメータは以下の通りです。
+
 * `vpc_id` - （必須）ルートテーブルのvpc_id、フィールドは変更できません。
 * `name` - （任意）ルートテーブルの名前。
 * `description` - （任意）ルートテーブルインスタンスの説明。
 
 このalicloud_route_tableリソースを実行することにより、以下の属性情報が出力されます。
+
 * `id` - ルートテーブルインスタンスIDのID。
 
 #### **route_table_attachment**
 route_table_attachmentの入力パラメータは以下の通りです。
+
 * `vswitch_id` - （必須）ルートテーブル添付のvswitch_id、フィールドは変更できません。
 * `route_table_id` - （必須）ルートテーブル添付のroute_table_id。フィールドは変更できません。
 
 このroute_table_attachmentリソースを実行することにより、以下の属性情報が出力されます。
+
 * `id` - ルートテーブルのIDとアタッチしたvswitchのID。形式は<route_table_id>:<vswitch_id>で出力されます。
 
 
