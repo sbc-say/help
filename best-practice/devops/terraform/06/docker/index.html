@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T02:39:15 UTC">
+<meta name="revised" content="2019-07-19T02:46:26 UTC">
 <title>Dockerについて :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -581,10 +581,13 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h3 id="2-dockerのterraform位置について">2. dockerのTerraform位置について</h3>
 
-<p>&nbsp; Terraformによるdockerの利用は大きく2パターンあります。
-* 1.Terraformのバージョン違いなど環境差分を抑えつつ実行する場合
-* 2.Terraformで新規作成した各種リソースの接続設定をする場合
-* 3.CI/CD:継続的インテグレーションと継続的デリバリーをする場合</p>
+<p>&nbsp; Terraformによるdockerの利用は大きく2パターンあります。</p>
+
+<ul>
+<li>1.Terraformのバージョン違いなど環境差分を抑えつつ実行する場合</li>
+<li>2.Terraformで新規作成した各種リソースの接続設定をする場合</li>
+<li>3.CI/CD:継続的インテグレーションと継続的デリバリーをする場合</li>
+</ul>
 
 <p>ざっくりですがこんなイメージです。
 <img src="/help/image/7.0.0.png" alt="図 0" /></p>
@@ -640,8 +643,25 @@ resource &quot;alicloud_vpc&quot; &quot;vpc&quot; {
 <p><br>
 これで準備完了です。構成はこの通りになります。</p>
 
-<p><img src="/help/image/7.2.png" alt="図 3" />
-<br></p>
+<pre><code>$ pwd
+/Users/hironobu.ohara/Desktop/terraform-docker
+$ ls
+total 8
+drwxr-xr-x   3 hironobu.ohara  staff    96B  7 19 11:43 .
+drwx------@ 54 hironobu.ohara  staff   1.7K  7 19 11:43 ..
+-rw-r--r--   1 hironobu.ohara  staff   147B  7 19 11:31 main.tf
+$ cat main.tf 
+provider &quot;alicloud&quot; {
+  region = &quot;ap-northeast-1&quot;
+}
+
+resource &quot;alicloud_vpc&quot; &quot;vpc&quot; {
+  name = &quot;docker-test-vpc&quot;
+  cidr_block = &quot;192.168.1.0/24&quot;
+}
+</code></pre>
+
+<p><br></p>
 
 <p>次にTerraformをdocker上で起動します。
 そのとき、access_key・secret_keyを渡すことでAlibabaCloudのTerraformが実行できます。また、ホストのカレントディレクトリをコンテナ上へマウント( -v $(pwd):/terraform )してファイルの共有を行います。
@@ -776,14 +796,14 @@ $
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i> Last update on 07/01/2019
+        <i class='fa fa-calendar'></i>  07/01/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/devops/terraform/06/docker.md" target="blank"><i class="fa fa-code-fork"></i>
-        Improve this page</a>
+        </a>
     </div>
     
   </div>
