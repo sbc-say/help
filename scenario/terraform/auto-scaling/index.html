@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T10:10:36 UTC">
+<meta name="revised" content="2019-07-19T10:30:47 UTC">
 <title>オートスケーリングの実現 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -2130,7 +2130,7 @@ resource &quot;alicloud_vswitch&quot; &quot;db&quot; {
 }
 
 resource &quot;alicloud_ess_scaling_group&quot; &quot;web&quot; {
-  scaling_group_name = &quot;${var.solution_name}-ess-web&quot;
+  scaling_group_name = &quot;${var.project_name}-ess-web&quot;
   min_size           = &quot;${var.web_instance_min_count}&quot;
   max_size           = &quot;${var.web_instance_max_count}&quot;
   removal_policies   = [&quot;OldestInstance&quot;, &quot;NewestInstance&quot;]
@@ -2149,7 +2149,7 @@ resource &quot;alicloud_ess_scaling_configuration&quot; &quot;web&quot; {
 }
 
 resource &quot;alicloud_ess_scaling_rule&quot; &quot;web&quot; {
-  scaling_rule_name = &quot;${var.solution_name}-ess-rule-web&quot;
+  scaling_rule_name = &quot;${var.project_name}-ess-rule-web&quot;
   scaling_group_id  = &quot;${alicloud_ess_scaling_group.web.id}&quot;
   adjustment_type   = &quot;TotalCapacity&quot;
   adjustment_value  = 2
@@ -2254,7 +2254,7 @@ resource &quot;alicloud_instance&quot; &quot;app&quot; {
 }
 
 resource &quot;alicloud_ess_scaling_group&quot; &quot;app&quot; {
-  scaling_group_name = &quot;${var.solution_name}-ess-app&quot;
+  scaling_group_name = &quot;${var.project_name}-ess-app&quot;
   min_size           = &quot;${var.app_instance_min_count}&quot;
   max_size           = &quot;${var.app_instance_max_count}&quot;
   removal_policies   = [&quot;OldestInstance&quot;, &quot;NewestInstance&quot;]
@@ -2273,7 +2273,7 @@ resource &quot;alicloud_ess_scaling_configuration&quot; &quot;app&quot; {
 }
 
 resource &quot;alicloud_ess_scaling_rule&quot; &quot;app&quot; {
-  scaling_rule_name = &quot;${var.solution_name}-ess-rule-app&quot;
+  scaling_rule_name = &quot;${var.project_name}-ess-rule-app&quot;
   scaling_group_id  = &quot;${alicloud_ess_scaling_group.app.id}&quot;
   adjustment_type   = &quot;TotalCapacity&quot;
   adjustment_value  = 2
@@ -2352,6 +2352,7 @@ resource &quot;alicloud_db_connection&quot; &quot;default&quot; {
   connection_prefix = &quot;alicloud-database&quot;
   port = &quot;3306&quot;
 }
+
 </code></pre>
 
 <p><br>
@@ -2368,6 +2369,8 @@ variable &quot;db_password&quot; {}
 
 variable &quot;web_layer_name&quot; {}
 variable &quot;web_instance_count&quot; {}
+variable &quot;web_instance_min_count&quot; {}
+variable &quot;web_instance_max_count&quot; {}
 variable &quot;web_availability_zone&quot; {}
 variable &quot;web_instance_type&quot; {}
 variable &quot;web_instance_port&quot; {}
@@ -2376,6 +2379,8 @@ variable &quot;web_instance_user_data&quot; {}
 
 variable &quot;app_layer_name&quot; {}
 variable &quot;app_instance_count&quot; {}
+variable &quot;app_instance_min_count&quot; {}
+variable &quot;app_instance_max_count&quot; {}
 variable &quot;app_availability_zone&quot; {}
 variable &quot;app_instance_type&quot; {}
 variable &quot;app_instance_port&quot; {}
@@ -2405,6 +2410,8 @@ db_password = &quot;!Password2019&quot;
 web_layer_name = &quot;web-server&quot;
 web_availability_zone = &quot;ap-northeast-1a&quot;
 web_instance_count = 3
+web_instance_min_count = 1
+web_instance_max_count = 5
 web_instance_type = &quot;ecs.sn1ne.large&quot;
 web_instance_port = 80
 web_instance_image_id = &quot;centos_7_06_64_20G_alibase_20190218.vhd&quot;
@@ -2413,6 +2420,8 @@ web_instance_user_data = &quot;${file(&quot;provisioning.sh&quot;)}&quot;
 app_layer_name = &quot;app-server&quot;
 app_availability_zone = &quot;ap-northeast-1a&quot;
 app_instance_count = 3
+app_instance_min_count = 1
+app_instance_max_count = 5
 app_instance_type = &quot;ecs.sn1ne.large&quot;
 app_instance_port = 5000
 app_instance_image_id = &quot;centos_7_06_64_20G_alibase_20190218.vhd&quot;
