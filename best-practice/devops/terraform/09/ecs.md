@@ -32,20 +32,22 @@ resource "alicloud_instance" "ECS_instance" {
 }
 ```
 #### **alicloud_instance**
+
 ・`instance_name` - （オプション）ECSインスタンスの名前。このパラメータを指定しない場合、デフォルト名のECS-Instanceを自動生成します。
 ・`host_name` - （オプション）ECSのホスト名。
 ・`instance_type` - （必須）起動するインスタンスの種類。
 ・`image_id` - （必須）ECSインスタンスに使用するイメージ。ECSインスタンスのイメージは `image_id`を変更することで置き換えることができます。
 
 ***image_idの種類や取得方法は後述します。***
-・`system_disk_category` - （オプション）ストレージの種類。
-有効な値はcloud_efficiency 、 cloud_ssd 、およびcloudです。デフォルトはcloud_efficiency。
+
+・`system_disk_category` - （オプション）ストレージの種類。有効な値はcloud_efficiency 、 cloud_ssd 、およびcloudです。デフォルトはcloud_efficiency。
 ・`security_groups` - （必須）関連付けるセキュリティグループIDのリスト。
 ・`availability_zone` - （オプション）インスタンスを起動するゾーン。
 ・`vswitch_id` - （オプション）接続したいVSwitchのID。 
 ・`user_data` - （オプション）ユーザーデータ。起動直後、実行したいコマンドがあればこちらにて入れます。
 
 このalicloud_instanceリソースを実行することにより、以下の属性情報が出力されます。
+
 ・`id` - ECSインスタンスのID。
 ・`status` - ECSインスタンスの起動ステータス。
 ・`public_ip` - ECSインスタンスのパブリックIP。
@@ -117,6 +119,7 @@ resource "alicloud_eip_association" "eip_ecs_association" {
 }
 ```
 #### **alicloud_eip**
+
 ・`bandwidth` - EIPの帯域幅。デフォルト時は5Mbps。
 ・`internet_charge_type` - EIPのインターネット料金タイプ。PayByBandwidth、PayByTrafficのどれかで、デフォルトはPayByBandwidth。
 ・`instance_charge_type` - Elastic IPインスタンスの課金タイプ。PrePaidと PostPaidのどれかで、デフォルトはPostPaid。

@@ -151,7 +151,8 @@ VPCコンポーネントは以下のような構成図になります。
 
 2. ECSインスタンス生成のTerraformについて &amp;nbsp; 本題、ECSインスタンス生成作成に移ります。ECSインスタンス生成するだけの簡単なソースを作ってみます。
 resource &amp;quot;alicloud_instance&amp;quot; &amp;quot;ECS_instance&amp;quot; { instance_name = &amp;quot;ECS_instance_for_terraform&amp;quot; host_name = &amp;quot;ECS_instance_for_terraform&amp;quot; instance_type = &amp;quot;ecs.n4.small&amp;quot; image_id = &amp;quot;centos_7_06_64_20G_alibase_20190218.vhd&amp;quot; system_disk_category = &amp;quot;cloud_efficiency&amp;quot; security_groups = [&amp;quot;${alicloud_security_group.sg.id}&amp;quot;] availability_zone = &amp;quot;${var.zone}&amp;quot; vswitch_id = &amp;quot;${alicloud_vswitch.vsw.id}&amp;quot; }  alicloud_instance ・instance_name - （オプション）ECSインスタンスの名前。このパラメータを指定しない場合、デフォルト名のECS-Instanceを自動生成します。 ・host_name - （オプション）ECSのホスト名。 ・instance_type - （必須）起動するインスタンスの種類。 ・image_id - （必須）ECSインスタンスに使用するイメージ。ECSインスタンスのイメージは image_idを変更することで置き換えることができます。
-image_idの種類や取得方法は後述します。 ・system_disk_category - （オプション）ストレージの種類。 有効な値はcloud_efficiency 、 cloud_ssd 、およびcloudです。デフォルトはcloud_efficiency。 ・security_groups - （必須）関連付けるセキュリティグループIDのリスト。 ・availability_zone - （オプション）インスタンスを起動するゾーン。 ・vswitch_id - （オプション）接続したいVSwitchのID。 ・user_data - （オプション）ユーザーデータ。起動直後、実行したいコマンドがあればこちらにて入れます。</description>
+image_idの種類や取得方法は後述します。
+・system_disk_category - （オプション）ストレージの種類。有効な値はcloud_efficiency 、 cloud_ssd 、およびcloudです。デフォルトはcloud_efficiency。 ・security_groups - （必須）関連付けるセキュリティグループIDのリスト。 ・availability_zone - （オプション）インスタンスを起動するゾーン。 ・vswitch_id - （オプション）接続したいVSwitchのID。 ・user_data - （オプション）ユーザーデータ。起動直後、実行したいコマンドがあればこちらにて入れます。</description>
     </item>
     
     <item>
