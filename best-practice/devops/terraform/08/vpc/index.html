@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T02:51:25 UTC">
+<meta name="revised" content="2019-07-19T03:04:11 UTC">
 <title>VPCの作成 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -585,11 +585,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <p>&nbsp; VPCは、CIDRブロック、VRouter、及びVSwitchで構成されます。</p>
 
-<p>・CIDRブロック・・・IPアドレスの空間を指定することで通信経路を出す設定情報。プライベートIPアドレス範囲をCIDR（Classless Inter-Domain Routing）ブロックの形式で指定する必要があります。</p>
-
-<p>・VRouter・・・VPCのハブ。VPC内の各VSwitchを接続でき、ゲートウェイとしてもVPCを他のネットワークに接続することもできます。</p>
-
-<p>・VSwitch・・・VPCの基本的なネットワークデバイス、様々なクラウド製品インスタンスに接続するために使用されます。</p>
+<p>・CIDRブロック・・・IPアドレスの空間を指定することで通信経路を出す設定情報。プライベートIPアドレス範囲をCIDR（Classless Inter-Domain Routing）ブロックの形式で指定する必要があります。
+・VRouter・・・VPCのハブ。VPC内の各VSwitchを接続でき、ゲートウェイとしてもVPCを他のネットワークに接続することもできます。
+・VSwitch・・・VPCの基本的なネットワークデバイス、様々なクラウド製品インスタンスに接続するために使用されます。</p>
 
 <p>VPCコンポーネントは以下のような構成図になります。
 <img src="/help/image/9.2.png" alt="図 2" /></p>
@@ -677,18 +675,24 @@ resource &quot;alicloud_vswitch&quot; &quot;vsw&quot; {
 
 <h4 id="alicloud-vpc"><strong>alicloud_vpc</strong></h4>
 
-<p>上記で記載したリソース以外にオプション（任意）でパラメータや構成を指定することもできます。
-* <code>cidr_block</code> - （必須）VPCのCIDRブロック。VPCのIPv4アドレスの範囲をCIDR形式(XX.XX.XX.XX/XX)で、cidr_blockに指定します。そのため、<a href="https://docs.alicloud.amazon.com/ja_jp/vpc/latest/peering/what-is-vpc-peering.html">VPCピアリング</a>なども考慮し て、最初にきちんと設計する必要があります。後からの変更も不可です。
-* <code>name</code> - （オプション）VPCの名前。デフォルトはnullです。
-* <code>description</code> - （オプション）VPCの説明。デフォルトはnullです。</p>
+<p>上記で記載したリソース以外にオプション（任意）でパラメータや構成を指定することもできます。</p>
 
-<p>このリソースを実行することにより、以下の属性情報が出力されます。
-* <code>id</code> - VPCのID。
-* <code>cidr_block</code> - VPCのCIDRブロック。
-* <code>name</code> - VPCの名前。
-* <code>description</code> - VPCの説明。
-* <code>router_id</code> - VPC作成時にデフォルトで作成されたルータのID。
-* <code>route_table_id</code> - VPC作成時にデフォルトで作成されたルータのルートテーブルID。</p>
+<ul>
+<li><code>cidr_block</code> - （必須）VPCのCIDRブロック。VPCのIPv4アドレスの範囲をCIDR形式(XX.XX.XX.XX/XX)で、cidr_blockに指定します。そのため、<a href="https://docs.alicloud.amazon.com/ja_jp/vpc/latest/peering/what-is-vpc-peering.html">VPCピアリング</a>なども考慮し て、最初にきちんと設計する必要があります。後からの変更も不可です。</li>
+<li><code>name</code> - （オプション）VPCの名前。デフォルトはnullです。</li>
+<li><code>description</code> - （オプション）VPCの説明。デフォルトはnullです。</li>
+</ul>
+
+<p>このリソースを実行することにより、以下の属性情報が出力されます。</p>
+
+<ul>
+<li><code>id</code> - VPCのID。</li>
+<li><code>cidr_block</code> - VPCのCIDRブロック。</li>
+<li><code>name</code> - VPCの名前。</li>
+<li><code>description</code> - VPCの説明。</li>
+<li><code>router_id</code> - VPC作成時にデフォルトで作成されたルータのID。</li>
+<li><code>route_table_id</code> - VPC作成時にデフォルトで作成されたルータのルートテーブルID。</li>
+</ul>
 
 <h4 id="alicloud-vswitch"><strong>alicloud_vswitch</strong></h4>
 
@@ -702,13 +706,16 @@ resource &quot;alicloud_vswitch&quot; &quot;vsw&quot; {
 <li><code>description</code> - （オプション）スイッチの説明。デフォルトはnullです。</li>
 </ul>
 
-<p>このalicloud_vswitchリソースを実行することにより、以下の属性情報が出力されます。
-* <code>id</code> - スイッチのID。
-* <code>availability_zone</code> - スイッチのAvailabilityZone。
-* <code>cidr_block</code> - スイッチのCIDRブロック。
-* <code>vpc_id</code> - VPC ID。
-* <code>name</code> - スイッチの名前。
-* <code>description</code> - スイッチの説明。</p>
+<p>このalicloud_vswitchリソースを実行することにより、以下の属性情報が出力されます。</p>
+
+<ul>
+<li><code>id</code> - スイッチのID。</li>
+<li><code>availability_zone</code> - スイッチのAvailabilityZone。</li>
+<li><code>cidr_block</code> - スイッチのCIDRブロック。</li>
+<li><code>vpc_id</code> - VPC ID。</li>
+<li><code>name</code> - スイッチの名前。</li>
+<li><code>description</code> - スイッチの説明。</li>
+</ul>
 
 <p>他に入力パラメータ、出力パラメータがいくつかありますので、<a href="https://www.terraform.io/docs/providers/alicloud/r/vpc.html">こちらも是非参照</a>してみてください。
 <a href="https://www.terraform.io/docs/providers/alicloud/r/vpc.html">https://www.terraform.io/docs/providers/alicloud/r/vpc.html</a>
@@ -755,37 +762,55 @@ resource &quot;alicloud_route_table_attachment&quot; &quot;foo&quot; {
 
 <h4 id="alicloud-route-entry"><strong>alicloud_route_entry</strong></h4>
 
-<p>alicloud_route_entryの必須パラメータは以下の通りです。
-* <code>route_table_id</code> - （必須）ルートテーブルのID。
-* <code>destination_cidrblock</code> - （必須）RouteEntryのターゲットネットワークセグメント。
-* <code>nexthop_type</code> - （必須）ネクストホップタイプ
-* <code>nexthop_id</code> - （必須）ルートエントリのネクストホップ。ECSインスタンスIDまたはVPCルータインターフェイスID。</p>
+<p>alicloud_route_entryの必須パラメータは以下の通りです。</p>
 
-<p>このalicloud_route_entryリソースを実行することにより、以下の属性情報が出力されます。
-* <code>router_id</code> - Vpcに接続されている仮想ルータのID。
-* <code>route_table_id</code> - ルートテーブルのID。
-* <code>destination_cidrblock</code> - RouteEntryのターゲットネットワークセグメント。
-* <code>nexthop_type</code> - ネクストホップタイプ。
-* <code>nexthop_id</code> - ルートエントリのネクストホップ。</p>
+<ul>
+<li><code>route_table_id</code> - （必須）ルートテーブルのID。</li>
+<li><code>destination_cidrblock</code> - （必須）RouteEntryのターゲットネットワークセグメント。</li>
+<li><code>nexthop_type</code> - （必須）ネクストホップタイプ</li>
+<li><code>nexthop_id</code> - （必須）ルートエントリのネクストホップ。ECSインスタンスIDまたはVPCルータインターフェイスID。</li>
+</ul>
+
+<p>このalicloud_route_entryリソースを実行することにより、以下の属性情報が出力されます。</p>
+
+<ul>
+<li><code>router_id</code> - Vpcに接続されている仮想ルータのID。</li>
+<li><code>route_table_id</code> - ルートテーブルのID。</li>
+<li><code>destination_cidrblock</code> - RouteEntryのターゲットネットワークセグメント。</li>
+<li><code>nexthop_type</code> - ネクストホップタイプ。</li>
+<li><code>nexthop_id</code> - ルートエントリのネクストホップ。</li>
+</ul>
 
 <h4 id="alicloud-route-table"><strong>alicloud_route_table</strong></h4>
 
-<p>alicloud_route_tableの入力パラメータは以下の通りです。
-* <code>vpc_id</code> - （必須）ルートテーブルのvpc_id、フィールドは変更できません。
-* <code>name</code> - （任意）ルートテーブルの名前。
-* <code>description</code> - （任意）ルートテーブルインスタンスの説明。</p>
+<p>alicloud_route_tableの入力パラメータは以下の通りです。</p>
 
-<p>このalicloud_route_tableリソースを実行することにより、以下の属性情報が出力されます。
-* <code>id</code> - ルートテーブルインスタンスIDのID。</p>
+<ul>
+<li><code>vpc_id</code> - （必須）ルートテーブルのvpc_id、フィールドは変更できません。</li>
+<li><code>name</code> - （任意）ルートテーブルの名前。</li>
+<li><code>description</code> - （任意）ルートテーブルインスタンスの説明。</li>
+</ul>
+
+<p>このalicloud_route_tableリソースを実行することにより、以下の属性情報が出力されます。</p>
+
+<ul>
+<li><code>id</code> - ルートテーブルインスタンスIDのID。</li>
+</ul>
 
 <h4 id="route-table-attachment"><strong>route_table_attachment</strong></h4>
 
-<p>route_table_attachmentの入力パラメータは以下の通りです。
-* <code>vswitch_id</code> - （必須）ルートテーブル添付のvswitch_id、フィールドは変更できません。
-* <code>route_table_id</code> - （必須）ルートテーブル添付のroute_table_id。フィールドは変更できません。</p>
+<p>route_table_attachmentの入力パラメータは以下の通りです。</p>
 
-<p>このroute_table_attachmentリソースを実行することにより、以下の属性情報が出力されます。
-* <code>id</code> - ルートテーブルのIDとアタッチしたvswitchのID。形式は<route_table_id>:<vswitch_id>で出力されます。</p>
+<ul>
+<li><code>vswitch_id</code> - （必須）ルートテーブル添付のvswitch_id、フィールドは変更できません。</li>
+<li><code>route_table_id</code> - （必須）ルートテーブル添付のroute_table_id。フィールドは変更できません。</li>
+</ul>
+
+<p>このroute_table_attachmentリソースを実行することにより、以下の属性情報が出力されます。</p>
+
+<ul>
+<li><code>id</code> - ルートテーブルのIDとアタッチしたvswitchのID。形式は<route_table_id>:<vswitch_id>で出力されます。</li>
+</ul>
 
 <p><br></p>
 
