@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-19T03:13:24 UTC">
+<meta name="revised" content="2019-07-19T03:44:14 UTC">
 <title>ECS、EIPの作成 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -595,24 +595,30 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h4 id="alicloud-instance"><strong>alicloud_instance</strong></h4>
 
-<p>・<code>instance_name</code> - （オプション）ECSインスタンスの名前。このパラメータを指定しない場合、デフォルト名のECS-Instanceを自動生成します。
-・<code>host_name</code> - （オプション）ECSのホスト名。
-・<code>instance_type</code> - （必須）起動するインスタンスの種類。
-・<code>image_id</code> - （必須）ECSインスタンスに使用するイメージ。ECSインスタンスのイメージは <code>image_id</code>を変更することで置き換えることができます。</p>
+<ul>
+<li><code>instance_name</code> - （オプション）ECSインスタンスの名前。このパラメータを指定しない場合、デフォルト名のECS-Instanceを自動生成します。</li>
+<li><code>host_name</code> - （オプション）ECSのホスト名。</li>
+<li><code>instance_type</code> - （必須）起動するインスタンスの種類。</li>
+<li><code>image_id</code> - （必須）ECSインスタンスに使用するイメージ。ECSインスタンスのイメージは <code>image_id</code>を変更することで置き換えることができます。</li>
+</ul>
 
 <p><strong><em>image_idの種類や取得方法は後述します。</em></strong></p>
 
-<p>・<code>system_disk_category</code> - （オプション）ストレージの種類。有効な値はcloud_efficiency 、 cloud_ssd 、およびcloudです。デフォルトはcloud_efficiency。
-・<code>security_groups</code> - （必須）関連付けるセキュリティグループIDのリスト。
-・<code>availability_zone</code> - （オプション）インスタンスを起動するゾーン。
-・<code>vswitch_id</code> - （オプション）接続したいVSwitchのID。
-・<code>user_data</code> - （オプション）ユーザーデータ。起動直後、実行したいコマンドがあればこちらにて入れます。</p>
+<ul>
+<li><code>system_disk_category</code> - （オプション）ストレージの種類。有効な値はcloud_efficiency 、 cloud_ssd 、およびcloudです。デフォルトはcloud_efficiency。</li>
+<li><code>security_groups</code> - （必須）関連付けるセキュリティグループIDのリスト。</li>
+<li><code>availability_zone</code> - （オプション）インスタンスを起動するゾーン。</li>
+<li><code>vswitch_id</code> - （オプション）接続したいVSwitchのID。</li>
+<li><code>user_data</code> - （オプション）ユーザーデータ。起動直後、実行したいコマンドがあればこちらにて入れます。</li>
+</ul>
 
 <p>このalicloud_instanceリソースを実行することにより、以下の属性情報が出力されます。</p>
 
-<p>・<code>id</code> - ECSインスタンスのID。
-・<code>status</code> - ECSインスタンスの起動ステータス。
-・<code>public_ip</code> - ECSインスタンスのパブリックIP。</p>
+<ul>
+<li><code>id</code> - ECSインスタンスのID。</li>
+<li><code>status</code> - ECSインスタンスの起動ステータス。</li>
+<li><code>public_ip</code> - ECSインスタンスのパブリックIP。</li>
+</ul>
 
 <p>他に入力パラメータ、出力パラメータがいくつかありますので、<a href="https://www.terraform.io/docs/providers/alicloud/r/instance.html">こちらも是非参照</a>してみてください。
 <a href="https://www.terraform.io/docs/providers/alicloud/r/instance.html">https://www.terraform.io/docs/providers/alicloud/r/instance.html</a></p>
@@ -684,9 +690,11 @@ resource &quot;alicloud_eip_association&quot; &quot;eip_ecs_association&quot; {
 
 <h4 id="alicloud-eip"><strong>alicloud_eip</strong></h4>
 
-<p>・<code>bandwidth</code> - EIPの帯域幅。デフォルト時は5Mbps。
-・<code>internet_charge_type</code> - EIPのインターネット料金タイプ。PayByBandwidth、PayByTrafficのどれかで、デフォルトはPayByBandwidth。
-・<code>instance_charge_type</code> - Elastic IPインスタンスの課金タイプ。PrePaidと PostPaidのどれかで、デフォルトはPostPaid。</p>
+<ul>
+<li><code>bandwidth</code> - EIPの帯域幅。デフォルト時は5Mbps。</li>
+<li><code>internet_charge_type</code> - EIPのインターネット料金タイプ。PayByBandwidth、PayByTrafficのどれかで、デフォルトはPayByBandwidth。</li>
+<li><code>instance_charge_type</code> - Elastic IPインスタンスの課金タイプ。PrePaidと PostPaidのどれかで、デフォルトはPostPaid。</li>
+</ul>
 
 <!-- 
 現状、cn-hangzhou、ap-south-1、me-east-1、eu-central-1、ap-northeast-1、ap-southheast-2のみサポートなので、将来的 日本リージョンでサポートできるようになったら追記
@@ -721,14 +729,14 @@ https://www.terraform.io/docs/providers/alicloud/r/dns.html
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  07/01/2019
+        <i class='fa fa-calendar'></i> Last update on 07/01/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/devops/terraform/09/ecs.md" target="blank"><i class="fa fa-code-fork"></i>
-        </a>
+        Improve this page</a>
     </div>
     
   </div>
