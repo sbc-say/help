@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-22T03:04:39 UTC">
+<meta name="revised" content="2019-07-22T03:19:40 UTC">
 <title>RDSの構築 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -1437,7 +1437,7 @@ resource &quot;alicloud_slb_attachment&quot; &quot;default&quot; {
 data &quot;template_file&quot; &quot;user_data&quot; {
   template = &quot;${file(&quot;provisioning.sh&quot;)}&quot;
   vars {
-    DB_HOST_IP = &quot;${alicloud_db_instance.db_instance.connections.0.ip_address}&quot;
+    DB_HOST_IP = &quot;${alicloud_db_instance.db_instance.connection_string}&quot;
     DB_NAME = &quot;${var.database_name}&quot;
     DB_USER = &quot;${var.db_user}&quot;
     DB_PASSWORD = &quot;${var.db_password}&quot;
@@ -1494,7 +1494,7 @@ provisioning.sh</p>
 <pre><code>#!/bin/sh
 export MYSQL_HOST=${DB_HOST_IP}
 export MYSQL_DATABASE=${DB_NAME}
-export MYSQL_USER=${MYSQL_USER}
+export MYSQL_USER=${DB_USER}
 export MYSQL_PASSWORD=${DB_PASSWORD}
 
 sudo yum install -y yum-utils unzip mysql
@@ -1624,14 +1624,14 @@ Bye
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  07/01/2019
+        <i class='fa fa-calendar'></i> Last update on 07/01/2019
     </div>
     
 
     
     <div class="github-link">
       <a href="https://github.com/sbcloud/help/tree/master/content/scenario/terraform/rds-setting-sample.md" target="blank"><i class="fa fa-code-fork"></i>
-        </a>
+        Improve this page</a>
     </div>
     
   </div>
