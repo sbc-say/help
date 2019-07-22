@@ -8,7 +8,7 @@ draft: false
 <!-- descriptionがコンテンツの前に表示されます -->
 
 <!-- コンテンツを書くときはこの下に記載ください -->
-&nbsp; 本章はゴールとなる構成図、完成像からTerraformを使ってリソースを作成します。 この実践例は初心者でもわかりやすいようにモジュールは非使用、`main.tf`、`variables.tf`、`output.tf`、`confing.tfvars`、`provisioning.sh`の４つのファイルに分けて作成します。（kubernetesなど一部例外もありますし、`provisioning.sh`が空白の事例もあります。）
+&nbsp; 本章はゴールとなる構成図、完成像からTerraformを使ってリソースを作成します。 この実践例は初心者でもわかりやすいようにモジュールは非使用、`main.tf`、`variables.tf`、`output.tf`、`confing.tfvars`、`provisioning.sh`の４つのファイルに分けて作成します。（kubernetesなど一部例外もありますし、`provisioning.sh`が空白の事例もあります。またTerraformはリソースごとに`immutable`と`not_immutable`で分けてフォルダ・ファイル構成をするのが理想ですが、ここは同フォルダにて同様配置を前提とします。）
 
 このサンプルで実行したTerraformのバージョンは`Terraform v0.11.13`、`tfenv 0.6.0`になります。Terraformのバージョン情報は以下の記事を参照ください。 
 
@@ -24,14 +24,14 @@ access_key = "xxxxxxxxxxxxxxxxx"
 secret_key = "xxxxxxxxxxxxxxxxx"
 ```
 <br>
-あとは3Stepのコマンドで実行できます。
+あとは以下のコマンドで実行できます。
 ```
 terraform init
 terraform play -var-file="confing.tfvars"
 terraform apply -var-file="confing.tfvars"
 ```
 <br>
-もし作成したリソースを削除、解放したい場合は、諸元となるソースコードを一切変更せずに このコマンドを実行します。
+もし作成したリソースを削除、解放したい場合は、諸元となるソースコードを一切変更せずに このコマンドを実行します。これで作成したリソースを破棄できます。
 ```
 terraform destroy -var-file="confing.tfvars"
 ```

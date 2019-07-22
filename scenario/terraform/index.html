@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-07-22T00:24:04 UTC">
+<meta name="revised" content="2019-07-22T00:28:02 UTC">
 <title>Terraform :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -550,7 +550,7 @@ AlibabaCloudにおけるTerraformの実践例を記載します
 
 <!-- コンテンツを書くときはこの下に記載ください -->
 
-<p>&nbsp; 本章はゴールとなる構成図、完成像からTerraformを使ってリソースを作成します。 この実践例は初心者でもわかりやすいようにモジュールは非使用、<code>main.tf</code>、<code>variables.tf</code>、<code>output.tf</code>、<code>confing.tfvars</code>、<code>provisioning.sh</code>の４つのファイルに分けて作成します。（kubernetesなど一部例外もありますし、<code>provisioning.sh</code>が空白の事例もあります。）</p>
+<p>&nbsp; 本章はゴールとなる構成図、完成像からTerraformを使ってリソースを作成します。 この実践例は初心者でもわかりやすいようにモジュールは非使用、<code>main.tf</code>、<code>variables.tf</code>、<code>output.tf</code>、<code>confing.tfvars</code>、<code>provisioning.sh</code>の４つのファイルに分けて作成します。（kubernetesなど一部例外もありますし、<code>provisioning.sh</code>が空白の事例もあります。またTerraformはリソースごとに<code>immutable</code>と<code>not_immutable</code>で分けてフォルダ・ファイル構成をするのが理想ですが、ここは同フォルダにて同様配置を前提とします。）</p>
 
 <p>このサンプルで実行したTerraformのバージョンは<code>Terraform v0.11.13</code>、<code>tfenv 0.6.0</code>になります。Terraformのバージョン情報は以下の記事を参照ください。</p>
 
@@ -567,7 +567,7 @@ secret_key = &quot;xxxxxxxxxxxxxxxxx&quot;
 </code></pre>
 
 <p><br>
-あとは3Stepのコマンドで実行できます。</p>
+あとは以下のコマンドで実行できます。</p>
 
 <pre><code>terraform init
 terraform play -var-file=&quot;confing.tfvars&quot;
@@ -575,7 +575,7 @@ terraform apply -var-file=&quot;confing.tfvars&quot;
 </code></pre>
 
 <p><br>
-もし作成したリソースを削除、解放したい場合は、諸元となるソースコードを一切変更せずに このコマンドを実行します。</p>
+もし作成したリソースを削除、解放したい場合は、諸元となるソースコードを一切変更せずに このコマンドを実行します。これで作成したリソースを破棄できます。</p>
 
 <pre><code>terraform destroy -var-file=&quot;confing.tfvars&quot;
 </code></pre>
