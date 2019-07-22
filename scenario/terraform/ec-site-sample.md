@@ -3,7 +3,7 @@ title: " MagentoでECサイト構築"
 date: 2019-07-01T00:00:00+09:00
 description: "Terraformを用いて、Alibaba Cloud上でMagentoのECサイト構築作成方法を紹介します"
 weight: 240
-draft: false
+draft: true
 ---
 
 &nbsp; インターネットを通じて自社商品を販売、宣伝するのにおすすめなのが、ECサイトを作るという方法です。ECは Electronic Commerce（電子商取引）の略です。
