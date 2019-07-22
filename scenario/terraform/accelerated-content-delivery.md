@@ -1,7 +1,7 @@
 ---
 title: "高速コンテンツ配信の実現"
 date: 2019-07-01T00:00:00+09:00
-description: "Terraformを用いて、Alibaba Cloud上で高速コンテンツ配信可能なWebアプリケーションの構築します"
+description: "Terraformを用いて、Alibaba Cloud上で高速コンテンツ配信可能なWebアプリケーションの構築します。"
 weight: 210
 draft: false
 ---

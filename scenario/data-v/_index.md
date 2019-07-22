@@ -1,6 +1,6 @@
 ---
 title: "DataV"
-description: "ここではデータ分析の手法を記載します"
+description: "ここではデータ分析の手法を記載します。"
 date: 2019-05-13T16:20:40+09:00
 weight: 40
 draft: true

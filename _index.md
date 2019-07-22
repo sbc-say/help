@@ -7,7 +7,6 @@
 
 ### [2. ベストプラクティス]({{%relref "best-practice/_index.md" %}})
 * [アドバイザリ]({{%relref "best-practice/advisory.md" %}})
-* [料金体系]({{%relref "best-practice/pricing.md" %}})
 * [個別プロダクト]({{%relref "best-practice/product/_index.md" %}})
 * [DevOps]({{%relref "best-practice/devops/_index.md" %}})
 

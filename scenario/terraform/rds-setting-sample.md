@@ -1,7 +1,7 @@
 ---
 title: "RDSの構築"
 date: 2019-07-01T00:00:00+09:00
-description: "Terraformを用いて、Alibaba Cloud上でRDSを作成します"
+description: "Terraformを用いて、Alibaba Cloud上でRDSを作成します。"
 weight: 180
 draft: false
 ---

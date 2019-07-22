@@ -1,6 +1,6 @@
 ---
 title: "サービスラインナップ比較"
-description: "Alibaba CloudとAWS、GCP、Azureのサービスラインアップの比較を記載します"
+description: "Alibaba CloudとAWS、GCP、Azureのサービスラインアップの比較を記載します。"
 date: 2019-06-05T12:30:18+08:00
 weight: 10
 draft: false

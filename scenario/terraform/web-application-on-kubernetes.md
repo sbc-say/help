@@ -1,7 +1,7 @@
 ---
 title: "KubernetesによるコンテナでWordPress作成"
 date: 2019-07-01T00:00:00+09:00
-description: "Terraformを用いて、Alibaba Cloud上でKubernetesによるWordPress作成方法を紹介します"
+description: "Terraformを用いて、Alibaba Cloud上でKubernetesによるWordPress作成方法を紹介します。"
 weight: 230
 draft: false
 ---

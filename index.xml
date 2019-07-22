@@ -127,7 +127,7 @@ AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの�
       
       <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
       <description>   トップページ         Getting Started     アカウント登録   プロダクト紹介プロダクト資料のリンク一覧
-ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較   ベストプラクティス   :&amp;mdash;&amp;mdash;:   アドバイザリ   料金体系   個別プロダクトECS   DevOpsTerraformTerraformとは
+ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較   ベストプラクティス   :&amp;mdash;&amp;mdash;:   アドバイザリ   個別プロダクトECS   DevOpsTerraformTerraformとは
 インストール
 サンプルプロジェクトの作成
 サンプルプロジェクトの実行
@@ -180,15 +180,6 @@ $ echo 0.11.13 &amp;gt; .</description>
 main.tf … モジュールが内包するリソース、データソースなどの定義 outputs.tf … モジュールが出力するAttributeの定義 variables.tf … モジュールが受け取る変数の定義  main.tf には どのプロパイダを使うかを記載します。 階層化は任意ですが、.tfから別のフォルダの.tfに記載されてる変数を取り出すためにルートディレクトリを指定することがありますのでそこは注意が必要です。apply (=実行) にて分離実行することも可能です。 例えば以下のようにプロダクトサービス毎にフォルダを作成し、それぞれのリソースを作成しても、最終的には一つへまとめれます。
 ├── main.tf ├── output.tf ├── variables.tf │ ├── region │├── VPC ││├── main.tf ││├── output.tf ││└── variables.tf ││ │├── ECS ││├── main.tf ││├── output.tf ││└── variables.tf ・ ・ ・  &amp;nbsp; RAMなど他者へ渡したくない情報がある場合、別途設定ファイル（ confing.tfvars など）へ記載し、実行時は -var-file引数で 設定ファイルを読み取り実行することができます。
 ├── main.tf ├── output.tf ├── variables.</description>
-    </item>
-    
-    <item>
-      <title>料金体系</title>
-      <link>https://sbcloud.github.io/help/best-practice/pricing/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/best-practice/pricing/</guid>
-      <description> 既存のMDで上書きいただく　 </description>
     </item>
     
     <item>

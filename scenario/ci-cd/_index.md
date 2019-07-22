@@ -1,6 +1,6 @@
 ---
 title: "CI/CD"
-description: "ここではCI/CDの実践構成を記載します"
+description: "ここではCI/CDの実践構成を記載します。"
 date: 2019-05-13T16:20:40+09:00
 weight: 20
 draft: true
