@@ -4,6 +4,7 @@
 - [ ] In Japanse, it is written in "ですます調 
 - [ ] In Japanse, it ends with "。".
 - [ ] I've updated [CHANGELOG.md](CHANGELOG.md).
+- [ ] I've added meta-description. (when adding file).
 - [ ] I've updated [_index.md](content/_index.md) (when adding/deleting MD file).
 - [ ] I've updated [sitemap.md](content/about/sitemap.md) (when adding/deleting MD file).
 
