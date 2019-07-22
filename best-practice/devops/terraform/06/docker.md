@@ -19,7 +19,7 @@ draft: false
 <br>
 
 ### 2. dockerのTerraform位置について
-&nbsp; Terraformによるdockerの利用は大きく2パターンあります。
+&nbsp; Terraformによるdockerの利用は大きく3パターンあります。他の便利な役割もありますが、ここは以下３つに絞って紹介します。
 
 * 1.Terraformのバージョン違いなど環境差分を抑えつつ実行する場合
 * 2.Terraformで新規作成した各種リソースの接続設定をする場合
