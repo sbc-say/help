@@ -1,6 +1,6 @@
 ---
 title: "Terraform"
-description: "AlibabaCloudにおけるTerraformの実践例を記載します"
+description: "AlibabaCloudにおけるTerraformの実践例を記載します。"
 date: 2019-05-13T16:20:40+09:00
 weight: 30
 draft: false

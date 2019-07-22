@@ -1,7 +1,5 @@
 baseURL = "https://sbcloud.github.io/help/"
 languageCode = "ja-jp"
-#languageCode = "en-us"
-DefaultContentLanguage = "en"
 title = "テクニカルリファレンス"
 theme = "docdock"
 publishDir = "docs"
