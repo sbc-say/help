@@ -1,7 +1,7 @@
 ---
 title: "Webアプリケーションの構築"
 date: 2019-07-01T00:00:00+09:00
-description: "Terraformを用いて、Alibaba Cloud上でWebアプリケーションの構築します"
+description: "Terraformを用いて、Alibaba Cloud上でWebアプリケーションの構築します。"
 weight: 200
 draft: false
 ---

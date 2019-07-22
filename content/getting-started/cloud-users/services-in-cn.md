@@ -1,6 +1,6 @@
 ---
 title: "中国リージョンのサービス一覧"
-description: "Alibaba Cloudの中国リージョンと日本リージョンのサービスラインアップの比較を記載します"
+description: "Alibaba Cloudの中国リージョンと日本リージョンのサービスラインアップの比較を記載します。"
 date: 2019-06-05T12:30:18+08:00
 weight: 20
 draft: true

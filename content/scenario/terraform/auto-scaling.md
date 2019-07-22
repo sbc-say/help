@@ -1,7 +1,7 @@
 ---
 title: "オートスケーリングの実現"
 date: 2019-07-01T00:00:00+09:00
-description: "Terraformを用いて、Alibaba Cloud上でオートスケーリングの作成方法を紹介します"
+description: "Terraformを用いて、Alibaba Cloud上でオートスケーリングの作成方法を紹介します。"
 weight: 220
 draft: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: "ユースケース別シナリオ"
-description: "ユースケースに沿ったシナリオに基づいた"
+description: "ユースケースに沿ったAlibaba Cloudの構築シナリオを記載します。"
 date: 2019-07-11T12:30:18+08:00
 weight: 30
 draft: false
