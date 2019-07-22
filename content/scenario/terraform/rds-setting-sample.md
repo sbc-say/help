@@ -276,7 +276,7 @@ resource "alicloud_slb_attachment" "default" {
 data "template_file" "user_data" {
   template = "${file("provisioning.sh")}"
   vars {
-    DB_HOST_IP = "${alicloud_db_instance.db_instance.connections.0.ip_address}"
+    DB_HOST_IP = "${alicloud_db_instance.db_instance.connection_string}"
     DB_NAME = "${var.database_name}"
     DB_USER = "${var.db_user}"
     DB_PASSWORD = "${var.db_password}"
@@ -337,7 +337,7 @@ provisioning.sh
 #!/bin/sh
 export MYSQL_HOST=${DB_HOST_IP}
 export MYSQL_DATABASE=${DB_NAME}
-export MYSQL_USER=${MYSQL_USER}
+export MYSQL_USER=${DB_USER}
 export MYSQL_PASSWORD=${DB_PASSWORD}
 
 sudo yum install -y yum-utils unzip mysql
