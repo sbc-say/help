@@ -1,6 +1,6 @@
 ---
 title: "Kubernetesの作成"
-date: 2019-07-01T00:00:00+09:00
+date: 2019-07-22T00:00:00+09:00
 description: "Terraformによる、Alibaba CloudのKubernetesリソース作成方法を紹介します。"
 weight: 150
 draft: false

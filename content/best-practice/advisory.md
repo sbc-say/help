@@ -1,15 +1,15 @@
 ---
 title: "アドバイザリ"
 description: "Alibaba Cloudを活用する上での導入アドバイザリを記載します。"
-date: 2019-06-05T12:30:18+08:00
+date: 2019-07-22T12:30:18+08:00
 weight: 10
 draft: false
 ---
 
-Alibaba Cloud 導入アドバイザリは下記リンクから取得可能です。
-
-[<button class="btn btn-primary">Alibaba Cloud導入アドバイザリをダウンロード</button>](https://www.sbcloud.co.jp/file/17680117127012390429)
-
+Alibaba Cloud 導入アドバイザリは下記リンクから取得可能です。  
+<br>
+[<button class="btn btn-primary">Alibaba Cloud導入アドバイザリをダウンロード</button>](https://www.sbcloud.co.jp/file/17680117127012390429)  
+<br>
 本書では、Alibaba Cloud上でシステムを構築する際の「アーキテクチャの設計」、「インフラストラクチャーの構築」、「セキュリティ」、「システム運用」の4点に関わるAlibaba Cloudの構成例をご紹介します。本書を一読頂くことで、一連のプラクティスを把握頂けます。  
 
 なお、本書は公開時点でのアドバイザリであり、時間の経過とともに、プロダクトの追加や機能追加・変更等で仕様が変更になる可能性があります。内容については随時更新を行ってまりますので、最新版をご参照下さい。  

@@ -1,11 +1,12 @@
 ---
 title: "サービスラインナップ比較"
 description: "Alibaba CloudとAWS、GCP、Azureのサービスラインアップの比較を記載します。"
-date: 2019-06-05T12:30:18+08:00
+date: 2019-07-22T12:30:18+08:00
 weight: 10
 draft: false
 ---
-AlibabaCloudというクラウドサービスにて2019年5月現在、中国版、国際版、日本版の３つのサービスが展開されているので、それぞれのサービス比較をまとめてみました。
+2019年7月時点でのAlibaba Cloud、AWS、Azure、GCPのサービスラインアップの比較となります。  
+Alibaba Cloudは中国版、国際版、日本版の３つのサービスが展開されているので、それらも併せて記載しています。
 
 ### AWS/Azure/GCPとの比較について
 ※ AlibabaCloud公式によるAWSとの比較は[こちら](https://help.aliyun.com/document_detail/65455.html)を参照。
