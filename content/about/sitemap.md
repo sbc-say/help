@@ -23,7 +23,7 @@ draft: false
 
 |[ユースケース別シナリオ]({{%relref "scenario/_index.md" %}})|
 |:------:|
-|<details><summary>[Terraform]({{%relref "scenario/terraform/_index.md" %}})</summary>[SSH踏み台サーバの作成]({{%relref "scenario/terraform/bastion-server.md" %}})<br>[SLBの構築]({{%relref "scenario/terraform/slb-setting-sample.md" %}})<br>[RDSの構築]({{%relref "scenario/terraform/rds-setting-sample.md" %}})<br>[Kubernetesの構築と設定]({{%relref "scenario/terraform/kubernetes-setting-sample.md" %}})<br>[Webアプリケーションの構築]({{%relref "scenario/terraform/web-application.md" %}})<br>[高速コンテンツ配信の実現]({{%relref "scenario/terraform/accelerated-content-delivery.md" %}})<br>[オートスケーリングの実現]({{%relref "scenario/terraform/auto-scaling.md" %}})<br>[KubernetesによるコンテナでWordPress作成]({{%relref "scenario/terraform/web-application-on-kubernetes.md" %}})<br>[MagentoでECサイト構築]({{%relref "scenario/terraform/ec-site-sample.md" %}})</details>|
+|<details><summary>[Terraform]({{%relref "scenario/terraform/_index.md" %}})</summary>[SSH踏み台サーバの作成]({{%relref "scenario/terraform/bastion-server.md" %}})<br>[SLBの構築]({{%relref "scenario/terraform/slb-setting-sample.md" %}})<br>[RDSの構築]({{%relref "scenario/terraform/rds-setting-sample.md" %}})<br>[Kubernetesの構築と設定]({{%relref "scenario/terraform/kubernetes-setting-sample.md" %}})<br>[Webアプリケーションの構築]({{%relref "scenario/terraform/web-application.md" %}})<br>[高速コンテンツ配信の実現]({{%relref "scenario/terraform/accelerated-content-delivery.md" %}})<br>[オートスケーリングの実現]({{%relref "scenario/terraform/auto-scaling.md" %}})<br>[KubernetesによるコンテナでWordPress作成]({{%relref "scenario/terraform/web-application-on-kubernetes.md" %}})</details>|
 
 |[よくある質問]({{%relref "faq/_index.md" %}})
 |:------:|
