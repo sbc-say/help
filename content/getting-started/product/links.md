@@ -1,7 +1,7 @@
 ---
 title: "プロダクト資料のリンク一覧"
 description: "Alibaba Cloudでよく利用されるプロダクトの資料リンク一覧"
-date: 2019-06-05T12:30:18+08:00
+date: 2019-07-22T12:30:18+08:00
 weight: 10
 draft: false
 ---

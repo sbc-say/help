@@ -1,7 +1,7 @@
 ---
 title: "アカウント登録"
 description: "Alibaba Cloudを初めて利用する上での新規アカウント登録の手順を紹介します。"
-date: 2019-06-05T12:30:18+08:00
+date: 2019-07-22T12:30:18+08:00
 weight: 10
 draft: false
 ---
