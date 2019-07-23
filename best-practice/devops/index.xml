@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DevOps on テクニカルリファレンス</title>
-    <link>https://sbcloud.github.io/help/best-practice/devops/</link>
+    <link>https://www.sbcloud.co.jp/help/best-practice/devops/</link>
     <description>Recent content in DevOps on テクニカルリファレンス</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Wed, 15 May 2019 10:37:37 +0900</lastBuildDate>
     
-	<atom:link href="https://sbcloud.github.io/help/best-practice/devops/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.sbcloud.co.jp/help/best-practice/devops/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

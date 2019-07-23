@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>プロダクトの紹介 on テクニカルリファレンス</title>
-    <link>https://sbcloud.github.io/help/getting-started/product/</link>
+    <link>https://www.sbcloud.co.jp/help/getting-started/product/</link>
     <description>Recent content in プロダクトの紹介 on テクニカルリファレンス</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 22 Jul 2019 12:30:18 +0800</lastBuildDate>
     
-	<atom:link href="https://sbcloud.github.io/help/getting-started/product/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.sbcloud.co.jp/help/getting-started/product/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>プロダクト資料のリンク一覧</title>
-      <link>https://sbcloud.github.io/help/getting-started/product/links/</link>
+      <link>https://www.sbcloud.co.jp/help/getting-started/product/links/</link>
       <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/getting-started/product/links/</guid>
+      <guid>https://www.sbcloud.co.jp/help/getting-started/product/links/</guid>
       <description> 頻繁に利用されるプロダクトの活用リンク一覧を記載します。
 主要プロダクト    製品名 コンテンツテーマ URL     ECS プロダクト紹介 公式ドキュメント   ECS クイックスタート 公式ドキュメント   RDS プロダクト紹介 公式ドキュメント   SLB プロダクト紹介 公式ドキュメント   VPC プロダクト紹介 公式ドキュメント   ExpressConnect プロダクト紹介 公式ドキュメント   CloudMonitor プロダクト紹介 公式ドキュメント   OSS プロダクト紹介 公式ドキュメント    人気のプロダクト    製品名 コンテンツテーマ URL     Container Service for Kubernetes プロダクト紹介 公式ドキュメント   MaxCompute プロダクト紹介 公式ドキュメント   Realtime Compute プロダクト紹介 公式ドキュメント   Image Search プロダクト紹介 公式ドキュメント   Anti-DDoS プロダクト紹介 公式ドキュメント    </description>
     </item>
     
     <item>
       <title>ECSの使用可能なRegion/Spec/Price紹介</title>
-      <link>https://sbcloud.github.io/help/getting-started/product/ecs-by-region/</link>
+      <link>https://www.sbcloud.co.jp/help/getting-started/product/ecs-by-region/</link>
       <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/getting-started/product/ecs-by-region/</guid>
+      <guid>https://www.sbcloud.co.jp/help/getting-started/product/ecs-by-region/</guid>
       <description>ap-northeast-1    instanceType vCPU  メモリ  イントラネット帯域幅 パケット転送速度  GPU/FPGA  ローカルストレージ  OS 従量課金 サブスクリプション サブスクリプション     ecs.c5.large 2 vCPU 4 GiB 1 Gbps 300,000 PPS - - linux ￥ 9.8 JPY /時間 ¥ 5170.00 JPY /月 ¥ 52734.00 JPY /年   ecs.c5.large 2 vCPU 4 GiB 1 Gbps 300,000 PPS - - windows ￥ 17.7 JPY /時間 ¥ 10710.00 JPY /月 ¥ 109242.</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ベストプラクティス on テクニカルリファレンス</title>
-    <link>https://sbcloud.github.io/help/best-practice/</link>
+    <link>https://www.sbcloud.co.jp/help/best-practice/</link>
     <description>Recent content in ベストプラクティス on テクニカルリファレンス</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 22 Jul 2019 12:30:18 +0800</lastBuildDate>
     
-	<atom:link href="https://sbcloud.github.io/help/best-practice/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.sbcloud.co.jp/help/best-practice/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>アドバイザリ</title>
-      <link>https://sbcloud.github.io/help/best-practice/advisory/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/advisory/</link>
       <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/advisory/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/advisory/</guid>
       <description>Alibaba Cloud 導入アドバイザリは下記リンクから取得可能です。
 Alibaba Cloud導入アドバイザリをダウンロード
 本書では、Alibaba Cloud上でシステムを構築する際の「アーキテクチャの設計」、「インフラストラクチャーの構築」、「セキュリティ」、「システム運用」の4点に関わるAlibaba Cloudの構成例をご紹介します。本書を一読頂くことで、一連のプラクティスを把握頂けます。

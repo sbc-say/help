@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Getting Started on テクニカルリファレンス</title>
-    <link>https://sbcloud.github.io/help/getting-started/</link>
+    <link>https://www.sbcloud.co.jp/help/getting-started/</link>
     <description>Recent content in Getting Started on テクニカルリファレンス</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 22 Jul 2019 12:30:18 +0800</lastBuildDate>
     
-	<atom:link href="https://sbcloud.github.io/help/getting-started/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.sbcloud.co.jp/help/getting-started/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>アカウント登録</title>
-      <link>https://sbcloud.github.io/help/getting-started/registration/</link>
+      <link>https://www.sbcloud.co.jp/help/getting-started/registration/</link>
       <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/getting-started/registration/</guid>
+      <guid>https://www.sbcloud.co.jp/help/getting-started/registration/</guid>
       <description>Alibaba Cloudのアカウント登録マニュアルが以下のリンクよりダウンロードいただけます。
 Alibaba Cloud登録マニュアルをダウンロード
 また本アカウント登録手順は以下の流れで記載しております。

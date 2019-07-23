@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AWS/Azure/GCPユーザ向け on テクニカルリファレンス</title>
-    <link>https://sbcloud.github.io/help/getting-started/cloud-users/</link>
+    <link>https://www.sbcloud.co.jp/help/getting-started/cloud-users/</link>
     <description>Recent content in AWS/Azure/GCPユーザ向け on テクニカルリファレンス</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 22 Jul 2019 12:30:18 +0800</lastBuildDate>
     
-	<atom:link href="https://sbcloud.github.io/help/getting-started/cloud-users/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.sbcloud.co.jp/help/getting-started/cloud-users/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>サービスラインナップ比較</title>
-      <link>https://sbcloud.github.io/help/getting-started/cloud-users/vs-aws-gcp-azure/</link>
+      <link>https://www.sbcloud.co.jp/help/getting-started/cloud-users/vs-aws-gcp-azure/</link>
       <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/getting-started/cloud-users/vs-aws-gcp-azure/</guid>
+      <guid>https://www.sbcloud.co.jp/help/getting-started/cloud-users/vs-aws-gcp-azure/</guid>
       <description>2019年7月時点でのAlibaba Cloud、AWS、Azure、GCPのサービスラインアップの比較となります。
 Alibaba Cloudは中国版、国際版、日本版の３つのサービスが展開されているので、それらも併せて記載しています。
 AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの比較はこちらを参照。 https://help.aliyun.com/document_detail/65455.html

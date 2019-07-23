@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>テクニカルリファレンス</title>
-    <link>https://sbcloud.github.io/help/</link>
+    <link>https://www.sbcloud.co.jp/help/</link>
     <description>Recent content on テクニカルリファレンス</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 23 Jul 2019 10:20:40 +0900</lastBuildDate>
     
-	<atom:link href="https://sbcloud.github.io/help/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.sbcloud.co.jp/help/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>サイトマップ</title>
-      <link>https://sbcloud.github.io/help/about/sitemap/</link>
+      <link>https://www.sbcloud.co.jp/help/about/sitemap/</link>
       <pubDate>Tue, 23 Jul 2019 10:20:40 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
+      <guid>https://www.sbcloud.co.jp/help/about/sitemap/</guid>
       <description>トップページ         Getting Started     アカウント登録   プロダクト紹介プロダクト資料のリンク一覧
 ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較       ベストプラクティス     アドバイザリ   個別プロダクトECS   DevOpsTerraformTerraformとは
 インストール
@@ -37,10 +37,10 @@ Kubernetesの作成       ユースケース別シナリオ     TerraformSSH踏�
     
     <item>
       <title>アカウント登録</title>
-      <link>https://sbcloud.github.io/help/getting-started/registration/</link>
+      <link>https://www.sbcloud.co.jp/help/getting-started/registration/</link>
       <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/getting-started/registration/</guid>
+      <guid>https://www.sbcloud.co.jp/help/getting-started/registration/</guid>
       <description>Alibaba Cloudのアカウント登録マニュアルが以下のリンクよりダウンロードいただけます。
 Alibaba Cloud登録マニュアルをダウンロード
 また本アカウント登録手順は以下の流れで記載しております。
@@ -51,10 +51,10 @@ Alibaba Cloud登録マニュアルをダウンロード
     
     <item>
       <title>アドバイザリ</title>
-      <link>https://sbcloud.github.io/help/best-practice/advisory/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/advisory/</link>
       <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/advisory/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/advisory/</guid>
       <description>Alibaba Cloud 導入アドバイザリは下記リンクから取得可能です。
 Alibaba Cloud導入アドバイザリをダウンロード
 本書では、Alibaba Cloud上でシステムを構築する際の「アーキテクチャの設計」、「インフラストラクチャーの構築」、「セキュリティ」、「システム運用」の4点に関わるAlibaba Cloudの構成例をご紹介します。本書を一読頂くことで、一連のプラクティスを把握頂けます。
@@ -77,10 +77,10 @@ Alibaba Cloud導入アドバイザリをダウンロード
     
     <item>
       <title>サービスラインナップ比較</title>
-      <link>https://sbcloud.github.io/help/getting-started/cloud-users/vs-aws-gcp-azure/</link>
+      <link>https://www.sbcloud.co.jp/help/getting-started/cloud-users/vs-aws-gcp-azure/</link>
       <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/getting-started/cloud-users/vs-aws-gcp-azure/</guid>
+      <guid>https://www.sbcloud.co.jp/help/getting-started/cloud-users/vs-aws-gcp-azure/</guid>
       <description>2019年7月時点でのAlibaba Cloud、AWS、Azure、GCPのサービスラインアップの比較となります。
 Alibaba Cloudは中国版、国際版、日本版の３つのサービスが展開されているので、それらも併せて記載しています。
 AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの比較はこちらを参照。 https://help.aliyun.com/document_detail/65455.html
@@ -90,20 +90,20 @@ AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの�
     
     <item>
       <title>プロダクト資料のリンク一覧</title>
-      <link>https://sbcloud.github.io/help/getting-started/product/links/</link>
+      <link>https://www.sbcloud.co.jp/help/getting-started/product/links/</link>
       <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/getting-started/product/links/</guid>
+      <guid>https://www.sbcloud.co.jp/help/getting-started/product/links/</guid>
       <description> 頻繁に利用されるプロダクトの活用リンク一覧を記載します。
 主要プロダクト    製品名 コンテンツテーマ URL     ECS プロダクト紹介 公式ドキュメント   ECS クイックスタート 公式ドキュメント   RDS プロダクト紹介 公式ドキュメント   SLB プロダクト紹介 公式ドキュメント   VPC プロダクト紹介 公式ドキュメント   ExpressConnect プロダクト紹介 公式ドキュメント   CloudMonitor プロダクト紹介 公式ドキュメント   OSS プロダクト紹介 公式ドキュメント    人気のプロダクト    製品名 コンテンツテーマ URL     Container Service for Kubernetes プロダクト紹介 公式ドキュメント   MaxCompute プロダクト紹介 公式ドキュメント   Realtime Compute プロダクト紹介 公式ドキュメント   Image Search プロダクト紹介 公式ドキュメント   Anti-DDoS プロダクト紹介 公式ドキュメント    </description>
     </item>
     
     <item>
       <title>Terraformとは</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/01/how-to-use/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/01/how-to-use/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/01/how-to-use/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/01/how-to-use/</guid>
       <description>&amp;nbsp; AlibabaCloudというクラウドサービスが登場したことで、クラウドサービス上にあるECSという仮想コンピューティングを作成・破棄するのが非常に簡単になりました。ボタン一つで数分でコンピューティングを起動できます。AlibabaCloudのマネジメントコンソールはWeb上にて操作する、数多くの機能をまとめた完成度の高いGUIです。
 &amp;nbsp; しかし、Web上にてGUI操作とはいえ設定項目を一つ一つずつ画面上操作するのは骨が折れるのと、小規模サービスでも構築にヒューマンエラーや運用・学習コストはどうしても付き物になります。例えばAlibabaCloud未経験者がECSをCS 100台を手動起動してみましょう。この作業にどれほどの時間がかかるか、そしてミスをゼロにして稼働できるか、という課題があります。そこで解決の道となったのがInfrastructure as Code（以降は「IaC」と略します）です。
 &amp;nbsp; IaCはコード通りの内容を自動で設定する仕組みを持ちます。IaCの種類はPackerやVagrantなど様々ですが、HashiCorp社がオープンソースとして手掛けるTerraformというマルチクラウド対応プロビジョニングツールがあります。シンプルなDSL(HCL)、自由自在な変数表現と状態管理が特徴です。
@@ -116,10 +116,10 @@ AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの�
     
     <item>
       <title>ECS</title>
-      <link>https://sbcloud.github.io/help/best-practice/product/ecs/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/product/ecs/</link>
       <pubDate>Thu, 18 Jul 2019 10:37:37 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/product/ecs/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/product/ecs/</guid>
       <description>ECSのベストプラクティス情報を以下のリンクよりダウンロードいただけます。
 ECSのベストプラクティス情報をダウンロード
 また本PDFは以下の流れで記載しております。
@@ -147,19 +147,19 @@ ECSのベストプラクティス情報をダウンロード
     
     <item>
       <title>ECSの使用可能なRegion/Spec/Price紹介</title>
-      <link>https://sbcloud.github.io/help/getting-started/product/ecs-by-region/</link>
+      <link>https://www.sbcloud.co.jp/help/getting-started/product/ecs-by-region/</link>
       <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://sbcloud.github.io/help/getting-started/product/ecs-by-region/</guid>
+      <guid>https://www.sbcloud.co.jp/help/getting-started/product/ecs-by-region/</guid>
       <description>ap-northeast-1    instanceType vCPU  メモリ  イントラネット帯域幅 パケット転送速度  GPU/FPGA  ローカルストレージ  OS 従量課金 サブスクリプション サブスクリプション     ecs.c5.large 2 vCPU 4 GiB 1 Gbps 300,000 PPS - - linux ￥ 9.8 JPY /時間 ¥ 5170.00 JPY /月 ¥ 52734.00 JPY /年   ecs.c5.large 2 vCPU 4 GiB 1 Gbps 300,000 PPS - - windows ￥ 17.7 JPY /時間 ¥ 10710.00 JPY /月 ¥ 109242.</description>
     </item>
     
     <item>
       <title>インストール</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/02/install/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/02/install/</guid>
       <description>本章は Terraform のインストール方法を学びます。
  ※ Mac/Linuxでのインストール方法になります。Windows版でのTerraform導入方法は別途記載予定です。 ※ Terraformバージョン違いを防止するためにtfenvで管理をする方法がありますが、これとは別に Dockerを使った方法もありますので参考にしてください。
  1. Homebrew &amp;nbsp; Terraformは前章で説明した通り、HashiCorp社がオープンソースとして展開してるツールです。基本的にはバージョンアップに 追従しやすい tfenv の利用を推奨しますが、お試しであればHomebrew も手軽です。 macOS の場合は次のように、Homebrew を使ってインストールできます。
@@ -173,10 +173,10 @@ $ echo 0.11.13 &amp;gt; .</description>
     
     <item>
       <title>サンプルプロジェクトの作成</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/03/sample-project/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/03/sample-project/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/03/sample-project/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/03/sample-project/</guid>
       <description>&amp;nbsp; ここまででTerraform のインストール方法を学びました。それではサンプルプロジェクトを作成します。簡単なWebサーバを立ち上げながら、Terraformの流れや中身を確認します。 1. ディレクトリ・ファイル構成 &amp;nbsp; Terraformのファイルの拡張子は *.tf です。実行時、同じディレクトリの *.tf ファイルがマージされますので、基本は以下3ファイルに分けてそれぞれの用途・目的に応じた記載・運用がベターです。
 main.tf … モジュールが内包するリソース、データソースなどの定義 outputs.tf … モジュールが出力するAttributeの定義 variables.tf … モジュールが受け取る変数の定義  main.tf には どのプロパイダを使うかを記載します。 階層化は任意ですが、.tfから別のフォルダの.tfに記載されてる変数を取り出すためにルートディレクトリを指定することがありますのでそこは注意が必要です。apply (=実行) にて分離実行することも可能です。 例えば以下のようにプロダクトサービス毎にフォルダを作成し、それぞれのリソースを作成しても、最終的には一つへまとめれます。
 ├── main.tf ├── output.tf ├── variables.tf │ ├── region │├── VPC ││├── main.tf ││├── output.tf ││└── variables.tf ││ │├── ECS ││├── main.tf ││├── output.tf ││└── variables.tf ・ ・ ・  &amp;nbsp; RAMなど他者へ渡したくない情報がある場合、別途設定ファイル（ confing.tfvars など）へ記載し、実行時は -var-file引数で 設定ファイルを読み取り実行することができます。
@@ -185,10 +185,10 @@ main.tf … モジュールが内包するリソース、データソースな�
     
     <item>
       <title>サンプルプロジェクトの実行</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/04/run-terraform/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/04/run-terraform/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/04/run-terraform/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/04/run-terraform/</guid>
       <description>&amp;nbsp; 前章は 簡単なWebサーバを立ち上げるというサンプルプロジェクトを作成しました。今章はサンプルプロジェクトを実行しつつ、Terraformの流れや中身を確認します。
 Terraformの実行は非常にシンプルです。以下図のようにterraform initから始まり、terraform play、terraform applyでリソース作成を実行します。
 
@@ -200,10 +200,10 @@ $ terraform plan -var-file=&amp;quot;confing.tfvars&amp;quot; Refreshing Terrafo
     
     <item>
       <title>Terraform文法について</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/05/program-syntax/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/05/program-syntax/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/05/program-syntax/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/05/program-syntax/</guid>
       <description>&amp;nbsp; 前章は 簡単なWebサーバを立ち上げるというサンプルプロジェクトを実行しました。うち、Terraformには様々な記載文法がありますので、把握した方がいい部分だけ説明します。
 
 1. Configuration Syntax &amp;nbsp; Terraformのコード構成要素、コードの構成文の書き方です。Terraformの利用ガイドラインに沿って記載してみてください。Terraformのバージョンによっては書き方が異なる場合がありますので、注意が必要です。
@@ -217,10 +217,10 @@ $ terraform plan -var-file=&amp;quot;confing.tfvars&amp;quot; Refreshing Terrafo
     
     <item>
       <title>Dockerについて</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/06/docker/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/06/docker/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/06/docker/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/06/docker/</guid>
       <description>&amp;nbsp; 前章までは Terraformのインストール方法、Terraformの文法、実行方法を説明しました。しかしこれらはTerraform v0.11.13前提での話なので、Terraformのバージョンが違うことで挙動が異なってしまうこともあります。Terraformでよく使うメソッドが急に廃止、、というのもよくあります。それを防ぐためにdockerを使ったインストール、利用する方法があります。dockerはパッケージングを行うための技術です。
 *注：Terraformのバージョン食い違いは基本的にtfenvでカバーできます。詳しくはインストールを参照してください
 
@@ -236,10 +236,10 @@ Continuous Deployment Automation on Alibaba Cloud: CI/CD Automation on Container
     
     <item>
       <title>Moduleについて</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/07/module/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/07/module/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/07/module/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/07/module/</guid>
       <description>&amp;nbsp; これまでTerraformの書き方を学びました。しかし問題があります。それはvariableによる変数宣言が多すぎると、可読性も下がり、場合によっては何度も同じ内容を書く必要があったりします。それを防ぐために、他のプログラミング言語と同じくモジュール化があります。
 
 1. Moduleとは &amp;nbsp; Terraformにおけるmoduleは各resourceを抽象化するためのものです。以下の例を見てみましょう。モジュール化されてないソースと、モジュール化されてないソースを見てください。
@@ -249,10 +249,10 @@ Continuous Deployment Automation on Alibaba Cloud: CI/CD Automation on Container
     
     <item>
       <title>VPCの作成</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/08/vpc/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/08/vpc/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/08/vpc/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/08/vpc/</guid>
       <description>&amp;nbsp; ここまではTerraformのインストール方法、コード記載方法、実行方法を説明しました。
 ここからはユーザ各自でコード作成、応用ができるよう、AlibabaCloudの基本プロダクトサービスの説明を通じて解説します。
 1. VPC &amp;nbsp; VPCは、Alibaba Cloudに設置されたプライベートネットワークです。 VPCはAlibaba Cloudの他のアカウントを含む仮想ネットワークと論理的に分離されています。
@@ -268,10 +268,10 @@ VPCコンポーネントは以下のような構成図になります。
     
     <item>
       <title>ECS、EIPの作成</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/09/ecs/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/09/ecs/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/09/ecs/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/09/ecs/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるECS、EIPの作成方法を解説します。
 1. ECS &amp;nbsp; ECSは、Alibaba Cloudによる仮装コンピューティングサービスです。ECS インスタンスは、ECS のコアコンポーネントであり、CPU、メモリ、およびその他の基本的なコンピューティングコンポーネントを含む仮想コンピューティング環境です。ディスク、イメージ、スナップショットなどの他のリソースは、ECS インスタンスと組み合わせてのみ使用できます。 &amp;nbsp; Alibaba CloudのECSはビジネスやWebアプリケーションなど様々なニーズに対応しており、即時に作れることが特徴です。
 &amp;nbsp; ECSインスタンス生成リソースは多くのオプション（任意）でパラメータや構成を指定できます。ECSインスタンスはVPCやセキュリティグループとは少し異なり、OSやバージョン選定、起動時データ引き渡しやECS使い捨て利用など様々な利用方法が実現出来るため、ここは抑えておきましょう。
@@ -283,10 +283,10 @@ resource &amp;quot;alicloud_instance&amp;quot; &amp;quot;ECS_instance&amp;quot; 
     
     <item>
       <title>SLBの作成</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/10/slb/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/10/slb/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/10/slb/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/10/slb/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるSLBの作成方法を解説します。
 1. SLB &amp;nbsp; SLB（Server Load Balancer）はアプリケーションや Web サイトのトラフィックを分散させるサービスです。
 &amp;nbsp; SLB は、仮想サービスアドレスを設定することによって、追加の ECS インスタンスを高性能で可用性の高いアプリケーションサービスプールに仮想化し、クライアントからのリクエストを、 転送ルールに従ってサーバープール内のECS インスタンスに分配します。
@@ -301,10 +301,10 @@ resource &amp;quot;alicloud_instance&amp;quot; &amp;quot;ECS_instance&amp;quot; 
     
     <item>
       <title>ECS</title>
-      <link>https://sbcloud.github.io/help/faq/ecs/</link>
+      <link>https://www.sbcloud.co.jp/help/faq/ecs/</link>
       <pubDate>Fri, 19 Jul 2019 15:30:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/faq/ecs/</guid>
+      <guid>https://www.sbcloud.co.jp/help/faq/ecs/</guid>
       <description>目次  一般仕様  アベイラビリティゾーン（AZ）識別文字と実際のロケーションに関するマッピング仕様について 1つのアカウント/リージョン配下のECS購入台数制限について サブスクリプションECSのライフサイクルについて RDSCALとクライアントCALの必要性について ECSのデフォルトタイムゾーンについて スナップショット取得時の性能影響について 購入可能な従量課金インスタンスの上限について 25番ポートの制限について ICP必要性の判断方法について インスタンススペックのアップグレード方法について  ネットワーク  VPCとVswitchの変更方法について VPCで指定可能なCIDRブロックについて EIPとパブリックIPの違いについて EIPとパブリックIPの帯域幅の変更方法について プライベートIPの変更方法について インバウンドとアウトバウンド帯域幅の制限値について  イメージ  イメージのインポート方法について クラウド移転ツールについて イメージのエクスポート方法について イメージのリージョン間コピー方法について  ディスク  システムディスクとデータディスクの違いについて クラウドディスクの拡張方法について  VNC  VNCで一部記号入力できない事象について VNCパスワードとECSパスワードの違いと再設定方法について  セキュリティグループ  インバウンドとアウトバウンドのデフォルト動作について 同じセキュリティグループ内のアクセス制限について セキュリティグルールの適用順位について   一般仕様  アベイラビリティゾーン（AZ）識別文字と実際のロケーションに関するマッピング仕様について Alibaba Cloudでは、アベイラビリティゾーン（AZ）識別文字と実際のロケーションのマッピングは、全てのアカウントで共通しています。
 AWSにおいては、アカウント毎に個別にマップされます。 仕様が異なるのでご注意ください。
    [⬆ 目次へ]
@@ -315,10 +315,10 @@ AWSにおいては、アカウント毎に個別にマップされます。 仕�
     
     <item>
       <title>OSS</title>
-      <link>https://sbcloud.github.io/help/faq/oss/</link>
+      <link>https://www.sbcloud.co.jp/help/faq/oss/</link>
       <pubDate>Fri, 19 Jul 2019 15:30:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/faq/oss/</guid>
+      <guid>https://www.sbcloud.co.jp/help/faq/oss/</guid>
       <description>目次  一般仕様  中国東部1のOSSを利用しなくても課金される事象について 標準、IA、アーカイブの違いについて クロスリージョンレプリケーションの利用制限について パケット間のファイル複製方法について 5G以上のファイルのアップロード方法について 同名ファイルを入れ替え後の即時反映について プライベート/パブリックエンドポイントの違いについて OSSのアクセスログの取得方法について OSSのイメージ/ビデオ処理の利用方法について  製品連携  OSSをディスクとしてマウントする方法について FunctionComputeのトリガーとして利用方法について CDNでOSS静的サイトの公開方法について OSSに静的サイトを設置した場合のICP必要性について OSSにインターネット経由で接続する際のFQDNについて  権限  RAMユーザー対象にバケットアクセス権限の制御方法について OSS公開してもディレクトリにアクセスできない事象について RAMユーザー利用時のBucketList権限の必要性について   一般仕様  中国東部1のOSSを利用しなくても課金される事象について OSSコンソールでのパケット操作は実質上にAPIで実行されています。
 GetBucketなどのようなパケットを特定しないに操作以外、共通な属性を取得するようなリクエストを実行された場合、デフォルトで中国東部１リージョンのエンドポイントが利用される仕様となります。
 コンソールからのAPIリクエストにより発生した料金は中国東部1のパケットに記録されますので、中国東部1のOSSを利用しなくても課金される事象の原因となります。
@@ -341,10 +341,10 @@ GetBucketなどのようなパケットを特定しないに操作以外、共�
     
     <item>
       <title>RDS</title>
-      <link>https://sbcloud.github.io/help/faq/rds/</link>
+      <link>https://www.sbcloud.co.jp/help/faq/rds/</link>
       <pubDate>Fri, 19 Jul 2019 15:30:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/faq/rds/</guid>
+      <guid>https://www.sbcloud.co.jp/help/faq/rds/</guid>
       <description>目次  一般仕様  RDSのトラフィック料金について sysadminの権限提供について カスタマイズ可能なパラメーターについて RDSのストレージ容量の拡張方法について ホワイトリストの設定方法について インターネットアドレスとイントラネットアドレスの違いについて VPCとVswitchの変更方法について  バックアップ  バックアップ取得時の性能影響について RDSバックアップの保存先について リカバリ時に指定可能な時刻について RDSリリース後のバックアップ提供について  マルチゾーン  マルチゾーンの確認方法について マルチゾーンの切り替え方法について レプリカのマルチゾーン対応について  暗号化  保存データの暗号化方法について SSLを利用するデータ転送方法について   一般仕様  RDSのトラフィック料金について RDS現在トラフィック（インバウンド、アウトバウンド含む）料金は無料です。
   [⬆ 目次へ]
  sysadminの権限提供について インスタンスの安定性とセキュリティを保証するために、RDS for SQL Server では、sysadmin 権限を提供しておりません。
@@ -359,10 +359,10 @@ https://jp.alibabacloud.com/help/doc-detail/26141.htm
     
     <item>
       <title>SLB</title>
-      <link>https://sbcloud.github.io/help/faq/slb/</link>
+      <link>https://www.sbcloud.co.jp/help/faq/slb/</link>
       <pubDate>Fri, 19 Jul 2019 15:30:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/faq/slb/</guid>
+      <guid>https://www.sbcloud.co.jp/help/faq/slb/</guid>
       <description>目次  一般仕様  レイヤー4とレイヤー7のSLBの違いについて SLBのアクセスログについて SLBのスペック変更方法と業務影響について VServerグループとマスタースレーブグループの違いについて サードパーティ証明書のアップロード方法について SLB関連の各APIのスロットリング上限について  ネットワーク  パブリックSLBとプライベートSLBの違いについて パブリックSLBとバックエンドECS間の通信仕様について パブリックIPとプライベートIP付きSLBの作成方法について ホワイトリストとブラックリストについて SLBのインバウンド/アウトバウンド帯域幅について 証明書をSLB側とECS側に設置の違いについて TCP over SSLの対応について  負荷分散  ラウンドロビン利用時に分散されない事象について バックエンドECSの重み設定について APIでVserverグループ追加時の引数書き方について SLBの相互認証について SLBを利用したsorryサーバーの実装方法について  ヘルスチェック  SLBのヘルスチェック頻度の仕様について SLBのヘルスチェック用CIDRブロックについて   一般仕様  レイヤー4とレイヤー7のSLBの違いについて SLBはレイヤ4 (TCP、UDP)およびレイヤ7(HTTP、HTTPS)を提供しています。
 レイヤ 4 SLB は、ロードバランシングを実現するために keepalived のオープンソースソフトウェアの Linux 仮想サーバー（ LVS ）を使用し、クラウドコンピューティングの要件に応じて、いくつかのカスタマイズを行っています。
 レイヤ 7 SLB は、ロードバランシングを実現するために Tengine を使用しています。 Tengine、Nginx に基づいて Web サーバープロジェクトは、多量トラフィックのウェブサイトに対応する機能を追加しています。
@@ -372,10 +372,10 @@ https://jp.alibabacloud.com/help/doc-detail/26141.htm
     
     <item>
       <title>アカウント</title>
-      <link>https://sbcloud.github.io/help/faq/account/</link>
+      <link>https://www.sbcloud.co.jp/help/faq/account/</link>
       <pubDate>Fri, 19 Jul 2019 15:30:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/faq/account/</guid>
+      <guid>https://www.sbcloud.co.jp/help/faq/account/</guid>
       <description>目次  アカウント  TOTP認証利用できなくなった時の対応方法について メールアドレスの変更方法について クレジットカードの変更方法について アカウント登録氏名（社名）の変更方法について コンソール自動ログアウトの仕様について   アカウント  TOTP認証利用できなくなった時の対応方法について バインドしている携帯電話を紛失したり、TOTP認証アプリケーションを削除する等、何らかの理由で認証が行えなくなった場合、バインド解除を申請することができます。
 申請方法は下記のドキュメントをご参照ください。
 https://jp.alibabacloud.com/help/faq-detail/54827.html
@@ -401,10 +401,10 @@ https://jp.alibabacloud.com/help/doc-detail/50107.html
     
     <item>
       <title>サポート</title>
-      <link>https://sbcloud.github.io/help/faq/support/</link>
+      <link>https://www.sbcloud.co.jp/help/faq/support/</link>
       <pubDate>Fri, 19 Jul 2019 15:30:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/faq/support/</guid>
+      <guid>https://www.sbcloud.co.jp/help/faq/support/</guid>
       <description>目次  サポート  サポートセンターの対応範囲について   サポート  サポートセンターの対応範囲について サポートセンターの対応範囲は下記となります。
 ■サービスに関する問い合わせ
 ・プロダクトの概要/価格
@@ -453,10 +453,10 @@ https://jp.alibabacloud.com/support/after-sales
     
     <item>
       <title>料金</title>
-      <link>https://sbcloud.github.io/help/faq/price/</link>
+      <link>https://www.sbcloud.co.jp/help/faq/price/</link>
       <pubDate>Fri, 19 Jul 2019 15:30:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/faq/price/</guid>
+      <guid>https://www.sbcloud.co.jp/help/faq/price/</guid>
       <description>目次  料金  マイクロチャージの仕様について コンソールに表示される月の使用金額と実際請求額の差分について 月の従量課金が10円未満場合の課金方法について サブスクリプション及び従量課金の請求時期について サブスクリプション及び従量課金の請求失敗後の動作について 利用明細のダウンロード可能時期と見方について 請求書払いの申請方法と基準について 請求書払いの締切日と発行日について インスタンス自動更新失敗後の動作について 自動更新OFFの状態で有効期限切れ後の更新方法について サブスクリプションインスタンスの削除方法について 無料トライアルクーポンの入手方法と確認場所について クーポンで支払い可能な範囲について クーポンの消費順について   料金  マイクロチャージの仕様について クレジットカードをご登録またはご追加の際に、マイクロチャージというクレジットカードの有効性を確認するプロセスにより、少額の課金（通常は100円以内）が発生します。
 該当課金は、AlibabaCloudから24時間以内にカードに払い戻ししますが、カード発行会社により、ご利用のカードに対する払い戻しをご確認いただけるまでに 30 日程度を要する場合があります。
 実際にAlibabaCloudが領収してないため、請求書の発行はできかねます。
@@ -483,10 +483,10 @@ https://jp.alibabacloud.com/support/after-sales
     
     <item>
       <title>AutoScalingの作成</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/11/autoscaling/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/11/autoscaling/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/11/autoscaling/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/11/autoscaling/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるAutoscalingの作成方法を解説します。
 1. AutoScaling &amp;nbsp; Auto Scaling はECSリソースの容量を自動的にスケールイン/スケールアウト調整してくれます。 ※ESSとは、SDK名やパッケージ名で用いられるAuto Scalingの略称です。（Elastic Scaling Service）
 
@@ -497,10 +497,10 @@ resource &amp;quot;alicloud_ess_scaling_group&amp;quot; &amp;quot;scaling&amp;qu
     
     <item>
       <title>OSSの作成</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/12/oss/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/12/oss/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/12/oss/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/12/oss/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるObject Storage Serviceの作成方法を解説します。
 1. OSS &amp;nbsp; Object Storage Service （OSS）は、クラウド内の任意の量のデータの保存、バックアップ、およびアーカイブを可能にするストレージサービスです。
 
@@ -513,10 +513,10 @@ resource &amp;quot;alicloud_oss_bucket&amp;quot; &amp;quot;bucket-acl&amp;quot;{
     
     <item>
       <title>RDSの作成</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/13/rds/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/13/rds/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/13/rds/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/13/rds/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるRelation Database Serviceの作成方法を解説します。
 1. RDS &amp;nbsp; Relation Database Service （RDS）は、ApsaraDB for RDS 、クラウド内の独立したデータベースサービスです。
 2. コンポーネント &amp;nbsp; ApsaraDB for RDSシリーズとしてMySQL、SQL Server、PostgreSQL、PPASがあります。
@@ -530,10 +530,10 @@ resource &amp;quot;alicloud_db_instance&amp;quot; &amp;quot;default&amp;quot; { 
     
     <item>
       <title>RAMの作成</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/14/ram/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/14/ram/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/14/ram/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/14/ram/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるResource Access Managementの作成方法を解説します。
 1. RAM権限管理 &amp;nbsp; AlibabaCloudはどのサービスを利用・操作するにしろ権限が必要です。 Terraformで作成したリソースサービスにも他ユーザが操作できるように権限アタッチが必要になります。 &amp;nbsp; 本章では、AlibabaCloudサービスに対する権限付与の方法を学びます。
 
@@ -548,10 +548,10 @@ resource &amp;quot;alicloud_db_instance&amp;quot; &amp;quot;default&amp;quot; { 
     
     <item>
       <title>Kubernetesの作成</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/15/kubernetes/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/15/kubernetes/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/15/kubernetes/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/15/kubernetes/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるResource Access Managementの作成方法を解説します。
 1. Kubernetes &amp;nbsp; Kubernetesは自動デプロイ、スケーリング、アプリ・コンテナの運用自動化のために設計されたオープンソースのプラットフォームです。Kubernetesによって、以下のことが要求に迅速かつ効率良く対応ができます。
  アプリを迅速に予定通りにデプロイする (コンテナをサーバー群へ展開する) 稼働中にアプリをスケールする（稼働中にコンテナ数を変更する） 新機能をシームレスに提供開始する (稼働中にロールアウトする) ハードウェアの利用率を要求に制限する (コンテナで共存させて稼働率を高くする）  &amp;nbsp; Kubernetesのゴールは、下記の様なアプリの運用負担を軽減するためのエコシステムのコンポーネントとツールを整備することです。
@@ -565,10 +565,10 @@ resource &amp;quot;alicloud_cs_kubernetes&amp;quot; &amp;quot;main&amp;quot; { n
     
     <item>
       <title>SSH踏み台サーバの作成</title>
-      <link>https://sbcloud.github.io/help/scenario/terraform/bastion-server/</link>
+      <link>https://www.sbcloud.co.jp/help/scenario/terraform/bastion-server/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/scenario/terraform/bastion-server/</guid>
+      <guid>https://www.sbcloud.co.jp/help/scenario/terraform/bastion-server/</guid>
       <description>ssh踏み台サーバ &amp;nbsp; クラウド上にてEC2やOSS、RDSなどにて個人情報や外部流出したくないしたくない危険なファイルがある場合、インターネットら外部からメインサーバが見える状態は極力避けたいです。それを防ぐために様々な手段がありますが、費用対効果の高いネットワーク構造として踏み台サーバを作る方法があります。踏み台サーバーとは、インターネットに直接繋がないサーバーをSSHで接続するために経由される、セキュリティ層の役割を満たすことができるサーバーのことです。踏み台サーバを使うことで、以下のメリットがあります。
  実行用など本番に使う各サーバに直接アクセスできないため、外部からの侵入リスクを軽減できる。 PublicIPを実行用など本番に使う各サーバに割る必要がないため、運用における負荷を軽減できる。 踏み台サーバから実行用など本番に使う各サーバへのログを残せるため、不正操作を防げれる。  
 
@@ -582,10 +582,10 @@ resource &amp;quot;alicloud_cs_kubernetes&amp;quot; &amp;quot;main&amp;quot; { n
     
     <item>
       <title>SLBの構築</title>
-      <link>https://sbcloud.github.io/help/scenario/terraform/slb-setting-sample/</link>
+      <link>https://www.sbcloud.co.jp/help/scenario/terraform/slb-setting-sample/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/scenario/terraform/slb-setting-sample/</guid>
+      <guid>https://www.sbcloud.co.jp/help/scenario/terraform/slb-setting-sample/</guid>
       <description>SLBの構築 &amp;nbsp; SLB（Server Load Balancer）は、外部インターネット、もしくは内部イントラネットからパブリックIPまたはプライベートIPへ届くインバウンドトラフィックを予め設定したSLBの転送ルールに従って、複数のECSインスタンス間のインバウンドトラフィックを分散および制御し、アプリケーションの可用性を高めるサービスです。SLBを使うことで、以下のメリットがあります。
  高可用性・・・完全冗長モードとして障害や災害時でもで稼働します。 スケーラブル・・・サービスニーズに合わせて必要な台数分へサーバを増減します。 費用対効果・・・必要なリソースの分だけ使用なので、通常の負荷分散ハードウェアと比べてコスト削減します。 セキュリティ・・・SLBはトラフィックを分散するだけでなくHTTP Flood攻撃やSYN Flood攻撃など、最大5GbitsのDDoS攻撃から防御できます。  SLBのより詳しい詳細はこちらを参照ください。
 &amp;nbsp; TerraformでSLBを使ったECSインスタンスを作成してみます。ゴールの構成図は以下の通りです。
@@ -596,10 +596,10 @@ resource &amp;quot;alicloud_cs_kubernetes&amp;quot; &amp;quot;main&amp;quot; { n
     
     <item>
       <title>RDSの構築</title>
-      <link>https://sbcloud.github.io/help/scenario/terraform/rds-setting-sample/</link>
+      <link>https://www.sbcloud.co.jp/help/scenario/terraform/rds-setting-sample/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/scenario/terraform/rds-setting-sample/</guid>
+      <guid>https://www.sbcloud.co.jp/help/scenario/terraform/rds-setting-sample/</guid>
       <description>&amp;nbsp; TerraformでデータベースサービスであるRDSを作ってみます。ゴールの構成図は以下の通りです。
 またECSからRDS for MySQLへ接続するためにdocker-composeを使います。docker-composeはコンテナオーケストレーションの一つで、環境構築を再現するのが楽になる手法です。docker-compose.ymlファイルは以下の通りです。
 version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysql_host environment: - MYSQL_HOST=&#39;rds-sample.mysql.japan.rds.aliyuncs.com&#39; - MYSQL_DATABASE=&#39;rds_setting_sample&#39; - MYSQL_USER=&#39;test_user&#39; - MYSQL_PASSWORD=&#39;!Password2019&#39; - TZ=&#39;Asia/Tokyo&#39; command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci volumes: - ./docker/db/data:/var/lib/mysql - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf - ./docker/db/sql:/docker-entrypoint-initdb.d ports: - 3306:3306  それぞれのパラメータは以下の通りです。
@@ -609,10 +609,10 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
     
     <item>
       <title>Kubernetesの構築と設定</title>
-      <link>https://sbcloud.github.io/help/scenario/terraform/kubernetes-setting-sample/</link>
+      <link>https://www.sbcloud.co.jp/help/scenario/terraform/kubernetes-setting-sample/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/scenario/terraform/kubernetes-setting-sample/</guid>
+      <guid>https://www.sbcloud.co.jp/help/scenario/terraform/kubernetes-setting-sample/</guid>
       <description>&amp;nbsp; 簡単なkuberntesクラスターを作ってみます。シングルゾーンによるクラスタでの作成になります。ゴールの構成図は以下の通りです。
 それぞれのパラメータは以下の通りです。
 ネットワーク構成:
@@ -621,10 +621,10 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
     
     <item>
       <title>Webアプリケーションの構築</title>
-      <link>https://sbcloud.github.io/help/scenario/terraform/web-application/</link>
+      <link>https://www.sbcloud.co.jp/help/scenario/terraform/web-application/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/scenario/terraform/web-application/</guid>
+      <guid>https://www.sbcloud.co.jp/help/scenario/terraform/web-application/</guid>
       <description>&amp;nbsp; こちらはAlibabaCloud公式サイトにあるソリューション構築例を通じての紹介になります。IDCなどデータセンターにて、スケーラブルで世界規模で利用可能なWebアプリケーションを開発および展開するのは、多くの手作業から工数がかかり、またトラフィックに応じてリソースの効率さが悪くなってしまう課題があります。しかしAlibabaCloudで構築すると、それらの課題が払拭されます。それだけでなく、上に、投資収益率（ROI）も向上するメリットがあります。
  すぐに着手できる配置構成 必要な分だけリソースを提供（オンデマンドサーバープロビジョニング） 単一障害点（SPOF）なし 多重層のセキュリティ保護あり  
 &amp;nbsp; TerraformでWebアプリケーションを作ってみます。ゴールの構成図は以下の通りです。
@@ -635,10 +635,10 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
     
     <item>
       <title>高速コンテンツ配信の実現</title>
-      <link>https://sbcloud.github.io/help/scenario/terraform/accelerated-content-delivery/</link>
+      <link>https://www.sbcloud.co.jp/help/scenario/terraform/accelerated-content-delivery/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/scenario/terraform/accelerated-content-delivery/</guid>
+      <guid>https://www.sbcloud.co.jp/help/scenario/terraform/accelerated-content-delivery/</guid>
       <description>&amp;nbsp; こちらはAlibabaCloud公式サイトにあるソリューション構築例を通じての紹介になります。従来のWebアプリケーションアーキテクチャでは、Webアプリケーションが大量のリクエストトラフィックを受け取ると、サーバーが過負荷になり、サイトが遅くなったりサーバーがクラッシュしたりする可能性があります。また地理的に異なる場所に分散していると、コンテンツが1か所から配信されるため、待ち時間の問題が発生する可能性があります。そのためにWebアプリケーションは高速でコンテンツ配信することが望ましいです。
  グローバル配信が可能 静的および動的コンテンツのアクセラレーション 待ち時間の短縮などパフォーマンス改善  
 &amp;nbsp; TerraformでWebアプリケーションを作ってみます。ゴールの構成図は以下の通りです。
@@ -649,10 +649,10 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
     
     <item>
       <title>オートスケーリングの実現</title>
-      <link>https://sbcloud.github.io/help/scenario/terraform/auto-scaling/</link>
+      <link>https://www.sbcloud.co.jp/help/scenario/terraform/auto-scaling/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/scenario/terraform/auto-scaling/</guid>
+      <guid>https://www.sbcloud.co.jp/help/scenario/terraform/auto-scaling/</guid>
       <description>&amp;nbsp; こちらはAlibabaCloud公式サイトにあるソリューション構築例を通じての紹介になります。
 プロビジョニング済みのECSインスタンスをメインとするWebアプリケーションにて、予測が難しいトラフィックニーズに応じて、必要なECSインスタンス台数を増減してくれます。これにより、アプリケーションを止めることなく稼働し続けることが出来ます。同時にリソースに応じた需要増/減から必要なコスト管理も実現出来ます。
  アプリケーションの稼働時間・堅牢性向上 サーバーの自動プロビジョニング ニーズに応じたコスト管理  
@@ -664,10 +664,10 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
     
     <item>
       <title>KubernetesによるコンテナでWordPress作成</title>
-      <link>https://sbcloud.github.io/help/scenario/terraform/web-application-on-kubernetes/</link>
+      <link>https://www.sbcloud.co.jp/help/scenario/terraform/web-application-on-kubernetes/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/scenario/terraform/web-application-on-kubernetes/</guid>
+      <guid>https://www.sbcloud.co.jp/help/scenario/terraform/web-application-on-kubernetes/</guid>
       <description>&amp;nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。
  AlibabaCloudでKubernetesクラスターを生成 kube_configを環境変数にて設定 KubernetesクラスターのローカルボリュームにてWordPressとMySQLをインストール  
 こちらはAlibabaCloud Terraformのサンプル集を通じての紹介になります。

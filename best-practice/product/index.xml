@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>個別プロダクト on テクニカルリファレンス</title>
-    <link>https://sbcloud.github.io/help/best-practice/product/</link>
+    <link>https://www.sbcloud.co.jp/help/best-practice/product/</link>
     <description>Recent content in 個別プロダクト on テクニカルリファレンス</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 22 Jul 2019 12:30:18 +0800</lastBuildDate>
     
-	<atom:link href="https://sbcloud.github.io/help/best-practice/product/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.sbcloud.co.jp/help/best-practice/product/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ECS</title>
-      <link>https://sbcloud.github.io/help/best-practice/product/ecs/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/product/ecs/</link>
       <pubDate>Thu, 18 Jul 2019 10:37:37 +0900</pubDate>
       
-      <guid>https://sbcloud.github.io/help/best-practice/product/ecs/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/product/ecs/</guid>
       <description>ECSのベストプラクティス情報を以下のリンクよりダウンロードいただけます。
 ECSのベストプラクティス情報をダウンロード
 また本PDFは以下の流れで記載しております。
