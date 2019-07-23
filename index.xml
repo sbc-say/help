@@ -6,10 +6,113 @@
     <description>Recent content on テクニカルリファレンス</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 18 Jul 2019 10:37:37 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jul 2019 10:20:40 +0900</lastBuildDate>
     
 	<atom:link href="https://sbcloud.github.io/help/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>サイトマップ</title>
+      <link>https://sbcloud.github.io/help/about/sitemap/</link>
+      <pubDate>Tue, 23 Jul 2019 10:20:40 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
+      <description>トップページ         Getting Started     アカウント登録   プロダクト紹介プロダクト資料のリンク一覧
+ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較       ベストプラクティス     アドバイザリ   個別プロダクトECS   DevOpsTerraformTerraformとは
+インストール
+サンプルプロジェクトの作成
+サンプルプロジェクトの実行
+文法について
+Dockerについて
+Moduleについて
+VPCの作成
+ECS、EIPの作成
+SLBの作成
+Autoscalingの作成
+OSSの作成
+RDSの作成
+RAMの作成
+Kubernetesの作成       ユースケース別シナリオ     TerraformSSH踏み台サーバの作成</description>
+    </item>
+    
+    <item>
+      <title>アカウント登録</title>
+      <link>https://sbcloud.github.io/help/getting-started/registration/</link>
+      <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/registration/</guid>
+      <description>Alibaba Cloudのアカウント登録マニュアルが以下のリンクよりダウンロードいただけます。
+Alibaba Cloud登録マニュアルをダウンロード
+また本アカウント登録手順は以下の流れで記載しております。
+ 各種登録手順のご案内
+ 環境設定 各種登録の流れ
+  アカウントの登録手順  基本情報の入力 メールアドレスの確認 電話番号の確認 プロファイルの更新  クレジットカードの登録手順  クレジットカードの追加 有効化のための認証 本人確認チケット起票方法  アカウント登録後のお問い合わせ  チケットによるお問い合わせ   SBCloudホームページでも同様の内容が確認できます。 https://www.sbcloud.co.jp/document/account_registration</description>
+    </item>
+    
+    <item>
+      <title>アドバイザリ</title>
+      <link>https://sbcloud.github.io/help/best-practice/advisory/</link>
+      <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/advisory/</guid>
+      <description>Alibaba Cloud 導入アドバイザリは下記リンクから取得可能です。
+Alibaba Cloud導入アドバイザリをダウンロード
+本書では、Alibaba Cloud上でシステムを構築する際の「アーキテクチャの設計」、「インフラストラクチャーの構築」、「セキュリティ」、「システム運用」の4点に関わるAlibaba Cloudの構成例をご紹介します。本書を一読頂くことで、一連のプラクティスを把握頂けます。
+なお、本書は公開時点でのアドバイザリであり、時間の経過とともに、プロダクトの追加や機能追加・変更等で仕様が変更になる可能性があります。内容については随時更新を行ってまりますので、最新版をご参照下さい。
+ 用語集 本書に扱われるサービス一覧 Alibaba Cloudアーキテクチャの全体像 ネットワークの構成
+4-1. Alibaba Cloudのネットワークの考え方
+4-2. ネットワーク分割
+4-3. アクセス経路
+4-4. アクセス制御
+ セキュリテイの構成
+5-1. Alibaba Cloud責任共有モデル 5-2. ID&amp;amp;アクセスマネジメント 5-3. インフラセキュリティ 5-4. ログ管理 5-5. データ保護
+ 運用機能
+6-1 システム監視
+6-2 パッチ管理
+6-3 バックアップ管理
+6-4 ジョブ管理
+6-5 構成管理
+  </description>
+    </item>
+    
+    <item>
+      <title>サービスラインナップ比較</title>
+      <link>https://sbcloud.github.io/help/getting-started/cloud-users/vs-aws-gcp-azure/</link>
+      <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/cloud-users/vs-aws-gcp-azure/</guid>
+      <description>2019年7月時点でのAlibaba Cloud、AWS、Azure、GCPのサービスラインアップの比較となります。
+Alibaba Cloudは中国版、国際版、日本版の３つのサービスが展開されているので、それらも併せて記載しています。
+AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの比較はこちらを参照。 https://help.aliyun.com/document_detail/65455.html
+※ AlibabaCloud公式によるAzureとの比較はこちらを参照。 https://help.aliyun.com/document_detail/74242.html
+コンピューティング（弹性计算）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      云服务器 ECS クラウドサーバ Elastic Compute Service Elastic Compute Service EC2 Virtual Machines Compute Engine    弹性裸金属服务器（神龙） Bare Metalクラウドサーバ ECS Bare Metal Instance ECS Bare Metal Instance EC2 Bare Metal Virtual Machines Compute Engine    轻量应用服务器 軽量アプリケーションサーバー Simple Application Server        GPU 云服务器 GPUクラウドサーバ Elastic GPU Service Elastic GPU Service EC2 Elastic GPUs Virtual Machines Compute Engine    FPGA 云服务器 FPGAクラウドサーバ   AWS EC2 FPGA Virtual Machines Compute Engine    专有宿主机 専有ホスト Dedicated Host Dedicated Host       超级计算集群 スーパーコンピューティングクラスター（SCC） Super Computing Cluster Super Computing Cluster       弹性高性能计算 E-HPC 高性能コンピューティング（E-HPC） E-HPC E-HPC High Performance Computing (HPC)      批量计算 バッチ計算 Batch Compute        容器服务 コンテナサービス Container Service Container Service AWS ECS Container Service -    容器服务 Kubernetes 版 コンテナサービスKubernetes版 Container Service for Kubernetes Container Service for Kubenetes Elastic Container Service for Kubernetes Kubernetes Service Google Kubernetes Engine    弹性容器实例 ECI サーバレスコンテナサービス Elastic Container Instance  Fargate Container Instance -    容器镜像服务 コンテナミラーリングサービス Container Registry  Elastic Container Registry Container Registry Google Container Registry    弹性伸缩 Auto Scaling Auto Scaling Auto Scaling EC2 Auto Scaling Virtual Machine Scale Sets Autoscaling    资源编排 リソースの作成と管理サービス Resource Orchestration Service Resource Orchestration Service AWS CloudFormation Resource Manager Cloud Deployment Manager    函数计算 Function as a Service Function Compute Function Compute AWS Lambda Functions Cloud Functions    图形工作站 GPUワークステーション         ストレージ（存储服务）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      对象存储 OSS オブジェクトストレージ Object Storage Service Object Storage Service S3 Blob Storage Cloud Storage    块存储 ブロックストレージ Block Storage Block Storage EBS Managed Disk 永続ディスク    文件存储 NAS ファイルストレージNAS Network Attached Storage Network Attached Storage Elastic File System (EFS) File Storage Cloud Filestore    文件存储 CPFS クラウドパラレルファイルストレージ         文件存储 HDFS HDFSファイルストレージ         智能云相册 クラウドフォトアルバム         智能媒体管理 インテリジェントメディア管理         云存储网关 クラウドストレージゲートウェイ   AWS Storage Gateway StorSimple     混合云存储阵列 ハイブリッドクラウドストレージアレイ Hybrid Cloud Storage Array        CDN配信（CDN与边缘）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      CDN Content Delivery Network Alibaba Cloud CDN Alibaba Cloud CDN CloudFront CDN Cloud CDN    安全加速 SCDN Secure Content Delivery Network         全站加速 DCDN Dynamic Route for CDN Dynamic Route for CDN Dynamic route for CDN       PCDN P2P CDN         边缘节点服务 ENS Edge Node Service         データベース（数据库）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      云数据库 POLARDB MySQL、Oracle、PostgreSQLの互換性があるクラウドデータベース   Aurora  Cloud Spanner    云数据库 RDS MySQL 版 MySQL ApsaraDB RDS for MySQL ApsaraDB for RDS(MySQL) RDS for MySQL/Aurora Database for MySQL Cloud SQL for MySQL    云数据库 RDS MariaDB TX 版 MariaDB ApsaraDB for MariaDB TX  RDS for MariaDB Database for MariaDB     云数据库 RDS SQL Server 版 SQLServer ApsaraDB RDS for SQL Server ApsaraDB for RDS(SQL Server) RDS for SQL Server SQL Database Cloud SQL for SQL Server    云数据库 RDS PostgreSQL 版 PostgreSQL ApsaraDB RDS for PostgreSQL ApsaraDB for RDS(PostgreSQL) RDS for PostgreSQL/Aurora Database for PostgreSQL Cloud SQL for PostgreSQL    云数据库 RDS PPAS 版 Oracle ApsaraDB RDS for PPAS ApsaraDB for RDS(PPAS) RDS for Oracle      分布式关系型数据库服务 DRDS 分散リレーショナルデータベースサービス Distributed Relational Database Service  Aurora  Cloud Spanner    云数据库 Redis 版 Redis ApsaraDB for Redis ApsaraDB for Redis ElastiCache (Redis) Cache for Redis Cloud Memorystore    云数据库 MongoDB 版 MongoDB ApsaraDB for MongoDB ApsaraDB for MongoDB DocumentDB (with MongoDB compatibility) Cosmos DB(API for MongoDB)     TSDB 时序时空数据库 時系列データベース High-Performance Time Series Database  Timestream Time Series Insights     云数据库 HBase 版 Apache Hbase     Cloud Bigtable   iconなし 图数据库 GDB グラフデータベース   Neptune Cosmos DB(API for Gremlin)     云数据库 Memcache 版 Memcache ApsaraDB for Memcache ApsaraDB for Memcache ElastiCache (Memcached)  Cloud Memorystore    表格存储 TableStore TableStore(NoSQL) Table Store Table Store DynamoDB Cosmos DB Cloud Datastore    分析型数据库 MySQL版 MySQLをベースにした分析データベース         分析型数据库 PostgreSQL版 DWH分析データベース HybridDB for PostgreSQL AnalyticDB for PostgreSQL Redshift SQL Data Warehouse Google BigQuery    HybridDB for MySQL HybridDB for MySQL         Data Lake Analytics データレイクアナリティクス Data Lake Analytics  Athena Data Lake Analytics Google BigQuery    数据管理 DMS データ管理サービス         混合云数据库管理 HDM ハイブリッドクラウドデータベース管理サービス         クラウド通信サービス（云通信）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      短信服务 ショートメッセージサービス         语音服务 音声メッセージサービス         流量服务 移動体通信データパッケージ         物联网无线连接服务 IoT無線通信接続サービス        iconなし 号码隐私保护 モバイルプライバシー保護サービス         号码认证服务 番号認証サービス         ネットワーク（网络）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 云通信网络加速 クラウド通信ネットワーク高速化サービス         专有网络 VPC 専用ネットワークVPC Virtual Private Cloud Virtual Private Cloud VPC Virtual Network Cloud VPN    云解析 PrivateZone VPCのDNSサービス Alibaba Cloud PrivateZone        负载均衡 SLB 負荷分散ロードパランサ Server Load Balancer Server Load Balancer AWS Global Accelerator Traffic Manager Cloud Load Balancing    NAT 网关 NATゲートウェイ NAT Gateway NAT Gateway Internet Gateway、NAT Instance、NAT Gateway      弹性公网 IP パブリックIPリソース Elastic IP Elastic IP Elastic IP Addresses     iconなし IPv6 转换服务 IPv6変換サービス         IPv6 网关 IPv6ゲートウェイ         全局流量管理 Global Traffic Manager Global Traffic Manager Global Traffic Manager Route 53（Traffic policy) Traffic Manager Global Load Balancing   iconなし 共享带宽 帯域幅共有サービス         共享流量包 クラウド間のデータ転送 Data Transfer Plan    Cloud Storage Transfer Service    云企业网 Cloud Enterprise Network Cloud Enterprise Network Cloud Enterprise Network       VPN 网关 VPNゲートウェイ VPN Gateway VPN Gateway VPN Gateway      智能接入网关（邀测中） オンプレミスからのデータ転送 Smart Access Gateway  AWS DataSync      高速通道 専用線接続 Express Connect Express Connect AWS Direct Connect ExpressRoute Dedicated Interconnect    基本的なセキュリティ（基础安全）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      DDoS高防IP DDoS 対策 (DDoS Pro) Anti-DDoS Pro        DDoS基础防护服务 DDoS 対策 (DDoS Basic) Anti-DDoS Basic Anti-DDoS Basic AWS Shield Standard DDoS Protection     DDoS高防（国际） DDoS 対策 (Premium) Anti-DDoS Premium  AWS Shield Advanced DDoS Protection Cloud Armor    新BGP高防IP DDoS 対策 (DDoS BGP)         Web应用防火墙 Webアプリケーションファイアウォール Web Application Firewall Web Application Firewall AWS WAF Application Gateway Cloud Armor    云安全中心（态势感知） クラウドセキュリティセンター Threat Detection Service        云盾混合云 クラウド、IDC、ハイブリッドクラウドでのセキュリティ保護サービス         云安全中心（安骑士） ホストセキュリティソフトウェア Server Guard        云防火墙 クラウドファイアウォール   AWS Firewall Manager Firewall     堡垒机 セキュリティ監査管理プラットフォーム         漏洞扫描 脆弱性スキャンサービス         网站威胁扫描系统 Webサイト脅威スキャンサービス Website Threat Inspector  GuardDuty Security Center Cloud Security Command Center    アイデンティティ管理（身份管理）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      访问控制 アカウント権限管理 Resource Access Management Resource Access Management AWS Identity and Access Management Active Directory Cloud IAM    データセキュリティ（数据安全）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      SSL 证书 SSL/TLS証明書管理サービス SSL Certificates Service SSL Certificates Service AWS Certificate Manager App Service Certificates Google-managed SSL certificates    数据库审计 データベース監査サービス         加密服务 暗号化サービス        iconなし 敏感数据保护 機密データ保護サービス   AWS Secrets Manager Key Vault     密钥管理服务 キー管理 Key Management Service Key Management Service AWS Key Management Service, AWS CloudHSM, AWS Secrets Manager Key Vault Cloud Key Management Service    ビジネスセキュリティ（业务安全）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      游戏盾 ゲームシールド GameShield        内容安全 コンテンツセキュリティ Content Moderation        风险识别 リスク識別と特定サービス         实人认证 人物識別・認証サービス         爬虫风险管理 Webクローラーやbotから防御するサービス Anti-Bot Service        セキュリティサービス(安全服务)    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      安全管家 セキュリティテクノロジおよびコンサルティングサービス Managed Security service       iconなし 渗透测试 侵入テスト         安全众测 セキュリティテスト   Inspector Security Center Cloud Security Command Center   iconなし 等保咨询 セキュリティコンサルティングサービス   Inspector Security Center Cloud Security Command Center   iconなし 应急响应 セキュリティ緊急対応サービス        iconなし 漏洞扫描 脆弱性スキャンサービス        iconなし 安全培训 セキュリティトレーニング        iconなし 安全评估 セキュリティ評価サービス        iconなし 代码审计 ソースコード監査        iconなし 安全加固 セキュリティ強化サービス        iconなし 安全通告 セキュリティ監視通知サービス        iconなし PCI DSS合规咨询 PCI DSSサービス         ビッグデータ計算（大数据计算）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      MaxCompute MaxCompute MaxCompute MaxCompute Redshift SQL Data Warehouse BigQuery    E-MapReduce E-MapReduce、Hadoopクラスタの展開 E-MapReduce E-Mapreduce EMR HDInsight Cloud Datalab, Cloud Dataproc    实时计算 Realtime Compute（元はApache Flink） Realtime Compute Realtime Compute       データの可視化（数据可视化）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      DataV数据可视化 DataV、データの可視化 DataV DataV       ビッグデータの検索と分析（大数据搜索与分析）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      开放搜索 分散検索エンジンプラットフォーム   CloudSearch Search     日志服务 各種ログの一元管理 Log Service Log Service Kinesis, SQS Event Hubs, Stream Analytics Cloud Dataflow, Cloud Pub/Sub    Elasticsearch ElasticSearch Elasticsearch Elasticsearch Elasticserach Service      关系网络分析 リレーショナルネットワーク分析         画像分析 画像分析サービス         公众趋势分析 トレンド分析サービス         Quick BI BIツール Quick BI Quick BI QuickSight Power BI Data Studio    データ開発（数据开发）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      DataWorks データの可視化 DataWorks DataWorks       Dataphin データ構築と管理サービス Dataphin        阿里云DataHub ストリーム処理   Kinesis, SQS Event Hubs, Stream Analytics Cloud Dataflow, Cloud Pub/Sub    数据集成 データ統合 Data Integration Data Integration       データのレコメンデーション（数据开发）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      企业图谱 コーポレートマップ        iconなし 智能推荐 スマートレコメンデーション         インテリジェントな音声対話（智能语音交互）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      录音文件识别 録音ファイルの認識（Speech-to-Text）   Transcribe Speech Services Cloud Speech-to-Text    实时语音转写 リアルタイム音声転写         一句话识别 一文認識（Text-to-Speech）   Polly Speech Services Cloud Text-to-Speech    语音合成 音声合成         语音合成声音定制 音声データの合成およびカスタマイズ         语音模型自学习工具 音声モデル自己学習ツール         画像検索（图像搜索）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      图像搜索 画像検索 Image Search Image Search       自然言語処理（自然语言处理）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      多语言分词 テキスト上の多言語の単語・分詞の分割サービス   Comprehend Language Understanding Cloud Natural Language    词性标注 品詞タグ付けの一部         命名实体 名前付きエンティティ         情感分析 感情分析         中心词提取 中心語抽出         智能文本分类 インテリジェントテキスト分類         文本信息抽取 テキスト情報抽出         商品评价解析 製品レビューの評価分析         印刷テキスト認識（印刷文字识别）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      通用型卡证类 IDカード、銀行カード、パスポートなどカード識別サービス         汽车相关识别 免許証・ナンバープレートなど自動車関連データの識別サービス         行业票据识别 請求書・領収書の識別サービス         资产类识别 資産証明書など各証明書識別サービス         通用文字识别 画像データのテキスト認識         行业文档类识别 業界文書データのテキスト認識サービス         视频类文字识别 ビデオデータ内の字幕および文字テキスト認識サービス         自定义模板识别 ORCカスタムテンプレートを作成し認識するサービス         顔認識（人脸识别）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      人脸识别 顔認識         機械翻訳（机器翻译）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      机器翻译 機械翻訳   Translate Translator Text Cloud Translation    画像認識（图像识别）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      图像识别 画像認識   Rekognition Computer Vision Cloud Vision    コンテンツセキュリティ（内容安全）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      图片鉴黄 ポルノコンテンツ認識         图片涉政暴恐识别 写真データからテロ画像や政治的問題画像識別サービス         图片Logo商标检测 画像からロゴ検出サービス         图片垃圾广告识别 画像スパム認識         图片不良场景识别 薬物使用、ギャンブルなどの不適切なコンテンツ認識サービス         图片风险人物识别 画像から人物特定リスク識別サービス         视频风险内容识别 ビデオリスクのコンテンツ認識         文本反垃圾识别 テキストリスクのコンテンツ認識         语音垃圾识别 音声データのリスク識別サービス         機械学習プラットフォーム（机器学习平台）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      机器学习平台 PAI 機械学習プラットフォームPAI Machine Learning Platform For AI  SageMaker Machine Learning Service Cloud ML Engine   iconなし 人工智能众包 AIによるクラウドソーシング         ドメイン名とウェブサイト（域名与网站）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      域名注册 ドメイン登録サービス         域名交易 ドメイン名取引サービス         网站建设 ウェブサイト構築サポートサービス         云虚拟主机 クラウド仮想ホスト Web Hosting        海外云虚拟主机 国外Webホスティング設置サービス         云解析 DNS DNS Domains Alibaba Cloud DNS Route 53 DNS Cloud DNS    弹性Web托管 柔軟なWebホスティング   Elastic Beanstalk App Service App Engine   iconなし 备案 ドメイン登録(IPC)のためのICP代替申請サービス         知的財産サービス（知识产权服务）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      商标注册 商標登録サービス         商标交易 商標登録されてるものを購入するサービス         申請サービス（应用服务）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 机器人流程自动化 RPA RPA         云桌面 クラウドデスクトップ         云AP クラウドAP         API 网关 API管理 API Gateway API Gateway API Gateway API Management Cloud Endpoints/Apigee    企业邮箱 ビジネスメールボックス Alibaba Mail        邮件推送 メール送受信サービス DirectMail  Simple Email Service      インテリジェントデザインサービス（智能设计服务）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 鹿班 画像自動生成サービス         モバイルクラウド（移动云）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      移动推送 モバイルアプリの通知とメッセージングサービス         移动热修复 モバイルサービスのhot-fixサービス         移动测试 モバイルテストサービス   AWS Device Farm  Cloud Test Lab    移动数据分析 モバイルアプリデータ統計サービス         移动用户反馈 モバイルアプリからのフィードバックサービス        iconなし HTTPDNS モバイル開発者向けのドメイン名解決サービス         ビデオクラウド（视频云）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      音视频通信 RTC オーディオとビデオ通信RTC         视频直播 ライブビデオ ApsaraVideo Live ApsaraVideo Live AWS Elemental MediaLive Media Services - Live and On-demand Streaming     视频监控 ビデオ監視サービス         视频点播 オンデマンドオーディオ/ビデオストリーミングサービス ApsaraVideo VOD  AWS Elemental MediaPackage Media Services     媒体处理 メディア変換 ApsaraVideo for Media Processing ApsaraVideo for Media Processing Elastic Transcoder/AWS Elemental MediaConvert Media Services - Encoding (Anvato)    视频审核 ビデオ検閲サービス。ポルノや政治など禁止事項の特定をメイン         视频DNA ビデオ監査サービス。映像データから重複排除をメイン         视频智能生产 ビデオ制作サービス。映像を識別しリアルタイムでハイライトを生成         视频多模态内容理解 ビデオコンテンツ識別サービス。視覚情報、テキスト、音声および動作から家庭用品、自動車、動物、植物など1000以上のカテゴリを特定         智能封面 ビデオデータやコンテンツから最適なビデオカバー提供         智能视觉 ビデオインテリジェント。画像分類、画像検出、ビデオ分類、ビデオ認識、ライブ識別         プライベートクラウド（专有云）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      Apsara Stack オンプレミスによるAlibabaCloudサービス Apsara Stack  AWS Outposts Stack Cloud Platform Service    メッセージキューMQ（消息队列 MQ）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      消息队列 RocketMQ 分散メッセージミドルウェア   Simple Queue Service Queue Storage     消息队列 AMQP RabbitMQによるメッセージキュー         微消息队列 for IoT IoT向けマイクロメッセージキュー         消息队列 Kafka kafkaによるメッセージキュー   Managed Streaming for Kafka      消息服务 MNS 分散型メッセージキューサービス Message Service Message Service SQS (Simple Queue Service), SNS (Simple Notification Service), MQ Queue Storage, Service Bus Google Pub/Sub, GAE の Task Queue   iconなし 微服务 マイクロサービス         企业级分布式应用服务 EDAS エンタープライズ分散アプリケーションサービスEDAS Enterprise Distributed Application Service        应用配置管理 ACM アプリケーション構成管理ACM Application Configuration Management        全局事务服务 GTS グローバルトランザクションサービス         インテリジェントカスタマーサービス（智能客服）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      云呼叫中心 クラウドコールセンター         云小蜜 NLPベースの会話ロボットサービス   Lex Bot Service (Dialogflow)    智能对话分析 知的対話分析         云客服 クラウドカスタマーサービス         ブロックチェーン（区块链）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      区块链服务 ブロックチェーンサービス Blockchain as a Service Blockchain as a Service Managed Blockchain、Quantum Ledger Database Blockchain Service、Blockchain Workbench     SaaSアクセラレータ（SaaS加速器）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      宜搭 GUIベース開発サービス         モノのインターネットプラットフォーム（物联网平台）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      物联网设备接入 IoTデバイスへのアクセス         生活物联网平台 Life Internet of Thingsプラットフォーム         物联网设备管理 IoTデバイス管理         物联网数据分析 モノのインターネットデータ分析   AWS IoT Analytics Stream Analytics/Time Series Insights    iconなし 物联网一站式开发 IoT 開発Studio   AWS IoT Things Graph IoT Central     低電力WAN（低功耗广域网）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      物联网络管理平台 IoTネットワーク管理プラットフォーム         物联网无线连接服务 IoT無線通信接続サービス         エッジサービス（边缘服务）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      物联网边缘计算 IoTエッジコンピューティング   AWS Greengrass IoT Edge Cloud IoT Edge   iconなし 视频边缘智能服务 ビデオエッジインテリジェンスサービス         設備サービス（设备服务）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし AliOS Things Alibaba Cloud用IoTオペレーティングシステム         IoTセキュリティ（物联安全）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 物联网设备身份认证 IoTデバイスアイデンティティ認証   AWS IoT Core IoT Hub Cloud IoT Core   iconなし 物联网安全运营中心 IoTセキュリティオペレーションセンター   AWS IoT Device Defender     iconなし 物联网可信执行环境 IoT実行環境アプリケーション   AWS IoT 1-Click     iconなし 物联网可信服务管理 IoTサービス集約管理プラットフォーム   AWS IoT Device Management IoT Hub Cloud IoT Core    ソフトとハードの統合アプリケーション（软硬一体化应用）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 魔笔 手書きデータの認識サービス（マジックペン）         云投屏 クラウドプロジェクションスクリーン         関連クラウド製品（相关云产品）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      智联车管理云平台 Zhilian自動車メーカー向けの自動車管理クラウドプラットフォーム         エコロジー（生态）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 物联网市场 IoTアプリケーション購入市場        iconなし ICA物联网标准联盟 IoTConnectivityAlliance、IoTアライアンス        iconなし 物联网测试认证服务 IoTテストおよび認証サービス         バックアップ、移行、および災害復旧（备份、迁移与容灾）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      混合云备份服务 ハイブリッドクラウドのバックアップサービス         混合云容灾服务 ハイブリットクラウドの災害復旧サービス         数据库备份 DBS データベースバックアップ Database Backup Database Backup       数据传输 DTS データ転送サービス Data Transmission Service Data Transmission Service AWS Database Migration Service, AWS Schema Conversion Tool Database Migration Service     数据库和应用迁移 ADAM データベースとアプリケーション移植サービス         闪电立方 オンラインとオフラインのデータ転送サービス（Lightning Cube）        iconなし 迁移工具 Qianyun移植ツール         開発者プラットフォーム（开发者平台）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      云效 DevOpsサービス        iconなし 开发者中心 デベロッパーセンター         物联网开发者平台 IoTプラットフォーム         APIとツール（API与工具）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし Cloud Toolkit クラウド開発ツールキット   AWS CodeStar DevOps     OpenAPI Explorer OpenAPI Explorer        iconなし API 控制中心 APIコンソール        iconなし API 全集 APIプラットフォーム        iconなし API 错误中心 APIエラーセンター        iconなし SDK 全集 Alibaba Cloud SDKプラットフォーム   AWS Cloud9 (Visual Studio Online) (Cloud Shell Code editor)    云命令行 Cloud Shell Cloud Shell Cloud Shell AWS Systems Manager Session Manager Cloud Shell Cloud Shell    プロジェクトコラボレーション（项目协作）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 项目协作 クラウドエンタープライズコラボレーション         コードホスティング、倉庫（代码托管、仓库）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      代码托管 Gitライブラリホスティングサービス   AWS CodeCommit Repos Cloud Source Repositories   iconなし Maven公共仓库 Maven Public Warehouse        iconなし 制品仓库 Maven製品管理サービス         統合配送（集成交付）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 持续交付 継続的配信サービス         CodePipline パイプライン   AWS CodePipeline Pipelines Cloud Build    テスト（测试）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      性能测试 PTS パフォーマンステストサービス        iconなし 测试平台 クラウドサービス上のテストプラットフォーム         開発と運用（开发与运维）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      应用实时监控服务 アプリケーションリアルタイム監視サービス         云监控 クラウドモニタリング CloudMonitor CloudMonitor CloudWatch Events Event Grid、Monitor Stackdriver Monitoring   iconなし 智能顾问 AlibabaCloudコンサルティングサービス         应用高可用服务 AHAS Application High Availability Service         Node.</description>
+    </item>
+    
+    <item>
+      <title>プロダクト資料のリンク一覧</title>
+      <link>https://sbcloud.github.io/help/getting-started/product/links/</link>
+      <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/getting-started/product/links/</guid>
+      <description> 頻繁に利用されるプロダクトの活用リンク一覧を記載します。
+主要プロダクト    製品名 コンテンツテーマ URL     ECS プロダクト紹介 公式ドキュメント   ECS クイックスタート 公式ドキュメント   RDS プロダクト紹介 公式ドキュメント   SLB プロダクト紹介 公式ドキュメント   VPC プロダクト紹介 公式ドキュメント   ExpressConnect プロダクト紹介 公式ドキュメント   CloudMonitor プロダクト紹介 公式ドキュメント   OSS プロダクト紹介 公式ドキュメント    人気のプロダクト    製品名 コンテンツテーマ URL     Container Service for Kubernetes プロダクト紹介 公式ドキュメント   MaxCompute プロダクト紹介 公式ドキュメント   Realtime Compute プロダクト紹介 公式ドキュメント   Image Search プロダクト紹介 公式ドキュメント   Anti-DDoS プロダクト紹介 公式ドキュメント    </description>
+    </item>
+    
+    <item>
+      <title>Terraformとは</title>
+      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/01/how-to-use/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/01/how-to-use/</guid>
+      <description>&amp;nbsp; AlibabaCloudというクラウドサービスが登場したことで、クラウドサービス上にあるECSという仮想コンピューティングを作成・破棄するのが非常に簡単になりました。ボタン一つで数分でコンピューティングを起動できます。AlibabaCloudのマネジメントコンソールはWeb上にて操作する、数多くの機能をまとめた完成度の高いGUIです。
+&amp;nbsp; しかし、Web上にてGUI操作とはいえ設定項目を一つ一つずつ画面上操作するのは骨が折れるのと、小規模サービスでも構築にヒューマンエラーや運用・学習コストはどうしても付き物になります。例えばAlibabaCloud未経験者がECSをCS 100台を手動起動してみましょう。この作業にどれほどの時間がかかるか、そしてミスをゼロにして稼働できるか、という課題があります。そこで解決の道となったのがInfrastructure as Code（以降は「IaC」と略します）です。
+&amp;nbsp; IaCはコード通りの内容を自動で設定する仕組みを持ちます。IaCの種類はPackerやVagrantなど様々ですが、HashiCorp社がオープンソースとして手掛けるTerraformというマルチクラウド対応プロビジョニングツールがあります。シンプルなDSL(HCL)、自由自在な変数表現と状態管理が特徴です。
+&amp;nbsp; TerraformはAlibabaCloudだけでなくAmazon Web Services 、GoogleCloudPlatform、MicrosoftAzure、Docker、OpenStackなど様々なインフラに幅広く対応しています。インフラを構築するためのプロビジョニングツールであり、開発者だけなく、運用担当者でも必要となりうるプロビジョニングツールです。
+&amp;nbsp; Terraformは構築したいインフラの構成をテキスト形式のテンプレートファイルに定義します（Infrastructure as Code）。「どこのリージョン」「どのスペックのECS、どのリソースを使うか」「支払い方法」「展開方法」といったインフラの状態をコードとして記述し、ターミナルからコマンドを実行するだけでクラウド上に適用 (構築) が出来ます。逆に既存のリソースをTerraformでImportすることでコード化、同じ構成のコードを他リージョンで同様展開することも可能です。 他にIaCとしてPackerやVagrantがありますが、本ガイドラインとしてはTerraformを中心とした説明で進めます。 &amp;nbsp; 構成変更や他クラウドプロパイダからのマイグレーション、同じリソースで別リージョン、別アカウントにて展開するときにIaCがあることでエラーなくシームレスに移管ができます（リソースをGUIベースでコピーすることは不可能です。） また障害や高負荷など問題発生時でも環境を復元することができるメリットもあります。
+&amp;nbsp; 加えて、コードからリソースを作成することで学習コスト・運用コストを削減することができます。例えば先ほどの例、AlibabaCloud未経験者がECS 100台を手動でなくIaC、Terraformで起動すると、ミスをゼロへ抑制はもちろん、学習工数・運用保守コスト・全てが大幅に節約できます。
+&amp;nbsp; また、クラウド環境（仮想環境）が登場したことで、サーバらHW、物理的リソース制約がなくなりました。これにより、サーバやネットワークを簡単に構築したり、一旦構築したものをすぐに破棄することが出来るようになったので、一度構築したインフラやリソースは変更を加えることなく破棄して、新しいものを構築する考えが可能になりました。 →このような流れは「Immutable Infrastructure（不変のインフラ）」と呼ばれ、インフラ変更履歴を管理するのではなく、動作している「インフラの状態」を管理（=必要に応じて使い捨て）からクラウド環境ではコードによるインフラ構成・構築・管理・運用を行う必要があります。
+&amp;nbsp; 前置きが長くなりましたが、クラウドサービスの良いところは立案した戦略や設計をすぐに試せれるところであり、AlibabaCloudの良いところは、PaaS/IaaS/SaaS/KaaS&amp;hellip;幅多くのプロダクトサービスがあり、これらの活用によってより楽に生産的にすることができる点です。是非楽しみながらAlibabaCloudのTerraformを読み進めていただければ大変幸いです。</description>
+    </item>
     
     <item>
       <title>ECS</title>
@@ -43,111 +146,9 @@ ECSのベストプラクティス情報をダウンロード
     </item>
     
     <item>
-      <title>Terraformとは</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/01/how-to-use/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/01/how-to-use/</guid>
-      <description>&amp;nbsp; AlibabaCloudというクラウドサービスが登場したことで、クラウドサービス上にあるECSという仮想コンピューティングを作成・破棄するのが非常に簡単になりました。ボタン一つで数分でコンピューティングを起動できます。AlibabaCloudのマネジメントコンソールはWeb上にて操作する、数多くの機能をまとめた完成度の高いGUIです。
-&amp;nbsp; しかし、Web上にてGUI操作とはいえ設定項目を一つ一つずつ画面上操作するのは骨が折れるのと、小規模サービスでも構築にヒューマンエラーや運用・学習コストはどうしても付き物になります。例えばAlibabaCloud未経験者がECSをCS 100台を手動起動してみましょう。この作業にどれほどの時間がかかるか、そしてミスをゼロにして稼働できるか、という課題があります。そこで解決の道となったのがInfrastructure as Code（以降は「IaC」と略します）です。
-&amp;nbsp; IaCはコード通りの内容を自動で設定する仕組みを持ちます。IaCの種類はPackerやVagrantなど様々ですが、HashiCorp社がオープンソースとして手掛けるTerraformというマルチクラウド対応プロビジョニングツールがあります。シンプルなDSL(HCL)、自由自在な変数表現と状態管理が特徴です。
-&amp;nbsp; TerraformはAlibabaCloudだけでなくAmazon Web Services 、GoogleCloudPlatform、MicrosoftAzure、Docker、OpenStackなど様々なインフラに幅広く対応しています。インフラを構築するためのプロビジョニングツールであり、開発者だけなく、運用担当者でも必要となりうるプロビジョニングツールです。
-&amp;nbsp; Terraformは構築したいインフラの構成をテキスト形式のテンプレートファイルに定義します（Infrastructure as Code）。「どこのリージョン」「どのスペックのECS、どのリソースを使うか」「支払い方法」「展開方法」といったインフラの状態をコードとして記述し、ターミナルからコマンドを実行するだけでクラウド上に適用 (構築) が出来ます。逆に既存のリソースをTerraformでImportすることでコード化、同じ構成のコードを他リージョンで同様展開することも可能です。 他にIaCとしてPackerやVagrantがありますが、本ガイドラインとしてはTerraformを中心とした説明で進めます。 &amp;nbsp; 構成変更や他クラウドプロパイダからのマイグレーション、同じリソースで別リージョン、別アカウントにて展開するときにIaCがあることでエラーなくシームレスに移管ができます（リソースをGUIベースでコピーすることは不可能です。） また障害や高負荷など問題発生時でも環境を復元することができるメリットもあります。
-&amp;nbsp; 加えて、コードからリソースを作成することで学習コスト・運用コストを削減することができます。例えば先ほどの例、AlibabaCloud未経験者がECS 100台を手動でなくIaC、Terraformで起動すると、ミスをゼロへ抑制はもちろん、学習工数・運用保守コスト・全てが大幅に節約できます。
-&amp;nbsp; また、クラウド環境（仮想環境）が登場したことで、サーバらHW、物理的リソース制約がなくなりました。これにより、サーバやネットワークを簡単に構築したり、一旦構築したものをすぐに破棄することが出来るようになったので、一度構築したインフラやリソースは変更を加えることなく破棄して、新しいものを構築する考えが可能になりました。 →このような流れは「Immutable Infrastructure（不変のインフラ）」と呼ばれ、インフラ変更履歴を管理するのではなく、動作している「インフラの状態」を管理（=必要に応じて使い捨て）からクラウド環境ではコードによるインフラ構成・構築・管理・運用を行う必要があります。
-&amp;nbsp; 前置きが長くなりましたが、クラウドサービスの良いところは立案した戦略や設計をすぐに試せれるところであり、AlibabaCloudの良いところは、PaaS/IaaS/SaaS/KaaS&amp;hellip;幅多くのプロダクトサービスがあり、これらの活用によってより楽に生産的にすることができる点です。是非楽しみながらAlibabaCloudのTerraformを読み進めていただければ大変幸いです。</description>
-    </item>
-    
-    <item>
-      <title>アカウント登録</title>
-      <link>https://sbcloud.github.io/help/getting-started/registration/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/getting-started/registration/</guid>
-      <description>Alibaba Cloudのアカウント登録マニュアルが以下のリンクよりダウンロードいただけます。
-Alibaba Cloud登録マニュアルをダウンロード
-また本アカウント登録手順は以下の流れで記載しております。
- 各種登録手順のご案内
- 環境設定 各種登録の流れ
-  アカウントの登録手順  基本情報の入力 メールアドレスの確認 電話番号の確認 プロファイルの更新  クレジットカードの登録手順  クレジットカードの追加 有効化のための認証 本人確認チケット起票方法  アカウント登録後のお問い合わせ  チケットによるお問い合わせ   SBCloudホームページでも同様の内容が確認できます。 https://www.sbcloud.co.jp/document/account_registration</description>
-    </item>
-    
-    <item>
-      <title>アドバイザリ</title>
-      <link>https://sbcloud.github.io/help/best-practice/advisory/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/best-practice/advisory/</guid>
-      <description>Alibaba Cloud 導入アドバイザリは下記リンクから取得可能です。
-Alibaba Cloud導入アドバイザリをダウンロード
-本書では、Alibaba Cloud上でシステムを構築する際の「アーキテクチャの設計」、「インフラストラクチャーの構築」、「セキュリティ」、「システム運用」の4点に関わるAlibaba Cloudの構成例をご紹介します。本書を一読頂くことで、一連のプラクティスを把握頂けます。
-なお、本書は公開時点でのアドバイザリであり、時間の経過とともに、プロダクトの追加や機能追加・変更等で仕様が変更になる可能性があります。内容については随時更新を行ってまりますので、最新版をご参照下さい。
- 用語集 本書に扱われるサービス一覧 Alibaba Cloudアーキテクチャの全体像 ネットワークの構成
-4-1. Alibaba Cloudのネットワークの考え方
-4-2. ネットワーク分割
-4-3. アクセス経路
-4-4. アクセス制御
- セキュリテイの構成
-5-1. Alibaba Cloud責任共有モデル 5-2. ID&amp;amp;アクセスマネジメント 5-3. インフラセキュリティ 5-4. ログ管理 5-5. データ保護
- 運用機能
-6-1 システム監視
-6-2 パッチ管理
-6-3 バックアップ管理
-6-4 ジョブ管理
-6-5 構成管理
-  </description>
-    </item>
-    
-    <item>
-      <title>サービスラインナップ比較</title>
-      <link>https://sbcloud.github.io/help/getting-started/cloud-users/vs-aws-gcp-azure/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/getting-started/cloud-users/vs-aws-gcp-azure/</guid>
-      <description>AlibabaCloudというクラウドサービスにて2019年5月現在、中国版、国際版、日本版の３つのサービスが展開されているので、それぞれのサービス比較をまとめてみました。
-AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの比較はこちらを参照。 https://help.aliyun.com/document_detail/65455.html
-※ AlibabaCloud公式によるAzureとの比較はこちらを参照。 https://help.aliyun.com/document_detail/74242.html
-コンピューティング（弹性计算）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      云服务器 ECS クラウドサーバ Elastic Compute Service Elastic Compute Service EC2 Virtual Machines Compute Engine    弹性裸金属服务器（神龙） Bare Metalクラウドサーバ ECS Bare Metal Instance ECS Bare Metal Instance EC2 Bare Metal Virtual Machines Compute Engine    轻量应用服务器 軽量アプリケーションサーバー Simple Application Server        GPU 云服务器 GPUクラウドサーバ Elastic GPU Service Elastic GPU Service EC2 Elastic GPUs Virtual Machines Compute Engine    FPGA 云服务器 FPGAクラウドサーバ   AWS EC2 FPGA Virtual Machines Compute Engine    专有宿主机 専有ホスト Dedicated Host Dedicated Host       超级计算集群 スーパーコンピューティングクラスター（SCC） Super Computing Cluster Super Computing Cluster       弹性高性能计算 E-HPC 高性能コンピューティング（E-HPC） E-HPC E-HPC High Performance Computing (HPC)      批量计算 バッチ計算 Batch Compute        容器服务 コンテナサービス Container Service Container Service AWS ECS Container Service -    容器服务 Kubernetes 版 コンテナサービスKubernetes版 Container Service for Kubernetes Container Service for Kubenetes Elastic Container Service for Kubernetes Kubernetes Service Google Kubernetes Engine    弹性容器实例 ECI サーバレスコンテナサービス Elastic Container Instance  Fargate Container Instance -    容器镜像服务 コンテナミラーリングサービス Container Registry  Elastic Container Registry Container Registry Google Container Registry    弹性伸缩 Auto Scaling Auto Scaling Auto Scaling EC2 Auto Scaling Virtual Machine Scale Sets Autoscaling    资源编排 リソースの作成と管理サービス Resource Orchestration Service Resource Orchestration Service AWS CloudFormation Resource Manager Cloud Deployment Manager    函数计算 Function as a Service Function Compute Function Compute AWS Lambda Functions Cloud Functions    图形工作站 GPUワークステーション         ストレージ（存储服务）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      对象存储 OSS オブジェクトストレージ Object Storage Service Object Storage Service S3 Blob Storage Cloud Storage    块存储 ブロックストレージ Block Storage Block Storage EBS Managed Disk 永続ディスク    文件存储 NAS ファイルストレージNAS Network Attached Storage Network Attached Storage Elastic File System (EFS) File Storage Cloud Filestore    文件存储 CPFS クラウドパラレルファイルストレージ         文件存储 HDFS HDFSファイルストレージ         智能云相册 クラウドフォトアルバム         智能媒体管理 インテリジェントメディア管理         云存储网关 クラウドストレージゲートウェイ   AWS Storage Gateway StorSimple     混合云存储阵列 ハイブリッドクラウドストレージアレイ Hybrid Cloud Storage Array        CDN配信（CDN与边缘）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      CDN Content Delivery Network Alibaba Cloud CDN Alibaba Cloud CDN CloudFront CDN Cloud CDN    安全加速 SCDN Secure Content Delivery Network         全站加速 DCDN Dynamic Route for CDN Dynamic Route for CDN Dynamic route for CDN       PCDN P2P CDN         边缘节点服务 ENS Edge Node Service         データベース（数据库）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      云数据库 POLARDB MySQL、Oracle、PostgreSQLの互換性があるクラウドデータベース   Aurora  Cloud Spanner    云数据库 RDS MySQL 版 MySQL ApsaraDB RDS for MySQL ApsaraDB for RDS(MySQL) RDS for MySQL/Aurora Database for MySQL Cloud SQL for MySQL    云数据库 RDS MariaDB TX 版 MariaDB ApsaraDB for MariaDB TX  RDS for MariaDB Database for MariaDB     云数据库 RDS SQL Server 版 SQLServer ApsaraDB RDS for SQL Server ApsaraDB for RDS(SQL Server) RDS for SQL Server SQL Database Cloud SQL for SQL Server    云数据库 RDS PostgreSQL 版 PostgreSQL ApsaraDB RDS for PostgreSQL ApsaraDB for RDS(PostgreSQL) RDS for PostgreSQL/Aurora Database for PostgreSQL Cloud SQL for PostgreSQL    云数据库 RDS PPAS 版 Oracle ApsaraDB RDS for PPAS ApsaraDB for RDS(PPAS) RDS for Oracle      分布式关系型数据库服务 DRDS 分散リレーショナルデータベースサービス Distributed Relational Database Service  Aurora  Cloud Spanner    云数据库 Redis 版 Redis ApsaraDB for Redis ApsaraDB for Redis ElastiCache (Redis) Cache for Redis Cloud Memorystore    云数据库 MongoDB 版 MongoDB ApsaraDB for MongoDB ApsaraDB for MongoDB DocumentDB (with MongoDB compatibility) Cosmos DB(API for MongoDB)     TSDB 时序时空数据库 時系列データベース High-Performance Time Series Database  Timestream Time Series Insights     云数据库 HBase 版 Apache Hbase     Cloud Bigtable   iconなし 图数据库 GDB グラフデータベース   Neptune Cosmos DB(API for Gremlin)     云数据库 Memcache 版 Memcache ApsaraDB for Memcache ApsaraDB for Memcache ElastiCache (Memcached)  Cloud Memorystore    表格存储 TableStore TableStore(NoSQL) Table Store Table Store DynamoDB Cosmos DB Cloud Datastore    分析型数据库 MySQL版 MySQLをベースにした分析データベース         分析型数据库 PostgreSQL版 DWH分析データベース HybridDB for PostgreSQL AnalyticDB for PostgreSQL Redshift SQL Data Warehouse Google BigQuery    HybridDB for MySQL HybridDB for MySQL         Data Lake Analytics データレイクアナリティクス Data Lake Analytics  Athena Data Lake Analytics Google BigQuery    数据管理 DMS データ管理サービス         混合云数据库管理 HDM ハイブリッドクラウドデータベース管理サービス         クラウド通信サービス（云通信）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      短信服务 ショートメッセージサービス         语音服务 音声メッセージサービス         流量服务 移動体通信データパッケージ         物联网无线连接服务 IoT無線通信接続サービス        iconなし 号码隐私保护 モバイルプライバシー保護サービス         号码认证服务 番号認証サービス         ネットワーク（网络）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 云通信网络加速 クラウド通信ネットワーク高速化サービス         专有网络 VPC 専用ネットワークVPC Virtual Private Cloud Virtual Private Cloud VPC Virtual Network Cloud VPN    云解析 PrivateZone VPCのDNSサービス Alibaba Cloud PrivateZone        负载均衡 SLB 負荷分散ロードパランサ Server Load Balancer Server Load Balancer AWS Global Accelerator Traffic Manager Cloud Load Balancing    NAT 网关 NATゲートウェイ NAT Gateway NAT Gateway Internet Gateway、NAT Instance、NAT Gateway      弹性公网 IP パブリックIPリソース Elastic IP Elastic IP Elastic IP Addresses     iconなし IPv6 转换服务 IPv6変換サービス         IPv6 网关 IPv6ゲートウェイ         全局流量管理 Global Traffic Manager Global Traffic Manager Global Traffic Manager Route 53（Traffic policy) Traffic Manager Global Load Balancing   iconなし 共享带宽 帯域幅共有サービス         共享流量包 クラウド間のデータ転送 Data Transfer Plan    Cloud Storage Transfer Service    云企业网 Cloud Enterprise Network Cloud Enterprise Network Cloud Enterprise Network       VPN 网关 VPNゲートウェイ VPN Gateway VPN Gateway VPN Gateway      智能接入网关（邀测中） オンプレミスからのデータ転送 Smart Access Gateway  AWS DataSync      高速通道 専用線接続 Express Connect Express Connect AWS Direct Connect ExpressRoute Dedicated Interconnect    基本的なセキュリティ（基础安全）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      DDoS高防IP DDoS 対策 (DDoS Pro) Anti-DDoS Pro        DDoS基础防护服务 DDoS 対策 (DDoS Basic) Anti-DDoS Basic Anti-DDoS Basic AWS Shield Standard DDoS Protection     DDoS高防（国际） DDoS 対策 (Premium) Anti-DDoS Premium  AWS Shield Advanced DDoS Protection Cloud Armor    新BGP高防IP DDoS 対策 (DDoS BGP)         Web应用防火墙 Webアプリケーションファイアウォール Web Application Firewall Web Application Firewall AWS WAF Application Gateway Cloud Armor    云安全中心（态势感知） クラウドセキュリティセンター Threat Detection Service        云盾混合云 クラウド、IDC、ハイブリッドクラウドでのセキュリティ保護サービス         云安全中心（安骑士） ホストセキュリティソフトウェア Server Guard        云防火墙 クラウドファイアウォール   AWS Firewall Manager Firewall     堡垒机 セキュリティ監査管理プラットフォーム         漏洞扫描 脆弱性スキャンサービス         网站威胁扫描系统 Webサイト脅威スキャンサービス Website Threat Inspector  GuardDuty Security Center Cloud Security Command Center    アイデンティティ管理（身份管理）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      访问控制 アカウント権限管理 Resource Access Management Resource Access Management AWS Identity and Access Management Active Directory Cloud IAM    データセキュリティ（数据安全）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      SSL 证书 SSL/TLS証明書管理サービス SSL Certificates Service SSL Certificates Service AWS Certificate Manager App Service Certificates Google-managed SSL certificates    数据库审计 データベース監査サービス         加密服务 暗号化サービス        iconなし 敏感数据保护 機密データ保護サービス   AWS Secrets Manager Key Vault     密钥管理服务 キー管理 Key Management Service Key Management Service AWS Key Management Service, AWS CloudHSM, AWS Secrets Manager Key Vault Cloud Key Management Service    ビジネスセキュリティ（业务安全）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      游戏盾 ゲームシールド GameShield        内容安全 コンテンツセキュリティ Content Moderation        风险识别 リスク識別と特定サービス         实人认证 人物識別・認証サービス         爬虫风险管理 Webクローラーやbotから防御するサービス Anti-Bot Service        セキュリティサービス(安全服务)    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      安全管家 セキュリティテクノロジおよびコンサルティングサービス Managed Security service       iconなし 渗透测试 侵入テスト         安全众测 セキュリティテスト   Inspector Security Center Cloud Security Command Center   iconなし 等保咨询 セキュリティコンサルティングサービス   Inspector Security Center Cloud Security Command Center   iconなし 应急响应 セキュリティ緊急対応サービス        iconなし 漏洞扫描 脆弱性スキャンサービス        iconなし 安全培训 セキュリティトレーニング        iconなし 安全评估 セキュリティ評価サービス        iconなし 代码审计 ソースコード監査        iconなし 安全加固 セキュリティ強化サービス        iconなし 安全通告 セキュリティ監視通知サービス        iconなし PCI DSS合规咨询 PCI DSSサービス         ビッグデータ計算（大数据计算）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      MaxCompute MaxCompute MaxCompute MaxCompute Redshift SQL Data Warehouse BigQuery    E-MapReduce E-MapReduce、Hadoopクラスタの展開 E-MapReduce E-Mapreduce EMR HDInsight Cloud Datalab, Cloud Dataproc    实时计算 Realtime Compute（元はApache Flink） Realtime Compute Realtime Compute       データの可視化（数据可视化）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      DataV数据可视化 DataV、データの可視化 DataV DataV       ビッグデータの検索と分析（大数据搜索与分析）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      开放搜索 分散検索エンジンプラットフォーム   CloudSearch Search     日志服务 各種ログの一元管理 Log Service Log Service Kinesis, SQS Event Hubs, Stream Analytics Cloud Dataflow, Cloud Pub/Sub    Elasticsearch ElasticSearch Elasticsearch Elasticsearch Elasticserach Service      关系网络分析 リレーショナルネットワーク分析         画像分析 画像分析サービス         公众趋势分析 トレンド分析サービス         Quick BI BIツール Quick BI Quick BI QuickSight Power BI Data Studio    データ開発（数据开发）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      DataWorks データの可視化 DataWorks DataWorks       Dataphin データ構築と管理サービス Dataphin        阿里云DataHub ストリーム処理   Kinesis, SQS Event Hubs, Stream Analytics Cloud Dataflow, Cloud Pub/Sub    数据集成 データ統合 Data Integration Data Integration       データのレコメンデーション（数据开发）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      企业图谱 コーポレートマップ        iconなし 智能推荐 スマートレコメンデーション         インテリジェントな音声対話（智能语音交互）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      录音文件识别 録音ファイルの認識（Speech-to-Text）   Transcribe Speech Services Cloud Speech-to-Text    实时语音转写 リアルタイム音声転写         一句话识别 一文認識（Text-to-Speech）   Polly Speech Services Cloud Text-to-Speech    语音合成 音声合成         语音合成声音定制 音声データの合成およびカスタマイズ         语音模型自学习工具 音声モデル自己学習ツール         画像検索（图像搜索）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      图像搜索 画像検索 Image Search Image Search       自然言語処理（自然语言处理）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      多语言分词 テキスト上の多言語の単語・分詞の分割サービス   Comprehend Language Understanding Cloud Natural Language    词性标注 品詞タグ付けの一部         命名实体 名前付きエンティティ         情感分析 感情分析         中心词提取 中心語抽出         智能文本分类 インテリジェントテキスト分類         文本信息抽取 テキスト情報抽出         商品评价解析 製品レビューの評価分析         印刷テキスト認識（印刷文字识别）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      通用型卡证类 IDカード、銀行カード、パスポートなどカード識別サービス         汽车相关识别 免許証・ナンバープレートなど自動車関連データの識別サービス         行业票据识别 請求書・領収書の識別サービス         资产类识别 資産証明書など各証明書識別サービス         通用文字识别 画像データのテキスト認識         行业文档类识别 業界文書データのテキスト認識サービス         视频类文字识别 ビデオデータ内の字幕および文字テキスト認識サービス         自定义模板识别 ORCカスタムテンプレートを作成し認識するサービス         顔認識（人脸识别）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      人脸识别 顔認識         機械翻訳（机器翻译）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      机器翻译 機械翻訳   Translate Translator Text Cloud Translation    画像認識（图像识别）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      图像识别 画像認識   Rekognition Computer Vision Cloud Vision    コンテンツセキュリティ（内容安全）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      图片鉴黄 ポルノコンテンツ認識         图片涉政暴恐识别 写真データからテロ画像や政治的問題画像識別サービス         图片Logo商标检测 画像からロゴ検出サービス         图片垃圾广告识别 画像スパム認識         图片不良场景识别 薬物使用、ギャンブルなどの不適切なコンテンツ認識サービス         图片风险人物识别 画像から人物特定リスク識別サービス         视频风险内容识别 ビデオリスクのコンテンツ認識         文本反垃圾识别 テキストリスクのコンテンツ認識         语音垃圾识别 音声データのリスク識別サービス         機械学習プラットフォーム（机器学习平台）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      机器学习平台 PAI 機械学習プラットフォームPAI Machine Learning Platform For AI  SageMaker Machine Learning Service Cloud ML Engine   iconなし 人工智能众包 AIによるクラウドソーシング         ドメイン名とウェブサイト（域名与网站）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      域名注册 ドメイン登録サービス         域名交易 ドメイン名取引サービス         网站建设 ウェブサイト構築サポートサービス         云虚拟主机 クラウド仮想ホスト Web Hosting        海外云虚拟主机 国外Webホスティング設置サービス         云解析 DNS DNS Domains Alibaba Cloud DNS Route 53 DNS Cloud DNS    弹性Web托管 柔軟なWebホスティング   Elastic Beanstalk App Service App Engine   iconなし 备案 ドメイン登録(IPC)のためのICP代替申請サービス         知的財産サービス（知识产权服务）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      商标注册 商標登録サービス         商标交易 商標登録されてるものを購入するサービス         申請サービス（应用服务）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 机器人流程自动化 RPA RPA         云桌面 クラウドデスクトップ         云AP クラウドAP         API 网关 API管理 API Gateway API Gateway API Gateway API Management Cloud Endpoints/Apigee    企业邮箱 ビジネスメールボックス Alibaba Mail        邮件推送 メール送受信サービス DirectMail  Simple Email Service      インテリジェントデザインサービス（智能设计服务）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 鹿班 画像自動生成サービス         モバイルクラウド（移动云）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      移动推送 モバイルアプリの通知とメッセージングサービス         移动热修复 モバイルサービスのhot-fixサービス         移动测试 モバイルテストサービス   AWS Device Farm  Cloud Test Lab    移动数据分析 モバイルアプリデータ統計サービス         移动用户反馈 モバイルアプリからのフィードバックサービス        iconなし HTTPDNS モバイル開発者向けのドメイン名解決サービス         ビデオクラウド（视频云）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      音视频通信 RTC オーディオとビデオ通信RTC         视频直播 ライブビデオ ApsaraVideo Live ApsaraVideo Live AWS Elemental MediaLive Media Services - Live and On-demand Streaming     视频监控 ビデオ監視サービス         视频点播 オンデマンドオーディオ/ビデオストリーミングサービス ApsaraVideo VOD  AWS Elemental MediaPackage Media Services     媒体处理 メディア変換 ApsaraVideo for Media Processing ApsaraVideo for Media Processing Elastic Transcoder/AWS Elemental MediaConvert Media Services - Encoding (Anvato)    视频审核 ビデオ検閲サービス。ポルノや政治など禁止事項の特定をメイン         视频DNA ビデオ監査サービス。映像データから重複排除をメイン         视频智能生产 ビデオ制作サービス。映像を識別しリアルタイムでハイライトを生成         视频多模态内容理解 ビデオコンテンツ識別サービス。視覚情報、テキスト、音声および動作から家庭用品、自動車、動物、植物など1000以上のカテゴリを特定         智能封面 ビデオデータやコンテンツから最適なビデオカバー提供         智能视觉 ビデオインテリジェント。画像分類、画像検出、ビデオ分類、ビデオ認識、ライブ識別         プライベートクラウド（专有云）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      Apsara Stack オンプレミスによるAlibabaCloudサービス Apsara Stack  AWS Outposts Stack Cloud Platform Service    メッセージキューMQ（消息队列 MQ）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      消息队列 RocketMQ 分散メッセージミドルウェア   Simple Queue Service Queue Storage     消息队列 AMQP RabbitMQによるメッセージキュー         微消息队列 for IoT IoT向けマイクロメッセージキュー         消息队列 Kafka kafkaによるメッセージキュー   Managed Streaming for Kafka      消息服务 MNS 分散型メッセージキューサービス Message Service Message Service SQS (Simple Queue Service), SNS (Simple Notification Service), MQ Queue Storage, Service Bus Google Pub/Sub, GAE の Task Queue   iconなし 微服务 マイクロサービス         企业级分布式应用服务 EDAS エンタープライズ分散アプリケーションサービスEDAS Enterprise Distributed Application Service        应用配置管理 ACM アプリケーション構成管理ACM Application Configuration Management        全局事务服务 GTS グローバルトランザクションサービス         インテリジェントカスタマーサービス（智能客服）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      云呼叫中心 クラウドコールセンター         云小蜜 NLPベースの会話ロボットサービス   Lex Bot Service (Dialogflow)    智能对话分析 知的対話分析         云客服 クラウドカスタマーサービス         ブロックチェーン（区块链）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      区块链服务 ブロックチェーンサービス Blockchain as a Service Blockchain as a Service Managed Blockchain、Quantum Ledger Database Blockchain Service、Blockchain Workbench     SaaSアクセラレータ（SaaS加速器）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      宜搭 GUIベース開発サービス         モノのインターネットプラットフォーム（物联网平台）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      物联网设备接入 IoTデバイスへのアクセス         生活物联网平台 Life Internet of Thingsプラットフォーム         物联网设备管理 IoTデバイス管理         物联网数据分析 モノのインターネットデータ分析   AWS IoT Analytics Stream Analytics/Time Series Insights    iconなし 物联网一站式开发 IoT 開発Studio   AWS IoT Things Graph IoT Central     低電力WAN（低功耗广域网）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      物联网络管理平台 IoTネットワーク管理プラットフォーム         物联网无线连接服务 IoT無線通信接続サービス         エッジサービス（边缘服务）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      物联网边缘计算 IoTエッジコンピューティング   AWS Greengrass IoT Edge Cloud IoT Edge   iconなし 视频边缘智能服务 ビデオエッジインテリジェンスサービス         設備サービス（设备服务）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし AliOS Things Alibaba Cloud用IoTオペレーティングシステム         IoTセキュリティ（物联安全）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 物联网设备身份认证 IoTデバイスアイデンティティ認証   AWS IoT Core IoT Hub Cloud IoT Core   iconなし 物联网安全运营中心 IoTセキュリティオペレーションセンター   AWS IoT Device Defender     iconなし 物联网可信执行环境 IoT実行環境アプリケーション   AWS IoT 1-Click     iconなし 物联网可信服务管理 IoTサービス集約管理プラットフォーム   AWS IoT Device Management IoT Hub Cloud IoT Core    ソフトとハードの統合アプリケーション（软硬一体化应用）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 魔笔 手書きデータの認識サービス（マジックペン）         云投屏 クラウドプロジェクションスクリーン         関連クラウド製品（相关云产品）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      智联车管理云平台 Zhilian自動車メーカー向けの自動車管理クラウドプラットフォーム         エコロジー（生态）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 物联网市场 IoTアプリケーション購入市場        iconなし ICA物联网标准联盟 IoTConnectivityAlliance、IoTアライアンス        iconなし 物联网测试认证服务 IoTテストおよび認証サービス         バックアップ、移行、および災害復旧（备份、迁移与容灾）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      混合云备份服务 ハイブリッドクラウドのバックアップサービス         混合云容灾服务 ハイブリットクラウドの災害復旧サービス         数据库备份 DBS データベースバックアップ Database Backup Database Backup       数据传输 DTS データ転送サービス Data Transmission Service Data Transmission Service AWS Database Migration Service, AWS Schema Conversion Tool Database Migration Service     数据库和应用迁移 ADAM データベースとアプリケーション移植サービス         闪电立方 オンラインとオフラインのデータ転送サービス（Lightning Cube）        iconなし 迁移工具 Qianyun移植ツール         開発者プラットフォーム（开发者平台）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      云效 DevOpsサービス        iconなし 开发者中心 デベロッパーセンター         物联网开发者平台 IoTプラットフォーム         APIとツール（API与工具）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし Cloud Toolkit クラウド開発ツールキット   AWS CodeStar DevOps     OpenAPI Explorer OpenAPI Explorer        iconなし API 控制中心 APIコンソール        iconなし API 全集 APIプラットフォーム        iconなし API 错误中心 APIエラーセンター        iconなし SDK 全集 Alibaba Cloud SDKプラットフォーム   AWS Cloud9 (Visual Studio Online) (Cloud Shell Code editor)    云命令行 Cloud Shell Cloud Shell Cloud Shell AWS Systems Manager Session Manager Cloud Shell Cloud Shell    プロジェクトコラボレーション（项目协作）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 项目协作 クラウドエンタープライズコラボレーション         コードホスティング、倉庫（代码托管、仓库）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      代码托管 Gitライブラリホスティングサービス   AWS CodeCommit Repos Cloud Source Repositories   iconなし Maven公共仓库 Maven Public Warehouse        iconなし 制品仓库 Maven製品管理サービス         統合配送（集成交付）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP     iconなし 持续交付 継続的配信サービス         CodePipline パイプライン   AWS CodePipeline Pipelines Cloud Build    テスト（测试）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      性能测试 PTS パフォーマンステストサービス        iconなし 测试平台 クラウドサービス上のテストプラットフォーム         開発と運用（开发与运维）    icon 中国サイト コメント 国際サイト 日本サイト AWS Azure GCP      应用实时监控服务 アプリケーションリアルタイム監視サービス         云监控 クラウドモニタリング CloudMonitor CloudMonitor CloudWatch Events Event Grid、Monitor Stackdriver Monitoring   iconなし 智能顾问 AlibabaCloudコンサルティングサービス         应用高可用服务 AHAS Application High Availability Service         Node.</description>
-    </item>
-    
-    <item>
-      <title>プロダクト資料のリンク一覧</title>
-      <link>https://sbcloud.github.io/help/getting-started/product/links/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/getting-started/product/links/</guid>
-      <description> 頻繁に利用されるプロダクトの活用リンク一覧を記載します。
-主要プロダクト    製品名 コンテンツテーマ URL     ECS プロダクト紹介 公式ドキュメント   ECS クイックスタート 公式ドキュメント   RDS プロダクト紹介 公式ドキュメント   SLB プロダクト紹介 公式ドキュメント   VPC プロダクト紹介 公式ドキュメント   ExpressConnect プロダクト紹介 公式ドキュメント   CloudMonitor プロダクト紹介 公式ドキュメント   OSS プロダクト紹介 公式ドキュメント    人気のプロダクト    製品名 コンテンツテーマ URL     Container Service for Kubernetes プロダクト紹介 公式ドキュメント   MaxCompute プロダクト紹介 公式ドキュメント   Realtime Compute プロダクト紹介 公式ドキュメント   Image Search プロダクト紹介 公式ドキュメント   Anti-DDoS プロダクト紹介 公式ドキュメント    </description>
-    </item>
-    
-    <item>
-      <title>サイトマップ</title>
-      <link>https://sbcloud.github.io/help/about/sitemap/</link>
-      <pubDate>Mon, 13 May 2019 16:20:40 +0900</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
-      <description>   トップページ         Getting Started     アカウント登録   プロダクト紹介プロダクト資料のリンク一覧
-ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較       ベストプラクティス     アドバイザリ   個別プロダクトECS   DevOpsTerraformTerraformとは
-インストール
-サンプルプロジェクトの作成
-サンプルプロジェクトの実行
-文法について
-Dockerについて
-Moduleについて
-VPCの作成
-ECS、EIPの作成
-SLBの作成
-Autoscalingの作成
-OSSの作成
-RDSの作成
-RAMの作成
-Kubernetesの作成       よくある質問     ECS   RDS   SLB   OSS   料金   アカウント   サポート       About SBC Technical Reference     サイトマップ    </description>
-    </item>
-    
-    <item>
       <title>ECSの使用可能なRegion/Spec/Price紹介</title>
       <link>https://sbcloud.github.io/help/getting-started/product/ecs-by-region/</link>
-      <pubDate>Wed, 05 Jun 2019 12:30:18 +0800</pubDate>
+      <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
       
       <guid>https://sbcloud.github.io/help/getting-started/product/ecs-by-region/</guid>
       <description>ap-northeast-1    instanceType vCPU  メモリ  イントラネット帯域幅 パケット転送速度  GPU/FPGA  ローカルストレージ  OS 従量課金 サブスクリプション サブスクリプション     ecs.c5.large 2 vCPU 4 GiB 1 Gbps 300,000 PPS - - linux ￥ 9.8 JPY /時間 ¥ 5170.00 JPY /月 ¥ 52734.00 JPY /年   ecs.c5.large 2 vCPU 4 GiB 1 Gbps 300,000 PPS - - windows ￥ 17.7 JPY /時間 ¥ 10710.00 JPY /月 ¥ 109242.</description>
@@ -156,7 +157,7 @@ Kubernetesの作成       よくある質問     ECS   RDS   SLB   OSS   料金 
     <item>
       <title>インストール</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/</guid>
       <description>本章は Terraform のインストール方法を学びます。
@@ -173,7 +174,7 @@ $ echo 0.11.13 &amp;gt; .</description>
     <item>
       <title>サンプルプロジェクトの作成</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/03/sample-project/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/03/sample-project/</guid>
       <description>&amp;nbsp; ここまででTerraform のインストール方法を学びました。それではサンプルプロジェクトを作成します。簡単なWebサーバを立ち上げながら、Terraformの流れや中身を確認します。 1. ディレクトリ・ファイル構成 &amp;nbsp; Terraformのファイルの拡張子は *.tf です。実行時、同じディレクトリの *.tf ファイルがマージされますので、基本は以下3ファイルに分けてそれぞれの用途・目的に応じた記載・運用がベターです。
@@ -185,7 +186,7 @@ main.tf … モジュールが内包するリソース、データソースな�
     <item>
       <title>サンプルプロジェクトの実行</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/04/run-terraform/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/04/run-terraform/</guid>
       <description>&amp;nbsp; 前章は 簡単なWebサーバを立ち上げるというサンプルプロジェクトを作成しました。今章はサンプルプロジェクトを実行しつつ、Terraformの流れや中身を確認します。
@@ -200,7 +201,7 @@ $ terraform plan -var-file=&amp;quot;confing.tfvars&amp;quot; Refreshing Terrafo
     <item>
       <title>Terraform文法について</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/05/program-syntax/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/05/program-syntax/</guid>
       <description>&amp;nbsp; 前章は 簡単なWebサーバを立ち上げるというサンプルプロジェクトを実行しました。うち、Terraformには様々な記載文法がありますので、把握した方がいい部分だけ説明します。
@@ -217,7 +218,7 @@ $ terraform plan -var-file=&amp;quot;confing.tfvars&amp;quot; Refreshing Terrafo
     <item>
       <title>Dockerについて</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/06/docker/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/06/docker/</guid>
       <description>&amp;nbsp; 前章までは Terraformのインストール方法、Terraformの文法、実行方法を説明しました。しかしこれらはTerraform v0.11.13前提での話なので、Terraformのバージョンが違うことで挙動が異なってしまうこともあります。Terraformでよく使うメソッドが急に廃止、、というのもよくあります。それを防ぐためにdockerを使ったインストール、利用する方法があります。dockerはパッケージングを行うための技術です。
@@ -236,7 +237,7 @@ Continuous Deployment Automation on Alibaba Cloud: CI/CD Automation on Container
     <item>
       <title>Moduleについて</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/07/module/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/07/module/</guid>
       <description>&amp;nbsp; これまでTerraformの書き方を学びました。しかし問題があります。それはvariableによる変数宣言が多すぎると、可読性も下がり、場合によっては何度も同じ内容を書く必要があったりします。それを防ぐために、他のプログラミング言語と同じくモジュール化があります。
@@ -249,7 +250,7 @@ Continuous Deployment Automation on Alibaba Cloud: CI/CD Automation on Container
     <item>
       <title>VPCの作成</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/08/vpc/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/08/vpc/</guid>
       <description>&amp;nbsp; ここまではTerraformのインストール方法、コード記載方法、実行方法を説明しました。
@@ -268,7 +269,7 @@ VPCコンポーネントは以下のような構成図になります。
     <item>
       <title>ECS、EIPの作成</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/09/ecs/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/09/ecs/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるECS、EIPの作成方法を解説します。
@@ -278,6 +279,24 @@ VPCコンポーネントは以下のような構成図になります。
 2. ECSインスタンス生成のTerraformについて &amp;nbsp; 本題、ECSインスタンス生成作成に移ります。ECSインスタンス生成するだけの簡単なソースを作ってみます。
 resource &amp;quot;alicloud_instance&amp;quot; &amp;quot;ECS_instance&amp;quot; { instance_name = &amp;quot;ECS_instance_for_terraform&amp;quot; host_name = &amp;quot;ECS_instance_for_terraform&amp;quot; instance_type = &amp;quot;ecs.n4.small&amp;quot; image_id = &amp;quot;centos_7_06_64_20G_alibase_20190218.vhd&amp;quot; system_disk_category = &amp;quot;cloud_efficiency&amp;quot; security_groups = [&amp;quot;${alicloud_security_group.sg.id}&amp;quot;] availability_zone = &amp;quot;${var.zone}&amp;quot; vswitch_id = &amp;quot;${alicloud_vswitch.vsw.id}&amp;quot; }  alicloud_instance  instance_name - （オプション）ECSインスタンスの名前。このパラメータを指定しない場合、デフォルト名のECS-Instanceを自動生成します。 host_name - （オプション）ECSのホスト名。 instance_type - （必須）起動するインスタンスの種類。 image_id - （必須）ECSインスタンスに使用するイメージ。ECSインスタンスのイメージは image_idを変更することで置き換えることができます。  image_idの種類や取得方法は後述します。
  system_disk_category - （オプション）ストレージの種類。有効な値はcloud_efficiency 、 cloud_ssd 、およびcloudです。デフォルトはcloud_efficiency。 security_groups - （必須）関連付けるセキュリティグループIDのリスト。 availability_zone - （オプション）インスタンスを起動するゾーン。 vswitch_id - （オプション）接続したいVSwitchのID。 user_data - （オプション）ユーザーデータ。起動直後、実行したいコマンドがあればこちらにて入れます。  このalicloud_instanceリソースを実行することにより、以下の属性情報が出力されます。</description>
+    </item>
+    
+    <item>
+      <title>SLBの作成</title>
+      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/10/slb/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
+      
+      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/10/slb/</guid>
+      <description>AlibabaCloudの基本プロダクトサービスであるSLBの作成方法を解説します。
+1. SLB &amp;nbsp; SLB（Server Load Balancer）はアプリケーションや Web サイトのトラフィックを分散させるサービスです。
+&amp;nbsp; SLB は、仮想サービスアドレスを設定することによって、追加の ECS インスタンスを高性能で可用性の高いアプリケーションサービスプールに仮想化し、クライアントからのリクエストを、 転送ルールに従ってサーバープール内のECS インスタンスに分配します。
+&amp;nbsp; また、SLB は、追加されたバックエンドサーバーの状態をチェックし、異常状態の ECS インスタンスを自動的に分離します。そうすることで SPOF (単一障害点) 問題を除去し、アプリケ ーションの全体的なサービス性能を向上させます。 それに加え、Alibaba Anti-DDoS と組み合わせることで、SLB は DDoS 攻撃を防御することができます。
+
+2. コンポーネント &amp;nbsp; SLBは以下のコンポーネントが含まれています。
+ SLB インスタンス SLB インスタンスは、実行中の負荷分散サービスで、着信トラフィックをバックエンドサーバーに分配します。 負荷分散サービスを使用するには、SLB インスタンスを作成します。インスタンスには少なくとも 1 つのリスナーと 2 つのバックエンドサーバーを設定する必要があります。
+ リスナー リスナーはクライアントからのリクエストをチェックし、設定されたルールに基づいてバックエンドサーバーに転送します。 また、バックエンドサーバーのヘルスチェックも実行します。
+ バックエンドサーバー バックエンドサーバーは、分散リクエストを処理するために SLB インスタンスに追加された ECS インスタンスです。 分散リクエストを処理する ECSインスタンスは、デフォルトサーバーグループ、VServer グループ、アクティブ/スタンバイサーバーグループのいずれかに追加することができます。
+  またServer Load Balancer (SLB) は、 ECS インスタンスの単一障害点 (SPOF)、アクティブゾーンの障害、などを防ぐ役割がありますので、SLBを組み合わせることでサービスの高可用性を実現することができます。</description>
     </item>
     
     <item>
@@ -463,27 +482,9 @@ https://jp.alibabacloud.com/support/after-sales
     </item>
     
     <item>
-      <title>SLBの作成</title>
-      <link>https://sbcloud.github.io/help/best-practice/devops/terraform/10/slb/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
-      
-      <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/10/slb/</guid>
-      <description>AlibabaCloudの基本プロダクトサービスであるSLBの作成方法を解説します。
-1. SLB &amp;nbsp; SLB（Server Load Balancer）はアプリケーションや Web サイトのトラフィックを分散させるサービスです。
-&amp;nbsp; SLB は、仮想サービスアドレスを設定することによって、追加の ECS インスタンスを高性能で可用性の高いアプリケーションサービスプールに仮想化し、クライアントからのリクエストを、 転送ルールに従ってサーバープール内のECS インスタンスに分配します。
-&amp;nbsp; また、SLB は、追加されたバックエンドサーバーの状態をチェックし、異常状態の ECS インスタンスを自動的に分離します。そうすることで SPOF (単一障害点) 問題を除去し、アプリケ ーションの全体的なサービス性能を向上させます。 それに加え、Alibaba Anti-DDoS と組み合わせることで、SLB は DDoS 攻撃を防御することができます。
-
-2. コンポーネント &amp;nbsp; SLBは以下のコンポーネントが含まれています。
- SLB インスタンス SLB インスタンスは、実行中の負荷分散サービスで、着信トラフィックをバックエンドサーバーに分配します。 負荷分散サービスを使用するには、SLB インスタンスを作成します。インスタンスには少なくとも 1 つのリスナーと 2 つのバックエンドサーバーを設定する必要があります。
- リスナー リスナーはクライアントからのリクエストをチェックし、設定されたルールに基づいてバックエンドサーバーに転送します。 また、バックエンドサーバーのヘルスチェックも実行します。
- バックエンドサーバー バックエンドサーバーは、分散リクエストを処理するために SLB インスタンスに追加された ECS インスタンスです。 分散リクエストを処理する ECSインスタンスは、デフォルトサーバーグループ、VServer グループ、アクティブ/スタンバイサーバーグループのいずれかに追加することができます。
-  またServer Load Balancer (SLB) は、 ECS インスタンスの単一障害点 (SPOF)、アクティブゾーンの障害、などを防ぐ役割がありますので、SLBを組み合わせることでサービスの高可用性を実現することができます。</description>
-    </item>
-    
-    <item>
       <title>AutoScalingの作成</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/11/autoscaling/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/11/autoscaling/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるAutoscalingの作成方法を解説します。
@@ -497,7 +498,7 @@ resource &amp;quot;alicloud_ess_scaling_group&amp;quot; &amp;quot;scaling&amp;qu
     <item>
       <title>OSSの作成</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/12/oss/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/12/oss/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるObject Storage Serviceの作成方法を解説します。
@@ -513,7 +514,7 @@ resource &amp;quot;alicloud_oss_bucket&amp;quot; &amp;quot;bucket-acl&amp;quot;{
     <item>
       <title>RDSの作成</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/13/rds/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/13/rds/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるRelation Database Serviceの作成方法を解説します。
@@ -530,7 +531,7 @@ resource &amp;quot;alicloud_db_instance&amp;quot; &amp;quot;default&amp;quot; { 
     <item>
       <title>RAMの作成</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/14/ram/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/14/ram/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるResource Access Managementの作成方法を解説します。
@@ -548,7 +549,7 @@ resource &amp;quot;alicloud_db_instance&amp;quot; &amp;quot;default&amp;quot; { 
     <item>
       <title>Kubernetesの作成</title>
       <link>https://sbcloud.github.io/help/best-practice/devops/terraform/15/kubernetes/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/best-practice/devops/terraform/15/kubernetes/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるResource Access Managementの作成方法を解説します。
@@ -565,7 +566,7 @@ resource &amp;quot;alicloud_cs_kubernetes&amp;quot; &amp;quot;main&amp;quot; { n
     <item>
       <title>SSH踏み台サーバの作成</title>
       <link>https://sbcloud.github.io/help/scenario/terraform/bastion-server/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/bastion-server/</guid>
       <description>ssh踏み台サーバ &amp;nbsp; クラウド上にてEC2やOSS、RDSなどにて個人情報や外部流出したくないしたくない危険なファイルがある場合、インターネットら外部からメインサーバが見える状態は極力避けたいです。それを防ぐために様々な手段がありますが、費用対効果の高いネットワーク構造として踏み台サーバを作る方法があります。踏み台サーバーとは、インターネットに直接繋がないサーバーをSSHで接続するために経由される、セキュリティ層の役割を満たすことができるサーバーのことです。踏み台サーバを使うことで、以下のメリットがあります。
@@ -582,7 +583,7 @@ resource &amp;quot;alicloud_cs_kubernetes&amp;quot; &amp;quot;main&amp;quot; { n
     <item>
       <title>SLBの構築</title>
       <link>https://sbcloud.github.io/help/scenario/terraform/slb-setting-sample/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/slb-setting-sample/</guid>
       <description>SLBの構築 &amp;nbsp; SLB（Server Load Balancer）は、外部インターネット、もしくは内部イントラネットからパブリックIPまたはプライベートIPへ届くインバウンドトラフィックを予め設定したSLBの転送ルールに従って、複数のECSインスタンス間のインバウンドトラフィックを分散および制御し、アプリケーションの可用性を高めるサービスです。SLBを使うことで、以下のメリットがあります。
@@ -596,7 +597,7 @@ resource &amp;quot;alicloud_cs_kubernetes&amp;quot; &amp;quot;main&amp;quot; { n
     <item>
       <title>RDSの構築</title>
       <link>https://sbcloud.github.io/help/scenario/terraform/rds-setting-sample/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/rds-setting-sample/</guid>
       <description>&amp;nbsp; TerraformでデータベースサービスであるRDSを作ってみます。ゴールの構成図は以下の通りです。
@@ -609,7 +610,7 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
     <item>
       <title>Kubernetesの構築と設定</title>
       <link>https://sbcloud.github.io/help/scenario/terraform/kubernetes-setting-sample/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/kubernetes-setting-sample/</guid>
       <description>&amp;nbsp; 簡単なkuberntesクラスターを作ってみます。シングルゾーンによるクラスタでの作成になります。ゴールの構成図は以下の通りです。
@@ -621,7 +622,7 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
     <item>
       <title>Webアプリケーションの構築</title>
       <link>https://sbcloud.github.io/help/scenario/terraform/web-application/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/web-application/</guid>
       <description>&amp;nbsp; こちらはAlibabaCloud公式サイトにあるソリューション構築例を通じての紹介になります。IDCなどデータセンターにて、スケーラブルで世界規模で利用可能なWebアプリケーションを開発および展開するのは、多くの手作業から工数がかかり、またトラフィックに応じてリソースの効率さが悪くなってしまう課題があります。しかしAlibabaCloudで構築すると、それらの課題が払拭されます。それだけでなく、上に、投資収益率（ROI）も向上するメリットがあります。
@@ -635,7 +636,7 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
     <item>
       <title>高速コンテンツ配信の実現</title>
       <link>https://sbcloud.github.io/help/scenario/terraform/accelerated-content-delivery/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/accelerated-content-delivery/</guid>
       <description>&amp;nbsp; こちらはAlibabaCloud公式サイトにあるソリューション構築例を通じての紹介になります。従来のWebアプリケーションアーキテクチャでは、Webアプリケーションが大量のリクエストトラフィックを受け取ると、サーバーが過負荷になり、サイトが遅くなったりサーバーがクラッシュしたりする可能性があります。また地理的に異なる場所に分散していると、コンテンツが1か所から配信されるため、待ち時間の問題が発生する可能性があります。そのためにWebアプリケーションは高速でコンテンツ配信することが望ましいです。
@@ -649,7 +650,7 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
     <item>
       <title>オートスケーリングの実現</title>
       <link>https://sbcloud.github.io/help/scenario/terraform/auto-scaling/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/auto-scaling/</guid>
       <description>&amp;nbsp; こちらはAlibabaCloud公式サイトにあるソリューション構築例を通じての紹介になります。
@@ -664,7 +665,7 @@ version: &#39;3&#39; services: # MySQL db: image: mysql:5.7 container_name: mysq
     <item>
       <title>KubernetesによるコンテナでWordPress作成</title>
       <link>https://sbcloud.github.io/help/scenario/terraform/web-application-on-kubernetes/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0900</pubDate>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/scenario/terraform/web-application-on-kubernetes/</guid>
       <description>&amp;nbsp; KubernetesによるコンテナでWordPressを作成します。流れは以下の通りになります。

@@ -14,10 +14,10 @@
     <item>
       <title>サイトマップ</title>
       <link>https://sbcloud.github.io/help/about/sitemap/</link>
-      <pubDate>Mon, 13 May 2019 16:20:40 +0900</pubDate>
+      <pubDate>Tue, 23 Jul 2019 10:20:40 +0900</pubDate>
       
       <guid>https://sbcloud.github.io/help/about/sitemap/</guid>
-      <description>   トップページ         Getting Started     アカウント登録   プロダクト紹介プロダクト資料のリンク一覧
+      <description>トップページ         Getting Started     アカウント登録   プロダクト紹介プロダクト資料のリンク一覧
 ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較       ベストプラクティス     アドバイザリ   個別プロダクトECS   DevOpsTerraformTerraformとは
 インストール
 サンプルプロジェクトの作成
@@ -32,7 +32,7 @@ Autoscalingの作成
 OSSの作成
 RDSの作成
 RAMの作成
-Kubernetesの作成       よくある質問     ECS   RDS   SLB   OSS   料金   アカウント   サポート       About SBC Technical Reference     サイトマップ    </description>
+Kubernetesの作成       ユースケース別シナリオ     TerraformSSH踏み台サーバの作成</description>
     </item>
     
   </channel>

@@ -1,7 +1,7 @@
 ---
 title: "サイトマップ"
 description: "SBCloudテクニカルリファレンスのサイトマップを記載します。"
-date: 2019-05-13T16:20:40+09:00
+date: 2019-07-23T10:20:40+09:00
 weight: 10
 draft: false
 ---
@@ -20,6 +20,10 @@ draft: false
 |[アドバイザリ]({{%relref "best-practice/advisory.md" %}})|
 |<details><summary>[個別プロダクト]({{%relref "best-practice/product/_index.md" %}})</summary>[ECS]({{%relref "best-practice/product/ecs.md" %}})</details>|
 |<details><summary>[DevOps]({{%relref "best-practice/devops/_index.md" %}})</summary><details><summary>[Terraform]({{%relref "best-practice/devops/terraform/_index.md" %}})</summary>[Terraformとは]({{%relref "best-practice/devops/terraform/01/how-to-use.md" %}})<br>[インストール]({{%relref "best-practice/devops/terraform/02/install.md" %}})<br>[サンプルプロジェクトの作成]({{%relref "best-practice/devops/terraform/03/sample-project.md" %}})<br>[サンプルプロジェクトの実行]({{%relref "best-practice/devops/terraform/04/run-terraform.md" %}})<br>[文法について]({{%relref "best-practice/devops/terraform/05/program-syntax.md" %}})<br>[Dockerについて]({{%relref "best-practice/devops/terraform/06/docker.md" %}})<br>[Moduleについて]({{%relref "best-practice/devops/terraform/07/module.md" %}})<br>[VPCの作成]({{%relref "best-practice/devops/terraform/08/vpc.md" %}})<br>[ECS、EIPの作成]({{%relref "best-practice/devops/terraform/09/ecs.md" %}})<br>[SLBの作成]({{%relref "best-practice/devops/terraform/10/slb.md" %}})<br>[Autoscalingの作成]({{%relref "best-practice/devops/terraform/11/autoscaling.md" %}})<br>[OSSの作成]({{%relref "best-practice/devops/terraform/12/oss.md" %}})<br>[RDSの作成]({{%relref "best-practice/devops/terraform/13/rds.md" %}})<br>[RAMの作成]({{%relref "best-practice/devops/terraform/14/ram.md" %}})<br>[Kubernetesの作成]({{%relref "best-practice/devops/terraform/15/kubernetes.md" %}})</details></details>|
+
+|[ユースケース別シナリオ]({{%relref "scenario/_index.md" %}})|
+|:------:|
+|<details><summary>[Terraform]({{%relref "scenario/terraform/_index.md" %}})</summary>[SSH踏み台サーバの作成]({{%relref "scenario/terraform/bastion-server.md" %}})<br>[SLBの構築]({{%relref "scenario/terraform/slb-setting-sample.md" %}})<br>[RDSの構築]({{%relref "scenario/terraform/rds-setting-sample.md" %}})<br>[Kubernetesの構築と設定]({{%relref "scenario/terraform/kubernetes-setting-sample.md" %}})<br>[Webアプリケーションの構築]({{%relref "scenario/terraform/web-application.md" %}})<br>[高速コンテンツ配信の実現]({{%relref "scenario/terraform/accelerated-content-delivery.md" %}})<br>[オートスケーリングの実現]({{%relref "scenario/terraform/auto-scaling.md" %}})<br>[KubernetesによるコンテナでWordPress作成]({{%relref "scenario/terraform/web-application-on-kubernetes.md" %}})</details>|
 
 |[よくある質問]({{%relref "faq/_index.md" %}})
 |:------:|

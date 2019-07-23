@@ -1,6 +1,6 @@
 ---
 title: "Terraform 25章 example: Multi-AZ Kubernetes"
-date: 2019-07-01T00:00:00+09:00
+date: 2019-07-22T00:00:00+09:00
 weight: 10
 draft: true
 ---
