@@ -1,4 +1,4 @@
-baseURL = "https://sbcloud.github.io/help/"
+baseURL = "https://www.sbcloud.co.jp/help/"
 languageCode = "ja-jp"
 title = "テクニカルリファレンス"
 theme = "docdock"
