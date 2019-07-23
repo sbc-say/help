@@ -1,5 +1,11 @@
 # Change Log
 
+## [1.0.1] - 2019-07-23
+  
+### 変更項目
+ - [config.toml](config.toml)のbaseURLをsbcloud.github.ioからwww.sbcloud.co.jpへ修正
+ - [vpc.md](content/best-practice/devops/terraform/08/vpc.md)の9.4pngのパスを/help/imagesから/help/imageへ変更
+
 ## [1.0.0] - 2019-07-23
  
 ### 新規公開
