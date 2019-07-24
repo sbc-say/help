@@ -14,7 +14,7 @@ This document gets updated along with four categories
 1. Usage Case Scenarios
 1. FAQ
 
-How to install and other knowledge is [here](content/hugo-konw-how.md)  
+How to install and other knowledge is [here](/hugo-know-how.md)  
 Detailed Agenda is [here](content/_index.md)  
 Changelog is [here](CHANGELOG.md)
 
