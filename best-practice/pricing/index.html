@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-08-05T04:34:50 UTC">
+<meta name="revised" content="2019-08-05T07:29:43 UTC">
 <title>料金体系 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -534,8 +534,6 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     
     
 
-<h1 id="alibaba-cloud-japan-料金ホワイトペーパー">Alibaba Cloud Japan 料金ホワイトペーパー</h1>
-
 <p>Tags ： AlibabaCloud Price Bill</p>
 
 <hr />
@@ -549,11 +547,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <li>Alibaba Cloud お支払い関連の紹介</li>
 <li>代表的なプロダクトの料金体系の紹介</li>
 </ul>
-</blockquote>
 
-<p>[toc]</p>
-
-<blockquote>
 <h2 id="初めに">初めに</h2>
 </blockquote>
 
@@ -656,34 +650,27 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <ul>
 <li><strong>サブスクリプション</strong>のライフサイクル</li>
 </ul>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-flow" data-lang="flow">st=&gt;start: 購入
-op1=&gt;operation: 期限切れ
-cond=&gt;condition: 延長
-cond2=&gt;condition: 成功
-op2=&gt;operation: 15 日後サービス停止
-op3=&gt;operation: さらに15 日後データ削除
-e=&gt;end: リリース
-
-st-&gt;op1-&gt;cond
-cond(no)-&gt;op2-&gt;op3-&gt;e
-cond(yes)-&gt;cond2(yes)-&gt;op1
-cond(yes)-&gt;cond2(no)-&gt;op2-&gt;op3-&gt;e</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mermaid" data-lang="mermaid">graph TB
+    st((購入)) --&gt; op0[利用開始]
+    op0 --&gt; op1[期限切れ]
+    op1 --&gt; op2{延長}
+    op2 --失敗--&gt; op3[15 日後サービス停止]
+    op2 --成功--&gt; op0
+    op3 --&gt; op4[さらに15 日後データ削除]
+    op4 --&gt; en((リリース))</code></pre></div>
 <ul>
 <li><strong>従量課金</strong>のライフサイクル</li>
 </ul>
 
 <p>従量課金における料金滞納の影響範囲はアカウント内のすべての従量課金プロダクトです。</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-flow" data-lang="flow">st=&gt;start: 利用開始
-op1=&gt;operation: 料金滞納発生
-op2=&gt;operation: 3回課金再試行
-cond=&gt;condition: 滞納継続
-op3=&gt;operation: 15 日後サービス停止
-op4=&gt;operation: さらに15 日後データ削除
-e=&gt;end: リリース
-
-st-&gt;op1-&gt;op2-&gt;cond
-cond(yes)-&gt;op3-&gt;op4-&gt;e
-cond(no)-&gt;op1</code></pre></div>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mermaid" data-lang="mermaid">graph TB
+    st((利用開始)) --&gt; op1[料金滞納発生]
+    op1 --&gt; op2[3回課金再試行]
+    op2 --&gt; op3{滞納継続}
+    op3 --no --&gt; st
+    op3 --yes --&gt; op4[15 日後サービス停止]
+    op4 --&gt; op5[さらに15 日後データ削除]
+    op5 --&gt; en((リリース))</code></pre></div>
 <h3 id="キーワード４-課金計算単位">キーワード４：課金計算単位</h3>
 
 <p>クラウドサービスの利用料金を計算する場合は、使用量と使用時間で下記項目と計算単位を明確する必要があります。</p>
@@ -802,7 +789,7 @@ cond(no)-&gt;op1</code></pre></div>
 <p>ネットワーク料金について、データ転送 (アウトバウンド) は有料ですが、インバウンドデータ転送、または<code>同じリージョン</code>内の他の Alibaba Cloud サービス間でのデータ転送は無料です。</p>
 </blockquote>
 
-<p><img src="http://static.zybuluo.com/xkj1314/7lcfefb1r2r6zv3gqwhzeh1v/image_1dfd51dcjduj1oahj4ns6v13n39.png" alt="image_1dfd51dcjduj1oahj4ns6v13n39.png-26.6kB" /></p>
+<p><img src="https://xukejian.oss-ap-northeast-1.aliyuncs.com/%08mdpic/14_17_12__07_10_2019.jpg" alt="image_1dfd51dcjduj1oahj4ns6v13n39.png-26.6kB" /></p>
 
 <p>これらの特性は使用している Alibaba Cloud 製品によって多少異なりますが、基本的にはこれらがコストのコア部分になります。それ以外は、各プロダクトの特徴次第で独自の課金項目が存在するものもあります。</p>
 

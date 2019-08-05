@@ -6,8 +6,6 @@ weight: 30
 draft: false
 ---
 
-# Alibaba Cloud Japan 料金ホワイトペーパー
-
 Tags ： AlibabaCloud Price Bill
 
 ---
@@ -19,7 +17,6 @@ Tags ： AlibabaCloud Price Bill
 > * Alibaba Cloud お支払い関連の紹介
 > * 代表的なプロダクトの料金体系の紹介
 
-[toc]
 
 > ## 初めに
 
@@ -71,36 +68,31 @@ Alibaba Cloud は`サブスクリプション`と`従量課金`の両方をサ�
 
 - **サブスクリプション**のライフサイクル
 
-```flow
-st=>start: 購入
-op1=>operation: 期限切れ
-cond=>condition: 延長
-cond2=>condition: 成功
-op2=>operation: 15 日後サービス停止
-op3=>operation: さらに15 日後データ削除
-e=>end: リリース
+```mermaid
+graph TB
+    st((購入)) --> op0[利用開始]
+    op0 --> op1[期限切れ]
+    op1 --> op2{延長}
+    op2 --失敗--> op3[15 日後サービス停止]
+    op2 --成功--> op0
+    op3 --> op4[さらに15 日後データ削除]
+    op4 --> en((リリース))
 
-st->op1->cond
-cond(no)->op2->op3->e
-cond(yes)->cond2(yes)->op1
-cond(yes)->cond2(no)->op2->op3->e
 ```
+
 - **従量課金**のライフサイクル
 
 従量課金における料金滞納の影響範囲はアカウント内のすべての従量課金プロダクトです。
 
-```flow
-st=>start: 利用開始
-op1=>operation: 料金滞納発生
-op2=>operation: 3回課金再試行
-cond=>condition: 滞納継続
-op3=>operation: 15 日後サービス停止
-op4=>operation: さらに15 日後データ削除
-e=>end: リリース
-
-st->op1->op2->cond
-cond(yes)->op3->op4->e
-cond(no)->op1
+```mermaid
+graph TB
+    st((利用開始)) --> op1[料金滞納発生]
+    op1 --> op2[3回課金再試行]
+    op2 --> op3{滞納継続}
+    op3 --no --> st
+    op3 --yes --> op4[15 日後サービス停止]
+    op4 --> op5[さらに15 日後データ削除]
+    op5 --> en((リリース))
 
 ```
 
@@ -302,7 +294,7 @@ Alibaba Cloud の価格影響要因や無料利用枠など、お客様のコス
   [1]: http://static.zybuluo.com/xkj1314/tbsxejtnbtjqpzlaq19et7xb/image_1dcghej001fom18mo10ug1c1c9cp2e.png
   [2]: http://static.zybuluo.com/xkj1314/k7m01v8umxd4wjp3ovmvo4io/image_1dcgh18uuttn1t90uos5v6ilj9.png
   [3]: http://static.zybuluo.com/xkj1314/8nkmd5qe8w45ag7mbhe7x24y/image_1dcgh6d6n8o8gl817ei157vcbb18.png
-  [4]: http://static.zybuluo.com/xkj1314/7lcfefb1r2r6zv3gqwhzeh1v/image_1dfd51dcjduj1oahj4ns6v13n39.png
+  [4]: https://xukejian.oss-ap-northeast-1.aliyuncs.com/%08mdpic/14_17_12__07_10_2019.jpg
   [5]: http://static.zybuluo.com/xkj1314/e2o2e3pf4e4v7emi1tl9b8ek/image_1dcjfs8se1cqt1jhktg1riqjgt9.png
   [6]: http://static.zybuluo.com/xkj1314/kuojm5wrg10a3xz4xuowm7k0/image_1dfdekmhu1ikv1uihcnq122a1meim.png
   [7]: http://static.zybuluo.com/xkj1314/l5j74a0i8to1wrsdujr9bb5u/image_1dfvl19sb1iv8l3c1k1a57qfpp.png
