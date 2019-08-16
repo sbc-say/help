@@ -18,7 +18,7 @@
       
       <guid>https://www.sbcloud.co.jp/help/about/sitemap/</guid>
       <description>トップページ         Getting Started     アカウント登録   プロダクト紹介プロダクト資料のリンク一覧
-ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較       ベストプラクティス     アドバイザリ   個別プロダクトECS   DevOpsTerraformTerraformとは
+ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較       ベストプラクティス     アドバイザリ   DevOpsTerraformTerraformとは
 インストール
 サンプルプロジェクトの作成
 サンプルプロジェクトの実行
@@ -32,7 +32,10 @@ Autoscalingの作成
 OSSの作成
 RDSの作成
 RAMの作成
-Kubernetesの作成       ユースケース別シナリオ     TerraformSSH踏み台サーバの作成</description>
+Kubernetesの作成       ユースケース別シナリオ     TerraformSSH踏み台サーバの作成
+SLBの構築
+RDSの構築
+Kubernetesの構築と設定</description>
     </item>
     
     <item>
@@ -112,37 +115,6 @@ AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの�
 &amp;nbsp; 加えて、コードからリソースを作成することで学習コスト・運用コストを削減することができます。例えば先ほどの例、AlibabaCloud未経験者がECS 100台を手動でなくIaC、Terraformで起動すると、ミスをゼロへ抑制はもちろん、学習工数・運用保守コスト・全てが大幅に節約できます。
 &amp;nbsp; また、クラウド環境（仮想環境）が登場したことで、サーバらHW、物理的リソース制約がなくなりました。これにより、サーバやネットワークを簡単に構築したり、一旦構築したものをすぐに破棄することが出来るようになったので、一度構築したインフラやリソースは変更を加えることなく破棄して、新しいものを構築する考えが可能になりました。 →このような流れは「Immutable Infrastructure（不変のインフラ）」と呼ばれ、インフラ変更履歴を管理するのではなく、動作している「インフラの状態」を管理（=必要に応じて使い捨て）からクラウド環境ではコードによるインフラ構成・構築・管理・運用を行う必要があります。
 &amp;nbsp; 前置きが長くなりましたが、クラウドサービスの良いところは立案した戦略や設計をすぐに試せれるところであり、AlibabaCloudの良いところは、PaaS/IaaS/SaaS/KaaS&amp;hellip;幅多くのプロダクトサービスがあり、これらの活用によってより楽に生産的にすることができる点です。是非楽しみながらAlibabaCloudのTerraformを読み進めていただければ大変幸いです。</description>
-    </item>
-    
-    <item>
-      <title>ECS</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/product/ecs/</link>
-      <pubDate>Thu, 18 Jul 2019 10:37:37 +0900</pubDate>
-      
-      <guid>https://www.sbcloud.co.jp/help/best-practice/product/ecs/</guid>
-      <description>ECSのベストプラクティス情報を以下のリンクよりダウンロードいただけます。
-ECSのベストプラクティス情報をダウンロード
-また本PDFは以下の流れで記載しております。
-1 セキュリティ&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;1
-1.1 セキュリティグループのベストプラクティス (パート 2)&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.1
-1.2 セキュリティグループのベストプラクティス (パート 3)&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.6
-1.3 ECS データセキュリティのベストプラクティス&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;. 11
-1.4 クラシックネットワーク内のインスタンス同⼠のアクセスを設定する⽅法&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..13
-1.5 既定のリモートアクセスポートの変更&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;. 20
-1.6 Windows インスタンスでのログの使⽤&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;. 26
-1.7 セキュリティが強化された Windows ファイアウォールの概要とベストプラクティス&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.. 28
-1.8 セキュリティグループ内のインスタンスの分離&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..47
-1.9 セキュリティグループの 5 つのルール&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.49
-2 ディザスタリカバリソリューション&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;. 53
-3 データリカバリ&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.58
-3.1 誤って削除したデータを復元する⽅法&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;. 58
-3.2 Linux インスタンスでのデータ復元&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip; 62
-3.3 Windows インスタンスでのデータ復元&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;. 71
-4 設定の優先度&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.75
-4.1 複数インスタンスの⾔語の設定⽅法&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;. 75
-5 モニター&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;.80
-5.1 CloudMonitor を使⽤した ECS インスタンスのモニター&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;..80
-6 インスタンス RAM ロールによる他のクラウドプロダクト API へのアクセス&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;83</description>
     </item>
     
     <item>
