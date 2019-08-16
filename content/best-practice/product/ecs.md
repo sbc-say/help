@@ -3,7 +3,7 @@ title: "ECS"
 date: 2019-07-18T10:37:37+09:00
 description: "Alibaba CloudのECSを活用する為のベストプラクティスを記載します。"
 weight: 10
-draft: false
+draft: true
 ---
 
 ECSのベストプラクティス情報を以下のリンクよりダウンロードいただけます。  
