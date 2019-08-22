@@ -1,9 +1,9 @@
 ---
-title: "Container Architecture"
-description: "Alibaba Cloudでコンテナを活用したシステム構成を紹介します。"
+title: "イントロダクション"
+description: "Alibaba Cloudでコンテナを活用した開発手法を紹介します。"
 date: 2019-08-13T16:20:40+09:00
-weight: 20
-draft: true
+weight: 10
+draft: false
 ---
 
 そもそもコンテナを利用する事で、どんな事が実現できるか。
@@ -27,15 +27,11 @@ draft: true
 
 ### 開発フロー
 1. 開発環境
-1. バージョン管理
-1. イメージビルド
-1. イメージレジストリ
-1. デプロイ・管理方式
-1. モニター
-1. ログ管理
-1. データ分析
+1. コンテナイメージ管理
+1. コンテナデプロイ管理
+1. ログ管理・モニタリング
 
-## 開発環境
+## 開発端末
 - 選択肢
   - Windows
   - MAC
@@ -62,7 +58,7 @@ draft: true
   - Public Service (CircleCI/TravisCI)
   - Alibaba Cloud Managed Service (Container Registry)
 
-## イメージレジストリ
+## イメージリポジトリ
 - 選択肢
   - Private Repository (Docker Trusted Registry)
   - Public Repository (Dockerhub)
