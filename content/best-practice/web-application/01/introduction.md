@@ -15,10 +15,11 @@ Webアプリケーションを構築する上でどのプロダクトを用い�
 
 ### Components
 1. 名前解決
-1. ロードバランサー
+1. 負荷分散
 1. Web/APサーバ
-1. データベース
-1. 静的コンテンツ（CDN、OSS）
+1. データベース/キャッシュ
+1. 静的コンテンツ
+
 
 http://alicloud-common.oss-ap-southeast-1.aliyuncs.com/Alibaba%20Cloud%20Solution%20Infrastructure%20-%20Web%20Application%20Hosting.pdf
 
