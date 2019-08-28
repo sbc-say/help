@@ -129,13 +129,18 @@ jobs:
     steps:
       - run:
           name: Update enviroment
-          command: apt-get update && apt-get install -y git
+          command: apt-get update && apt-get install -y git hugo
       - run:
           name: Install OSS util tool
           command: go get github.com/aliyun/ossutil && ossutil --version
+      - checkout
       - run:
           name: Sleep a little
-          command: sleep 2
+          command: sleep 5
+      - run:
+          name: Build Hugo contents
+          command: |
+            hugo
       - run:
           name: OSS util config
           command: |
