@@ -58,3 +58,5 @@ ReadOnlyのアクセスキーを払い出す事がルール上許されれば、
 | Alibaba Cloud Container Service for Kubernetes （ACK)）徹底解説 | https://www.slideshare.net/sbcloud/alibaba-cloud-container-service-for-kubernetes-ack |
 | Connect CloudMonitor to Grafana | https://www.alibabacloud.com/help/doc-detail/109434.htm |
 | Log Service Best Practice (PDF) | http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/pdf/sls-best-practices-intl-en-2018-01-24.pdf |
+| Best Practices of Log Analysis and Monitoring by Using Kubernetes Ingress | https://www.alibabacloud.com/blog/595084 |
+| Technical Best Practices for Container Log Processing | https://www.alibabacloud.com/blog/594955 |

@@ -1,9 +1,9 @@
 ---
-title: "データベース"
+title: "データベース/キャッシュ"
 description: "Alibaba Cloudを用いたWeb三層アーキテクチャを紹介します。"
 date: 2019-05-13T16:20:40+09:00
 weight: 50
-draft: true
+draft: false
 ---
 
 Webアプリケーションを構築する際には以下のコンポーネントが必要となります。
@@ -23,7 +23,8 @@ Webアプリケーションを構築する際には以下のコンポーネン�
  - アーキテクチャ図
 
 ## 対象サービス
-Relational Databaseとして、Aspara for RDSとPoloarDBの２つがあります。
+Relational Databaseとして、Aspara for RDSを利用できます。
+Poloardbとして。
 NoSQL Databaseとして、Aspara for MongoDBとTableStore( https://www.alibabacloud.com/product/table-store?spm=5176.2020520106.104.1.36615aeZ5aeZcP )があります。
 キャッシュの用途として、Aspara for RedisとAspara for Memcacheが提供されています。
 （"Aspara"という名前はAlibaba社でAlibaba Cloudを指す名称で、一部サービスにその名残があります。）
