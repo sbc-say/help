@@ -142,16 +142,6 @@ jobs:
           command: |
             hugo
       - run:
-          name: OSS util config
-          command: |
-            cat > ~/.ossutilconfig \<\< "EOF"
-            [Credentials]
-            language=EN
-            endpoint=oss-ap-northeast-1.aliyuncs.com
-            accessKeyID=$OSS_ACCESS_KEY_ID
-            accessKeySecret=$OSS_ACCESS_KEY_SECRET
-            EOF
-      - run:
           name: Deploy to OSS Pages
           command: |
             chmod +x ./.circleci/oss-deploy.sh
