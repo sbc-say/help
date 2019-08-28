@@ -13,8 +13,8 @@ accessKeySecret=$OSS_ACCESS_KEY_SECRET
 EOL
 
 ## Replace HTML output for OSS deployment
-$ find ./docs/* -type f -name index.html -exec sed -i -e  's/\/">/\/index.html">/g' {} \;
-$ find ./docs/* -type f -name index.html -exec sed -i -e 's/help\/image/image/g' {} \;
+find ./docs/* -type f -name index.html -exec sed -i -e  's/\/">/\/index.html">/g' {} \;
+find ./docs/* -type f -name index.html -exec sed -i -e 's/help\/image/image/g' {} \;
 
 ## Deploy to OSS bucket
 ossutil ls oss://technical-reference
