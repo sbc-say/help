@@ -129,10 +129,10 @@ jobs:
     steps:
       - run:
           name: Update enviroment
-          command: sudo apt-get update && sudo apt-get install -y golang git hugo
+          command: apt-get update && apt-get install -y git hugo
       - run:
           name: Install OSS util tool
-          command: sudo go get github.com/aliyun/ossutil && ossutil --version
+          command: go get github.com/aliyun/ossutil && ossutil --version
       - checkout
       - run:
           name: Sleep a little
