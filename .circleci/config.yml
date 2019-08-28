@@ -6,7 +6,7 @@ executors:
       - image: cibuilds/hugo:0.54
   ossutil:
     docker:
-      - image: circleci/golang:1.12
+      - image: golang
 jobs:
   test-job:
     executor:
@@ -129,7 +129,7 @@ jobs:
     steps:
       - run:
           name: Update enviroment
-          command: sudo apt-get update && sudo apt-get install -y git hugo
+          command: sudo apt-get update && sudo apt-get install -y golang git hugo
       - run:
           name: Install OSS util tool
           command: sudo go get github.com/aliyun/ossutil && ossutil --version
