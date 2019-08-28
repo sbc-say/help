@@ -209,4 +209,4 @@ workflows:
           filters:
             branches:
               only:
-                - oss-deploy
+                - oss-prod-deploy
