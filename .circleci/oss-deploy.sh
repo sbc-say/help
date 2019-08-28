@@ -3,18 +3,14 @@
 # エラー時、実行を止める
 set -e
 
-#DEPLOY_DIR=oss-deploy
-
-# gitの諸々の設定
-#git config --global push.default simple
-#git config --global user.email $(git --no-pager show -s --format='%ae' HEAD)
-#git config --global user.name $CIRCLE_USERNAME
-
-# oss-deployブランチをossdeployディレクトリにクローン
-#git clone -q --branch=oss-deploy $CIRCLE_REPOSITORY_URL $DEPLOY_DIR
-
-# 作業Directoryへ移動
-#cd $DEPLOY_DIR
+# OSS Configuration
+cat <<EOL >> ~/.ossutilconfig
+[Credentials]
+language=EN
+endpoint=oss-ap-northeast-1.aliyuncs.com
+accessKeyID=$OSS_ACCESS_KEY_ID
+accessKeySecret=$OSS_ACCESS_KEY_SECRET
+EOL
 
 ## Replace HTML output for OSS deployment
 $ find ./docs/* -type f -name index.html -exec sed -i -e  's/\/">/\/index.html">/g' {} \;
