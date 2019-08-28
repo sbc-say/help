@@ -4,6 +4,9 @@ executors:
     working_directory: ~/hugo
     docker:
       - image: cibuilds/hugo:0.54
+  ossutil:
+    docker:
+      - image: circleci/golang:1.12
 jobs:
   test-job:
     executor:
@@ -120,6 +123,65 @@ jobs:
                 }
             }"
             $DINGTALK_WEBHOOK_URL
+  oss-deploy-job:
+    executor:
+      name: ossutil
+    steps:
+      - run:
+          name: Update enviroment
+          command: apt-get update && apt-get install -y git
+      - run:
+          name: Install OSS util tool
+          command: go get github.com/aliyun/ossutil && ossutil --version
+      - checkout
+      - run:
+          name: Sleep a little
+          command: sleep 2
+      - run:
+          name: List current oss bucket
+          command: ossutil ls oss://technical-reference
+      - run:
+          name: Deploy to OSS Bucket
+          command: |
+            ossutil cp -f  ./docs oss://technical-reference/  --recursive
+            ossutil ls oss://technical-reference
+      - run:
+          name: Chat Notification Fail
+          when: on_fail
+          command: >
+            curl --header "Content-Type: application/json"
+            --request POST
+            --data
+            "{
+                \"msgtype\": \"link\",
+                \"link\": {
+                    \"text\": \"SBC Technical Reference deploy to production failed.
+                     Click me for further information\",
+                    \"title\": \"Oops. Build ${CIRCLE_BUILD_NUM} failed and NOT deployed to production.\",
+                    \"picUrl\": \"https://png.pngtree.com/svg/20170406/icon_failed__1325447.png\",
+                    \"messageUrl\": \"${CIRCLE_BUILD_URL}\"
+                }
+            }"
+            $DINGTALK_WEBHOOK_URL
+
+      - run:
+          name: Chat Notification Success
+          when: on_success
+          command: >
+            curl --header "Content-Type: application/json"
+            --request POST
+            --data
+            "{
+                \"msgtype\": \"link\",
+                \"link\": {
+                    \"text\": \"SBC Technical Reference successfully deployed to production.
+                     Click me for further information\",
+                    \"title\": \"Build ${CIRCLE_BUILD_NUM} passed and DEPLOYED to PRODUCTION.\",
+                    \"picUrl\": \"https://png.pngtree.com/svg/20170510/success_404253.png\",
+                    \"messageUrl\": \"${CIRCLE_BUILD_URL}\"
+                }
+            }"
+            $DINGTALK_WEBHOOK_URL
 
 workflows:
   test-and-deploy:
@@ -132,3 +194,8 @@ workflows:
             branches:
               only:
                 - master
+      - oss-deploy-job:
+          filters:
+            branches:
+              only:
+                - oss-deploy
