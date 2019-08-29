@@ -14,11 +14,11 @@ EOL
 
 ## Replace HTML output for OSS deployment
 find ./docs/* -type f -name index.html -exec sed -i -e  's/\/">/\/index.html">/g' {} \;
-find ./docs/* -type f -name index.html -exec sed -i -e 's/help\/image/image/g' {} \;
+### find ./docs/* -type f -name index.html -exec sed -i -e 's/help\/image/image/g' {} \;
 
 ## Deploy to OSS bucket
-ossutil ls oss://technical-reference
-ossutil cp -f  ./docs oss://technical-reference/  --recursive
-ossutil ls oss://technical-reference
+ossutil ls oss://technical-reference/help
+ossutil cp -f  ./docs oss://technical-reference/help  --recursive
+ossutil ls oss://technical-reference/help
 
 # EOF
