@@ -6,64 +6,78 @@ weight: 20
 draft: false
 ---
 
-本記事では、開発環境について紹介いたします。
+以下の区分により、コンテナを活用したAlibaba Cloudにおける開発手法を紹介いたします。
 
 1. 開発環境
-1. コンテナイメージ管理
+1. コンテナイメージの作成・管理
 1. コンテナデプロイ管理
 1. ログ管理とモニタリング
 
-開発環境は、開発端末とバージョン管理リポジトリの２点に焦点を当てて紹介します。
+本項目では、 <b>開発環境</b> に焦点を当てて、開発端末とバージョン管理システムの選択肢を紹介します。
+その後、Alibaba Cloudにおける推奨を紹介します。
 
-## 開発環境
+## 目次
+- 開発端末
+- バージョン管理
+- Alibaba Cloudにおける推奨
+
+## 開発端末
   - Windows
-  - Linux
-  - バージョン管理
-  - Alibaba Cloudにおける選択肢
-  - Kubernetes開発ツール
+  - macOS
+  - Linux/その他
 
-### Windows
-プライベートでもビジネスでも最もよく利用されているOSはWindowsであり、
-慣れ親しんだ画面のまま開発できるメリットは大きいです。
+#### Windows
+プライベートでもビジネスでも最もよく利用されているOSはWindowsであり、慣れ親しんだUIのまま開発できるメリットは大きいです。
+開発ツールとして、Docker Desktop for Windowsが提供されており、Bash for Windowsや各種IDEのDocker Clientプラグインと併せて、よく利用されます。  
+ただ、Windowsのデスクトップ上でDockerコンテナを利用する為にはEditionやBIOSにおいて制限をクリアする必要があります。具体的にはWindows 10 64-bitのPro Edition、Enterprise Edition、もしくはEducation Editionのいずれかで、Hyper-Vが有効化されている必要があります。最新の情報は以下の公式ホームページより確認ください。  
+<br>
+WindowsにおけるDockerインストール要件：https://docs.docker.com/docker-for-windows/install/  
+<br>
+上記要件を満たしている場合には、Bash for Windowsもインストールする事で、Windows上でDockerコンテナの開発が可能となります。  
+要件を満たしていない場合には、Vagrantやパブリッククラウド上でLinuxを稼働させる形で開発環境を整えます。
 
-しかしながらWindowsのデスクトップ上でDockerをそのまま利用する為には
-EditionやBIOS設定での制限をクリアする必要があります。
-
-https://docs.docker.com/docker-for-windows/install/
-
-Windowsにおける開発ツールとしては以下が挙げられます。
-- Bash for Windows
-- Docker Desktop for Windows
-- 各種IDEのDocker Clientプラグイン
-
-### macOS/Linux
-普段からmacOSを利用している場合には、OSに対する制限は比較的少なく、以下公式URLを参照してインストールできます。
-
+#### macOS
+macOSで開発する場合には、Windowsと比較して制限は少ないです。手順として、以下DockerhubのURLよりdmgパッケージをダウンロードします。
+<br>
+https://hub.docker.com/editions/community/docker-ce-desktop-mac  
+<br>
+その後、以下のDocker公式のURLの手順を参照して、インストールする事でDockerコンテナが利用可能となります。  
 https://docs.docker.com/docker-for-mac/install/
 
-LinuxもmacOSと同様、以下の公式URLからインストールできますが、OSの種類によってコマンドが異なる点に注意が必要です。
-
+#### Linux/その他
+LinuxもmacOSと同様、以下の公式URLからインストールできますが、OSの種類によってコマンドが異なる点に注意が必要です。詳しくは各URLを参照ください。  
+<br>
 [CentOS](https://docs.docker.com/install/linux/docker-ce/centos/) /
 [Debian](https://docs.docker.com/install/linux/docker-ce/debian/) / 
 [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/) /
 [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)  
 
-## バージョン管理
-Github/Gitlab/Bitbucket
-- Github Enterprise
-- Gitlab
-- Bitbuckert
+## バージョン管理リポジトリ
+- Github/Gitlab/Bitbucket
+- それ以外のリポジトリ
 
-### Alibaba Cloudにおける選択肢
-開発端末において、Alibaba Cloudだからという選択肢はなく、コンテナ環境で最もユーザの文化にあった開発端末を推奨します。
-また、Alibaba CloudにはSaaS型の開発環境サービスは2019年8月時点で提供されておりませんが、同サービスが提供され次第、本記事を更新して、紹介いたします。
+#### Github/GitLab/Bitbucket
+コンテナを活用した開発では、Gitを用いた形が一般的です。  
+それぞれの概要は以下の通りとなります。  
+<br>
+Github: Gitのリポジトリとして最も有名なリポジトリ。利用における情報量も最も多い。  
+GitLab: Githubの次に有名で、コード管理だけでなく、コンテナレジストリやCIを含めた様々な機能が無料で提供されている。  
+Bitbucket: Atlassian社製で、同社のコラボレーションツールとの相性が良い。  
+#### それ以外のリポジトリ
+Gitリポジトリにおいて、Github/GitLab/Bitbucket以外のリポジトリは情報量が少なく、後述するAlibaba Cloudのコンテナサービスとの相性も良くありません。また、SVN等のGit以外のバージョン管理リポジトリも、情報量の観点から、今現在コンテナ開発に向いているとは言えません。
 
-ただし、バージョン管理リポジトリについては、Github/Gitlab/Bitbucketのいずれかを推奨しております。
-理由としては、後述のContainer Registryサービスからのソースコードの読み取りが、上記3種類のリポジトリから可能な為です。
+## Alibaba Cloudにおける推奨
+#### 開発端末
+開発端末において、Alibaba Cloudによる推奨の選択肢はありません。その為、最もユーザの文化にあった開発端末を推奨します。
+また、Alibaba CloudにはSaaS型の開発環境サービスは2019年9月時点で提供されておりませんが、同サービスが提供され次第、本記事を更新して、紹介いたします。
 
-### 参考リンク一覧
+#### バージョン管理リポジトリ
+バージョン管理リポジトリについては、Github/Gitlab/Bitbucketのいずれかを推奨しております。
+理由としては、Alibaba Cloudのコンテナイメージレジストリサービスである、Container Registryが連携してソースコードの読み取り可能なリポジトリが上記3種類の為です。逆に言えば、有名な上記3種類のGitサービス全てに連携可能となります。
+
+#### 参考リンク一覧
 Alibaba Cloudのコンテナベストプラクティス  
-https://www.alibabacloud.com/help/doc-detail/60951.htm
-
+https://www.alibabacloud.com/help/doc-detail/60951.htm  
+<br>
 コンテナ自動ビルドの設定  
-https://www.alibabacloud.com/help/doc-detail/60997.htm
+https://www.alibabacloud.com/help/doc-detail/60997.htm  
