@@ -12,7 +12,7 @@ draft: false
 1. コンテナデプロイ管理
 1. ログ管理とモニタリング
 
-ログ管理とモニタリングでは、OSS/Enterprise製品とパブリックサービスの２点に焦点を当てて紹介します。
+ログ管理とモニタリングでは、OSS/Enterprise製品とパブリックサービスの２点に焦点を当てて紹介します。その後、Alibaba Cloudにおける推奨を紹介します。
 
 ## ログ管理・モニタリング
 - OSS/Enterprise製品の活用
@@ -20,33 +20,29 @@ draft: false
 - Alibaba Cloudでの選択肢
 
 ### OSS/Enterprise製品の活用
-Container環境においてアプリケーションログとインフラログを対象にして、
-ログ管理・集計の製品と、それらをGUIとして可視化する製品の組み合わせがあります。
+Container環境においてアプリケーションログとインフラログを対象にして、ログ管理・集計の製品と、それらをGUIとして可視化する製品の組み合わせがあります。
 
 - Fluentd + Elasticsearch + Kibana  
 - Prometheus/Grafana
 - Loki/Grafana
 
 ### パブリックサービスでの活用
-クラウド型のサービスとしてDatadogやNew Relicを活用するのも広がっています。
+クラウド型のサービスとしてDatadogやNew Relicを活用するのも広がっています。これらはパブリッククラウドの読み取り権限のアクセスキーを登録する事で、パブリッククラウドインフラ全体のログを収集・可視化する事ができます。また、APMの機能も提供しており、アプリケーションログも並行して取得する事ができます。
 
 - Datadog
 - New Relic
 
 ### Alibaba Cloudにおける選択肢
-Alibaba Cloudにおいてコンテナ内のログとコンテナ外のログを確認する事があります。
-コンテナ内のログはLogServiceを有効化して、同ログを蓄積するように設定する事が一般的です。
-コンテナ外のログ、例えばECSやKubernetesのログに関してはCloudMonitorで確認する事が出来ます。
-CloudMonitorに加えて、Prometheusの利用も推奨されており、共にGrafanaを利用して可視化します。
-ReadOnlyのアクセスキーを払い出す事がルール上許されれば、Datadogを利用して監視する事も可能です。
+Alibaba Cloudにおいてコンテナ内のログとコンテナ外のログを確認する事があります。コンテナ内のログはLogServiceを有効化して、同ログをObject Storage Service(OSS)に蓄積する形が一般的です。ECSやKubernetes等のサーバに関するメトリックはCloudMonitorで確認する事が出来ますが、インフラ全体のログはPrometheusを利用して、Grafanaで可視化する形が推奨されています。また、パブリックサービスの中ではDatadogがAlibaba CloudとのIntegrationを提供しており、同サービス内で一括監視する事も可能です。
 
 アプリケーションログ
   - LogService
-  - Datadog
+  - Datadog APM
 インフラログ
   - CloudMonitor/Grafana
+  - Datadog Alibaba Cloud Integration
+ログ全般
   - Prometheus/Grafana
-  - Datadog
 
 ### 参考リンク一覧
 |タイトル|URL|

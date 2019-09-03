@@ -29,15 +29,16 @@ draft: false
 #### Windows
 プライベートでもビジネスでも最もよく利用されているOSはWindowsであり、慣れ親しんだUIのまま開発できるメリットは大きいです。
 開発ツールとして、Docker Desktop for Windowsが提供されており、Bash for Windowsや各種IDEのDocker Clientプラグインと併せて、よく利用されます。  
-ただ、Windowsのデスクトップ上でDockerコンテナを利用する為にはEditionやBIOSにおいて制限をクリアする必要があります。具体的にはWindows 10 64-bitのPro Edition、Enterprise Edition、もしくはEducation Editionのいずれかで、Hyper-Vが有効化されている必要があります。最新の情報は以下の公式ホームページより確認ください。  
+ただ、Windowsのデスクトップ上でDockerコンテナを利用する為にはEditionやBIOSにおいて制限をクリアする必要があります。具体的にはOSがWindows 10 64-bitで、EditionはPro、Enterprise、もしくはEducationのいずれか、かつHyper-Vが有効化されている必要があります。最新の情報は以下の公式ホームページより確認ください。  
 <br>
-WindowsにおけるDockerインストール要件：https://docs.docker.com/docker-for-windows/install/  
+Docker Desktop for Windowsインストール要件：https://docs.docker.com/docker-for-windows/install/  
 <br>
-上記要件を満たしている場合には、Bash for Windowsもインストールする事で、Windows上でDockerコンテナの開発が可能となります。  
-要件を満たしていない場合には、Vagrantやパブリッククラウド上でLinuxを稼働させる形で開発環境を整えます。
+上記要件を満たしている場合には、Bash for Windowsを併せてインストールする事で、Windows上でDockerコンテナの開発環境が整います。  
+Docker Desktop for Windowsのインストール要件を満たしていない場合には、Vagrantやパブリッククラウド上でLinuxを稼働させる形で開発環境を整えます。
 
 #### macOS
-macOSで開発する場合には、Windowsと比較して制限は少ないです。手順として、以下DockerhubのURLよりdmgパッケージをダウンロードします。
+macOSで開発する場合には、Windowsと比較して制限は少なく、OS X Sierra 10.12かそれより新しいOSが利用要件となります。
+手順として、以下DockerhubのURLよりdmgパッケージをダウンロードします。
 <br>
 https://hub.docker.com/editions/community/docker-ce-desktop-mac  
 <br>
@@ -45,7 +46,7 @@ https://hub.docker.com/editions/community/docker-ce-desktop-mac
 https://docs.docker.com/docker-for-mac/install/
 
 #### Linux/その他
-LinuxもmacOSと同様、以下の公式URLからインストールできますが、OSの種類によってコマンドが異なる点に注意が必要です。詳しくは各URLを参照ください。  
+LinuxもmacOSと同様、以下の公式URLからインストールできます。OSによってコマンドが異なりますが、Dockerを含むパッケージリポジトリを登録して、OSのパッケージ管理コマンドを用いて、ダウンロードおよびインストールする流れとなります。  
 <br>
 [CentOS](https://docs.docker.com/install/linux/docker-ce/centos/) /
 [Debian](https://docs.docker.com/install/linux/docker-ce/debian/) / 
@@ -73,7 +74,7 @@ Gitリポジトリにおいて、Github/GitLab/Bitbucket以外のリポジトリ
 
 #### バージョン管理リポジトリ
 バージョン管理リポジトリについては、Github/Gitlab/Bitbucketのいずれかを推奨しております。
-理由としては、Alibaba Cloudのコンテナイメージレジストリサービスである、Container Registryが連携してソースコードの読み取り可能なリポジトリが上記3種類の為です。逆に言えば、有名な上記3種類のGitサービス全てに連携可能となります。
+理由としては、Alibaba Cloudのコンテナイメージレジストリサービスである、Container Registryが上記のGitレポジトリとのアカウント連携可能な為となります。アカウント連携する事で、ソースコードの読み取りやDockerイメージビルドが自動で設定する事が可能となります。
 
 #### 参考リンク一覧
 Alibaba Cloudのコンテナベストプラクティス  
