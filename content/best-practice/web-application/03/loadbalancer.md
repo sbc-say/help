@@ -3,29 +3,26 @@ title: "負荷分散"
 description: "Alibaba Cloudを用いたWeb三層アーキテクチャを紹介します。"
 date: 2019-05-13T16:20:40+09:00
 weight: 30
-draft: false
+draft: true
 ---
 
-Webアプリケーションを構築する際には以下のコンポーネントが必要となります。
+以下の区分により、Alibaba Cloudを活用したWebアプリケーション構築手法を紹介いたします。
 
-### Components
 1. 名前解決
 1. 負荷分散
 1. Web/APサーバ
 1. データベース/キャッシュ
 
-ここではAlibaba Cloudの負荷分散に関するサービスの基本仕様と設計ポイントを紹介します。
+本項目では、Alibaba Cloudの<b>負荷分散</b>に関するサービスの基本仕様と設計ポイントを紹介します。
 
 ## 負荷分散
  - 対象サービス
  - 基本的な仕様
  - 設計のポイント
- - アーキテクチャ図
+ - 参考リンク一覧
 
 ## 対象サービス
-Alibaba Cloudでロードバランサーの役割を担うのはServer Load Balancerであり、Webアプリケーションを公開する上で利用します。
-またjpegやcss等の静的ファイルを公開する場合には、Object Storage Serviceも利用します。
-これら2つのサービスを介してコンテンツを公開する事で、可用性の高いWebアプリケーションを実現します。
+Webアプリケーションにおいて負荷分散を実現するサービスを3つ紹介します。ひとつはロードバランサーの役割を担うServer Load Balancerです。もうひとつは、jpegやcss等の静的ファイルを公開する際に用いるObject Storage Serviceです。最後に、コンテンツデリバリーサービスとして機能するAlibaba CDNです。以上の3つのサービスを活用する事で、可用性の高いWebアプリケーションを実現します。
 
 ### 基本的な仕様
 - Server Load Balancer (SLB)
@@ -63,6 +60,11 @@ Alibaba Cloudでロードバランサーの役割を担うのはServer Load Bala
     ```
   - Log Serviceというサービスを併用してアプリケーションのログをアップロードする事も可能です。
 
+- Alibaba Cloud CDN
+  - CDNを適用したいドメイン名を登録すると、FQDNが発行される。そのFQDNをCNAMEとしてドメインに登録する。
+
+
+
 ### 設計のポイント
 - SLB
   - 本番環境では最も大きいインスタンスタイプ（slb.s3.large）を指定する事を推奨します。 
@@ -87,6 +89,7 @@ Alibaba Cloudでロードバランサーの役割を担うのはServer Load Bala
 ## 参考リンク一覧
 https://jp.alibabacloud.com/help/product/34269.htm
 
+Alibaba Document
 https://jp.alibabacloud.com/help/product/27537.htm
 
 ### Best Practice in PDF
