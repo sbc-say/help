@@ -18,8 +18,11 @@ find ./docs/* -type f -name index.html -exec sed -i -e  's/\/">/\/index.html">/g
 
 ## Deploy to OSS bucket
 ossutil ls oss://technical-reference/help
+ossutil ls oss://technical-reference/
 ossutil cp -f  ./docs oss://technical-reference/help  --recursive
+ossutil cp -f  ./docs/index.html oss://technical-reference/
+ossutil cp -f  ./docs/404.html oss://technical-reference/
 ossutil ls oss://technical-reference/help
-
+ossutil ls oss://technical-reference/
 
 # EOF
