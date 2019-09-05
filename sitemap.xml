@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/devops/container/01/introduction/</loc>
+    <lastmod>2019-09-04T16:20:40+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/about/sitemap/</loc>
     <lastmod>2019-07-23T10:20:40+09:00</lastmod>
   </url>
@@ -48,6 +53,16 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/devops/container/02/development-environment/</loc>
+    <lastmod>2019-08-13T16:20:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/devops/container/</loc>
+    <lastmod>2019-07-22T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/getting-started/product/</loc>
     <lastmod>2019-07-22T12:30:18+08:00</lastmod>
   </url>
@@ -60,6 +75,11 @@
   <url>
     <loc>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/02/install/</loc>
     <lastmod>2019-07-22T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/devops/container/03/image-management/</loc>
+    <lastmod>2019-08-13T16:20:40+09:00</lastmod>
   </url>
   
   <url>
@@ -83,8 +103,18 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/devops/</loc>
+    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/scenario/terraform/</loc>
     <lastmod>2019-05-13T16:20:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/devops/container/04/deploy-management/</loc>
+    <lastmod>2019-08-13T16:20:40+09:00</lastmod>
   </url>
   
   <url>
@@ -98,13 +128,13 @@
   </url>
   
   <url>
-    <loc>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/05/program-syntax/</loc>
-    <lastmod>2019-07-22T00:00:00+09:00</lastmod>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/devops/container/05/monitoring/</loc>
+    <lastmod>2019-08-13T16:20:40+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.sbcloud.co.jp/help/best-practice/devops/</loc>
-    <lastmod>2019-05-15T10:37:37+09:00</lastmod>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/05/program-syntax/</loc>
+    <lastmod>2019-07-22T00:00:00+09:00</lastmod>
   </url>
   
   <url>
@@ -239,7 +269,7 @@
   
   <url>
     <loc>https://www.sbcloud.co.jp/help/</loc>
-    <lastmod>2019-07-23T10:20:40+09:00</lastmod>
+    <lastmod>2019-09-04T16:20:40+09:00</lastmod>
   </url>
   
   <url>

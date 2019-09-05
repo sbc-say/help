@@ -6,10 +6,23 @@
     <description>Recent content on テクニカルリファレンス</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 23 Jul 2019 10:20:40 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 04 Sep 2019 16:20:40 +0900</lastBuildDate>
     
 	<atom:link href="https://www.sbcloud.co.jp/help/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>イントロダクション</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/container/01/introduction/</link>
+      <pubDate>Wed, 04 Sep 2019 16:20:40 +0900</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/container/01/introduction/</guid>
+      <description> 本記事の狙い 世間一般ではコンテナを用いた開発が一般的になりつつありますがが、Alibaba CloudでもAWSやGCP、Azureと同等かそれ以上のコンテナサービスが揃っており、使い方次第で最もコンテナのメリットを享受できるパブリッククラウドとなります。本項ではコンテナ開発の基礎から、Alibaba Cloudを最大限活用した形までを紹介いたします。
+コンテナ活用とは そもそもコンテナ※を利用する事で、どんなメリットを享受できるのか。
+※containerdを用いたDockerコンテナと定義
+ 開発スピードが早くなり、機能実装やバグ修正までの時間を短くする 開発環境と本番環境の差分が最小限となり、人的バグを極小化する オンプレミスやクラウドを問わず、デプロイが容易になる  エンドユーザがシステムを利用する上で、バックグラウンドがコンテナか仮想サーバかは関係なく、メリットを得るのはシステム開発者です。 システム開発者がAlibaba Cloudにおけるコンテナ活用で得られるメリットを、下記開発フローから順を追って紹介いたします。
+開発フロー  開発環境 コンテナイメージの作成・管理 コンテナデプロイ管理 ログ管理・モニタリング  開発端末  選択肢  Windows MAC SaaS (Cloud9的な何か)  評価基準  Shell/Powershell Docker Desktop MiniKube Microk8s Alibaba Native?   バージョン管理  選択肢  Github Gitlab Bitbucket  評価基準  Alibaba Native? Documentation   イメージビルド  選択肢  Private Server (Jenkins/JenkinsX) Public Service (CircleCI/TravisCI) Alibaba Cloud Managed Service (Container Registry)   イメージリポジトリ  選択肢  Private Repository (Docker Trusted Registry) Public Repository (Dockerhub) Alibaba Cloud Managed Service (Container Registry)   管理方式  選択肢  Custom Middleware (Kubernetes/Mesos/Nomad) Managed Service (Kubernetes)   モニタリング  選択肢  Custom Middleware (Prometheus/ElasticSearch) Managed Service (CloudMonitor)    </description>
+    </item>
     
     <item>
       <title>サイトマップ</title>
@@ -98,7 +111,7 @@ AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの�
       
       <guid>https://www.sbcloud.co.jp/help/getting-started/product/links/</guid>
       <description> 頻繁に利用されるプロダクトの活用リンク一覧を記載します。
-主要プロダクト    製品名 コンテンツテーマ URL     ECS プロダクト紹介 公式ドキュメント   ECS クイックスタート 公式ドキュメント   RDS プロダクト紹介 公式ドキュメント   SLB プロダクト紹介 公式ドキュメント   VPC プロダクト紹介 公式ドキュメント   ExpressConnect プロダクト紹介 公式ドキュメント   CloudMonitor プロダクト紹介 公式ドキュメント   OSS プロダクト紹介 公式ドキュメント    人気のプロダクト    製品名 コンテンツテーマ URL     Container Service for Kubernetes プロダクト紹介 公式ドキュメント   MaxCompute プロダクト紹介 公式ドキュメント   Realtime Compute プロダクト紹介 公式ドキュメント   Image Search プロダクト紹介 公式ドキュメント   Anti-DDoS プロダクト紹介 公式ドキュメント    </description>
+主要プロダクト    製品名 コンテンツテーマ URL     ECS プロダクト紹介 公式ドキュメント   ECS クイックスタート 公式ドキュメント   ECS ベストプラクティス 公式ドキュメント   RDS プロダクト紹介 公式ドキュメント   SLB プロダクト紹介 公式ドキュメント   VPC プロダクト紹介 公式ドキュメント   ExpressConnect プロダクト紹介 公式ドキュメント   CloudMonitor プロダクト紹介 公式ドキュメント   OSS プロダクト紹介 公式ドキュメント    人気のプロダクト    製品名 コンテンツテーマ URL     Container Service for Kubernetes プロダクト紹介 公式ドキュメント   MaxCompute プロダクト紹介 公式ドキュメント   Realtime Compute プロダクト紹介 公式ドキュメント   Image Search プロダクト紹介 公式ドキュメント   Anti-DDoS プロダクト紹介 公式ドキュメント    </description>
     </item>
     
     <item>
@@ -127,6 +140,27 @@ AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの�
     </item>
     
     <item>
+      <title>開発環境</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/container/02/development-environment/</link>
+      <pubDate>Tue, 13 Aug 2019 16:20:40 +0900</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/container/02/development-environment/</guid>
+      <description>以下の区分により、コンテナを活用したAlibaba Cloudにおける開発手法を紹介いたします。
+ 開発環境 コンテナイメージの作成・管理 コンテナデプロイ管理 ログ管理とモニタリング  本項目では、 開発環境 に焦点を当てて、開発端末とバージョン管理システムの選択肢を紹介します。 その後、Alibaba Cloudにおける推奨を紹介します。
+目次  開発端末 バージョン管理 Alibaba Cloudにおける推奨  開発端末  Windows macOS Linux/その他  Windows プライベートでもビジネスでも最もよく利用されているOSはWindowsであり、慣れ親しんだUIのまま開発できるメリットは大きいです。 開発ツールとして、Docker Desktop for Windowsが提供されており、Bash for Windowsや各種IDEのDocker Clientプラグインと併せて、よく利用されます。
+ただ、Windowsのデスクトップ上でDockerコンテナを利用する為にはEditionやBIOSにおいて制限をクリアする必要があります。具体的にはOSがWindows 10 64-bitで、EditionはPro、Enterprise、もしくはEducationのいずれか、かつHyper-Vが有効化されている必要があります。最新の情報は以下の公式ホームページより確認ください。
+Docker Desktop for Windowsインストール要件：https://docs.docker.com/docker-for-windows/install/
+上記要件を満たしている場合には、Bash for Windowsを併せてインストールする事で、Windows上でDockerコンテナの開発環境が整います。
+Docker Desktop for Windowsのインストール要件を満たしていない場合には、Vagrantやパブリッククラウド上でLinuxを稼働させる形で開発環境を整えます。
+macOS macOSで開発する場合には、Windowsと比較して制限は少なく、OS X Sierra 10.12かそれより新しいOSが利用要件となります。 手順として、以下DockerhubのURLよりdmgパッケージをダウンロードします。 https://hub.docker.com/editions/community/docker-ce-desktop-mac
+その後、以下のDocker公式のURLの手順を参照して、インストールする事でDockerコンテナが利用可能となります。
+https://docs.docker.com/docker-for-mac/install/
+Linux/その他 LinuxもmacOSと同様、以下の公式URLからインストールできます。OSによってコマンドが異なりますが、Dockerを含むパッケージリポジトリを登録して、OSのパッケージ管理コマンドを用いて、ダウンロードおよびインストールする流れとなります。
+CentOS / Debian / Fedora / Ubuntu
+バージョン管理リポジトリ  Github/Gitlab/Bitbucket それ以外のリポジトリ  Github/GitLab/Bitbucket コンテナを活用した開発では、Gitを用いた形が一般的です。</description>
+    </item>
+    
+    <item>
       <title>インストール</title>
       <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/02/install/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
@@ -141,6 +175,20 @@ $ brew install tfenv $ tfenv --version tfenv 0.6.0  完了したら、インス�
 $ tfenv list-remote 0.12.0-beta1 0.11.13 ・・・  最新の安定バージョンかつAlibabaCloud Terraform対応は 0.11.13です。0.11.13を次のようにインストールします。
 $ tfenv install 0.11.13  terraformには .terraform-versionというファイルがあり、こちらにバージョンを記述すると、そのバージョンを自動的にインストールできます。
 $ echo 0.11.13 &amp;gt; .</description>
+    </item>
+    
+    <item>
+      <title>コンテナイメージ作成・管理</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/container/03/image-management/</link>
+      <pubDate>Tue, 13 Aug 2019 16:20:40 +0900</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/container/03/image-management/</guid>
+      <description>以下の区分により、コンテナを活用したAlibaba Cloudにおける開発手法を紹介いたします。
+ 開発環境 コンテナイメージの作成・管理 コンテナデプロイ管理 ログ管理とモニタリング  本項目では、 コンテナイメージ作成・管理 に焦点を当てて、インターネットと接続しないプライベート環境における手法とインターネット上で利用可能なパブリックサービスを用いた手法の2種類を紹介します。その後、Alibaba Cloudにおける推奨を紹介します。
+コンテナイメージ管理  プライベート環境における手法 パブリックサービスを用いた手法 Alibaba Cloudにおける推奨  プライベート環境における手法 プライベート環境（外部公開していないサーバ）にてコンテナをビルドする時には、まずコンテナイメージをビルドするスクリプトを自身で作成します。その後、パイプラインツールを実行するサーバを作成してその上で、「コードソースの変更を検知して、ビルドスクリプトを実行、ビルドされたコンテナイメージをイメージリポジトリにプッシュする」仕組みを実装するのが一般的です。
+パイプラインツールはJenkinsが無償で利用でき、最も広く利用されています。パブリックサービスであるGitLabCIやCircleCIの有償パッケージを、プライベート環境に導入する事も可能です。コンテナイメージリポジトリは有償のDocker Trusted RegistryやGitlab Enterprise Registryが利用可能です。
+ イメージビルド  Jenkins/JenkinsX GitLabCI CircleCI Enterprise  イメージレジストリ  Docker Trusted Registry Gitlab Enterprise Registry   パブリックサービスを用いた手法 パブリックサービスを用いてコンテナイメージをビルドする時も、自前でビルドスクリプトを作成する点は変更ありません。 ただ独自の環境変数やパイプライン処理が事前に提供されている為、Jenkins等のパイプラインツールよりも簡素的に実装できる事が多く、何よりサーバの管理が不要な為、運用における利便性に優れていると言えます。
+ イメージビルド  GitLabCI CircleCI TravisCI  イメージレジストリ  Dockerhub Gitlab Registry   Alibaba Cloudでの選択肢 Alibaba CloudではContainer Registryというイメージサービスの機能の一つとしてコンテナのビルドが実行できます。 Container RegistryはGithub/Gitlab/Bitbucketのソースコードを読み取り、自動でビルドを実行して イメージをリポジトリにプッシュします。特徴的なのは他のサービスでは必要となるビルドスクリプトの作成や YAMLファイルが一切不要で、GUI操作のみで一貫してビルドからプッシュまでを設定できる点です。 この為、Container Registryは有用な選択肢の一つと言えるでしょう。</description>
     </item>
     
     <item>
@@ -174,6 +222,20 @@ main.tf … モジュールが内包するリソース、データソースな�
     </item>
     
     <item>
+      <title>コンテナデプロイ管理</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/container/04/deploy-management/</link>
+      <pubDate>Tue, 13 Aug 2019 16:20:40 +0900</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/container/04/deploy-management/</guid>
+      <description>本記事では、コンテナデプロイ管理について紹介いたします。
+ 開発環境 コンテナイメージの作成・管理 コンテナデプロイ管理 ログ管理とモニタリング  コンテナデプロイ管理では、開発環境と本番環境の２点に焦点を当てて紹介します。その後、Alibaba Cloudにおける推奨を紹介します。
+コンテナデプロイ管理  開発環境 本番環境 Alibaba Cloudでの選択肢  開発環境 開発環境の場合ではコードの変化に伴って、コンテナイメージを作成、環境変数を伴ってデプロイする必要があります。 その際には各種IDEのプラグインよりdocker buildを実践して、コンテナイメージを作成して、docker-composeを使って他のコンテナとの連携する方法が最もシンプルです。また、本番環境でKubernetesを利用する場合には、Minikubeやmicrok8sを用いて、Kubernetes環境をローカルの開発環境に再現する事も有用です。
+ IDEのプラグイン docker-compose Minukube microk8s scaffold  本番環境 本番環境では、可用性を保つ為にサーバでクラスターを組み、冗長性を保った上でコンテナを動作させる事が一般的です。 簡易的な機能のみであればNomad、フルスタックな機能が必要であればKubernetesが利用できます。
+ Nomad Kubernetes  Alibaba Cloudでの選択肢 Alibaba Cloudでは現在のデファクトスタンダードと言えるKubernetesを３種類の形で提供しています。 Kubernetesは大きくMaster nodeとWorker nodeの2種類のホストで構成され、それぞれをユーザが管理するか Alibaba Cloudの任せるかという違いがあります。
+   種類 Master nodeの管理 Worker nodeの管理     Dedicated ユーザ ユーザ   Managed Alibaba Cloud ユーザ   Serverless Alibaba Cloud Alibaba Cloud    Dedicatedは既存でKubernetesを利用していて、その設定を引き継ぎたいなど、より細かい設定をしたい要件がある時、 インフラの細かい設定が不要でとにかく使いたい場合はServerless、その中間の選択肢がManagedとなります。</description>
+    </item>
+    
+    <item>
       <title>サンプルプロジェクトの実行</title>
       <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/04/run-terraform/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
@@ -186,6 +248,22 @@ Terraformの実行は非常にシンプルです。以下図のようにterrafor
 $ terraform init Initializing provider plugins... ・・・ Terraform has been successfully initialized!  
 2. terraform plan 次は「terraform plan」コマンドです。 RAMなどの情報を別途設定ファイル confing.tfvars へ記載した場合は以下のコマンドで実行します。
 $ terraform plan -var-file=&amp;quot;confing.tfvars&amp;quot; Refreshing Terraform state in-memory prior to plan... The refreshed state will be used to calculate this plan, but will not be persisted to local or remote state storage.</description>
+    </item>
+    
+    <item>
+      <title>ログ管理とモニタリング</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/devops/container/05/monitoring/</link>
+      <pubDate>Tue, 13 Aug 2019 16:20:40 +0900</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/container/05/monitoring/</guid>
+      <description>本記事では、ログ管理とモニタリングについて紹介いたします。
+ 開発環境 コンテナイメージの作成・管理 コンテナデプロイ管理 ログ管理とモニタリング  ログ管理とモニタリングでは、OSS/Enterprise製品とパブリックサービスの２点に焦点を当てて紹介します。その後、Alibaba Cloudにおける推奨を紹介します。
+ログ管理・モニタリング  OSS/Enterprise製品の活用 パブリックサービスの活用 Alibaba Cloudでの選択肢  OSS/Enterprise製品の活用 Container環境においてアプリケーションログとインフラログを対象にして、ログ管理・集計の製品と、それらをGUIとして可視化する製品の組み合わせがあります。
+ Fluentd + Elasticsearch + Kibana
+ Prometheus/Grafana Loki/Grafana  パブリックサービスでの活用 クラウド型のサービスとしてDatadogやNew Relicを活用するのも広がっています。これらはパブリッククラウドの読み取り権限のアクセスキーを登録する事で、パブリッククラウドインフラ全体のログを収集・可視化する事ができます。また、APMの機能も提供しており、アプリケーションログも並行して取得する事ができます。
+ Datadog New Relic  Alibaba Cloudにおける選択肢 Alibaba Cloudにおいてコンテナ内のログとコンテナ外のログを確認する事があります。コンテナ内のログはLogServiceを有効化して、同ログをObject Storage Service(OSS)に蓄積する形が一般的です。ECSやKubernetes等のサーバに関するメトリックはCloudMonitorで確認する事が出来ますが、インフラ全体のログはPrometheusを利用して、Grafanaで可視化する形が推奨されています。また、パブリックサービスの中ではDatadogがAlibaba CloudとのIntegrationを提供しており、同サービス内で一括監視する事も可能です。
+アプリケーションログ - LogService - Datadog APM インフラログ - CloudMonitor/Grafana - Datadog Alibaba Cloud Integration ログ全般 - Prometheus/Grafana
+参考リンク一覧    タイトル URL     Prometheusモニタリングシステムのデプロイ https://jp.</description>
     </item>
     
     <item>
