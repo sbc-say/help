@@ -6,7 +6,7 @@ executors:
       - image: cibuilds/hugo:0.54
   ossutil:
     docker:
-      - image: circleci/golang:1.12
+      - image: golang
 jobs:
   test-job:
     executor:
@@ -42,7 +42,6 @@ jobs:
                 }
             }"
             $DINGTALK_WEBHOOK_URL
-
       - run:
           name: Chat Notification Success
           when: on_success
@@ -104,7 +103,6 @@ jobs:
                 }
             }"
             $DINGTALK_WEBHOOK_URL
-
       - run:
           name: Chat Notification Success
           when: on_success
@@ -129,28 +127,23 @@ jobs:
     steps:
       - run:
           name: Update enviroment
-          command: apt-get update && apt-get install -y git
+          command: apt-get update && apt-get install -y git hugo
       - run:
           name: Install OSS util tool
           command: go get github.com/aliyun/ossutil && ossutil --version
       - checkout
       - run:
           name: Sleep a little
-          command: sleep 2
+          command: sleep 5
       - run:
           name: Build Hugo contents
           command: |
             hugo
       - run:
-          name: List current oss bucket
-          command: ossutil ls oss://technical-reference
-      - run:
-          name: Deploy to OSS Bucket
+          name: Deploy to OSS Pages
           command: |
-            ossutil cp -f  ./docs oss://technical-reference/help  --recursive
-            ossutil cp -f  ./docs/index.html oss://technical-reference/
-            ossutil cp -f  ./docs/404.html oss://technical-reference/
-            ossutil ls oss://technical-reference
+            chmod +x ./.circleci/oss-deploy.sh
+            sh -x ./.circleci/oss-deploy.sh
       - run:
           name: Chat Notification Fail
           when: on_fail
@@ -169,7 +162,6 @@ jobs:
                 }
             }"
             $DINGTALK_WEBHOOK_URL
-
       - run:
           name: Chat Notification Success
           when: on_success
@@ -188,7 +180,6 @@ jobs:
                 }
             }"
             $DINGTALK_WEBHOOK_URL
-
 workflows:
   test-and-deploy:
     jobs:
@@ -204,4 +195,4 @@ workflows:
           filters:
             branches:
               only:
-                - oss-deploy
+                - oss-prod-deploy
