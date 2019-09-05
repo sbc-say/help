@@ -162,6 +162,7 @@ jobs:
                 }
             }"
             $DINGTALK_WEBHOOK_URL
+
       - run:
           name: Chat Notification Success
           when: on_success
@@ -180,6 +181,7 @@ jobs:
                 }
             }"
             $DINGTALK_WEBHOOK_URL
+
 workflows:
   test-and-deploy:
     jobs:
