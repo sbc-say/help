@@ -138,12 +138,18 @@ jobs:
           name: Sleep a little
           command: sleep 2
       - run:
+          name: Build Hugo contents
+          command: |
+            hugo
+      - run:
           name: List current oss bucket
           command: ossutil ls oss://technical-reference
       - run:
           name: Deploy to OSS Bucket
           command: |
-            ossutil cp -f  ./docs oss://technical-reference/  --recursive
+            ossutil cp -f  ./docs oss://technical-reference/help  --recursive
+            ossutil cp -f  ./docs/index.html oss://technical-reference/
+            ossutil cp -f  ./docs/404.html oss://technical-reference/
             ossutil ls oss://technical-reference
       - run:
           name: Chat Notification Fail
