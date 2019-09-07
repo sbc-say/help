@@ -75,10 +75,3 @@ Gitリポジトリにおいて、Github/GitLab/Bitbucket以外のリポジトリ
 #### バージョン管理リポジトリ
 バージョン管理リポジトリについては、Github/Gitlab/Bitbucketのいずれかを推奨しております。
 理由としては、Alibaba Cloudのコンテナイメージレジストリサービスである、Container Registryが上記のGitレポジトリとのアカウント連携可能な為となります。アカウント連携する事で、ソースコードの読み取りやDockerイメージビルドが自動で設定する事が可能となります。
-
-#### 参考リンク一覧
-Alibaba Cloudのコンテナベストプラクティス  
-https://www.alibabacloud.com/help/doc-detail/60951.htm  
-<br>
-コンテナ自動ビルドの設定  
-https://www.alibabacloud.com/help/doc-detail/60997.htm  

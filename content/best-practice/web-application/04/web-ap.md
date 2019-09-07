@@ -6,25 +6,24 @@ weight: 50
 draft: true
 ---
 
-Webアプリケーションを構築する際には以下のコンポーネントが必要となります。
+以下の区分により、Alibaba Cloudを活用したWebアプリケーション構築手法を紹介いたします。
 
-### Components
 1. 名前解決
 1. 負荷分散
 1. Web/APサーバ
 1. データベース/キャッシュ
 
-ここではAlibaba CloudのWeb/APサーバに関するサービスの基本仕様と設計ポイントを紹介します。
+本項目では、Alibaba Cloudの<b>Web/APサーバ</b>に関するサービスの仕様と設計ポイントを紹介します。
 
-## Web/APサーバ
+## 負荷分散
  - 対象サービス
  - 基本的な仕様
  - 設計のポイント
- - アーキテクチャ図
+ - 参考リンク一覧
 
 ## 対象サービス
-仮想サーバであるElastic Compute Serviceを用いるのが最も一般的です。
-加えて昨今はContainer Serviceもアプリケーション環境として活用されており、こちらも紹介します。
+Web/APサーバとして用いるサービスは、仮想サーバであるElastic Compute Serviceを用いるのが最も一般的です。
+Autoscalingを実装します。加えてContainerServiceもアプリケーション環境として活用されており、こちらも紹介します。
  
 ### 基本的な仕様
 - ECS
@@ -37,6 +36,11 @@ Webアプリケーションを構築する際には以下のコンポーネン�
   - Webを公開していると、セキュリティアラートを能動的に検知します。
   - インスタンス削除をリリースと呼び、時間指定リリースが可能です。
 
+- Auto Scaling
+  - インスタンスの最大数・最小数、インスタンスをデプロイするVPC、インスタンスの削除ポリシーを設定して利用します。
+  - 最初に「スケーリンググループ」を作成してスケーリングに関する設定を行い、次に「スケーリング設定」を作成して、スケールするECSの設定を紐付けます。
+  - 既存のインスタンスを、オートスケーリンググループに追加することも可能です。
+ 
 - Container Service
   - Kubernetesを利用して、Dedicated Kubernetes・Managed Kubernetes・Serverless Kubernetesが利用できます。
   - フロントエンドとしてSLBを連携作成します。
@@ -56,18 +60,17 @@ Webアプリケーションを構築する際には以下のコンポーネン�
   - 同一セキュリテイグループに紐付くインスタンス間の通信は全許可されます。
   - AliyunOSの場合、NginxをパッケージインストールしようとするとTerwayがインストールされます。
 
+- Auto Scaling
+  - スケーリング設定の代わりに起動テンプレートを使用すると、既存のすべてのスケーリング設定が自動的に無効になります。
+  - 台数の細かく調整する時には、スケーリングルールを作成・実行することで、スケーリングアクティビティをトリガーできます。
+
 - Container Service
   - リージョンやアカウントの種類によって、Container Registryが利用できない等一部利用可能なサービスに違いがあります。
   - DockerfileにENVとして記載された環境変数がそのままコンソールの環境変数項目にもパースされるので、環境変数は
     docker-entrypoint.sh等のカスタムスクリプト内で指定するよりもDockerfileで環境変数を指定する方が手間が省けます。
 
-## アーキテクチャ図
-ECS利用した場合の構成図  
-![Show as JPEG](/help/image/23.1.png)
-Container Service利用した場合の構成図  
-![Show as JPEG](/help/image/23.1.png)
-
 ## 参考リンク一覧
 https://jp.alibabacloud.com/help/product/34269.htm
 https://jp.alibabacloud.com/help/product/27537.htm
 
+Auto Scalingのよくある質問 https://jp.alibabacloud.com/help/faq-detail/25967.htm

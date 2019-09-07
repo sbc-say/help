@@ -52,9 +52,7 @@ Dedicatedは既存でKubernetesを利用していて、その設定を引き継�
 インフラの細かい設定が不要でとにかく使いたい場合はServerless、その中間の選択肢がManagedとなります。
 
 ## 参考リンク一覧
-Container Service for Kubernetes とは  
-https://jp.alibabacloud.com/help/doc-detail/86737.htm
-
-Alibaba Cloud Kubernetes と自作 Kubernetes  
-https://jp.alibabacloud.com/help/doc-detail/69575.htm
-
+|タイトル|URL|
+| ---- | ---- |
+|Container Service for Kubernetes とは|https://jp.alibabacloud.com/help/doc-detail/86737.htm|
+|Alibaba Cloud Kubernetes と自作 Kubernetes|https://jp.alibabacloud.com/help/doc-detail/69575.htm|

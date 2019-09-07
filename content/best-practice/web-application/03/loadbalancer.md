@@ -61,9 +61,25 @@ Webアプリケーションにおいて負荷分散を実現するサービス�
   - Log Serviceというサービスを併用してアプリケーションのログをアップロードする事も可能です。
 
 - Alibaba Cloud CDN
-  - CDNを適用したいドメイン名を登録すると、FQDNが発行される。そのFQDNをCNAMEとしてドメインに登録する。
-
-
+  - CDNを適用したいドメイン名を登録すると、CDNとしてのFQDNが発行されます。発行されたFQDNをCNAMEとして登録します。
+    例："*.example.com"をCDNに登録後、"foo.bar.com"が発行される。CNAMEレコードとして"foo.bar.com"のValueを"*.example.com"でDomainに登録
+  - 最適化配信の為に、コンテンツタイプを以下から選択します。
+    - Image and Small File
+    - Large File Download
+    - VOD (Video on Demand)
+    - Live Streaming
+    - DCDN（Dynamic CDN）: コンテンツタイプ、URI、リクエスト方法、カスタム HTTP ヘッダーを指定することで、動的コンテンツと静的コンテンツを区別して配信する。
+　- CDNのオリジン設定は以下から対象を選択します。
+    - OSS Domain
+    - IP
+    - Origin Domain
+    - FC Domain (Function Compute Domain)
+　- 対象リージョンを以下から選択します。中国を含む場合にはICPライセンスの登録が必要です。
+    - 中国本土
+    - 中国本土と全リージョン
+    - 中国を除く全リージョン
+  - リファラーもしくはユーザエージェントによるブラックリスト/ホワイトリストでアクセス制御可能です。
+  - その他のパラメータは[こちら](https://jp.alibabacloud.com/help/doc-detail/27125.htm)から確認できます。
 
 ### 設計のポイント
 - SLB
@@ -77,38 +93,29 @@ Webアプリケーションにおいて負荷分散を実現するサービス�
   - バックエンドとして、デフォルトサーバーグループ、VServerグループ、アクティブ/スタンバイサーバーグループがありそれぞれ使い分ける事ができます。  
     ただ、特別な用途がなければVServerグループが最も無難な選択肢です。
   - マルチゾーンに配置して、プライマリゾーンとバックアップゾーンを指定しますが、プライマリゾーンにしかトラフィックは流れません。
+
 - OSS
   - 権限管理のサービスとしてRAMを用いますが、OSSにアクセスする権限は最小限に設定します。
   - 1ファイルの最大サイズは48.8TBで、保存できる容量は無制限の為、コスト管理に気をつける必要があります。
   - 1ファイルが5GBを超える場合、マルチパートアップロードと言うモードでファイルを分割してアップロードする必要があります。
+
+- CDN
+  - Alibaba Cloud CDNにドメインを登録するだけでなく、DomainサービスでCDN用のCNAMEを登録して初めて使えるようになります。
+  - オリジンサイトを ECS にデプロイする場合は、ECS の帯域幅に注意してください。この帯域幅は、ビジネストラフィック全体の 20% 以上とすることをお勧めします。
+  - Alibaba CloudMonitorと連携して、CDNのメトリックに対応したアラームルールを設定する事を推奨します。
 
 ## アーキテクチャ図
 システム構成  
 ![Show as JPEG](/help/image/23.1.png)
 
 ## 参考リンク一覧
-https://jp.alibabacloud.com/help/product/34269.htm
-
-Alibaba Document
-https://jp.alibabacloud.com/help/product/27537.htm
-
-### Best Practice in PDF
-http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download/pdf/DNSLB11825295_ja-JP_jp_190524094546_public_48f51f1c98dba2f44bbc936c3f27f11b.pdf
-
-### SDKを利用したOSSへの一時公開
-https://jp.alibabacloud.com/help/doc-detail/32122.htm
-
-### リファラーホワイトリスト設定
-https://jp.alibabacloud.com/help/doc-detail/32127.htm?spm=a21mg.p38356.b99.482.33ed6d34SQp2RX
-
-### バケットのアクセスログ設定
-https://jp.alibabacloud.com/help/doc-detail/32125.htm?spm=a21mg.p38356.b99.480.3623431frijy4g
-
-## OSS PDF Best Practice
-http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/pdf/oss-user-guide-jp-ja-2018-02-14.pdf
-
-## ECSのログ取得
-https://www.alibabacloud.com/help/doc-detail/72561.htm?spm=a2c63.p38356.b99.29.351e45acTnqpib
-
-## OSSへのログ送信
-https://www.alibabacloud.com/help/doc-detail/29002.htm?spm=a2c63.p38356.b99.285.2eff592fnf9HNU
+|タイトル|URL|
+| ---- | ---- |
+|SLB Documentation |https://jp.alibabacloud.com/help/product/27537.htm|
+|SLB Best Practice in PDF|http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download/pdf/DNSLB11825295_ja-JP_jp_190524094546_public_48f51f1c98dba2f44bbc936c3f27f11b.pdf|
+|OSS Best Practice in PDF|http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/pdf/oss-user-guide-jp-ja-2018-02-14.pdf|
+|OSS SDKを利用したバケットの一時公開|https://jp.alibabacloud.com/help/doc-detail/32122.htm|
+|OSS リファラーホワイトリスト設定|https://jp.alibabacloud.com/help/doc-detail/32127.htm?spm=a21mg.p38356.b99.482.33ed6d34SQp2RX|
+|OSS バケットのアクセスログ設定|https://jp.alibabacloud.com/help/doc-detail/32125.htm?spm=a21mg.p38356.b99.480.3623431frijy4g|
+|OOS ECSのログ取得|https://www.alibabacloud.com/help/doc-detail/72561.htm?spm=a2c63.p38356.b99.29.351e45acTnqpib|
+|OSSへのログ送信|https://www.alibabacloud.com/help/doc-detail/29002.htm?spm=a2c63.p38356.b99.285.2eff592fnf9HNU|
