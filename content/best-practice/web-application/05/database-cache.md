@@ -40,9 +40,20 @@ NoSQL Databaseとして、Aspara for MongoDBとTableStore( https://www.alibabacl
   - コンソールからパラメータの書き換え可能
   - 文字コードはデータベースの仕様に準拠
 - Polar DB
-  - Managedされていて、管理不要
+  - 
+  - 2019年8月末時点でジャカルタリージョンのみ利用可能です。
 - Aspara for MongoDB
-  - Managedされていて、管理不要
+  - レプリカセットかシャーディングかの選択をした後に、リージョン、VPC、スペック、MongoDBバージョン、レプリカ/シャーディング数、パスワードを入力して作成
+  - 作成後には主に以下の設定が可能となります。
+    - バックアップ・リカバリ
+    - リソース監視
+    - アラームルール設定
+    - パラメータ設定
+    - 監査ログの確認
+    - スロークエリ含むログ確認
+    - インデックス最適化
+    - Data Transfer Serviceを用いた既存MongoDBの移行
+  
 - TableStore
   - Managedされていて、管理不要
 - Aspara for Redis

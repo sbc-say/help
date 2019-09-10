@@ -70,7 +70,7 @@ Autoscalingを実装します。加えてContainerServiceもアプリケーシ�
     docker-entrypoint.sh等のカスタムスクリプト内で指定するよりもDockerfileで環境変数を指定する方が手間が省けます。
 
 ## 参考リンク一覧
-https://jp.alibabacloud.com/help/product/34269.htm
-https://jp.alibabacloud.com/help/product/27537.htm
+|タイトル|URL|
+| ---- | ---- |
+|Auto Scalingのよくある質問DF|https://jp.alibabacloud.com/help/faq-detail/25967.htm|
 
-Auto Scalingのよくある質問 https://jp.alibabacloud.com/help/faq-detail/25967.htm
