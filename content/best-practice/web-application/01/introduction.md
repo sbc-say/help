@@ -3,7 +3,7 @@ title: "イントロダクション"
 description: "Alibaba Cloudを用いたWeb三層アーキテクチャを紹介します。"
 date: 2019-09-04T16:20:40+09:00
 weight: 10
-draft: true
+draft: false
 ---
 
 ### 本記事の狙い
@@ -22,9 +22,8 @@ draft: true
 1. Web/APサーバ
 1. データベース/キャッシュ
 
-### 　参考URL  
-http://alicloud-common.oss-ap-southeast-1.aliyuncs.com/Alibaba%20Cloud%20Solution%20Infrastructure%20-%20Web%20Application%20Hosting.pdf
-
-How to Set up a Website with Alibaba Cloud Web Hosting and Domains
-https://www.alibabacloud.com/getting-started/projects/how-to-set-up-a-website-with-alibaba-cloud-web
-
+### 参考リンク
+|タイトル|URL|
+| ---- | ---- |
+|Alibaba Cloud Solution Infrastructure Web Application Hosting.pdf | http://alicloud-common.oss-ap-southeast-1.aliyuncs.com/Alibaba%20Cloud%20Solution%20Infrastructure%20-%20Web%20Application%20Hosting.pdf|
+|How to Set up a Website (FTP Server) with Alibaba Cloud Web Hosting and Domains| https://www.alibabacloud.com/getting-started/projects/how-to-set-up-a-website-with-alibaba-cloud-web|
