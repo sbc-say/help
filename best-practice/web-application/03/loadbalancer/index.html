@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.54.0" />
     <title>SB Cloud&nbsp;テクニカルリファレンス</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-09-10T05:54:18 UTC">
-<title> :: テクニカルリファレンス</title>
+<title>負荷分散 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -48,7 +47,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-<meta name="description" content="">
+<meta name="description" content="Alibaba Cloudを用いたWeb三層アーキテクチャを紹介します。">
 
         
 
@@ -58,7 +57,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
   </head>
-  <body data-url="/help/">
+  <body data-url="/help/best-practice/web-application/03/loadbalancer/">
     
       <header>
 
@@ -148,10 +147,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/best-practice/">ベストプラクティス</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/advisory/" class="dd-item">
@@ -332,10 +332,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/web-application/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/web-application/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/best-practice/web-application/">Webアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/web-application/">Webアプリケーション</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/web-application/01/introduction/" class="dd-item">
@@ -352,7 +353,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/best-practice/web-application/03/loadbalancer/" class="dd-item">
+      <li data-nav-id="/help/best-practice/web-application/03/loadbalancer/" class="dd-item active">
         <div>
           <a href="/help/best-practice/web-application/03/loadbalancer/">
             負荷分散
@@ -552,6 +553,21 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
         <span class="links">
         
 
+
+
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/web-application/'>Webアプリケーション</a> > 負荷分散
+
+ 
+
+ 
+
  
 
 
@@ -565,7 +581,22 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <option value="/help/getting-started/" >
    Getting Started</option>
     <option value="/help/best-practice/" >
-   ベストプラクティス</option>
+   ベストプラクティス</option> 
+      <option value="/help/best-practice/advisory/" >- アドバイザリ</option>
+      <option value="/help/best-practice/pricing/" >- 料金体系</option>
+    <option value="/help/best-practice/devops/" >
+  - 
+   DevOps</option>
+    <option value="/help/best-practice/web-application/" >
+  - 
+   Webアプリケーション</option> 
+      <option value="/help/best-practice/web-application/01/introduction/" >-- イントロダクション</option>
+      <option value="/help/best-practice/web-application/02/name-resolve/" >-- 名前解決</option>
+      <option value="/help/best-practice/web-application/03/loadbalancer/"  selected>-- 負荷分散</option>
+      <option value="/help/best-practice/web-application/04/web-ap/" >-- Web/APサーバ</option>
+      <option value="/help/best-practice/web-application/05/database/" >-- データベース</option>
+  
+  
     <option value="/help/scenario/" >
    ユースケース別シナリオ</option>
     <option value="/help/faq/" >
@@ -579,61 +610,245 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       </center>
     </div>
 
-    
+    <h1>負荷分散</h1>
 
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
+    
 
+<p>以下の区分により、Alibaba Cloudを活用したWebアプリケーション構築手法を紹介いたします。</p>
 
+<ol>
+<li>名前解決</li>
+<li>負荷分散</li>
+<li>Web/APサーバ</li>
+<li>データベース/キャッシュ</li>
+</ol>
 
-<h1 id="sbc-technical-reference">SBC Technical Reference</h1>
+<p>本項目では、Alibaba Cloudの<b>負荷分散</b>に関するサービスの基本仕様と設計ポイントを紹介します。</p>
 
-<h2 id="1-getting-started-hahahugoshortcode-0xc000165900-1-hbhb"><a href="/help/getting-started/">1. Getting Started</a></h2>
-
-<ul>
-<li><a href="/help/getting-started/registration/">アカウント登録</a></li>
-<li><a href="/help/getting-started/product/">プロダクトの紹介</a></li>
-<li><a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a></li>
-</ul>
-
-<h3 id="2-ベストプラクティス-hahahugoshortcode-0xc000165900-5-hbhb"><a href="/help/best-practice/">2. ベストプラクティス</a></h3>
+<h2 id="負荷分散">負荷分散</h2>
 
 <ul>
-<li><a href="/help/best-practice/advisory/">アドバイザリ</a></li>
-<li><a href="">個別プロダクト</a></li>
-<li><a href="/help/best-practice/devops/">DevOps</a></li>
+<li>対象サービス</li>
+<li>基本的な仕様</li>
+<li>設計のポイント</li>
+<li>参考リンク一覧</li>
 </ul>
 
-<h2 id="3-ユースケース別シナリオ-hahahugoshortcode-0xc000165900-9-hbhb"><a href="/help/scenario/">3. ユースケース別シナリオ</a></h2>
+<h2 id="対象サービス">対象サービス</h2>
+
+<p>Webアプリケーションにおいて負荷分散を実現するサービスを3つ紹介します。ひとつはロードバランサーの役割を担うServer Load Balancerです。もうひとつは、jpegやcss等の静的ファイルを公開する際に用いるObject Storage Serviceです。最後に、コンテンツデリバリーサービスとして機能するAlibaba CDNです。以上の3つのサービスを活用する事で、可用性の高いWebアプリケーションを実現します。</p>
+
+<h3 id="基本的な仕様">基本的な仕様</h3>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">Server Load Balancer (SLB)</div>
+	<div class="panel-body"><ul>
+<li>SLBインスタンスを作成する際、以下のパラメータを入力します。<br>
 
 <ul>
-<li><a href="/help/scenario/terraform/">Terraform</a></li>
-</ul>
-
-<h2 id="4-よくある質問-hahahugoshortcode-0xc000165900-11-hbhb"><a href="/help/faq/">4. よくある質問</a></h2>
+<li>インスタンス名<br></li>
+<li>スペック<br></li>
+<li>インターネット公開かイントラネット公開か<br></li>
+<li>アベイラビリティゾーンの設定<br>
 
 <ul>
-<li><a href="/help/faq/ecs/">ECS</a></li>
-<li><a href="/help/faq/rds/">RDS</a></li>
-<li><a href="/help/faq/slb/">SLB</a></li>
-<li><a href="/help/faq/oss/">OSS</a></li>
-<li><a href="/help/faq/price/">料金</a></li>
-<li><a href="/help/faq/account/">アカウント</a></li>
-<li><a href="/help/faq/support/">サポート</a></li>
+<li>プライマリゾーンとバックアップゾーン<br></li>
+</ul></li>
+</ul></li>
+<li>バックエンドに複数のECSからなるサーバグループを指定、ヘルスチェックを有効化して、疎通確認します。<br></li>
+<li>SLBインスタンスのIPアドレスもしくはCNAMEを、A/CNAMEレコード登録してドメインとして公開します。<br></li>
+<li>SLBインスタンスに付与されたIPアドレスは静的であり、動的変更されません。<br></li>
+<li>証明書を登録して、SSLアクセラレータとして機能させます。<br></li>
+<li>WebSocketやHTTP2.0、セッション維持の有効・無効を指定できます。<br></li>
+<li>物理ロードバランサと同じようなセキュリティルールを設定してアクセス制御します。同ルールには以下が含まれます。<br>
+
+<ul>
+<li>アクセスの許可もしくは禁止（ホワイトリストとブラックリストの双方として機能する）<br></li>
+<li>プロトコルとポート番号<br></li>
+<li>1~100までの優先番号をつけ、数字が小さい方から優先適用<br></li>
+</ul></li>
 </ul>
+</div>
+	
+</div>
 
 
+<div class="panel panel-primary">
+	<div class="panel-heading">Object Storage Service (OSS)</div>
+	<div class="panel-body"><ul>
+<li>バケットを作成して、その配下にファイルをアップロードして利用します。<br></li>
+<li>オブジェクトストレージとして一般的なGET/HEAD/PUT/POST/DELETEに対応しています。<br></li>
+<li>バケットには標準ストレージ、低頻度アクセスストレージ、アーカイブストレージと3種類のタイプがあります。<br></li>
+<li>Web公開する機能を有しています。<br>
+
+<ul>
+<li>HTMLを置いて、Sorryサーバとして機能させる事ができます。<br></li>
+<li>SDKを介してアクセストークンによる限定公開も設定できます。<br></li>
+</ul></li>
+<li>リファラーホワイトリスト設定をしてアクセス制御が可能です。<br></li>
+<li>ファイルをOSSにアップロードする前に、クライアント側で暗号化する事ができます。<br></li>
+<li>サーバー側での暗号化も可能です。<br></li>
+
+<li><p>SDKを介したファイルのアップロード結果は以下のように確認できます。<br></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#111">result</span> <span style="color:#f92672">=</span> <span style="color:#111">bucket</span><span style="color:#f92672">.</span><span style="color:#111">put_object</span><span style="color:#111">(</span><span style="color:#d88200">&#39;&lt;yourObjectName&gt;&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;content of object&#39;</span><span style="color:#111">)</span>
+<span style="color:#75715e"># HTTP return code</span>
+<span style="color:#00a8c8">print</span><span style="color:#111">(</span><span style="color:#d88200">&#39;http status: {0}&#39;</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#111">result</span><span style="color:#f92672">.</span><span style="color:#111">status</span><span style="color:#111">))</span></code></pre></div></li>
+
+<li><p>Log Serviceというサービスを併用してアプリケーションのログをアップロードする事も可能です。<br></p></li>
+</ul>
+</div>
+	
+</div>
+
+
+<div class="panel panel-primary">
+	<div class="panel-heading">Alibaba Cloud CDN</div>
+	<div class="panel-body"><ul>
+<li>CDNを適用したいドメイン名を登録すると、CDNとしてのFQDNが発行されます。発行されたFQDNをCNAMEとして登録します。<br>
+例：&rdquo;<em>.example.com&rdquo;をCDNに登録後、&rdquo;foo.bar.com&rdquo;が発行される。CNAMEレコードとして&rdquo;foo.bar.com&rdquo;のValueを&rdquo;</em>.example.com&rdquo;でDomainに登録</li>
+<li>最適化配信の為に、コンテンツタイプを以下から選択します。<br>
+
+<ul>
+<li>Image and Small File<br></li>
+<li>Large File Download<br></li>
+<li>VOD (Video on Demand)<br></li>
+<li>Live Streaming<br></li>
+<li>DCDN（Dynamic CDN）: コンテンツタイプ、URI、リクエスト方法、カスタム HTTP ヘッダーを指定することで、動的コンテンツと静的コンテンツを区別して配信する。<br>
+　- CDNのオリジン設定は以下から対象を選択します。 <br></li>
+<li>OSS Domain <br></li>
+<li>IP <br></li>
+<li>Origin Domain <br></li>
+<li>FC Domain (Function Compute Domain) <br>
+　- 対象リージョンを以下から選択します。中国を含む場合にはICPライセンスの登録が必要です。 <br></li>
+<li>中国本土 <br></li>
+<li>中国本土と全リージョン <br></li>
+<li>中国を除く全リージョン <br></li>
+</ul></li>
+<li>リファラーもしくはユーザエージェントによるブラックリスト/ホワイトリストでアクセス制御可能です。 <br></li>
+<li>その他のパラメータは<a href="https://jp.alibabacloud.com/help/doc-detail/27125.htm">こちら</a>から確認できます。<br></li>
+</ul>
+</div>
+	
+</div>
+
+
+<h3 id="設計のポイント">設計のポイント</h3>
+
+<div class="panel panel-danger">
+	<div class="panel-heading">SLB</div>
+	<div class="panel-body"><ul>
+<li>本番環境では最も大きいインスタンスタイプ（slb.s3.large）を指定する事を推奨します。  <br>
+
+<ul>
+<li>SLBのインスタンスタイプを変更する時には１秒〜３秒程度のTCP接続断が発生する可能性がある為、あらかじめ最大インスタンスタイプを指定しておきます。 <br></li>
+<li>SLBインスタンスタイプは従量課金制なので、大きいインスタンスタイプを購入してもインスタンスに対するトラフィックが閾値（特定のQPS）を超すまで、最低限のインスタンスタイプとして課金となります。 <br></li>
+<li>小さいインスタンスタイプ（slb.s1.small等）では <br><br /></li>
+</ul></li>
+<li>SLBとECS間のネットワークは全てのトラフィックが許可されます。当該ネットワークはAlibaba Cloud内部管理の為、セキュリティグループ等で変更できません。 <br>
+
+<ul>
+<li>全て許可で固定の為、SLBからのヘルスチェックを疎通させる為に、ECSのセキュリティグループのインバウンド設定を変更する必要はありません。 <br></li>
+</ul></li>
+<li>バックエンドとして、デフォルトサーバーグループ、VServerグループ、アクティブ/スタンバイサーバーグループがありそれぞれ使い分ける事ができます。ただ、特別な用途がなければVServerグループが最も無難な選択肢です。 <br></li>
+<li>マルチゾーンに配置して、プライマリゾーンとバックアップゾーンを指定しますが、プライマリゾーンにしかトラフィックは流れません。</li>
+</ul>
+</div>
+	
+</div>
+
+
+<div class="panel panel-danger">
+	<div class="panel-heading">OSS</div>
+	<div class="panel-body"><ul>
+<li>権限管理のサービスとしてRAMを用いますが、OSSにアクセスする権限は最小限に設定します。 <br></li>
+<li>1ファイルの最大サイズは48.8TBで、保存できる容量は無制限の為、コスト管理に気をつける必要があります。 <br></li>
+<li>1ファイルが5GBを超える場合、マルチパートアップロードと言うモードでファイルを分割してアップロードする必要があります。</li>
+</ul>
+</div>
+	
+</div>
+
+
+<div class="panel panel-danger">
+	<div class="panel-heading">CDN</div>
+	<div class="panel-body"><ul>
+<li>Alibaba Cloud CDNにドメインを登録するだけでなく、DomainサービスでCDN用のCNAMEを登録して初めて使えるようになります。 <br></li>
+<li>オリジンサイトを ECS にデプロイする場合は、ECS の帯域幅に注意してください。この帯域幅は、ビジネストラフィック全体の 20% 以上とすることをお勧めします。 <br></li>
+<li>Alibaba CloudMonitorと連携して、CDNのメトリックに対応したアラームルールを設定する事を推奨します。</li>
+</ul>
+</div>
+	
+</div>
+
+
+<h2 id="アーキテクチャ図">アーキテクチャ図</h2>
+
+<p>システム構成<br />
+<img src="/help/image/23.1.png" alt="Show as JPEG" /></p>
+
+<h2 id="参考リンク一覧">参考リンク一覧</h2>
+
+<table>
+<thead>
+<tr>
+<th>タイトル</th>
+<th>URL</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>SLB Documentation</td>
+<td><a href="https://jp.alibabacloud.com/help/product/27537.htm">https://jp.alibabacloud.com/help/product/27537.htm</a></td>
+</tr>
+
+<tr>
+<td>SLB Best Practice in PDF</td>
+<td><a href="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download/pdf/DNSLB11825295_ja-JP_jp_190524094546_public_48f51f1c98dba2f44bbc936c3f27f11b.pdf">http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/download/pdf/DNSLB11825295_ja-JP_jp_190524094546_public_48f51f1c98dba2f44bbc936c3f27f11b.pdf</a></td>
+</tr>
+
+<tr>
+<td>OSS Best Practice in PDF</td>
+<td><a href="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/pdf/oss-user-guide-jp-ja-2018-02-14.pdf">http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/pdf/oss-user-guide-jp-ja-2018-02-14.pdf</a></td>
+</tr>
+
+<tr>
+<td>OSS SDKを利用したバケットの一時公開</td>
+<td><a href="https://jp.alibabacloud.com/help/doc-detail/32122.htm">https://jp.alibabacloud.com/help/doc-detail/32122.htm</a></td>
+</tr>
+
+<tr>
+<td>OSS リファラーホワイトリスト設定</td>
+<td><a href="https://jp.alibabacloud.com/help/doc-detail/32127.htm?spm=a21mg.p38356.b99.482.33ed6d34SQp2RX">https://jp.alibabacloud.com/help/doc-detail/32127.htm?spm=a21mg.p38356.b99.482.33ed6d34SQp2RX</a></td>
+</tr>
+
+<tr>
+<td>OSS バケットのアクセスログ設定</td>
+<td><a href="https://jp.alibabacloud.com/help/doc-detail/32125.htm?spm=a21mg.p38356.b99.480.3623431frijy4g">https://jp.alibabacloud.com/help/doc-detail/32125.htm?spm=a21mg.p38356.b99.480.3623431frijy4g</a></td>
+</tr>
+
+<tr>
+<td>OOS ECSのログ取得</td>
+<td><a href="https://www.alibabacloud.com/help/doc-detail/72561.htm?spm=a2c63.p38356.b99.29.351e45acTnqpib">https://www.alibabacloud.com/help/doc-detail/72561.htm?spm=a2c63.p38356.b99.29.351e45acTnqpib</a></td>
+</tr>
+
+<tr>
+<td>OSSへのログ送信</td>
+<td><a href="https://www.alibabacloud.com/help/doc-detail/29002.htm?spm=a2c63.p38356.b99.285.2eff592fnf9HNU">https://www.alibabacloud.com/help/doc-detail/29002.htm?spm=a2c63.p38356.b99.285.2eff592fnf9HNU</a></td>
+</tr>
+</tbody>
+</table>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/help/getting-started/" title="Getting Started" style="margin-right: 0px;"><label>Getting Started</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/best-practice/web-application/02/name-resolve/" title="名前解決"> <i class="fa fa-chevron-left"></i><label>名前解決</label></a>
+    <a class="nav nav-next" href="/help/best-practice/web-application/04/web-ap/" title="Web/APサーバ" style="margin-right: 0px;"><label>Web/APサーバ</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -648,13 +863,13 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  09/04/2019
+        <i class='fa fa-calendar'></i>  05/13/2019
     </div>
     
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/web-application/03/loadbalancer.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     

@@ -25,6 +25,18 @@
     </item>
     
     <item>
+      <title>イントロダクション</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/web-application/01/introduction/</link>
+      <pubDate>Wed, 04 Sep 2019 16:20:40 +0900</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/web-application/01/introduction/</guid>
+      <description> 本記事の狙い パブリッククラウドの中でもAlibaba Cloudは日本での認知度が低いと言えます。 そんな中、本記事で一般的なWeb三層アプリケーションをAlibaba Cloudでどのように実現できるかを紹介する事で、読者の方々にAlibaba Cloudの基本サービスを理解を深めてもらう事を狙いとしています。言い換えれば、認知度を上げて「Alibaba Cloudが良い意味で他社クラウドサービスと変わらない事」を伝える為となります。
+Web三層モデルによるアプリケーションアーキテクチャ 以下のWeb三層アプリケーションアーキテクチャの構成図に沿って解説します。
+上記システム構成を以下の4つのレイヤーに分けて、それぞれAlibaba Cloudでどのような選択肢があり、どのように活用できるのかを説明いたします。
+ 名前解決 負荷分散 Web/APサーバ データベース  参考リンク    タイトル URL     Alibaba Cloud Solution Infrastructure Web Application Hosting.pdf http://alicloud-common.oss-ap-southeast-1.aliyuncs.com/Alibaba%20Cloud%20Solution%20Infrastructure%20-%20Web%20Application%20Hosting.pdf   How to Set up a Website (FTP Server) with Alibaba Cloud Web Hosting and Domains https://www.alibabacloud.com/getting-started/projects/how-to-set-up-a-website-with-alibaba-cloud-web    </description>
+    </item>
+    
+    <item>
       <title>サイトマップ</title>
       <link>https://www.sbcloud.co.jp/help/about/sitemap/</link>
       <pubDate>Tue, 23 Jul 2019 10:20:40 +0900</pubDate>
@@ -178,6 +190,32 @@ $ echo 0.11.13 &amp;gt; .</description>
     </item>
     
     <item>
+      <title>名前解決</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/web-application/02/name-resolve/</link>
+      <pubDate>Mon, 13 May 2019 16:20:40 +0900</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/web-application/02/name-resolve/</guid>
+      <description>以下の区分により、Alibaba Cloudを活用したWebアプリケーション構築手法を紹介いたします。
+ 名前解決 負荷分散 Web/APサーバ データベース/キャッシュ  本項目では、Alibaba Cloudの名前解決に関するサービスの仕様と設計ポイントを紹介します。
+名前解決  対象サービス 基本的な仕様 設計のポイント 参考リンク一覧  対象サービス 名前解決に関するサービスは2種類あり、DomainとCloud DNSになります。 Domainでは、ドメインのレジストリ登録や管理を行い、Cloud DNSではAレコードやMXレコードの登録や削除等のゾーンの管理を行います。
+基本的な仕様 Domain  新規ドメインを購入する際、ICANN情報を入力します。
+ .cnドメインの取得もサポートしています。
+ 1年〜10年単位でドメインを購入できます。
+ レジスタラはALIBABA.COM SINGAPORE E-COMMERCE PRIVATE LIMITEDになります。
+ DNSSECを有効化できます。
+ ドメインの移管（転入転出）にも対応しています。
+ ドメインの移管及び更新に対するセキュリティロックを有効化できます。
+ 当該ドメインに対する変更証跡をコンソールから確認できます。
+ デフォルトでAlibaba Cloudのネームサーバ（e.g. ns7.alidns.comとns8.alidns.com）を利用しますが、独自のDNSサーバへ変更できます。     Cloud DNS  DNSレコード管理を行い、ロードバランサや仮想サーバの名前解決をサポートします。
+ デフォルトではインターネット公開向けですが、プライベートゾーンへも変更可能です。
+ オペレーションログをコンソールから確認できます。
+ デフォルトは無料版であり、Cloud DNS有料版を購入する事で以下の対応ができるようになります。
+ レコード登録数やサブドメインレベルの上限緩和
+ QPS上限設定によるDNS攻撃からの保護
+ クエリボリュームの確認</description>
+    </item>
+    
+    <item>
       <title>コンテナイメージ作成・管理</title>
       <link>https://www.sbcloud.co.jp/help/best-practice/devops/container/03/image-management/</link>
       <pubDate>Tue, 13 Aug 2019 16:20:40 +0900</pubDate>
@@ -222,6 +260,33 @@ main.tf … モジュールが内包するリソース、データソースな�
     </item>
     
     <item>
+      <title>負荷分散</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/web-application/03/loadbalancer/</link>
+      <pubDate>Mon, 13 May 2019 16:20:40 +0900</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/web-application/03/loadbalancer/</guid>
+      <description>以下の区分により、Alibaba Cloudを活用したWebアプリケーション構築手法を紹介いたします。
+ 名前解決 負荷分散 Web/APサーバ データベース/キャッシュ  本項目では、Alibaba Cloudの負荷分散に関するサービスの基本仕様と設計ポイントを紹介します。
+負荷分散  対象サービス 基本的な仕様 設計のポイント 参考リンク一覧  対象サービス Webアプリケーションにおいて負荷分散を実現するサービスを3つ紹介します。ひとつはロードバランサーの役割を担うServer Load Balancerです。もうひとつは、jpegやcss等の静的ファイルを公開する際に用いるObject Storage Serviceです。最後に、コンテンツデリバリーサービスとして機能するAlibaba CDNです。以上の3つのサービスを活用する事で、可用性の高いWebアプリケーションを実現します。
+基本的な仕様 Server Load Balancer (SLB)  SLBインスタンスを作成する際、以下のパラメータを入力します。
+ インスタンス名
+ スペック
+ インターネット公開かイントラネット公開か
+ アベイラビリティゾーンの設定
+ プライマリゾーンとバックアップゾーン
+   バックエンドに複数のECSからなるサーバグループを指定、ヘルスチェックを有効化して、疎通確認します。
+ SLBインスタンスのIPアドレスもしくはCNAMEを、A/CNAMEレコード登録してドメインとして公開します。
+ SLBインスタンスに付与されたIPアドレスは静的であり、動的変更されません。
+ 証明書を登録して、SSLアクセラレータとして機能させます。
+ WebSocketやHTTP2.0、セッション維持の有効・無効を指定できます。
+ 物理ロードバランサと同じようなセキュリティルールを設定してアクセス制御します。同ルールには以下が含まれます。
+ アクセスの許可もしくは禁止（ホワイトリストとブラックリストの双方として機能する）
+ プロトコルとポート番号
+ 1~100までの優先番号をつけ、数字が小さい方から優先適用
+     Object Storage Service (OSS)  バケットを作成して、その配下にファイルをアップロードして利用します。</description>
+    </item>
+    
+    <item>
       <title>コンテナデプロイ管理</title>
       <link>https://www.sbcloud.co.jp/help/best-practice/devops/container/04/deploy-management/</link>
       <pubDate>Tue, 13 Aug 2019 16:20:40 +0900</pubDate>
@@ -248,6 +313,18 @@ Terraformの実行は非常にシンプルです。以下図のようにterrafor
 $ terraform init Initializing provider plugins... ・・・ Terraform has been successfully initialized!  
 2. terraform plan 次は「terraform plan」コマンドです。 RAMなどの情報を別途設定ファイル confing.tfvars へ記載した場合は以下のコマンドで実行します。
 $ terraform plan -var-file=&amp;quot;confing.tfvars&amp;quot; Refreshing Terraform state in-memory prior to plan... The refreshed state will be used to calculate this plan, but will not be persisted to local or remote state storage.</description>
+    </item>
+    
+    <item>
+      <title>Web/APサーバ</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/web-application/04/web-ap/</link>
+      <pubDate>Mon, 13 May 2019 16:20:40 +0900</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/web-application/04/web-ap/</guid>
+      <description>以下の区分により、Alibaba Cloudを活用したWebアプリケーション構築手法を紹介いたします。
+ 名前解決 負荷分散 Web/APサーバ データベース  本項目では、Alibaba CloudのWeb/APサーバに関するサービスの仕様と設計ポイントを紹介します。
+負荷分散  対象サービス 基本的な仕様 設計のポイント 参考リンク一覧  対象サービス Web/APサーバとして用いるサービスは、仮想サーバであるElastic Compute Serviceを用いるのが最も一般的です。 Autoscalingを実装します。加えてContainerServiceもアプリケーション環境として活用されており、こちらも紹介します。
+基本的な仕様 ECS  ECS  OSには、Fedora、Cent、Ubuntu、Windowsに加えて、独自のAliyunOSも利用できます。 ログはCloudMonitorから確認できます。 セキュリティグループでインバウンドアウトバウンドを設定します。 ECSインスタンス自体にAlibaba CloudのSaaS利用の権限をRAMより付与します。 VNCからアクセス可能です。 メタ情報はcurl で取得できます。 Webを公開していると、セキュリティアラートを能動的に検知します。 インスタンス削除をリリースと呼び、時間指定リリースが可能です。     Auto Scaling  インスタンスの最大数・最小数、インスタンスをデプロイするVPC、インスタンスの削除ポリシーを設定して利用します。 最初に「スケーリンググループ」を作成してスケーリングに関する設定を行い、次に「スケーリング設定」を作成して、スケールするECSの設定を紐付けます。 既存のインスタンスを、オートスケーリンググループに追加することも可能です。    Container Service  Kubernetesを利用して、Dedicated Kubernetes・Managed Kubernetes・Serverless Kubernetesが利用できます。 フロントエンドとしてSLBを連携作成します。 バックエンドはデータベースを指定してホワイトリスト形式でアクセス許可する事で疎通させます。 Kubernetesで利用可能な主要モジュールをコンソールから実施できます。  ステートフルコンテナの起動 バッチコンテナの起動  Container Registryと併用する事で、Github/Gitlab/BitbucketからシームレスにKubernetes環境にデプロイ可能です。 Log ServiceやCloudMonitorといったAlibaba Cloudのサービスとの他に、Prometheus＋Grafanaを用いたモニタリングも推奨されています。     設計ポイント ECS  時間が中国語。 新規インスタンス作成時にパスワードか秘密鍵のいずれかを指定できますが、デフォルトではどちらも設定されずに作成されます。 サブスクリプションする場合には、EBSディスクも一緒に購入できます。 セキュリティグループのルール設定は、許可・禁止を選択でき、優先度設定によって管理します。 同一セキュリテイグループに紐付くインスタンス間の通信は全許可されます。 AliyunOSの場合、NginxをパッケージインストールしようとするとTerwayがインストールされます。    Auto Scaling  スケーリング設定の代わりに起動テンプレートを使用すると、既存のすべてのスケーリング設定が自動的に無効になります。 台数の細かく調整する時には、スケーリングルールを作成・実行することで、スケーリングアクティビティをトリガーできます。    Container Service  リージョンやアカウントの種類によって、Container Registryが利用できない等一部利用可能なサービスに違いがあります。 DockerfileにENVとして記載された環境変数がそのままコンソールの環境変数項目にもパースされるので、環境変数は docker-entrypoint.</description>
     </item>
     
     <item>
@@ -281,6 +358,30 @@ $ terraform plan -var-file=&amp;quot;confing.tfvars&amp;quot; Refreshing Terrafo
  ユーザ文字列変数 var.接頭辞とそれに続く変数名を使用します。たとえば${var.foo} で foo変数値を補間します。
  ユーザーマップ変数 構文はvar.MAP[&amp;quot;KEY&amp;quot;]です。たとえば${var.amis[&amp;quot;us-east-1&amp;quot;]} でマップ変数us-east-1、内キーの値amisを取得します。
  ユーザリスト変数 構文は${var.</description>
+    </item>
+    
+    <item>
+      <title>データベース</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/web-application/05/database/</link>
+      <pubDate>Mon, 13 May 2019 16:20:40 +0900</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/web-application/05/database/</guid>
+      <description>以下の区分により、Alibaba Cloudを活用したWebアプリケーション構築手法を紹介いたします。
+ 名前解決 負荷分散 Web/APサーバ データベース  本項目では、Alibaba Cloudのデータベースに関するサービスの基本仕様と設計ポイントを紹介します。
+データベース  対象サービス 基本的な仕様 設計のポイント アーキテクチャ図  対象サービス Relational DatabaseとしてAspara for RDS、NoSQL DatabaseとしてAspara for MongoDBを利用する事が出来ます。 &amp;ldquo;Aspara&amp;rdquo;という名前はAlibaba社内でのAlibaba Cloudを指す為、その名残として名称となります。
+基本的な仕様 Aspara for RDS  リードレプリカの追加
+ ディスク消費量のコンソールからの確認
+ メンテナンス時間の設定
+ アクセスホワイトリストの設定
+ コンソールからパラメータの書き換え可能
+ 文字コードはデータベースの仕様に準拠
+    Polar DB  2019年8月末時点でジャカルタリージョンのみ利用可能です。
+    Aspara for MongoDB  レプリカセットかシャーディングかの選択をした後に、リージョン、VPC、スペック、MongoDBバージョン、レプリカ/シャーディング数、パスワードを入力して作成
+ 作成後には主に以下の設定が可能となります。
+ バックアップ・リカバリ
+ リソース監視
+ アラームルール設定
+ パラメータ設定</description>
     </item>
     
     <item>

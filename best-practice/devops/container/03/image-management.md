@@ -54,3 +54,8 @@ YAMLファイルが一切不要で、GUI操作のみで一貫してビルドか�
   - Container Registry
 
 ## 参考リンク一覧
+|タイトル|URL|
+| ---- | ---- |
+|Alibaba Cloudのコンテナベストプラクティス|https://www.alibabacloud.com/help/doc-detail/60951.htm|
+|コンテナ自動ビルドの設定|https://www.alibabacloud.com/help/doc-detail/60997.htm|
+

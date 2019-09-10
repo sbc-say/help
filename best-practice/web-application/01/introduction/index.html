@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.54.0" />
     <title>SB Cloud&nbsp;テクニカルリファレンス</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-09-10T05:54:18 UTC">
-<title> :: テクニカルリファレンス</title>
+<title>イントロダクション :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -48,7 +47,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-<meta name="description" content="">
+<meta name="description" content="Alibaba Cloudを用いたWeb三層アーキテクチャを紹介します。">
 
         
 
@@ -58,7 +57,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
   </head>
-  <body data-url="/help/">
+  <body data-url="/help/best-practice/web-application/01/introduction/">
     
       <header>
 
@@ -148,10 +147,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/best-practice/">ベストプラクティス</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/advisory/" class="dd-item">
@@ -332,13 +332,14 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/web-application/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/web-application/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/best-practice/web-application/">Webアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/web-application/">Webアプリケーション</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/best-practice/web-application/01/introduction/" class="dd-item">
+      <li data-nav-id="/help/best-practice/web-application/01/introduction/" class="dd-item active">
         <div>
           <a href="/help/best-practice/web-application/01/introduction/">
             イントロダクション
@@ -552,6 +553,21 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
         <span class="links">
         
 
+
+
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/web-application/'>Webアプリケーション</a> > イントロダクション
+
+ 
+
+ 
+
  
 
 
@@ -565,7 +581,22 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <option value="/help/getting-started/" >
    Getting Started</option>
     <option value="/help/best-practice/" >
-   ベストプラクティス</option>
+   ベストプラクティス</option> 
+      <option value="/help/best-practice/advisory/" >- アドバイザリ</option>
+      <option value="/help/best-practice/pricing/" >- 料金体系</option>
+    <option value="/help/best-practice/devops/" >
+  - 
+   DevOps</option>
+    <option value="/help/best-practice/web-application/" >
+  - 
+   Webアプリケーション</option> 
+      <option value="/help/best-practice/web-application/01/introduction/"  selected>-- イントロダクション</option>
+      <option value="/help/best-practice/web-application/02/name-resolve/" >-- 名前解決</option>
+      <option value="/help/best-practice/web-application/03/loadbalancer/" >-- 負荷分散</option>
+      <option value="/help/best-practice/web-application/04/web-ap/" >-- Web/APサーバ</option>
+      <option value="/help/best-practice/web-application/05/database/" >-- データベース</option>
+  
+  
     <option value="/help/scenario/" >
    ユースケース別シナリオ</option>
     <option value="/help/faq/" >
@@ -579,61 +610,63 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       </center>
     </div>
 
-    
+    <h1>イントロダクション</h1>
 
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
+    
 
+<h3 id="本記事の狙い">本記事の狙い</h3>
 
+<p>パブリッククラウドの中でもAlibaba Cloudは日本での認知度が低いと言えます。
+そんな中、本記事で一般的なWeb三層アプリケーションをAlibaba Cloudでどのように実現できるかを紹介する事で、読者の方々にAlibaba Cloudの基本サービスを理解を深めてもらう事を狙いとしています。言い換えれば、認知度を上げて「Alibaba Cloudが良い意味で他社クラウドサービスと変わらない事」を伝える為となります。</p>
 
-<h1 id="sbc-technical-reference">SBC Technical Reference</h1>
+<h3 id="web三層モデルによるアプリケーションアーキテクチャ">Web三層モデルによるアプリケーションアーキテクチャ</h3>
 
-<h2 id="1-getting-started-hahahugoshortcode-0xc000165900-1-hbhb"><a href="/help/getting-started/">1. Getting Started</a></h2>
+<p>以下のWeb三層アプリケーションアーキテクチャの構成図に沿って解説します。</p>
 
-<ul>
-<li><a href="/help/getting-started/registration/">アカウント登録</a></li>
-<li><a href="/help/getting-started/product/">プロダクトの紹介</a></li>
-<li><a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a></li>
-</ul>
+<p><img src="/help/image/23.1.png" alt="Show as JPEG" /></p>
 
-<h3 id="2-ベストプラクティス-hahahugoshortcode-0xc000165900-5-hbhb"><a href="/help/best-practice/">2. ベストプラクティス</a></h3>
+<p>上記システム構成を以下の4つのレイヤーに分けて、それぞれAlibaba Cloudでどのような選択肢があり、どのように活用できるのかを説明いたします。</p>
 
-<ul>
-<li><a href="/help/best-practice/advisory/">アドバイザリ</a></li>
-<li><a href="">個別プロダクト</a></li>
-<li><a href="/help/best-practice/devops/">DevOps</a></li>
-</ul>
+<ol>
+<li>名前解決</li>
+<li>負荷分散</li>
+<li>Web/APサーバ</li>
+<li>データベース</li>
+</ol>
 
-<h2 id="3-ユースケース別シナリオ-hahahugoshortcode-0xc000165900-9-hbhb"><a href="/help/scenario/">3. ユースケース別シナリオ</a></h2>
+<h3 id="参考リンク">参考リンク</h3>
 
-<ul>
-<li><a href="/help/scenario/terraform/">Terraform</a></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>タイトル</th>
+<th>URL</th>
+</tr>
+</thead>
 
-<h2 id="4-よくある質問-hahahugoshortcode-0xc000165900-11-hbhb"><a href="/help/faq/">4. よくある質問</a></h2>
+<tbody>
+<tr>
+<td>Alibaba Cloud Solution Infrastructure Web Application Hosting.pdf</td>
+<td><a href="http://alicloud-common.oss-ap-southeast-1.aliyuncs.com/Alibaba%20Cloud%20Solution%20Infrastructure%20-%20Web%20Application%20Hosting.pdf">http://alicloud-common.oss-ap-southeast-1.aliyuncs.com/Alibaba%20Cloud%20Solution%20Infrastructure%20-%20Web%20Application%20Hosting.pdf</a></td>
+</tr>
 
-<ul>
-<li><a href="/help/faq/ecs/">ECS</a></li>
-<li><a href="/help/faq/rds/">RDS</a></li>
-<li><a href="/help/faq/slb/">SLB</a></li>
-<li><a href="/help/faq/oss/">OSS</a></li>
-<li><a href="/help/faq/price/">料金</a></li>
-<li><a href="/help/faq/account/">アカウント</a></li>
-<li><a href="/help/faq/support/">サポート</a></li>
-</ul>
-
-
+<tr>
+<td>How to Set up a Website (FTP Server) with Alibaba Cloud Web Hosting and Domains</td>
+<td><a href="https://www.alibabacloud.com/getting-started/projects/how-to-set-up-a-website-with-alibaba-cloud-web">https://www.alibabacloud.com/getting-started/projects/how-to-set-up-a-website-with-alibaba-cloud-web</a></td>
+</tr>
+</tbody>
+</table>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/help/getting-started/" title="Getting Started" style="margin-right: 0px;"><label>Getting Started</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/best-practice/web-application/" title="Webアプリケーション"> <i class="fa fa-chevron-left"></i><label>Webアプリケーション</label></a>
+    <a class="nav nav-next" href="/help/best-practice/web-application/02/name-resolve/" title="名前解決" style="margin-right: 0px;"><label>名前解決</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -654,7 +687,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/web-application/01/introduction.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     

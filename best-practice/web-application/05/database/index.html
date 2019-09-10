@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.54.0" />
     <title>SB Cloud&nbsp;テクニカルリファレンス</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-09-10T05:54:18 UTC">
-<title> :: テクニカルリファレンス</title>
+<title>データベース :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -48,7 +47,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-<meta name="description" content="">
+<meta name="description" content="Alibaba Cloudを用いたWeb三層アーキテクチャを紹介します。">
 
         
 
@@ -58,7 +57,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
   </head>
-  <body data-url="/help/">
+  <body data-url="/help/best-practice/web-application/05/database/">
     
       <header>
 
@@ -148,10 +147,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/best-practice/">ベストプラクティス</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/advisory/" class="dd-item">
@@ -332,10 +332,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/web-application/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/web-application/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/best-practice/web-application/">Webアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/web-application/">Webアプリケーション</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/web-application/01/introduction/" class="dd-item">
@@ -366,7 +367,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/best-practice/web-application/05/database/" class="dd-item">
+      <li data-nav-id="/help/best-practice/web-application/05/database/" class="dd-item active">
         <div>
           <a href="/help/best-practice/web-application/05/database/">
             データベース
@@ -552,6 +553,21 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
         <span class="links">
         
 
+
+
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/web-application/'>Webアプリケーション</a> > データベース
+
+ 
+
+ 
+
  
 
 
@@ -565,7 +581,22 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <option value="/help/getting-started/" >
    Getting Started</option>
     <option value="/help/best-practice/" >
-   ベストプラクティス</option>
+   ベストプラクティス</option> 
+      <option value="/help/best-practice/advisory/" >- アドバイザリ</option>
+      <option value="/help/best-practice/pricing/" >- 料金体系</option>
+    <option value="/help/best-practice/devops/" >
+  - 
+   DevOps</option>
+    <option value="/help/best-practice/web-application/" >
+  - 
+   Webアプリケーション</option> 
+      <option value="/help/best-practice/web-application/01/introduction/" >-- イントロダクション</option>
+      <option value="/help/best-practice/web-application/02/name-resolve/" >-- 名前解決</option>
+      <option value="/help/best-practice/web-application/03/loadbalancer/" >-- 負荷分散</option>
+      <option value="/help/best-practice/web-application/04/web-ap/" >-- Web/APサーバ</option>
+      <option value="/help/best-practice/web-application/05/database/"  selected>-- データベース</option>
+  
+  
     <option value="/help/scenario/" >
    ユースケース別シナリオ</option>
     <option value="/help/faq/" >
@@ -579,61 +610,113 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       </center>
     </div>
 
-    
+    <h1>データベース</h1>
 
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
+    
 
+<p>以下の区分により、Alibaba Cloudを活用したWebアプリケーション構築手法を紹介いたします。</p>
 
+<ol>
+<li>名前解決</li>
+<li>負荷分散</li>
+<li>Web/APサーバ</li>
+<li>データベース</li>
+</ol>
 
-<h1 id="sbc-technical-reference">SBC Technical Reference</h1>
+<p>本項目では、Alibaba Cloudの<b>データベース</b>に関するサービスの基本仕様と設計ポイントを紹介します。</p>
 
-<h2 id="1-getting-started-hahahugoshortcode-0xc000165900-1-hbhb"><a href="/help/getting-started/">1. Getting Started</a></h2>
-
-<ul>
-<li><a href="/help/getting-started/registration/">アカウント登録</a></li>
-<li><a href="/help/getting-started/product/">プロダクトの紹介</a></li>
-<li><a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a></li>
-</ul>
-
-<h3 id="2-ベストプラクティス-hahahugoshortcode-0xc000165900-5-hbhb"><a href="/help/best-practice/">2. ベストプラクティス</a></h3>
+<h2 id="データベース">データベース</h2>
 
 <ul>
-<li><a href="/help/best-practice/advisory/">アドバイザリ</a></li>
-<li><a href="">個別プロダクト</a></li>
-<li><a href="/help/best-practice/devops/">DevOps</a></li>
+<li>対象サービス</li>
+<li>基本的な仕様</li>
+<li>設計のポイント</li>
+<li>アーキテクチャ図</li>
 </ul>
 
-<h2 id="3-ユースケース別シナリオ-hahahugoshortcode-0xc000165900-9-hbhb"><a href="/help/scenario/">3. ユースケース別シナリオ</a></h2>
+<h2 id="対象サービス">対象サービス</h2>
+
+<p>Relational DatabaseとしてAspara for RDS、NoSQL DatabaseとしてAspara for MongoDBを利用する事が出来ます。
+&ldquo;Aspara&rdquo;という名前はAlibaba社内でのAlibaba Cloudを指す為、その名残として名称となります。</p>
+
+<h3 id="基本的な仕様">基本的な仕様</h3>
+
+<p><div class="panel panel-primary">
+	<div class="panel-heading">Aspara for RDS</div>
+	<div class="panel-body"><ul>
+<li>リードレプリカの追加<br></li>
+<li>ディスク消費量のコンソールからの確認<br></li>
+<li>メンテナンス時間の設定<br></li>
+<li>アクセスホワイトリストの設定<br></li>
+<li>コンソールからパラメータの書き換え可能<br></li>
+<li>文字コードはデータベースの仕様に準拠<br></li>
+</ul>
+</div>
+	
+</div>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">Polar DB</div>
+	<div class="panel-body"><ul>
+<li>2019年8月末時点でジャカルタリージョンのみ利用可能です。<br></li>
+</ul>
+</div>
+	
+</div>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">Aspara for MongoDB</div>
+	<div class="panel-body"><ul>
+<li>レプリカセットかシャーディングかの選択をした後に、リージョン、VPC、スペック、MongoDBバージョン、レプリカ/シャーディング数、パスワードを入力して作成<br></li>
+<li>作成後には主に以下の設定が可能となります。<br>
 
 <ul>
-<li><a href="/help/scenario/terraform/">Terraform</a></li>
+<li>バックアップ・リカバリ<br></li>
+<li>リソース監視<br></li>
+<li>アラームルール設定<br></li>
+<li>パラメータ設定<br></li>
+<li>監査ログの確認<br></li>
+<li>スロークエリ含むログ確認<br></li>
+<li>インデックス最適化<br></li>
+<li>Data Transfer Serviceを用いた既存MongoDBの移行<br></li>
+</ul></li>
 </ul>
+</div>
+	
+</div>
+</p>
 
-<h2 id="4-よくある質問-hahahugoshortcode-0xc000165900-11-hbhb"><a href="/help/faq/">4. よくある質問</a></h2>
+<h3 id="設計ポイント">設計ポイント</h3>
 
-<ul>
-<li><a href="/help/faq/ecs/">ECS</a></li>
-<li><a href="/help/faq/rds/">RDS</a></li>
-<li><a href="/help/faq/slb/">SLB</a></li>
-<li><a href="/help/faq/oss/">OSS</a></li>
-<li><a href="/help/faq/price/">料金</a></li>
-<li><a href="/help/faq/account/">アカウント</a></li>
-<li><a href="/help/faq/support/">サポート</a></li>
+<div class="panel panel-danger">
+	<div class="panel-heading">ECS</div>
+	<div class="panel-body"><ul>
+<li>時間が中国語。<br></li>
 </ul>
+</div>
+	
+</div>
 
 
+<h2 id="補足">補足</h2>
+
+<p>日本リージョン未公開だが他の有用なデータベースサービスとして、クラウドネイティブでハイパフォーマンスなMySQL, PostgreSQL, and Oracleを提供する<a href="https://www.alibabacloud.com/products/apsaradb-for-polardb">Polardb</a>と、独身の日でのオンライントランザクションを支えた分散型SQLエンジンである<a href="https://www.alibabacloud.com/product/drds">Distributed Relational Database Service</a>があります。現在これらは中国リージョンのみで利用可能ですが、東京リージョンでも利用可能になり次第紹介したいと思います。</p>
+
+<h2 id="参考リンク一覧">参考リンク一覧</h2>
+
+<p><a href="https://jp.alibabacloud.com/help/product/34269.htm">https://jp.alibabacloud.com/help/product/34269.htm</a>
+<a href="https://jp.alibabacloud.com/help/product/27537.htm">https://jp.alibabacloud.com/help/product/27537.htm</a></p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/help/getting-started/" title="Getting Started" style="margin-right: 0px;"><label>Getting Started</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/best-practice/web-application/04/web-ap/" title="Web/APサーバ"> <i class="fa fa-chevron-left"></i><label>Web/APサーバ</label></a>
+    <a class="nav nav-next" href="/help/scenario/" title="ユースケース別シナリオ" style="margin-right: 0px;"><label>ユースケース別シナリオ</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -648,13 +731,13 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  09/04/2019
+        <i class='fa fa-calendar'></i>  05/13/2019
     </div>
     
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/web-application/05/database.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     

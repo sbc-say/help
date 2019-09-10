@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.54.0" />
     <title>SB Cloud&nbsp;テクニカルリファレンス</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-09-10T05:54:18 UTC">
-<title> :: テクニカルリファレンス</title>
+<title>Webアプリケーション :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -48,7 +47,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-<meta name="description" content="">
+<meta name="description" content="WebアプリケーションをAlibaba Cloudでどのように構築するかのシナリオを記載します。">
 
         
 
@@ -58,7 +57,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
   </head>
-  <body data-url="/help/">
+  <body data-url="/help/best-practice/web-application/">
     
       <header>
 
@@ -148,10 +147,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/help/best-practice/">ベストプラクティス</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/advisory/" class="dd-item">
@@ -332,10 +332,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/web-application/" class="dd-item haschildren
+    <li data-nav-id="/help/best-practice/web-application/" class="dd-item parent active haschildren
         ">
       <div>
-      <a href="/help/best-practice/web-application/">Webアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/help/best-practice/web-application/">Webアプリケーション</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
       <li data-nav-id="/help/best-practice/web-application/01/introduction/" class="dd-item">
@@ -552,6 +553,16 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
         <span class="links">
         
 
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > Webアプリケーション
+
+ 
+
  
 
 
@@ -565,7 +576,22 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <option value="/help/getting-started/" >
    Getting Started</option>
     <option value="/help/best-practice/" >
-   ベストプラクティス</option>
+   ベストプラクティス</option> 
+      <option value="/help/best-practice/advisory/" >- アドバイザリ</option>
+      <option value="/help/best-practice/pricing/" >- 料金体系</option>
+    <option value="/help/best-practice/devops/" >
+  - 
+   DevOps</option>
+    <option value="/help/best-practice/web-application/"  selected>
+  - 
+   Webアプリケーション</option> 
+      <option value="/help/best-practice/web-application/01/introduction/" >-- イントロダクション</option>
+      <option value="/help/best-practice/web-application/02/name-resolve/" >-- 名前解決</option>
+      <option value="/help/best-practice/web-application/03/loadbalancer/" >-- 負荷分散</option>
+      <option value="/help/best-practice/web-application/04/web-ap/" >-- Web/APサーバ</option>
+      <option value="/help/best-practice/web-application/05/database/" >-- データベース</option>
+  
+  
     <option value="/help/scenario/" >
    ユースケース別シナリオ</option>
     <option value="/help/faq/" >
@@ -579,61 +605,77 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       </center>
     </div>
 
-    
+    <h1>Webアプリケーション</h1>
 
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
+WebアプリケーションをAlibaba Cloudでどのように構築するかのシナリオを記載します。
+<!-- descriptionがコンテンツの前に表示されます -->
 
+<!-- コンテンツを書くときはこの下に記載ください -->
 
-
-<h1 id="sbc-technical-reference">SBC Technical Reference</h1>
-
-<h2 id="1-getting-started-hahahugoshortcode-0xc000165900-1-hbhb"><a href="/help/getting-started/">1. Getting Started</a></h2>
+<!-- 配下タイトル一覧がコンテンツの後に表示されます -->
 
 <ul>
-<li><a href="/help/getting-started/registration/">アカウント登録</a></li>
-<li><a href="/help/getting-started/product/">プロダクトの紹介</a></li>
-<li><a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a></li>
+  
+    <li>
+        <a href="/help/best-practice/web-application/01/introduction/">
+            イントロダクション
+        </a>
+    </li>
+    Alibaba Cloudを用いたWeb三層アーキテクチャを紹介します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/web-application/02/name-resolve/">
+            名前解決
+        </a>
+    </li>
+    Alibaba Cloudを用いたWeb三層アーキテクチャを紹介します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/web-application/03/loadbalancer/">
+            負荷分散
+        </a>
+    </li>
+    Alibaba Cloudを用いたWeb三層アーキテクチャを紹介します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/web-application/04/web-ap/">
+            Web/APサーバ
+        </a>
+    </li>
+    Alibaba Cloudを用いたWeb三層アーキテクチャを紹介します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/web-application/05/database/">
+            データベース
+        </a>
+    </li>
+    Alibaba Cloudを用いたWeb三層アーキテクチャを紹介します。
+    <br>
+    <br>
+    
+    
+    
+
+
 </ul>
-
-<h3 id="2-ベストプラクティス-hahahugoshortcode-0xc000165900-5-hbhb"><a href="/help/best-practice/">2. ベストプラクティス</a></h3>
-
-<ul>
-<li><a href="/help/best-practice/advisory/">アドバイザリ</a></li>
-<li><a href="">個別プロダクト</a></li>
-<li><a href="/help/best-practice/devops/">DevOps</a></li>
-</ul>
-
-<h2 id="3-ユースケース別シナリオ-hahahugoshortcode-0xc000165900-9-hbhb"><a href="/help/scenario/">3. ユースケース別シナリオ</a></h2>
-
-<ul>
-<li><a href="/help/scenario/terraform/">Terraform</a></li>
-</ul>
-
-<h2 id="4-よくある質問-hahahugoshortcode-0xc000165900-11-hbhb"><a href="/help/faq/">4. よくある質問</a></h2>
-
-<ul>
-<li><a href="/help/faq/ecs/">ECS</a></li>
-<li><a href="/help/faq/rds/">RDS</a></li>
-<li><a href="/help/faq/slb/">SLB</a></li>
-<li><a href="/help/faq/oss/">OSS</a></li>
-<li><a href="/help/faq/price/">料金</a></li>
-<li><a href="/help/faq/account/">アカウント</a></li>
-<li><a href="/help/faq/support/">サポート</a></li>
-</ul>
-
-
-
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/help/getting-started/" title="Getting Started" style="margin-right: 0px;"><label>Getting Started</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/best-practice/devops/container/05/monitoring/" title="ログ管理とモニタリング"> <i class="fa fa-chevron-left"></i><label>ログ管理とモニタリング</label></a>
+    <a class="nav nav-next" href="/help/best-practice/web-application/01/introduction/" title="イントロダクション" style="margin-right: 0px;"><label>イントロダクション</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -648,13 +690,13 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  09/04/2019
+        <i class='fa fa-calendar'></i>  07/22/2019
     </div>
     
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/web-application/_index.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     
