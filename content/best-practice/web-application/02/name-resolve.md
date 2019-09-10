@@ -3,7 +3,7 @@ title: "名前解決"
 description: "Alibaba Cloudを用いたWeb三層アーキテクチャを紹介します。"
 date: 2019-05-13T16:20:40+09:00
 weight: 20
-draft: true
+draft: false
 ---
 
 以下の区分により、Alibaba Cloudを活用したWebアプリケーション構築手法を紹介いたします。
@@ -13,7 +13,7 @@ draft: true
 1. Web/APサーバ
 1. データベース/キャッシュ
 
-本項目では、Alibaba Cloudの<b>名前解決</b>に関するサービスの基本仕様と設計ポイントを紹介します。
+本項目では、Alibaba Cloudの<b>名前解決</b>に関するサービスの仕様と設計ポイントを紹介します。
 
 ## 名前解決
  - 対象サービス
@@ -22,7 +22,7 @@ draft: true
  - 参考リンク一覧
 
 ## 対象サービス
-名前解決に関するサービスは2種類あり、「Domain」と「Cloud DNS」になります。
+名前解決に関するサービスは2種類あり、[Domain](https://www.alibabacloud.com/domain)と[Cloud DNS](https://www.alibabacloud.com/product/dns)になります。
 Domainでは、ドメインのレジストリ登録や管理を行い、Cloud DNSではAレコードやMXレコードの登録や削除等のゾーンの管理を行います。
 
 ### 基本的な仕様
