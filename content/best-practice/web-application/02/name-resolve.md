@@ -22,8 +22,8 @@ draft: false
  - 参考リンク一覧
 
 ## 対象サービス
-名前解決に関するサービスは2種類あり、「 Domain https://www.alibabacloud.com/domain」と「[Cloud DNS] https://www.alibabacloud.com/product/dns 」になります。
-[Domain](https://www.alibabacloud.com/domain)では、ドメインのレジストリ登録や管理を行い、Cloud DNSではAレコードやMXレコードの登録や削除等のゾーンの管理を行います。
+名前解決に関するサービスは2種類あり、[Domain](https://www.alibabacloud.com/domain)と[Cloud DNS](https://www.alibabacloud.com/product/dns)になります。
+Domainでは、ドメインのレジストリ登録や管理を行い、Cloud DNSではAレコードやMXレコードの登録や削除等のゾーンの管理を行います。
 
 ### 基本的な仕様
 {{%panel header="Domain"%}}
