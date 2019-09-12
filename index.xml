@@ -13,10 +13,10 @@
     
     <item>
       <title>イントロダクション</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/container/01/introduction/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/container/01/introduction/</link>
       <pubDate>Wed, 04 Sep 2019 16:20:40 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/container/01/introduction/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/container/01/introduction/</guid>
       <description> 本記事の狙い 世間一般ではコンテナを用いた開発が一般的になりつつありますがが、Alibaba CloudでもAWSやGCP、Azureと同等かそれ以上のコンテナサービスが揃っており、使い方次第で最もコンテナのメリットを享受できるパブリッククラウドとなります。本項ではコンテナ開発の基礎から、Alibaba Cloudを最大限活用した形までを紹介いたします。
 コンテナ活用とは そもそもコンテナ※を利用する事で、どんなメリットを享受できるのか。
 ※containerdを用いたDockerコンテナと定義
@@ -37,33 +37,6 @@ Web三層モデルによるアプリケーションアーキテクチャ 以下�
     </item>
     
     <item>
-      <title>サイトマップ</title>
-      <link>https://www.sbcloud.co.jp/help/about/sitemap/</link>
-      <pubDate>Tue, 23 Jul 2019 10:20:40 +0900</pubDate>
-      
-      <guid>https://www.sbcloud.co.jp/help/about/sitemap/</guid>
-      <description>トップページ         Getting Started     アカウント登録   プロダクト紹介プロダクト資料のリンク一覧
-ECS   AWS/Azure/GCPユーザ向けAWS/Azure/GCPとのサービス比較       ベストプラクティス     アドバイザリ   DevOpsTerraformTerraformとは
-インストール
-サンプルプロジェクトの作成
-サンプルプロジェクトの実行
-文法について
-Dockerについて
-Moduleについて
-VPCの作成
-ECS、EIPの作成
-SLBの作成
-Autoscalingの作成
-OSSの作成
-RDSの作成
-RAMの作成
-Kubernetesの作成       ユースケース別シナリオ     TerraformSSH踏み台サーバの作成
-SLBの構築
-RDSの構築
-Kubernetesの構築と設定</description>
-    </item>
-    
-    <item>
       <title>アカウント登録</title>
       <link>https://www.sbcloud.co.jp/help/getting-started/registration/</link>
       <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
@@ -79,10 +52,10 @@ Alibaba Cloud登録マニュアルをダウンロード
     
     <item>
       <title>アドバイザリ</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/advisory/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/general/advisory/</link>
       <pubDate>Mon, 22 Jul 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/advisory/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/general/advisory/</guid>
       <description>Alibaba Cloud 導入アドバイザリは下記リンクから取得可能です。
 Alibaba Cloud導入アドバイザリをダウンロード
 本書では、Alibaba Cloud上でシステムを構築する際の「アーキテクチャの設計」、「インフラストラクチャーの構築」、「セキュリティ」、「システム運用」の4点に関わるAlibaba Cloudの構成例をご紹介します。本書を一読頂くことで、一連のプラクティスを把握頂けます。
@@ -128,10 +101,10 @@ AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの�
     
     <item>
       <title>Terraformとは</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/01/how-to-use/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/01/how-to-use/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/01/how-to-use/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/01/how-to-use/</guid>
       <description>&amp;nbsp; AlibabaCloudというクラウドサービスが登場したことで、クラウドサービス上にあるECSという仮想コンピューティングを作成・破棄するのが非常に簡単になりました。ボタン一つで数分でコンピューティングを起動できます。AlibabaCloudのマネジメントコンソールはWeb上にて操作する、数多くの機能をまとめた完成度の高いGUIです。
 &amp;nbsp; しかし、Web上にてGUI操作とはいえ設定項目を一つ一つずつ画面上操作するのは骨が折れるのと、小規模サービスでも構築にヒューマンエラーや運用・学習コストはどうしても付き物になります。例えばAlibabaCloud未経験者がECSをCS 100台を手動起動してみましょう。この作業にどれほどの時間がかかるか、そしてミスをゼロにして稼働できるか、という課題があります。そこで解決の道となったのがInfrastructure as Code（以降は「IaC」と略します）です。
 &amp;nbsp; IaCはコード通りの内容を自動で設定する仕組みを持ちます。IaCの種類はPackerやVagrantなど様々ですが、HashiCorp社がオープンソースとして手掛けるTerraformというマルチクラウド対応プロビジョニングツールがあります。シンプルなDSL(HCL)、自由自在な変数表現と状態管理が特徴です。
@@ -153,10 +126,10 @@ AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの�
     
     <item>
       <title>開発環境</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/container/02/development-environment/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/container/02/development-environment/</link>
       <pubDate>Tue, 13 Aug 2019 16:20:40 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/container/02/development-environment/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/container/02/development-environment/</guid>
       <description>以下の区分により、コンテナを活用したAlibaba Cloudにおける開発手法を紹介いたします。
  開発環境 コンテナイメージの作成・管理 コンテナデプロイ管理 ログ管理とモニタリング  本項目では、 開発環境 に焦点を当てて、開発端末とバージョン管理システムの選択肢を紹介します。 その後、Alibaba Cloudにおける推奨を紹介します。
 目次  開発端末 バージョン管理 Alibaba Cloudにおける推奨  開発端末  Windows macOS Linux/その他  Windows プライベートでもビジネスでも最もよく利用されているOSはWindowsであり、慣れ親しんだUIのまま開発できるメリットは大きいです。 開発ツールとして、Docker Desktop for Windowsが提供されており、Bash for Windowsや各種IDEのDocker Clientプラグインと併せて、よく利用されます。
@@ -174,10 +147,10 @@ CentOS / Debian / Fedora / Ubuntu
     
     <item>
       <title>インストール</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/02/install/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/02/install/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/02/install/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/02/install/</guid>
       <description>本章は Terraform のインストール方法を学びます。
  ※ Mac/Linuxでのインストール方法になります。Windows版でのTerraform導入方法は別途記載予定です。 ※ Terraformバージョン違いを防止するためにtfenvで管理をする方法がありますが、これとは別に Dockerを使った方法もありますので参考にしてください。
  1. Homebrew &amp;nbsp; Terraformは前章で説明した通り、HashiCorp社がオープンソースとして展開してるツールです。基本的にはバージョンアップに 追従しやすい tfenv の利用を推奨しますが、お試しであればHomebrew も手軽です。 macOS の場合は次のように、Homebrew を使ってインストールできます。
@@ -217,10 +190,10 @@ $ echo 0.11.13 &amp;gt; .</description>
     
     <item>
       <title>DataV Widget 開発ガイド</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/datav-widget-develop-guide/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/product/datav/datav-widget-develop-guide/</link>
       <pubDate>Tue, 10 Sep 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/datav-widget-develop-guide/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/product/datav/datav-widget-develop-guide/</guid>
       <description>Tags ： AlibabaCloud DataV Widget Develop
 目的 DataV は AlibabaCloud のデータ可視化プロダクトとして日々進化して、とても優れていますが、提供できる Widget が限られてるため、一部特殊ニーズがあるユーザに答えられない可能性があります。このため、DataVのプロ版（中国サイト基準の呼び方）はWidget開発権限を開放し、DataV固有のWidgetを利用以外はユーザ自身も自由に開発するできるようになります。
 　DataV プロ版はユーザ自身のWidgetを開発できるメリットがある以外は、開発された Widget を他人にも共有できるし、中国サイトの MarketPlace を販売することもできるので、開発ベンダーにとってもDataVはデータ可視化ツールの魅了的なプラットフォームです。
@@ -231,10 +204,10 @@ $ echo 0.11.13 &amp;gt; .</description>
     
     <item>
       <title>コンテナイメージ作成・管理</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/container/03/image-management/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/container/03/image-management/</link>
       <pubDate>Tue, 13 Aug 2019 16:20:40 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/container/03/image-management/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/container/03/image-management/</guid>
       <description>以下の区分により、コンテナを活用したAlibaba Cloudにおける開発手法を紹介いたします。
  開発環境 コンテナイメージの作成・管理 コンテナデプロイ管理 ログ管理とモニタリング  本項目では、 コンテナイメージ作成・管理 に焦点を当てて、インターネットと接続しないプライベート環境における手法とインターネット上で利用可能なパブリックサービスを用いた手法の2種類を紹介します。その後、Alibaba Cloudにおける推奨を紹介します。
 コンテナイメージ管理  プライベート環境における手法 パブリックサービスを用いた手法 Alibaba Cloudにおける推奨  プライベート環境における手法 プライベート環境（外部公開していないサーバ）にてコンテナをビルドする時には、まずコンテナイメージをビルドするスクリプトを自身で作成します。その後、パイプラインツールを実行するサーバを作成してその上で、「コードソースの変更を検知して、ビルドスクリプトを実行、ビルドされたコンテナイメージをイメージリポジトリにプッシュする」仕組みを実装するのが一般的です。
@@ -245,10 +218,10 @@ $ echo 0.11.13 &amp;gt; .</description>
     
     <item>
       <title>料金体系</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/pricing/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/general/pricing/</link>
       <pubDate>Thu, 01 Aug 2019 12:30:18 +0800</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/pricing/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/general/pricing/</guid>
       <description>Tags ： AlibabaCloud Price Bill
 本文の概要は下記のとおりです。
   Alibaba Cloud 料金の基本的な考え方の紹介 Alibaba Cloud 課金体系の紹介 Alibaba Cloud お支払い関連の紹介 代表的なプロダクトの料金体系の紹介  初めに  本文の目的は、Alibaba Cloud の課金ルールや料金計算方法などを紹介し、お客様のサービスにおける今後のコスト管理と最適化に役立つように、 AlibabaCloud の料金体系を理解してもらうことです。  基本概念  まず、買い物における一般的な料金関連の基本概念をいくつか紹介します。
@@ -263,10 +236,10 @@ $ echo 0.11.13 &amp;gt; .</description>
     
     <item>
       <title>サンプルプロジェクトの作成</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/03/sample-project/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/03/sample-project/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/03/sample-project/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/03/sample-project/</guid>
       <description>&amp;nbsp; ここまででTerraform のインストール方法を学びました。それではサンプルプロジェクトを作成します。簡単なWebサーバを立ち上げながら、Terraformの流れや中身を確認します。 1. ディレクトリ・ファイル構成 &amp;nbsp; Terraformのファイルの拡張子は *.tf です。実行時、同じディレクトリの *.tf ファイルがマージされますので、基本は以下3ファイルに分けてそれぞれの用途・目的に応じた記載・運用がベターです。
 main.tf … モジュールが内包するリソース、データソースなどの定義 outputs.tf … モジュールが出力するAttributeの定義 variables.tf … モジュールが受け取る変数の定義  main.tf には どのプロパイダを使うかを記載します。 階層化は任意ですが、.tfから別のフォルダの.tfに記載されてる変数を取り出すためにルートディレクトリを指定することがありますのでそこは注意が必要です。apply (=実行) にて分離実行することも可能です。 例えば以下のようにプロダクトサービス毎にフォルダを作成し、それぞれのリソースを作成しても、最終的には一つへまとめれます。
 ├── main.tf ├── output.tf ├── variables.tf │ ├── region │├── VPC ││├── main.tf ││├── output.tf ││└── variables.tf ││ │├── ECS ││├── main.tf ││├── output.tf ││└── variables.tf ・ ・ ・  &amp;nbsp; RAMなど他者へ渡したくない情報がある場合、別途設定ファイル（ confing.tfvars など）へ記載し、実行時は -var-file引数で 設定ファイルを読み取り実行することができます。
@@ -302,10 +275,10 @@ main.tf … モジュールが内包するリソース、データソースな�
     
     <item>
       <title>コンテナデプロイ管理</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/container/04/deploy-management/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/container/04/deploy-management/</link>
       <pubDate>Tue, 13 Aug 2019 16:20:40 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/container/04/deploy-management/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/container/04/deploy-management/</guid>
       <description>本記事では、コンテナデプロイ管理について紹介いたします。
  開発環境 コンテナイメージの作成・管理 コンテナデプロイ管理 ログ管理とモニタリング  コンテナデプロイ管理では、開発環境と本番環境の２点に焦点を当てて紹介します。その後、Alibaba Cloudにおける推奨を紹介します。
 コンテナデプロイ管理  開発環境 本番環境 Alibaba Cloudでの選択肢  開発環境 開発環境の場合ではコードの変化に伴って、コンテナイメージを作成、環境変数を伴ってデプロイする必要があります。 その際には各種IDEのプラグインよりdocker buildを実践して、コンテナイメージを作成して、docker-composeを使って他のコンテナとの連携する方法が最もシンプルです。また、本番環境でKubernetesを利用する場合には、Minikubeやmicrok8sを用いて、Kubernetes環境をローカルの開発環境に再現する事も有用です。
@@ -316,10 +289,10 @@ main.tf … モジュールが内包するリソース、データソースな�
     
     <item>
       <title>サンプルプロジェクトの実行</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/04/run-terraform/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/04/run-terraform/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/04/run-terraform/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/04/run-terraform/</guid>
       <description>&amp;nbsp; 前章は 簡単なWebサーバを立ち上げるというサンプルプロジェクトを作成しました。今章はサンプルプロジェクトを実行しつつ、Terraformの流れや中身を確認します。
 Terraformの実行は非常にシンプルです。以下図のようにterraform initから始まり、terraform play、terraform applyでリソース作成を実行します。
 
@@ -343,10 +316,10 @@ $ terraform plan -var-file=&amp;quot;confing.tfvars&amp;quot; Refreshing Terrafo
     
     <item>
       <title>ログ管理とモニタリング</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/container/05/monitoring/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/container/05/monitoring/</link>
       <pubDate>Tue, 13 Aug 2019 16:20:40 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/container/05/monitoring/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/container/05/monitoring/</guid>
       <description>本記事では、ログ管理とモニタリングについて紹介いたします。
  開発環境 コンテナイメージの作成・管理 コンテナデプロイ管理 ログ管理とモニタリング  ログ管理とモニタリングでは、OSS/Enterprise製品とパブリックサービスの２点に焦点を当てて紹介します。その後、Alibaba Cloudにおける推奨を紹介します。
 ログ管理・モニタリング  OSS/Enterprise製品の活用 パブリックサービスの活用 Alibaba Cloudでの選択肢  OSS/Enterprise製品の活用 Container環境においてアプリケーションログとインフラログを対象にして、ログ管理・集計の製品と、それらをGUIとして可視化する製品の組み合わせがあります。
@@ -359,10 +332,10 @@ $ terraform plan -var-file=&amp;quot;confing.tfvars&amp;quot; Refreshing Terrafo
     
     <item>
       <title>Terraform文法について</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/05/program-syntax/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/05/program-syntax/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/05/program-syntax/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/05/program-syntax/</guid>
       <description>&amp;nbsp; 前章は 簡単なWebサーバを立ち上げるというサンプルプロジェクトを実行しました。うち、Terraformには様々な記載文法がありますので、把握した方がいい部分だけ説明します。
 
 1. Configuration Syntax &amp;nbsp; Terraformのコード構成要素、コードの構成文の書き方です。Terraformの利用ガイドラインに沿って記載してみてください。Terraformのバージョンによっては書き方が異なる場合がありますので、注意が必要です。
@@ -400,10 +373,10 @@ $ terraform plan -var-file=&amp;quot;confing.tfvars&amp;quot; Refreshing Terrafo
     
     <item>
       <title>Dockerについて</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/06/docker/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/06/docker/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/06/docker/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/06/docker/</guid>
       <description>&amp;nbsp; 前章までは Terraformのインストール方法、Terraformの文法、実行方法を説明しました。しかしこれらはTerraform v0.11.13前提での話なので、Terraformのバージョンが違うことで挙動が異なってしまうこともあります。Terraformでよく使うメソッドが急に廃止、、というのもよくあります。それを防ぐためにdockerを使ったインストール、利用する方法があります。dockerはパッケージングを行うための技術です。
 *注：Terraformのバージョン食い違いは基本的にtfenvでカバーできます。詳しくはインストールを参照してください
 
@@ -419,10 +392,10 @@ Continuous Deployment Automation on Alibaba Cloud: CI/CD Automation on Container
     
     <item>
       <title>Moduleについて</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/07/module/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/07/module/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/07/module/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/07/module/</guid>
       <description>&amp;nbsp; これまでTerraformの書き方を学びました。しかし問題があります。それはvariableによる変数宣言が多すぎると、可読性も下がり、場合によっては何度も同じ内容を書く必要があったりします。それを防ぐために、他のプログラミング言語と同じくモジュール化があります。
 
 1. Moduleとは &amp;nbsp; Terraformにおけるmoduleは各resourceを抽象化するためのものです。以下の例を見てみましょう。モジュール化されてないソースと、モジュール化されてないソースを見てください。
@@ -432,10 +405,10 @@ Continuous Deployment Automation on Alibaba Cloud: CI/CD Automation on Container
     
     <item>
       <title>VPCの作成</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/08/vpc/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/08/vpc/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/08/vpc/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/08/vpc/</guid>
       <description>&amp;nbsp; ここまではTerraformのインストール方法、コード記載方法、実行方法を説明しました。
 ここからはユーザ各自でコード作成、応用ができるよう、AlibabaCloudの基本プロダクトサービスの説明を通じて解説します。
 1. VPC &amp;nbsp; VPCは、Alibaba Cloudに設置されたプライベートネットワークです。 VPCはAlibaba Cloudの他のアカウントを含む仮想ネットワークと論理的に分離されています。
@@ -451,10 +424,10 @@ VPCコンポーネントは以下のような構成図になります。
     
     <item>
       <title>ECS、EIPの作成</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/09/ecs/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/09/ecs/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/09/ecs/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/09/ecs/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるECS、EIPの作成方法を解説します。
 1. ECS &amp;nbsp; ECSは、Alibaba Cloudによる仮装コンピューティングサービスです。ECS インスタンスは、ECS のコアコンポーネントであり、CPU、メモリ、およびその他の基本的なコンピューティングコンポーネントを含む仮想コンピューティング環境です。ディスク、イメージ、スナップショットなどの他のリソースは、ECS インスタンスと組み合わせてのみ使用できます。 &amp;nbsp; Alibaba CloudのECSはビジネスやWebアプリケーションなど様々なニーズに対応しており、即時に作れることが特徴です。
 &amp;nbsp; ECSインスタンス生成リソースは多くのオプション（任意）でパラメータや構成を指定できます。ECSインスタンスはVPCやセキュリティグループとは少し異なり、OSやバージョン選定、起動時データ引き渡しやECS使い捨て利用など様々な利用方法が実現出来るため、ここは抑えておきましょう。
@@ -466,10 +439,10 @@ resource &amp;quot;alicloud_instance&amp;quot; &amp;quot;ECS_instance&amp;quot; 
     
     <item>
       <title>SLBの作成</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/10/slb/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/10/slb/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/10/slb/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/10/slb/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるSLBの作成方法を解説します。
 1. SLB &amp;nbsp; SLB（Server Load Balancer）はアプリケーションや Web サイトのトラフィックを分散させるサービスです。
 &amp;nbsp; SLB は、仮想サービスアドレスを設定することによって、追加の ECS インスタンスを高性能で可用性の高いアプリケーションサービスプールに仮想化し、クライアントからのリクエストを、 転送ルールに従ってサーバープール内のECS インスタンスに分配します。
@@ -666,10 +639,10 @@ https://jp.alibabacloud.com/support/after-sales
     
     <item>
       <title>AutoScalingの作成</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/11/autoscaling/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/11/autoscaling/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/11/autoscaling/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/11/autoscaling/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるAutoscalingの作成方法を解説します。
 1. AutoScaling &amp;nbsp; Auto Scaling はECSリソースの容量を自動的にスケールイン/スケールアウト調整してくれます。 ※ESSとは、SDK名やパッケージ名で用いられるAuto Scalingの略称です。（Elastic Scaling Service）
 
@@ -680,10 +653,10 @@ resource &amp;quot;alicloud_ess_scaling_group&amp;quot; &amp;quot;scaling&amp;qu
     
     <item>
       <title>OSSの作成</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/12/oss/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/12/oss/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/12/oss/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/12/oss/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるObject Storage Serviceの作成方法を解説します。
 1. OSS &amp;nbsp; Object Storage Service （OSS）は、クラウド内の任意の量のデータの保存、バックアップ、およびアーカイブを可能にするストレージサービスです。
 
@@ -696,10 +669,10 @@ resource &amp;quot;alicloud_oss_bucket&amp;quot; &amp;quot;bucket-acl&amp;quot;{
     
     <item>
       <title>RDSの作成</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/13/rds/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/13/rds/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/13/rds/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/13/rds/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるRelation Database Serviceの作成方法を解説します。
 1. RDS &amp;nbsp; Relation Database Service （RDS）は、ApsaraDB for RDS 、クラウド内の独立したデータベースサービスです。
 2. コンポーネント &amp;nbsp; ApsaraDB for RDSシリーズとしてMySQL、SQL Server、PostgreSQL、PPASがあります。
@@ -713,10 +686,10 @@ resource &amp;quot;alicloud_db_instance&amp;quot; &amp;quot;default&amp;quot; { 
     
     <item>
       <title>RAMの作成</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/14/ram/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/14/ram/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/14/ram/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/14/ram/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるResource Access Managementの作成方法を解説します。
 1. RAM権限管理 &amp;nbsp; AlibabaCloudはどのサービスを利用・操作するにしろ権限が必要です。 Terraformで作成したリソースサービスにも他ユーザが操作できるように権限アタッチが必要になります。 &amp;nbsp; 本章では、AlibabaCloudサービスに対する権限付与の方法を学びます。
 
@@ -731,10 +704,10 @@ resource &amp;quot;alicloud_db_instance&amp;quot; &amp;quot;default&amp;quot; { 
     
     <item>
       <title>Kubernetesの作成</title>
-      <link>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/15/kubernetes/</link>
+      <link>https://www.sbcloud.co.jp/help/best-practice/terraform/15/kubernetes/</link>
       <pubDate>Mon, 22 Jul 2019 00:00:00 +0900</pubDate>
       
-      <guid>https://www.sbcloud.co.jp/help/best-practice/devops/terraform/15/kubernetes/</guid>
+      <guid>https://www.sbcloud.co.jp/help/best-practice/terraform/15/kubernetes/</guid>
       <description>AlibabaCloudの基本プロダクトサービスであるResource Access Managementの作成方法を解説します。
 1. Kubernetes &amp;nbsp; Kubernetesは自動デプロイ、スケーリング、アプリ・コンテナの運用自動化のために設計されたオープンソースのプラットフォームです。Kubernetesによって、以下のことが要求に迅速かつ効率良く対応ができます。
  アプリを迅速に予定通りにデプロイする (コンテナをサーバー群へ展開する) 稼働中にアプリをスケールする（稼働中にコンテナ数を変更する） 新機能をシームレスに提供開始する (稼働中にロールアウトする) ハードウェアの利用率を要求に制限する (コンテナで共存させて稼働率を高くする）  &amp;nbsp; Kubernetesのゴールは、下記の様なアプリの運用負担を軽減するためのエコシステムのコンポーネントとツールを整備することです。

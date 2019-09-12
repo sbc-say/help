@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>プロダクト on テクニカルリファレンス</title>
+    <link>https://www.sbcloud.co.jp/help/best-practice/product/</link>
+    <description>Recent content in プロダクト on テクニカルリファレンス</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Mon, 22 Jul 2019 12:30:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sbcloud.co.jp/help/best-practice/product/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DataV Widget 開発ガイド</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/product/datav/datav-widget-develop-guide/</link>
+      <pubDate>Tue, 10 Sep 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/product/datav/datav-widget-develop-guide/</guid>
+      <description>Tags ： AlibabaCloud DataV Widget Develop
+目的 DataV は AlibabaCloud のデータ可視化プロダクトとして日々進化して、とても優れていますが、提供できる Widget が限られてるため、一部特殊ニーズがあるユーザに答えられない可能性があります。このため、DataVのプロ版（中国サイト基準の呼び方）はWidget開発権限を開放し、DataV固有のWidgetを利用以外はユーザ自身も自由に開発するできるようになります。
+　DataV プロ版はユーザ自身のWidgetを開発できるメリットがある以外は、開発された Widget を他人にも共有できるし、中国サイトの MarketPlace を販売することもできるので、開発ベンダーにとってもDataVはデータ可視化ツールの魅了的なプラットフォームです。
+本ガイドは、いくつの簡単な Echarts ライブラリをDataVに取り込みのサンプルを通じてDataV開発版の使い方とWidget開発ルールを紹介させていただきます。
+ 本ガイド全体的な流れは下記の通り：
+   セクション Topic 説明     前提知識 DataVの基本知識 DataVの概要を紹介、Widgetの簡単な説明   - Echarts基本知識 Echartsの概要紹介とOptionの簡単な説明   - Nodejs基本知識 NodeJSのパッケージとDataV widgetの関係、及びNPMコマンドの簡単な説明   準備作業 Tokenの取得とGroupの作成 開発前にDataV側が必要な準備作業   - ローカル環境構築 ローカルの開発環境の構築手順   開発ルール index.js index.jsの各Functionの説明   - package.json package.jsonの説明   サンプルコード EchartsのコードをそのままDataVに移行 package.</description>
+    </item>
+    
+  </channel>
+</rss>
