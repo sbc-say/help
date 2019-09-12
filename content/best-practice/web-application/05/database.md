@@ -59,5 +59,10 @@ Relational DatabaseとしてAspara for RDS、NoSQL DatabaseとしてAspara for M
 日本リージョン未公開だが他の有用なデータベースサービスとして、クラウドネイティブでハイパフォーマンスなMySQL, PostgreSQL, and Oracleを提供する[Polardb](https://www.alibabacloud.com/products/apsaradb-for-polardb)と、独身の日でのオンライントランザクションを支えた分散型SQLエンジンである[Distributed Relational Database Service](https://www.alibabacloud.com/product/drds)があります。現在これらは中国リージョンのみで利用可能ですが、東京リージョンでも利用可能になり次第紹介したいと思います。
 
 ## 参考リンク一覧
-https://jp.alibabacloud.com/help/product/34269.htm
-https://jp.alibabacloud.com/help/product/27537.htm
+|タイトル|URL|
+| ---- | ---- |
+|ApsaraDB for RDS|https://jp.alibabacloud.com/help/product/26090.htm|
+|AsparaDB for MongoDB|https://jp.alibabacloud.com/help/product/26556.htm|
+|Polardb What is Polardb?|
+https://www.quora.com/What-is-Alibaba-Cloud-PolarDB||Polardb History/architecture|https://www.alibabacloud.com/blog/a-brief-history-of-development-of-alibaba-cloud-polardb_594254|
+|Polardb getting started/features|https://www.alibabacloud.com/blog/polardb-series-1-get-started-in-10-minutes_594647|
