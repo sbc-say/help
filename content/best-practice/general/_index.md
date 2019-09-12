@@ -1,8 +1,8 @@
 ---
-title: "コンテナ"
-description: "Alibaba Cloudでコンテナを活用する上でのベストプラクティスを記載します。"
+title: "全般"
+description: "Alibaba Cloud全体に関するベストプラクティスを記載します。"
 date: 2019-07-22T12:30:18+08:00
-weight: 20
+weight: 10
 draft: false
 ---
 <!-- descriptionがコンテンツの前に表示されます -->
