@@ -13,6 +13,7 @@ draft: false
 |:------:|:-----:|:------:|
 |ECS|プロダクト紹介|[公式ドキュメント](https://jp.alibabacloud.com/help/doc-detail/25367.htm)|
 |ECS|クイックスタート|[公式ドキュメント](https://jp.alibabacloud.com/help/doc-detail/25422.htm)|
+|ECS|ベストプラクティス|[公式ドキュメント](https://www.alibabacloud.com/blog/alibaba-clouds-guide-to-ecs-best-practice_594911)|
 |RDS|プロダクト紹介|[公式ドキュメント](https://jp.alibabacloud.com/help/product/26090.htm)|
 |SLB|プロダクト紹介|[公式ドキュメント](https://jp.alibabacloud.com/help/product/27537.htm)|
 |VPC|プロダクト紹介|[公式ドキュメント](https://jp.alibabacloud.com/help/product/27706.htm)|

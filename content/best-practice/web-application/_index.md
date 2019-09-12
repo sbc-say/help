@@ -1,9 +1,9 @@
 ---
-title: "ウェブアプリケーション"
-description: "ここではWebApplicationを中心に記載します。"
+title: "Webアプリケーション"
+description: "WebアプリケーションをAlibaba Cloudでどのように構築するかのシナリオを記載します。"
 date: 2019-07-22T12:30:18+08:00
-weight: 10
-draft: true
+weight: 80
+draft: false
 ---
 <!-- descriptionがコンテンツの前に表示されます -->
 
