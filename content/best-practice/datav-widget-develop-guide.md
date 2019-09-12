@@ -111,21 +111,24 @@ DataV の Widget は Nodejs をベースに開発するため、`Nodejs` と `Ja
 下記基本概念を一旦知っておきましょう。
 
 - Nodejs
-  * 「Node.js」はサーバー側で動くJavaScriptの環境（プラットフォーム）であり、Googleが開発したV8エンジンと非同期処理によって高速なレスポンスを実現できるのが特徴です。
-  *  Node.jsとJavaScriptの違いについて、JavaScriptはブラウザ側で実行され、Node.jsはサーバー側で実行される。
+  * 「Node.js」はサーバー側で動くJavaScriptの環境（プラットフォーム）であり、Googleが開発したV8エンジンと非同期処理によって高速なレスポンスを実現できるのが特徴です。  
+  *  Node.jsとJavaScriptの違いについて、JavaScriptはブラウザ側で実行され、Node.jsはサーバー側で実行される。  
 - NPM
-  * Node Package Manager、Node.jsのパッケージ（Package ）を管理する（Manager）ツールです。
-  * DataVの開発ツールも、EchartsもNPM使ってインストール。
-  * npmでパッケージをインストールする場合は次のようなコマンドを実行します。
+  * Node Package Manager、Node.jsのパッケージ（Package ）を管理する（Manager）ツールです。  
+  * DataVの開発ツールも、EchartsもNPM使ってインストール。  
+  * npmでパッケージをインストールする場合は次のようなコマンドを実行します。  
+
 ```shell
 npm install パッケージ名
 
 ```
+
 - package.json
-　* package.jsonはprojectのpackageを管理するためのファイルです。mavenで言うところのpom.xmlです。
-　* package.jsonはnode.jsのlibraryを公開する時のファイルなので、licenseなどが入ります。`dependencies`でライブラリの依存関係を管理します。
-　* npm installを実行すると、package.jsonの内容に従って、packageを自動にインストールします。
-　* 一つサンプル：
+  * package.jsonはprojectのpackageを管理するためのファイルです。mavenで言うところのpom.xmlです。
+  * package.jsonはnode.jsのlibraryを公開する時のファイルなので、licenseなどが入ります。`dependencies`でライブラリの依存関係を管理します。
+  * npm installを実行すると、package.jsonの内容に従って、packageを自動にインストールします。
+  * 一つサンプル：
+
 ```shell
 {
   "name": "chart1",
@@ -157,6 +160,8 @@ DataVのプロ版を購入してから、Developer Token が手に入れます�
 ![image_1dkcadj8l14tv8as19he17hcq61g.png-599.7kB][2]
 
 Group IDの Naming ルールについて:
+
+
 - 必ず[会社.group名]や[会社-group名]のフォマットにしないと行けない。
 - Group名の最後の文字は数値に入れるのはNG。
 
@@ -197,6 +202,7 @@ DataVインストール終わりましたら、下記のように言語を設定
 |--history.md //Widget update history
 
 ```
+
 ここで一番重要なファイルが２つあります。
 
 - index.js
@@ -212,6 +218,7 @@ DataVインストール終わりましたら、下記のように言語を設定
 - mergeConfigでpackage.jsonの設定とthis.config中で設定をマージし、変換する
 
 サンプル：
+
 ```javascript
 var Event = require('bcore/event');
 var $ = require('jquery');
@@ -311,6 +318,7 @@ module.exports = Event.extend(function Base(container, config) {
 ![DataVeditor](https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/pie.jpg)
 
 サンプル：
+
 ```javascript
 {
   "name": "@sbcloud-test/line",
@@ -1023,6 +1031,7 @@ Echartsの全部optionをDataVの標準Configに変換するサンプルです�
 
 
 ```
+
 * 効果
   ![](https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/bar.jpg)
 
