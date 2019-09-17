@@ -15,7 +15,7 @@ draft: false
 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
 
 
-![BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_001](/static_images/BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_001.png)
+![BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_001](../static_images/BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_001.png)
 <br>
 
 
@@ -81,7 +81,7 @@ Time taken: 14.094 seconds
 
 これでHive側にテーブルが作成できました。
 
-![BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_002](/static_images/BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_002.png)
+![BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_002](../static_images/BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_002.png)
 <br>
 
 

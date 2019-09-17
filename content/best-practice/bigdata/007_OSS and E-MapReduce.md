@@ -17,19 +17,19 @@ AlibabaCloudには様々なBigDataプロダクトがあります。BigData絡み
 
 |icon|プロダクト名|説明|メモ|
 |---|---|---|---|
-|![BD_Images_Product](/static_images/MaxCompute.png)|[MaxCompute](https://www.alibabacloud.com/product/maxcompute)|大規模データウェアハウジングに対応できるデータ処理プラットフォーム|	|
-|![BD_Images_Product](/static_images/e-mapreduce.png)|[E-MapReduce](https://www.alibabacloud.com/products/emapreduce)|E-MapReduce、Hadoopクラスタの展開や運用が可能|	|
-|![BD_Images_Product](/static_images/RealtimeCompute.png)|[RealtimeCompute](https://www.alibabacloud.com/products/realtime-compute)|Apache Flink を最適化したマネージドリアルタイムデータ処理プラットフォーム|	|
-|![BD_Images_Product](/static_images/DataWorks.png)|[DataWorks](https://www.alibabacloud.com/product/ide)|大規模データを処理するオンラインIDEサービス|	|
-|![BD_Images_Product](/static_images/LogService.png)|[LogService](https://www.alibabacloud.com/product/log-service)|データ収集、クリーニング、分析、視覚化、アラートを実現するマネージドサービス|	|
-|![BD_Images_Product](/static_images/datav-data.png)|[DataV](https://www.alibabacloud.com/product/datav)|DataV、データの可視化|	|
-|![BD_Images_Product](/static_images/quickbi.png)|[QuickBI](https://www.alibabacloud.com/product/quickbi)|クラウド上のユーザー向けに調整されたBIサービス|	|
-|![BD_Images_Product](/static_images/pai.png)|[Machine Learning PAI](https://www.alibabacloud.com/product/machine-learning)|機械学習と深層学習のデータ処理、モデルトレーニング、サービス展開、予測のためのプラットフォーム|	|
-|![BD_Images_Product](/static_images/elasticsearch.png)|[Elasticsearch](https://www.alibabacloud.com/product/elasticsearch)|データ分析、データ検索、機械学習、グラフ、APMなどを実現するマネージドサービス|	|
-|![BD_Images_Product](/static_images/graphanalytics.png)|[GraphAnalytics](https://data.aliyun.com/product/graphanalytics)|リレーショナルネットワークの分析サービス|中国サイトのみ|
-|![BD_Images_Product](/static_images/datalakeanalytics.png)|[DataLakeAnalytics](https://www.alibabacloud.com/products/data-lake-analytics)|ServerlessでOSS、データベース、NoSQLなどのデータソースでデータを分析するマネージドサービス||
-|![BD_Images_Product](/static_images/opensearch.png)|[OpenSearch](https://cn.aliyun.com/product/opensearch)|分散検索エンジンプラットフォーム|中国サイトのみ|
-|![BD_Images_Product](/static_images/hologram.png)|[Hologram](https://cn.aliyun.com/product/hologram)|PBレベルのデータに対し1秒未満で応答する超高速OLAPマネージドサービス|中国サイトのみ|
+|![BD_Images_Product](../static_images/MaxCompute.png)|[MaxCompute](https://www.alibabacloud.com/product/maxcompute)|大規模データウェアハウジングに対応できるデータ処理プラットフォーム|	|
+|![BD_Images_Product](../static_images/e-mapreduce.png)|[E-MapReduce](https://www.alibabacloud.com/products/emapreduce)|E-MapReduce、Hadoopクラスタの展開や運用が可能|	|
+|![BD_Images_Product](../static_images/RealtimeCompute.png)|[RealtimeCompute](https://www.alibabacloud.com/products/realtime-compute)|Apache Flink を最適化したマネージドリアルタイムデータ処理プラットフォーム|	|
+|![BD_Images_Product](../static_images/DataWorks.png)|[DataWorks](https://www.alibabacloud.com/product/ide)|大規模データを処理するオンラインIDEサービス|	|
+|![BD_Images_Product](../static_images/LogService.png)|[LogService](https://www.alibabacloud.com/product/log-service)|データ収集、クリーニング、分析、視覚化、アラートを実現するマネージドサービス|	|
+|![BD_Images_Product](../static_images/datav-data.png)|[DataV](https://www.alibabacloud.com/product/datav)|DataV、データの可視化|	|
+|![BD_Images_Product](../static_images/quickbi.png)|[QuickBI](https://www.alibabacloud.com/product/quickbi)|クラウド上のユーザー向けに調整されたBIサービス|	|
+|![BD_Images_Product](../static_images/pai.png)|[Machine Learning PAI](https://www.alibabacloud.com/product/machine-learning)|機械学習と深層学習のデータ処理、モデルトレーニング、サービス展開、予測のためのプラットフォーム|	|
+|![BD_Images_Product](../static_images/elasticsearch.png)|[Elasticsearch](https://www.alibabacloud.com/product/elasticsearch)|データ分析、データ検索、機械学習、グラフ、APMなどを実現するマネージドサービス|	|
+|![BD_Images_Product](../static_images/graphanalytics.png)|[GraphAnalytics](https://data.aliyun.com/product/graphanalytics)|リレーショナルネットワークの分析サービス|中国サイトのみ|
+|![BD_Images_Product](../static_images/datalakeanalytics.png)|[DataLakeAnalytics](https://www.alibabacloud.com/products/data-lake-analytics)|ServerlessでOSS、データベース、NoSQLなどのデータソースでデータを分析するマネージドサービス||
+|![BD_Images_Product](../static_images/opensearch.png)|[OpenSearch](https://cn.aliyun.com/product/opensearch)|分散検索エンジンプラットフォーム|中国サイトのみ|
+|![BD_Images_Product](../static_images/hologram.png)|[Hologram](https://cn.aliyun.com/product/hologram)|PBレベルのデータに対し1秒未満で応答する超高速OLAPマネージドサービス|中国サイトのみ|
 <br>
 
 
@@ -40,19 +40,19 @@ E-MapReduceを利用するメリット
 * マスタノード/スレーブノードなどクラスタ管理など、運用をしなくていい
 * 使った分だけ料金を払う**pay-as-you-go**、利用期間に応じて料金を払う**subscription**があり、利用用途に応じて節約することが可能
 
-![BD_Images_OSS_and_E-MapReduce_002](/static_images/BD_Images_OSS_and_E-MapReduce_002.png)
+![BD_Images_OSS_and_E-MapReduce_002](../static_images/BD_Images_OSS_and_E-MapReduce_002.png)
 <br>
 
 &nbsp; E-MapReduceはOSSのデータを使って処理したり、処理結果をOSSへ保存したりします。もちろんOSSをセントラルストレージとして、直接SQLクエリを投げてOSSからデータ取得することもできます。BigDataはデータが増えれば増えるほど維持費、処理のコストが跳ね上がってしまいます。例えば、OSSに処理したいDataLakeデータ、DWHなどが100TBあるとして、これをECSなど一時的なストレージに持たせるのはコスト的にも負荷が大きいです。そのため、OSSを全体的にHubとしたBigData運用が経済的にもお得です。
 
-![BD_Images_OSS_and_E-MapReduce_003.5](/static_images/BD_Images_OSS_and_E-MapReduce_003.5.png)
-![BD_Images_OSS_and_E-MapReduce_007](/static_images/BD_Images_OSS_and_E-MapReduce_007.png)
+![BD_Images_OSS_and_E-MapReduce_003.5](../static_images/BD_Images_OSS_and_E-MapReduce_003.5.png)
+![BD_Images_OSS_and_E-MapReduce_007](../static_images/BD_Images_OSS_and_E-MapReduce_007.png)
 <br>
 
 
 &nbsp; 上記、大規模なBigDataを運用するときOSSをセントラルストレージとするもう一つの理由があります。AlibabaCloudのOSSはDataLake、DWHを構築するのに必要な機能や大規模な分散サービスに必要な要件を備えています。SLA99.99999999%、高い堅牢性、データロストなし、他サービスとの親和性etc... 加えて、先述した通り料金が安いというメリットを踏まえると、これ以上の選択肢はないと思います。
 
-![BD_Images_OSS_and_E-MapReduce_005](/static_images/BD_Images_OSS_and_E-MapReduce_005.png)
+![BD_Images_OSS_and_E-MapReduce_005](../static_images/BD_Images_OSS_and_E-MapReduce_005.png)
 <br>
 
 &nbsp; まとめると、OSSをセントラルストレージとしたBigData運用をすると以下のメリットがあります。
@@ -60,12 +60,12 @@ E-MapReduceを利用するメリット
 * OSSをセントラルストレージとすることで、全体的なコスト削減が見込める
 * E-MapReduceの処理結果データをRDSやDataVなど、他プロダクトへ回すことが可能
 
-![BD_Images_OSS_and_E-MapReduce_004](/static_images/BD_Images_OSS_and_E-MapReduce_004.png)
+![BD_Images_OSS_and_E-MapReduce_004](../static_images/BD_Images_OSS_and_E-MapReduce_004.png)
 <br>
 
 &nbsp; 他社クラウドとのOSS比較としては以下の通りになります。AlibabaCloud OSSはAWS S3、GCP Cloud Storage、Azure Blob Storageとあまり謙遜ないです。
 
-![BD_Images_OSS_and_E-MapReduce_006](/static_images/BD_Images_OSS_and_E-MapReduce_006.png)
+![BD_Images_OSS_and_E-MapReduce_006](../static_images/BD_Images_OSS_and_E-MapReduce_006.png)
 <br>
 
 &nbsp; しかし、AlibabaCloudのE-MapReduceは他社クラウドと比べてかなり多くのHadoopエコシステムを搭載しています。AWS、GCP、Azure、Clouderaの様々なサービス+α 以上の機能があり、BigDataに関するあらゆること（OLTP、OLAP、FaaS、コンテナ運用、分散で深層学習、ストリーミングで機械学習など）が詰まっています。ImpalaにKuduなど、他社クラウドサービスでは実現できないこと、また構築が困難なケースに対し解決アプローチとなるエコシステムがたくさんあります。こちらが比較表です。（2019/08/20時点）
@@ -163,7 +163,7 @@ E-MapReduceを利用するメリット
 &nbsp; そういった意味では、AlibabaCloudのBigDataはかなり力が入ってることが伝わると思います。MaxComputeにHologramなど、他のプロダクトの力もありますが、E-MapReduceだけでも強力な武器となっているのはAlibabaCloudだからこそです。
 &nbsp; AlibabaCloudのE-MapReduceアーキテクチャを少しみてみます。以下のような構成図となっています。（ここには書いていないHadoopエコシステムが多数ありますがそこは割愛します）
 
-![BD_Images_OSS_and_E-MapReduce_003](/static_images/BD_Images_OSS_and_E-MapReduce_003.png)
+![BD_Images_OSS_and_E-MapReduce_003](../static_images/BD_Images_OSS_and_E-MapReduce_003.png)
 <br>
 
 &nbsp; 上記の図のように、E-MapReduceはECSインスタンスのローカルティスク上に構築され、HDFSは中間データの格納先として利用されます。E-MapReduceのデータ読み出しや書き込みは基本的にOSSに対して行われます。
@@ -176,11 +176,11 @@ E-MapReduceを利用するメリット
 
 &nbsp; E-MapReduceにはJindoFSアーキテクチャを実装しており、OSSに対しシームレスな読み込み/書き込み処理が実現できます。それだけでなく、OSSにあるDWHやHDFSなどでのメタデータの共有、管理ができるため、E-MapReduceで高速処理することができます。
 
-![BD_Images_OSS_and_E-MapReduce_009](/static_images/BD_Images_OSS_and_E-MapReduce_009.png)
+![BD_Images_OSS_and_E-MapReduce_009](../static_images/BD_Images_OSS_and_E-MapReduce_009.png)
 <br>
 
 &nbsp; JindoFS接続の使い方も簡単です。通常URLパスをjfsへ書き換えるだけです。実際の利用方法は別の章にて記載いたします。
-![BD_Images_OSS_and_E-MapReduce_010](/static_images/BD_Images_OSS_and_E-MapReduce_010.png)
+![BD_Images_OSS_and_E-MapReduce_010](../static_images/BD_Images_OSS_and_E-MapReduce_010.png)
 <br>
 
 

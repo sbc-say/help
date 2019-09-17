@@ -12,7 +12,7 @@ draft: false
 ## E-MapReduceの起動、チューリアトルについて
 &nbsp; 簡単なチューリアトルとして、E-MapReduceを起動しHiveでOSSにあるCSVファイルをParquetへETLし、HiveでOLTP、ImpalaでOLAPというワークフローをしてみます。
 E-MapReduceの起動は非常に簡単です。ゴールとしては以下の通りになります。
-![BD_Images_OSS_and_E-MapReduce_015](/static_images/BD_Images_OSS_and_E-MapReduce_015.png)
+![BD_Images_OSS_and_E-MapReduce_015](../static_images/BD_Images_OSS_and_E-MapReduce_015.png)
 <br>
 
 #### Step1: OSSにデータを保存します
@@ -20,7 +20,7 @@ BigDataを始めるためにはまずデータが必要です。今回はニュ�
 https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page
 <br>
 
-![BD_Images_OSS_and_E-MapReduce_015.5](/static_images/BD_Images_OSS_and_E-MapReduce_015.5.png)
+![BD_Images_OSS_and_E-MapReduce_015.5](../static_images/BD_Images_OSS_and_E-MapReduce_015.5.png)
 <br>
 
 ECSインスタンス１台にて、aliyun-cliをインストールします。そのあと、NYTデータをダウンロード、OSSヘアップロードします。
@@ -125,7 +125,7 @@ ECSでaliyun-cliのインストールが無事完了しましたので、今度�
 
 この処理後、OSSのプレフィックス上では、このような感じになってると思います。
 
-![BD_Images_OSS_and_E-MapReduce_016](/static_images/BD_Images_OSS_and_E-MapReduce_016.png)
+![BD_Images_OSS_and_E-MapReduce_016](../static_images/BD_Images_OSS_and_E-MapReduce_016.png)
 <br>
 
 
@@ -164,10 +164,10 @@ https://jp.alibabacloud.com/help/doc-detail/43966.html
 }
 ```
 >初期設定状態
-![BD_Images_OSS_and_E-MapReduce_019](/static_images/BD_Images_OSS_and_E-MapReduce_019.png)
+![BD_Images_OSS_and_E-MapReduce_019](../static_images/BD_Images_OSS_and_E-MapReduce_019.png)
 
 >E-MapReduceがOSSへアクセスできるように権限変更へ
-![BD_Images_OSS_and_E-MapReduce_020](/static_images/BD_Images_OSS_and_E-MapReduce_020.png)
+![BD_Images_OSS_and_E-MapReduce_020](../static_images/BD_Images_OSS_and_E-MapReduce_020.png)
 
 <br>
 
@@ -183,7 +183,7 @@ https://jp.alibabacloud.com/help/doc-detail/43966.html
 |       |TASK|ecs.sn2.large|4|
 
 
-![BD_Images_OSS_and_E-MapReduce_022](/static_images/BD_Images_OSS_and_E-MapReduce_022.png)
+![BD_Images_OSS_and_E-MapReduce_022](../static_images/BD_Images_OSS_and_E-MapReduce_022.png)
 <br>
 Masterインスタンス、Coreインスタンス、Taskインスタンスは任意での選定になります。
 ただし、Hadoopエコシステムによっては必要な起動要件がありますので、状況によってはインスタンス台数を調整する必要があります。
@@ -195,11 +195,11 @@ Masterインスタンス、Coreインスタンス、Taskインスタンスは任
 |タスク|データは持たないが、MPPなどデータ処理のためにリソース提供することが可能。任意起動|タスクトラッカー|
 
 
-![BD_Images_OSS_and_E-MapReduce_023](/static_images/BD_Images_OSS_and_E-MapReduce_023.png)
+![BD_Images_OSS_and_E-MapReduce_023](../static_images/BD_Images_OSS_and_E-MapReduce_023.png)
 <br>
 
 knox（REST APIを使用してWebHDFSやHBaseとかWeb UIインターフェースを閲覧するもの）を利用する場合は、こちらにてKnoxユーザ追加のアカウントを登録するとあとが便利です。
-![BD_Images_OSS_and_E-MapReduce_023.5](/static_images/BD_Images_OSS_and_E-MapReduce_023.5.png)
+![BD_Images_OSS_and_E-MapReduce_023.5](../static_images/BD_Images_OSS_and_E-MapReduce_023.5.png)
 <br>
 
 
@@ -223,7 +223,7 @@ sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 <br>
 
 E-MapReduceが無事起動完了したら、ヘルスチェックを見て無事完了してるかを確認します。自動でヘルスチェックが行ってることもあり、基本的には問題ないことが多いです。
-![BD_Images_OSS_and_E-MapReduce_024](/static_images/BD_Images_OSS_and_E-MapReduce_024.png)
+![BD_Images_OSS_and_E-MapReduce_024](../static_images/BD_Images_OSS_and_E-MapReduce_024.png)
 <br>
 
 
@@ -243,9 +243,9 @@ E-MapReduceでのポート8443、8888、8088は次のような位置付けです
 |YARNリソースマネージャ|8088|
 
 
-![BD_Images_OSS_and_E-MapReduce_025](/static_images/BD_Images_OSS_and_E-MapReduce_025.png)
+![BD_Images_OSS_and_E-MapReduce_025](../static_images/BD_Images_OSS_and_E-MapReduce_025.png)
 
-![BD_Images_OSS_and_E-MapReduce_026](/static_images/BD_Images_OSS_and_E-MapReduce_026.png)
+![BD_Images_OSS_and_E-MapReduce_026](../static_images/BD_Images_OSS_and_E-MapReduce_026.png)
 <br>
 
 ###### ローカルポートフォワードで接続
@@ -268,26 +268,26 @@ https://jp.alibabacloud.com/help/doc-detail/28187.html
 
 #### Step5: HueらWeb UIに接続
 上記設定が終わり次第、Hueのアクセスリンクから閲覧したいURLを選択します。
-![BD_Images_OSS_and_E-MapReduce_027](/static_images/BD_Images_OSS_and_E-MapReduce_027.png)
+![BD_Images_OSS_and_E-MapReduce_027](../static_images/BD_Images_OSS_and_E-MapReduce_027.png)
 <br>
 
 今回はHue起動なのでHueを起動します。
-![BD_Images_OSS_and_E-MapReduce_029](/static_images/BD_Images_OSS_and_E-MapReduce_029.png)
+![BD_Images_OSS_and_E-MapReduce_029](../static_images/BD_Images_OSS_and_E-MapReduce_029.png)
 <br>
 
 ここでユーザ名、パスワードが求められます。ここはE-MapReduceのHue画面の設定にあるPWを取得して、
 ユーザ名：admin
 パスワード：<Hue画面の設定にあるPW>
 を入力します。
-![BD_Images_OSS_and_E-MapReduce_028](/static_images/BD_Images_OSS_and_E-MapReduce_028.png)
+![BD_Images_OSS_and_E-MapReduce_028](../static_images/BD_Images_OSS_and_E-MapReduce_028.png)
 <br>
 
 これでHue Web UIが表示されました。
-![BD_Images_OSS_and_E-MapReduce_030](/static_images/BD_Images_OSS_and_E-MapReduce_030.png)
+![BD_Images_OSS_and_E-MapReduce_030](../static_images/BD_Images_OSS_and_E-MapReduce_030.png)
 <br>
 
 Hueの便利なところは「クエリ」のボタンから様々なHiveやImpala、Sparkなど様々なOSSのクエリを選択できることです。
-![BD_Images_OSS_and_E-MapReduce_031](/static_images/BD_Images_OSS_and_E-MapReduce_031.png)
+![BD_Images_OSS_and_E-MapReduce_031](../static_images/BD_Images_OSS_and_E-MapReduce_031.png)
 <br>
 
 
@@ -343,7 +343,7 @@ CREATE EXTERNAL TABLE `default.yellow_trips`(
 <br>
 HueでSQL入力画面に上記のSQLクエリを入力後、実行ボタンをクリックすればSQLが実行されます。
 
-![BD_Images_OSS_and_E-MapReduce_032](/static_images/BD_Images_OSS_and_E-MapReduce_032.png)
+![BD_Images_OSS_and_E-MapReduce_032](../static_images/BD_Images_OSS_and_E-MapReduce_032.png)
 <br>
 
 
@@ -366,7 +366,7 @@ LOAD DATA INPATH 'oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tr
 <br>
 SQL実行したい量が多いので、コツとして実行したいSQKをマウスで全て選択し、実行ボタンを押すと順次SQL実行してくれます。
 
-![BD_Images_OSS_and_E-MapReduce_033](/static_images/BD_Images_OSS_and_E-MapReduce_033.png)
+![BD_Images_OSS_and_E-MapReduce_033](../static_images/BD_Images_OSS_and_E-MapReduce_033.png)
 <br>
 
 
@@ -374,7 +374,7 @@ SQL実行したい量が多いので、コツとして実行したいSQKをマ�
 ```SQL
 SHOW PARTITIONS default.yellow_trips;
 ```
-![BD_Images_OSS_and_E-MapReduce_034](/static_images/BD_Images_OSS_and_E-MapReduce_034.png)
+![BD_Images_OSS_and_E-MapReduce_034](../static_images/BD_Images_OSS_and_E-MapReduce_034.png)
 <br>
 
 テストにHive SQLを中間テーブルに投げてみます。ここでも結果が表示されていたらOKです。
@@ -382,7 +382,7 @@ SHOW PARTITIONS default.yellow_trips;
 ```SQL
 SELECT vendor_id,pickup_datetime,passenger_count FROM default.yellow_trips WHERE yyyymmdd >= '201003' AND yyyymmdd <= '201004' limit 10;
 ```
-![BD_Images_OSS_and_E-MapReduce_035](/static_images/BD_Images_OSS_and_E-MapReduce_035.png)
+![BD_Images_OSS_and_E-MapReduce_035](../static_images/BD_Images_OSS_and_E-MapReduce_035.png)
 <br>
 
 
@@ -404,7 +404,7 @@ LOCATION 'oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/hive_parquet';
 ```
 この結果として、上記の`oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/hive_parquet`にてフォルダが自動で作成されます。
 
-![BD_Images_OSS_and_E-MapReduce_036](/static_images/BD_Images_OSS_and_E-MapReduce_036.png)
+![BD_Images_OSS_and_E-MapReduce_036](../static_images/BD_Images_OSS_and_E-MapReduce_036.png)
 <br>
 
 続いて、DataNodeにある中間テーブルをOSSのParquetへ保存するSQLを実行します。
@@ -457,7 +457,7 @@ WHERE yyyymmdd >= '201004' limit 10;
 ```
 
 
-![BD_Images_OSS_and_E-MapReduce_037](/static_images/BD_Images_OSS_and_E-MapReduce_037.png)
+![BD_Images_OSS_and_E-MapReduce_037](../static_images/BD_Images_OSS_and_E-MapReduce_037.png)
 <br>
 
 <br>

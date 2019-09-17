@@ -15,7 +15,7 @@ draft: false
 本ページは具体的な手法より、どんな手法があるかをメインに記載します。
 
 ### クロスリージョンレプリケーションを使った同期方法
-![BD_Images_AlibabaCloud_OSS_to_another_OSS_(synchronization)_001](/static_images/BD_Images_AlibabaCloud_OSS_to_another_OSS_(synchronization)_001.png)
+![BD_Images_AlibabaCloud_OSS_to_another_OSS_(synchronization)_001](../static_images/BD_Images_AlibabaCloud_OSS_to_another_OSS_(synchronization)_001.png)
 <br>
 >注意 
 >* 2019/8/30 現在、クロスリージョンレプリケーション機能は、中国本土の異なるリージョン間、および米国西部1（シリコンバレー）と米国東部1（バージニア）リージョン間でのみサポートされています。

@@ -14,7 +14,7 @@ draft: false
 また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。
 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
 
-![BD_Images_Fluend_to_OSS_001](/static_images/BD_Images_Fluend_to_OSS_001.png)
+![BD_Images_Fluend_to_OSS_001](../static_images/BD_Images_Fluend_to_OSS_001.png)
 <br>
 
 
@@ -280,7 +280,7 @@ Step7. ちゃんと実現できてるかテストしてみます。
 <br>
 
 OSSのバケットでも、Logがあることを確認できます。これで以上です。
-![BD_Images_Fluend_to_OSS_002](/static_images/BD_Images_Fluend_to_OSS_002.png)
+![BD_Images_Fluend_to_OSS_002](../static_images/BD_Images_Fluend_to_OSS_002.png)
 <br>
 
 

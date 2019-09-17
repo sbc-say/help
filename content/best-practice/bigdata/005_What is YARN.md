@@ -41,7 +41,7 @@ YARNファミリーのそれぞれの役割、およびHadoopクラスタの位�
 * コンテナのリソースはTaskに割当
 * クライアントのコードはTaskで実行
 
-![BD_Images_What_is_YARN_001](/static_images/BD_Images_What_is_YARN_001.png)
+![BD_Images_What_is_YARN_001](../static_images/BD_Images_What_is_YARN_001.png)
 <br>
 
 ## YARNを使ったアプリケーション実行の流れについて
@@ -58,7 +58,7 @@ YARNファミリーのそれぞれの役割、およびHadoopクラスタの位�
 1. NodeManagerで持ちTask処理が終わればResourceManagerへ通知
 1. 全てのNodeManagerの処理が終われば、アプリケーション結果をクライアントに返してアプリケーション終了
 
-![BD_Images_What_is_YARN_001](/static_images/BD_Images_What_is_YARN_002.png)
+![BD_Images_What_is_YARN_001](../static_images/BD_Images_What_is_YARN_002.png)
 <br>
 
 

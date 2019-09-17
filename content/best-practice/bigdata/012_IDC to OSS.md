@@ -17,7 +17,7 @@ draft: false
 [物理接続を介したオンプレミス IDC からの VPC への接続](https://jp.alibabacloud.com/help/doc-detail/44844.htm)
 https://jp.alibabacloud.com/help/doc-detail/44844.htm
 
-![BD_Images_IDC_to_OSS_001](/static_images/BD_Images_IDC_to_OSS_001.png)
+![BD_Images_IDC_to_OSS_001](../static_images/BD_Images_IDC_to_OSS_001.png)
 <br>
 
 ### Hybrid Cloud Storage Arrayを使用した方法
@@ -41,7 +41,7 @@ https://jp.alibabacloud.com/help/doc-detail/59922.html
 https://www.sbcloud.co.jp/entry/2018/10/31/migration_oss/
 
 
-![BD_Images_IDC_to_OSS_002](/static_images/BD_Images_IDC_to_OSS_002.png)
+![BD_Images_IDC_to_OSS_002](../static_images/BD_Images_IDC_to_OSS_002.png)
 <br>
 
 

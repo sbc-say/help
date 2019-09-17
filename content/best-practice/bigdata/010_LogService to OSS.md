@@ -16,7 +16,7 @@ draft: false
 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
 
 
-![BD_Images_LogService_to_OSS_001](/static_images/BD_Images_LogService_to_OSS_001.png)
+![BD_Images_LogService_to_OSS_001](../static_images/BD_Images_LogService_to_OSS_001.png)
 <br>
 
 
@@ -31,7 +31,7 @@ https://jp.alibabacloud.com/help/doc-detail/48869.htm
 LogServiceでのデータ収集方法は様々な方法がありますが、今回はtwitterのtweetデータを収集、OSSヘ転送する処理を目指します。イメージとしてはECSでTwitterデータを収集、それをLogServiceに転送し、LogServiceによりOSSへParquet形式でデータ転送、という流れになります。
 
 
-![BD_Images_LogService_to_OSS_002](/static_images/BD_Images_LogService_to_OSS_002.png)
+![BD_Images_LogService_to_OSS_002](../static_images/BD_Images_LogService_to_OSS_002.png)
 
 
 Step1 . LogServiceでプロジェクトの作成、Logstoreを作成します。
@@ -180,18 +180,18 @@ if __name__=='__main__':
 Step3. LogServiceでステータスチェックします。
 LogServiceの「Logstoreリスト」の「解析検索」にある「解析」をクリックし、上記Pythonの実行結果、tweet情報を確認します。
 
-![BD_Images_LogService_to_OSS_002.5](/static_images/BD_Images_LogService_to_OSS_002.5.png)
+![BD_Images_LogService_to_OSS_002.5](../static_images/BD_Images_LogService_to_OSS_002.5.png)
 
-![BD_Images_LogService_to_OSS_003](/static_images/BD_Images_LogService_to_OSS_003.png)
+![BD_Images_LogService_to_OSS_003](../static_images/BD_Images_LogService_to_OSS_003.png)
 <br>
 
 今度はLogServiceの「Logstoreリスト」の「LogShipper」にある「OSS」をクリックし、収集したLogをOSSへ転送するように設定します。
 今回のTwitterデータの場合は以下のような設定となりました。
-![BD_Images_LogService_to_OSS_004](/static_images/BD_Images_LogService_to_OSS_004.png)
+![BD_Images_LogService_to_OSS_004](../static_images/BD_Images_LogService_to_OSS_004.png)
 <br>
 
 Step4. OSSでデータが転送されてるかを確認します。データがあることを確認できたら終了です。
-![BD_Images_LogService_to_OSS_005](/static_images/BD_Images_LogService_to_OSS_005.png)
+![BD_Images_LogService_to_OSS_005](../static_images/BD_Images_LogService_to_OSS_005.png)
 
 
 ## 最後に

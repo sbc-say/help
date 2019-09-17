@@ -15,13 +15,13 @@ draft: false
 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
 
 
-![BD_Images_Apache_Flume_to_OSS_001](/static_images/BD_Images_Apache_Flume_to_OSS_001.png)
+![BD_Images_Apache_Flume_to_OSS_001](../static_images/BD_Images_Apache_Flume_to_OSS_001.png)
 <br>
 
 
 ## Apache Flumeとは
 &nbsp; Apache Flumeは堅牢性が高く、耐障害性のある分散データ取り込みツールです。さまざまなデータソース（Webサーバーなど）からHadoop分散ファイルシステム（HDFS）、HDFS上のHBaseやkuduなどの分散データベース、またはElasticsearchなど大量のログファイルをストリーミングすることができます。Flumeはログデータのストリーミングに加えて、Twitter、Facebook、Kafka BrokersなどのWebソースから生成されたEventデータをストリーミングすることもできます。
-![BD_Images_Apache_Flume_to_OSS_002](/static_images/BD_Images_Apache_Flume_to_OSS_002.png)
+![BD_Images_Apache_Flume_to_OSS_002](../static_images/BD_Images_Apache_Flume_to_OSS_002.png)
 <br>
 
 [Apache Flumeでより詳しいことは公式サイト](https://flume.apache.org/)を参照ください。

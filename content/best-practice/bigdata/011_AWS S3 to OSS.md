@@ -13,7 +13,7 @@ draft: false
 &nbsp; 本ページはAWS S3からAlibabaCloud OSSへデータを移植する方法をまとめます。
 本ページは具体的な手法より、どんな手法があるかをメインに記載します。
 
-![BD_Images_AWS_S3_to_OSS_001](/static_images/BD_Images_AWS_S3_to_OSS_001.png)
+![BD_Images_AWS_S3_to_OSS_001](../static_images/BD_Images_AWS_S3_to_OSS_001.png)
 <br>
 
 

@@ -14,7 +14,7 @@ draft: false
 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
 
 
-![BD_Images_Apache_Arrow_to_OSS_001](/static_images/BD_Images_Apache_Arrow_to_OSS_001.png)
+![BD_Images_Apache_Arrow_to_OSS_001](../static_images/BD_Images_Apache_Arrow_to_OSS_001.png)
 <br>
 
 
@@ -29,7 +29,7 @@ draft: false
 * OLAP、OLTP、DeepLearningなど様々な分野で活躍
 * データの交換をするならArrow、データの永続化をするならSpark
 
-![BD_Images_Apache_Arrow_to_OSS_002](/static_images/BD_Images_Apache_Arrow_to_OSS_002.png)
+![BD_Images_Apache_Arrow_to_OSS_002](../static_images/BD_Images_Apache_Arrow_to_OSS_002.png)
 <br>
 
 参考：PythonのPandas問題

@@ -12,7 +12,7 @@ draft: false
 ## はじめに
 &nbsp; 本章はApache Spark（Batch）を使ってAlibabaCloud OSSへデータを送ります。ゴールとしては以下のような構成図になります。
 
-![BD_Images_Apache_Spark_to_OSS_001](/static_images/BD_Images_Apache_Spark_to_OSS_001.png)
+![BD_Images_Apache_Spark_to_OSS_001](../static_images/BD_Images_Apache_Spark_to_OSS_001.png)
 <br>
 
 
@@ -141,7 +141,7 @@ only showing top 20 rows
 >>> 
 ```
 結果、OSSに加工処理したDataFrameがcsvとして保存されました。
-![BD_Images_Apache_Spark_to_OSS_002](/static_images/BD_Images_Apache_Spark_to_OSS_002.png)
+![BD_Images_Apache_Spark_to_OSS_002](../static_images/BD_Images_Apache_Spark_to_OSS_002.png)
 <br>
 
 
@@ -201,7 +201,7 @@ df.write.format("jdbc").option("url", "jdbc:mysql://test:3306/table").option("db
 上記、ファイルのRead/Writeは理解できたと思いますので、これをBatchとして組み込み、実行します。
 この処理はOSSにあるnyc-taxi CSVファイル全データをOSSのHDFS_Parquetへ変換し保存するものです。
 OSSには以下 このようなcsvファイルがあるとします。
-![BD_Images_Apache_Spark_to_OSS_003](/static_images/BD_Images_Apache_Spark_to_OSS_003.png)
+![BD_Images_Apache_Spark_to_OSS_003](../static_images/BD_Images_Apache_Spark_to_OSS_003.png)
 <br>
 
 次に、`convert2parquet.py`というPython実行ファイルを作成します。
@@ -274,7 +274,7 @@ $ spark-submit --num-executors 85 --executor-memory 5g convert2parquet.py
 
 実行結果、しばらくすると以下のようにHDFS Parquetファイルたちができました。
 
-![BD_Images_Apache_Spark_to_OSS_004](/static_images/BD_Images_Apache_Spark_to_OSS_004.png)
+![BD_Images_Apache_Spark_to_OSS_004](../static_images/BD_Images_Apache_Spark_to_OSS_004.png)
 <br>
 
 

@@ -18,7 +18,7 @@ IDC調査によれば 2025年になるとデジタルデータはZBの領域に�
 ※ 1ZB = 125EB = 125000PB = 125000000TB
 
 このデジタルデータはどこから発生してるのか。具体例を見てみましょう。
-![BD_Images_What_is_BigData_001](/static_images/BD_Images_What_is_BigData_001.png)
+![BD_Images_What_is_BigData_001](../static_images/BD_Images_What_is_BigData_001.png)
 * [1回のMRIスキャンで20,000枚の画像取得。](https://www.seagate.com/files/www-content/our-story/trends/files/idc-seagate-dataage-whitepaper.pdf)
 * [Googleは1日あたり35億の検索クエリを処理。](http://www.internetlivestats.com/google-search-statistics/)
 * [Instagramユーザーは毎分54,000枚の写真を投稿。](http://www.internetlivestats.com/one-second/#instagram-band.)
@@ -50,7 +50,7 @@ IDC調査によれば 2025年になるとデジタルデータはZBの領域に�
 ### データ・ビジネスに対する様々な精度向上が可能
 &nbsp; 様々なデータの中には事業やビジネスを阻害する異常データ、不正データなどが混じっています。
 これらを検知し、撲滅することで問題は解決します。しかしそれだけでしょうか？例えば時系列のデータで、1時間おきに100億のデータがあり、0.001%の確率で異常データ、不正データが出るとしたら、次の新しいデータが来るまでの短い時間でどうやって検知しますか？ その解決策として、機械学習を使います。機械学習とは大量のデータを反復的に学習し、そこに潜むパターンを見つけ出すことです。そして過去データを学習した結果（数式およびパターン、変化値を特定するためのスコアや変数、パラメータ値）を新たなデータにあてはめることで、パターンにしたがって異常検知や将来予測ができます。
-![BD_Images_What_is_BigData_002](/static_images/BD_Images_What_is_BigData_002.png)
+![BD_Images_What_is_BigData_002](../static_images/BD_Images_What_is_BigData_002.png)
 
 &nbsp; このように、今後新しいデータが出るとき、異常データ・不正データを検出するときは過去のデータを遡って、変化値が大きいものを検出します。そういう意味ではビッグデータは非常に重要な存在になります。
 異常検知のみならず、将来の予測、データのグループ分けなど、機械学習/深層学習/強化学習をすることもできます。しかし、データ処理をするにおいてサンプルら母数が少ないと、既存データに対するアプローチ精度が保証できない課題があります。言い換えれば、データが多ければ多いほど精度が高い=確実論で事業に対する意思決定の裏付けが可能です。
@@ -79,7 +79,7 @@ IDC調査によれば 2025年になるとデジタルデータはZBの領域に�
 &nbsp; これをデータ上で行うのはどうでしょうか。問題設問を様々な分類へカテゴライズした上で、既存のデータに対し5W1H形式で順次絞って対処する必要があります。
 ここにて元となるデータが少ない、実績や実例がない、過去数年前のデータと比較できない、数値的な根拠が弱いなどと、参考となるデータが少ないと確認や根拠取りに時間がかかります。そういう意味ではビッグデータは非常に重要です。
 
-![BD_Images_What_is_BigData_003](/static_images/BD_Images_What_is_BigData_003.png)
+![BD_Images_What_is_BigData_003](../static_images/BD_Images_What_is_BigData_003.png)
 
 
 <br>
@@ -88,7 +88,7 @@ IDC調査によれば 2025年になるとデジタルデータはZBの領域に�
 &nbsp; ビッグデータは売上や業務成績をチェックするだけでなく、既存のデータを様々な角度から見える化を実施することで、必要な断捨離、経営課題を分析、最終的にはビジネスとして意思決定ができます。
 例えば、過去と同じ環境や条件で年間売上推移、失注率の比較、データをマトリクス図に散布して業務の断捨離、効率化のポイント絞り、新メニューの導入判定、価格変更アプローチ、というのが可能になります。ビッグデータがあれば、業務で工数削減や効率化、断捨離などと様々な決断をつけることができます。
 
-![BD_Images_What_is_BigData_004](/static_images/BD_Images_What_is_BigData_004.png)
+![BD_Images_What_is_BigData_004](../static_images/BD_Images_What_is_BigData_004.png)
 
 
 <br>
@@ -98,7 +98,7 @@ IDC調査によれば 2025年になるとデジタルデータはZBの領域に�
 &nbsp; BigDataはデータを維持するのに年数百万〜数十億円以上かかります。AmazonWebServiceにしろ、AlibabaCloudにしろ、データを持つのにお金がかかります。
 例えば、AlibabaCloud OSSで1TBのデータを持つ場合、1GB 2.41円/月（2019/09/01 時点）なので、1TBのデータを維持するのに月2,410円かかります。これが10倍、10TBとなったら月24,100円、100TBとなったら月241,000円、1PBとなったら月241万円かかります。他のクラウド会社でも、オンプレミスでも同じです。それだけではありません。データ収集基盤、ETLら加工基盤、分析基盤でこれだけの規模となると、処理に必要な台数（ノード）が増えます。そのため、現在ビッグデータに関する多様多種なシステム（ETLツール、クエリエンジン、BIツール、etc）が色々出ていますが、結局のところ適材適所の問題なので、ビッグデータを担当する人々はコスト削減と処理の効率化、工数削減を求めて様々なソリューション探り、マイグレ、システム改善の日々が続いています。
 
-![BD_Images_What_is_BigData_005](/static_images/BD_Images_What_is_BigData_005.png)
+![BD_Images_What_is_BigData_005](../static_images/BD_Images_What_is_BigData_005.png)
 <br>
 <br>
 

@@ -15,7 +15,7 @@ draft: false
 本ページは具体的な手法より、どんな手法があるかをメインに記載します。
 一部、URLにある手順はAWS S3をメインとしていますが、こちらはAlibabaCloud OSSでも同じことなので、参考にしてください。
 
-![BD_Images_AlibabaCloud_OSS_to_another_OSS_(migration)_001](/static_images/BD_Images_AlibabaCloud_OSS_to_another_OSS_(migration)_001.png)
+![BD_Images_AlibabaCloud_OSS_to_another_OSS_(migration)_001](../static_images/BD_Images_AlibabaCloud_OSS_to_another_OSS_(migration)_001.png)
 <br>
 
 

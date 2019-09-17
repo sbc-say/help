@@ -116,7 +116,7 @@ Oracleの[JDKダウンロードページ](https://www.oracle.com/java/technologi
 https://www.oracle.com/java/technologies/javase-java-archive-javase8-downloads.html
 ※(Java10ではIntelliJ IDEAが動かないため注意)
 そのあとはダウンロードされたdmgファイルを開き、インストールすれば完了です。
-![BD_Images_development_environment_buildup_set_and_buildup_method_000](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_000.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_000](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_000.png)
 
 インストール完了後、ターミナルでJavaのバージョン確認コマンドを実行し、以下のような表示になればOKです。
 ```bash
@@ -160,7 +160,7 @@ scala>
 <br>
 scalaでちょっと試してみます。何が対話型なのかみてみましょう。
 
-![BD_Images_development_environment_buildup_set_and_buildup_method_014](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_014.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_014](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_014.png)
 
 また、scalaの対話型を終了するときは`sys.exit`で終了します。
 ```shell
@@ -172,48 +172,48 @@ $ sys.exit
 IntelliJとは、Java言語など多言語対応の統合開発環境です。
 [IntelliJ IDEAのダウンロードページ](https://www.jetbrains.com/idea/download/) にアクセスします。
 https://www.jetbrains.com/idea/download/
-![BD_Images_development_environment_buildup_set_and_buildup_method_001](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_001.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_001](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_001.png)
 <br>
 
 Community版をダウンロードします。
-![BD_Images_development_environment_buildup_set_and_buildup_method_002](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_002.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_002](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_002.png)
 <br>
 
 
 ダウンロードされたdmgファイルを開き、appファイルをApplicationsフォルダへDragします。
-![BD_Images_development_environment_buildup_set_and_buildup_method_003](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_003.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_003](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_003.png)
 <br>
 
 アプリケーションフォルダにて、IntelliJ IDEA CE.appを開きます。
-![BD_Images_development_environment_buildup_set_and_buildup_method_003.5](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_003.5.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_003.5](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_003.5.png)
 <br>
 
 今回は初期インストールなので、「Do not import settings」を選定します。
-![BD_Images_development_environment_buildup_set_and_buildup_method_004](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_004.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_004](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_004.png)
 <br>
 
 UIは好きに選定します。
-![BD_Images_development_environment_buildup_set_and_buildup_method_005](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_005.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_005](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_005.png)
 <br>
 
 何も選択せずに、Nextをクリックします。
-![BD_Images_development_environment_buildup_set_and_buildup_method_006](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_006.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_006](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_006.png)
 <br>
 
 今回は何も選択せずに、Nextをクリックします。
-![BD_Images_development_environment_buildup_set_and_buildup_method_007](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_007.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_007](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_007.png)
 <br>
 
 scalaのpluginをクリックしインストールします。
-![BD_Images_development_environment_buildup_set_and_buildup_method_008](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_008.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_008](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_008.png)
 <br>
 
 これでインストールは完了です。
-![BD_Images_development_environment_buildup_set_and_buildup_method_009](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_009.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_009](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_009.png)
 <br>
 
 再起動後、起動画面で「Create New Project」をクリックし、次の画面のようになっていればインストールは成功です。
-![BD_Images_development_environment_buildup_set_and_buildup_method_009.1](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_009.1.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_009.1](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_009.1.png)
 <br>
 
 ---
@@ -221,7 +221,7 @@ scalaのpluginをクリックしインストールします。
 &nbsp; IntelliJ IDEAは便利なIDE綜合開発環境です。これをさらに快適な開発環境へ整えるために、行数追加とか、様々な設定を入れます。ここは著者のおすすめ設定を入れてみます。方法としては以下の通りです。
 
 メニューバーの [IntelliJ IDEA] > [Preferences] から設定します。
-![BD_Images_development_environment_buildup_set_and_buildup_method_010](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_010.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_010](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_010.png)
 <br>
 
 
@@ -231,13 +231,13 @@ scalaのpluginをクリックしインストールします。
 `Ensure line feed at file end on Save` : 保存時にファイル末尾に改行が入ります。
 `Show quick documentation on mouse move Delay (ms): 500` : クラスやメソッドにカーソルを合わせるとJava docがホバー表示されます。
 
-![BD_Images_development_environment_buildup_set_and_buildup_method_011](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_011.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_011](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_011.png)
 <br>
 
 #### Editor > General > Auto Import 
 `Optimize imports on the fly (for current project) ` : 自動でインポートの最適化を実施
 
-![BD_Images_development_environment_buildup_set_and_buildup_method_012](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_012.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_012](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_012.png)
 <br>
 
 #### Editor > General > Apperence
@@ -245,7 +245,7 @@ scalaのpluginをクリックしインストールします。
 `Show method separators` : メソッド区切り線を表示
 `Show whitespaces (Leading/Inner/Trailing)` : スペースを表示
 
-![BD_Images_development_environment_buildup_set_and_buildup_method_013](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_013.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_013](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_013.png)
 <br>
 
 ---
@@ -254,7 +254,7 @@ scalaのpluginをクリックしインストールします。
 mavenはPOM（Project Object Model)に基づいたプロジェクトのビルド、テスト、ドキュメンテーション、配信など、プロジェクトのライフサイクル全体を管理するものです。
 
 以下はmavenのコマンドとアーキテクチャ全体図です。
-![BD_Images_development_environment_buildup_set_and_buildup_method_015](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_015.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_015](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_015.png)
 <br>
 
 
@@ -276,7 +276,7 @@ $
 ここで注目したいのが、`Maven home: /usr/local/Cellar/maven/3.6.2/libexec`という行です。IntelliJ IDEAでもmaven環境と連携しますので、IntelliJ IDEAのmavenホームディレクトリとして設定する必要があります。
 [IntelliJ IDEA]>[Preferences]からmavenのホームディレクトリを設定します。
 
-![BD_Images_development_environment_buildup_set_and_buildup_method_017](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_017.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_017](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_017.png)
 <br>
 
 
@@ -539,7 +539,7 @@ Clean `$ mvn clean`
 MavenによるProject開発を行うときは プロジェクトフォルダ（archetype、原型）を選定する必要があります。
 様々なapache案件がありますが、ここはチューリアトルとして`add archetype`をクリックします。
 
-![BD_Images_development_environment_buildup_set_and_buildup_method_016](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_016.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_016](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_016.png)
 <br>
 
 cli版では以下のようにコマンドを入れてプロジェクトを作成していましたが、IntelliJ IDEAで作成する場合はこのようにパラメータ値を入れます。
@@ -553,28 +553,28 @@ $ mvn archetype:generate \
     -DgroupId=com.example \
     -DartifactId=helloworld
 ```
-![BD_Images_development_environment_buildup_set_and_buildup_method_018](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_018.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_018](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_018.png)
 <br>
 
 プロジェクトフォルダ（archetype、原型）ができましたので、それを選択します。
-![BD_Images_development_environment_buildup_set_and_buildup_method_019](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_019.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_019](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_019.png)
 <br>
 
 groupId、artifactIdを指定します。
-![BD_Images_development_environment_buildup_set_and_buildup_method_020](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_020.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_020](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_020.png)
 <br>
 
 それまでのそれぞれ設定した属性情報を確認します。
-![BD_Images_development_environment_buildup_set_and_buildup_method_021](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_021.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_021](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_021.png)
 <br>
 
 PJ Nameを指定します。
-![BD_Images_development_environment_buildup_set_and_buildup_method_022](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_022.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_022](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_022.png)
 <br>
 
 
 IntelliJ IDEAでの開発環境画面が表示されました。このような画面になってると思います。
-![BD_Images_development_environment_buildup_set_and_buildup_method_023](/static_images/BD_Images_development_environment_buildup_set_and_buildup_method_023.png)
+![BD_Images_development_environment_buildup_set_and_buildup_method_023](../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_023.png)
 <br>
 
 
