@@ -122,12 +122,12 @@ pq.write_table(table, './parquet/test.parquet')
 
 <br>
 
-他にこちらも参考にいただければ幸いです。
-[PyArrowでテキストファイルからParquetファイルを作成する方法](https://qiita.com/kusanoiskuzuno/items/eef36ba8dc23cd0828b1)
-https://qiita.com/kusanoiskuzuno/items/eef36ba8dc23cd0828b1
-
-[Apache SparkとPandasを使用したApache Arrowの使用方法](https://towardsdatascience.com/a-gentle-introduction-to-apache-arrow-with-apache-spark-and-pandas-bb19ffe0ddae)
-https://towardsdatascience.com/a-gentle-introduction-to-apache-arrow-with-apache-spark-and-pandas-bb19ffe0ddae
+他にこちらも参考にいただければ幸いです。  
+[PyArrowでテキストファイルからParquetファイルを作成する方法](https://qiita.com/kusanoiskuzuno/items/eef36ba8dc23cd0828b1)  
+https://qiita.com/kusanoiskuzuno/items/eef36ba8dc23cd0828b1  
+<br>
+[Apache SparkとPandasを使用したApache Arrowの使用方法](https://towardsdatascience.com/a-gentle-introduction-to-apache-arrow-with-apache-spark-and-pandas-bb19ffe0ddae)  
+https://towardsdatascience.com/a-gentle-introduction-to-apache-arrow-with-apache-spark-and-pandas-bb19ffe0ddae  
 
 
 

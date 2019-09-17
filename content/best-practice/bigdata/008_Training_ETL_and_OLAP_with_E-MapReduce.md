@@ -188,6 +188,7 @@ https://jp.alibabacloud.com/help/doc-detail/43966.html
 Masterインスタンス、Coreインスタンス、Taskインスタンスは任意での選定になります。
 ただし、Hadoopエコシステムによっては必要な起動要件がありますので、状況によってはインスタンス台数を調整する必要があります。
 役割はこちらを参考にしてください。
+
 |種類|説明|役割|
 |---|---|---|
 |マスター|ジョブフロー全体の構成管理を実施|ジョブトラッカー、ネームノード|
@@ -236,6 +237,7 @@ Hueを使う前に、E-MapReduceのセキュリティルールを変更する必
 http://www.ip138.com
 
 E-MapReduceでのポート8443、8888、8088は次のような位置付けです。
+
 |ポート|用途|
 |---|---|
 |knox|8443|
@@ -474,7 +476,7 @@ AlibabaCloudのE-MapReduceはこの流れをタイムスケジューラによっ
 <br>
 
 ## 余談
-AlibabaCloud公式blogにもE-MapReduce起動方法、手法、ベストプラクティスが記載されていますので、こちらも参考にしてください。
+AlibabaCloud公式blogにもE-MapReduce起動方法、手法、ベストプラクティスが記載されていますので、こちらも参考にしてください。  
 [EMRクラスター管理](https://www.alibabacloud.com/blog/diving-into-big-data-emr-cluster-management_595321)
 
 <br>

@@ -273,6 +273,7 @@ Step7. ちゃんと実現できてるかテストしてみます。
 [root@bigdatatest ~]# 
 ```
 ちなみにLogファイルの場所は以下の通りになります（CentOSの場合）
+
 |ファイル名|場所|
 |---|---|
 |設定ファイル|/etc/td-agent/td-agent.conf|

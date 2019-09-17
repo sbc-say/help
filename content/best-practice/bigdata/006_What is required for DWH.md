@@ -97,22 +97,11 @@ draft: false
 ## まとめ
 &nbsp; AlibabaCloudのBigDataはシンプルかつ様々な基盤構築が簡単にできますので、データ分析業務へ結びつけることを意識してリソースを作成いただければと思います。
 
-また、著者の経験上、大規模な分散システムを設計・構築する上で[非常に参考になる情報](https://blog.pragmaticengineer.com/distributed-architecture-concepts-i-have-learned-while-building-payments-systems/)がありますので、こちらも参考にいただければ幸いです。本テクニカルサイトでは記載しませんが、DWH構築〜BigData運用においてReactive Architectureや冪等性の重要さが伝わると思います。
-https://blog.pragmaticengineer.com/
-
-[分散アーキテクチャの概念](distributed-architecture-concepts-i-have-learned-while-building-payments-systems/)
-distributed-architecture-concepts-i-have-learned-while-building-payments-systems/
-
-[信頼できる方法で大規模な分散システムを運用する方法](https://blog.pragmaticengineer.com/operating-a-high-scale-distributed-system/)
+また、著者の経験上、大規模な分散システムを設計・構築する上で[非常に参考になる情報](https://blog.pragmaticengineer.com/distributed-architecture-concepts-i-have-learned-while-building-payments-systems/)がありますので、こちらも参考にいただければ幸いです。本テクニカルサイトでは記載しませんが、DWH構築〜BigData運用においてReactive Architectureや冪等性の重要さが伝わると思います。  
+<br>
+[分散アーキテクチャの概念](https://blog.pragmaticengineer.com/distributed-architecture-concepts-i-have-learned-while-building-payments-systems/)  
+https://blog.pragmaticengineer.com/distributed-architecture-concepts-i-have-learned-while-building-payments-systems/
+<br>
+[信頼できる方法で大規模な分散システムを運用する方法](https://blog.pragmaticengineer.com/operating-a-high-scale-distributed-system/)  
 https://blog.pragmaticengineer.com/operating-a-high-scale-distributed-system/
 <br>
-
-
-
-
-
-
-
-
-
-

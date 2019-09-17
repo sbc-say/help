@@ -1,5 +1,5 @@
 ---
-title: "Bigdataのベストプラクティスの紹介"
+title: "Bigdata"
 description: "Alibaba CloudのBigdataサービスに関するベストプラクティスを記載します。"
 date: 2019-09-15T12:30:18+08:00
 weight: 60

@@ -581,12 +581,12 @@ IntelliJ IDEAでの開発環境画面が表示されました。このような�
 ## 最後に
 IntelliJ IDEA、Cli両方でAlibabaCloud SDK開発環境を整えることができました。BigData運用を行うときはこの開発環境を通じて　構築する場合がありますので、参考にいただければ幸いです。
 
-また、参考となるリンクを添えます
-* [IntelliJ IDEAチューリアトル](https://www.jetbrains.com/help/idea/discover-intellij-idea.html)
-https://www.jetbrains.com/help/idea/discover-intellij-idea.html
-
-* [IntelliJ IDEAでScalaを開発する方法](https://dwango.github.io/scala_text/IDE.html)
-https://dwango.github.io/scala_text/IDE.html
+また、参考となるリンクを添えます  
+* [IntelliJ IDEAチューリアトル](https://www.jetbrains.com/help/idea/discover-intellij-idea.html)  
+https://www.jetbrains.com/help/idea/discover-intellij-idea.html  
+<br>
+* [IntelliJ IDEAでScalaを開発する方法](https://dwango.github.io/scala_text/IDE.html)  
+https://dwango.github.io/scala_text/IDE.html  
 
 
 

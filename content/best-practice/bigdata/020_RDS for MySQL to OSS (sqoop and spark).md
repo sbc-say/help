@@ -42,6 +42,7 @@ Sqoopを使ってRDS for MySQLにあるテーブルをHive Tableへ移植しま�
 
 
 Sqoopには様々なオプションがありますので、目的に応じて使い分けてください
+
 |オプション|説明|
 |---|---|
 |--connect|接続したいjdbcデータソース|
@@ -90,7 +91,7 @@ Time taken: 14.094 seconds
 ## 最後に
 AlibabaCloud公式blogにもE-MapReduce起動方法、手法、ベストプラクティスが記載されていますので、こちらを参考にするのもありです。
 
-[Sqoopによるデータ移植方法](https://www.alibabacloud.com/blog/drilling-into-big-data-data-ingestion-4_594666)
+[Sqoopによるデータ移植方法](https://www.alibabacloud.com/blog/drilling-into-big-data-data-ingestion-4_594666)  
 https://www.alibabacloud.com/blog/drilling-into-big-data-getting-started-with-oss-and-emr-2_594668
 
 * SqoopはORC、RCなどの少数のhadoopファイル形式をサポートしていません

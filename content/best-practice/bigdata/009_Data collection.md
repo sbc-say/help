@@ -49,6 +49,7 @@ draft: false
 ### ETL
 &nbsp; ETLは様々な方法がありますが、データ型やhdfsタイプ、仕様上できることできないことを見極めて全体設計が望ましいです。
 ex: 
+
 * HiveやSparkはdate型をサポートしますが、PrestoやImpalaはdate型をサポートしないので読み込み不可
 * SparkはORCサポートを打ち切ったため 、代わりの手法はSparkの最新ドキュメントで確認
 
