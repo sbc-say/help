@@ -2,7 +2,7 @@
 title: "DWHには何が必要か"
 description: "DWHを構築する上で大事なことを伝えます。"
 date: 2019-08-30T00:00:00+00:00
-weight: 30
+weight: 60
 draft: false
 ---
 

@@ -2,7 +2,7 @@
 title: "BigDataとは"
 description: "BigDataとは何かをお話しします。"
 date: 2019-08-30T00:00:00+00:00
-weight: 30
+weight: 10
 draft: false
 ---
 

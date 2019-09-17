@@ -2,7 +2,7 @@
 title: "IDCからOSSへ"
 description: "IDCオンプレミスからOSSへデータを移植する方法を説明します。"
 date: 2019-08-30T00:00:00+00:00
-weight: 30
+weight: 120
 draft: false
 ---
 <!-- descriptionがコンテンツの前に表示されます -->

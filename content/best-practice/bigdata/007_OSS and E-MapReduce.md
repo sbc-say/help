@@ -2,7 +2,7 @@
 title: "OSSとE-MapReduce"
 description: "OSSとE-MapReduceを勧める理由、簡単な使い方を説明します。"
 date: 2019-08-30T00:00:00+00:00
-weight: 30
+weight: 70
 draft: false
 ---
 <!-- descriptionがコンテンツの前に表示されます -->

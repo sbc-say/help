@@ -2,7 +2,7 @@
 title: "YARNとは"
 description: "BigDataを支える技術レイヤー、YARNについてを説明します。"
 date: 2019-08-30T00:00:00+00:00
-weight: 30
+weight: 50
 draft: false
 ---
 <!-- descriptionがコンテンツの前に表示されます -->

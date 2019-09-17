@@ -2,7 +2,7 @@
 title: "E-MapReduce起動、ETLとOLTP、OLAPをする"
 description: "チューリアトルとして、E-MapReduceを起動しETLし、HiveでOLTP、ImpalaでOLAPをします"
 date: 2019-08-30T00:00:00+00:00
-weight: 30
+weight: 80
 draft: false
 ---
 <!-- descriptionがコンテンツの前に表示されます -->
