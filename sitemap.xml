@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/001_what-is-bigdata/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/getting-started/</loc>
     <lastmod>2019-07-22T12:30:18+08:00</lastmod>
   </url>
@@ -53,6 +58,11 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/best-practice/container/02/development-environment/</loc>
     <lastmod>2019-08-13T16:20:40+09:00</lastmod>
   </url>
@@ -85,6 +95,11 @@
   <url>
     <loc>https://www.sbcloud.co.jp/help/best-practice/product/datav/datav-widget-develop-guide/</loc>
     <lastmod>2019-09-10T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/003_what-is-spark/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -128,6 +143,11 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/004_what-is-hdfs/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/best-practice/container/04/deploy-management/</loc>
     <lastmod>2019-08-13T16:20:40+09:00</lastmod>
   </url>
@@ -153,6 +173,11 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/005_what-is-yarn/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/best-practice/container/05/monitoring/</loc>
     <lastmod>2019-08-13T16:20:40+09:00</lastmod>
   </url>
@@ -173,8 +198,23 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/</loc>
+    <lastmod>2019-09-15T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/006_what-is-required-for-dwh/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/best-practice/terraform/06/docker/</loc>
     <lastmod>2019-07-22T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/007_oss-and-e-mapreduce/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -183,13 +223,28 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/best-practice/terraform/08/vpc/</loc>
     <lastmod>2019-07-22T00:00:00+09:00</lastmod>
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/009_data-collection/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/best-practice/terraform/09/ecs/</loc>
     <lastmod>2019-07-22T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/010_logservice-to-oss/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -233,8 +288,18 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/011_aws-s3-to-oss/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/best-practice/terraform/11/autoscaling/</loc>
     <lastmod>2019-07-22T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/012_idc-to-oss/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -243,8 +308,18 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/013_apache-spark-to-oss/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/best-practice/terraform/13/rds/</loc>
     <lastmod>2019-07-22T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -258,8 +333,18 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/016_apache-flume-to-oss/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/scenario/terraform/bastion-server/</loc>
     <lastmod>2019-07-22T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/017_fluentd-to-oss/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -268,8 +353,18 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/018_enbulk-to-oss/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/scenario/terraform/rds-setting-sample/</loc>
     <lastmod>2019-07-22T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/019_apache-arrow-to-oss/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -278,8 +373,18 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/scenario/terraform/web-application/</loc>
     <lastmod>2019-07-22T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -288,8 +393,18 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/scenario/terraform/auto-scaling/</loc>
     <lastmod>2019-07-22T00:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/</loc>
+    <lastmod>2019-08-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>

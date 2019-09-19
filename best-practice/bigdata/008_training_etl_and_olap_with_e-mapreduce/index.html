@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SB Cloud&nbsp;テクニカルリファレンス</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-09-19T10:48:17 UTC">
+<title>E-MapReduce起動、ETLとOLTP、OLAPをする :: テクニカルリファレンス</title>
+<link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
+<link href="/help/css/font-awesome.min.css" rel="stylesheet">
+<link href="/help/css/nucleus.css" rel="stylesheet">
+<link href="/help/theme-flex/style.css" rel="stylesheet">
+
+	<link href="/help/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/help/css/bootstrap.min.css">
+<script src="/help/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GTM-MQFZWG', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" id="mierucajs">
+window.__fid = window.__fid || [];__fid.push([317537360]);
+(function() {
+function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
+setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
+})();
+</script>
+
+
+
+<meta name="description" content="チューリアトルとして、E-MapReduceを起動しETLし、HiveでOLTP、ImpalaでOLAPをします">
+
+        
+
+
+<link href="/help/css/custom.css"  rel="stylesheet">
+
+
+    
+  </head>
+  <body data-url="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/">
+    
+      <header>
+
+    
+  <div class="logo">
+      <a href="https://www.sbcloud.co.jp/help/" style="vertical-align: baseline;">
+            <img src="https://www.sbcloud.co.jp/help//img/sbcloud_logo.png" class="noshadow" alt="">
+        </a>
+  </div>
+
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+
+<nav class="shortcuts">
+    <li>
+        <span class="searchbox">
+            <input data-search-input id="search-by" type="text" placeholder="検索">
+        </span>
+        <script type="text/javascript" src="/help/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/help/js/auto-complete.js"></script>
+        <link href="/help/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+            
+            var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+            
+        </script>
+        <script type="text/javascript" src="/help/js/search.js"></script>
+    </li>
+            <li class="" role="">
+                <a href="https://github.com/sbcloud/help"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+        </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/">Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/registration/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/registration/">
+            アカウント登録
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/getting-started/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/product/">プロダクトの紹介</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/product/links/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/links/">
+            プロダクト資料のリンク一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/product/ecs-by-region/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/ecs-by-region/">
+            ECSの使用可能なRegion/Spec/Price紹介
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/getting-started/cloud-users/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/cloud-users/vs-aws-gcp-azure/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/vs-aws-gcp-azure/">
+            サービスラインナップ比較
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/best-practice/general/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/general/">全般</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/general/advisory/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/advisory/">
+            アドバイザリ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/general/pricing/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/pricing/">
+            料金体系
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/product/">プロダクト</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/product/datav/datav-widget-develop-guide/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/datav/datav-widget-develop-guide/">
+            DataV Widget 開発ガイド
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/web-application/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/web-application/">Webアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/web-application/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/02/name-resolve/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/02/name-resolve/">
+            名前解決
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/03/loadbalancer/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/03/loadbalancer/">
+            負荷分散
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/04/web-ap/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/04/web-ap/">
+            Web/APサーバ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/05/database/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/05/database/">
+            データベース
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/terraform/01/how-to-use/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/01/how-to-use/">
+            Terraformとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/02/install/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/02/install/">
+            インストール
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/03/sample-project/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/03/sample-project/">
+            サンプルプロジェクトの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/04/run-terraform/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/04/run-terraform/">
+            サンプルプロジェクトの実行
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/05/program-syntax/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/05/program-syntax/">
+            Terraform文法について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/06/docker/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/06/docker/">
+            Dockerについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/07/module/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/07/module/">
+            Moduleについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/08/vpc/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/08/vpc/">
+            VPCの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/09/ecs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/09/ecs/">
+            ECS、EIPの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/10/slb/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/10/slb/">
+            SLBの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/11/autoscaling/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/11/autoscaling/">
+            AutoScalingの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/12/oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/12/oss/">
+            OSSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/13/rds/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/13/rds/">
+            RDSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/14/ram/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/14/ram/">
+            RAMの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/15/kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/15/kubernetes/">
+            Kubernetesの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/container/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/container/">コンテナ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/container/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/02/development-environment/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/02/development-environment/">
+            開発環境
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/03/image-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/03/image-management/">
+            コンテナイメージ作成・管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/04/deploy-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/04/deploy-management/">
+            コンテナデプロイ管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/05/monitoring/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/05/monitoring/">
+            ログ管理とモニタリング
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/bigdata/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/bigdata/">Bigdata</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/bigdata/001_what-is-bigdata/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/001_what-is-bigdata/">
+            BigDataとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/">
+            Hadoopとその周辺の技術について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/003_what-is-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/003_what-is-spark/">
+            Sparkについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/004_what-is-hdfs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/004_what-is-hdfs/">
+            HDFSとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/005_what-is-yarn/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/005_what-is-yarn/">
+            YARNとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/006_what-is-required-for-dwh/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/006_what-is-required-for-dwh/">
+            DWHには何が必要か
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/007_oss-and-e-mapreduce/">
+            OSSとE-MapReduce
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/" class="dd-item active">
+        <div>
+          <a href="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/">
+            E-MapReduce起動、ETLとOLTP、OLAPをする
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/009_data-collection/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/009_data-collection/">
+            既存データからの移植について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/010_logservice-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/010_logservice-to-oss/">
+            LogServiceでOSSへデータを集める方法
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/011_aws-s3-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/011_aws-s3-to-oss/">
+            AWS S3からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/012_idc-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/012_idc-to-oss/">
+            IDCからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/013_apache-spark-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/013_apache-spark-to-oss/">
+            ApacheSpark（Batch）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/">
+            ApacheSpark（Streaming）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/016_apache-flume-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/016_apache-flume-to-oss/">
+            Apache FlumeからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/017_fluentd-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/017_fluentd-to-oss/">
+            FluentdからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/018_enbulk-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/018_enbulk-to-oss/">
+            EnbulkからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/019_apache-arrow-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/019_apache-arrow-to-oss/">
+            Apache ArrowからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/">
+            RDS for MySQLからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/">
+            AlibabaCloud OSSから別のOSSへ（移植）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/">
+            AlibabaCloud OSSから別のOSSへ（同期）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/">
+            開発環境構築について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/scenario/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/scenario/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/scenario/terraform/bastion-server/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/bastion-server/">
+            SSH踏み台サーバの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/slb-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/slb-setting-sample/">
+            SLBの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/rds-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/rds-setting-sample/">
+            RDSの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/kubernetes-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/kubernetes-setting-sample/">
+            Kubernetesの構築と設定
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application/">
+            Webアプリケーションの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/accelerated-content-delivery/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/accelerated-content-delivery/">
+            高速コンテンツ配信の実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/auto-scaling/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/auto-scaling/">
+            オートスケーリングの実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application-on-kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application-on-kubernetes/">
+            KubernetesによるコンテナでWordPress作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/faq/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/faq/">よくある質問</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/faq/ecs/" class="dd-item">
+        <div>
+          <a href="/help/faq/ecs/">
+            ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/oss/" class="dd-item">
+        <div>
+          <a href="/help/faq/oss/">
+            OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/rds/" class="dd-item">
+        <div>
+          <a href="/help/faq/rds/">
+            RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
+        <div>
+          <a href="/help/faq/slb/">
+            SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/account/" class="dd-item">
+        <div>
+          <a href="/help/faq/account/">
+            アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/support/" class="dd-item">
+        <div>
+          <a href="/help/faq/support/">
+            サポート
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+<a class="github-button" href="https://github.com/sbcloud/help/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download SBC Technical Reference on GitHub">Download</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help" data-icon="octicon-star" data-show-count="false" aria-label="Star SBC Technical Reference on GitHub">Star</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork SBC Technical Reference on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    </section>
+  </aside>
+  <section class="page">
+
+    <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span id="sidebar-toggle-span">
+          <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+            <i class="fa fa-bars"></i>
+          </a>
+        </span>
+        <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+        <span class="links">
+        
+
+
+
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/bigdata/'>Bigdata</a> > E-MapReduce起動、ETLとOLTP、OLAPをする
+
+ 
+
+ 
+
+ 
+
+
+        </span>
+    </div>
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/help/getting-started/" >
+   Getting Started</option>
+    <option value="/help/best-practice/" >
+   ベストプラクティス</option> 
+    <option value="/help/best-practice/general/" >
+  - 
+   全般</option>
+    <option value="/help/best-practice/product/" >
+  - 
+   プロダクト</option>
+    <option value="/help/best-practice/web-application/" >
+  - 
+   Webアプリケーション</option>
+    <option value="/help/best-practice/terraform/" >
+  - 
+   Terraform</option>
+    <option value="/help/best-practice/container/" >
+  - 
+   コンテナ</option>
+    <option value="/help/best-practice/bigdata/" >
+  - 
+   Bigdata</option> 
+      <option value="/help/best-practice/bigdata/001_what-is-bigdata/" >-- BigDataとは</option>
+      <option value="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" >-- Hadoopとその周辺の技術について</option>
+      <option value="/help/best-practice/bigdata/003_what-is-spark/" >-- Sparkについて</option>
+      <option value="/help/best-practice/bigdata/004_what-is-hdfs/" >-- HDFSとは</option>
+      <option value="/help/best-practice/bigdata/005_what-is-yarn/" >-- YARNとは</option>
+      <option value="/help/best-practice/bigdata/006_what-is-required-for-dwh/" >-- DWHには何が必要か</option>
+      <option value="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" >-- OSSとE-MapReduce</option>
+      <option value="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/"  selected>-- E-MapReduce起動、ETLとOLTP、OLAPをする</option>
+      <option value="/help/best-practice/bigdata/009_data-collection/" >-- 既存データからの移植について</option>
+      <option value="/help/best-practice/bigdata/010_logservice-to-oss/" >-- LogServiceでOSSへデータを集める方法</option>
+      <option value="/help/best-practice/bigdata/011_aws-s3-to-oss/" >-- AWS S3からOSSへ</option>
+      <option value="/help/best-practice/bigdata/012_idc-to-oss/" >-- IDCからOSSへ</option>
+      <option value="/help/best-practice/bigdata/013_apache-spark-to-oss/" >-- ApacheSpark（Batch）からOSSへ</option>
+      <option value="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" >-- ApacheSpark（Streaming）からOSSへ</option>
+      <option value="/help/best-practice/bigdata/016_apache-flume-to-oss/" >-- Apache FlumeからOSSへ</option>
+      <option value="/help/best-practice/bigdata/017_fluentd-to-oss/" >-- FluentdからOSSへ</option>
+      <option value="/help/best-practice/bigdata/018_enbulk-to-oss/" >-- EnbulkからOSSへ</option>
+      <option value="/help/best-practice/bigdata/019_apache-arrow-to-oss/" >-- Apache ArrowからOSSへ</option>
+      <option value="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" >-- RDS for MySQLからOSSへ</option>
+      <option value="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" >-- AlibabaCloud OSSから別のOSSへ（移植）</option>
+      <option value="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" >-- AlibabaCloud OSSから別のOSSへ（同期）</option>
+      <option value="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/" >-- 開発環境構築について</option>
+  
+  
+    <option value="/help/scenario/" >
+   ユースケース別シナリオ</option>
+    <option value="/help/faq/" >
+   よくある質問</option>
+
+
+
+        </select>
+      </center>
+    </div>
+
+    <h1>E-MapReduce起動、ETLとOLTP、OLAPをする</h1>
+
+    
+    
+    
+    
+
+<!-- descriptionがコンテンツの前に表示されます -->
+
+<!-- コンテンツを書くときはこの下に記載ください -->
+
+<h2 id="e-mapreduceの起動-チューリアトルについて">E-MapReduceの起動、チューリアトルについて</h2>
+
+<p>&nbsp; 簡単なチューリアトルとして、E-MapReduceを起動しHiveでOSSにあるCSVファイルをParquetへETLし、HiveでOLTP、ImpalaでOLAPというワークフローをしてみます。
+E-MapReduceの起動は非常に簡単です。ゴールとしては以下の通りになります。
+<img src="../static_images/BD_Images_OSS_and_E-MapReduce_015.png" alt="BD_Images_OSS_and_E-MapReduce_015" />
+<br></p>
+
+<h4 id="step1-ossにデータを保存します">Step1: OSSにデータを保存します</h4>
+
+<p>BigDataを始めるためにはまずデータが必要です。今回はニューヨーク市のタクシーおよびリムジン委員会（NYC TLC）によるタクシーデータ（240GBを超えるCSVファイル）という<a href="https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page">オープンデータ</a>を使って、OSS+E-MapReduceを使用したETL、分析業務の取り込みについて説明します。
+<a href="https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page">https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page</a>
+<br></p>
+
+<p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_015.5.png" alt="BD_Images_OSS_and_E-MapReduce_015.5" />
+<br></p>
+
+<p>ECSインスタンス１台にて、aliyun-cliをインストールします。そのあと、NYTデータをダウンロード、OSSヘアップロードします。
+前提として、OSSにBigData専用のディレクトリを作成する必要があります。以下の例では
+<code>oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/</code> というディレクトリを作成しました。</p>
+
+<p>以下はECS、CentOS 7.6での操作になります。
+より詳しい<a href="https://www.alibabacloud.com/help/doc-detail/121541.htm">インストール方法はこちらを参考</a>にしてください。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span># 
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># yum -y install wget</span>
+〜 略 〜
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># wget https://aliyuncli.alicdn.com/aliyun-cli-linux-3.0.16-amd64.tgz</span>
+--2019-06-06 <span style="color:#ae81ff">14</span>:18:34--  https://aliyuncli.alicdn.com/aliyun-cli-linux-3.0.16-amd64.tgz
+Resolving aliyuncli.alicdn.com <span style="color:#f92672">(</span>aliyuncli.alicdn.com<span style="color:#f92672">)</span>... <span style="color:#ae81ff">202</span>.47.28.98, <span style="color:#ae81ff">202</span>.47.28.99
+Connecting to aliyuncli.alicdn.com <span style="color:#f92672">(</span>aliyuncli.alicdn.com<span style="color:#f92672">)</span><span style="color:#111">|</span><span style="color:#ae81ff">202</span>.47.28.98<span style="color:#111">|</span>:443... connected.
+HTTP request sent, awaiting response... <span style="color:#ae81ff">200</span> OK
+Length: <span style="color:#ae81ff">9159371</span> <span style="color:#f92672">(</span><span style="color:#ae81ff">8</span>.7M<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>application/x-compressed-tar<span style="color:#f92672">]</span>
+Saving to: ‘aliyun-cli-linux-3.0.16-amd64.tgz’
+
+<span style="color:#ae81ff">100</span>%<span style="color:#f92672">[==============================================================================================================================================================</span>&gt;<span style="color:#f92672">]</span> <span style="color:#ae81ff">9</span>,159,371   --.-K/s   in <span style="color:#ae81ff">0</span>.06s   
+
+<span style="color:#ae81ff">2019</span>-06-06 <span style="color:#ae81ff">14</span>:18:34 <span style="color:#f92672">(</span><span style="color:#ae81ff">150</span> MB/s<span style="color:#f92672">)</span> - ‘aliyun-cli-linux-3.0.16-amd64.tgz’ saved <span style="color:#f92672">[</span><span style="color:#ae81ff">9159371</span>/9159371<span style="color:#f92672">]</span>
+
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># tar -xzvf aliyun-cli-linux-3.0.16-amd64.tgz</span>
+aliyun
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span># 
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># sudo cp aliyun /usr/local/bin</span>
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span># 
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># aliyun configure</span>
+Configuring profile <span style="color:#d88200">&#39;&#39;</span> in <span style="color:#d88200">&#39;&#39;</span> authenticate mode...
+Access Key Id <span style="color:#f92672">[]</span>: ＜ここは各自のAccess Key Idを入力してください＞
+Access Key Secret <span style="color:#f92672">[]</span>: ＜ここは各自のAccess Key Secretを入力してください＞
+Default Region Id <span style="color:#f92672">[]</span>: ap-northeast-1
+Default Output Format <span style="color:#f92672">[</span>json<span style="color:#f92672">]</span>: json <span style="color:#f92672">(</span>Only support json<span style="color:#f92672">))</span>
+Default Language <span style="color:#f92672">[</span>zh<span style="color:#111">|</span>en<span style="color:#f92672">]</span> en: en
+Saving profile<span style="color:#f92672">[]</span> ...Done.
+ available regions: 
+  cn-qingdao
+  cn-beijing
+  cn-zhangjiakou
+  cn-huhehaote
+  cn-hangzhou
+  cn-shanghai
+  cn-shenzhen
+  cn-hongkong
+  ap-northeast-1
+  ap-southeast-1
+  ap-southeast-2
+  ap-southeast-3
+  ap-southeast-5
+  ap-south-1
+  us-east-1
+  us-west-1
+  eu-west-1
+  me-east-1
+  eu-central-1
+
+Configure Done!!!
+..............888888888888888888888 ........<span style="color:#f92672">=</span><span style="color:#111">8888888888888888888D</span><span style="color:#f92672">=</span>..............
+...........88888888888888888888888 ..........D8888888888888888888888I...........
+.........,8888888888888ZI: ...........................<span style="color:#f92672">=</span>Z88D8888888888D..........
+.........+88888888 ..........................................88888888D..........
+.........+88888888 .......Welcome to use Alibaba Cloud.......O8888888D..........
+.........+88888888 ............. ************* ..............O8888888D..........
+.........+88888888 .... Command Line Interface<span style="color:#f92672">(</span>Reloaded<span style="color:#f92672">)</span> ....O8888888D..........
+.........+88888888...........................................88888888D..........
+..........D888888888888DO+. ..........................?ND888888888888D..........
+...........O8888888888888888888888...........D8888888888888888888888<span style="color:#f92672">=</span>...........
+............ .:D8888888888888888888.........78888888888888888888O ..............
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span># 
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span># 
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># aliyun oss ls</span>
+CreationTime                                 Region    StorageClass    BucketName
+<span style="color:#ae81ff">2019</span>-05-27 <span style="color:#ae81ff">13</span>:59:58 +0800 CST    oss-ap-northeast-1        Standard    oss://bigdata-prod-tech
+<span style="color:#ae81ff">2019</span>-02-26 <span style="color:#ae81ff">09</span>:47:16 +0800 CST        oss-cn-beijing        Standard    oss://ohiro18-analysis-china
+<span style="color:#ae81ff">2019</span>-02-26 <span style="color:#ae81ff">09</span>:48:11 +0800 CST    oss-ap-northeast-1        Standard    oss://ohiro18-dev-japan
+<span style="color:#ae81ff">2019</span>-04-01 <span style="color:#ae81ff">11</span>:51:37 +0800 CST    oss-ap-northeast-1        Standard    oss://ohiro18-mediation
+<span style="color:#ae81ff">2019</span>-05-22 <span style="color:#ae81ff">20</span>:51:37 +0800 CST    oss-ap-northeast-1        Standard    oss://ohiro18-efk-ml
+Bucket Number is: <span style="color:#ae81ff">5</span>
+<span style="color:#ae81ff">0</span>.335011<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> elapsed
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span># </code></pre></div>
+<p><br></p>
+
+<p>ECSでaliyun-cliのインストールが無事完了しましたので、今度はNYTデータをダウンロード、OSSへアップロードします。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># wget https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2018-09.csv</span>
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># aliyun oss cp yellow_tripdata_2018-09.csv oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/</span>
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># rm -rf yellow_tripdata_2018-09.csv</span>
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># wget https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2018-10.csv</span>
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># aliyun oss cp yellow_tripdata_2018-10.csv oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/</span>
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># rm -rf yellow_tripdata_2018-10.csv</span>
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># wget https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2018-11.csv</span>
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># aliyun oss cp yellow_tripdata_2018-11.csv oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/</span>
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># rm -rf yellow_tripdata_2018-11.csv</span>
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># wget https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2018-12.csv</span>
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># aliyun oss cp yellow_tripdata_2018-12.csv oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/</span>
+<span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># rm -rf yellow_tripdata_2018-12.csv</span></code></pre></div>
+<p><br></p>
+
+<p>この処理後、OSSのプレフィックス上では、このような感じになってると思います。</p>
+
+<p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_016.png" alt="BD_Images_OSS_and_E-MapReduce_016" />
+<br></p>
+
+<p>これで、OSSへのDataLake（厳密には違うが）、下準備が完了しました。
+<br></p>
+
+<h4 id="step2-e-mapreduceを起動する前に-ossでe-mapreduceに必要な権限を付与します">Step2: E-MapReduceを起動する前に、OSSでE-MapReduceに必要な権限を付与します。</h4>
+
+<p>&nbsp; E-MapReduceを起動する時に先に実施したいのがRAMロール <strong>AliyunEmrEcsDefaultRole</strong> の設定です。これを設定することで、EMRからOSSへのアクセスが楽になります。理由としては<a href="https://www.sbcloud.co.jp/entry/2019/02/01/metaservice/">こちらのBlog</a>が参考になると思います。
+<a href="https://www.sbcloud.co.jp/entry/2019/02/01/metaservice/">https://www.sbcloud.co.jp/entry/2019/02/01/metaservice/</a>
+<a href="https://jp.alibabacloud.com/help/doc-detail/43966.html">https://jp.alibabacloud.com/help/doc-detail/43966.html</a></p>
+
+<pre><code>{
+  &quot;Statement&quot;: [
+    {
+      &quot;Action&quot;: [
+        &quot;sts:AssumeRole&quot;,
+        &quot;oss:GetObject&quot;,
+        &quot;oss:ListObjects&quot;,
+        &quot;oss:PutObject&quot;,
+        &quot;oss:DeleteObject&quot;,
+        &quot;oss:ListBuckets&quot;,
+        &quot;oss:AbortMultipartUpload&quot;
+      ],
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Principal&quot;: {
+        &quot;Service&quot;: [
+          &quot;emr.aliyuncs.com&quot;
+        ]
+      },
+      &quot;Resource&quot;: &quot;*&quot;
+    }
+  ],
+  &quot;Version&quot;: &quot;1&quot;
+}
+</code></pre>
+
+<blockquote>
+<p>初期設定状態
+<img src="../static_images/BD_Images_OSS_and_E-MapReduce_019.png" alt="BD_Images_OSS_and_E-MapReduce_019" /></p>
+
+<p>E-MapReduceがOSSへアクセスできるように権限変更へ
+<img src="../static_images/BD_Images_OSS_and_E-MapReduce_020.png" alt="BD_Images_OSS_and_E-MapReduce_020" /></p>
+</blockquote>
+
+<p><br></p>
+
+<h4 id="step3-e-mapreduceを起動します">Step3: E-MapReduceを起動します。</h4>
+
+<p>&nbsp; 本題、E-MapReduceを起動します。consoleからE-MapReduceを選定し、クラスタ作成を進めます。
+今回、著者は以下の条件で起動いたしました。</p>
+
+<h6 id="環境について">環境について</h6>
+
+<table>
+<thead>
+<tr>
+<th>Clustor</th>
+<th>instance</th>
+<th>Type</th>
+<th>台数</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Hadoop EMR-3.22.0</td>
+<td>MASTER</td>
+<td>ecs.sn2.large</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td></td>
+<td>CORE</td>
+<td>ecs.sn2.large</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td></td>
+<td>TASK</td>
+<td>ecs.sn2.large</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_022.png" alt="BD_Images_OSS_and_E-MapReduce_022" />
+<br>
+Masterインスタンス、Coreインスタンス、Taskインスタンスは任意での選定になります。
+ただし、Hadoopエコシステムによっては必要な起動要件がありますので、状況によってはインスタンス台数を調整する必要があります。
+役割はこちらを参考にしてください。</p>
+
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>説明</th>
+<th>役割</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>マスター</td>
+<td>ジョブフロー全体の構成管理を実施</td>
+<td>ジョブトラッカー、ネームノード</td>
+</tr>
+
+<tr>
+<td>コア</td>
+<td>HDFSを持っており、実際にデータを読み込みつつデータ処理を行う。一つのジョブフローに対して複数存在</td>
+<td>タスクトラッカー、データノード</td>
+</tr>
+
+<tr>
+<td>タスク</td>
+<td>データは持たないが、MPPなどデータ処理のためにリソース提供することが可能。任意起動</td>
+<td>タスクトラッカー</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_023.png" alt="BD_Images_OSS_and_E-MapReduce_023" />
+<br></p>
+
+<p>knox（REST APIを使用してWebHDFSやHBaseとかWeb UIインターフェースを閲覧するもの）を利用する場合は、こちらにてKnoxユーザ追加のアカウントを登録するとあとが便利です。
+<img src="../static_images/BD_Images_OSS_and_E-MapReduce_023.5.png" alt="BD_Images_OSS_and_E-MapReduce_023.5" />
+<br></p>
+
+<p>途中、<code>ブートストラップアクション</code>という入力欄があります。ブートストラップアクションについて説明します。
+E-MapReduceは上記の説明通り、ECSを起動し、E-MapReduceに必要な機能をインストール・起動、こうしてE-MapReduceを起動します。
+この流れで注目したいのが <code>E-MapReduceに必要な機能をインストール・起動</code>という箇所で、これをブートストラップアクションと呼びます。
+AlibabaCloudのE-MapReduceはブートストラップアクションが利用できるので、以下の例に加えて、様々な応用ができます。
+* タイムゾーンの変更
+* Igniteなど、利用したいOSSやライブラリをインストール</p>
+
+<p>ここでちょっと例を記載してみます。E-MapReduceでタイムゾーンを変更したいとします。この場合、以下のshellを作成し、OSSへ格納します。
+これをE-MapReduceのブートストラップアクション欄にてシェルを起動するように記載するだけです。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>sudo rm /etc/localtime 
+sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime</code></pre></div>
+<p><br></p>
+
+<p>起動したい設定が終わったら、起動します。起動するエコシステムが多いほどブートストラップアクション含め時間がかかります（10〜30分）
+<br></p>
+
+<p>E-MapReduceが無事起動完了したら、ヘルスチェックを見て無事完了してるかを確認します。自動でヘルスチェックが行ってることもあり、基本的には問題ないことが多いです。
+<img src="../static_images/BD_Images_OSS_and_E-MapReduce_024.png" alt="BD_Images_OSS_and_E-MapReduce_024" />
+<br></p>
+
+<h4 id="step4-e-mapreduceに関するセキュリティについて">Step4: E-MapReduceに関するセキュリティについて</h4>
+
+<p>&nbsp; E-MapReduceを起動しました。ここで上記の目的を達成するためにはHiveを使います。そのためにはHueというWebによるGUIインターフェース、もしくはCLIコマンドベースを使う必要があります。今回はHueというWebによるGUIインターフェースを使います。
+Hueを使う前に、E-MapReduceのセキュリティルールを変更する必要があります。ここは用途に応じて対応をしてください。</p>
+
+<h6 id="自分が使用してるnw環境のipアドレスのみを許容する場合">自分が使用してるNW環境のIPアドレスのみを許容する場合</h6>
+
+<p><a href="http://www.ip138.com">以下のサイト</a>へアクセスし、自分が使用してるNW環境のIPアドレスを取得します。これをE-MapReduceが使用してるセキュリティグループにてポート8443、8888に許容します。
+<a href="http://www.ip138.com">http://www.ip138.com</a></p>
+
+<p>E-MapReduceでのポート8443、8888、8088は次のような位置付けです。</p>
+
+<table>
+<thead>
+<tr>
+<th>ポート</th>
+<th>用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>knox</td>
+<td>8443</td>
+</tr>
+
+<tr>
+<td>Hue</td>
+<td>8888</td>
+</tr>
+
+<tr>
+<td>YARNリソースマネージャ</td>
+<td>8088</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_025.png" alt="BD_Images_OSS_and_E-MapReduce_025" /></p>
+
+<p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_026.png" alt="BD_Images_OSS_and_E-MapReduce_026" />
+<br></p>
+
+<h6 id="ローカルポートフォワードで接続">ローカルポートフォワードで接続</h6>
+
+<p>クライアント端末からE-MapReduceの環境へ接続するためには、sshポートフォワードを経由してアクセスしたい、という場合に使う方法です。</p>
+
+<p>E-MapReduceのMasterNodeのプライベートIPを把握の上、Macローカルのターミナルにて以下コマンドでssh接続します。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh -fN -L <span style="color:#ae81ff">8888</span>:&lt;MasterNodeのプライベートIP&gt;:8888 hadoop@&lt;MasterNodeのプライベートIP&gt;</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>ssh引数オプション</th>
+<th>意味</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>-f</td>
+<td>コマンドを実行する際にsshをバックグラウンドにする</td>
+</tr>
+
+<tr>
+<td>-fN</td>
+<td>リモートでコマンドを実行しない</td>
+</tr>
+
+<tr>
+<td>-L</td>
+<td>クライアント→ホストのポート転送の際のアドレス・ポートを指定</td>
+</tr>
+</tbody>
+</table>
+
+<p><br>
+他の使い方もありますので、参考にいただければ幸いです。
+<a href="https://jp.alibabacloud.com/help/doc-detail/28187.html">https://jp.alibabacloud.com/help/doc-detail/28187.html</a>
+<br></p>
+
+<h4 id="step5-hueらweb-uiに接続">Step5: HueらWeb UIに接続</h4>
+
+<p>上記設定が終わり次第、Hueのアクセスリンクから閲覧したいURLを選択します。
+<img src="../static_images/BD_Images_OSS_and_E-MapReduce_027.png" alt="BD_Images_OSS_and_E-MapReduce_027" />
+<br></p>
+
+<p>今回はHue起動なのでHueを起動します。
+<img src="../static_images/BD_Images_OSS_and_E-MapReduce_029.png" alt="BD_Images_OSS_and_E-MapReduce_029" />
+<br></p>
+
+<p>ここでユーザ名、パスワードが求められます。ここはE-MapReduceのHue画面の設定にあるPWを取得して、
+ユーザ名：admin
+パスワード：<Hue画面の設定にあるPW>
+を入力します。
+<img src="../static_images/BD_Images_OSS_and_E-MapReduce_028.png" alt="BD_Images_OSS_and_E-MapReduce_028" />
+<br></p>
+
+<p>これでHue Web UIが表示されました。
+<img src="../static_images/BD_Images_OSS_and_E-MapReduce_030.png" alt="BD_Images_OSS_and_E-MapReduce_030" />
+<br></p>
+
+<p>Hueの便利なところは「クエリ」のボタンから様々なHiveやImpala、Sparkなど様々なOSSのクエリを選択できることです。
+<img src="../static_images/BD_Images_OSS_and_E-MapReduce_031.png" alt="BD_Images_OSS_and_E-MapReduce_031" />
+<br></p>
+
+<h4 id="step6-hueを使ってetl処理">Step6: Hueを使ってETL処理</h4>
+
+<p>続いて、E-MapReduceのHiveを使ってOSSにあるCSVファイルをHDFS_Parquetへ変換します。流れとして以下シーケンス図通りになります。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mermaid" data-lang="mermaid">    sequenceDiagram
+      participant cl as クライアント
+      participant sv as E-MapReduce
+      participant db as OSS
+
+      cl -&gt;&gt;+ sv : 1.Hiveで中間テーブルを作成
+      sv --&gt;&gt;- cl : 2.DataNodeにて中間テーブル作成完了
+
+      cl -&gt;&gt;+ sv : 3.HiveでOSSのデータをLoad
+      sv -&gt;&gt;+ db : 4.OSSのcsvファイルへアクセス
+      db --&gt;&gt;- sv : 5.csvをParquetとしてDataNodeへ保持
+      sv --&gt;&gt;- cl : 6.OSSのデータのLoad完了
+
+      cl -&gt;&gt;+ sv : 7.HiveでDataNodeのParquetをOSSへ保存
+      sv -&gt;&gt;+ db : 8.OSSのParquetフォルダ作成&amp;DataNodeからの保存
+      db --&gt;&gt;- sv : 9.OSSのParquetフォルダ生成完了
+      sv --&gt;&gt;- cl : 10.OSSのCSVファイルのETL完了
+
+      cl -&gt;&gt;+ sv : 11.ImpalaでOSSのHDFSにクエリ投与
+      sv -&gt;&gt;+ db : 12.ImpalaがOSSのHDFSへ直接クエリ処理
+      db --&gt;&gt;- sv : 13.クエリ処理結果を取得
+      sv --&gt;&gt;- cl : 14.クエリ結果を表示            </code></pre></div>
+<p><br></p>
+
+<p>まずは 1〜2:「Hiveで中間テーブルを作成」の処理をします。HueでクエリをHiveに選択し、以下クエリを投げます。
+このSQLはHiveで一時的に中間テーブル（クラスタ内のデータノード）を作成するものです。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">EXTERNAL</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#f92672">`</span><span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span><span style="color:#f92672">`</span><span style="color:#111">(</span> 
+<span style="color:#f92672">`</span><span style="color:#111">vendor_id</span><span style="color:#f92672">`</span> <span style="color:#111">string</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">pickup_datetime</span><span style="color:#f92672">`</span> <span style="color:#00a8c8">timestamp</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">dropoff_datetime</span><span style="color:#f92672">`</span> <span style="color:#00a8c8">timestamp</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">passenger_count</span><span style="color:#f92672">`</span> <span style="color:#111">float</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">trip_distance</span><span style="color:#f92672">`</span> <span style="color:#111">string</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">pickup_longitude</span><span style="color:#f92672">`</span> <span style="color:#111">float</span><span style="color:#111">,</span>
+<span style="color:#f92672">`</span><span style="color:#111">pickup_latitude</span><span style="color:#f92672">`</span> <span style="color:#111">float</span><span style="color:#111">,</span>
+<span style="color:#f92672">`</span><span style="color:#111">rate_code</span><span style="color:#f92672">`</span> <span style="color:#111">float</span> <span style="color:#111">)</span>
+ <span style="color:#111">PARTITIONED</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">(</span><span style="color:#f92672">`</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">`</span> <span style="color:#111">string</span><span style="color:#111">)</span>
+ <span style="color:#00a8c8">ROW</span> <span style="color:#111">FORMAT</span> <span style="color:#111">DELIMITED</span> 
+ <span style="color:#111">FIELDS</span> <span style="color:#111">TERMINATED</span> <span style="color:#00a8c8">BY</span> <span style="color:#d88200">&#39;,&#39;</span> 
+ <span style="color:#111">ESCAPED</span> <span style="color:#00a8c8">BY</span> <span style="color:#d88200">&#39;&#39;</span> 
+ <span style="color:#111">LINES</span> <span style="color:#111">TERMINATED</span> <span style="color:#00a8c8">BY</span> <span style="color:#d88200">&#39;\n&#39;</span> 
+ <span style="color:#111">TBLPROPERTIES</span> <span style="color:#111">(</span><span style="color:#d88200">&#34;skip.header.line.count&#34;</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;1&#34;</span><span style="color:#111">);</span></code></pre></div>
+<p><br>
+HueでSQL入力画面に上記のSQLクエリを入力後、実行ボタンをクリックすればSQLが実行されます。</p>
+
+<p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_032.png" alt="BD_Images_OSS_and_E-MapReduce_032" />
+<br></p>
+
+<p>続いて、3-6:「HiveでOSSのデータをLoad」の処理をします。
+Hiveのデータノードにて中間テーブル作成後、OSSのファイルを指定し、中間テーブルへLoadします（時間がかかります）
+Load後 OSSのファイルは自動消去されますので、注意してください。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2009-08.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;200908&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2009-09.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;200909&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2009-10.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;200910&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2009-11.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;200911&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2009-12.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;200912&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2010-01.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201001&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2010-02.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201002&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2010-03.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201003&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2010-04.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201004&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2010-05.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201005&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2010-06.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201006&#39;</span><span style="color:#111">);</span></code></pre></div>
+<p><br>
+SQL実行したい量が多いので、コツとして実行したいSQKをマウスで全て選択し、実行ボタンを押すと順次SQL実行してくれます。</p>
+
+<p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_033.png" alt="BD_Images_OSS_and_E-MapReduce_033" />
+<br></p>
+
+<p>この処理の結果としてパーティションを確認します。ここでPartitionが表示されたらDataNode、中間テーブルにデータがあることがわかります。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">SHOW</span> <span style="color:#111">PARTITIONS</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span><span style="color:#111">;</span></code></pre></div>
+<p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_034.png" alt="BD_Images_OSS_and_E-MapReduce_034" />
+<br></p>
+
+<p>テストにHive SQLを中間テーブルに投げてみます。ここでも結果が表示されていたらOKです。
+&gt;注意として、レコード数が多いため、limit などでレコード表示件数を制限してください。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">SELECT</span> <span style="color:#111">vendor_id</span><span style="color:#111">,</span><span style="color:#111">pickup_datetime</span><span style="color:#111">,</span><span style="color:#111">passenger_count</span> <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#00a8c8">WHERE</span> <span style="color:#111">yyyymmdd</span> <span style="color:#f92672">&gt;=</span> <span style="color:#d88200">&#39;201003&#39;</span> <span style="color:#00a8c8">AND</span> <span style="color:#111">yyyymmdd</span> <span style="color:#f92672">&lt;=</span> <span style="color:#d88200">&#39;201004&#39;</span> <span style="color:#00a8c8">limit</span> <span style="color:#ae81ff">10</span><span style="color:#111">;</span></code></pre></div>
+<p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_035.png" alt="BD_Images_OSS_and_E-MapReduce_035" />
+<br></p>
+
+<p>7-10:「HiveでDataNodeのParquetをOSSへ保存」の処理をします。DataNodeにある中間テーブルをOSSへ保存するために、OSSでParquet形式で保存したいテーブルを作成します。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">EXTERNAL</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#111">yellow_trips_parquet</span> <span style="color:#111">(</span>
+<span style="color:#f92672">`</span><span style="color:#111">vendor_id</span><span style="color:#f92672">`</span> <span style="color:#111">string</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">pickup_datetime</span><span style="color:#f92672">`</span> <span style="color:#00a8c8">timestamp</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">dropoff_datetime</span><span style="color:#f92672">`</span> <span style="color:#00a8c8">timestamp</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">passenger_count</span><span style="color:#f92672">`</span> <span style="color:#111">float</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">trip_distance</span><span style="color:#f92672">`</span> <span style="color:#111">string</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">pickup_longitude</span><span style="color:#f92672">`</span> <span style="color:#111">float</span><span style="color:#111">,</span>
+<span style="color:#f92672">`</span><span style="color:#111">pickup_latitude</span><span style="color:#f92672">`</span> <span style="color:#111">float</span><span style="color:#111">,</span>
+<span style="color:#f92672">`</span><span style="color:#111">rate_code</span><span style="color:#f92672">`</span> <span style="color:#111">float</span><span style="color:#111">)</span>
+<span style="color:#111">PARTITIONED</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">(</span><span style="color:#f92672">`</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">`</span> <span style="color:#111">string</span><span style="color:#111">)</span>
+<span style="color:#111">STORED</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">PARQUET</span>
+<span style="color:#00a8c8">LOCATION</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/hive_parquet&#39;</span><span style="color:#111">;</span></code></pre></div>
+<p>この結果として、上記の<code>oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/hive_parquet</code>にてフォルダが自動で作成されます。</p>
+
+<p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_036.png" alt="BD_Images_OSS_and_E-MapReduce_036" />
+<br></p>
+
+<p>続いて、DataNodeにある中間テーブルをOSSのParquetへ保存するSQLを実行します。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">set</span> <span style="color:#111">hive</span><span style="color:#111">.</span><span style="color:#00a8c8">exec</span><span style="color:#111">.</span><span style="color:#00a8c8">dynamic</span><span style="color:#111">.</span><span style="color:#111">partition</span><span style="color:#111">.</span><span style="color:#00a8c8">mode</span><span style="color:#f92672">=</span><span style="color:#111">nonstrict</span><span style="color:#111">;</span>
+<span style="color:#00a8c8">INSERT</span> <span style="color:#111">OVERWRITE</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#111">yellow_trips_parquet</span> <span style="color:#111">PARTITION</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">SELECT</span> 
+<span style="color:#111">vendor_id</span><span style="color:#111">,</span>
+<span style="color:#111">pickup_datetime</span><span style="color:#111">,</span>
+<span style="color:#111">dropoff_datetime</span><span style="color:#111">,</span>
+<span style="color:#111">passenger_count</span><span style="color:#111">,</span>
+<span style="color:#111">trip_distance</span><span style="color:#111">,</span>
+<span style="color:#111">pickup_longitude</span><span style="color:#111">,</span>
+<span style="color:#111">pickup_latitude</span><span style="color:#111">,</span>
+<span style="color:#111">rate_code</span> <span style="color:#111">,</span>
+<span style="color:#111">yyyymmdd</span> 
+<span style="color:#00a8c8">FROM</span> <span style="color:#111">yellow_trips</span> <span style="color:#00a8c8">where</span> <span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201004&#39;</span><span style="color:#111">;</span></code></pre></div>
+<p>その結果、OSSのPartitionが yyyymmdd=&lsquo;201004&rsquo; というところにHDFS_parquetファイルが生成されます。これでOSSにあったCSVファイルをHDFS_ParquetへETLすることができました。ちなみにDataNodeの中間データで Partitionが yyyymmdd=&lsquo;201004&rsquo; はこのSQLクエリにより自動削除されています。</p>
+
+<p>あとはPartitionごとに上記クエリを投与してETL処理をしていただければと思います。また、HiveはOLTP（加工処理）が得意なので、ここでSQLを使ってレコードの追加、削除、更新をしてみるのもいいです。
+<br></p>
+
+<p>11-14.「ImpalaでOSSのHDFSにクエリ投与」の処理をします。Hueの「クエリ」プルタウンでImpalaを選択します。
+ImpalaでOSSにあるデータをHDFSとして認識するために以下SQLクエリを投与します。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">EXTERNAL</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#111">yellow_trips_impala</span> <span style="color:#111">(</span>
+<span style="color:#f92672">`</span><span style="color:#111">vendor_id</span><span style="color:#f92672">`</span> <span style="color:#111">string</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">pickup_datetime</span><span style="color:#f92672">`</span> <span style="color:#00a8c8">timestamp</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">dropoff_datetime</span><span style="color:#f92672">`</span> <span style="color:#00a8c8">timestamp</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">passenger_count</span><span style="color:#f92672">`</span> <span style="color:#111">float</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">trip_distance</span><span style="color:#f92672">`</span> <span style="color:#111">string</span><span style="color:#111">,</span> 
+<span style="color:#f92672">`</span><span style="color:#111">pickup_longitude</span><span style="color:#f92672">`</span> <span style="color:#111">float</span><span style="color:#111">,</span>
+<span style="color:#f92672">`</span><span style="color:#111">pickup_latitude</span><span style="color:#f92672">`</span> <span style="color:#111">float</span><span style="color:#111">,</span>
+<span style="color:#f92672">`</span><span style="color:#111">rate_code</span><span style="color:#f92672">`</span> <span style="color:#111">float</span><span style="color:#111">)</span>
+<span style="color:#111">PARTITIONED</span> <span style="color:#00a8c8">BY</span> <span style="color:#111">(</span><span style="color:#f92672">`</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">`</span> <span style="color:#111">string</span><span style="color:#111">)</span>
+<span style="color:#111">STORED</span> <span style="color:#00a8c8">AS</span> <span style="color:#111">PARQUET</span>
+<span style="color:#00a8c8">LOCATION</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/hive_parquet&#39;</span><span style="color:#111">;</span>
+
+<span style="color:#00a8c8">alter</span> <span style="color:#00a8c8">table</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips_impala</span> <span style="color:#00a8c8">add</span> <span style="color:#111">partition</span><span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201004&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">alter</span> <span style="color:#00a8c8">table</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips_impala</span> <span style="color:#00a8c8">add</span> <span style="color:#111">partition</span><span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201005&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">alter</span> <span style="color:#00a8c8">table</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips_impala</span> <span style="color:#00a8c8">add</span> <span style="color:#111">partition</span><span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201006&#39;</span><span style="color:#111">);</span></code></pre></div>
+<p>あとはImpalaでPartitionを指定しつつ、好きに分析することができます。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">SELECT</span> <span style="color:#111">vendor_id</span> <span style="color:#111">,</span> <span style="color:#111">pickup_datetime</span><span style="color:#111">,</span> <span style="color:#111">dropoff_datetime</span><span style="color:#111">,</span> <span style="color:#111">passenger_count</span> 
+<span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips_impala</span> 
+<span style="color:#00a8c8">WHERE</span> <span style="color:#111">yyyymmdd</span> <span style="color:#f92672">&gt;=</span> <span style="color:#d88200">&#39;201004&#39;</span> <span style="color:#00a8c8">limit</span> <span style="color:#ae81ff">10</span><span style="color:#111">;</span></code></pre></div>
+<p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_037.png" alt="BD_Images_OSS_and_E-MapReduce_037" />
+<br></p>
+
+<p><br></p>
+
+<p>Impalaの優れてるところはSQLクエリにてLOCATIONをOSSのパス先を指定するだけで、クエリを投げることができます。
+※もちろんSparkやHive、PrestoもOSSをセントラルストレージとしたSQLクエリ投与もできます。
+<br></p>
+
+<h2 id="まとめ">まとめ</h2>
+
+<p>本章ではE-MapReduceだけでOSSのcsvファイルをParquetへ簡単にETLできることや、OSSをセントラルストレージとしたOLTP、OLAP運用する手法を説明しました。
+AlibabaCloudのE-MapReduceはこの流れをタイムスケジューラによって自動処理化することも可能ですし、そこから機械学習をすることも可能です。ビジネスシーンに応じた様々な応用ができます。
+そのため、ファーストステップとして、上記E-MapReduceの全体的な流れを掴めればと思います。
+<br></p>
+
+<h2 id="余談">余談</h2>
+
+<p>AlibabaCloud公式blogにもE-MapReduce起動方法、手法、ベストプラクティスが記載されていますので、こちらも参考にしてください。<br />
+<a href="https://www.alibabacloud.com/blog/diving-into-big-data-emr-cluster-management_595321">EMRクラスター管理</a></p>
+
+<p><br></p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" title="OSSとE-MapReduce"> <i class="fa fa-chevron-left"></i><label>OSSとE-MapReduce</label></a>
+    <a class="nav nav-next" href="/help/best-practice/bigdata/009_data-collection/" title="既存データからの移植について" style="margin-right: 0px;"><label>既存データからの移植について</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i>  08/30/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/bigdata/008_Training_ETL_and_OLAP_with_E-MapReduce.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/help/js/clipboard.min.js"></script>
+
+<link href="/help/css/featherlight.min.css" rel="stylesheet">
+<script src="/help/js/featherlight.min.js"></script>
+
+
+
+<script src="/help/theme-flex/script.js"></script>
+
+<link href="/help/mermaid/mermaid.css" type="text/css" rel="stylesheet" />
+<script src="/help/mermaid/mermaid.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

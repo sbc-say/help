@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SB Cloud&nbsp;テクニカルリファレンス</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-09-19T10:48:17 UTC">
+<title>Sparkについて :: テクニカルリファレンス</title>
+<link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
+<link href="/help/css/font-awesome.min.css" rel="stylesheet">
+<link href="/help/css/nucleus.css" rel="stylesheet">
+<link href="/help/theme-flex/style.css" rel="stylesheet">
+
+	<link href="/help/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/help/css/bootstrap.min.css">
+<script src="/help/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GTM-MQFZWG', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" id="mierucajs">
+window.__fid = window.__fid || [];__fid.push([317537360]);
+(function() {
+function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
+setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
+})();
+</script>
+
+
+
+<meta name="description" content="BigDataを支える技術レイヤー、Sparkについてを説明します。">
+
+        
+
+
+<link href="/help/css/custom.css"  rel="stylesheet">
+
+
+    
+  </head>
+  <body data-url="/help/best-practice/bigdata/003_what-is-spark/">
+    
+      <header>
+
+    
+  <div class="logo">
+      <a href="https://www.sbcloud.co.jp/help/" style="vertical-align: baseline;">
+            <img src="https://www.sbcloud.co.jp/help//img/sbcloud_logo.png" class="noshadow" alt="">
+        </a>
+  </div>
+
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+
+<nav class="shortcuts">
+    <li>
+        <span class="searchbox">
+            <input data-search-input id="search-by" type="text" placeholder="検索">
+        </span>
+        <script type="text/javascript" src="/help/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/help/js/auto-complete.js"></script>
+        <link href="/help/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+            
+            var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+            
+        </script>
+        <script type="text/javascript" src="/help/js/search.js"></script>
+    </li>
+            <li class="" role="">
+                <a href="https://github.com/sbcloud/help"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+        </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/">Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/registration/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/registration/">
+            アカウント登録
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/getting-started/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/product/">プロダクトの紹介</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/product/links/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/links/">
+            プロダクト資料のリンク一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/product/ecs-by-region/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/ecs-by-region/">
+            ECSの使用可能なRegion/Spec/Price紹介
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/getting-started/cloud-users/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/cloud-users/vs-aws-gcp-azure/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/vs-aws-gcp-azure/">
+            サービスラインナップ比較
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/best-practice/general/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/general/">全般</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/general/advisory/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/advisory/">
+            アドバイザリ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/general/pricing/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/pricing/">
+            料金体系
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/product/">プロダクト</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/product/datav/datav-widget-develop-guide/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/datav/datav-widget-develop-guide/">
+            DataV Widget 開発ガイド
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/web-application/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/web-application/">Webアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/web-application/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/02/name-resolve/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/02/name-resolve/">
+            名前解決
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/03/loadbalancer/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/03/loadbalancer/">
+            負荷分散
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/04/web-ap/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/04/web-ap/">
+            Web/APサーバ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/05/database/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/05/database/">
+            データベース
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/terraform/01/how-to-use/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/01/how-to-use/">
+            Terraformとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/02/install/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/02/install/">
+            インストール
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/03/sample-project/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/03/sample-project/">
+            サンプルプロジェクトの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/04/run-terraform/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/04/run-terraform/">
+            サンプルプロジェクトの実行
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/05/program-syntax/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/05/program-syntax/">
+            Terraform文法について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/06/docker/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/06/docker/">
+            Dockerについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/07/module/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/07/module/">
+            Moduleについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/08/vpc/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/08/vpc/">
+            VPCの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/09/ecs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/09/ecs/">
+            ECS、EIPの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/10/slb/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/10/slb/">
+            SLBの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/11/autoscaling/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/11/autoscaling/">
+            AutoScalingの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/12/oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/12/oss/">
+            OSSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/13/rds/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/13/rds/">
+            RDSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/14/ram/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/14/ram/">
+            RAMの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/15/kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/15/kubernetes/">
+            Kubernetesの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/container/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/container/">コンテナ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/container/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/02/development-environment/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/02/development-environment/">
+            開発環境
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/03/image-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/03/image-management/">
+            コンテナイメージ作成・管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/04/deploy-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/04/deploy-management/">
+            コンテナデプロイ管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/05/monitoring/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/05/monitoring/">
+            ログ管理とモニタリング
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/bigdata/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/bigdata/">Bigdata</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/bigdata/001_what-is-bigdata/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/001_what-is-bigdata/">
+            BigDataとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/">
+            Hadoopとその周辺の技術について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/003_what-is-spark/" class="dd-item active">
+        <div>
+          <a href="/help/best-practice/bigdata/003_what-is-spark/">
+            Sparkについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/004_what-is-hdfs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/004_what-is-hdfs/">
+            HDFSとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/005_what-is-yarn/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/005_what-is-yarn/">
+            YARNとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/006_what-is-required-for-dwh/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/006_what-is-required-for-dwh/">
+            DWHには何が必要か
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/007_oss-and-e-mapreduce/">
+            OSSとE-MapReduce
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/">
+            E-MapReduce起動、ETLとOLTP、OLAPをする
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/009_data-collection/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/009_data-collection/">
+            既存データからの移植について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/010_logservice-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/010_logservice-to-oss/">
+            LogServiceでOSSへデータを集める方法
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/011_aws-s3-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/011_aws-s3-to-oss/">
+            AWS S3からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/012_idc-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/012_idc-to-oss/">
+            IDCからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/013_apache-spark-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/013_apache-spark-to-oss/">
+            ApacheSpark（Batch）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/">
+            ApacheSpark（Streaming）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/016_apache-flume-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/016_apache-flume-to-oss/">
+            Apache FlumeからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/017_fluentd-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/017_fluentd-to-oss/">
+            FluentdからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/018_enbulk-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/018_enbulk-to-oss/">
+            EnbulkからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/019_apache-arrow-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/019_apache-arrow-to-oss/">
+            Apache ArrowからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/">
+            RDS for MySQLからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/">
+            AlibabaCloud OSSから別のOSSへ（移植）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/">
+            AlibabaCloud OSSから別のOSSへ（同期）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/">
+            開発環境構築について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/scenario/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/scenario/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/scenario/terraform/bastion-server/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/bastion-server/">
+            SSH踏み台サーバの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/slb-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/slb-setting-sample/">
+            SLBの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/rds-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/rds-setting-sample/">
+            RDSの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/kubernetes-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/kubernetes-setting-sample/">
+            Kubernetesの構築と設定
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application/">
+            Webアプリケーションの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/accelerated-content-delivery/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/accelerated-content-delivery/">
+            高速コンテンツ配信の実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/auto-scaling/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/auto-scaling/">
+            オートスケーリングの実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application-on-kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application-on-kubernetes/">
+            KubernetesによるコンテナでWordPress作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/faq/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/faq/">よくある質問</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/faq/ecs/" class="dd-item">
+        <div>
+          <a href="/help/faq/ecs/">
+            ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/oss/" class="dd-item">
+        <div>
+          <a href="/help/faq/oss/">
+            OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/rds/" class="dd-item">
+        <div>
+          <a href="/help/faq/rds/">
+            RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
+        <div>
+          <a href="/help/faq/slb/">
+            SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/account/" class="dd-item">
+        <div>
+          <a href="/help/faq/account/">
+            アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/support/" class="dd-item">
+        <div>
+          <a href="/help/faq/support/">
+            サポート
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+<a class="github-button" href="https://github.com/sbcloud/help/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download SBC Technical Reference on GitHub">Download</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help" data-icon="octicon-star" data-show-count="false" aria-label="Star SBC Technical Reference on GitHub">Star</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork SBC Technical Reference on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    </section>
+  </aside>
+  <section class="page">
+
+    <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span id="sidebar-toggle-span">
+          <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+            <i class="fa fa-bars"></i>
+          </a>
+        </span>
+        <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+        <span class="links">
+        
+
+
+
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/bigdata/'>Bigdata</a> > Sparkについて
+
+ 
+
+ 
+
+ 
+
+
+        </span>
+    </div>
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/help/getting-started/" >
+   Getting Started</option>
+    <option value="/help/best-practice/" >
+   ベストプラクティス</option> 
+    <option value="/help/best-practice/general/" >
+  - 
+   全般</option>
+    <option value="/help/best-practice/product/" >
+  - 
+   プロダクト</option>
+    <option value="/help/best-practice/web-application/" >
+  - 
+   Webアプリケーション</option>
+    <option value="/help/best-practice/terraform/" >
+  - 
+   Terraform</option>
+    <option value="/help/best-practice/container/" >
+  - 
+   コンテナ</option>
+    <option value="/help/best-practice/bigdata/" >
+  - 
+   Bigdata</option> 
+      <option value="/help/best-practice/bigdata/001_what-is-bigdata/" >-- BigDataとは</option>
+      <option value="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" >-- Hadoopとその周辺の技術について</option>
+      <option value="/help/best-practice/bigdata/003_what-is-spark/"  selected>-- Sparkについて</option>
+      <option value="/help/best-practice/bigdata/004_what-is-hdfs/" >-- HDFSとは</option>
+      <option value="/help/best-practice/bigdata/005_what-is-yarn/" >-- YARNとは</option>
+      <option value="/help/best-practice/bigdata/006_what-is-required-for-dwh/" >-- DWHには何が必要か</option>
+      <option value="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" >-- OSSとE-MapReduce</option>
+      <option value="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/" >-- E-MapReduce起動、ETLとOLTP、OLAPをする</option>
+      <option value="/help/best-practice/bigdata/009_data-collection/" >-- 既存データからの移植について</option>
+      <option value="/help/best-practice/bigdata/010_logservice-to-oss/" >-- LogServiceでOSSへデータを集める方法</option>
+      <option value="/help/best-practice/bigdata/011_aws-s3-to-oss/" >-- AWS S3からOSSへ</option>
+      <option value="/help/best-practice/bigdata/012_idc-to-oss/" >-- IDCからOSSへ</option>
+      <option value="/help/best-practice/bigdata/013_apache-spark-to-oss/" >-- ApacheSpark（Batch）からOSSへ</option>
+      <option value="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" >-- ApacheSpark（Streaming）からOSSへ</option>
+      <option value="/help/best-practice/bigdata/016_apache-flume-to-oss/" >-- Apache FlumeからOSSへ</option>
+      <option value="/help/best-practice/bigdata/017_fluentd-to-oss/" >-- FluentdからOSSへ</option>
+      <option value="/help/best-practice/bigdata/018_enbulk-to-oss/" >-- EnbulkからOSSへ</option>
+      <option value="/help/best-practice/bigdata/019_apache-arrow-to-oss/" >-- Apache ArrowからOSSへ</option>
+      <option value="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" >-- RDS for MySQLからOSSへ</option>
+      <option value="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" >-- AlibabaCloud OSSから別のOSSへ（移植）</option>
+      <option value="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" >-- AlibabaCloud OSSから別のOSSへ（同期）</option>
+      <option value="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/" >-- 開発環境構築について</option>
+  
+  
+    <option value="/help/scenario/" >
+   ユースケース別シナリオ</option>
+    <option value="/help/faq/" >
+   よくある質問</option>
+
+
+
+        </select>
+      </center>
+    </div>
+
+    <h1>Sparkについて</h1>
+
+    
+    
+    
+    
+
+<!-- descriptionがコンテンツの前に表示されます -->
+
+<!-- コンテンツを書くときはこの下に記載ください -->
+
+<h2 id="apoache-sparkとは">Apoache Sparkとは</h2>
+
+<p>&nbsp; Apoache Sparkはカリフォルニア大学バークレー校のAMP Labで開発されたオープンソースプロダクトです。Sparkは、大きなデータセットを処理および分析するための次世代のビッグデータ処理フレームワークです。 Sparkは、Scala、Python、Java、R言語による高レベルAPIサポート、Spark SQL、Streaming、機械学習のMLlib、グラフ処理用のGraphXなどを強力なライブラリを提供する統合処理フレームワークです。後にApache Software Foundationに寄付され、2014年2月24日にApacheトップレベルのプロジェクトになりました。
+<br></p>
+
+<h2 id="sparkの概要">Sparkの概要</h2>
+
+<p>&nbsp; SparkはHadoopのデータ処理フレームワークであるMapReduceの多くの処理制限問題を認識し、反復的でインタラクティブなアプリケーションを処理できる、より高速でより汎用的に利用できるデータ処理フレームワークとして開発されました。SparkのJobは、メモリ内の高速機能と高度なDAG（Directed Acyclic Graph）実行エンジンにより、同等のMapReduceジョブよりも10〜100倍高速に実行できます。データサイエンティスト、分析エンジニアからすれば、SparkはどのMapReduce処理よりも最も生産的な位置付けとなっています。</p>
+
+<p><img src="../static_images/BD_Images_What_is_Spark_001.png" alt="BD_Images_What_is_Spark_001" />
+<br></p>
+
+<p>&nbsp; Sparkは一見シンプルですが強力なAPIにより、非常に利用・汎用しやすくなっています。 Sparkは以下をサポートする統合プラットフォームを提供します。現在、Sparkはデータサイエンティスト、分析エンジニアにとって重要な存在となっています。ストリーミング、インタラクティブ処理、ETL、機械学習、バッチ処理、Delta Lake運用、container/Kubernetes、Function as a Serivce、超高速HTAPなど、幅広い分野へ広まっています。手法は別章にて紹介いたします。</p>
+
+<p><img src="../static_images/BD_Images_What_is_Spark_002.png" alt="BD_Images_What_is_Spark_002" />
+<br></p>
+
+<h2 id="cluster-managers">Cluster Managers</h2>
+
+<p>&nbsp; Cluster Managersはアプリケーションのクラスタリソースを割り当て、管理をしています。Sparkは、Spark（Standalone Scheduler）、YARN、およびMesosに付属しているスタンドアロンのCluster Managersをサポートしています。またKubernetesをCluster Managersとして利用することも可能です。このテクニカルサイトにも手法を記載いたしますが、<a href="https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html">詳細についてはこちらを参照</a>してください。
+<a href="https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html">https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html</a>
+<br></p>
+
+<h2 id="sparkのアーキテクチャ">Sparkのアーキテクチャ</h2>
+
+<p>&nbsp; Sparkはコード内容（処理内容）をSparkアプリケーションタスクとして以下の画像のように複数のクラスターノードへ分散し処理することができます。すべてのSparkアプリケーションには、Driver ProgramにSpark Contextというオブジェクトがあります。Spark ContextはCluster Managersへの接続を意味しており、Sparkアプリケーションにコンピューティングリソースを提供します。Hadoop分散モードの上で実行となれば、マスターノードで実行、これがスレーブノードへ処理したいリソースを提供となります。
+&nbsp; クラスターに接続した後、SparkはWorker NodeでExecuterを取得します。その後、SparkはアプリケーションコードをExecuterに送信します。通常、アプリケーションはSparkアクションに応じて1つ以上のジョブを実行します。その後、各ジョブはSparkによって小さな有向非周期グラフ（DAG）に分割されます。その後、各タスクは分散され、実行のためにワーカーノード全体のExecuterに送信されます。各Sparkアプリケーションは、独自のExecuterのセットを取得します。異なるアプリケーションのタスクは異なるJVMで実行されるため、Sparkアプリケーションは別のSparkアプリケーションと干渉することはないです。（＝処理内容が重複、コンフリクトすることがない構造）これはHDFSやS3などの低速の外部データソースを使用しないと、Sparkアプリケーション同士がデータを共有することは難しいことを意味します。一方、AlibabaCloudのSparkはJindoFSを使うと、ワーカーノードがOSSら外部データソースとマルチ接続し分散処理されるため、OSSに対してデータ共有をより速く、かつ簡単に読み込み、書き込みすることができます。JindoFSや手法は別章にて紹介いたします。</p>
+
+<p><img src="../static_images/BD_Images_What_is_Spark_003.png" alt="BD_Images_What_is_Spark_003" />
+<br></p>
+
+<h2 id="spark-on-yarn">Spark on YARN</h2>
+
+<p>&nbsp; YARNはHadoopベースのCluster Managersです。YARNでSparkアプリケーションを起動するためには2つの方法があります。</p>
+
+<p><strong>Cluster Mode</strong>
+&nbsp; Cluster Modeの場合、Driver Program は YARNによってアプリケーションを管理、実行されます。そのため、クライアントはアプリケーションの実行に影響を与えることなく終了できます。
+アプリケーション、またはSpark Shellをクラスタモードで起動するには以下のコマンドになります。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">spark-shell --master yarn --deploy-mode cluster
+spark-submit --class myPath.myClass --master yarn --deploy-mode cluster</code></pre></div>
+<p><br></p>
+
+<p><strong>Client Mode</strong>
+&nbsp; Client Modeの場合、Driver Program はクライアントのマシンで実行されます。アプリケーションマスターは、YARNからリソースを要求する時のみ使用されます。
+クライアントモードでアプリケーション、またはSpark Shellをクラスタモードで起動するには以下のコマンドになります。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">spark-shell --master yarn --deploy-mode client
+spark-submit --class myPath.myClass --master yarn --deploy-mode client</code></pre></div>
+<p><br></p>
+
+<h2 id="spark-shell">Spark-Shell</h2>
+
+<p>&nbsp; 通常、アドホックデータの分析または調査にはSpark-Shellという対話型シェルを使用します。また、Spark-ShellはSpark APIを学習・調査するにも優れたツールです。SparkのShellはScalaまたはPythonで使用できます。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@emr-header-1 ~<span style="color:#f92672">]</span><span style="color:#75715e"># su hadoop</span>
+<span style="color:#f92672">[</span>hadoop@emr-header-1 root<span style="color:#f92672">]</span>$ pyspark
+Python <span style="color:#ae81ff">2</span>.7.5 <span style="color:#f92672">(</span>default, Apr <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">2018</span>, <span style="color:#ae81ff">07</span>:36:10<span style="color:#f92672">)</span> 
+<span style="color:#f92672">[</span>GCC <span style="color:#ae81ff">4</span>.8.5 <span style="color:#ae81ff">20150623</span> <span style="color:#f92672">(</span>Red Hat <span style="color:#ae81ff">4</span>.8.5-28<span style="color:#f92672">)]</span> on linux2
+Type <span style="color:#d88200">&#34;help&#34;</span>, <span style="color:#d88200">&#34;copyright&#34;</span>, <span style="color:#d88200">&#34;credits&#34;</span> or <span style="color:#d88200">&#34;license&#34;</span> <span style="color:#00a8c8">for</span> more information.
+Setting default log level to <span style="color:#d88200">&#34;WARN&#34;</span>.
+To adjust logging level use sc.setLogLevel<span style="color:#f92672">(</span>newLevel<span style="color:#f92672">)</span>. For SparkR, use setLogLevel<span style="color:#f92672">(</span>newLevel<span style="color:#f92672">)</span>.
+<span style="color:#ae81ff">19</span>/08/21 <span style="color:#ae81ff">20</span>:42:29 WARN HiveConf: HiveConf of name hive.server2.enable.impersonation does not exist
+<span style="color:#ae81ff">19</span>/08/21 <span style="color:#ae81ff">20</span>:42:30 WARN Utils: Service <span style="color:#d88200">&#39;SparkUI&#39;</span> could not <span style="color:#111">bind</span> on port <span style="color:#ae81ff">4040</span>. Attempting port <span style="color:#ae81ff">4041</span>.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _<span style="color:#8045ff">\ \/</span> _ <span style="color:#8045ff">\/</span> _ <span style="color:#d88200">`</span>/ __/  <span style="color:#d88200">&#39;_/
+</span><span style="color:#d88200">   /__ / .__/\_,_/_/ /_/\_\   version 2.4.3
+</span><span style="color:#d88200">      /_/
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">Using Python version 2.7.5 (default, Apr 11 2018 07:36:10)
+</span><span style="color:#d88200">SparkSession available as &#39;</span>spark<span style="color:#960050;background-color:#1e0010">&#39;</span>.
+&gt;&gt;&gt; </code></pre></div>
+<p><br></p>
+
+<h2 id="sparksession">SparkSession</h2>
+
+<p>&nbsp; 前述したように、CodeにてSparkContextを使用すると、Sparkの全ての機能にアクセスできます。Driver Programは、SparkContextを使用して、StreamingContext、SQLContext、HiveContextなどの他のコンテキストにアクセスできます。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/usr/bin/env python
+</span><span style="color:#75715e"></span><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+ 
+from pyspark import SparkContext 
+<span style="color:#111">filePath</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;./train.csv&#34;</span>
+<span style="color:#111">sc</span> <span style="color:#f92672">=</span> SparkContext<span style="color:#f92672">(</span><span style="color:#d88200">&#34;local&#34;</span>, <span style="color:#d88200">&#34;Simple App&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#111">data</span> <span style="color:#f92672">=</span> sc.textFile<span style="color:#f92672">(</span>filePath<span style="color:#f92672">)</span>.cache<span style="color:#f92672">()</span>
+
+<span style="color:#111">Miss</span> <span style="color:#f92672">=</span> data.filter<span style="color:#f92672">(</span>lambda s: <span style="color:#d88200">&#39;Miss&#39;</span> in s<span style="color:#f92672">)</span>.count<span style="color:#f92672">()</span>
+<span style="color:#111">Mr</span> <span style="color:#f92672">=</span> data.filter<span style="color:#f92672">(</span>lambda s: <span style="color:#d88200">&#39;Mr.&#39;</span> in s<span style="color:#f92672">)</span>.count<span style="color:#f92672">()</span>
+print <span style="color:#d88200">&#34;Miss: %d, lines with Mr.: %d&#34;</span> % <span style="color:#f92672">(</span>Miss, Mr<span style="color:#f92672">)</span>
+
+sc.stop<span style="color:#f92672">()</span></code></pre></div>
+<p><br></p>
+
+<h4 id="rddとは">RDDとは</h4>
+
+<p>&nbsp; RDDはResilient Distributed Dataset、Sparkクラスタ内の1つ以上のノードに分割されたオブジェクトの復元力のある不変の分散コレクションです。RDDは変換とアクションの2種類の操作によって並行処理および操作ができます。RDDは復数のマシンから構成されるクラスタ上での分散処理を前提として設計されており、内部的にはパーティションに分割されています。Sparkはこのパーティションが分散処理の単位となり、パーティションごとに復数のマシンで処理することによって、単一のマシンでは処理しきれない大量のデータを扱うことができます。以下、RDDを使った処理例を記載してみます。</p>
+
+<h4 id="rdd-parallelize">RDD : parallelize</h4>
+
+<p>&nbsp; parallelizeはリストやタプルからRDDを作ります。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h4 id="rdd-textfile">RDD : textFile</h4>
+
+<p>&nbsp; textFileはファイルを読み込みます。ワイルドカードや正規表現も使用可能です。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">filePath</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;./train.csv&#34;</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.textFile<span style="color:#f92672">(</span>filePath<span style="color:#f92672">)</span>
+
+<span style="color:#111">filePath2</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;./*.csv&#34;</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.textFile<span style="color:#f92672">(</span>filePath2<span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h4 id="rdd-wholetextfiles">RDD : wholeTextFiles</h4>
+
+<p>&nbsp; wholeTextFilesはディレクトリの各ファイルの内容全体をそれぞれRDDの一つの要素にセットするものです。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># $ ls</span>
+<span style="color:#75715e"># aaaa.json bbbb.json cccc.json</span>
+&gt;&gt;&gt; <span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.textWholeFiles<span style="color:#f92672">(</span><span style="color:#d88200">&#34;./&#34;</span><span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h4 id="transformations">Transformations</h4>
+
+<p>&nbsp; Transformationsは名前通り、RDDの変換処理です。RDDの変換は既存のRDDを変化させるわけでなく、新しいRDDを生成するための変換処理です。最もよく使われる変換処理のいくつかを記載します。（他はSparkの公式ドキュメントを閲覧してください。）
+|メソッド|備考|
+|&mdash;|&mdash;|
+|Filter|条件を満たす要素のみ抽出|
+|Map|各要素に関数を適用して別の要素に変換|
+|Flatmap|各要素に関数を適用して別の要素に変換。関数の返り値はイテレータ|
+|Distinct|重複する要素を取り除く|
+|ReduceByKey|キー毎に要素同士を演算処理|
+|Keys|要素のタプル(Key, Value)からキーのみに変換|
+|Values|要素のタプル(Key, Value)から値のみに変換|
+|Join|要素のタプル(Key, Value)を使って他のRDDと結合|
+|Union|他のRDDと結合。単純にパーティション数が増えます|
+|Subtract|他のRDDとの差集合を生成|
+<br></p>
+
+<h4 id="rdd-transformations-map">RDD：Transformations：Map</h4>
+
+<p>&nbsp; 各要素に関数を適用して別の要素に変換</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">([</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">])</span>
+<span style="color:#111">rdd2</span> <span style="color:#f92672">=</span> rdd.map<span style="color:#f92672">(</span>lambda x: x * <span style="color:#ae81ff">2</span><span style="color:#f92672">)</span>.collect<span style="color:#f92672">()</span></code></pre></div>
+<p><br></p>
+
+<h4 id="rdd-transformations-flatmap">RDD：Transformations：Flatmap</h4>
+
+<p>&nbsp; 各要素に関数を適用して別の要素に変換。関数の返り値はイテレータ</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">([</span><span style="color:#d88200">&#34;This is a pen&#34;</span>, <span style="color:#d88200">&#34;This is an apple&#34;</span><span style="color:#f92672">])</span>
+<span style="color:#111">rdd2</span> <span style="color:#f92672">=</span> rdd.flatMap<span style="color:#f92672">(</span>lambda x: x.split<span style="color:#f92672">())</span>.collect<span style="color:#f92672">()</span></code></pre></div>
+<p><br></p>
+
+<h4 id="rdd-transformations-filter">RDD：Transformations：Filter</h4>
+
+<p>&nbsp; 条件を満たす要素のみ抽出</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">([</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">])</span>
+<span style="color:#111">rdd2</span> <span style="color:#f92672">=</span> rdd.filter<span style="color:#f92672">(</span>lambda x: x % <span style="color:#111">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">)</span>.collect<span style="color:#f92672">()</span></code></pre></div>
+<p><br></p>
+
+<h4 id="rdd-transformations-distinct">RDD：Transformations：Distinct</h4>
+
+<p>&nbsp; 重複する要素を取り除く</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+<span style="color:#111">rdd2</span> <span style="color:#f92672">=</span> rdd.distinct<span style="color:#f92672">()</span></code></pre></div>
+<p><br></p>
+
+<h4 id="rdd-transformations-reducebykey">RDD：Transformations：ReduceByKey</h4>
+
+<p>&nbsp; キー毎に要素同士を演算処理</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>Seq<span style="color:#f92672">(</span><span style="color:#d88200">&#34;a&#34;</span>-&gt;1, <span style="color:#d88200">&#34;b&#34;</span>-&gt;2, <span style="color:#d88200">&#34;c&#34;</span>-&gt;3, <span style="color:#d88200">&#34;a&#34;</span>-&gt;4<span style="color:#f92672">))</span>
+<span style="color:#111">rdd2</span> <span style="color:#f92672">=</span> rdd.reduceByKey<span style="color:#f92672">(</span>_ + _<span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h4 id="rdd-transformations-keys">RDD：Transformations：Keys</h4>
+
+<p>&nbsp; 要素のタプル(Key, Value)からキーのみに変換</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>Seq<span style="color:#f92672">(</span><span style="color:#d88200">&#34;a&#34;</span>-&gt;1, <span style="color:#d88200">&#34;b&#34;</span>-&gt;2, <span style="color:#d88200">&#34;c&#34;</span>-&gt;3, <span style="color:#d88200">&#34;a&#34;</span>-&gt;2<span style="color:#f92672">))</span>
+<span style="color:#111">keys</span> <span style="color:#f92672">=</span> rdd.keys</code></pre></div>
+<p><br></p>
+
+<h4 id="rdd-transformations-value">RDD：Transformations：Value</h4>
+
+<p>&nbsp; 要素のタプル(Key, Value)から値のみに変換</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>Seq<span style="color:#f92672">(</span><span style="color:#d88200">&#34;a&#34;</span>-&gt;1, <span style="color:#d88200">&#34;b&#34;</span>-&gt;2, <span style="color:#d88200">&#34;c&#34;</span>-&gt;3, <span style="color:#d88200">&#34;a&#34;</span>-&gt;2<span style="color:#f92672">))</span>
+<span style="color:#111">values</span> <span style="color:#f92672">=</span> rdd.value</code></pre></div>
+<p><br></p>
+
+<h4 id="rdd-transformations-join">RDD：Transformations：Join</h4>
+
+<p>&nbsp; 要素のタプル(Key, Value)を使って他のRDDと結合</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">rdd1</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>Seq<span style="color:#f92672">(</span><span style="color:#d88200">&#34;a&#34;</span>-&gt;1, <span style="color:#d88200">&#34;b&#34;</span>-&gt;2, <span style="color:#d88200">&#34;a&#34;</span>-&gt;3, <span style="color:#d88200">&#34;b&#34;</span>-&gt;4<span style="color:#f92672">))</span>
+<span style="color:#111">rdd2</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>Seq<span style="color:#f92672">(</span><span style="color:#d88200">&#34;b&#34;</span>-&gt;<span style="color:#d88200">&#34;foo&#34;</span>, <span style="color:#d88200">&#34;c&#34;</span>-&gt;<span style="color:#d88200">&#34;bar&#34;</span><span style="color:#f92672">))</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> rdd1.join<span style="color:#f92672">(</span>rdd2<span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h4 id="rdd-transformations-union">RDD：Transformations：Union</h4>
+
+<p>&nbsp; 他のRDDと結合。単純にパーティション数が増えます</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">]</span>
+<span style="color:#111">b</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd1</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+<span style="color:#111">rdd2</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>b<span style="color:#f92672">)</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> rdd1.union<span style="color:#f92672">(</span>rdd2<span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h4 id="rdd-transformations-subtract">RDD：Transformations：Subtract</h4>
+
+<p>&nbsp; 他のRDDとの差集合を生成</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">]</span>
+<span style="color:#111">b</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd1</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+<span style="color:#111">rdd2</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>b<span style="color:#f92672">)</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> rdd1.subtract<span style="color:#f92672">(</span>rdd2<span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h4 id="rdd-coalesce">RDD：Coalesce</h4>
+
+<p>&nbsp; Coalesceは、RDD内のパーティションの数を減らす処理です。大きなRDDでフィルタなどの加工・抽出処理を実行した後、フィルタリングにより新しいRDDのデータ量は減りますが、元のRDDパーティション数は継承されます。そのため、新しいRDDが元のRDDよりも大幅に小さい場合、パフォーマンス上の問題が発生してしまいます。そのため、RDDの大きなデータ増減処理後、Coalesceを使ってパーティションの数を減らしておくといいです。
+また、HDFSへの書き込み時、Sparkによって生成されるファイルの数を減らした場合、hdfsのファイルブロックサイズ（64〜256MB）より小さい「小さなファイル」を書き込むと問題が発生してしまいます。そのためにCoalesceと合体関連（Unionなど）を使って処理すると問題を回避できます。各パーティションはHDFSに個別のファイルとして書き込まれます。HDFSにParquetファイルを1つだけ書き込む例を記載してみます。
+<br></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rdd.coalesce<span style="color:#f92672">(</span>l<span style="color:#f92672">)</span>.write.mode<span style="color:#f92672">(</span><span style="color:#d88200">&#34;append&#34;</span><span style="color:#f92672">)</span>.parquet<span style="color:#f92672">(</span><span style="color:#d88200">&#34;/user/root/hadoop/Table&#34;</span><span style="color:#f92672">)</span></code></pre></div>
+<p><img src="../static_images/BD_Images_What_is_Spark_004.png" alt="BD_Images_What_is_Spark_004" />
+<br></p>
+
+<h4 id="rdd-repartition">RDD：Repartition</h4>
+
+<p>&nbsp; RepartitionはRDD内のパーティションの数を減らすことも増やすこともできます。再分割よりも効率的であるため、パーティションを削減する場合は通常、Coalesceと合体変数の組み合わせを使用します。一方、こちらはパーティションの数を増やすことができるため、hdfsのファイルブロックサイズ（64〜256MB）の条件からしてHDFSに書き込む際の並列度が向上するため便利です。6つのParquetファイルをHDFSに書き込む例を記載してみます。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rdd.repartition<span style="color:#f92672">(</span><span style="color:#ae81ff">6</span><span style="color:#f92672">)</span>.write.mode<span style="color:#f92672">(</span><span style="color:#d88200">&#34;append&#34;</span><span style="color:#f92672">)</span>•parquet<span style="color:#f92672">(</span><span style="color:#d88200">&#34;/user/root/hadoop/Table&#34;</span><span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h4 id="actions">Actions</h4>
+
+<p>&nbsp; Actionsは、driver programに値を返すRDD操作です。最もよく使われる変換処理のいくつかを記載します。（他はSparkの公式ドキュメントを閲覧してください。）
+|メソッド|備考|
+|&mdash;|&mdash;|
+|collect|全ての要素を返します|
+|Foreach|全ての要素に対して演算を行い、ドライバプログラムには何も返さずに保持します|
+|Take|最初n個の要素を返します|
+|Count|要素数を数えて返します|
+|first|一番最初の要素を返します|
+|top|大きいものからn個要素を返します|
+|mean|平均を返します|
+|sum|合計を返します|
+|variance|分散を返します|
+|stdev|標準偏差を返します|
+|saveAsTextFile|ファイルを保存します|
+<br></p>
+
+<h4 id="actions-collect">Actions : collect</h4>
+
+<p>&nbsp; 全ての要素を返します</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+print<span style="color:#f92672">(</span>rdd.collect<span style="color:#f92672">())</span></code></pre></div>
+<p><br></p>
+
+<h4 id="actions-foreach">Actions : Foreach</h4>
+
+<p>&nbsp; 全ての要素に対して演算を行い、ドライバプログラムには何も返さずに保持します</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+rdd.collect.Foreach<span style="color:#f92672">(</span>printin<span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h4 id="actions-take">Actions : Take</h4>
+
+<p>&nbsp; 最初n個の要素を返します</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+print<span style="color:#f92672">(</span>rdd.take<span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">))</span></code></pre></div>
+<p><br></p>
+
+<h4 id="actions-count">Actions : Count</h4>
+
+<p>&nbsp; 要素数を数えて返します</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+rdd.count<span style="color:#f92672">()</span></code></pre></div>
+<p><br></p>
+
+<h4 id="actions-first">Actions : first</h4>
+
+<p>&nbsp; 一番最初の要素を返します</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+rdd.first<span style="color:#f92672">()</span></code></pre></div>
+<p><br></p>
+
+<h4 id="actions-top">Actions : top</h4>
+
+<p>&nbsp; 大きいものからn個要素を返します</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+rdd.top<span style="color:#f92672">(</span><span style="color:#ae81ff">2</span><span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h4 id="actions-mean">Actions : mean</h4>
+
+<p>&nbsp; 平均を返します</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+rdd.mean<span style="color:#f92672">()</span></code></pre></div>
+<p><br></p>
+
+<h4 id="actions-sum">Actions : sum</h4>
+
+<p>&nbsp; 合計を返します</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+rdd.sum<span style="color:#f92672">()</span></code></pre></div>
+<p><br></p>
+
+<h4 id="actions-variance">Actions : variance</h4>
+
+<p>&nbsp; 分散を返します</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+rdd.variance<span style="color:#f92672">()</span></code></pre></div>
+<p><br></p>
+
+<h4 id="actions-stdev">Actions : stdev</h4>
+
+<p>&nbsp; 標準偏差を返します</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+rdd.stdev<span style="color:#f92672">()</span></code></pre></div>
+<p><br></p>
+
+<h4 id="actions-saveastextfile">Actions : saveAsTextFile</h4>
+
+<p>&nbsp; ファイルを保存します</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rdd.saveAsTextFile<span style="color:#f92672">(</span><span style="color:#d88200">&#34;./words.txt&#34;</span><span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h2 id="遅延評価">遅延評価</h2>
+
+<p>&nbsp; Sparkはビッグデータ処理に必須な遅延評価をサポートします。 遅延評価とは、値が必要になるまで、値の評価を後回しにすることです。Sparkのすべての変換処理は遅延評価のため、すぐに変換を実行せず、さらに変換を定義し続けることができます。最終的な最終結果が必要な場合は、Actionを実行します。これにより、変換が実行されます。</p>
+
+<h2 id="永続化-キャッシング">永続化（キャッシング）</h2>
+
+<p>&nbsp; 上記、SparkのRDDは遅延評価されるため、Actionが呼ばれるたびにデータをロードして計算し直されるのが一般です。これでは非効率なので、同じRDDを何回もアクションで再利用したいのであれば、永続化させることで複数回計算されることを防ぐことができます。</p>
+
+<table>
+<thead>
+<tr>
+<th>永続化レベル</th>
+<th>永続化先</th>
+<th>シリアライズ</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>DISK_ONLY</td>
+<td>ディスクのみに格納</td>
+<td>有</td>
+</tr>
+
+<tr>
+<td>MEMORY_ONLY</td>
+<td>メモリのみに格納</td>
+<td>無</td>
+</tr>
+
+<tr>
+<td>MEMORY_ONLY_SER</td>
+<td>メモリのみに格納</td>
+<td>有</td>
+</tr>
+
+<tr>
+<td>MEMORY_AND_DISK</td>
+<td>メモリからあふれた分はディスクに格納</td>
+<td>無</td>
+</tr>
+
+<tr>
+<td>MEMORY_AND_DISK_SER</td>
+<td>メモリからあふれた分はディスクに格納</td>
+<td>有</td>
+</tr>
+</tbody>
+</table>
+
+<p>RDDに対する永続化宣言はRDD処理を記載する前に呼び出す必要があります。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span><span style="color:#f92672">]</span>
+<span style="color:#111">rdd</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>a<span style="color:#f92672">)</span>
+rdd.persist<span style="color:#f92672">(</span> pyspark.StorageLevel.MEMORY_AND_DISK_2 <span style="color:#f92672">)</span>
+rdd.getStorageLevel<span style="color:#f92672">()</span>
+print<span style="color:#f92672">(</span>rdd.getStorageLevel<span style="color:#f92672">())</span></code></pre></div>
+<p><br></p>
+
+<h2 id="メモリ容量を超える処理をする場合">メモリ容量を超える処理をする場合</h2>
+
+<p>&nbsp; Spark経験者ならば「Sparkはよく落ちる」と話をしますが、これはオンメモリ上でMapReduce処理、メモリを保持して処理するため、メモリリソースが高いことから発生する問題です。これはメモリサイズが適切でないと、GCがFull状態、これによって、古いパーティションを保持した不要なメモリが解放されます。Full GC実行後、解放されたメモリ量が前回5回分のFull GCの2.5%を下回ると、JVMはOut of Memory例外を発生させ、落ちるようになります。
+※Sparkのデフォルトは、Executorに1GBのメモリが割り当てられています。
+そのために、永続化を使って落ちないように処理するなど工夫が必要です。メモリで永続化の場合、メモリに収まり切らなかった場合、そのパーティションはディスクに書き出されます。
+また、永続化を繰り返ししすぎるとディスクを消費（メモリに書ききれなかったからディスクに一時保持）するため処理が遅くなるなど問題が出ますので、利用しないRDDがあれば、unpersistなどで永続化を解除するなどチューニングをしてください。</p>
+
+<h2 id="spark-sql-dataset-およびdataframes-api">Spark SQL、Dataset、およびDataFrames API</h2>
+
+<p>&nbsp; Sparkの素晴らしいところは構造化、非構造化および半構造化データ（ビデオ分析、画像処理、テキストマイニングを含む）での分析や処理ができることです。ここで大量の構造化、非構造化および半構造化データがあるとして、Sparkはそれに応えるよう様々なAPIをサポートしています。SparkSQLはSparkデータエンジニアとデータサイエンスが構造化データを簡単に処理および分析できるように開発されました。DatasetはRDDに似ていますが、内部でははるかに効率的な処理エンジンを備えています。Spark2.0から、Dataset APIが主要なプログラミングインターフェイスになりました。DataFrameは、リレーショナルテーブルに非常によく似た名前付きの列を持つ単なるデータセットです。Spark SQLとDataFramesを組み合わせることで、構造化データの処理と分析のための強力なプログラミングインターフェイスが提供されます。Spark SQLとDataFramesの使用方法の簡単な例を次に示します。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">sc</span> <span style="color:#f92672">=</span> spark.sparkContext
+
+<span style="color:#111">path</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;examples/src/main/resources/people.json&#34;</span>
+<span style="color:#111">peopleDF</span> <span style="color:#f92672">=</span> spark.read.json<span style="color:#f92672">(</span>path<span style="color:#f92672">)</span>
+
+<span style="color:#75715e"># スキーマ表じ</span>
+peopleDF.printSchema<span style="color:#f92672">()</span>
+<span style="color:#75715e"># root</span>
+<span style="color:#75715e">#  |-- age: long (nullable = true)</span>
+<span style="color:#75715e">#  |-- name: string (nullable = true)</span>
+
+<span style="color:#75715e"># DataFrameを使用して一時的なビューを作成</span>
+peopleDF.createOrReplaceTempView<span style="color:#f92672">(</span><span style="color:#d88200">&#34;people&#34;</span><span style="color:#f92672">)</span>
+
+<span style="color:#75715e"># Spark SQLでpeopleというテーブル（DataFrame）にクエリを投げます</span>
+<span style="color:#111">teenagerNamesDF</span> <span style="color:#f92672">=</span> spark.sql<span style="color:#f92672">(</span><span style="color:#d88200">&#34;SELECT name FROM people WHERE age BETWEEN 13 AND 19&#34;</span><span style="color:#f92672">)</span>
+teenagerNamesDF.show<span style="color:#f92672">()</span>
+<span style="color:#75715e"># +------+</span>
+<span style="color:#75715e"># |  name|</span>
+<span style="color:#75715e"># +------+</span>
+<span style="color:#75715e"># |Justin|</span>
+<span style="color:#75715e"># +------+</span>
+
+<span style="color:#75715e"># または次のJSONデータセットに対してDataFrameを作成することもできます。</span>
+<span style="color:#111">jsonStrings</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#d88200">&#39;{&#34;name&#34;:&#34;Yin&#34;,&#34;address&#34;:{&#34;city&#34;:&#34;Columbus&#34;,&#34;state&#34;:&#34;Ohio&#34;}}&#39;</span><span style="color:#f92672">]</span>
+<span style="color:#111">otherPeopleRDD</span> <span style="color:#f92672">=</span> sc.parallelize<span style="color:#f92672">(</span>jsonStrings<span style="color:#f92672">)</span>
+<span style="color:#111">otherPeople</span> <span style="color:#f92672">=</span> spark.read.json<span style="color:#f92672">(</span>otherPeopleRDD<span style="color:#f92672">)</span>
+otherPeople.show<span style="color:#f92672">()</span>
+<span style="color:#75715e"># +---------------+----+</span>
+<span style="color:#75715e"># |        address|name|</span>
+<span style="color:#75715e"># +---------------+----+</span>
+<span style="color:#75715e"># |[Columbus,Ohio]| Yin|</span>
+<span style="color:#75715e"># +---------------+----+</span></code></pre></div>
+<p><br></p>
+
+<h2 id="spark-data-sources">Spark Data Sources</h2>
+
+<p>&nbsp; Sparkは様々なデータソースを提供しています。CSV、XML、JSON、HDFS、Parquet、odbc、jdbc、などとあります。以下、いくつか例を記載します。</p>
+
+<h4 id="csv">CSV</h4>
+
+<p>&nbsp; CSVの読み込み方法です。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">df</span> <span style="color:#f92672">=</span> sc.textFile<span style="color:#f92672">(</span><span style="color:#d88200">&#34;test.csv&#34;</span><span style="color:#f92672">)</span>.toDF<span style="color:#f92672">([</span><span style="color:#d88200">&#39;Col1&#39;</span>,<span style="color:#d88200">&#39;Col2&#39;</span><span style="color:#f92672">])</span></code></pre></div>
+<p><br></p>
+
+<h4 id="xml">XML</h4>
+
+<p>&nbsp; XMLの読み込み方法です。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">df</span> <span style="color:#f92672">=</span> sqlContext.read
+    .option<span style="color:#f92672">(</span><span style="color:#d88200">&#34;rowTag&#34;</span>, <span style="color:#d88200">&#34;book&#34;</span><span style="color:#f92672">)</span>
+    .load<span style="color:#f92672">(</span><span style="color:#d88200">&#34;test.xml&#34;</span><span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h4 id="json">JSON</h4>
+
+<p>&nbsp; JSONの読み込み方法です。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">df</span> <span style="color:#f92672">=</span> spark.read.json<span style="color:#f92672">(</span><span style="color:#d88200">&#34;test.json&#34;</span><span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h4 id="relational-databases-using-jdbc">Relational Databases Using JDBC</h4>
+
+<p>&nbsp; JDBCドライバはMySQLの他 Oracle、SQL Server、PostgreSQLなどの他のリレーショナルデータベースもサポートしています。リレーショナルデータベースにJDBC/ODBCドライバーがある限り、Sparkからアクセスできます。パフォーマンスは、JDBC/ODBCドライバーのバッチ操作のサポートに依存となります。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">jdbcDF</span> <span style="color:#f92672">=</span> spark.read <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    .format<span style="color:#f92672">(</span><span style="color:#d88200">&#34;jdbc&#34;</span><span style="color:#f92672">)</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    .option<span style="color:#f92672">(</span><span style="color:#d88200">&#34;url&#34;</span>, <span style="color:#d88200">&#34;jdbc:postgresql:dbserver&#34;</span><span style="color:#f92672">)</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    .option<span style="color:#f92672">(</span><span style="color:#d88200">&#34;dbtable&#34;</span>, <span style="color:#d88200">&#34;schema.tablename&#34;</span><span style="color:#f92672">)</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    .option<span style="color:#f92672">(</span><span style="color:#d88200">&#34;user&#34;</span>, <span style="color:#d88200">&#34;username&#34;</span><span style="color:#f92672">)</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    .option<span style="color:#f92672">(</span><span style="color:#d88200">&#34;password&#34;</span>, <span style="color:#d88200">&#34;password&#34;</span><span style="color:#f92672">)</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    .load<span style="color:#f92672">()</span></code></pre></div>
+<p><br></p>
+
+<h4 id="parquet">Parquet</h4>
+
+<p>&nbsp; Parquetの読み込み方法です。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#111">parquetFile</span> <span style="color:#f92672">=</span> spark.read.parquet<span style="color:#f92672">(</span><span style="color:#d88200">&#34;people.parquet&#34;</span><span style="color:#f92672">)</span>
+parquetFile.createOrReplaceTempView<span style="color:#f92672">(</span><span style="color:#d88200">&#34;parquetFile&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#111">teenagers</span> <span style="color:#f92672">=</span> spark.sql<span style="color:#f92672">(</span><span style="color:#d88200">&#34;SELECT name FROM parquetFile WHERE age &gt;= 13 AND age &lt;= 19&#34;</span><span style="color:#f92672">)</span>
+teenagers.show<span style="color:#f92672">()</span>
+<span style="color:#75715e"># +------+</span>
+<span style="color:#75715e"># |  name|</span>
+<span style="color:#75715e"># +------+</span>
+<span style="color:#75715e"># |Justin|</span>
+<span style="color:#75715e"># +------+</span></code></pre></div>
+<p><br></p>
+
+<h2 id="spark-mllib-dataframe-based-api">Spark MLlib (DataFrame-Based API)</h2>
+
+<p>&nbsp; 機械学習（Machine Learning、以下MLと略します）はSparkの主要なアプリケーションの１つです。上記、DataFrameをベースとした、Spark MLlibによる機械学習ができます。DataFramesベースはRDDベースよりも高速で使いやすく、ユーザーはSQLを使用して、Catalystやデータ内容の最適化などができます。
+SparkのDataFrameの優れてるところは、機械学習パイプラインで機能変換が容易に行えることです。図のように、元々のDataFrameから機械学習用のDataFrame2へ下準備（変換）、そしてTF-IDF（単語の頻度の評価、機械学習の一つ）を実施し、その結果をDataFrame3として出力することができます。この一連をPipelineと呼びます。</p>
+
+<p><img src="../static_images/BD_Images_What_is_Spark_005.png" alt="BD_Images_What_is_Spark_005" />
+<br></p>
+
+<h4 id="pipeline">Pipeline</h4>
+
+<p>&nbsp; Pipelineは、機械学習のワークフローを作成するための接続された一連処理のことをさします。GPU演算処理が必要な大規模計算処理でも、このパイプラインを確立することで、並列分散で演算処理を行うことも可能なので、機械学習を行う上では重要な位置付けになります。</p>
+
+<h4 id="transformer">Transformer</h4>
+
+<p>&nbsp; Transformerは入力としてDataFrameを受け取り、新しいDataFrameに追加の列が追加された新しいDataFrameを出力します。</p>
+
+<p><br></p>
+
+<p>Spark MLlibによる機械学習の例を記載します。ここは使い方、イメージとして理解いただければと思います。より詳しいこと、Sparkによる機械学習、分散学習は別の章にて記載いたします。</p>
+
+<pre><code>from ​pyspark.ml.linalg import Vectors
+from pyspark.ml.classification import LogisticRegression
+
+training = spark.createDataFrame([
+    (1.0, Vectors.dense([0.0, 1.1, 0.1])),
+    (0.0, Vectors.dense([2.0, 1.0, -1.0])),
+    (0.0, Vectors.dense([2.0, 1.3, 1.0])),
+    (1.0, Vectors.dense([0.0, 1.2, -0.5]))], [&quot;label&quot;, &quot;features&quot;])
+
+lr = LogisticRegression(maxIter=10, regParam=0.01)
+# Print out the parameters, documentation, and any default values.
+print(&quot;LogisticRegression parameters:\n&quot; + lr.explainParams() + &quot;\n&quot;)
+
+model1 = lr.fit(training)
+
+print(&quot;Model 1 was fit using parameters: &quot;)
+print(model1.extractParamMap())
+
+paramMap = {lr.maxIter: 20}
+paramMap[lr.maxIter] = 30  # Specify 1 Param, overwriting the original maxIter.
+paramMap.update({lr.regParam: 0.1, lr.threshold: 0.55})  # Specify multiple Params.
+
+paramMap2 = {lr.probabilityCol: &quot;myProbability&quot;}  # Change output column name
+paramMapCombined = paramMap.copy()
+paramMapCombined.update(paramMap2)
+
+model2 = lr.fit(training, paramMapCombined)
+print(&quot;Model 2 was fit using parameters: &quot;)
+print(model2.extractParamMap())
+
+test = spark.createDataFrame([
+    (1.0, Vectors.dense([-1.0, 1.5, 1.3])),
+    (0.0, Vectors.dense([3.0, 2.0, -0.1])),
+    (1.0, Vectors.dense([0.0, 2.2, -1.5]))], [&quot;label&quot;, &quot;features&quot;])
+
+prediction = model2.transform(test)
+result = prediction.select(&quot;features&quot;, &quot;label&quot;, &quot;myProbability&quot;, &quot;prediction&quot;) \
+    .collect()
+
+for row in result:
+    print(&quot;features=%s, label=%s -&gt; prob=%s, prediction=%s&quot;
+          % (row.features, row.label, row.myProbability, row.prediction))
+</code></pre>
+
+<p><br></p>
+
+<h2 id="graphx">GraphX</h2>
+
+<p>&nbsp; Sparkには、GraphXと呼ばれるグラフ処理フレームワークが含まれています。DataFramesに基づくGraphFramesと呼ばれる別のパッケージがあります。
+GraphXは現在開発中・バージョンごとに仕様が変化している（進化段階）状態なので、本テクニカルガイドではGraphXは扱わず、詳しいことは本サイトにて確認頂ければ幸いです。
+<br></p>
+
+<h2 id="spark-streaming">Spark Streaming</h2>
+
+<p>&nbsp; Spark2.0には、Structured Streamingと呼ばれる新しいストリーム処理フレームワークが含まれています。SparkSQLの上に構築された高レベルのストリーミングAPIです。別の章にて説明します。
+<br></p>
+
+<h2 id="まとめ">まとめ</h2>
+
+<p>&nbsp; Apache Sparkは、ビッグデータ処理フレームワークとして強力な位置付けとなっています。データサイエンティスト、エンジニアはSparkが使いやすく、様々な画面で大いに役立ちます。Sparkがあることで、KuduやHBaseと連携処理することも可能ですし、他のHadoopエコシステムと連携することで更に利便になります。AlibabaCloudにはMaxCompute、E-MapReduce、ContainerにSparkを実装しており、Sparkをフル活用することでBigData運用が非常に楽になります。
+<br></p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" title="Hadoopとその周辺の技術について"> <i class="fa fa-chevron-left"></i><label>Hadoopとその周辺の技術について</label></a>
+    <a class="nav nav-next" href="/help/best-practice/bigdata/004_what-is-hdfs/" title="HDFSとは" style="margin-right: 0px;"><label>HDFSとは</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i>  08/30/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/bigdata/003_What%20is%20Spark.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/help/js/clipboard.min.js"></script>
+
+<link href="/help/css/featherlight.min.css" rel="stylesheet">
+<script src="/help/js/featherlight.min.js"></script>
+
+
+
+<script src="/help/theme-flex/script.js"></script>
+
+<link href="/help/mermaid/mermaid.css" type="text/css" rel="stylesheet" />
+<script src="/help/mermaid/mermaid.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

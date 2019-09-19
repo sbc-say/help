@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SB Cloud&nbsp;テクニカルリファレンス</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-09-19T10:48:17 UTC">
+<title>ApacheSpark（Batch）からOSSへ :: テクニカルリファレンス</title>
+<link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
+<link href="/help/css/font-awesome.min.css" rel="stylesheet">
+<link href="/help/css/nucleus.css" rel="stylesheet">
+<link href="/help/theme-flex/style.css" rel="stylesheet">
+
+	<link href="/help/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/help/css/bootstrap.min.css">
+<script src="/help/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GTM-MQFZWG', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" id="mierucajs">
+window.__fid = window.__fid || [];__fid.push([317537360]);
+(function() {
+function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
+setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
+})();
+</script>
+
+
+
+<meta name="description" content="ApacheSpark（Batch）からOSSへデータを集約する方法を説明します。">
+
+        
+
+
+<link href="/help/css/custom.css"  rel="stylesheet">
+
+
+    
+  </head>
+  <body data-url="/help/best-practice/bigdata/013_apache-spark-to-oss/">
+    
+      <header>
+
+    
+  <div class="logo">
+      <a href="https://www.sbcloud.co.jp/help/" style="vertical-align: baseline;">
+            <img src="https://www.sbcloud.co.jp/help//img/sbcloud_logo.png" class="noshadow" alt="">
+        </a>
+  </div>
+
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+
+<nav class="shortcuts">
+    <li>
+        <span class="searchbox">
+            <input data-search-input id="search-by" type="text" placeholder="検索">
+        </span>
+        <script type="text/javascript" src="/help/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/help/js/auto-complete.js"></script>
+        <link href="/help/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+            
+            var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+            
+        </script>
+        <script type="text/javascript" src="/help/js/search.js"></script>
+    </li>
+            <li class="" role="">
+                <a href="https://github.com/sbcloud/help"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+        </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/">Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/registration/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/registration/">
+            アカウント登録
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/getting-started/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/product/">プロダクトの紹介</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/product/links/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/links/">
+            プロダクト資料のリンク一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/product/ecs-by-region/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/ecs-by-region/">
+            ECSの使用可能なRegion/Spec/Price紹介
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/getting-started/cloud-users/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/cloud-users/vs-aws-gcp-azure/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/vs-aws-gcp-azure/">
+            サービスラインナップ比較
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/best-practice/general/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/general/">全般</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/general/advisory/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/advisory/">
+            アドバイザリ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/general/pricing/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/pricing/">
+            料金体系
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/product/">プロダクト</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/product/datav/datav-widget-develop-guide/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/datav/datav-widget-develop-guide/">
+            DataV Widget 開発ガイド
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/web-application/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/web-application/">Webアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/web-application/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/02/name-resolve/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/02/name-resolve/">
+            名前解決
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/03/loadbalancer/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/03/loadbalancer/">
+            負荷分散
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/04/web-ap/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/04/web-ap/">
+            Web/APサーバ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/05/database/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/05/database/">
+            データベース
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/terraform/01/how-to-use/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/01/how-to-use/">
+            Terraformとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/02/install/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/02/install/">
+            インストール
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/03/sample-project/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/03/sample-project/">
+            サンプルプロジェクトの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/04/run-terraform/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/04/run-terraform/">
+            サンプルプロジェクトの実行
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/05/program-syntax/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/05/program-syntax/">
+            Terraform文法について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/06/docker/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/06/docker/">
+            Dockerについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/07/module/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/07/module/">
+            Moduleについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/08/vpc/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/08/vpc/">
+            VPCの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/09/ecs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/09/ecs/">
+            ECS、EIPの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/10/slb/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/10/slb/">
+            SLBの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/11/autoscaling/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/11/autoscaling/">
+            AutoScalingの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/12/oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/12/oss/">
+            OSSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/13/rds/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/13/rds/">
+            RDSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/14/ram/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/14/ram/">
+            RAMの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/15/kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/15/kubernetes/">
+            Kubernetesの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/container/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/container/">コンテナ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/container/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/02/development-environment/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/02/development-environment/">
+            開発環境
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/03/image-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/03/image-management/">
+            コンテナイメージ作成・管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/04/deploy-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/04/deploy-management/">
+            コンテナデプロイ管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/05/monitoring/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/05/monitoring/">
+            ログ管理とモニタリング
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/bigdata/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/bigdata/">Bigdata</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/bigdata/001_what-is-bigdata/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/001_what-is-bigdata/">
+            BigDataとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/">
+            Hadoopとその周辺の技術について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/003_what-is-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/003_what-is-spark/">
+            Sparkについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/004_what-is-hdfs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/004_what-is-hdfs/">
+            HDFSとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/005_what-is-yarn/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/005_what-is-yarn/">
+            YARNとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/006_what-is-required-for-dwh/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/006_what-is-required-for-dwh/">
+            DWHには何が必要か
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/007_oss-and-e-mapreduce/">
+            OSSとE-MapReduce
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/">
+            E-MapReduce起動、ETLとOLTP、OLAPをする
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/009_data-collection/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/009_data-collection/">
+            既存データからの移植について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/010_logservice-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/010_logservice-to-oss/">
+            LogServiceでOSSへデータを集める方法
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/011_aws-s3-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/011_aws-s3-to-oss/">
+            AWS S3からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/012_idc-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/012_idc-to-oss/">
+            IDCからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/013_apache-spark-to-oss/" class="dd-item active">
+        <div>
+          <a href="/help/best-practice/bigdata/013_apache-spark-to-oss/">
+            ApacheSpark（Batch）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/">
+            ApacheSpark（Streaming）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/016_apache-flume-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/016_apache-flume-to-oss/">
+            Apache FlumeからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/017_fluentd-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/017_fluentd-to-oss/">
+            FluentdからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/018_enbulk-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/018_enbulk-to-oss/">
+            EnbulkからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/019_apache-arrow-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/019_apache-arrow-to-oss/">
+            Apache ArrowからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/">
+            RDS for MySQLからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/">
+            AlibabaCloud OSSから別のOSSへ（移植）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/">
+            AlibabaCloud OSSから別のOSSへ（同期）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/">
+            開発環境構築について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/scenario/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/scenario/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/scenario/terraform/bastion-server/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/bastion-server/">
+            SSH踏み台サーバの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/slb-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/slb-setting-sample/">
+            SLBの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/rds-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/rds-setting-sample/">
+            RDSの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/kubernetes-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/kubernetes-setting-sample/">
+            Kubernetesの構築と設定
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application/">
+            Webアプリケーションの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/accelerated-content-delivery/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/accelerated-content-delivery/">
+            高速コンテンツ配信の実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/auto-scaling/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/auto-scaling/">
+            オートスケーリングの実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application-on-kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application-on-kubernetes/">
+            KubernetesによるコンテナでWordPress作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/faq/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/faq/">よくある質問</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/faq/ecs/" class="dd-item">
+        <div>
+          <a href="/help/faq/ecs/">
+            ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/oss/" class="dd-item">
+        <div>
+          <a href="/help/faq/oss/">
+            OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/rds/" class="dd-item">
+        <div>
+          <a href="/help/faq/rds/">
+            RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
+        <div>
+          <a href="/help/faq/slb/">
+            SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/account/" class="dd-item">
+        <div>
+          <a href="/help/faq/account/">
+            アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/support/" class="dd-item">
+        <div>
+          <a href="/help/faq/support/">
+            サポート
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+<a class="github-button" href="https://github.com/sbcloud/help/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download SBC Technical Reference on GitHub">Download</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help" data-icon="octicon-star" data-show-count="false" aria-label="Star SBC Technical Reference on GitHub">Star</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork SBC Technical Reference on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    </section>
+  </aside>
+  <section class="page">
+
+    <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span id="sidebar-toggle-span">
+          <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+            <i class="fa fa-bars"></i>
+          </a>
+        </span>
+        <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+        <span class="links">
+        
+
+
+
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/bigdata/'>Bigdata</a> > ApacheSpark（Batch）からOSSへ
+
+ 
+
+ 
+
+ 
+
+
+        </span>
+    </div>
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/help/getting-started/" >
+   Getting Started</option>
+    <option value="/help/best-practice/" >
+   ベストプラクティス</option> 
+    <option value="/help/best-practice/general/" >
+  - 
+   全般</option>
+    <option value="/help/best-practice/product/" >
+  - 
+   プロダクト</option>
+    <option value="/help/best-practice/web-application/" >
+  - 
+   Webアプリケーション</option>
+    <option value="/help/best-practice/terraform/" >
+  - 
+   Terraform</option>
+    <option value="/help/best-practice/container/" >
+  - 
+   コンテナ</option>
+    <option value="/help/best-practice/bigdata/" >
+  - 
+   Bigdata</option> 
+      <option value="/help/best-practice/bigdata/001_what-is-bigdata/" >-- BigDataとは</option>
+      <option value="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" >-- Hadoopとその周辺の技術について</option>
+      <option value="/help/best-practice/bigdata/003_what-is-spark/" >-- Sparkについて</option>
+      <option value="/help/best-practice/bigdata/004_what-is-hdfs/" >-- HDFSとは</option>
+      <option value="/help/best-practice/bigdata/005_what-is-yarn/" >-- YARNとは</option>
+      <option value="/help/best-practice/bigdata/006_what-is-required-for-dwh/" >-- DWHには何が必要か</option>
+      <option value="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" >-- OSSとE-MapReduce</option>
+      <option value="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/" >-- E-MapReduce起動、ETLとOLTP、OLAPをする</option>
+      <option value="/help/best-practice/bigdata/009_data-collection/" >-- 既存データからの移植について</option>
+      <option value="/help/best-practice/bigdata/010_logservice-to-oss/" >-- LogServiceでOSSへデータを集める方法</option>
+      <option value="/help/best-practice/bigdata/011_aws-s3-to-oss/" >-- AWS S3からOSSへ</option>
+      <option value="/help/best-practice/bigdata/012_idc-to-oss/" >-- IDCからOSSへ</option>
+      <option value="/help/best-practice/bigdata/013_apache-spark-to-oss/"  selected>-- ApacheSpark（Batch）からOSSへ</option>
+      <option value="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" >-- ApacheSpark（Streaming）からOSSへ</option>
+      <option value="/help/best-practice/bigdata/016_apache-flume-to-oss/" >-- Apache FlumeからOSSへ</option>
+      <option value="/help/best-practice/bigdata/017_fluentd-to-oss/" >-- FluentdからOSSへ</option>
+      <option value="/help/best-practice/bigdata/018_enbulk-to-oss/" >-- EnbulkからOSSへ</option>
+      <option value="/help/best-practice/bigdata/019_apache-arrow-to-oss/" >-- Apache ArrowからOSSへ</option>
+      <option value="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" >-- RDS for MySQLからOSSへ</option>
+      <option value="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" >-- AlibabaCloud OSSから別のOSSへ（移植）</option>
+      <option value="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" >-- AlibabaCloud OSSから別のOSSへ（同期）</option>
+      <option value="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/" >-- 開発環境構築について</option>
+  
+  
+    <option value="/help/scenario/" >
+   ユースケース別シナリオ</option>
+    <option value="/help/faq/" >
+   よくある質問</option>
+
+
+
+        </select>
+      </center>
+    </div>
+
+    <h1>ApacheSpark（Batch）からOSSへ</h1>
+
+    
+    
+    
+    
+
+<!-- descriptionがコンテンツの前に表示されます -->
+
+<!-- コンテンツを書くときはこの下に記載ください -->
+
+<h2 id="はじめに">はじめに</h2>
+
+<p>&nbsp; 本章はApache Spark（Batch）を使ってAlibabaCloud OSSへデータを送ります。ゴールとしては以下のような構成図になります。</p>
+
+<p><img src="../static_images/BD_Images_Apache_Spark_to_OSS_001.png" alt="BD_Images_Apache_Spark_to_OSS_001" />
+<br></p>
+
+<h2 id="apachesparkでやる理由">ApacheSparkでやる理由</h2>
+
+<p>&nbsp; 別途、Apache Sparkとは何かを説明しました。これを使ってやる理由について説明します。
+SparkはTB、PB、EB級の大量データを扱うことができます。マシン1台で処理できないデータでも、E-MapReduceとSparkを使えば分散してデータを取得・処理することができます。そのため、処理に時間がかかるものはSparkを積極的に活用することで、ビジネス上メリットを得ることができます。</p>
+
+<p>&nbsp; Sparkの便利なことはIN/OUTデータソースが様々な形式へサポートしています。そのため、例えばcsvファイルをHDFS Parquetとして保存したり、MySQLやOracleのデータをHDFSとして保存、逆にOracleのデータをMySQLへ移植、HDFS_Parquetをcsvファイルへ保存することも可能です。</p>
+
+<table>
+<thead>
+<tr>
+<th>データソース</th>
+<th>text</th>
+<th>json</th>
+<th>csv</th>
+<th>parquet</th>
+<th>orc</th>
+<th>jdbc</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>IN</td>
+<td>◯</td>
+<td>◯</td>
+<td>◯</td>
+<td>◯</td>
+<td>◯</td>
+<td>◯</td>
+</tr>
+
+<tr>
+<td>OUT</td>
+<td>◯</td>
+<td>◯</td>
+<td>◯</td>
+<td>◯</td>
+<td>◯</td>
+<td>◯</td>
+</tr>
+</tbody>
+</table>
+
+<p><br></p>
+
+<p>&nbsp; それでは実際にSpark処理をやってみます。今回はE-MapReduceを使って実装します。
+※ECSでも実現可能。その場合、スタンドアロン（単体）での処理になります。</p>
+
+<h2 id="spark-shell-対話型-で試してみる">Spark-Shell（対話型）で試してみる</h2>
+
+<p>Spark Batch処理をする前に、処理の流れとしてSparl-Shellを使って説明します。以下サンプルを入れていますので、流れをみていただければと思います。</p>
+
+<h6 id="環境について">環境について</h6>
+
+<table>
+<thead>
+<tr>
+<th>Clustor</th>
+<th>instance</th>
+<th>Type</th>
+<th>台数</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Hadoop EMR-3.22.0</td>
+<td>MASTER</td>
+<td>ecs.sn2.large</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td></td>
+<td>CORE</td>
+<td>ecs.sn2.large</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@emr-header-1 ~<span style="color:#f92672">]</span><span style="color:#75715e"># pyspark</span>
+Python <span style="color:#ae81ff">2</span>.7.5 <span style="color:#f92672">(</span>default, Apr <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">2018</span>, <span style="color:#ae81ff">07</span>:36:10<span style="color:#f92672">)</span> 
+<span style="color:#f92672">[</span>GCC <span style="color:#ae81ff">4</span>.8.5 <span style="color:#ae81ff">20150623</span> <span style="color:#f92672">(</span>Red Hat <span style="color:#ae81ff">4</span>.8.5-28<span style="color:#f92672">)]</span> on linux2
+Type <span style="color:#d88200">&#34;help&#34;</span>, <span style="color:#d88200">&#34;copyright&#34;</span>, <span style="color:#d88200">&#34;credits&#34;</span> or <span style="color:#d88200">&#34;license&#34;</span> <span style="color:#00a8c8">for</span> more information.
+Setting default log level to <span style="color:#d88200">&#34;WARN&#34;</span>.
+To adjust logging level use sc.setLogLevel<span style="color:#f92672">(</span>newLevel<span style="color:#f92672">)</span>. For SparkR, use setLogLevel<span style="color:#f92672">(</span>newLevel<span style="color:#f92672">)</span>.
+<span style="color:#ae81ff">19</span>/08/15 <span style="color:#ae81ff">15</span>:25:28 WARN HiveConf: HiveConf of name hive.server2.enable.impersonation does not exist
+<span style="color:#ae81ff">19</span>/08/15 <span style="color:#ae81ff">15</span>:25:29 WARN Utils: Service <span style="color:#d88200">&#39;SparkUI&#39;</span> could not <span style="color:#111">bind</span> on port <span style="color:#ae81ff">4040</span>. Attempting port <span style="color:#ae81ff">4041</span>.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _<span style="color:#8045ff">\ \/</span> _ <span style="color:#8045ff">\/</span> _ <span style="color:#d88200">`</span>/ __/  <span style="color:#d88200">&#39;_/
+</span><span style="color:#d88200">   /__ / .__/\_,_/_/ /_/\_\   version 2.4.3
+</span><span style="color:#d88200">      /_/
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">Using Python version 2.7.5 (default, Apr 11 2018 07:36:10)
+</span><span style="color:#d88200">SparkSession available as &#39;</span>spark<span style="color:#d88200">&#39;.
+</span><span style="color:#d88200">&gt;&gt;&gt; a = [1, 2, 3, 4, 5]
+</span><span style="color:#d88200">&gt;&gt;&gt; rdd = sc.parallelize(a)
+</span><span style="color:#d88200">&gt;&gt;&gt; print(rdd.collect())
+</span><span style="color:#d88200">[1, 2, 3, 4, 5]
+</span><span style="color:#d88200">&gt;&gt;&gt; print(rdd.take(2))
+</span><span style="color:#d88200">[1, 2]
+</span><span style="color:#d88200">&gt;&gt;&gt; 
+</span><span style="color:#d88200">&gt;&gt;&gt; 
+</span><span style="color:#d88200">&gt;&gt;&gt; df = sqlContext.read.format(&#34;com.databricks.spark.csv&#34;).option(&#34;header&#34;, &#34;true&#34;).option(&#34;inferSchema&#34;, &#34;true&#34;).load(&#34;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2010-08.csv&#34;)
+</span><span style="color:#d88200">19/08/15 17:40:33 WARN HiveConf: HiveConf of name hive.server2.enable.impersonation does not exist
+</span><span style="color:#d88200">&gt;&gt;&gt; df.top(5)                                                                   
+</span><span style="color:#d88200">Traceback (most recent call last):
+</span><span style="color:#d88200">  File &#34;&lt;stdin&gt;&#34;, line 1, in &lt;module&gt;
+</span><span style="color:#d88200">  File &#34;/usr/lib/spark-current/python/pyspark/sql/dataframe.py&#34;, line 1300, in __getattr__
+</span><span style="color:#d88200">    &#34;&#39;</span>%s<span style="color:#d88200">&#39; object has no attribute &#39;</span>%s<span style="color:#d88200">&#39;&#34; % (self.__class__.__name__, name))
+</span><span style="color:#d88200">AttributeError: &#39;</span>DataFrame<span style="color:#d88200">&#39; object has no attribute &#39;</span>top<span style="color:#d88200">&#39;
+</span><span style="color:#d88200">&gt;&gt;&gt; df.show()
+</span><span style="color:#d88200">+---------+-------------------+-------------------+---------------+-------------+----------------+---------------+---------+------------------+-----------------+----------------+------------+-----------+---------+-------+----------+------------+------------+
+</span><span style="color:#d88200">|vendor_id|    pickup_datetime|   dropoff_datetime|passenger_count|trip_distance|pickup_longitude|pickup_latitude|rate_code|store_and_fwd_flag|dropoff_longitude|dropoff_latitude|payment_type|fare_amount|surcharge|mta_tax|tip_amount|tolls_amount|total_amount|
+</span><span style="color:#d88200">+---------+-------------------+-------------------+---------------+-------------+----------------+---------------+---------+------------------+-----------------+----------------+------------+-----------+---------+-------+----------+------------+------------+
+</span><span style="color:#d88200">|      CMT|2010-08-25 16:55:54|2010-08-25 17:02:51|              1|          0.9|      -73.990554|      40.750067|        1|                 N|       -73.984793|       40.748424|         CSH|        5.3|      1.0|    0.5|       0.0|         0.0|         6.8|
+</span><span style="color:#d88200">|      CMT|2010-08-25 16:49:27|2010-08-25 17:02:15|              2|          1.8|      -73.960153|      40.766382|        1|                 N|       -73.980571|       40.765318|         CSH|        8.5|      1.0|    0.5|       0.0|         0.0|        10.0|
+</span><span style="color:#d88200">|      CMT|2010-08-25 18:56:44|2010-08-25 19:03:56|              2|          1.8|      -73.960912|      40.764876|        1|                 N|       -73.971936|       40.743987|         CSH|        7.3|      1.0|    0.5|       0.0|         0.0|         8.8|
+</span><span style="color:#d88200">|      CMT|2010-08-25 17:42:53|2010-08-25 17:52:00|              1|          1.6|      -73.978349|      40.753755|        1|                 N|       -73.994618|       40.734713|         CSH|        6.9|      1.0|    0.5|       0.0|         0.0|         8.4|
+</span><span style="color:#d88200">|      CMT|2010-08-25 18:33:36|2010-08-25 18:46:43|              1|          5.9|      -74.011604|      40.707754|        1|                 N|        -73.96428|        40.75641|         CSH|       15.3|      1.0|    0.5|       0.0|         0.0|        16.8|
+</span><span style="color:#d88200">|      CMT|2010-08-25 18:26:02|2010-08-25 18:33:01|              1|          1.5|             0.0|            0.0|        1|                 N|              0.0|             0.0|         CSH|        6.1|      1.0|    0.5|       0.0|         0.0|         7.6|
+</span><span style="color:#d88200">|      CMT|2010-08-25 09:39:42|2010-08-25 09:48:56|              1|          1.6|      -73.970818|      40.788291|        1|                 N|       -73.952251|       40.789791|         CSH|        7.3|      0.0|    0.5|       0.0|         0.0|         7.8|
+</span><span style="color:#d88200">|      CMT|2010-08-25 07:10:51|2010-08-25 07:17:42|              1|          1.6|      -73.999173|      40.732382|        1|                 N|       -74.010951|       40.716006|         CRD|        6.5|      0.0|    0.5|       1.0|         0.0|         8.0|
+</span><span style="color:#d88200">|      CMT|2010-08-25 07:09:54|2010-08-25 07:24:21|              1|          3.4|      -73.925234|      40.744107|        1|                 N|       -73.976631|       40.757641|         CRD|       11.3|      0.0|    0.5|      2.36|         0.0|       14.16|
+</span><span style="color:#d88200">|      CMT|2010-08-25 18:50:13|2010-08-25 18:51:46|              1|          0.3|      -73.964992|      40.769131|        1|                 N|       -73.968243|       40.765135|         CSH|        3.3|      1.0|    0.5|       0.0|         0.0|         4.8|
+</span><span style="color:#d88200">|      CMT|2010-08-24 18:29:43|2010-08-24 18:38:16|              1|          1.7|       -73.97112|      40.762027|        1|                 N|       -73.949569|        40.77218|         CSH|        7.3|      1.0|    0.5|       0.0|         0.0|         8.8|
+</span><span style="color:#d88200">|      CMT|2010-08-25 12:32:45|2010-08-25 13:18:31|              1|         21.2|      -73.982377|      40.762223|        2|                 N|       -73.789045|        40.64233|         CSH|       45.0|      0.0|    0.5|       0.0|        4.57|       50.07|
+</span><span style="color:#d88200">|      CMT|2010-08-25 02:12:03|2010-08-25 02:18:40|              1|          1.1|      -73.984696|      40.758834|        1|                 N|       -73.992362|       40.766537|         CSH|        5.7|      0.5|    0.5|       0.0|         0.0|         6.7|
+</span><span style="color:#d88200">|      CMT|2010-08-24 22:55:39|2010-08-24 22:57:09|              2|          0.5|      -73.970982|      40.752929|        1|                 N|       -73.975142|       40.745102|         CSH|        3.3|      0.5|    0.5|       0.0|         0.0|         4.3|
+</span><span style="color:#d88200">|      CMT|2010-08-25 17:20:06|2010-08-25 17:27:30|              1|          2.6|      -73.962069|      40.759348|        1|                 N|       -73.936891|       40.792298|         CSH|        8.1|      1.0|    0.5|       0.0|         0.0|         9.6|
+</span><span style="color:#d88200">|      CMT|2010-08-25 19:00:12|2010-08-25 19:03:10|              2|          0.5|      -73.945084|      40.778577|        1|                 N|       -73.953714|       40.781227|         CSH|        3.7|      1.0|    0.5|       0.0|         0.0|         5.2|
+</span><span style="color:#d88200">|      CMT|2010-08-25 18:33:42|2010-08-25 18:38:26|              2|          0.7|      -73.994903|      40.731576|        1|                 N|       -73.987274|       40.729054|         CSH|        4.5|      1.0|    0.5|       0.0|         0.0|         6.0|
+</span><span style="color:#d88200">|      CMT|2010-08-24 23:14:00|2010-08-24 23:20:22|              1|          0.9|      -73.985465|      40.760003|        1|                 N|       -73.997547|        40.75638|         CRD|        5.3|      0.5|    0.5|       1.2|         0.0|         7.5|
+</span><span style="color:#d88200">|      CMT|2010-08-24 23:44:16|2010-08-24 23:52:19|              1|          2.2|      -74.011916|      40.706786|        1|                 N|       -74.003883|       40.732755|         CSH|        7.7|      0.5|    0.5|       0.0|         0.0|         8.7|
+</span><span style="color:#d88200">|      CMT|2010-08-24 18:27:22|2010-08-24 18:46:01|              1|          3.2|      -73.955509|      40.779722|        1|                 N|       -73.984703|       40.739615|         CRD|       12.1|      1.0|    0.5|       3.4|         0.0|        17.0|
+</span><span style="color:#d88200">+---------+-------------------+-------------------+---------------+-------------+----------------+---------------+---------+------------------+-----------------+----------------+------------+-----------+---------+-------+----------+------------+------------+
+</span><span style="color:#d88200">only showing top 20 rows
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">&gt;&gt;&gt; 
+</span><span style="color:#d88200">&gt;&gt;&gt; 
+</span><span style="color:#d88200">&gt;&gt;&gt; df.createOrReplaceTempView(&#34;nytaxi&#34;)
+</span><span style="color:#d88200">&gt;&gt;&gt; nytaxi_list_df = spark.sql(&#34;SELECT pickup_datetime, dropoff_datetime, passenger_count, pickup_longitude, pickup_latitude FROM nytaxi WHERE passenger_count = 2&#34;)
+</span><span style="color:#d88200">&gt;&gt;&gt; nytaxi_list_df.show()
+</span><span style="color:#d88200">+-------------------+-------------------+---------------+----------------+---------------+
+</span><span style="color:#d88200">|    pickup_datetime|   dropoff_datetime|passenger_count|pickup_longitude|pickup_latitude|
+</span><span style="color:#d88200">+-------------------+-------------------+---------------+----------------+---------------+
+</span><span style="color:#d88200">|2010-08-25 16:49:27|2010-08-25 17:02:15|              2|      -73.960153|      40.766382|
+</span><span style="color:#d88200">|2010-08-25 18:56:44|2010-08-25 19:03:56|              2|      -73.960912|      40.764876|
+</span><span style="color:#d88200">|2010-08-24 22:55:39|2010-08-24 22:57:09|              2|      -73.970982|      40.752929|
+</span><span style="color:#d88200">|2010-08-25 19:00:12|2010-08-25 19:03:10|              2|      -73.945084|      40.778577|
+</span><span style="color:#d88200">|2010-08-25 18:33:42|2010-08-25 18:38:26|              2|      -73.994903|      40.731576|
+</span><span style="color:#d88200">|2010-08-24 19:35:31|2010-08-24 19:39:21|              2|      -74.004164|      40.742297|
+</span><span style="color:#d88200">|2010-08-24 17:47:44|2010-08-24 17:56:28|              2|      -73.999218|      40.718953|
+</span><span style="color:#d88200">|2010-08-23 22:29:54|2010-08-23 22:48:10|              2|      -73.967677|      40.744444|
+</span><span style="color:#d88200">|2010-08-26 12:19:23|2010-08-26 12:28:15|              2|      -73.979934|      40.764332|
+</span><span style="color:#d88200">|2010-08-25 19:04:37|2010-08-25 19:12:22|              2|      -73.970949|      40.759029|
+</span><span style="color:#d88200">|2010-08-25 23:20:24|2010-08-25 23:24:01|              2|      -73.990314|      40.740772|
+</span><span style="color:#d88200">|2010-08-25 21:42:37|2010-08-25 21:52:28|              2|      -73.982866|      40.742284|
+</span><span style="color:#d88200">|2010-08-26 00:08:44|2010-08-26 00:24:50|              2|      -73.994291|      40.751075|
+</span><span style="color:#d88200">|2010-08-23 22:47:25|2010-08-23 22:57:31|              2|      -73.996476|      40.744429|
+</span><span style="color:#d88200">|2010-08-23 17:09:19|2010-08-23 17:11:13|              2|      -73.958722|      40.772043|
+</span><span style="color:#d88200">|2010-08-24 21:12:04|2010-08-24 21:27:40|              2|      -74.002412|      40.730339|
+</span><span style="color:#d88200">|2010-08-24 20:08:02|2010-08-24 20:12:07|              2|      -73.992127|      40.749433|
+</span><span style="color:#d88200">|2010-08-25 02:35:51|2010-08-25 02:38:27|              2|      -73.991222|      40.745008|
+</span><span style="color:#d88200">|2010-08-25 21:50:25|2010-08-25 21:55:20|              2|      -73.964557|      40.763893|
+</span><span style="color:#d88200">|2010-08-23 19:52:19|2010-08-23 19:58:15|              2|             0.0|            0.0|
+</span><span style="color:#d88200">+-------------------+-------------------+---------------+----------------+---------------+
+</span><span style="color:#d88200">only showing top 20 rows
+</span><span style="color:#d88200">
+</span><span style="color:#d88200">&gt;&gt;&gt; 
+</span><span style="color:#d88200">&gt;&gt;&gt; 
+</span><span style="color:#d88200">&gt;&gt;&gt; nytaxi_list_df.coalesce(1).write.format(&#39;</span>com.databricks.spark.csv<span style="color:#d88200">&#39;).option(&#34;overwrite&#34;, &#34;true&#34;).save(&#39;</span>oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/from_spark_csv/<span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#f92672">)</span>
+&gt;&gt;&gt; </code></pre></div>
+<p>結果、OSSに加工処理したDataFrameがcsvとして保存されました。
+<img src="../static_images/BD_Images_Apache_Spark_to_OSS_002.png" alt="BD_Images_Apache_Spark_to_OSS_002" />
+<br></p>
+
+<p>ここでポイントとなる点は以下の通りです。</p>
+
+<h6 id="既存データからdataframeの作成">既存データからDataFrameの作成</h6>
+
+<p>途中、”com.databricks.spark.csv” はSparkを生み出した会社「databricks」によるフレームワークを使って処理になります。詳しくは<a href="https://databricks.com/spark/about">こちらを参照</a>ください。
+<a href="https://databricks.com/spark/about">https://databricks.com/spark/about</a></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># 単数のcsvファイルをDF（DataFrame）へ読み込む</span>
+<span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">spark</span><span style="color:#f92672">.</span><span style="color:#111">read</span><span style="color:#f92672">.</span><span style="color:#111">csv</span><span style="color:#111">(</span><span style="color:#d88200">&#34;oss://my-backet/folder/data.csv&#34;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># 複数のcsvファイルをまとめてDF（DataFrame）へ読み込む</span>
+<span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">spark</span><span style="color:#f92672">.</span><span style="color:#111">read</span><span style="color:#f92672">.</span><span style="color:#111">csv</span><span style="color:#111">(</span><span style="color:#d88200">&#34;oss://my-backet/folder/*.csv&#34;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># 単数のcsvファイルをDF（DataFrame）へ読み込む（高速処理）</span>
+<span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">sqlContext</span><span style="color:#f92672">.</span><span style="color:#111">read</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#d88200">&#34;com.databricks.spark.csv&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">option</span><span style="color:#111">(</span><span style="color:#d88200">&#34;header&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;true&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">option</span><span style="color:#111">(</span><span style="color:#d88200">&#34;inferSchema&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;true&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">load</span><span style="color:#111">(</span><span style="color:#d88200">&#34;oss://my-backet/folder/data.csv&#34;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># 単数のjson形式をDF（DataFrame）へ読み込む。先にフィールド名を指定する必要があります</span>
+<span style="color:#111">fields</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span><span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;pickup_datetime&#39;</span><span style="color:#111">,</span> <span style="color:#111">StringType</span><span style="color:#111">(),</span> <span style="color:#111">True</span><span style="color:#111">),</span>
+          <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;dropoff_datetime&#39;</span><span style="color:#111">,</span> <span style="color:#111">StringType</span><span style="color:#111">(),</span> <span style="color:#111">True</span><span style="color:#111">),</span>
+          <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;passenger_count&#39;</span><span style="color:#111">,</span> <span style="color:#111">IntegerType</span><span style="color:#111">(),</span> <span style="color:#111">True</span><span style="color:#111">)]</span>
+<span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">spark</span><span style="color:#f92672">.</span><span style="color:#111">read</span><span style="color:#f92672">.</span><span style="color:#111">json</span><span style="color:#111">(</span><span style="color:#d88200">&#34;oss://my-backet/folder/*.json&#34;</span><span style="color:#111">,</span> <span style="color:#111">schema</span><span style="color:#f92672">=</span><span style="color:#111">StructType</span><span style="color:#111">(</span><span style="color:#111">fields</span><span style="color:#111">))</span>
+
+<span style="color:#75715e"># parquet形式をDF（DataFrame）へ読み込む</span>
+<span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">spark</span><span style="color:#f92672">.</span><span style="color:#111">read</span><span style="color:#f92672">.</span><span style="color:#111">parquet</span><span style="color:#111">(</span><span style="color:#d88200">&#34;oss://my-backet/folder/&#34;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># mySQLをjdbc経由でDF（DataFrame）へ読み込む</span>
+<span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">sqlcontext</span><span style="color:#f92672">.</span><span style="color:#111">read</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#d88200">&#34;jdbc&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">option</span><span style="color:#111">(</span><span style="color:#d88200">&#34;url&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;jdbc:mysql://test:3306/table&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">option</span><span style="color:#111">(</span><span style="color:#d88200">&#34;driver&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;com.mysql.jdbc.Driver&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">option</span><span style="color:#111">(</span><span style="color:#d88200">&#34;dbtable&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;test_table&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">option</span><span style="color:#111">(</span><span style="color:#d88200">&#34;user&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;root&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">option</span><span style="color:#111">(</span><span style="color:#d88200">&#34;password&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;xxxxx&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">load</span><span style="color:#111">()</span></code></pre></div>
+<p><br></p>
+
+<h6 id="既存dataframeからossへの出力">既存DataFrameからOSSへの出力</h6>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># DF（DataFrame）を単数のcsvファイルとして保存</span>
+<span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">spark</span><span style="color:#f92672">.</span><span style="color:#111">write</span><span style="color:#f92672">.</span><span style="color:#111">csv</span><span style="color:#111">(</span><span style="color:#d88200">&#34;oss://my-backet/folder/data.csv&#34;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># DF（DataFrame）を複数ののcsvファイルとして保存</span>
+<span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">spark</span><span style="color:#f92672">.</span><span style="color:#111">write</span><span style="color:#f92672">.</span><span style="color:#111">csv</span><span style="color:#111">(</span><span style="color:#d88200">&#34;oss://my-backet/folder/*.csv&#34;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># DFを単数のcsvファイルとして保存（高速処理）</span>
+<span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">coalesce</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">write</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#d88200">&#39;com.databricks.spark.csv&#39;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">option</span><span style="color:#111">(</span><span style="color:#d88200">&#34;overwrite&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;true&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">save</span><span style="color:#111">(</span><span style="color:#d88200">&#39;oss://my-backet/folder/&#39;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># parquet形式をDF（DataFrame）へ読み込む</span>
+<span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">spark</span><span style="color:#f92672">.</span><span style="color:#111">read</span><span style="color:#f92672">.</span><span style="color:#111">parquet</span><span style="color:#111">(</span><span style="color:#d88200">&#34;oss://my-backet/folder/&#34;</span><span style="color:#111">)</span>
+
+<span style="color:#75715e"># MySQLをjdbc経由でDF（DataFrame）へ読み込む</span>
+<span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">write</span><span style="color:#f92672">.</span><span style="color:#111">format</span><span style="color:#111">(</span><span style="color:#d88200">&#34;jdbc&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">option</span><span style="color:#111">(</span><span style="color:#d88200">&#34;url&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;jdbc:mysql://test:3306/table&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">option</span><span style="color:#111">(</span><span style="color:#d88200">&#34;dbtable&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;test_table&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">option</span><span style="color:#111">(</span><span style="color:#d88200">&#34;user&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;root&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">option</span><span style="color:#111">(</span><span style="color:#d88200">&#34;password&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;xxxxx&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">save</span><span style="color:#111">()</span></code></pre></div>
+<p><br></p>
+
+<h2 id="spark-batch型-を作成し実行する">Spark（batch型）を作成し実行する。</h2>
+
+<p>上記、ファイルのRead/Writeは理解できたと思いますので、これをBatchとして組み込み、実行します。
+この処理はOSSにあるnyc-taxi CSVファイル全データをOSSのHDFS_Parquetへ変換し保存するものです。
+OSSには以下 このようなcsvファイルがあるとします。
+<img src="../static_images/BD_Images_Apache_Spark_to_OSS_003.png" alt="BD_Images_Apache_Spark_to_OSS_003" />
+<br></p>
+
+<p>次に、<code>convert2parquet.py</code>というPython実行ファイルを作成します。
+※ 本来はScalaでやったほうが役120倍高速ですが、解説のためにPythonで実施します。
+※ SparkによるETLはCore台数を20〜100台にするとより高速処理ができます。また1時間以内、早い時間で処理が終われば早いほどその分投資回収もできます。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+<span style="color:#f92672">from</span> <span style="color:#111">concurrent.futures</span> <span style="color:#f92672">import</span> <span style="color:#111">ThreadPoolExecutor</span><span style="color:#111">,</span> <span style="color:#111">as_completed</span>
+<span style="color:#f92672">from</span> <span style="color:#111">pyspark.sql</span> <span style="color:#f92672">import</span> <span style="color:#111">SparkSession</span>
+<span style="color:#f92672">from</span> <span style="color:#111">pyspark.sql.types</span> <span style="color:#f92672">import</span> <span style="color:#111">StructType</span><span style="color:#111">,</span> <span style="color:#111">StructField</span>
+<span style="color:#f92672">from</span> <span style="color:#111">pyspark.sql.types</span> <span style="color:#f92672">import</span> <span style="color:#111">DoubleType</span><span style="color:#111">,</span> <span style="color:#111">IntegerType</span><span style="color:#111">,</span> <span style="color:#111">StringType</span><span style="color:#111">,</span> <span style="color:#111">TimestampType</span>
+<span style="color:#f92672">from</span> <span style="color:#111">pyspark.sql.functions</span> <span style="color:#f92672">import</span> <span style="color:#111">year</span><span style="color:#111">,</span> <span style="color:#111">month</span><span style="color:#111">,</span> <span style="color:#111">dayofmonth</span><span style="color:#111">,</span> <span style="color:#111">col</span>
+<span style="color:#f92672">from</span> <span style="color:#111">pyspark.sql</span> <span style="color:#f92672">import</span> <span style="color:#111">functions</span> <span style="color:#00a8c8">as</span> <span style="color:#111">func</span>
+
+<span style="color:#00a8c8">def</span> <span style="color:#75af00">write2parquet</span><span style="color:#111">():</span>
+    <span style="color:#111">df_add_partition</span><span style="color:#f92672">.</span><span style="color:#111">repartition</span><span style="color:#111">(</span><span style="color:#f92672">*</span><span style="color:#111">partitionby</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">write</span><span style="color:#f92672">.</span><span style="color:#111">partitionBy</span><span style="color:#111">(</span><span style="color:#111">partitionby</span><span style="color:#111">)</span>
+            <span style="color:#f92672">.</span><span style="color:#111">mode</span><span style="color:#111">(</span><span style="color:#d88200">&#34;append&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">parquet</span><span style="color:#111">(</span><span style="color:#111">output</span><span style="color:#111">,</span> <span style="color:#111">compression</span><span style="color:#f92672">=</span><span style="color:#111">codec</span><span style="color:#111">)</span>
+
+<span style="color:#111">input</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/*.csv&#39;</span>
+<span style="color:#111">output</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/hdfs/&#39;</span>
+<span style="color:#111">codec</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;snappy&#39;</span>
+<span style="color:#111">partitionby</span><span style="color:#f92672">=</span><span style="color:#111">[</span><span style="color:#d88200">&#39;year&#39;</span><span style="color:#111">,</span><span style="color:#d88200">&#39;month&#39;</span><span style="color:#111">,</span><span style="color:#d88200">&#39;day&#39;</span><span style="color:#111">]</span>
+<span style="color:#75715e"># Read</span>
+<span style="color:#111">spark</span> <span style="color:#f92672">=</span> <span style="color:#111">SparkSession</span><span style="color:#f92672">.</span><span style="color:#111">builder</span><span style="color:#f92672">.</span><span style="color:#111">appName</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Convert2Parquet&#39;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">getOrCreate</span><span style="color:#111">()</span>
+
+<span style="color:#111">struct</span> <span style="color:#f92672">=</span> <span style="color:#111">StructType</span><span style="color:#111">([</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;VendorID&#39;</span><span style="color:#111">,</span> <span style="color:#111">IntegerType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;tpep_pickup_datetime&#39;</span><span style="color:#111">,</span> <span style="color:#111">TimestampType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;tpep_dropoff_datetime&#39;</span><span style="color:#111">,</span> <span style="color:#111">TimestampType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;passenger_count&#39;</span><span style="color:#111">,</span> <span style="color:#111">IntegerType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;trip_distance&#39;</span><span style="color:#111">,</span> <span style="color:#111">DoubleType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;RatecodeID&#39;</span><span style="color:#111">,</span> <span style="color:#111">IntegerType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;store_and_fwd_flag&#39;</span><span style="color:#111">,</span> <span style="color:#111">StringType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;PULocationID&#39;</span><span style="color:#111">,</span> <span style="color:#111">IntegerType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;DOLocationID&#39;</span><span style="color:#111">,</span> <span style="color:#111">IntegerType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;payment_type&#39;</span><span style="color:#111">,</span> <span style="color:#111">IntegerType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;fare_amount&#39;</span><span style="color:#111">,</span> <span style="color:#111">DoubleType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;extra&#39;</span><span style="color:#111">,</span> <span style="color:#111">DoubleType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;mta_tax&#39;</span><span style="color:#111">,</span> <span style="color:#111">DoubleType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;tip_amount&#39;</span><span style="color:#111">,</span> <span style="color:#111">DoubleType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;tolls_amount&#39;</span><span style="color:#111">,</span> <span style="color:#111">DoubleType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;improvement_surcharge&#39;</span><span style="color:#111">,</span> <span style="color:#111">DoubleType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">),</span>
+        <span style="color:#111">StructField</span><span style="color:#111">(</span><span style="color:#d88200">&#39;total_amount&#39;</span><span style="color:#111">,</span> <span style="color:#111">DoubleType</span><span style="color:#111">(),</span> <span style="color:#111">False</span><span style="color:#111">)</span> 
+     <span style="color:#111">])</span>
+
+<span style="color:#111">df</span> <span style="color:#f92672">=</span> <span style="color:#111">spark</span><span style="color:#f92672">.</span><span style="color:#111">read</span><span style="color:#f92672">.</span><span style="color:#111">csv</span><span style="color:#111">(</span><span style="color:#111">input</span><span style="color:#111">,</span> <span style="color:#111">header</span><span style="color:#f92672">=</span><span style="color:#111">False</span><span style="color:#111">,</span> <span style="color:#111">mode</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;DROPMALFORMED&#34;</span><span style="color:#111">,</span> <span style="color:#111">schema</span><span style="color:#f92672">=</span><span style="color:#111">struct</span><span style="color:#111">)</span>
+
+<span style="color:#111">df_add_partition</span> <span style="color:#f92672">=</span> <span style="color:#111">(</span><span style="color:#111">df</span><span style="color:#f92672">.</span><span style="color:#111">withColumn</span><span style="color:#111">(</span><span style="color:#d88200">&#34;year&#34;</span><span style="color:#111">,</span> <span style="color:#111">year</span><span style="color:#111">(</span><span style="color:#111">col</span><span style="color:#111">(</span><span style="color:#d88200">&#34;tpep_pickup_datetime&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">cast</span><span style="color:#111">(</span><span style="color:#d88200">&#34;timestamp&#34;</span><span style="color:#111">)))</span>
+                        <span style="color:#f92672">.</span><span style="color:#111">withColumn</span><span style="color:#111">(</span><span style="color:#d88200">&#34;month&#34;</span><span style="color:#111">,</span> <span style="color:#111">month</span><span style="color:#111">(</span><span style="color:#111">col</span><span style="color:#111">(</span><span style="color:#d88200">&#34;tpep_pickup_datetime&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">cast</span><span style="color:#111">(</span><span style="color:#d88200">&#34;timestamp&#34;</span><span style="color:#111">)))</span>    
+                            <span style="color:#f92672">.</span><span style="color:#111">withColumn</span><span style="color:#111">(</span><span style="color:#d88200">&#34;day&#34;</span><span style="color:#111">,</span> <span style="color:#111">dayofmonth</span><span style="color:#111">(</span><span style="color:#111">col</span><span style="color:#111">(</span><span style="color:#d88200">&#34;tpep_pickup_datetime&#34;</span><span style="color:#111">)</span><span style="color:#f92672">.</span><span style="color:#111">cast</span><span style="color:#111">(</span><span style="color:#d88200">&#34;timestamp&#34;</span><span style="color:#111">))))</span>
+
+<span style="color:#75715e"># Write</span>
+<span style="color:#111">futures</span><span style="color:#f92672">=</span><span style="color:#111">[]</span>
+<span style="color:#111">pool</span> <span style="color:#f92672">=</span> <span style="color:#111">ThreadPoolExecutor</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+<span style="color:#111">futures</span><span style="color:#f92672">.</span><span style="color:#111">append</span><span style="color:#111">(</span><span style="color:#111">pool</span><span style="color:#f92672">.</span><span style="color:#111">submit</span><span style="color:#111">(</span><span style="color:#111">write2parquet</span><span style="color:#111">))</span>
+<span style="color:#00a8c8">for</span> <span style="color:#111">x</span> <span style="color:#f92672">in</span> <span style="color:#111">as_completed</span><span style="color:#111">(</span><span style="color:#111">futures</span><span style="color:#111">):</span>
+   <span style="color:#00a8c8">pass</span>
+
+<span style="color:#111">spark</span><span style="color:#f92672">.</span><span style="color:#111">stop</span><span style="color:#111">()</span></code></pre></div>
+<p>このファイルを以下のコマンドで実行してください。以下の例はCoreが2台の場合の例です。
+※ Spark-submit引数のより詳しい説明は別の章にて説明します。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ spark-submit --num-executors <span style="color:#ae81ff">85</span> --executor-memory 5g convert2parquet.py </code></pre></div>
+<p>実行結果、しばらくすると以下のようにHDFS Parquetファイルたちができました。</p>
+
+<p><img src="../static_images/BD_Images_Apache_Spark_to_OSS_004.png" alt="BD_Images_Apache_Spark_to_OSS_004" />
+<br></p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/help/best-practice/bigdata/012_idc-to-oss/" title="IDCからOSSへ"> <i class="fa fa-chevron-left"></i><label>IDCからOSSへ</label></a>
+    <a class="nav nav-next" href="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" title="ApacheSpark（Streaming）からOSSへ" style="margin-right: 0px;"><label>ApacheSpark（Streaming）からOSSへ</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i>  08/30/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/bigdata/013_Apache%20Spark%20to%20OSS.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/help/js/clipboard.min.js"></script>
+
+<link href="/help/css/featherlight.min.css" rel="stylesheet">
+<script src="/help/js/featherlight.min.js"></script>
+
+
+
+<script src="/help/theme-flex/script.js"></script>
+
+<link href="/help/mermaid/mermaid.css" type="text/css" rel="stylesheet" />
+<script src="/help/mermaid/mermaid.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SB Cloud&nbsp;テクニカルリファレンス</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-09-19T10:48:17 UTC">
+<title>開発環境構築について :: テクニカルリファレンス</title>
+<link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
+<link href="/help/css/font-awesome.min.css" rel="stylesheet">
+<link href="/help/css/nucleus.css" rel="stylesheet">
+<link href="/help/theme-flex/style.css" rel="stylesheet">
+
+	<link href="/help/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/help/css/bootstrap.min.css">
+<script src="/help/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GTM-MQFZWG', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" id="mierucajs">
+window.__fid = window.__fid || [];__fid.push([317537360]);
+(function() {
+function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
+setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
+})();
+</script>
+
+
+
+<meta name="description" content="AlibabaCloud SDKでBigDataを利用する上での開発環境を設定します。">
+
+        
+
+
+<link href="/help/css/custom.css"  rel="stylesheet">
+
+
+    
+  </head>
+  <body data-url="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/">
+    
+      <header>
+
+    
+  <div class="logo">
+      <a href="https://www.sbcloud.co.jp/help/" style="vertical-align: baseline;">
+            <img src="https://www.sbcloud.co.jp/help//img/sbcloud_logo.png" class="noshadow" alt="">
+        </a>
+  </div>
+
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+
+<nav class="shortcuts">
+    <li>
+        <span class="searchbox">
+            <input data-search-input id="search-by" type="text" placeholder="検索">
+        </span>
+        <script type="text/javascript" src="/help/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/help/js/auto-complete.js"></script>
+        <link href="/help/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+            
+            var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+            
+        </script>
+        <script type="text/javascript" src="/help/js/search.js"></script>
+    </li>
+            <li class="" role="">
+                <a href="https://github.com/sbcloud/help"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+        </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/">Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/registration/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/registration/">
+            アカウント登録
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/getting-started/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/product/">プロダクトの紹介</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/product/links/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/links/">
+            プロダクト資料のリンク一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/product/ecs-by-region/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/ecs-by-region/">
+            ECSの使用可能なRegion/Spec/Price紹介
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/getting-started/cloud-users/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/cloud-users/vs-aws-gcp-azure/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/vs-aws-gcp-azure/">
+            サービスラインナップ比較
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/best-practice/general/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/general/">全般</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/general/advisory/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/advisory/">
+            アドバイザリ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/general/pricing/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/pricing/">
+            料金体系
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/product/">プロダクト</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/product/datav/datav-widget-develop-guide/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/datav/datav-widget-develop-guide/">
+            DataV Widget 開発ガイド
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/web-application/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/web-application/">Webアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/web-application/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/02/name-resolve/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/02/name-resolve/">
+            名前解決
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/03/loadbalancer/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/03/loadbalancer/">
+            負荷分散
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/04/web-ap/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/04/web-ap/">
+            Web/APサーバ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/05/database/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/05/database/">
+            データベース
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/terraform/01/how-to-use/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/01/how-to-use/">
+            Terraformとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/02/install/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/02/install/">
+            インストール
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/03/sample-project/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/03/sample-project/">
+            サンプルプロジェクトの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/04/run-terraform/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/04/run-terraform/">
+            サンプルプロジェクトの実行
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/05/program-syntax/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/05/program-syntax/">
+            Terraform文法について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/06/docker/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/06/docker/">
+            Dockerについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/07/module/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/07/module/">
+            Moduleについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/08/vpc/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/08/vpc/">
+            VPCの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/09/ecs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/09/ecs/">
+            ECS、EIPの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/10/slb/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/10/slb/">
+            SLBの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/11/autoscaling/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/11/autoscaling/">
+            AutoScalingの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/12/oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/12/oss/">
+            OSSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/13/rds/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/13/rds/">
+            RDSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/14/ram/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/14/ram/">
+            RAMの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/15/kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/15/kubernetes/">
+            Kubernetesの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/container/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/container/">コンテナ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/container/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/02/development-environment/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/02/development-environment/">
+            開発環境
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/03/image-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/03/image-management/">
+            コンテナイメージ作成・管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/04/deploy-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/04/deploy-management/">
+            コンテナデプロイ管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/05/monitoring/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/05/monitoring/">
+            ログ管理とモニタリング
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/bigdata/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/bigdata/">Bigdata</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/bigdata/001_what-is-bigdata/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/001_what-is-bigdata/">
+            BigDataとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/">
+            Hadoopとその周辺の技術について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/003_what-is-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/003_what-is-spark/">
+            Sparkについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/004_what-is-hdfs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/004_what-is-hdfs/">
+            HDFSとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/005_what-is-yarn/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/005_what-is-yarn/">
+            YARNとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/006_what-is-required-for-dwh/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/006_what-is-required-for-dwh/">
+            DWHには何が必要か
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/007_oss-and-e-mapreduce/">
+            OSSとE-MapReduce
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/">
+            E-MapReduce起動、ETLとOLTP、OLAPをする
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/009_data-collection/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/009_data-collection/">
+            既存データからの移植について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/010_logservice-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/010_logservice-to-oss/">
+            LogServiceでOSSへデータを集める方法
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/011_aws-s3-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/011_aws-s3-to-oss/">
+            AWS S3からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/012_idc-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/012_idc-to-oss/">
+            IDCからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/013_apache-spark-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/013_apache-spark-to-oss/">
+            ApacheSpark（Batch）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/">
+            ApacheSpark（Streaming）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/016_apache-flume-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/016_apache-flume-to-oss/">
+            Apache FlumeからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/017_fluentd-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/017_fluentd-to-oss/">
+            FluentdからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/018_enbulk-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/018_enbulk-to-oss/">
+            EnbulkからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/019_apache-arrow-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/019_apache-arrow-to-oss/">
+            Apache ArrowからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/">
+            RDS for MySQLからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/">
+            AlibabaCloud OSSから別のOSSへ（移植）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/">
+            AlibabaCloud OSSから別のOSSへ（同期）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/" class="dd-item active">
+        <div>
+          <a href="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/">
+            開発環境構築について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/scenario/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/scenario/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/scenario/terraform/bastion-server/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/bastion-server/">
+            SSH踏み台サーバの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/slb-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/slb-setting-sample/">
+            SLBの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/rds-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/rds-setting-sample/">
+            RDSの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/kubernetes-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/kubernetes-setting-sample/">
+            Kubernetesの構築と設定
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application/">
+            Webアプリケーションの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/accelerated-content-delivery/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/accelerated-content-delivery/">
+            高速コンテンツ配信の実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/auto-scaling/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/auto-scaling/">
+            オートスケーリングの実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application-on-kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application-on-kubernetes/">
+            KubernetesによるコンテナでWordPress作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/faq/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/faq/">よくある質問</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/faq/ecs/" class="dd-item">
+        <div>
+          <a href="/help/faq/ecs/">
+            ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/oss/" class="dd-item">
+        <div>
+          <a href="/help/faq/oss/">
+            OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/rds/" class="dd-item">
+        <div>
+          <a href="/help/faq/rds/">
+            RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
+        <div>
+          <a href="/help/faq/slb/">
+            SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/account/" class="dd-item">
+        <div>
+          <a href="/help/faq/account/">
+            アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/support/" class="dd-item">
+        <div>
+          <a href="/help/faq/support/">
+            サポート
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+<a class="github-button" href="https://github.com/sbcloud/help/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download SBC Technical Reference on GitHub">Download</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help" data-icon="octicon-star" data-show-count="false" aria-label="Star SBC Technical Reference on GitHub">Star</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork SBC Technical Reference on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    </section>
+  </aside>
+  <section class="page">
+
+    <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span id="sidebar-toggle-span">
+          <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+            <i class="fa fa-bars"></i>
+          </a>
+        </span>
+        <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+        <span class="links">
+        
+
+
+
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/bigdata/'>Bigdata</a> > 開発環境構築について
+
+ 
+
+ 
+
+ 
+
+
+        </span>
+    </div>
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/help/getting-started/" >
+   Getting Started</option>
+    <option value="/help/best-practice/" >
+   ベストプラクティス</option> 
+    <option value="/help/best-practice/general/" >
+  - 
+   全般</option>
+    <option value="/help/best-practice/product/" >
+  - 
+   プロダクト</option>
+    <option value="/help/best-practice/web-application/" >
+  - 
+   Webアプリケーション</option>
+    <option value="/help/best-practice/terraform/" >
+  - 
+   Terraform</option>
+    <option value="/help/best-practice/container/" >
+  - 
+   コンテナ</option>
+    <option value="/help/best-practice/bigdata/" >
+  - 
+   Bigdata</option> 
+      <option value="/help/best-practice/bigdata/001_what-is-bigdata/" >-- BigDataとは</option>
+      <option value="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" >-- Hadoopとその周辺の技術について</option>
+      <option value="/help/best-practice/bigdata/003_what-is-spark/" >-- Sparkについて</option>
+      <option value="/help/best-practice/bigdata/004_what-is-hdfs/" >-- HDFSとは</option>
+      <option value="/help/best-practice/bigdata/005_what-is-yarn/" >-- YARNとは</option>
+      <option value="/help/best-practice/bigdata/006_what-is-required-for-dwh/" >-- DWHには何が必要か</option>
+      <option value="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" >-- OSSとE-MapReduce</option>
+      <option value="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/" >-- E-MapReduce起動、ETLとOLTP、OLAPをする</option>
+      <option value="/help/best-practice/bigdata/009_data-collection/" >-- 既存データからの移植について</option>
+      <option value="/help/best-practice/bigdata/010_logservice-to-oss/" >-- LogServiceでOSSへデータを集める方法</option>
+      <option value="/help/best-practice/bigdata/011_aws-s3-to-oss/" >-- AWS S3からOSSへ</option>
+      <option value="/help/best-practice/bigdata/012_idc-to-oss/" >-- IDCからOSSへ</option>
+      <option value="/help/best-practice/bigdata/013_apache-spark-to-oss/" >-- ApacheSpark（Batch）からOSSへ</option>
+      <option value="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" >-- ApacheSpark（Streaming）からOSSへ</option>
+      <option value="/help/best-practice/bigdata/016_apache-flume-to-oss/" >-- Apache FlumeからOSSへ</option>
+      <option value="/help/best-practice/bigdata/017_fluentd-to-oss/" >-- FluentdからOSSへ</option>
+      <option value="/help/best-practice/bigdata/018_enbulk-to-oss/" >-- EnbulkからOSSへ</option>
+      <option value="/help/best-practice/bigdata/019_apache-arrow-to-oss/" >-- Apache ArrowからOSSへ</option>
+      <option value="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" >-- RDS for MySQLからOSSへ</option>
+      <option value="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" >-- AlibabaCloud OSSから別のOSSへ（移植）</option>
+      <option value="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" >-- AlibabaCloud OSSから別のOSSへ（同期）</option>
+      <option value="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/"  selected>-- 開発環境構築について</option>
+  
+  
+    <option value="/help/scenario/" >
+   ユースケース別シナリオ</option>
+    <option value="/help/faq/" >
+   よくある質問</option>
+
+
+
+        </select>
+      </center>
+    </div>
+
+    <h1>開発環境構築について</h1>
+
+    
+    
+    
+    
+
+<!-- descriptionがコンテンツの前に表示されます -->
+
+<!-- コンテンツを書くときはこの下に記載ください -->
+
+<!-- 
+めも あとで削除
+static_images/BD_Images_Data_collection_001.png
+
+-->
+
+<h2 id="はじめに">はじめに</h2>
+
+<p>&nbsp; Alibaba Cloud SDKはGo、Node.js、RUSH、など幅広い分野に展開されていますが、AlibabaCloudのBigDataプロダクトはScala/Java/Pythonを主に利用します。
+そのため、本章ではローカルのMac OS上でPython及びPlayFrameworkの開発を開始するための環境構築手順について記載します。</p>
+
+<p><br></p>
+
+<h2 id="環境">環境</h2>
+
+<p>Mac OS Mojave (10.14.x）</p>
+
+<p><br></p>
+
+<h2 id="homebrew">Homebrew</h2>
+
+<h3 id="homebrewの導入">Homebrewの導入</h3>
+
+<p>Mac用パッケージ管理ソフト Homebrew をインストールします。
+Homebrew（ホームブルー）は、macOSオペレーティングシステム上でソフトウェアの導入を単純化するパッケージ管理システムのひとつです。
+Homebrewを導入することで、Pythonの構築など、後の導入が楽になります。</p>
+
+<h3 id="homebrewのインストール">Homebrewのインストール</h3>
+
+<p>ターミナルを開いてHomebrew公式サイト に書かれている以下コマンドを実行します。
+画面の指示に従ってキーやパスワード入力して、しばらく待つとインストールが終わります。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ /usr/bin/ruby -e <span style="color:#d88200">&#34;</span><span style="color:#00a8c8">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master</code></pre></div>
+<h3 id="homebrewのインストール確認">Homebrewのインストール確認</h3>
+
+<p>以下コマンドでHomebrewが無事インストールできたかを確認します。</p>
+
+<pre><code>$ brew doctor
+</code></pre>
+
+<p>ターミナルに以下が表示されれば完了です。
+&gt; Your system is ready to brew.</p>
+
+<h3 id="homebrewの更新">Homebrewの更新</h3>
+
+<p>brewコマンドでパッケージをインストールしたものの、目的のバージョンがないときは、brewのバージョンが古い可能性がありますので、以下コマンドで更新チェックをします。</p>
+
+<pre><code>$ brew update
+</code></pre>
+
+<p><br></p>
+
+<h2 id="python開発環境構築">Python開発環境構築</h2>
+
+<ul>
+<li>PyCharm
+
+<ul>
+<li>JetBrains社製のPython用IDE（統合開発環境）</li>
+<li>無償版（Community Edition）と有償版（Ultimate Edition）があり、有償版はDjangoなどのWebフレームワークをサポートしています。
+※無償版でも十分実用的なため今回は無償版を利用します</li>
+</ul></li>
+</ul>
+
+<p><br></p>
+
+<h3 id="pyenv導入">pyenv導入</h3>
+
+<p>pyenvは1台のPC内でPythonの異なるバージョンを切り分け、管理するためのツールです。例えば、Python2.7と3.6混合で利用したい場合は、pyenvが非常に役立ちます。
+ターミナル上で以下コマンドを使ってpyenvをインストールします。</p>
+
+<pre><code>$ brew install pyenv
+</code></pre>
+
+<p>ターミナルで以下コマンドを実行し、pyenvのフォルダにPATHを通します。</p>
+
+<pre><code>$ echo 'export PATH=&quot;~/.pyenv/shims:$PATH&quot;' &gt;&gt; ~/.bash_profile
+$ echo 'if which pyenv &gt; /dev/null; then eval &quot;$(pyenv init -)&quot;; fi' &gt;&gt; ~/.bash_profile
+$ source ~/.bash_profile
+</code></pre>
+
+<p>あとは<code>pyenv</code>を通じて、インストールしたいバージョンを指定してインストールします。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ pyenv install --list 
+<span style="color:#75715e"># ここで pyenvとしてインストール可能なリストがでます。</span>
+<span style="color:#75715e"># 今回はPython 3.7.3を入れたいので、 3.7.3を選択します&gt;</span>
+$ pyenv install <span style="color:#ae81ff">3</span>.7.3</code></pre></div>
+<p>あとは使用したい状況に合わせてバージョンを切り替えるだけです。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ python --version
+Python <span style="color:#ae81ff">2</span>.7.16
+$ pyenv versions
+* system <span style="color:#f92672">(</span><span style="color:#111">set</span> by /Users/hironobu.ohara/.pyenv/version<span style="color:#f92672">)</span>
+  <span style="color:#ae81ff">3</span>.6.3
+  <span style="color:#ae81ff">3</span>.7.3
+$ pyenv global <span style="color:#ae81ff">3</span>.7.3
+$ pyenv versions
+  system
+  <span style="color:#ae81ff">3</span>.6.3
+* <span style="color:#ae81ff">3</span>.7.3 <span style="color:#f92672">(</span><span style="color:#111">set</span> by /Users/hironobu.ohara/.pyenv/version<span style="color:#f92672">)</span>
+$ </code></pre></div>
+<p><br></p>
+
+<h3 id="pycharmダウンロード-インストール">PyCharmダウンロード＆インストール</h3>
+
+<p><a href="https://www.jetbrains.com/pycharm/">PyCharmのダウンロードページ</a> にアクセスし、Community版をダウンロードします。
+<a href="https://www.jetbrains.com/pycharm/">https://www.jetbrains.com/pycharm/</a>
+そのあとはダウンロードされたdmgファイルを開き、インストールすれば完了です。
+また、PyCharmのオプションとして、以下の設定を推奨します。
+* 行番号を表示
+* PEP8のコーディング規約に準拠</p>
+
+<h2 id="play-framework開発環境構築">Play Framework開発環境構築</h2>
+
+<p>Java(JDK)、Play Framework、IntelliJ IDEAを導入します。</p>
+
+<h3 id="jdkのインストール">JDKのインストール</h3>
+
+<p>Oracleの<a href="https://www.oracle.com/java/technologies/javase-java-archive-javase8-downloads.html">JDKダウンロードページ</a>からMac向けJDKをダウンロードします。
+<a href="https://www.oracle.com/java/technologies/javase-java-archive-javase8-downloads.html">https://www.oracle.com/java/technologies/javase-java-archive-javase8-downloads.html</a>
+※(Java10ではIntelliJ IDEAが動かないため注意)
+そのあとはダウンロードされたdmgファイルを開き、インストールすれば完了です。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_000.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_000" /></p>
+
+<p>インストール完了後、ターミナルでJavaのバージョン確認コマンドを実行し、以下のような表示になればOKです。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ java -version
+java version <span style="color:#d88200">&#34;1.8.0_144&#34;</span>
+Java<span style="color:#f92672">(</span>TM<span style="color:#f92672">)</span> SE Runtime Environment <span style="color:#f92672">(</span>build <span style="color:#ae81ff">1</span>.8.0_144-b01<span style="color:#f92672">)</span>
+Java HotSpot<span style="color:#f92672">(</span>TM<span style="color:#f92672">)</span> <span style="color:#ae81ff">64</span>-Bit Server VM <span style="color:#f92672">(</span>build <span style="color:#ae81ff">25</span>.144-b01, mixed mode<span style="color:#f92672">)</span></code></pre></div>
+<p><br></p>
+
+<h3 id="play-frameworkのインストール">Play Frameworkのインストール</h3>
+
+<p>Play Frameworkは「Javaのフレームワーク」です。Javaのライブラリだけでなく、Scalaという言語をサポートしています。
+ScalaはJava仮想マシン上で動くスクリプト言語です。Javaの文法と似つつ、Javaをベースとしたオブジェクト指向言語の上に、関数型の機能を表現しているため簡単にコーティングできることが特徴です。
+さてsbt、scala用のbuildツールをインストールします。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew install sbt</code></pre></div>
+<p>インストール完了後、以下コマンドを実行します。これでscala対話型コマンドが出たらインストール成功です。</p>
+
+<pre><code>$ sbt console
+[warn] No sbt.version set in project/build.properties, base directory: /Users/hironobu.ohara/Dev/bigdata_tech
+[info] Set current project to bigdata_tech (in build file:/Users/hironobu.ohara/Dev/bigdata_tech/)
+[info] Updating 
+https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.8/scala-library-2.12.8.pom
+  100.0% [##########] 1.6 KiB (804 B / s)
+[info] Resolved  dependencies
+[info] Updating 
+https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.8/scala-compiler-2.12.8.pom
+  100.0% [##########] 2.2 KiB (8.6 KiB / s)
+〜〜〜
+[info] Non-compiled module 'compiler-bridge_2.12' for Scala 2.12.8. Compiling...
+[info]   Compilation completed in 7.941s.
+[info] Starting scala interpreter...
+Welcome to Scala 2.12.8 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_144).
+Type in expressions for evaluation. Or try :help.
+
+scala&gt; 
+
+  | =&gt; bigdata_tech / Compile / compileIncremental 0s
+</code></pre>
+
+<p><br>
+scalaでちょっと試してみます。何が対話型なのかみてみましょう。</p>
+
+<p><img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_014.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_014" /></p>
+
+<p>また、scalaの対話型を終了するときは<code>sys.exit</code>で終了します。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sys.exit</code></pre></div>
+<h3 id="intellij-ideaのダウンロード-インストール">IntelliJ IDEAのダウンロード＆インストール</h3>
+
+<p>IntelliJとは、Java言語など多言語対応の統合開発環境です。
+<a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEAのダウンロードページ</a> にアクセスします。
+<a href="https://www.jetbrains.com/idea/download/">https://www.jetbrains.com/idea/download/</a>
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_001.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_001" />
+<br></p>
+
+<p>Community版をダウンロードします。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_002.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_002" />
+<br></p>
+
+<p>ダウンロードされたdmgファイルを開き、appファイルをApplicationsフォルダへDragします。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_003.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_003" />
+<br></p>
+
+<p>アプリケーションフォルダにて、IntelliJ IDEA CE.appを開きます。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_003.5.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_003.5" />
+<br></p>
+
+<p>今回は初期インストールなので、「Do not import settings」を選定します。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_004.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_004" />
+<br></p>
+
+<p>UIは好きに選定します。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_005.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_005" />
+<br></p>
+
+<p>何も選択せずに、Nextをクリックします。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_006.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_006" />
+<br></p>
+
+<p>今回は何も選択せずに、Nextをクリックします。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_007.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_007" />
+<br></p>
+
+<p>scalaのpluginをクリックしインストールします。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_008.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_008" />
+<br></p>
+
+<p>これでインストールは完了です。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_009.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_009" />
+<br></p>
+
+<p>再起動後、起動画面で「Create New Project」をクリックし、次の画面のようになっていればインストールは成功です。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_009.1.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_009.1" />
+<br></p>
+
+<hr />
+
+<h3 id="参考-intellij-ideaでおすすめ設定">&lt;参考&gt;IntelliJ IDEAでおすすめ設定</h3>
+
+<p>&nbsp; IntelliJ IDEAは便利なIDE綜合開発環境です。これをさらに快適な開発環境へ整えるために、行数追加とか、様々な設定を入れます。ここは著者のおすすめ設定を入れてみます。方法としては以下の通りです。</p>
+
+<p>メニューバーの [IntelliJ IDEA] &gt; [Preferences] から設定します。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_010.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_010" />
+<br></p>
+
+<h4 id="editor-general">Editor &gt; General</h4>
+
+<p><code>Strip trailing spaces on Save: Modified Lines</code> : 変更した行の末尾のスペースを除去します。
+<code>Always keep trailing spaces on caret line</code> :Reformat Code時に空白のみの行を残します。
+<code>Ensure line feed at file end on Save</code> : 保存時にファイル末尾に改行が入ります。
+<code>Show quick documentation on mouse move Delay (ms): 500</code> : クラスやメソッドにカーソルを合わせるとJava docがホバー表示されます。</p>
+
+<p><img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_011.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_011" />
+<br></p>
+
+<h4 id="editor-general-auto-import">Editor &gt; General &gt; Auto Import</h4>
+
+<p><code>Optimize imports on the fly (for current project)</code> : 自動でインポートの最適化を実施</p>
+
+<p><img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_012.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_012" />
+<br></p>
+
+<h4 id="editor-general-apperence">Editor &gt; General &gt; Apperence</h4>
+
+<p><code>Show line numbers</code> : 行番号を表示
+<code>Show method separators</code> : メソッド区切り線を表示
+<code>Show whitespaces (Leading/Inner/Trailing)</code> : スペースを表示</p>
+
+<p><img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_013.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_013" />
+<br></p>
+
+<hr />
+
+<h3 id="mavenのインストール">Mavenのインストール</h3>
+
+<p>mavenはPOM（Project Object Model)に基づいたプロジェクトのビルド、テスト、ドキュメンテーション、配信など、プロジェクトのライフサイクル全体を管理するものです。</p>
+
+<p>以下はmavenのコマンドとアーキテクチャ全体図です。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_015.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_015" />
+<br></p>
+
+<p>さて、コマンドラインの方にmavenをインストールしてみます。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ brew install maven</code></pre></div>
+<p>無事インストールできてるか確認します。</p>
+
+<pre><code>$ mvn -v
+Apache Maven 3.6.2 (40f52333136460af0dc0d7232c0dc0bcf0d9e117; 2019-08-28T00:06:16+09:00)
+Maven home: /usr/local/Cellar/maven/3.6.2/libexec
+Java version: 1.8.0_144, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre
+Default locale: ja_JP, platform encoding: UTF-8
+OS name: &quot;mac os x&quot;, version: &quot;10.14.5&quot;, arch: &quot;x86_64&quot;, family: &quot;mac&quot;
+$ 
+</code></pre>
+
+<p>これでmavenのインストール完了です。
+ここで注目したいのが、<code>Maven home: /usr/local/Cellar/maven/3.6.2/libexec</code>という行です。IntelliJ IDEAでもmaven環境と連携しますので、IntelliJ IDEAのmavenホームディレクトリとして設定する必要があります。
+[IntelliJ IDEA]&gt;[Preferences]からmavenのホームディレクトリを設定します。</p>
+
+<p><img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_017.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_017" />
+<br></p>
+
+<p>では軽くmavenをやってみます。mavenを使ってHellow Worldを表示してみたいと思います。
+mavenコマンド<code>mvn</code>を1つ実行するだけで、Hellow Worldプログラムのソースファイルとテストファイルが自動で生成されます。
+<br></p>
+
+<h3 id="maven-projectの作成">Maven Projectの作成</h3>
+
+<p>以下のMavenコマンドを実行すると、Java Projectが作成されます。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mvn archetype:generate <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DarchetypeGroupId<span style="color:#f92672">=</span>&lt;archetype-group-id&gt; <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DarchetypeVersion<span style="color:#f92672">=</span>&lt;archetype-version&gt; <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DarchetypeArtifactId<span style="color:#f92672">=</span>maven-archetype-quickstart <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DinteractiveMode<span style="color:#f92672">=</span><span style="color:#111">false</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DgroupId<span style="color:#f92672">=</span>&lt;group-id&gt; <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DartifactId<span style="color:#f92672">=</span>&lt;project-name&gt;</code></pre></div>
+<p>例えば <code>&lt;group-id&gt;</code> をcom.example、 <code>&lt;project-name&gt;</code> を helloworld とする場合は、以下のコマンドとして実行になります。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mvn archetype:generate <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DarchetypeGroupId<span style="color:#f92672">=</span>com.example <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DarchetypeVersion<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>.1 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DarchetypeArtifactId<span style="color:#f92672">=</span>maven-archetype-quickstart <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DinteractiveMode<span style="color:#f92672">=</span><span style="color:#111">false</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DgroupId<span style="color:#f92672">=</span>com.example <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DartifactId<span style="color:#f92672">=</span>helloworld</code></pre></div>
+<p>この<code>mvn archetype</code>を実行すると、ディレクトリ、ファイルが生成されます。生成される構成は以下の通り。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ tree helloworld
+helloworld
+├── pom.xml
+└── src
+    ├── main
+    │   └── java
+    │       └── com
+    │           └── example
+    │               └── App.java
+    └── <span style="color:#111">test</span>
+        └── java
+            └── com
+                └── example
+                    └── AppTest.java
+
+<span style="color:#ae81ff">9</span> directories, <span style="color:#ae81ff">3</span> files</code></pre></div>
+<p><br></p>
+
+<h3 id="maven-projectのコンパイル-実行">Maven Projectのコンパイル、実行</h3>
+
+<p>作成したprojectフォルダのトップディレクトリ(上記の例であれば、helloworldディレクトリ)へ移動し、コンパイルするとsrcディレクトリ配下のソースファイルがコンパイルさレます。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#111">cd</span> helloworld
+$ <span style="color:#111">pwd</span>
+/Users/hironobu.ohara/Dev/maven/helloworld
+$ 
+$ ls
+total <span style="color:#ae81ff">8</span>
+drwxr-xr-x  <span style="color:#ae81ff">4</span> hironobu.ohara  staff   128B  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">14</span>:51 src
+drwxr-xr-x  <span style="color:#ae81ff">4</span> hironobu.ohara  staff   128B  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">14</span>:51 .
+-rw-r--r--  <span style="color:#ae81ff">1</span> hironobu.ohara  staff   644B  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">14</span>:51 pom.xml
+drwxr-xr-x  <span style="color:#ae81ff">5</span> hironobu.ohara  staff   160B  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">14</span>:51 ..
+$ 
+$ 
+$ mvn compile
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Scanning <span style="color:#00a8c8">for</span> projects...
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> -----------------------&lt; com.example:helloworld &gt;-----------------------
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Building helloworld <span style="color:#ae81ff">1</span>.0-SNAPSHOT
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --------------------------------<span style="color:#f92672">[</span> jar <span style="color:#f92672">]</span>---------------------------------
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-resources-plugin:2.6:resources <span style="color:#f92672">(</span>default-resources<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>WARNING<span style="color:#f92672">]</span> Using platform encoding <span style="color:#f92672">(</span>UTF-8 actually<span style="color:#f92672">)</span> to copy filtered resources, i.e. build is platform dependent!
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> skip non existing resourceDirectory /Users/hironobu.ohara/Dev/bigdata_tech/maven/helloworld/src/main/resources
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-compiler-plugin:3.1:compile <span style="color:#f92672">(</span>default-compile<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Changes detected - recompiling the module!
+<span style="color:#f92672">[</span>WARNING<span style="color:#f92672">]</span> File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Compiling <span style="color:#ae81ff">1</span> <span style="color:#111">source</span> file to /Users/hironobu.ohara/Dev/bigdata_tech/maven/helloworld/target/classes
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> ------------------------------------------------------------------------
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> BUILD SUCCESS
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> ------------------------------------------------------------------------
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Total time:  <span style="color:#ae81ff">1</span>.324 s
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Finished at: <span style="color:#ae81ff">2019</span>-09-01T14:54:22+09:00
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> ------------------------------------------------------------------------
+$ ls
+total <span style="color:#ae81ff">8</span>
+drwxr-xr-x  <span style="color:#ae81ff">4</span> hironobu.ohara  staff   128B  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">14</span>:54 target
+drwxr-xr-x  <span style="color:#ae81ff">5</span> hironobu.ohara  staff   160B  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">14</span>:54 .
+drwxr-xr-x  <span style="color:#ae81ff">4</span> hironobu.ohara  staff   128B  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">14</span>:51 src
+-rw-r--r--  <span style="color:#ae81ff">1</span> hironobu.ohara  staff   644B  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">14</span>:51 pom.xml
+drwxr-xr-x  <span style="color:#ae81ff">5</span> hironobu.ohara  staff   160B  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">14</span>:51 ..
+$</code></pre></div>
+<p>トップディレクトリ配下にtargetディレクトリが作成され、その配下に class file が生成されます。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#111">pwd</span>
+/Users/hironobu.ohara/Dev/maven/helloworld
+$ tree .
+.
+├── pom.xml
+├── src
+│   ├── main
+│   │   └── java
+│   │       └── com
+│   │           └── example
+│   │               └── App.java
+│   └── <span style="color:#111">test</span>
+│       └── java
+│           └── com
+│               └── example
+│                   └── AppTest.java
+└── target
+    ├── classes
+    │   └── com
+    │       └── example
+    │           └── App.class
+    └── maven-status
+        └── maven-compiler-plugin
+            └── compile
+                └── default-compile
+                    ├── createdFiles.lst
+                    └── inputFiles.lst
+
+<span style="color:#ae81ff">17</span> directories, <span style="color:#ae81ff">6</span> files</code></pre></div>
+<p>あとはトップディレクトリで以下のコマンドを実行すれば、コンパイルしたclassファイルが実行できます。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ java -cp target/classes/ com.example.App
+Hello World!</code></pre></div>
+<p><br></p>
+
+<h3 id="maven-projectのテスト">Maven Projectのテスト</h3>
+
+<p>mavenで開発したProjectをテストします。作成したprojectフォルダのトップディレクトリ(上記の例であれば、helloworldディレクトリ)へ移動し、以下コマンドを実行すれば、Junitテストが実行されます。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mvn <span style="color:#111">test</span>
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Scanning <span style="color:#00a8c8">for</span> projects...
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> -----------------------&lt; com.example:helloworld &gt;-----------------------
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Building helloworld <span style="color:#ae81ff">1</span>.0-SNAPSHOT
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --------------------------------<span style="color:#f92672">[</span> jar <span style="color:#f92672">]</span>---------------------------------
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-resources-plugin:2.6:resources <span style="color:#f92672">(</span>default-resources<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>WARNING<span style="color:#f92672">]</span> Using platform encoding <span style="color:#f92672">(</span>UTF-8 actually<span style="color:#f92672">)</span> to copy filtered resources, i.e. build is platform dependent!
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> skip non existing resourceDirectory /Users/hironobu.ohara/Dev/bigdata_tech/maven/helloworld/src/main/resources
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-compiler-plugin:3.1:compile <span style="color:#f92672">(</span>default-compile<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Nothing to compile - all classes are up to date
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-resources-plugin:2.6:testResources <span style="color:#f92672">(</span>default-testResources<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>WARNING<span style="color:#f92672">]</span> Using platform encoding <span style="color:#f92672">(</span>UTF-8 actually<span style="color:#f92672">)</span> to copy filtered resources, i.e. build is platform dependent!
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> skip non existing resourceDirectory /Users/hironobu.ohara/Dev/bigdata_tech/maven/helloworld/src/test/resources
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-compiler-plugin:3.1:testCompile <span style="color:#f92672">(</span>default-testCompile<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Changes detected - recompiling the module!
+<span style="color:#f92672">[</span>WARNING<span style="color:#f92672">]</span> File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Compiling <span style="color:#ae81ff">1</span> <span style="color:#111">source</span> file to /Users/hironobu.ohara/Dev/bigdata_tech/maven/helloworld/target/test-classes
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-surefire-plugin:2.12.4:test <span style="color:#f92672">(</span>default-test<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Surefire report directory: /Users/hironobu.ohara/Dev/bigdata_tech/maven/helloworld/target/surefire-reports
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit3/2.12.4/surefire-junit3-2.12.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit3/2.12.4/surefire-junit3-2.12.4.pom <span style="color:#f92672">(</span><span style="color:#ae81ff">1</span>.7 kB at <span style="color:#ae81ff">1</span>.5 kB/s<span style="color:#f92672">)</span>
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/2.12.4/surefire-providers-2.12.4.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/2.12.4/surefire-providers-2.12.4.pom <span style="color:#f92672">(</span><span style="color:#ae81ff">2</span>.3 kB at <span style="color:#ae81ff">5</span>.9 kB/s<span style="color:#f92672">)</span>
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit3/2.12.4/surefire-junit3-2.12.4.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit3/2.12.4/surefire-junit3-2.12.4.jar <span style="color:#f92672">(</span><span style="color:#ae81ff">26</span> kB at <span style="color:#ae81ff">32</span> kB/s<span style="color:#f92672">)</span>
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.example.AppTest
+Tests run: <span style="color:#ae81ff">1</span>, Failures: <span style="color:#ae81ff">0</span>, Errors: <span style="color:#ae81ff">0</span>, Skipped: <span style="color:#ae81ff">0</span>, Time elapsed: <span style="color:#ae81ff">0</span>.006 sec
+
+Results :
+
+Tests run: <span style="color:#ae81ff">1</span>, Failures: <span style="color:#ae81ff">0</span>, Errors: <span style="color:#ae81ff">0</span>, Skipped: <span style="color:#ae81ff">0</span>
+
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> ------------------------------------------------------------------------
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> BUILD SUCCESS
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> ------------------------------------------------------------------------
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Total time:  <span style="color:#ae81ff">4</span>.432 s
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Finished at: <span style="color:#ae81ff">2019</span>-09-01T15:02:13+09:00
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> ------------------------------------------------------------------------
+$
+$ </code></pre></div>
+<p><br></p>
+
+<h3 id="maven-projectのパッケージ生成">Maven Projectのパッケージ生成</h3>
+
+<p>Maven Projectで作成したソースをJAR、WAR等の成果物として生成します。
+packageを実行すればvaliate、compile、test、packageのフェーズも実行される。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#111">pwd</span>
+/Users/hironobu.ohara/Dev/maven/helloworld
+$ mvn package
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Scanning <span style="color:#00a8c8">for</span> projects...
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> -----------------------&lt; com.example:helloworld &gt;-----------------------
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Building helloworld <span style="color:#ae81ff">1</span>.0-SNAPSHOT
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --------------------------------<span style="color:#f92672">[</span> jar <span style="color:#f92672">]</span>---------------------------------
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-resources-plugin:2.6:resources <span style="color:#f92672">(</span>default-resources<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>WARNING<span style="color:#f92672">]</span> Using platform encoding <span style="color:#f92672">(</span>UTF-8 actually<span style="color:#f92672">)</span> to copy filtered resources, i.e. build is platform dependent!
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> skip non existing resourceDirectory /Users/hironobu.ohara/Dev/maven/helloworld/src/main/resources
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-compiler-plugin:3.1:compile <span style="color:#f92672">(</span>default-compile<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Nothing to compile - all classes are up to date
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-resources-plugin:2.6:testResources <span style="color:#f92672">(</span>default-testResources<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>WARNING<span style="color:#f92672">]</span> Using platform encoding <span style="color:#f92672">(</span>UTF-8 actually<span style="color:#f92672">)</span> to copy filtered resources, i.e. build is platform dependent!
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> skip non existing resourceDirectory /Users/hironobu.ohara/Dev/maven/helloworld/src/test/resources
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-compiler-plugin:3.1:testCompile <span style="color:#f92672">(</span>default-testCompile<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Nothing to compile - all classes are up to date
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-surefire-plugin:2.12.4:test <span style="color:#f92672">(</span>default-test<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Surefire report directory: /Users/hironobu.ohara/Dev/maven/helloworld/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.example.AppTest
+Tests run: <span style="color:#ae81ff">1</span>, Failures: <span style="color:#ae81ff">0</span>, Errors: <span style="color:#ae81ff">0</span>, Skipped: <span style="color:#ae81ff">0</span>, Time elapsed: <span style="color:#ae81ff">0</span>.006 sec
+
+Results :
+
+Tests run: <span style="color:#ae81ff">1</span>, Failures: <span style="color:#ae81ff">0</span>, Errors: <span style="color:#ae81ff">0</span>, Skipped: <span style="color:#ae81ff">0</span>
+
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> 
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> --- maven-jar-plugin:2.4:jar <span style="color:#f92672">(</span>default-jar<span style="color:#f92672">)</span> @ helloworld ---
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Building jar: /Users/hironobu.ohara/Dev/maven/helloworld/target/helloworld-1.0-SNAPSHOT.jar
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> ------------------------------------------------------------------------
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> BUILD SUCCESS
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> ------------------------------------------------------------------------
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Total time:  <span style="color:#ae81ff">1</span>.399 s
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Finished at: <span style="color:#ae81ff">2019</span>-09-01T15:11:19+09:00
+<span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> ------------------------------------------------------------------------</code></pre></div>
+<p>これで、以下パスにて<code>helloworld-1.0-SNAPSHOT.jar</code>というJAR実行ファイルを生成しました。</p>
+
+<pre><code>/Users/hironobu.ohara/Dev/maven/helloworld/target/helloworld-1.0-SNAPSHOT.jar
+</code></pre>
+
+<p><br></p>
+
+<p>Mavenコマンドは他に
+インストール <code>$ mvn install</code>、
+デプロイ <code>$ mvn deploy</code>
+Clean <code>$ mvn clean</code>
+などがあります。
+こちらコマンドラインで実行したので、今度はMaven ProjectをIntelliJ IDEAで起動してみます。</p>
+
+<h3 id="maven-projectの作成-on-intellij-idea">Maven Projectの作成 on IntelliJ IDEA</h3>
+
+<p>MavenによるProject開発を行うときは プロジェクトフォルダ（archetype、原型）を選定する必要があります。
+様々なapache案件がありますが、ここはチューリアトルとして<code>add archetype</code>をクリックします。</p>
+
+<p><img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_016.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_016" />
+<br></p>
+
+<p>cli版では以下のようにコマンドを入れてプロジェクトを作成していましたが、IntelliJ IDEAで作成する場合はこのようにパラメータ値を入れます。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mvn archetype:generate <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DarchetypeGroupId<span style="color:#f92672">=</span>com.example <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DarchetypeVersion<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>.1 <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DarchetypeArtifactId<span style="color:#f92672">=</span>maven-archetype-quickstart <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DinteractiveMode<span style="color:#f92672">=</span><span style="color:#111">false</span> <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DgroupId<span style="color:#f92672">=</span>com.example <span style="color:#8045ff">\
+</span><span style="color:#8045ff"></span>    -DartifactId<span style="color:#f92672">=</span>helloworld</code></pre></div>
+<p><img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_018.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_018" />
+<br></p>
+
+<p>プロジェクトフォルダ（archetype、原型）ができましたので、それを選択します。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_019.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_019" />
+<br></p>
+
+<p>groupId、artifactIdを指定します。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_020.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_020" />
+<br></p>
+
+<p>それまでのそれぞれ設定した属性情報を確認します。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_021.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_021" />
+<br></p>
+
+<p>PJ Nameを指定します。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_022.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_022" />
+<br></p>
+
+<p>IntelliJ IDEAでの開発環境画面が表示されました。このような画面になってると思います。
+<img src="../static_images/BD_Images_development_environment_buildup_set_and_buildup_method_023.png" alt="BD_Images_development_environment_buildup_set_and_buildup_method_023" />
+<br></p>
+
+<h2 id="最後に">最後に</h2>
+
+<p>IntelliJ IDEA、Cli両方でAlibabaCloud SDK開発環境を整えることができました。BigData運用を行うときはこの開発環境を通じて　構築する場合がありますので、参考にいただければ幸いです。</p>
+
+<p>また、参考となるリンクを添えます<br />
+* <a href="https://www.jetbrains.com/help/idea/discover-intellij-idea.html">IntelliJ IDEAチューリアトル</a><br />
+<a href="https://www.jetbrains.com/help/idea/discover-intellij-idea.html">https://www.jetbrains.com/help/idea/discover-intellij-idea.html</a><br />
+<br>
+* <a href="https://dwango.github.io/scala_text/IDE.html">IntelliJ IDEAでScalaを開発する方法</a><br />
+<a href="https://dwango.github.io/scala_text/IDE.html">https://dwango.github.io/scala_text/IDE.html</a></p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" title="AlibabaCloud OSSから別のOSSへ（同期）"> <i class="fa fa-chevron-left"></i><label>AlibabaCloud OSSから別のOSSへ（同期）</label></a>
+    <a class="nav nav-next" href="/help/scenario/" title="ユースケース別シナリオ" style="margin-right: 0px;"><label>ユースケース別シナリオ</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i>  08/30/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/help/js/clipboard.min.js"></script>
+
+<link href="/help/css/featherlight.min.css" rel="stylesheet">
+<script src="/help/js/featherlight.min.js"></script>
+
+
+
+<script src="/help/theme-flex/script.js"></script>
+
+<link href="/help/mermaid/mermaid.css" type="text/css" rel="stylesheet" />
+<script src="/help/mermaid/mermaid.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

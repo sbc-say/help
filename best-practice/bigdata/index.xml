@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bigdata on テクニカルリファレンス</title>
+    <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/</link>
+    <description>Recent content in Bigdata on テクニカルリファレンス</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sun, 15 Sep 2019 12:30:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sbcloud.co.jp/help/best-practice/bigdata/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>BigDataとは</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/001_what-is-bigdata/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/001_what-is-bigdata/</guid>
+      <description>BigDataとは &amp;nbsp; 現在、私たちの生活の中にはあらゆる様々なものがデジタルデータとして生成・蓄積されています。
+例えば水道、電気、天気、ネットワーク、工業、ショッピング、教育、病院、スポーツ、農耕、etc… IDC調査によれば 2025年になるとデジタルデータはZBの領域に入ります。 ※ 1ZB = 125EB = 125000PB = 125000000TB
+このデジタルデータはどこから発生してるのか。具体例を見てみましょう。 * 1回のMRIスキャンで20,000枚の画像取得。 * Googleは1日あたり35億の検索クエリを処理。 * Instagramユーザーは毎分54,000枚の写真を投稿。 * 自律走行車は毎日11TBのデータを生成。 * Twitterユーザーは、毎秒3,000のTweetを投稿。 * LINEは毎日2600億のメッセージを通知。
+&amp;nbsp; これらはいつも発生し続けてるそれぞれの単なるデータ量ではなく、そのデータから重要な情報を抽出し、ビジネスでの意思決定に活用できてこそ、初めてビッグデータと呼びます。 逆に、この収集・蓄積したデータを二次、三次活用できてなければ、それはビッグデータとはいえません。例をあげますと、自律走行車の場合、車体のあちこちに様々な観点でのカメラを設置し、走行中にデータを収集しています。そこで人がいる位置、車が通る道路、交差点とのタイミング、駐車位置、などなどを動画/画像認識で抽出し、これを元にどう自律で攻略するかプロラミングを組んだり、自律走行用のMapを作成しています。Tesraが発行した1つの都市分の自律走行用のMapデータで20億ドルの価値が出たりとしています。
+このように、ビッグデータはビジネス上の様々な問題に対処できることから、ビッグデータの存在はいつの間にか巨大なビジネスの場へ展開しています。
+
+ビッグデータとビジネスの関係 &amp;nbsp; この生成し続けるデータは、ビジネス上の意思決定を裏付ける価値があります。この価値を発掘するまではただのデータとして役立たないので、ビッグデータを運用する際はデータを収集・蓄積するだけでなく、分析、解析の流れが必要になります。ビッグデータはデータ量が増えれば増えるほど、ビジネスに対してより正確かつ確実に意思決定を行うことができます。例えば、以下の例があります。
+ データ・ビジネスに対する様々な精度向上が可能 問題解決・未来予測において、より的確な解決策が見つかる ビジネス上、必要な断捨離ができる データ維持・運用システムやコスト削減の取り組みが可能  これらについてもううちょっと説明します。 データ・ビジネスに対する様々な精度向上が可能 &amp;nbsp; 様々なデータの中には事業やビジネスを阻害する異常データ、不正データなどが混じっています。 これらを検知し、撲滅することで問題は解決します。しかしそれだけでしょうか？例えば時系列のデータで、1時間おきに100億のデータがあり、0.001%の確率で異常データ、不正データが出るとしたら、次の新しいデータが来るまでの短い時間でどうやって検知しますか？ その解決策として、機械学習を使います。機械学習とは大量のデータを反復的に学習し、そこに潜むパターンを見つけ出すことです。そして過去データを学習した結果（数式およびパターン、変化値を特定するためのスコアや変数、パラメータ値）を新たなデータにあてはめることで、パターンにしたがって異常検知や将来予測ができます。 &amp;nbsp; このように、今後新しいデータが出るとき、異常データ・不正データを検出するときは過去のデータを遡って、変化値が大きいものを検出します。そういう意味ではビッグデータは非常に重要な存在になります。 異常検知のみならず、将来の予測、データのグループ分けなど、機械学習/深層学習/強化学習をすることもできます。しかし、データ処理をするにおいてサンプルら母数が少ないと、既存データに対するアプローチ精度が保証できない課題があります。言い換えれば、データが多ければ多いほど精度が高い=確実論で事業に対する意思決定の裏付けが可能です。 問題解決・未来予測において、より的確な解決策が見つかる &amp;nbsp; ビジネス上、様々な問題に直面します。例えば売上が下がってる、20代のお客様層が少ない、購入ユーザが少ない、今後の需要予測、１億円売上を作りたい、etc&amp;hellip; これらは今あるビッグデータを使えば解決できます。 現状抱えている問題（設問）は基本的に以下２つへ分類されます。
+ 発生タイプ：あるべき姿は設定される（受動的）
+・目標不達成問題・・・業務目標と現状のギャップが生み出す問題（ビジネス的に一番発生する問題）
+・異常発生問題・・・過去の延長戦上、問題が発生。維持すべき現状から遺脱し、ギャップが生まれるケース。原因究明と対策立案/実行の緊急性が高い
+設定タイプ：あるべき姿は目標を決めてる（能動的）
+・設定型問題・・・現在の問題に対して、改善革命活動のように、積極的に新たな到着目標を設定することで発生する問題
+・将来型問題・・・これからどこを目指していくべきかなど、将来のあるべき姿を描き、それと今を比較して、問題を定義する（例:半年後に1億円を目指す、etc）
+ この分類後、問題（設問）を整理するOPQ分析へカテゴライズすると、本当の問題を確認できます。同時にそれに対する解決策を発見しやすくなります。
+ O：Objectice 望ましい状況　依頼者が考えている達成すべき目標や改善後の姿 P：Probulem（問題、現状とObjectiveのギャップ） 依頼者にとっての問題 Q：Questicon（依頼者の疑問） Problemに直面した依頼者かが抱くだろう疑問（依頼者の視点で） A：Answeer（答え、メッセージ） Querstionに対する回答  &amp;nbsp; これをデータ上で行うのはどうでしょうか。問題設問を様々な分類へカテゴライズした上で、既存のデータに対し5W1H形式で順次絞って対処する必要があります。 ここにて元となるデータが少ない、実績や実例がない、過去数年前のデータと比較できない、数値的な根拠が弱いなどと、参考となるデータが少ないと確認や根拠取りに時間がかかります。そういう意味ではビッグデータは非常に重要です。</description>
+    </item>
+    
+    <item>
+      <title>Hadoopとその周辺の技術について</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/</guid>
+      <description>&amp;nbsp; Hadoopとその技術レイヤーについて BigDataはRDBMSでないとだめか？ BigDataは今後の事業貢献や継続アプローチとしても欠かせません。そこで素朴な質問です。多くの人は「BigDataはRDBMSでないとだめか？」と問いますが、答えはデータサイズに伴うI/O性能の限界に伴う問題です。 例えばの話、MySQL、PostgreSQL、SQL Server、OracleなどRDBMSでHDDに200TB分のデータがあるとして、HDDは今でも最大100MB/秒でデータを読み込むため、200TBのデータを読み込むために200×1000×1000 / 100 = 2000000秒、約23日と時間がかかります。SSDも同様です。 この問題を解決するために、Hadoopなど並列分散処理が必要になります。 &amp;gt;ただし、(後述しますが)HadoopはサーバとサーバをNW接続しながら分散処理する一方、RDBMSやNoSQLはストレージと隣接するためORM（レスポンス）に特化しており、数百人以上の同時操作などオペレーション系業務では性能要件を満たしてるため、TBまでの少ないデータ量であればまだ現役です。
+&amp;nbsp; BigDataを支える技術レイヤー:Hadoop 通常、データ量が100TB、1PBと多いほどI/O処理から取得や更新にどうしても時間がかかります。それを解決するためにApache Hadoopというオープンソースプラットフォームが登場しました。Hadoopは１つのマスタサーバ/ネームノードと、複数のスレーブサーバ/データノードをhostで接続しながら、マスタサーバ/ネームノードの指示によりデータストレージとデータ処理に対しスケーラブルながら分散処理、そしてフォールトトレラントによる耐性障害を備っています。 &amp;nbsp; BigDataを支える技術レイヤー:HDFS Hadoopの分散ファイルシステムとしてHDFS（Hadoop Distributed（分散） File（ファイル） System（システム））があります。こちらはHadoopら大規模データを前提に開発されたものです。大量のデータをブロック単位で分割し多数のノードに3つのレプリカとして重複保存されます。そのため、1つのサーバが壊れても、通じて生きてるサーバが自動で複製、データは常に３つのレプリカがあるよう保ってくれるので、障害にも強いです。
+&amp;nbsp; BigDataを支える技術レイヤー:MapReduce Hadoop、HDFSだけでも運用できますが、データ取得や更新時はHDFS同期処理、障害問題、ネットワーク帯域負荷問題があります。それを解決するのがMapReduceという並列分散処理です。例えば、選挙の投票用紙を集計し結果を表示する流れをMapReduceで位置づけすると、以下のような図になります。投票箱にて投稿したデータは、それぞれのスタッフが分散して（Map/Shuffle/Reduce）の3パートに区切って集計するのと同じようなイメージになります。ここで言うスタッフはスレーブサーバ/データノードの位置付けで、スレーブサーバ/データノード（スタッフ）は処理の際、ノード（Disk）へ記録するため、が万が一傷害など有事に遭遇しても、代わりのスレーブサーバ/データノード（スタッフ）が引き継いて作業を行うことができます。
+&amp;nbsp; BigDataを支える技術レイヤー:YARN MapReduceがあることで並列分散処理が出来ました。しかし、MapReduceは親ノードが子ノード（データノード）にプログラムを送信して計算処理するため、データを持ってないノード含め全送信するなど、処理速度・I/O負荷の面で課題があります。それを解決するためにYARNが登場しました。YARNはYet-Another-Resource-Negotiatorの略称、汎用的なクラスタリソース管理フレームワークです。YARNはリソースをによって効率的な計算処理送信で無駄を省くため、処理速度の向上・I/O負荷が減ります。そのため、YARNはMapReduce処理、Spark Streamingのようなストリーミング処理など、様々なMapReduce処理内容に応じてHadoopクラスタ(HDFS)上で効率よく並列分散処理を実現することができます。
+上記のMapReduceを選挙集計で例えたものに、YARNを追加してみます。その場合、以下のストーリーになります。 スレーブサーバ/データノード（スタッフ）はリソース（人手）が限られてるため、YARNのResourceManager（管理者）が 1. 実際に処理したい内容を全体で確認します。今回はAさんのみ集計したいので、Aさん以外は無視しAさんのみを集計します。 2. ResourceManager（管理者）にて、処理したい内容を実現するためには、スレーブサーバ/データノード（スタッフ）でどれぐらいのリソースが必要かを事前確認します。 3. それぞれのスレーブサーバ/データノード（スタッフ）にリソース割り当てを実施します。 4. ResourceManager（管理者）にて、スレーブサーバ/データノード（スタッフ）の処理リソース割り当てができたら、分散・リソース処理を実施します。今回はAさんのみ集計なので、Aさんに集中、そのため全スレーブサーバ/データノード（スタッフ）のI/O負荷を総合的に減らすことができます。
+&amp;nbsp; BigDataを支える技術レイヤー:Apache Hive MapReduceによって並列分散処理が簡単になりましたが、こちらは基本的にはJavaで書かなければならないことや、処理の都度コンパイルするなど、各自MapReduce処理の実装が大変という問題がありました。それを解決するためにApache Hiveが登場しました。SQLクエリ言語を書くだけで、Hiveサーバ側がMapReduceするようコンパイルし、MapReduce処理を実行してくれます。
+&amp;nbsp; BigDataを支える技術レイヤー:Apache Spark HiveでSQLを使ってMapReduce処理が簡単に実現できるようになりましたが、処理速度の課題がありました。Hive（MapReduce）は基本的に処理の都度ストレージへ書き込み処理をするため、処理速度に時間がかかります。それを解決するためにオンメモリで処理するApache Sparkが登場しました。現在、Apache Sparkはビッグデータ処理基盤に幅広くサポートしており、ストリーミング、OLAP、OLTP、機械学習、深層学習、コンテナ、CI/CD、パイプライン、ETL、FaaSなどでも活躍しています。
+&amp;nbsp; その他、Hadoopと周辺エコシステム 上記、Haddop、MapReduce、YARN、HDFS、Hive、Sparkなどを軽く説明しましたが、この他にHadoop周辺エコシステムが多数あります。HDFSをRDBMSとして扱うkuduに、高速OLAPするImpala、分散ストリーミングのflink、などがあります。こちらは別のページにて順次説明します。</description>
+    </item>
+    
+    <item>
+      <title>Sparkについて</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/003_what-is-spark/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/003_what-is-spark/</guid>
+      <description>Apoache Sparkとは &amp;nbsp; Apoache Sparkはカリフォルニア大学バークレー校のAMP Labで開発されたオープンソースプロダクトです。Sparkは、大きなデータセットを処理および分析するための次世代のビッグデータ処理フレームワークです。 Sparkは、Scala、Python、Java、R言語による高レベルAPIサポート、Spark SQL、Streaming、機械学習のMLlib、グラフ処理用のGraphXなどを強力なライブラリを提供する統合処理フレームワークです。後にApache Software Foundationに寄付され、2014年2月24日にApacheトップレベルのプロジェクトになりました。 Sparkの概要 &amp;nbsp; SparkはHadoopのデータ処理フレームワークであるMapReduceの多くの処理制限問題を認識し、反復的でインタラクティブなアプリケーションを処理できる、より高速でより汎用的に利用できるデータ処理フレームワークとして開発されました。SparkのJobは、メモリ内の高速機能と高度なDAG（Directed Acyclic Graph）実行エンジンにより、同等のMapReduceジョブよりも10〜100倍高速に実行できます。データサイエンティスト、分析エンジニアからすれば、SparkはどのMapReduce処理よりも最も生産的な位置付けとなっています。
+&amp;nbsp; Sparkは一見シンプルですが強力なAPIにより、非常に利用・汎用しやすくなっています。 Sparkは以下をサポートする統合プラットフォームを提供します。現在、Sparkはデータサイエンティスト、分析エンジニアにとって重要な存在となっています。ストリーミング、インタラクティブ処理、ETL、機械学習、バッチ処理、Delta Lake運用、container/Kubernetes、Function as a Serivce、超高速HTAPなど、幅広い分野へ広まっています。手法は別章にて紹介いたします。
+Cluster Managers &amp;nbsp; Cluster Managersはアプリケーションのクラスタリソースを割り当て、管理をしています。Sparkは、Spark（Standalone Scheduler）、YARN、およびMesosに付属しているスタンドアロンのCluster Managersをサポートしています。またKubernetesをCluster Managersとして利用することも可能です。このテクニカルサイトにも手法を記載いたしますが、詳細についてはこちらを参照してください。 https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html Sparkのアーキテクチャ &amp;nbsp; Sparkはコード内容（処理内容）をSparkアプリケーションタスクとして以下の画像のように複数のクラスターノードへ分散し処理することができます。すべてのSparkアプリケーションには、Driver ProgramにSpark Contextというオブジェクトがあります。Spark ContextはCluster Managersへの接続を意味しており、Sparkアプリケーションにコンピューティングリソースを提供します。Hadoop分散モードの上で実行となれば、マスターノードで実行、これがスレーブノードへ処理したいリソースを提供となります。 &amp;nbsp; クラスターに接続した後、SparkはWorker NodeでExecuterを取得します。その後、SparkはアプリケーションコードをExecuterに送信します。通常、アプリケーションはSparkアクションに応じて1つ以上のジョブを実行します。その後、各ジョブはSparkによって小さな有向非周期グラフ（DAG）に分割されます。その後、各タスクは分散され、実行のためにワーカーノード全体のExecuterに送信されます。各Sparkアプリケーションは、独自のExecuterのセットを取得します。異なるアプリケーションのタスクは異なるJVMで実行されるため、Sparkアプリケーションは別のSparkアプリケーションと干渉することはないです。（＝処理内容が重複、コンフリクトすることがない構造）これはHDFSやS3などの低速の外部データソースを使用しないと、Sparkアプリケーション同士がデータを共有することは難しいことを意味します。一方、AlibabaCloudのSparkはJindoFSを使うと、ワーカーノードがOSSら外部データソースとマルチ接続し分散処理されるため、OSSに対してデータ共有をより速く、かつ簡単に読み込み、書き込みすることができます。JindoFSや手法は別章にて紹介いたします。
+Spark on YARN &amp;nbsp; YARNはHadoopベースのCluster Managersです。YARNでSparkアプリケーションを起動するためには2つの方法があります。
+Cluster Mode &amp;nbsp; Cluster Modeの場合、Driver Program は YARNによってアプリケーションを管理、実行されます。そのため、クライアントはアプリケーションの実行に影響を与えることなく終了できます。 アプリケーション、またはSpark Shellをクラスタモードで起動するには以下のコマンドになります。
+spark-shell --master yarn --deploy-mode cluster spark-submit --class myPath.myClass --master yarn --deploy-mode cluster</description>
+    </item>
+    
+    <item>
+      <title>HDFSとは</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/004_what-is-hdfs/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/004_what-is-hdfs/</guid>
+      <description>HDFSについて &amp;nbsp; 別の章にてHDFSについてを軽く説明いたしましたが、本章はこれについてもう少し詳しく説明します。 HadoopはHDFS（Hadoop Distributed Filesystem)と呼ばれる分散ファイルシステムを利用しています。HDFSは非常に大きなファイルを保存、処理、抽出するために設計されたファイルシステムで、多数のコモディティハードウェア（一般販売されてるどのハードウェア）によって構成されるクラスタで動作します。
+ 非常に大きなファイルを設計  数PB〜EBに及ぶ設計 HDFS上に構築されたKey-Value-Store  ストリーミング型のデータアクセス  「書き込みは一度、読み出しは何度も行う」といった効率的なデータ処理パターンで設計  コモディティハードウェア  一般人でも購入可能なハードウェアでクラスタを構成    &amp;nbsp; HDFSクラスターは、クラスター内のノードごとに1つのNameNode（ネームノード）と複数のDataNode（データノード）で構成されます。NameNodeは、すべてのHDFSメタデータ（属性情報、構成情報、容量、カテゴリライズetc）を記録、管理します。いわゆるHDFSクラスタのリポジトリの位置付けです。NameNodeは、マスターサーバとスレーブサーバの構成で機能し、NameNodeによってファイルシステムを全体管理するため、マスタサーバ/ネームノードを通さずにDataNodeのファイル取得へのアクセスを規制します。応用としてケルベロス認証があります。ケルベロス認証は別の章にて記述します。 &amp;nbsp; NameNodeに入ってくるファイルは1つ以上のblockに分割され、それぞれのDataNodeに保存されます。NameNodeはファイルやディレクトリのオープン、クローズ、名前変更などのファイルシステム操作をします。DataNodeによって送信されたハートビートとブロックレポートからDataNodeへのブロックのマッピングを決定します。DataNodesは、読み取り/書き込み要求を実行し、NameNodeがコマンドを要求した場合にのみ、ブロック作成、ブロック削除、およびブロック複製を実行します。
+&amp;nbsp; HDFSはデータ保存をメインとして利用しますが、HBaseやKudu、他のNoSQL、Spark、tensorflowのような他の様々なHadoopエコシステムに利用する場合があります。様々なユースケースに応じてHDFSの種別、圧縮形式、ストレージ形式を考慮する必要があります。これは様々なHadoopエコシステムに依存します。以下、本章ではHDFSのファイル形式、圧縮戦略、スキーマ設計などについて説明します。 HDFSの設計 &amp;nbsp; 上記、HDFSのアーキテクチャを説明しました。HDFSはあくまでも大規模なビッグデータに対応するためのファイルシステムの故、以下のメリットとデメリットがあります。    得意分野 不得意分野     PB〜EBと非常に大きなファイルを処理 数KBなど大量の小さなファイルを処理   大容量のデータを高速でKVS処理することができる 高スループットを出すためにレイテンシが犠牲になってる   「書き込みは一度、読み出しは何度も行う」というストリーミング型のデータアクセス 複数ユーザによるHDFS更新処理が不可    
+&amp;nbsp; しかし、このHDFSの不得意分野はHadoopエコシステムのHBase、そしてKuduによって払拭されています。KuduはHDFSをストレージとした、低レイテンシで高スループット、複数ユーザによる処理が可能なBigDataのRDBMSが可能となるストレージの位置付けです。本章はHDFSの基本的なことに集中するため、HBaseやKuduは別の章にて記述いたします。
+HDFSのPartitionについて &amp;nbsp; Hadoopストレージレイヤでデータを管理するため、HDFSはフォルダ構造になっています。大量のファイルをhdfs.file.block.sizeで分割し保存してるため、区別ができるよう、それぞれのフォルダをパーティションとして保存されます。
+HDFSのファイル形式について &amp;nbsp; HDFSは様々なデータ形式を持っています。Parquetにorc、csv、json、AlibabacloudのオリジナルのaliORC、などがあります。
+&amp;nbsp; HDFSをcsvやtextファイルとして保存、処理すること可能ですが、HiveやSparkなどのMapReduce、ImpalaなどMPPら分析処理が遅くなります。理由として、csvやtextファイルなど生データの場合、メタ情報が担保できないことや、型変換のオーバヘッドが発生してしまうことから、HDFSのデータ量が多ければ多いほど分析処理クエリの性質上、フィールド名を認識する流れなどにて処理遅延、I/O負荷が発生してしまいます。
+&amp;nbsp; また、XMLやJSONをHDFSに変換することは可能ですが、開始タグと終了タグがないため、分割することが難しいのでHadoopそのものでHDFSにすることはできません。代わりの方法として、SparkもしくはHiveでParquet/Avro/Sequenceなどの形式に変換する必要があります。
+&amp;nbsp; 画像/動画などのバイナルファイルは基本的にfile.block.sizeごとにSequenceなどのコンテナ形式で保存されます。逆に100GBとかあまりにも大きいバイナリファイルであれば、ブロック固定長の関係とディスクの転送レートからしてそのまま保存することが望ましいです。
+&amp;nbsp; 他、HadoopのHDFSとして様々なファイル形式があります。特徴、列指向、様々なHadoopエコシステム、比較表を作成しましたので、こちらを参照いただければ幸いです。 この比較から、HDFSはParquetが最も有力候補となっています。 HDFS_Parquetについて &amp;nbsp; 上記、比較表でまとめたように、HDFSはParquetが理想という結論が出ました。こちらについて補足します。 &amp;nbsp; Parquetを説明する前に、列指向について説明します。BigDataの場合、レコードが数千万、数億レコードと巨大になります。MySQLやOracleなどは通常、レコード最後の行までフルスキャンして処理するので、レコード数が多いほどI/O負荷、結果クエリを投げても処理が遅くなってしまいます。そのために列指向というデータベースが登場しました。 &amp;nbsp; これらを応用して、Hadoop上で列指向処理ができるMPP（massively parallel processing）が登場しました。１つのクエリを多数の小さなタスクに分散し、HDFSに対して並列でクエリ処理を実現します。例えば、1億レコードのテーブルの合計を集計するためにはそれぞれノード台数分×hdfsのブロックサイズ毎で区切って（例:10万レコードを区切ってそれぞれ1000のタスクに分けて）各タスクはそれぞれが独立して10万レコードの処理を実施、最後に各タスクの結果が集められ、結果が出力されます。例としてGCP BigQuery、Impala、Prestoなどがあります。MPPのより詳しい説明は別の章にて解説します。</description>
+    </item>
+    
+    <item>
+      <title>YARNとは</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/005_what-is-yarn/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/005_what-is-yarn/</guid>
+      <description>YARNについて &amp;nbsp; 本章ではYARNについてを説明します。YARNとは以下の通りになります。
+ YARNはYet-Another-Resource-Negotiatorの略称 Hadoopエコシステムのためのリソース管理マネージャ サーバ数台のメモリやCPUなどリソース要求ハンドリングなど、リソースオーケストレーションを行う分散サービス   こちらについてもう少し詳しく説明します。 YARNファミリーのそれぞれの役割、およびHadoopクラスタの位置付けを図で示すとこのようになります。
+YARNファミリー  ResourceManager  クラスタのリソースを監視、管理 ワーカーノードにタスクを割当  NodeManager  様々な処理をワーカノードに起動、管理   Application Master  YARNクラスタ上のタスク・コンテナを全てまとめるTask 司令塔としてマスタサーバに実装  コンテナ  Taskを処理するリソースの単位。 voreリソースとメモリリソースを保持してる &amp;gt;vcoreはCPUの使用率のようなもの。メモリはコンテナ専用の仮想メモリ。バイト数として扱う  Task  コンテナ内で処理するプロセス コンテナのリソースはTaskに割当 クライアントのコードはTaskで実行  YARNを使ったアプリケーション実行の流れについて &amp;nbsp; 上記説明通り、YARNを利用するとResourceManager、NodeManagerの配置が実施されます。このような体制でクライアントからアプリケーションを起動してみます。すると以下の流れでYARN処理が実施されます。
+ クライアントにて MapReduce、Sparkなどアプリケーションを実行 マスタサーバ/ネームノード側でResourceManagerが受け取り、AppllicationMasterへ仲介指示 ApplicationMaster側がアプリケーションを実行するためにはどれほどかのリソースを確認（＝DAG） ApplicationMaster側がResourceManager側へ処理に必要なコンテナ（単位）の割当を依頼 ResourceManager側はコンテナ（単位）を受け取り、NodeManagerそれぞれへリソース配布 NodeManagerにて処理に必要なタスクをそれぞれ実施 NodeManagerにて処理が行き詰ったり問題が出たらResourceManagerへ通知し、その分のコンテナ(単位）を別のNodeManagerへ割当（またはコンテナ(単位)を増やすなど調整） NodeManagerで持ちTask処理が終わればResourceManagerへ通知 全てのNodeManagerの処理が終われば、アプリケーション結果をクライアントに返してアプリケーション終了  TensorFlow on YARN &amp;nbsp; AlibabaCloud E-MapReduceにTensorFlow on YARNがあります。こちらはApache Hadoo上で分散型機械学習を運用するために開発されたフレームワークです。YARNのリソース管理やコンテナ構築などのタスク処理を応用した、TensorFlowのジョブをHadoopクラスタに割り当てて分散処理を実現します。同時に、スケジューリングや種類に応じたリソース要求処理、メモリの割当調整ができます。
+より詳しくはこちらのドキュメントを参照してください。 * Native Support of TensorFlow on Hadoop https://engineering.</description>
+    </item>
+    
+    <item>
+      <title>DWHには何が必要か</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/006_what-is-required-for-dwh/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/006_what-is-required-for-dwh/</guid>
+      <description>DataLake、DWH、OLTP、OLAPについて &amp;nbsp; 本章ではDataLake、DWH、OLTP、OLAPについてを説明します。 * DataLakeとは、様々なデータを一点集約したデータのプールです。 * DWHとは、Data Ware House、二次三次利用できるよう処理済みのデータ基盤（テーブルたち）のことです。 * OLTPとは、Online Transaction Processing、オンライントランザクション処理のことです。 * OLAPとは、Online Analytic Processing、オンライン分析処理のことです。
+&amp;nbsp; BigDataを成功するためには、前章で記述した通り、BigDataから新しいビジネス意思決定に必要なデータや価値を発掘する必要があります。その鍵としてDWH構築の設計、基盤構築が必須となっています。以下、DataLakeとDWHの違いを記載します。
+    DataLake DWH     構造 未使用データ 処理済み、過去データと連結したデータ   目的 外部データソースから集約する場所 分析基盤として利用する場所   利用ユーザ 外部データソース 分析エンジニア、データサイエンティスト、機械学習    &amp;nbsp; BigData以前にMySQLやOracleなどリレーショナルデータベースでデータが肥えた時、古いデータを捨てたらいいのではないか？という意見がありますが、答えはNoです。 &amp;nbsp; 過去の古いデータも含めてこれらはビジネス上必要な資産（財産）情報なので、これを捨てることなく蓄積し、これが次の世代や今後のビジネスへ結びつける必要があります。そうすることで、ビジネス上意思決定アプローチ、例えば製造業で過去データから異常製品を検出したり、店舗の売上が下がってる時は過去データと比較して原因追求することができます。同時に、ビジネスへ活かすことでBigDataに対する設備投資の回収も見込めます。MySQLやOracleなどリレーショナルデータベースの場合はデータの範囲が限られてるため、少ないストレージ要領で分析メイン利用であれば設備投資回収が難しいです。
+&amp;nbsp; DWHを設計する上で特に意識したいことは以下の３点になります。 * データ収集、加工、処理が簡略化できる * 容量を気にしない、長期的なデータ分できができる * テーブル一本化（ファクトテーブル）で大規模加工処理や高速検索が可能 この３点を満たせば、DWHは分析基盤としても非常に有利になりますので、これらを意識して構築いただければと思います。
+データ分析業務のミッション &amp;nbsp; データ分析業務のミッションとして、サービスを継続、成功へ導くために、様々なLogをDWHへ収集、蓄積し、KPI、データの見える化を実現、分析し次のステップへ進める様に取り組みます。図の様なワークフローになります。こちらも「収集・蓄積」、「収集・加工」、「分析」ででデータ容量に注目してください。 上記、外部データからDataLakeへ収集、蓄積し、これを集計・加工、そして分析へといったワークフローがありますが、数千万レコードとか大規模データとなるとそう簡単には行かないです。そのために、OLTP、OLAPのアーキテクチャを持ったhadoopエコシステムでの処理が必要になります。
+・OLTPは更新系（生成/挿入/更新/削除）、１行単位のスキャン ・OLAPは分析処理、select参照、フルスキャン
+総じて、DHWがPB〜EB級でも更新できる、TB級の大規模データの分析難易度が鍵となります。
+BigDataプロダクトの組み合わせ例 &amp;nbsp; 外部データソースから、データ分析業務へ結びつけるためには、それぞれのポジションにて様々なプロダクトを配置する必要があります。
+著書はAlibabaCloudでのDWH構築を軸として実現例をいくつか作成してみましたので、参考にいただければ幸いです。構築手法は別の章にて記載いたします。</description>
+    </item>
+    
+    <item>
+      <title>OSSとE-MapReduce</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/007_oss-and-e-mapreduce/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/007_oss-and-e-mapreduce/</guid>
+      <description>OSSとE-MapReduce &amp;nbsp; 前述、Hadoop概要、DWHなどBigDataの基本的なことを説明しました。今回はAlibabaCloudで簡単にBigDataができることを記載します。 AlibabaCloudには様々なBigDataプロダクトがあります。BigData絡みだけでこのプロダクトがあります（RDB系、分散DB系、NoSQL系は除外） これらは順次追って本テクニカルサイトにて手法、ケースを載せます。
+   icon プロダクト名 説明 メモ      MaxCompute 大規模データウェアハウジングに対応できるデータ処理プラットフォーム     E-MapReduce E-MapReduce、Hadoopクラスタの展開や運用が可能     RealtimeCompute Apache Flink を最適化したマネージドリアルタイムデータ処理プラットフォーム     DataWorks 大規模データを処理するオンラインIDEサービス     LogService データ収集、クリーニング、分析、視覚化、アラートを実現するマネージドサービス     DataV DataV、データの可視化     QuickBI クラウド上のユーザー向けに調整されたBIサービス     Machine Learning PAI 機械学習と深層学習のデータ処理、モデルトレーニング、サービス展開、予測のためのプラットフォーム     Elasticsearch データ分析、データ検索、機械学習、グラフ、APMなどを実現するマネージドサービス     GraphAnalytics リレーショナルネットワークの分析サービス 中国サイトのみ    DataLakeAnalytics ServerlessでOSS、データベース、NoSQLなどのデータソースでデータを分析するマネージドサービス     OpenSearch 分散検索エンジンプラットフォーム 中国サイトのみ    Hologram PBレベルのデータに対し1秒未満で応答する超高速OLAPマネージドサービス 中国サイトのみ</description>
+    </item>
+    
+    <item>
+      <title>E-MapReduce起動、ETLとOLTP、OLAPをする</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/</guid>
+      <description>E-MapReduceの起動、チューリアトルについて &amp;nbsp; 簡単なチューリアトルとして、E-MapReduceを起動しHiveでOSSにあるCSVファイルをParquetへETLし、HiveでOLTP、ImpalaでOLAPというワークフローをしてみます。 E-MapReduceの起動は非常に簡単です。ゴールとしては以下の通りになります。 Step1: OSSにデータを保存します BigDataを始めるためにはまずデータが必要です。今回はニューヨーク市のタクシーおよびリムジン委員会（NYC TLC）によるタクシーデータ（240GBを超えるCSVファイル）というオープンデータを使って、OSS+E-MapReduceを使用したETL、分析業務の取り込みについて説明します。 https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page ECSインスタンス１台にて、aliyun-cliをインストールします。そのあと、NYTデータをダウンロード、OSSヘアップロードします。 前提として、OSSにBigData専用のディレクトリを作成する必要があります。以下の例では oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/ というディレクトリを作成しました。
+以下はECS、CentOS 7.6での操作になります。 より詳しいインストール方法はこちらを参考にしてください。
+[root@aliyun ~]# [root@aliyun ~]# yum -y install wget 〜 略 〜 [root@aliyun ~]# wget https://aliyuncli.alicdn.com/aliyun-cli-linux-3.0.16-amd64.tgz --2019-06-06 14:18:34-- https://aliyuncli.alicdn.com/aliyun-cli-linux-3.0.16-amd64.tgz Resolving aliyuncli.alicdn.com (aliyuncli.alicdn.com)... 202.47.28.98, 202.47.28.99 Connecting to aliyuncli.alicdn.com (aliyuncli.alicdn.com)|202.47.28.98|:443... connected. HTTP request sent, awaiting response... 200 OK Length: 9159371 (8.7M) [application/x-compressed-tar] Saving to: ‘aliyun-cli-linux-3.0.16-amd64.tgz’ 100%[==============================================================================================================================================================&amp;gt;] 9,159,371 --.-K/s in 0.06s 2019-06-06 14:18:34 (150 MB/s) - ‘aliyun-cli-linux-3.0.16-amd64.tgz’ saved [9159371/9159371] [root@aliyun ~]# tar -xzvf aliyun-cli-linux-3.</description>
+    </item>
+    
+    <item>
+      <title>既存データからの移植について</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/009_data-collection/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/009_data-collection/</guid>
+      <description>OSSをハブとした運用について &amp;nbsp; 前述、OSSとE-MapReduceを説明しました。OSSをハブとして運用することで、コスト削減はもちろん、AlibabaCloudの様々なフルマネージドサービスを中心とした構成が可能となります。 そのため、全ての処理基盤はAlibabaCloudで初め、AlibabaCloudで終わる、という構成も可能です。 同時に、AlibabaCloudのOSSは様々な外部データソースと連携することが可能です。 別の章にてそれぞれのデータソース接続手法を記載します。 2019/07/20 現状確認されてる外部データソースとの接続方法サマリとしては以下の通りになります。 今後このサマリにてApache Beam、Apache Flink、Apache samza、kinesis、Livy、Oracle on Spark、SQL Server on Spark、MongoDB、他の外部データソースも順次追加したいと思います。
+運用するときの注意点について データ構造 &amp;nbsp; データを集約した後、どんな分析を行うのか？これを踏まえて、どんな利用方法があるか？をイメージしたテーブル・スキーマ・フィールドタイプ・データ設計をする必要があります。
+転送料金 &amp;nbsp; OSSと外部データ（IDCやS3など）でデータやりとりするとき、OSSへInするデータは無料ですが、VPCより先へOutするデータには料金が発生してしまいます。なので、Outするときはデータを圧縮してから移植するなど、工夫が必要です。
+ネットワーク &amp;nbsp; データを集約・転送するとき、NW距離ら物理的な要因で処理が遅くなることがあります。そのため、OSSおよび周囲プロダクトサービスとのリージョン・配置はできるだけ近い位置で配置が望ましいです。
+ETL &amp;nbsp; ETLは様々な方法がありますが、データ型やhdfsタイプ、仕様上できることできないことを見極めて全体設計が望ましいです。 ex:
+ HiveやSparkはdate型をサポートしますが、PrestoやImpalaはdate型をサポートしないので読み込み不可 SparkはORCサポートを打ち切ったため 、代わりの手法はSparkの最新ドキュメントで確認</description>
+    </item>
+    
+    <item>
+      <title>LogServiceでOSSへデータを集める方法</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/010_logservice-to-oss/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/010_logservice-to-oss/</guid>
+      <description>はじめに &amp;nbsp; 本章はAlibabaCloud LogServiceを使ってOSSへデータを送ります。ゴールとしては以下のような構成図になります。 また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
+LogServiceとは &amp;nbsp; AlibabaCloudのLogServiceは迅速にログデータを収集、処理、送信、照会/分析することができるプロダクトサービスです。
+詳しいことはhelpページにて記載していますので、こちらを参照ください。 https://jp.alibabacloud.com/help/doc-detail/48869.htm
+LogServiceでのデータ収集方法 LogServiceでのデータ収集方法は様々な方法がありますが、今回はtwitterのtweetデータを収集、OSSヘ転送する処理を目指します。イメージとしてはECSでTwitterデータを収集、それをLogServiceに転送し、LogServiceによりOSSへParquet形式でデータ転送、という流れになります。
+Step1 . LogServiceでプロジェクトの作成、Logstoreを作成します。 こちらにやり方が記載されていますので、説明は割愛します。 https://jp.alibabacloud.com/help/doc-detail/54604.htm
+Step2. ECSインスタンスを起動 今回、LogService上で構築することも可能ですが、twitter APIを利用するためにECSでLogService APIと連携して処理します。
+下準備として、ECSインスタンスに以下ライブラリのインストールをします。
+pip3.6 install -U aliyun-log-python-sdk pip3.6 install twitter 次は以下、Pythonファイルtweet.pyを作成し、実行します。 ssh接続が切れても恒久的に起動し続けたい場合は、nohup python3.6 tweet.py &amp;amp;と実行してください。
+# -*- coding: utf-8 -*- from aliyun.log.logitem import LogItem from aliyun.log.logclient import LogClient from aliyun.log.putlogsrequest import PutLogsRequest import time import twitter SCREEN_NAME = &amp;#39;write here&amp;#39; # OAuth こちらはTwitter Developerに申請する必要があります。 # https://developer.twitter.com/content/developer-twitter/ja.html ACCESS_TOKEN_KEY = &amp;#39;&amp;#39; ACCESS_TOKEN_SECRET = &amp;#39;&amp;#39; CONSUMER_KEY = &amp;#39;&amp;#39; CONSUMER_SECRET = &amp;#39;&amp;#39; endpoint = &amp;#39;ap-northeast-1.</description>
+    </item>
+    
+    <item>
+      <title>AWS S3からOSSへ</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/011_aws-s3-to-oss/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/011_aws-s3-to-oss/</guid>
+      <description>はじめに &amp;nbsp; 本ページはAWS S3からAlibabaCloud OSSへデータを移植する方法をまとめます。 本ページは具体的な手法より、どんな手法があるかをメインに記載します。
+Data Migration Serviceを使った移植方法 ※Data Migration Serviceは国際サイト専用のサービスです Data Migration Serviceを使った移植方法
+https://www.alibabacloud.com/blog/migrating-from-aws-s3-to-alibaba-cloud-oss-using-data-migration-service_594382
+VPN経由でS3からOSSへ移植 VPN経由でS3からOSSへのマイグレーション
+https://www.sbcloud.co.jp/entry/2018/12/03/s3-vpn-oss/
+OSSImportツール（スタンドアロン）を使った移植 OssImportのアーキテクチャと構成、ダウンロードページ
+https://jp.alibabacloud.com/help/doc-detail/56990.html
+AWS S3からAlibaba Cloud OSSへのマイグレーション手順
+https://www.sbcloud.co.jp/file/98012380859496046
+AlibabaCloudへのマイグレーション -ストレージ編-
+https://www.sbcloud.co.jp/entry/2018/10/31/migration_oss/
+OSSImportツール（分散モード）を使った移植（分散版） OssImportのアーキテクチャと構成、ダウンロードページ
+https://jp.alibabacloud.com/help/doc-detail/56990.html
+OssImport を使用したデータの移行
+https://jp.alibabacloud.com/help/doc-detail/59922.htm
+分散デプロイについて
+https://jp.alibabacloud.com/help/doc-detail/57057.htm
+emr-toolを使って移植する方法 AWS EMRにてAlibabaCloudのemr-toolをセットアップ、hdfsデータの保存先(接続先パス、エンドポイント）をAlibabaCloud OSSへ指定し移植します。
+HDFS の OSS へのバックアップ
+https://jp.alibabacloud.com/help/doc-detail/63822.html
+Spark分散を使った移植方法 AWS EMRにてSpark分散処理を実施、保存先(接続先パス、エンドポイント）をAlibabaCloud OSSへ指定するだけです。
+最後に AWS S3からの移植方法は様々な方法があります。ここには書いていない方法もありますので、検証次第、追記したいと思います。
+またS3からOSSへ移植するとき、注意したいことが以下の三点です。
+ S3とOSSとのNW距離（リージョンが近ければGood） NW帯域（データが多いのであれば分散で移植した方がベター） S3からの転送料金（データが多いほどOut料金が高くなります）  これを踏まえてS3からOSSへ気軽なデータ移植（Import）ができれば幸いです。</description>
+    </item>
+    
+    <item>
+      <title>IDCからOSSへ</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/012_idc-to-oss/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/012_idc-to-oss/</guid>
+      <description>はじめに &amp;nbsp; 本ページはIDCからAlibabaCloud OSSへデータを移植する方法をまとめます。 本ページは具体的な手法より、どんな手法があるかをメインに記載します。
+ExpressConnectを使用した方法 物理接続を介したオンプレミス IDC からの VPC への接続
+https://jp.alibabacloud.com/help/doc-detail/44844.htm
+Hybrid Cloud Storage Arrayを使用した方法 ※ Hybrid Cloud Storage Arrayは国際サイトのみ提供となります。
+Hybrid Cloud Storage Array
+https://www.alibabacloud.com/product/storage-array
+オンプレミスとのクロスレプリケーションによるバックアップ方法
+https://medium.com/@Alibaba_Cloud/hybrid-cloud-storage-cross-cloud-replication-5b5a3dee8ff1
+OSSImport（スタンドアロン）を使用した方法 OssImportのアーキテクチャと構成、ダウンロードページ
+https://jp.alibabacloud.com/help/doc-detail/56990.html
+OssImport を使用したデータの移行
+https://jp.alibabacloud.com/help/doc-detail/59922.html
+AlibabaCloudへのマイグレーション -ストレージ編-
+https://www.sbcloud.co.jp/entry/2018/10/31/migration_oss/
+emr-toolを使って移植する方法 IDCオンプレミスにてAlibabaCloudのemr-toolをセットアップ、hdfsデータの保存先(接続先パス、エンドポイント）をAlibabaCloud OSSへ指定して移植します。
+HDFS の OSS へのバックアップ
+https://jp.alibabacloud.com/help/doc-detail/63822.html
+Spark分散を使った移植方法 IDCオンプレミス側にてSpark分散処理を実施、そのとき保存先（接続先）パスをAlibabaCloud OSSへ指定するだけです。
+最後に IDCオンプレミスからの移植方法はAWS S3と同様、様々な方法があります。ここには書いていない方法もありますので、検証次第、追記したいと思います。
+またIDCからOSSへ移植するとき、注意したいことが以下の三点です。
+ IDCオンプレミスとOSSとのNW距離（リージョンが近ければGood） NW帯域（データが多いのであれば分散で移植した方がベター）  これを踏まえてIDCオンプレミスからOSSへ気軽なデータ移植（Import）ができれば幸いです。</description>
+    </item>
+    
+    <item>
+      <title>ApacheSpark（Batch）からOSSへ</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/013_apache-spark-to-oss/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/013_apache-spark-to-oss/</guid>
+      <description>はじめに &amp;nbsp; 本章はApache Spark（Batch）を使ってAlibabaCloud OSSへデータを送ります。ゴールとしては以下のような構成図になります。
+ApacheSparkでやる理由 &amp;nbsp; 別途、Apache Sparkとは何かを説明しました。これを使ってやる理由について説明します。 SparkはTB、PB、EB級の大量データを扱うことができます。マシン1台で処理できないデータでも、E-MapReduceとSparkを使えば分散してデータを取得・処理することができます。そのため、処理に時間がかかるものはSparkを積極的に活用することで、ビジネス上メリットを得ることができます。
+&amp;nbsp; Sparkの便利なことはIN/OUTデータソースが様々な形式へサポートしています。そのため、例えばcsvファイルをHDFS Parquetとして保存したり、MySQLやOracleのデータをHDFSとして保存、逆にOracleのデータをMySQLへ移植、HDFS_Parquetをcsvファイルへ保存することも可能です。
+   データソース text json csv parquet orc jdbc     IN ◯ ◯ ◯ ◯ ◯ ◯   OUT ◯ ◯ ◯ ◯ ◯ ◯    
+&amp;nbsp; それでは実際にSpark処理をやってみます。今回はE-MapReduceを使って実装します。 ※ECSでも実現可能。その場合、スタンドアロン（単体）での処理になります。
+Spark-Shell（対話型）で試してみる Spark Batch処理をする前に、処理の流れとしてSparl-Shellを使って説明します。以下サンプルを入れていますので、流れをみていただければと思います。
+環境について    Clustor instance Type 台数     Hadoop EMR-3.22.0 MASTER ecs.sn2.large 1    CORE ecs.</description>
+    </item>
+    
+    <item>
+      <title>ApacheSpark（Streaming）からOSSへ</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/</guid>
+      <description>はじめに &amp;nbsp; 本章はApache Spark（Streaming）を使ってAlibabaCloud OSSへデータを送ります。ゴールとしては以下のような構成図になります。 また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
+Apache Spark Streaming とは &amp;nbsp; Apache Spark Streamingは大規模ストリーム処理フレームワークです。 Spark APIを拡張し、データサイエンティスト、エンジニアがKafka、Flume、Ignite、などのさまざまなソースからのリアルタイムデータを処理できるようにします。この処理されたデータは、OSS、MySQLなどのデータベース、ElasticSearchなどライブダッシュボードに出力できます。また、Spark Streamingは、MLlibやSpark SQLなど他のSparkコンポーネントとシームレスに統合できるので、加工処理、抽出、など様々な応用ができます。 さてPythonを使ってSpark Streamingのテストをしてみます。今回、手頃にいいデータがなかったので、TCPソースからストリームデータを作成し、その結果をOSSへ書き込むという処理を目指します。
+SocketTextStreamメソッドはTCPソース(hostname:port)からinputデータを生成、データはTCPソケットを使用して受け取とられ、UTF-8でエンコードし、¥nをデリミタとした行単位でバイトで受け取ります。 今回はAlibabaCloud E-MapReduceで実施するため、TCPソース(hostname:port)はE-MapReduceのHostname、使われてないPort 9999を使用します。
+環境について    Clustor instance Type 台数     Hadoop EMR-3.22.0 MASTER ecs.sn2.large 1    CORE ecs.sn2.large 2    E-MapReduceのHostは以下コマンドで取得します。
+[root@emr-header-1 ~]# [root@emr-header-1 ~]# hostname emr-header-1.cluster-44076 [root@emr-header-1 ~]#  続いて、Pythonソースにて、コードを記載します。
+# -*- coding:utf-8 -*- import sys from pyspark.</description>
+    </item>
+    
+    <item>
+      <title>Apache FlumeからOSSへ</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/016_apache-flume-to-oss/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/016_apache-flume-to-oss/</guid>
+      <description>はじめに &amp;nbsp; 本章はApache Flumeを使ってOSSへデータを送ります。ゴールとしては以下のような構成図になります。 また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
+Apache Flumeとは &amp;nbsp; Apache Flumeは堅牢性が高く、耐障害性のある分散データ取り込みツールです。さまざまなデータソース（Webサーバーなど）からHadoop分散ファイルシステム（HDFS）、HDFS上のHBaseやkuduなどの分散データベース、またはElasticsearchなど大量のログファイルをストリーミングすることができます。Flumeはログデータのストリーミングに加えて、Twitter、Facebook、Kafka BrokersなどのWebソースから生成されたEventデータをストリーミングすることもできます。 Apache Flumeでより詳しいことは公式サイトを参照ください。 https://flume.apache.org/ Flumeの概要 &amp;nbsp; Apache Flumeはクラスターへのデータの取り込み（ingres）に特化しています。特に数台または数千台のマシンに蓄積されているログファイルを収集、集約、クラスター内の単一のエントリポイントにストリーミングできます。Flumeのコンポーネントと概念についてを以下にて説明します。
+ Event：Flumeによって転送されるデータの基本ペイロード。Flumeが発信元から最終目的地まで転送できるデータの単位を表します。オプションのヘッダーはインターセプターを介してチェーン化され、通常はEventの検査と変更に使用されます。 Client：Eventの起点で動作し、それらをFlumeAgentに配信するインターフェース実装。Clientは通常、データを消費しているアプリケーションのプロセス空間で動作します。 Agent： Flumeのデータパスのコア要素。ホストは、Source、Channel、Sinkなどのコンポーネントを使用し、Eventを受信、保存、およびネクストホップの宛先に転送する機能を備えています。 Source：Client経由で配信されるEventを消費します。SourceがEventを受信すると、それを1つ以上のChannelに渡します。 Channel：Eventの一時ストア。SourceとSinkの間のリンク部分です。Channelは、フローの耐久性を確保する上で重要な役割を果たします。 Sink：ChannelからEventを削除し、フロー内の次のAgentまたはEventの最終宛先に送信します。Eventを最終宛先に送信するSinkは、ターミナルシンクとも呼ばれます。  EventはClientからSourceへ流れます。Sourceは、Eventを1つ以上のChannel書き込みます。Channelは、処理中のEventデータ保持領域であり、永続的（ファイルバックアップ）または非永続的（メモリバックアップ）に構成できます。Eventデータは、Sinkがそれを処理し、データを最終宛先に送信できるようになるまで、Channelで待機します。
+以下は、HDFS（OSS）ターミナルシンクで構成されたシンプルなFlumeエージェントを示しています。
+参考：Apache Flumeガイドライン http://flume.apache.org/FlumeUserGuide.html Flumeを使ってデータを取り込む &amp;nbsp; 今回はTwitter情報をFlumeで収集しHDFSフォルダをOSSとして格納するという流れを目指します。
+環境について    Clustor instance Type 台数     Hadoop EMR-3.22.0 MASTER ecs.sn2.large 1    CORE ecs.sn2.large 2    
+Step1. Twitter APIを発行 こちらはTwitter Developerに申請する必要があります。 https://developer.twitter.com/content/developer-twitter/ja.html Step2.</description>
+    </item>
+    
+    <item>
+      <title>FluentdからOSSへ</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/017_fluentd-to-oss/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/017_fluentd-to-oss/</guid>
+      <description>はじめに &amp;nbsp; 本章はAlibabaCloud LogServiceを使ってOSSへデータを送ります。ゴールとしては以下のような構成図になります。 また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
+Fluend とは &amp;nbsp; Fluendはデーモン上で動作する、データのやりとりを管理するソフトウェアです。 Fluentd は input, buffer, output という以下の役割を持っています。
+ 必要なデータを取り出す (input)  そのデータを必要に応じて分解(パース)する データのタイムスタンプを管理する  必要なところにデータを届ける (output)  そのデータを必要に応じて整形(フォーマット)して保存する  データを紛失しないよう管理する (buffer)  やりとりの途中で何かエラーが起きたらリトライする   他、特徴として、以下があります。 * ログはタグで管理される * JSON形式 * 様々なプラグインがあり、OSSやMySQL、Hadoop HDFSなど自由に接続が可能
+他、詳しいことはFluend公式サイトを参照してください。 また、Fluentdのガイドブックもありますので、使用方法はこちらを参考にしてください。 https://docs.fluentd.org/ Fluendの導入 ECSにFluendをインストールし、OSSへデータを送ってみます。ECSはCentOS 7.6です。
+Step1. td-agentをインストールするshellを入手し、Shellを実行
+[root@bigdatatest ~]# curl -L https://toolbelt.treasuredata.com/sh/install-redhat-td-agent3.sh | sh % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 100 849 100 849 0 0 5773 0 --:--:-- --:--:-- --:--:-- 5815 ============================== td-agent Installation Script ============================== This script requires superuser access to install rpm packages.</description>
+    </item>
+    
+    <item>
+      <title>EnbulkからOSSへ</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/018_enbulk-to-oss/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/018_enbulk-to-oss/</guid>
+      <description>はじめに &amp;nbsp; 本章はAlibabaCloud LogServiceを使ってOSSへデータを送ります。ゴールとしては以下のような構成図になります。 また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
+Enbulk とは &amp;nbsp; Fluendはデータをストリーミングで収集するに対し、データをバッチで収集するツール。
+並列データ転送ツール『Embulk』リリース！ http://frsyuki.hatenablog.com/entry/2015/02/16/080150
+Enbulkの導入 ECSにEnbulkをインストールし、S3からOSSへデータを送ってみます。ECSはCentOS 7.6です。 注意したいこととして、embulkは近年出たばかりのツールで、2019/08/15現時点、AlibabaCloud OSSのInput/Outputプラグインは未開発状態です。ここではFTPを利用した方法で対処します。 Step1. javaのインストール EmbulkはJavaアプリケーションなので、Javaがインストールされていることを確認してください。
+$ which java もしJavaが入ってないのであれば、インストールしてください。
+$ sudo yum install java-1.8.0-openjdk Javaが無事インストールされてることを確認します。
+[root@metabase ~]# which java /usr/bin/java [root@metabase ~]# java -version openjdk version &amp;#34;1.8.0_222&amp;#34; OpenJDK Runtime Environment (build 1.8.0_222-b10) OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode) [root@metabase ~]#  
+Step2. Embulkをダウンロードして配置します。
+[root@metabase ~]# curl --create-dirs -o ~/.embulk/bin/embulk -L &amp;#34;https://dl.embulk.org/embulk-latest.jar&amp;#34; % Total % Received % Xferd Average Speed Time Time Time Current Dload Upload Total Spent Left Speed 0 0 0 0 0 0 0 0 --:--:-- --:--:-- --:--:-- 0 0 0 0 0 0 0 0 0 --:--:-- --:--:-- --:--:-- 0 0 0 0 607 0 0 661 0 --:--:-- --:--:-- --:--:-- 661 100 43.</description>
+    </item>
+    
+    <item>
+      <title>Apache ArrowからOSSへ</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/019_apache-arrow-to-oss/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/019_apache-arrow-to-oss/</guid>
+      <description>はじめに &amp;nbsp; 本章はAlibabaCloud LogServiceを使ってOSSへデータを送ります。ゴールとしては以下のような構成図になります。 また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
+Apache Arrow とは &amp;nbsp; Apache Arrowは様々な言語で使えるIn-Memoryデータ変換処理プラットフォームです。大規模なBigDataでSpark以外の手法の一つです。見た目、Sparkにちょっと似ていますが、こちらの利点としては以下の通りです。
+ インメモリの列指向データフォーマット。PythonのPandas問題を解決するために開発 CPU/GPUのキャッシュメモリを利用して大量のデータの処理効率化 データ交換（シリアライズ、転送、デシリアライズ）の高速化に特化 実装コストは非常に低い PySparkなどSparkと連携することで、CPU、NW転送の観点上、今より数十倍高速化が可能 OLAP、OLTP、DeepLearningなど様々な分野で活躍 データの交換をするならArrow、データの永続化をするならSpark  参考：PythonのPandas問題 https://qiita.com/tamagawa-ryuji/items/3d8fc52406706ae0c144
+より詳しくはApache Arrowの公式ガイドラインを参照してください。 https://arrow.apache.org/ https://arrow.apache.org/docs/format/README.html
+
+それではApache Arrowを使ってECSにあるcsvファイルをhdfs_Parquetへ変換します。 &amp;gt;注意として、ECSはOSSへのアクセス権限を持ってることが前提となります。
+Apache ArrowのParquet形式変換で様々なオプションがありますので、こちらを参考にしてください。 https://arrow.apache.org/docs/python/parquet.html
+Apache Arrowの使い方 Arrowは多くの言語をサポートしています。（現在も様々な言語へ開発中） 今回はPythonを使います。 https://github.com/apache/arrow
+Step1. pip install arrowでインストールします。またpandasも必要なのでなければpip install pandasとインストールしましょう。
+[root@metabase ~]# pip install arrow DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.</description>
+    </item>
+    
+    <item>
+      <title>RDS for MySQLからOSSへ</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/</guid>
+      <description>はじめに &amp;nbsp; 本章はSqoopを使ってRDS for MySQLからOSSへデータを送ります。ゴールとしては以下のような構成図になります。 また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
+SQOOPとは &amp;nbsp; Apache SqoopはHadoopとリレーショナルデータベースなどの構造化データストアとの間で、大量のデータを効率的に転送するために設計されたツールです。
+   From To 備考     MySQL HDFS    MySQL Hive &amp;ndash;hive-importオプションを付与   PostgreSQL HDFS    PostgreSQL Hive &amp;ndash;hive-importオプションを付与    他、jdbcドライバがある限り、OracleやSQL ServerからHDFSやHiveテーブルへSqoop移植することも可能です。
+移植してみる Sqoopを使ってRDS for MySQLにあるテーブルをHive Tableへ移植します。
+環境について    Clustor instance Type 台数     Hadoop EMR-3.22.0 MASTER ecs.sn2.large 1    CORE ecs.</description>
+    </item>
+    
+    <item>
+      <title>AlibabaCloud OSSから別のOSSへ（移植）</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/</guid>
+      <description> はじめに &amp;nbsp; 本ページはAlibabaCloud OSSから別のOSSへデータを移植する方法をまとめます。 本ページは具体的な手法より、どんな手法があるかをメインに記載します。 一部、URLにある手順はAWS S3をメインとしていますが、こちらはAlibabaCloud OSSでも同じことなので、参考にしてください。
+OSSImportツール（スタンドアロン）を使った移植 OssImportのアーキテクチャと構成、ダウンロードページ
+https://jp.alibabacloud.com/help/doc-detail/56990.html
+AWS S3からAlibaba Cloud OSSへのマイグレーション手順
+https://www.sbcloud.co.jp/file/98012380859496046
+AlibabaCloudへのマイグレーション -ストレージ編-
+https://www.sbcloud.co.jp/entry/2018/10/31/migration_oss/
+OSSImportツール（分散モード）を使った移植（分散版） OssImportのアーキテクチャと構成、ダウンロードページ
+https://jp.alibabacloud.com/help/doc-detail/56990.html
+OssImport を使用したデータの移行
+https://jp.alibabacloud.com/help/doc-detail/59922.htm
+分散デプロイについて
+https://jp.alibabacloud.com/help/doc-detail/57057.htm
+emr-toolを使って移植する方法 AlibabaCloud E-MapReduceにてAlibabaCloudのemr-toolをセットアップ、hdfsデータの保存先(接続先パス、エンドポイント）を目的となるAlibabaCloud OSSへ指定し移植します。
+HDFS の OSS へのバックアップ
+https://jp.alibabacloud.com/help/doc-detail/63822.html
+Spark分散を使った移植方法 AWS EMRにてSpark分散処理を実施、保存先(接続先パス、エンドポイント）をAlibabaCloud OSSへ指定するだけです。
+
+最後に OSSからのデータ移植方法は様々な方法があります。ここには書いていない方法もありますので、検証次第、追記したいと思います。
+またOSSから別のOSSへ移植するとき、注意したいことが以下の三点です。
+ OSSとのNW距離（リージョンが近ければGood） NW帯域（データが多いのであれば分散で移植した方がベター） （アカウント分離している場合）OSSからの転送料金（データが多いほどOut料金が高くなります）  これを踏まえてOSSから別OSSへ気軽なデータ移植（Import）ができれば幸いです。 </description>
+    </item>
+    
+    <item>
+      <title>AlibabaCloud OSSから別のOSSへ（同期）</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/</guid>
+      <description> はじめに &amp;nbsp; 本ページはAlibabaCloud OSSから別のOSSへデータを同期する方法をまとめます。 本ページは具体的な手法より、どんな手法があるかをメインに記載します。
+クロスリージョンレプリケーションを使った同期方法   注意
+* 2019/8/30 現在、クロスリージョンレプリケーション機能は、中国本土の異なるリージョン間、および米国西部1（シリコンバレー）と米国東部1（バージニア）リージョン間でのみサポートされています。
+* クロスリージョンレプリケーション機能はベータテスト段階にあり、現在無料です。この関数は、公式にリリースされた後に課金されます。
+  参考：クロスリージョンレプリケーション https://www.alibabacloud.com/help/doc-detail/31864.htm
+
+最後に OSSの同期、クロスリージョンレプリケーションの手法があります。こちらは現在まだ開発段階なので、続報に期待したいと思います。 </description>
+    </item>
+    
+    <item>
+      <title>開発環境構築について</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/</link>
+      <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/</guid>
+      <description>はじめに &amp;nbsp; Alibaba Cloud SDKはGo、Node.js、RUSH、など幅広い分野に展開されていますが、AlibabaCloudのBigDataプロダクトはScala/Java/Pythonを主に利用します。 そのため、本章ではローカルのMac OS上でPython及びPlayFrameworkの開発を開始するための環境構築手順について記載します。
+
+環境 Mac OS Mojave (10.14.x）
+
+Homebrew Homebrewの導入 Mac用パッケージ管理ソフト Homebrew をインストールします。 Homebrew（ホームブルー）は、macOSオペレーティングシステム上でソフトウェアの導入を単純化するパッケージ管理システムのひとつです。 Homebrewを導入することで、Pythonの構築など、後の導入が楽になります。
+Homebrewのインストール ターミナルを開いてHomebrew公式サイト に書かれている以下コマンドを実行します。 画面の指示に従ってキーやパスワード入力して、しばらく待つとインストールが終わります。
+$ /usr/bin/ruby -e &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master Homebrewのインストール確認 以下コマンドでHomebrewが無事インストールできたかを確認します。
+$ brew doctor  ターミナルに以下が表示されれば完了です。 &amp;gt; Your system is ready to brew.
+Homebrewの更新 brewコマンドでパッケージをインストールしたものの、目的のバージョンがないときは、brewのバージョンが古い可能性がありますので、以下コマンドで更新チェックをします。
+$ brew update  
+Python開発環境構築  PyCharm  JetBrains社製のPython用IDE（統合開発環境） 無償版（Community Edition）と有償版（Ultimate Edition）があり、有償版はDjangoなどのWebフレームワークをサポートしています。 ※無償版でも十分実用的なため今回は無償版を利用します   
+pyenv導入 pyenvは1台のPC内でPythonの異なるバージョンを切り分け、管理するためのツールです。例えば、Python2.7と3.6混合で利用したい場合は、pyenvが非常に役立ちます。 ターミナル上で以下コマンドを使ってpyenvをインストールします。
+$ brew install pyenv  ターミナルで以下コマンドを実行し、pyenvのフォルダにPATHを通します。</description>
+    </item>
+    
+  </channel>
+</rss>

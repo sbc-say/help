@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SB Cloud&nbsp;テクニカルリファレンス</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-09-19T10:48:17 UTC">
+<title>Bigdata :: テクニカルリファレンス</title>
+<link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
+<link href="/help/css/font-awesome.min.css" rel="stylesheet">
+<link href="/help/css/nucleus.css" rel="stylesheet">
+<link href="/help/theme-flex/style.css" rel="stylesheet">
+
+	<link href="/help/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/help/css/bootstrap.min.css">
+<script src="/help/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GTM-MQFZWG', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" id="mierucajs">
+window.__fid = window.__fid || [];__fid.push([317537360]);
+(function() {
+function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
+setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
+})();
+</script>
+
+
+
+<meta name="description" content="Alibaba CloudのBigdataサービスに関するベストプラクティスを記載します。">
+
+        
+
+
+<link href="/help/css/custom.css"  rel="stylesheet">
+
+
+    
+  </head>
+  <body data-url="/help/best-practice/bigdata/">
+    
+      <header>
+
+    
+  <div class="logo">
+      <a href="https://www.sbcloud.co.jp/help/" style="vertical-align: baseline;">
+            <img src="https://www.sbcloud.co.jp/help//img/sbcloud_logo.png" class="noshadow" alt="">
+        </a>
+  </div>
+
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+
+<nav class="shortcuts">
+    <li>
+        <span class="searchbox">
+            <input data-search-input id="search-by" type="text" placeholder="検索">
+        </span>
+        <script type="text/javascript" src="/help/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/help/js/auto-complete.js"></script>
+        <link href="/help/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+            
+            var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+            
+        </script>
+        <script type="text/javascript" src="/help/js/search.js"></script>
+    </li>
+            <li class="" role="">
+                <a href="https://github.com/sbcloud/help"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+        </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/">Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/registration/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/registration/">
+            アカウント登録
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/getting-started/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/product/">プロダクトの紹介</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/product/links/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/links/">
+            プロダクト資料のリンク一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/product/ecs-by-region/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/ecs-by-region/">
+            ECSの使用可能なRegion/Spec/Price紹介
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/getting-started/cloud-users/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/cloud-users/vs-aws-gcp-azure/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/vs-aws-gcp-azure/">
+            サービスラインナップ比較
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/best-practice/general/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/general/">全般</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/general/advisory/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/advisory/">
+            アドバイザリ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/general/pricing/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/pricing/">
+            料金体系
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/product/">プロダクト</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/product/datav/datav-widget-develop-guide/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/datav/datav-widget-develop-guide/">
+            DataV Widget 開発ガイド
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/web-application/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/web-application/">Webアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/web-application/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/02/name-resolve/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/02/name-resolve/">
+            名前解決
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/03/loadbalancer/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/03/loadbalancer/">
+            負荷分散
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/04/web-ap/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/04/web-ap/">
+            Web/APサーバ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/05/database/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/05/database/">
+            データベース
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/terraform/01/how-to-use/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/01/how-to-use/">
+            Terraformとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/02/install/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/02/install/">
+            インストール
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/03/sample-project/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/03/sample-project/">
+            サンプルプロジェクトの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/04/run-terraform/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/04/run-terraform/">
+            サンプルプロジェクトの実行
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/05/program-syntax/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/05/program-syntax/">
+            Terraform文法について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/06/docker/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/06/docker/">
+            Dockerについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/07/module/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/07/module/">
+            Moduleについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/08/vpc/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/08/vpc/">
+            VPCの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/09/ecs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/09/ecs/">
+            ECS、EIPの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/10/slb/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/10/slb/">
+            SLBの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/11/autoscaling/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/11/autoscaling/">
+            AutoScalingの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/12/oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/12/oss/">
+            OSSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/13/rds/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/13/rds/">
+            RDSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/14/ram/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/14/ram/">
+            RAMの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/15/kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/15/kubernetes/">
+            Kubernetesの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/container/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/container/">コンテナ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/container/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/02/development-environment/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/02/development-environment/">
+            開発環境
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/03/image-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/03/image-management/">
+            コンテナイメージ作成・管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/04/deploy-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/04/deploy-management/">
+            コンテナデプロイ管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/05/monitoring/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/05/monitoring/">
+            ログ管理とモニタリング
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/bigdata/" class="dd-item parent active haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/bigdata/">Bigdata</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/bigdata/001_what-is-bigdata/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/001_what-is-bigdata/">
+            BigDataとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/">
+            Hadoopとその周辺の技術について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/003_what-is-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/003_what-is-spark/">
+            Sparkについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/004_what-is-hdfs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/004_what-is-hdfs/">
+            HDFSとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/005_what-is-yarn/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/005_what-is-yarn/">
+            YARNとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/006_what-is-required-for-dwh/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/006_what-is-required-for-dwh/">
+            DWHには何が必要か
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/007_oss-and-e-mapreduce/">
+            OSSとE-MapReduce
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/">
+            E-MapReduce起動、ETLとOLTP、OLAPをする
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/009_data-collection/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/009_data-collection/">
+            既存データからの移植について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/010_logservice-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/010_logservice-to-oss/">
+            LogServiceでOSSへデータを集める方法
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/011_aws-s3-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/011_aws-s3-to-oss/">
+            AWS S3からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/012_idc-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/012_idc-to-oss/">
+            IDCからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/013_apache-spark-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/013_apache-spark-to-oss/">
+            ApacheSpark（Batch）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/">
+            ApacheSpark（Streaming）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/016_apache-flume-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/016_apache-flume-to-oss/">
+            Apache FlumeからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/017_fluentd-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/017_fluentd-to-oss/">
+            FluentdからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/018_enbulk-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/018_enbulk-to-oss/">
+            EnbulkからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/019_apache-arrow-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/019_apache-arrow-to-oss/">
+            Apache ArrowからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/">
+            RDS for MySQLからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/">
+            AlibabaCloud OSSから別のOSSへ（移植）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/">
+            AlibabaCloud OSSから別のOSSへ（同期）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/">
+            開発環境構築について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/scenario/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/scenario/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/scenario/terraform/bastion-server/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/bastion-server/">
+            SSH踏み台サーバの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/slb-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/slb-setting-sample/">
+            SLBの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/rds-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/rds-setting-sample/">
+            RDSの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/kubernetes-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/kubernetes-setting-sample/">
+            Kubernetesの構築と設定
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application/">
+            Webアプリケーションの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/accelerated-content-delivery/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/accelerated-content-delivery/">
+            高速コンテンツ配信の実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/auto-scaling/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/auto-scaling/">
+            オートスケーリングの実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application-on-kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application-on-kubernetes/">
+            KubernetesによるコンテナでWordPress作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/faq/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/faq/">よくある質問</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/faq/ecs/" class="dd-item">
+        <div>
+          <a href="/help/faq/ecs/">
+            ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/oss/" class="dd-item">
+        <div>
+          <a href="/help/faq/oss/">
+            OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/rds/" class="dd-item">
+        <div>
+          <a href="/help/faq/rds/">
+            RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
+        <div>
+          <a href="/help/faq/slb/">
+            SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/account/" class="dd-item">
+        <div>
+          <a href="/help/faq/account/">
+            アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/support/" class="dd-item">
+        <div>
+          <a href="/help/faq/support/">
+            サポート
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+<a class="github-button" href="https://github.com/sbcloud/help/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download SBC Technical Reference on GitHub">Download</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help" data-icon="octicon-star" data-show-count="false" aria-label="Star SBC Technical Reference on GitHub">Star</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork SBC Technical Reference on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    </section>
+  </aside>
+  <section class="page">
+
+    <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span id="sidebar-toggle-span">
+          <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+            <i class="fa fa-bars"></i>
+          </a>
+        </span>
+        <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+        <span class="links">
+        
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > Bigdata
+
+ 
+
+ 
+
+
+        </span>
+    </div>
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/help/getting-started/" >
+   Getting Started</option>
+    <option value="/help/best-practice/" >
+   ベストプラクティス</option> 
+    <option value="/help/best-practice/general/" >
+  - 
+   全般</option>
+    <option value="/help/best-practice/product/" >
+  - 
+   プロダクト</option>
+    <option value="/help/best-practice/web-application/" >
+  - 
+   Webアプリケーション</option>
+    <option value="/help/best-practice/terraform/" >
+  - 
+   Terraform</option>
+    <option value="/help/best-practice/container/" >
+  - 
+   コンテナ</option>
+    <option value="/help/best-practice/bigdata/"  selected>
+  - 
+   Bigdata</option> 
+      <option value="/help/best-practice/bigdata/001_what-is-bigdata/" >-- BigDataとは</option>
+      <option value="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" >-- Hadoopとその周辺の技術について</option>
+      <option value="/help/best-practice/bigdata/003_what-is-spark/" >-- Sparkについて</option>
+      <option value="/help/best-practice/bigdata/004_what-is-hdfs/" >-- HDFSとは</option>
+      <option value="/help/best-practice/bigdata/005_what-is-yarn/" >-- YARNとは</option>
+      <option value="/help/best-practice/bigdata/006_what-is-required-for-dwh/" >-- DWHには何が必要か</option>
+      <option value="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" >-- OSSとE-MapReduce</option>
+      <option value="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/" >-- E-MapReduce起動、ETLとOLTP、OLAPをする</option>
+      <option value="/help/best-practice/bigdata/009_data-collection/" >-- 既存データからの移植について</option>
+      <option value="/help/best-practice/bigdata/010_logservice-to-oss/" >-- LogServiceでOSSへデータを集める方法</option>
+      <option value="/help/best-practice/bigdata/011_aws-s3-to-oss/" >-- AWS S3からOSSへ</option>
+      <option value="/help/best-practice/bigdata/012_idc-to-oss/" >-- IDCからOSSへ</option>
+      <option value="/help/best-practice/bigdata/013_apache-spark-to-oss/" >-- ApacheSpark（Batch）からOSSへ</option>
+      <option value="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" >-- ApacheSpark（Streaming）からOSSへ</option>
+      <option value="/help/best-practice/bigdata/016_apache-flume-to-oss/" >-- Apache FlumeからOSSへ</option>
+      <option value="/help/best-practice/bigdata/017_fluentd-to-oss/" >-- FluentdからOSSへ</option>
+      <option value="/help/best-practice/bigdata/018_enbulk-to-oss/" >-- EnbulkからOSSへ</option>
+      <option value="/help/best-practice/bigdata/019_apache-arrow-to-oss/" >-- Apache ArrowからOSSへ</option>
+      <option value="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" >-- RDS for MySQLからOSSへ</option>
+      <option value="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" >-- AlibabaCloud OSSから別のOSSへ（移植）</option>
+      <option value="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" >-- AlibabaCloud OSSから別のOSSへ（同期）</option>
+      <option value="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/" >-- 開発環境構築について</option>
+  
+  
+    <option value="/help/scenario/" >
+   ユースケース別シナリオ</option>
+    <option value="/help/faq/" >
+   よくある質問</option>
+
+
+
+        </select>
+      </center>
+    </div>
+
+    <h1>Bigdata</h1>
+
+    
+    
+    
+Alibaba CloudのBigdataサービスに関するベストプラクティスを記載します。
+<!-- descriptionがコンテンツの前に表示されます -->
+
+<!-- コンテンツを書くときはこの下に記載ください -->
+
+<!-- 配下タイトル一覧がコンテンツの後に表示されます -->
+
+<ul>
+  
+    <li>
+        <a href="/help/best-practice/bigdata/001_what-is-bigdata/">
+            BigDataとは
+        </a>
+    </li>
+    BigDataとは何かをお話しします。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/">
+            Hadoopとその周辺の技術について
+        </a>
+    </li>
+    BigDataを支える技術レイヤー、Hadoopとエコシステムやその周辺についてを説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/003_what-is-spark/">
+            Sparkについて
+        </a>
+    </li>
+    BigDataを支える技術レイヤー、Sparkについてを説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/004_what-is-hdfs/">
+            HDFSとは
+        </a>
+    </li>
+    BigDataを支える技術レイヤー、HDFSについてを説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/005_what-is-yarn/">
+            YARNとは
+        </a>
+    </li>
+    BigDataを支える技術レイヤー、YARNについてを説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/006_what-is-required-for-dwh/">
+            DWHには何が必要か
+        </a>
+    </li>
+    DWHを構築する上で大事なことを伝えます。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/007_oss-and-e-mapreduce/">
+            OSSとE-MapReduce
+        </a>
+    </li>
+    OSSとE-MapReduceを勧める理由、簡単な使い方を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/">
+            E-MapReduce起動、ETLとOLTP、OLAPをする
+        </a>
+    </li>
+    チューリアトルとして、E-MapReduceを起動しETLし、HiveでOLTP、ImpalaでOLAPをします
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/009_data-collection/">
+            既存データからの移植について
+        </a>
+    </li>
+    既存データからの移植についてを説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/010_logservice-to-oss/">
+            LogServiceでOSSへデータを集める方法
+        </a>
+    </li>
+    LogServiceでOSSへデータを収集する方法を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/011_aws-s3-to-oss/">
+            AWS S3からOSSへ
+        </a>
+    </li>
+    AWS S3からOSSへデータを移植する方法を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/012_idc-to-oss/">
+            IDCからOSSへ
+        </a>
+    </li>
+    IDCオンプレミスからOSSへデータを移植する方法を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/013_apache-spark-to-oss/">
+            ApacheSpark（Batch）からOSSへ
+        </a>
+    </li>
+    ApacheSpark（Batch）からOSSへデータを集約する方法を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/">
+            ApacheSpark（Streaming）からOSSへ
+        </a>
+    </li>
+    ApacheSpark（Streaming）からOSSへデータを集約する方法を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/016_apache-flume-to-oss/">
+            Apache FlumeからOSSへ
+        </a>
+    </li>
+    Apache FlumeからOSSへデータを集約する方法を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/017_fluentd-to-oss/">
+            FluentdからOSSへ
+        </a>
+    </li>
+    FluentdからOSSへデータを集約する方法を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/018_enbulk-to-oss/">
+            EnbulkからOSSへ
+        </a>
+    </li>
+    EnbulkからOSSへデータを集約する方法を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/019_apache-arrow-to-oss/">
+            Apache ArrowからOSSへ
+        </a>
+    </li>
+    Apache ArrowからOSSへデータを集約する方法を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/">
+            RDS for MySQLからOSSへ
+        </a>
+    </li>
+    RDS for MySQLからOSSへデータを集約する方法を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/">
+            AlibabaCloud OSSから別のOSSへ（移植）
+        </a>
+    </li>
+    AlibabaCloud OSSから別のOSSへ（移植）を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/">
+            AlibabaCloud OSSから別のOSSへ（同期）
+        </a>
+    </li>
+    AlibabaCloud OSSから別のOSSへ（同期）を説明します。
+    <br>
+    <br>
+    
+    <li>
+        <a href="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/">
+            開発環境構築について
+        </a>
+    </li>
+    AlibabaCloud SDKでBigDataを利用する上での開発環境を設定します。
+    <br>
+    <br>
+    
+    
+    
+
+
+</ul>
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/help/best-practice/container/05/monitoring/" title="ログ管理とモニタリング"> <i class="fa fa-chevron-left"></i><label>ログ管理とモニタリング</label></a>
+    <a class="nav nav-next" href="/help/best-practice/bigdata/001_what-is-bigdata/" title="BigDataとは" style="margin-right: 0px;"><label>BigDataとは</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i>  09/15/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/bigdata/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/help/js/clipboard.min.js"></script>
+
+<link href="/help/css/featherlight.min.css" rel="stylesheet">
+<script src="/help/js/featherlight.min.js"></script>
+
+
+
+<script src="/help/theme-flex/script.js"></script>
+
+<link href="/help/mermaid/mermaid.css" type="text/css" rel="stylesheet" />
+<script src="/help/mermaid/mermaid.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
