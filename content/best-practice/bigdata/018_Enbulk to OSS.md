@@ -2,7 +2,7 @@
 title: "EnbulkからOSSへ"
 description: "EnbulkからOSSへデータを集約する方法を説明します。"
 date: 2019-08-30T00:00:00+00:00
-weight: 30
+weight: 180
 draft: false
 ---
 <!-- descriptionがコンテンツの前に表示されます -->
@@ -14,7 +14,7 @@ draft: false
 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
 
 
-![BD_Images_Enbulk_to_OSS_001](/static_images/BD_Images_Enbulk_to_OSS_001.png)
+![BD_Images_Enbulk_to_OSS_001](../static_images/BD_Images_Enbulk_to_OSS_001.png)
 <br>
 
 
@@ -174,8 +174,8 @@ Step6. 上記の設定ファイルを引数にしつつembulkを実行します�
 ```
 
 これにより、AWS S3にあったcsvファイル集をOSSへ移植できてることを確認できました。
-![BD_Images_Enbulk_to_OSS_002](/static_images/BD_Images_Enbulk_to_OSS_002.png)
-![BD_Images_Enbulk_to_OSS_003](/static_images/BD_Images_Enbulk_to_OSS_003.png)
+![BD_Images_Enbulk_to_OSS_002](../static_images/BD_Images_Enbulk_to_OSS_002.png)
+![BD_Images_Enbulk_to_OSS_003](../static_images/BD_Images_Enbulk_to_OSS_003.png)
 <br>
 
 ## プラグインを作る方法

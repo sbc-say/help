@@ -2,7 +2,7 @@
 title: "RDS for MySQLからOSSへ"
 description: "RDS for MySQLからOSSへデータを集約する方法を説明します。"
 date: 2019-08-30T00:00:00+00:00
-weight: 30
+weight: 200
 draft: false
 ---
 <!-- descriptionがコンテンツの前に表示されます -->
@@ -15,7 +15,7 @@ draft: false
 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
 
 
-![BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_001](/static_images/BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_001.png)
+![BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_001](../static_images/BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_001.png)
 <br>
 
 
@@ -42,6 +42,7 @@ Sqoopを使ってRDS for MySQLにあるテーブルをHive Tableへ移植しま�
 
 
 Sqoopには様々なオプションがありますので、目的に応じて使い分けてください
+
 |オプション|説明|
 |---|---|
 |--connect|接続したいjdbcデータソース|
@@ -81,7 +82,7 @@ Time taken: 14.094 seconds
 
 これでHive側にテーブルが作成できました。
 
-![BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_002](/static_images/BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_002.png)
+![BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_002](../static_images/BD_Images_RDS_for_MySQL_to_OSS_(sqoop_and_spark)_002.png)
 <br>
 
 
@@ -90,7 +91,7 @@ Time taken: 14.094 seconds
 ## 最後に
 AlibabaCloud公式blogにもE-MapReduce起動方法、手法、ベストプラクティスが記載されていますので、こちらを参考にするのもありです。
 
-[Sqoopによるデータ移植方法](https://www.alibabacloud.com/blog/drilling-into-big-data-data-ingestion-4_594666)
+[Sqoopによるデータ移植方法](https://www.alibabacloud.com/blog/drilling-into-big-data-data-ingestion-4_594666)  
 https://www.alibabacloud.com/blog/drilling-into-big-data-getting-started-with-oss-and-emr-2_594668
 
 * SqoopはORC、RCなどの少数のhadoopファイル形式をサポートしていません

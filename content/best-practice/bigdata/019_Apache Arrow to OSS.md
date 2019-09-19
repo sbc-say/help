@@ -2,7 +2,7 @@
 title: "Apache ArrowからOSSへ"
 description: "Apache ArrowからOSSへデータを集約する方法を説明します。"
 date: 2019-08-30T00:00:00+00:00
-weight: 30
+weight: 190
 draft: false
 ---
 <!-- descriptionがコンテンツの前に表示されます -->
@@ -14,7 +14,7 @@ draft: false
 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
 
 
-![BD_Images_Apache_Arrow_to_OSS_001](/static_images/BD_Images_Apache_Arrow_to_OSS_001.png)
+![BD_Images_Apache_Arrow_to_OSS_001](../static_images/BD_Images_Apache_Arrow_to_OSS_001.png)
 <br>
 
 
@@ -29,7 +29,7 @@ draft: false
 * OLAP、OLTP、DeepLearningなど様々な分野で活躍
 * データの交換をするならArrow、データの永続化をするならSpark
 
-![BD_Images_Apache_Arrow_to_OSS_002](/static_images/BD_Images_Apache_Arrow_to_OSS_002.png)
+![BD_Images_Apache_Arrow_to_OSS_002](../static_images/BD_Images_Apache_Arrow_to_OSS_002.png)
 <br>
 
 参考：PythonのPandas問題
@@ -122,12 +122,12 @@ pq.write_table(table, './parquet/test.parquet')
 
 <br>
 
-他にこちらも参考にいただければ幸いです。
-[PyArrowでテキストファイルからParquetファイルを作成する方法](https://qiita.com/kusanoiskuzuno/items/eef36ba8dc23cd0828b1)
-https://qiita.com/kusanoiskuzuno/items/eef36ba8dc23cd0828b1
-
-[Apache SparkとPandasを使用したApache Arrowの使用方法](https://towardsdatascience.com/a-gentle-introduction-to-apache-arrow-with-apache-spark-and-pandas-bb19ffe0ddae)
-https://towardsdatascience.com/a-gentle-introduction-to-apache-arrow-with-apache-spark-and-pandas-bb19ffe0ddae
+他にこちらも参考にいただければ幸いです。  
+[PyArrowでテキストファイルからParquetファイルを作成する方法](https://qiita.com/kusanoiskuzuno/items/eef36ba8dc23cd0828b1)  
+https://qiita.com/kusanoiskuzuno/items/eef36ba8dc23cd0828b1  
+<br>
+[Apache SparkとPandasを使用したApache Arrowの使用方法](https://towardsdatascience.com/a-gentle-introduction-to-apache-arrow-with-apache-spark-and-pandas-bb19ffe0ddae)  
+https://towardsdatascience.com/a-gentle-introduction-to-apache-arrow-with-apache-spark-and-pandas-bb19ffe0ddae  
 
 
 

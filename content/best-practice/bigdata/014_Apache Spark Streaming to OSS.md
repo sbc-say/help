@@ -2,7 +2,7 @@
 title: "ApacheSpark（Streaming）からOSSへ"
 description: "ApacheSpark（Streaming）からOSSへデータを集約する方法を説明します。"
 date: 2019-08-30T00:00:00+00:00
-weight: 30
+weight: 140
 draft: false
 ---
 <!-- descriptionがコンテンツの前に表示されます -->
@@ -15,7 +15,7 @@ draft: false
 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
 
 
-![BD_Images_Apache_Spark_Streaming_to_OSS_001](/static_images/BD_Images_Apache_Spark_Streaming_to_OSS_001.png)
+![BD_Images_Apache_Spark_Streaming_to_OSS_001](../static_images/BD_Images_Apache_Spark_Streaming_to_OSS_001.png)
 <br>
 
 
@@ -24,7 +24,7 @@ draft: false
 ## Apache Spark Streaming とは
 &nbsp; Apache Spark Streamingは大規模ストリーム処理フレームワークです。
 Spark APIを拡張し、データサイエンティスト、エンジニアがKafka、Flume、Ignite、などのさまざまなソースからのリアルタイムデータを処理できるようにします。この処理されたデータは、OSS、MySQLなどのデータベース、ElasticSearchなどライブダッシュボードに出力できます。また、Spark Streamingは、MLlibやSpark SQLなど他のSparkコンポーネントとシームレスに統合できるので、加工処理、抽出、など様々な応用ができます。
-![BD_Images_Apache_Spark_Streaming_to_OSS_002](/static_images/BD_Images_Apache_Spark_Streaming_to_OSS_002.png)
+![BD_Images_Apache_Spark_Streaming_to_OSS_002](../static_images/BD_Images_Apache_Spark_Streaming_to_OSS_002.png)
 <br>
 
 さてPythonを使ってSpark Streamingのテストをしてみます。今回、手頃にいいデータがなかったので、TCPソースからストリームデータを作成し、その結果をOSSへ書き込むという処理を目指します。
@@ -92,7 +92,7 @@ spark-submit network_wordcount.py emr-header-1.cluster-44076 9999
 ```
 その結果、OSSにてStreming結果（TCPソースのデータ）が出力されてることが確認できます。
 
-![BD_Images_Apache_Spark_Streaming_to_OSS_003](/static_images/BD_Images_Apache_Spark_Streaming_to_OSS_003.png)
+![BD_Images_Apache_Spark_Streaming_to_OSS_003](../static_images/BD_Images_Apache_Spark_Streaming_to_OSS_003.png)
 <br>
 
 ## まとめ

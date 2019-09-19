@@ -2,7 +2,7 @@
 title: "FluentdからOSSへ"
 description: "FluentdからOSSへデータを集約する方法を説明します。"
 date: 2019-08-30T00:00:00+00:00
-weight: 30
+weight: 170
 draft: false
 ---
 <!-- descriptionがコンテンツの前に表示されます -->
@@ -14,7 +14,7 @@ draft: false
 また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。
 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）
 
-![BD_Images_Fluend_to_OSS_001](/static_images/BD_Images_Fluend_to_OSS_001.png)
+![BD_Images_Fluend_to_OSS_001](../static_images/BD_Images_Fluend_to_OSS_001.png)
 <br>
 
 
@@ -273,6 +273,7 @@ Step7. ちゃんと実現できてるかテストしてみます。
 [root@bigdatatest ~]# 
 ```
 ちなみにLogファイルの場所は以下の通りになります（CentOSの場合）
+
 |ファイル名|場所|
 |---|---|
 |設定ファイル|/etc/td-agent/td-agent.conf|
@@ -280,7 +281,7 @@ Step7. ちゃんと実現できてるかテストしてみます。
 <br>
 
 OSSのバケットでも、Logがあることを確認できます。これで以上です。
-![BD_Images_Fluend_to_OSS_002](/static_images/BD_Images_Fluend_to_OSS_002.png)
+![BD_Images_Fluend_to_OSS_002](../static_images/BD_Images_Fluend_to_OSS_002.png)
 <br>
 
 

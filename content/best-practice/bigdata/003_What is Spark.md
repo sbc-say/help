@@ -17,12 +17,12 @@ draft: false
 ## Sparkの概要
 &nbsp; SparkはHadoopのデータ処理フレームワークであるMapReduceの多くの処理制限問題を認識し、反復的でインタラクティブなアプリケーションを処理できる、より高速でより汎用的に利用できるデータ処理フレームワークとして開発されました。SparkのJobは、メモリ内の高速機能と高度なDAG（Directed Acyclic Graph）実行エンジンにより、同等のMapReduceジョブよりも10〜100倍高速に実行できます。データサイエンティスト、分析エンジニアからすれば、SparkはどのMapReduce処理よりも最も生産的な位置付けとなっています。
 
-![BD_Images_What_is_Spark_001](/static_images/BD_Images_What_is_Spark_001.png)
+![BD_Images_What_is_Spark_001](../static_images/BD_Images_What_is_Spark_001.png)
 <br>
 
 &nbsp; Sparkは一見シンプルですが強力なAPIにより、非常に利用・汎用しやすくなっています。 Sparkは以下をサポートする統合プラットフォームを提供します。現在、Sparkはデータサイエンティスト、分析エンジニアにとって重要な存在となっています。ストリーミング、インタラクティブ処理、ETL、機械学習、バッチ処理、Delta Lake運用、container/Kubernetes、Function as a Serivce、超高速HTAPなど、幅広い分野へ広まっています。手法は別章にて紹介いたします。
 
-![BD_Images_What_is_Spark_002](/static_images/BD_Images_What_is_Spark_002.png)
+![BD_Images_What_is_Spark_002](../static_images/BD_Images_What_is_Spark_002.png)
 <br>
 
 ## Cluster Managers
@@ -34,7 +34,7 @@ https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html
 &nbsp; Sparkはコード内容（処理内容）をSparkアプリケーションタスクとして以下の画像のように複数のクラスターノードへ分散し処理することができます。すべてのSparkアプリケーションには、Driver ProgramにSpark Contextというオブジェクトがあります。Spark ContextはCluster Managersへの接続を意味しており、Sparkアプリケーションにコンピューティングリソースを提供します。Hadoop分散モードの上で実行となれば、マスターノードで実行、これがスレーブノードへ処理したいリソースを提供となります。
 &nbsp; クラスターに接続した後、SparkはWorker NodeでExecuterを取得します。その後、SparkはアプリケーションコードをExecuterに送信します。通常、アプリケーションはSparkアクションに応じて1つ以上のジョブを実行します。その後、各ジョブはSparkによって小さな有向非周期グラフ（DAG）に分割されます。その後、各タスクは分散され、実行のためにワーカーノード全体のExecuterに送信されます。各Sparkアプリケーションは、独自のExecuterのセットを取得します。異なるアプリケーションのタスクは異なるJVMで実行されるため、Sparkアプリケーションは別のSparkアプリケーションと干渉することはないです。（＝処理内容が重複、コンフリクトすることがない構造）これはHDFSやS3などの低速の外部データソースを使用しないと、Sparkアプリケーション同士がデータを共有することは難しいことを意味します。一方、AlibabaCloudのSparkはJindoFSを使うと、ワーカーノードがOSSら外部データソースとマルチ接続し分散処理されるため、OSSに対してデータ共有をより速く、かつ簡単に読み込み、書き込みすることができます。JindoFSや手法は別章にて紹介いたします。
 
-![BD_Images_What_is_Spark_003](/static_images/BD_Images_What_is_Spark_003.png)
+![BD_Images_What_is_Spark_003](../static_images/BD_Images_What_is_Spark_003.png)
 <br>
 
 
@@ -255,7 +255,7 @@ rdd = rdd1.subtract(rdd2)
 rdd.coalesce(l).write.mode("append").parquet("/user/root/hadoop/Table")
 ```
 
-![BD_Images_What_is_Spark_004](/static_images/BD_Images_What_is_Spark_004.png)
+![BD_Images_What_is_Spark_004](../static_images/BD_Images_What_is_Spark_004.png)
 <br>
 
 #### RDD：Repartition
@@ -520,7 +520,7 @@ teenagers.show()
 &nbsp; 機械学習（Machine Learning、以下MLと略します）はSparkの主要なアプリケーションの１つです。上記、DataFrameをベースとした、Spark MLlibによる機械学習ができます。DataFramesベースはRDDベースよりも高速で使いやすく、ユーザーはSQLを使用して、Catalystやデータ内容の最適化などができます。
 SparkのDataFrameの優れてるところは、機械学習パイプラインで機能変換が容易に行えることです。図のように、元々のDataFrameから機械学習用のDataFrame2へ下準備（変換）、そしてTF-IDF（単語の頻度の評価、機械学習の一つ）を実施し、その結果をDataFrame3として出力することができます。この一連をPipelineと呼びます。
 
-![BD_Images_What_is_Spark_005](/static_images/BD_Images_What_is_Spark_005.png)
+![BD_Images_What_is_Spark_005](../static_images/BD_Images_What_is_Spark_005.png)
 <br>
 
 #### Pipeline
