@@ -15,7 +15,7 @@ draft: false
 
 例えば水道、電気、天気、ネットワーク、工業、ショッピング、教育、病院、スポーツ、農耕、etc…
 IDC調査によれば 2025年になるとデジタルデータはZBの領域に入ります。
-※ 1Zb = 125EB = 125000PB = 125000000TB
+※ 1ZB = 125EB = 125000PB = 125000000TB
 
 このデジタルデータはどこから発生してるのか。具体例を見てみましょう。
 ![BD_Images_What_is_BigData_001](../static_images/BD_Images_What_is_BigData_001.png)
