@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-09-20T06:32:14 UTC">
+<meta name="revised" content="2019-09-20T07:06:18 UTC">
 <title>FluentdからOSSへ :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -841,14 +841,17 @@ Fluentd は input, buffer, output という以下の役割を持っています�
 </ul></li>
 </ul>
 
-<p>他、特徴として、以下があります。
-* ログはタグで管理される
-* JSON形式
-* 様々なプラグインがあり、OSSやMySQL、Hadoop HDFSなど自由に接続が可能</p>
+<p>他、特徴として、以下があります。</p>
 
-<p>他、詳しいことは<a href="https://www.fluentd.org/architecture">Fluend公式サイト</a>を参照してください。
-また、<a href="https://docs.fluentd.org/">Fluentdのガイドブック</a>もありますので、使用方法はこちらを参考にしてください。
-<a href="https://docs.fluentd.org/">https://docs.fluentd.org/</a>
+<ul>
+<li>ログはタグで管理される</li>
+<li>JSON形式</li>
+<li>様々なプラグインがあり、OSSやMySQL、Hadoop HDFSなど自由に接続が可能</li>
+</ul>
+
+<p>他、詳しいことは<a href="https://www.fluentd.org/architecture">Fluend公式サイト</a>を参照してください。<br />
+また、<a href="https://docs.fluentd.org/">Fluentdのガイドブック</a>もありますので、使用方法はこちらを参考にしてください。<br />
+<a href="https://docs.fluentd.org/">https://docs.fluentd.org/</a><br />
 <br></p>
 
 <h2 id="fluendの導入">Fluendの導入</h2>
@@ -913,11 +916,11 @@ Loading mirror speeds from cached hostfile
 
 完了しました!
 <span style="color:#f92672">[</span>root@bigdatatest ~<span style="color:#f92672">]</span># </code></pre></div>
-<p>Step3. AlibabaCloud ossへデータを流すためのFluentdプラグインをインストール
-$ td-agent-gem install fluent-plugin-aliyun-oss</p>
+<p>Step3. AlibabaCloud ossへデータを流すためのFluentdプラグインをインストール<br />
+<code>$ td-agent-gem install fluent-plugin-aliyun-oss</code></p>
 
-<p>またfluent-plugin-aliyun-ossがインストールされてるか、以下のコマンドも実施
-$ td-agent-gem list fluent-plugin-aliyun-oss</p>
+<p>またfluent-plugin-aliyun-ossがインストールされてるか、以下のコマンドも実施<br />
+<code>$ td-agent-gem list fluent-plugin-aliyun-oss</code></p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@bigdatatest ~<span style="color:#f92672">]</span><span style="color:#75715e"># td-agent-gem install fluent-plugin-aliyun-oss</span>
 Fetching: http-accept-1.7.0.gem <span style="color:#f92672">(</span><span style="color:#ae81ff">100</span>%<span style="color:#f92672">)</span>
 Successfully installed http-accept-1.7.0
@@ -1003,7 +1006,7 @@ Reloading td-agent configuration <span style="color:#f92672">(</span>via systemc
 <span style="color:#f92672">[</span>root@bigdatatest ~<span style="color:#f92672">]</span><span style="color:#75715e"># sudo /etc/init.d/td-agent reload</span>
 Reloading td-agent configuration <span style="color:#f92672">(</span>via systemctl<span style="color:#f92672">)</span>:          <span style="color:#f92672">[</span>  OK  <span style="color:#f92672">]</span>
 <span style="color:#f92672">[</span>root@bigdatatest ~<span style="color:#f92672">]</span># </code></pre></div>
-<p>再起動すれば変更が反映されます。
+<p>再起動すれば変更が反映されます。<br />
 今回はApacheのAccess_Logとerror_Logを収集、OSSへ入れたいので、<code>/etc/td-agent/td-agent.conf</code>にて、以下の設定を付け加えます。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&lt;source&gt;
  <span style="color:#111">type</span> tail
@@ -1077,7 +1080,7 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/td-agent.servic
 
 <p><br></p>
 
-<p>OSSのバケットでも、Logがあることを確認できます。これで以上です。
+<p>OSSのバケットでも、Logがあることを確認できます。これで以上です。<br />
 <img src="../static_images/BD_Images_Fluend_to_OSS_002.png" alt="BD_Images_Fluend_to_OSS_002" />
 <br></p>
 

@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-09-20T06:32:14 UTC">
+<meta name="revised" content="2019-09-20T07:06:18 UTC">
 <title>Hadoopとその周辺の技術について :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -812,9 +812,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h3 id="bigdataはrdbmsでないとだめか">BigDataはRDBMSでないとだめか？</h3>
 
-<p>BigDataは今後の事業貢献や継続アプローチとしても欠かせません。そこで素朴な質問です。多くの人は「BigDataはRDBMSでないとだめか？」と問いますが、答えはデータサイズに伴うI/O性能の限界に伴う問題です。
-例えばの話、MySQL、PostgreSQL、SQL Server、OracleなどRDBMSでHDDに200TB分のデータがあるとして、HDDは今でも最大100MB/秒でデータを読み込むため、200TBのデータを読み込むために200×1000×1000 / 100 = 2000000秒、約23日と時間がかかります。SSDも同様です。
-この問題を解決するために、Hadoopなど並列分散処理が必要になります。
+<p>BigDataは今後の事業貢献や継続アプローチとしても欠かせません。そこで素朴な質問です。多くの人は「BigDataはRDBMSでないとだめか？」と問いますが、答えはデータサイズに伴うI/O性能の限界に伴う問題です。<br />
+例えばの話、MySQL、PostgreSQL、SQL Server、OracleなどRDBMSでHDDに200TB分のデータがあるとして、HDDは今でも最大100MB/秒でデータを読み込むため、200TBのデータを読み込むために200×1000×1000 / 100 = 2000000秒、約23日と時間がかかります。SSDも同様です。<br />
+この問題を解決するために、Hadoopなど並列分散処理が必要になります。<br />
 &gt;ただし、(後述しますが)HadoopはサーバとサーバをNW接続しながら分散処理する一方、RDBMSやNoSQLはストレージと隣接するためORM（レスポンス）に特化しており、数百人以上の同時操作などオペレーション系業務では性能要件を満たしてるため、TBまでの少ないデータ量であればまだ現役です。</p>
 
 <p><img src="../static_images/BD_Images_Hadoop_and_ecosystem_technologies_001.png" alt="BD_Images_Hadoop_and_ecosystem_technologies_001" />
@@ -822,7 +822,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h3 id="nbsp-bigdataを支える技術レイヤー-hadoop">&nbsp; BigDataを支える技術レイヤー:Hadoop</h3>
 
-<p>通常、データ量が100TB、1PBと多いほどI/O処理から取得や更新にどうしても時間がかかります。それを解決するためにApache Hadoopというオープンソースプラットフォームが登場しました。Hadoopは１つのマスタサーバ/ネームノードと、複数のスレーブサーバ/データノードをhostで接続しながら、マスタサーバ/ネームノードの指示によりデータストレージとデータ処理に対しスケーラブルながら分散処理、そしてフォールトトレラントによる耐性障害を備っています。
+<p>通常、データ量が100TB、1PBと多いほどI/O処理から取得や更新にどうしても時間がかかります。それを解決するためにApache Hadoopというオープンソースプラットフォームが登場しました。Hadoopは１つのマスタサーバ/ネームノードと、複数のスレーブサーバ/データノードをhostで接続しながら、マスタサーバ/ネームノードの指示によりデータストレージとデータ処理に対しスケーラブルながら分散処理、そしてフォールトトレラントによる耐性障害を備っています。<br />
 <img src="../static_images/BD_Images_Hadoop_and_ecosystem_technologies_002.png" alt="BD_Images_Hadoop_and_ecosystem_technologies_002" />
 <br></p>
 
@@ -844,12 +844,16 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <p>MapReduceがあることで並列分散処理が出来ました。しかし、MapReduceは親ノードが子ノード（データノード）にプログラムを送信して計算処理するため、データを持ってないノード含め全送信するなど、処理速度・I/O負荷の面で課題があります。それを解決するためにYARNが登場しました。YARNはYet-Another-Resource-Negotiatorの略称、汎用的なクラスタリソース管理フレームワークです。YARNはリソースをによって効率的な計算処理送信で無駄を省くため、処理速度の向上・I/O負荷が減ります。そのため、YARNはMapReduce処理、Spark Streamingのようなストリーミング処理など、様々なMapReduce処理内容に応じてHadoopクラスタ(HDFS)上で効率よく並列分散処理を実現することができます。</p>
 
-<p>上記のMapReduceを選挙集計で例えたものに、YARNを追加してみます。その場合、以下のストーリーになります。
-スレーブサーバ/データノード（スタッフ）はリソース（人手）が限られてるため、YARNのResourceManager（管理者）が
-1. 実際に処理したい内容を全体で確認します。今回はAさんのみ集計したいので、Aさん以外は無視しAさんのみを集計します。
-2. ResourceManager（管理者）にて、処理したい内容を実現するためには、スレーブサーバ/データノード（スタッフ）でどれぐらいのリソースが必要かを事前確認します。
-3. それぞれのスレーブサーバ/データノード（スタッフ）にリソース割り当てを実施します。
-4. ResourceManager（管理者）にて、スレーブサーバ/データノード（スタッフ）の処理リソース割り当てができたら、分散・リソース処理を実施します。今回はAさんのみ集計なので、Aさんに集中、そのため全スレーブサーバ/データノード（スタッフ）のI/O負荷を総合的に減らすことができます。</p>
+<p>上記のMapReduceを選挙集計で例えたものに、YARNを追加してみます。その場合、以下のストーリーになります。<br />
+スレーブサーバ/データノード（スタッフ）はリソース（人手）が限られてるため、YARNのResourceManager（管理者）が</p>
+
+<ol>
+<li>実際に処理したい内容を全体で確認します。今回はAさんのみ集計したいので、Aさん以外は無視しAさんのみを集計します。<br /></li>
+<li>ResourceManager（管理者）にて、処理したい内容を実現するためには、スレーブサーバ/データノード（スタッフ）でどれぐらいのリソースが必要かを事前確認します。<br /></li>
+<li>それぞれのスレーブサーバ/データノード（スタッフ）にリソース割り当てを実施します。<br /></li>
+<li>ResourceManager（管理者）にて、スレーブサーバ/データノード（スタッフ）の処理リソース割り当てができたら、分散・リソース処理を実施します。今回はAさんのみ集計なので、Aさんに集中、そのため全スレーブサーバ/データノード（スタッフ）のI/O負荷を総合的に減らすことができます。<br />
+<br /></li>
+</ol>
 
 <p><img src="../static_images/BD_Images_Hadoop_and_ecosystem_technologies_005.png" alt="BD_Images_Hadoop_and_ecosystem_technologies_005" />
 <br></p>

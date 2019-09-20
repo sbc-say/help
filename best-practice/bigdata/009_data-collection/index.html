@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-09-20T06:32:14 UTC">
+<meta name="revised" content="2019-09-20T07:06:18 UTC">
 <title>既存データからの移植について :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -810,19 +810,19 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h2 id="ossをハブとした運用について">OSSをハブとした運用について</h2>
 
-<p>&nbsp; 前述、OSSとE-MapReduceを説明しました。OSSをハブとして運用することで、コスト削減はもちろん、AlibabaCloudの様々なフルマネージドサービスを中心とした構成が可能となります。
+<p>&nbsp; 前述、OSSとE-MapReduceを説明しました。OSSをハブとして運用することで、コスト削減はもちろん、AlibabaCloudの様々なフルマネージドサービスを中心とした構成が可能となります。<br />
 <img src="../static_images/BD_Images_Data_collection_005.png" alt="BD_Images_Data_collection_005" />
 <br></p>
 
-<p>そのため、全ての処理基盤はAlibabaCloudで初め、AlibabaCloudで終わる、という構成も可能です。
+<p>そのため、全ての処理基盤はAlibabaCloudで初め、AlibabaCloudで終わる、という構成も可能です。<br />
 <img src="../static_images/BD_Images_Data_collection_007.png" alt="BD_Images_Data_collection_007" />
 <br></p>
 
-<p>同時に、AlibabaCloudのOSSは様々な外部データソースと連携することが可能です。
-別の章にてそれぞれのデータソース接続手法を記載します。
+<p>同時に、AlibabaCloudのOSSは様々な外部データソースと連携することが可能です。<br />
+別の章にてそれぞれのデータソース接続手法を記載します。<br />
 <img src="../static_images/BD_Images_Data_collection_006.png" alt="BD_Images_Data_collection_006" /></p>
 
-<p>2019/07/20 現状確認されてる外部データソースとの接続方法サマリとしては以下の通りになります。
+<p>2019/07/20 現状確認されてる外部データソースとの接続方法サマリとしては以下の通りになります。<br />
 今後このサマリにてApache Beam、Apache Flink、Apache samza、kinesis、Livy、Oracle on Spark、SQL Server on Spark、MongoDB、他の外部データソースも順次追加したいと思います。</p>
 
 <p><img src="../static_images/BD_Images_Data_collection_008.png" alt="BD_Images_Data_collection_008" />
@@ -844,13 +844,11 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h3 id="etl">ETL</h3>
 
-<p>&nbsp; ETLは様々な方法がありますが、データ型やhdfsタイプ、仕様上できることできないことを見極めて全体設計が望ましいです。
-ex:</p>
+<p>&nbsp; ETLは様々な方法がありますが、データ型やhdfsタイプ、仕様上できることできないことを見極めて全体設計が望ましいです。</p>
 
-<ul>
-<li>HiveやSparkはdate型をサポートしますが、PrestoやImpalaはdate型をサポートしないので読み込み不可</li>
-<li>SparkはORCサポートを打ち切ったため 、代わりの手法はSparkの最新ドキュメントで確認</li>
-</ul>
+<p>ex:
+* HiveやSparkはdate型をサポートしますが、PrestoやImpalaはdate型をサポートしないので読み込み不可
+* SparkはORCサポートを打ち切ったため 、代わりの手法はSparkの最新ドキュメントで確認</p>
 
 <p><br></p>
 

@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-09-20T06:32:14 UTC">
+<meta name="revised" content="2019-09-20T07:06:18 UTC">
 <title>OSSとE-MapReduce :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -810,8 +810,8 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h2 id="ossとe-mapreduce">OSSとE-MapReduce</h2>
 
-<p>&nbsp; 前述、Hadoop概要、DWHなどBigDataの基本的なことを説明しました。今回はAlibabaCloudで簡単にBigDataができることを記載します。
-AlibabaCloudには様々なBigDataプロダクトがあります。BigData絡みだけでこのプロダクトがあります（RDB系、分散DB系、NoSQL系は除外）
+<p>&nbsp; 前述、Hadoop概要、DWHなどBigDataの基本的なことを説明しました。今回はAlibabaCloudで簡単にBigDataができることを記載します。<br />
+AlibabaCloudには様々なBigDataプロダクトがあります。BigData絡みだけでこのプロダクトがあります（RDB系、分散DB系、NoSQL系は除外）<br />
 これらは順次追って本テクニカルサイトにて手法、ケースを載せます。</p>
 
 <table>
@@ -926,9 +926,9 @@ AlibabaCloudには様々なBigDataプロダクトがあります。BigData絡み
 E-MapReduceを利用するメリット</p>
 
 <ul>
-<li>自力でHadoopおよびエコシステムの環境を構築しなくていい</li>
-<li>マスタノード/スレーブノードなどクラスタ管理など、運用をしなくていい</li>
-<li>使った分だけ料金を払う<strong>pay-as-you-go</strong>、利用期間に応じて料金を払う<strong>subscription</strong>があり、利用用途に応じて節約することが可能</li>
+<li>自力でHadoopおよびエコシステムの環境を構築しなくていい<br /></li>
+<li>マスタノード/スレーブノードなどクラスタ管理など、運用をしなくていい<br /></li>
+<li>使った分だけ料金を払う<strong>pay-as-you-go</strong>、利用期間に応じて料金を払う<strong>subscription</strong>があり、利用用途に応じて節約することが可能<br /></li>
 </ul>
 
 <p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_002.png" alt="BD_Images_OSS_and_E-MapReduce_002" />
@@ -948,9 +948,9 @@ E-MapReduceを利用するメリット</p>
 <p>&nbsp; まとめると、OSSをセントラルストレージとしたBigData運用をすると以下のメリットがあります。</p>
 
 <ul>
-<li>ストレージと計算処理を分離できるため、データ消失のリスクがない</li>
-<li>OSSをセントラルストレージとすることで、全体的なコスト削減が見込める</li>
-<li>E-MapReduceの処理結果データをRDSやDataVなど、他プロダクトへ回すことが可能</li>
+<li>ストレージと計算処理を分離できるため、データ消失のリスクがない<br /></li>
+<li>OSSをセントラルストレージとすることで、全体的なコスト削減が見込める<br /></li>
+<li>E-MapReduceの処理結果データをRDSやDataVなど、他プロダクトへ回すことが可能<br /></li>
 </ul>
 
 <p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_004.png" alt="BD_Images_OSS_and_E-MapReduce_004" />
@@ -1869,7 +1869,7 @@ E-MapReduceを利用するメリット</p>
 <h2 id="まとめ">まとめ</h2>
 
 <p>本章ではOSSとE-MapReduceの相性、素晴らしさを説明しました。Hadoopに親しんでる人ならばE-MapReduceだけで簡単にETLできることや、OSSをセントラルストレージとしたOLTP、OLAP、機械学習、深層学習、ストリーミングができるのはAlibabaCloudのみです。
-加えて、本章では触れていませんでしたがHadoopに詳しくない、BigDataが初めての人でもマネージドサービスとしてMaxCompute、DataWorksプロダクトサービスもあります。このプロダクトだけでBigData運用を自己完結することも可能です。
+加えて、本章では触れていませんでしたがHadoopに詳しくない、BigDataが初めての人でもマネージドサービスとしてMaxCompute、DataWorksプロダクトサービスもあります。このプロダクトだけでBigData運用を自己完結することも可能です。<br />
 このように、AlibabaCloudのBigData運用は非常に優位性があることを理解いただければと思います。
 <br></p>
 

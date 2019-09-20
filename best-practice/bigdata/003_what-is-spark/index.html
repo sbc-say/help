@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-09-20T06:32:14 UTC">
+<meta name="revised" content="2019-09-20T07:06:18 UTC">
 <title>Sparkについて :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -810,7 +810,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h2 id="apache-sparkとは">Apache Sparkとは</h2>
 
-<p>&nbsp; Apache Sparkはカリフォルニア大学バークレー校のAMP Labで開発されたオープンソースプロダクトです。Sparkは、大きなデータセットを処理および分析するための次世代のビッグデータ処理フレームワークです。 Sparkは、Scala、Python、Java、R言語による高レベルAPIサポート、Spark SQL、Streaming、機械学習のMLlib、グラフ処理用のGraphXなどを強力なライブラリを提供する統合処理フレームワークです。後にApache Software Foundationに寄付され、2014年2月24日にApacheトップレベルのプロジェクトになりました。
+<p>&nbsp; Apache Sparkはカリフォルニア大学バークレー校のAMP Labで開発されたオープンソースプロダクトです。Sparkは、大きなデータセットを処理および分析するための次世代のビッグデータ処理フレームワークです。 Sparkは、Scala、Python、Java、R言語による高レベルAPIサポート、Spark SQL、Streaming、機械学習のMLlib、グラフ処理用のGraphXなどを強力なライブラリを提供する統合処理フレームワークです。後にApache Software Foundationに寄付され、2014年2月24日にApacheトップレベルのプロジェクトになりました。<br />
 <br></p>
 
 <h2 id="sparkの概要">Sparkの概要</h2>
@@ -827,13 +827,13 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h2 id="cluster-managers">Cluster Managers</h2>
 
-<p>&nbsp; Cluster Managersはアプリケーションのクラスタリソースを割り当て、管理をしています。Sparkは、Spark（Standalone Scheduler）、YARN、およびMesosに付属しているスタンドアロンのCluster Managersをサポートしています。またKubernetesをCluster Managersとして利用することも可能です。このテクニカルサイトにも手法を記載いたしますが、<a href="https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html">詳細についてはこちらを参照</a>してください。
+<p>&nbsp; Cluster Managersはアプリケーションのクラスタリソースを割り当て、管理をしています。Sparkは、Spark（Standalone Scheduler）、YARN、およびMesosに付属しているスタンドアロンのCluster Managersをサポートしています。またKubernetesをCluster Managersとして利用することも可能です。このテクニカルサイトにも手法を記載いたしますが、<a href="https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html">詳細についてはこちらを参照</a>してください。<br />
 <a href="https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html">https://apache-spark-on-k8s.github.io/userdocs/running-on-kubernetes.html</a>
 <br></p>
 
 <h2 id="sparkのアーキテクチャ">Sparkのアーキテクチャ</h2>
 
-<p>&nbsp; Sparkはコード内容（処理内容）をSparkアプリケーションタスクとして以下の画像のように複数のクラスターノードへ分散し処理することができます。すべてのSparkアプリケーションには、Driver ProgramにSpark Contextというオブジェクトがあります。Spark ContextはCluster Managersへの接続を意味しており、Sparkアプリケーションにコンピューティングリソースを提供します。Hadoop分散モードの上で実行となれば、マスターノードで実行、これがスレーブノードへ処理したいリソースを提供となります。
+<p>&nbsp; Sparkはコード内容（処理内容）をSparkアプリケーションタスクとして以下の画像のように複数のクラスターノードへ分散し処理することができます。すべてのSparkアプリケーションには、Driver ProgramにSpark Contextというオブジェクトがあります。Spark ContextはCluster Managersへの接続を意味しており、Sparkアプリケーションにコンピューティングリソースを提供します。Hadoop分散モードの上で実行となれば、マスターノードで実行、これがスレーブノードへ処理したいリソースを提供となります。<br />
 &nbsp; クラスターに接続した後、SparkはWorker NodeでExecuterを取得します。その後、SparkはアプリケーションコードをExecuterに送信します。通常、アプリケーションはSparkアクションに応じて1つ以上のジョブを実行します。その後、各ジョブはSparkによって小さな有向非周期グラフ（DAG）に分割されます。その後、各タスクは分散され、実行のためにワーカーノード全体のExecuterに送信されます。各Sparkアプリケーションは、独自のExecuterのセットを取得します。異なるアプリケーションのタスクは異なるJVMで実行されるため、Sparkアプリケーションは別のSparkアプリケーションと干渉することはないです。（＝処理内容が重複、コンフリクトすることがない構造）これはHDFSやS3などの低速の外部データソースを使用しないと、Sparkアプリケーション同士がデータを共有することは難しいことを意味します。一方、AlibabaCloudのSparkはJindoFSを使うと、ワーカーノードがOSSら外部データソースとマルチ接続し分散処理されるため、OSSに対してデータ共有をより速く、かつ簡単に読み込み、書き込みすることができます。JindoFSや手法は別章にて紹介いたします。</p>
 
 <p><img src="../static_images/BD_Images_What_is_Spark_003.png" alt="BD_Images_What_is_Spark_003" />
@@ -844,14 +844,14 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <p>&nbsp; YARNはHadoopベースのCluster Managersです。YARNでSparkアプリケーションを起動するためには2つの方法があります。</p>
 
 <p><strong>Cluster Mode</strong>
-&nbsp; Cluster Modeの場合、Driver Program は YARNによってアプリケーションを管理、実行されます。そのため、クライアントはアプリケーションの実行に影響を与えることなく終了できます。
+&nbsp; Cluster Modeの場合、Driver Program は YARNによってアプリケーションを管理、実行されます。そのため、クライアントはアプリケーションの実行に影響を与えることなく終了できます。<br />
 アプリケーション、またはSpark Shellをクラスタモードで起動するには以下のコマンドになります。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">spark-shell --master yarn --deploy-mode cluster
 spark-submit --class myPath.myClass --master yarn --deploy-mode cluster</code></pre></div>
 <p><br></p>
 
 <p><strong>Client Mode</strong>
-&nbsp; Client Modeの場合、Driver Program はクライアントのマシンで実行されます。アプリケーションマスターは、YARNからリソースを要求する時のみ使用されます。
+&nbsp; Client Modeの場合、Driver Program はクライアントのマシンで実行されます。アプリケーションマスターは、YARNからリソースを要求する時のみ使用されます。<br />
 クライアントモードでアプリケーション、またはSpark Shellをクラスタモードで起動するには以下のコマンドになります。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">spark-shell --master yarn --deploy-mode client
 spark-submit --class myPath.myClass --master yarn --deploy-mode client</code></pre></div>
@@ -930,20 +930,71 @@ sc.stop<span style="color:#f92672">()</span></code></pre></div>
 
 <h4 id="transformations">Transformations</h4>
 
-<p>&nbsp; Transformationsは名前通り、RDDの変換処理です。RDDの変換は既存のRDDを変化させるわけでなく、新しいRDDを生成するための変換処理です。最もよく使われる変換処理のいくつかを記載します。（他はSparkの公式ドキュメントを閲覧してください。）
-|メソッド|備考|
-|&mdash;|&mdash;|
-|Filter|条件を満たす要素のみ抽出|
-|Map|各要素に関数を適用して別の要素に変換|
-|Flatmap|各要素に関数を適用して別の要素に変換。関数の返り値はイテレータ|
-|Distinct|重複する要素を取り除く|
-|ReduceByKey|キー毎に要素同士を演算処理|
-|Keys|要素のタプル(Key, Value)からキーのみに変換|
-|Values|要素のタプル(Key, Value)から値のみに変換|
-|Join|要素のタプル(Key, Value)を使って他のRDDと結合|
-|Union|他のRDDと結合。単純にパーティション数が増えます|
-|Subtract|他のRDDとの差集合を生成|
+<p>&nbsp; Transformationsは名前通り、RDDの変換処理です。RDDの変換は既存のRDDを変化させるわけでなく、新しいRDDを生成するための変換処理です。最もよく使われる変換処理のいくつかを記載します。（他はSparkの公式ドキュメントを閲覧してください。）<br />
 <br></p>
+
+<table>
+<thead>
+<tr>
+<th>メソッド</th>
+<th>備考</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Filter</td>
+<td>条件を満たす要素のみ抽出</td>
+</tr>
+
+<tr>
+<td>Map</td>
+<td>各要素に関数を適用して別の要素に変換</td>
+</tr>
+
+<tr>
+<td>Flatmap</td>
+<td>各要素に関数を適用して別の要素に変換。関数の返り値はイテレータ</td>
+</tr>
+
+<tr>
+<td>Distinct</td>
+<td>重複する要素を取り除く</td>
+</tr>
+
+<tr>
+<td>ReduceByKey</td>
+<td>キー毎に要素同士を演算処理</td>
+</tr>
+
+<tr>
+<td>Keys</td>
+<td>要素のタプル(Key, Value)からキーのみに変換</td>
+</tr>
+
+<tr>
+<td>Values</td>
+<td>要素のタプル(Key, Value)から値のみに変換</td>
+</tr>
+
+<tr>
+<td>Join</td>
+<td>要素のタプル(Key, Value)を使って他のRDDと結合</td>
+</tr>
+
+<tr>
+<td>Union</td>
+<td>他のRDDと結合。単純にパーティション数が増えます</td>
+</tr>
+
+<tr>
+<td>Subtract</td>
+<td>他のRDDとの差集合を生成</td>
+</tr>
+</tbody>
+</table>
+
+<p><br></p>
 
 <h4 id="rdd-transformations-map">RDD：Transformations：Map</h4>
 
@@ -1040,21 +1091,76 @@ sc.stop<span style="color:#f92672">()</span></code></pre></div>
 
 <h4 id="actions">Actions</h4>
 
-<p>&nbsp; Actionsは、driver programに値を返すRDD操作です。最もよく使われる変換処理のいくつかを記載します。（他はSparkの公式ドキュメントを閲覧してください。）
-|メソッド|備考|
-|&mdash;|&mdash;|
-|collect|全ての要素を返します|
-|Foreach|全ての要素に対して演算を行い、ドライバプログラムには何も返さずに保持します|
-|Take|最初n個の要素を返します|
-|Count|要素数を数えて返します|
-|first|一番最初の要素を返します|
-|top|大きいものからn個要素を返します|
-|mean|平均を返します|
-|sum|合計を返します|
-|variance|分散を返します|
-|stdev|標準偏差を返します|
-|saveAsTextFile|ファイルを保存します|
+<p>&nbsp; Actionsは、driver programに値を返すRDD操作です。最もよく使われる変換処理のいくつかを記載します。（他はSparkの公式ドキュメントを閲覧してください。）<br />
 <br></p>
+
+<table>
+<thead>
+<tr>
+<th>メソッド</th>
+<th>備考</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>collect</td>
+<td>全ての要素を返します</td>
+</tr>
+
+<tr>
+<td>Foreach</td>
+<td>全ての要素に対して演算を行い、ドライバプログラムには何も返さずに保持します</td>
+</tr>
+
+<tr>
+<td>Take</td>
+<td>最初n個の要素を返します</td>
+</tr>
+
+<tr>
+<td>Count</td>
+<td>要素数を数えて返します</td>
+</tr>
+
+<tr>
+<td>first</td>
+<td>一番最初の要素を返します</td>
+</tr>
+
+<tr>
+<td>top</td>
+<td>大きいものからn個要素を返します</td>
+</tr>
+
+<tr>
+<td>mean</td>
+<td>平均を返します</td>
+</tr>
+
+<tr>
+<td>sum</td>
+<td>合計を返します</td>
+</tr>
+
+<tr>
+<td>variance</td>
+<td>分散を返します</td>
+</tr>
+
+<tr>
+<td>stdev</td>
+<td>標準偏差を返します</td>
+</tr>
+
+<tr>
+<td>saveAsTextFile</td>
+<td>ファイルを保存します</td>
+</tr>
+</tbody>
+</table>
+
+<p><br></p>
 
 <h4 id="actions-collect">Actions : collect</h4>
 

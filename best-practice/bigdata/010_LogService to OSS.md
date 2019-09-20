@@ -11,9 +11,9 @@ draft: false
 
 
 ## はじめに
-&nbsp; 本章はAlibabaCloud LogServiceを使ってOSSへデータを送ります。ゴールとしては以下のような構成図になります。
-また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。
-（この章のゴールは外部データソースをOSSへ集約する、のみとなります）
+&nbsp; 本章はAlibabaCloud LogServiceを使ってOSSへデータを送ります。ゴールとしては以下のような構成図になります。    
+また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。    
+（この章のゴールは外部データソースをOSSへ集約する、のみとなります）    
 
 
 ![BD_Images_LogService_to_OSS_001](../static_images/BD_Images_LogService_to_OSS_001.png)
@@ -21,35 +21,35 @@ draft: false
 
 
 ## LogServiceとは
-&nbsp; AlibabaCloudのLogServiceは迅速にログデータを収集、処理、送信、照会/分析することができるプロダクトサービスです。
+&nbsp; AlibabaCloudのLogServiceは迅速にログデータを収集、処理、送信、照会/分析することができるプロダクトサービスです。    
 
-[詳しいことはhelpページにて記載](https://jp.alibabacloud.com/help/doc-detail/48869.htm)していますので、こちらを参照ください。
-https://jp.alibabacloud.com/help/doc-detail/48869.htm
+[詳しいことはhelpページにて記載](https://jp.alibabacloud.com/help/doc-detail/48869.htm)していますので、こちらを参照ください。    
+https://jp.alibabacloud.com/help/doc-detail/48869.htm    
 
 
 ## LogServiceでのデータ収集方法
-LogServiceでのデータ収集方法は様々な方法がありますが、今回はtwitterのtweetデータを収集、OSSヘ転送する処理を目指します。イメージとしてはECSでTwitterデータを収集、それをLogServiceに転送し、LogServiceによりOSSへParquet形式でデータ転送、という流れになります。
+LogServiceでのデータ収集方法は様々な方法がありますが、今回はtwitterのtweetデータを収集、OSSヘ転送する処理を目指します。イメージとしてはECSでTwitterデータを収集、それをLogServiceに転送し、LogServiceによりOSSへParquet形式でデータ転送、という流れになります。    
 
 
 ![BD_Images_LogService_to_OSS_002](../static_images/BD_Images_LogService_to_OSS_002.png)
+    
 
-
-Step1 . LogServiceでプロジェクトの作成、Logstoreを作成します。
-[こちらにやり方が記載](https://jp.alibabacloud.com/help/doc-detail/54604.htm)されていますので、説明は割愛します。
+Step1 . LogServiceでプロジェクトの作成、Logstoreを作成します。    
+[こちらにやり方が記載](https://jp.alibabacloud.com/help/doc-detail/54604.htm)されていますので、説明は割愛します。    
 https://jp.alibabacloud.com/help/doc-detail/54604.htm
-
+    
 Step2. ECSインスタンスを起動
-今回、LogService上で構築することも可能ですが、twitter APIを利用するためにECSでLogService APIと連携して処理します。
-
-下準備として、ECSインスタンスに以下ライブラリのインストールをします。
+今回、LogService上で構築することも可能ですが、twitter APIを利用するためにECSでLogService APIと連携して処理します。    
+    
+下準備として、ECSインスタンスに以下ライブラリのインストールをします。    
 ```bash
 pip3.6 install -U aliyun-log-python-sdk
 pip3.6 install twitter
-```
-
-次は以下、Pythonファイル`tweet.py`を作成し、実行します。
-ssh接続が切れても恒久的に起動し続けたい場合は、`nohup python3.6 tweet.py &`と実行してください。
-
+```    
+    
+次は以下、Pythonファイル`tweet.py`を作成し、実行します。    
+ssh接続が切れても恒久的に起動し続けたい場合は、`nohup python3.6 tweet.py &`と実行してください。    
+    
 ```python
 # -*- coding: utf-8 -*-
 
@@ -177,20 +177,20 @@ if __name__=='__main__':
 
 ```
 <br>
-Step3. LogServiceでステータスチェックします。
-LogServiceの「Logstoreリスト」の「解析検索」にある「解析」をクリックし、上記Pythonの実行結果、tweet情報を確認します。
-
+Step3. LogServiceでステータスチェックします。    
+LogServiceの「Logstoreリスト」の「解析検索」にある「解析」をクリックし、上記Pythonの実行結果、tweet情報を確認します。    
+    
 ![BD_Images_LogService_to_OSS_002.5](../static_images/BD_Images_LogService_to_OSS_002.5.png)
 
 ![BD_Images_LogService_to_OSS_003](../static_images/BD_Images_LogService_to_OSS_003.png)
 <br>
 
-今度はLogServiceの「Logstoreリスト」の「LogShipper」にある「OSS」をクリックし、収集したLogをOSSへ転送するように設定します。
-今回のTwitterデータの場合は以下のような設定となりました。
+今度はLogServiceの「Logstoreリスト」の「LogShipper」にある「OSS」をクリックし、収集したLogをOSSへ転送するように設定します。    
+今回のTwitterデータの場合は以下のような設定となりました。    
 ![BD_Images_LogService_to_OSS_004](../static_images/BD_Images_LogService_to_OSS_004.png)
 <br>
 
-Step4. OSSでデータが転送されてるかを確認します。データがあることを確認できたら終了です。
+Step4. OSSでデータが転送されてるかを確認します。データがあることを確認できたら終了です。    
 ![BD_Images_LogService_to_OSS_005](../static_images/BD_Images_LogService_to_OSS_005.png)
 
 

@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-09-20T06:32:14 UTC">
+<meta name="revised" content="2019-09-20T07:06:18 UTC">
 <title>HDFSとは :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -833,18 +833,18 @@ HadoopはHDFS（Hadoop Distributed Filesystem)と呼ばれる分散ファイル�
 </ul></li>
 </ul>
 
-<p>&nbsp; HDFSクラスターは、クラスター内のノードごとに1つのNameNode（ネームノード）と複数のDataNode（データノード）で構成されます。NameNodeは、すべてのHDFSメタデータ（属性情報、構成情報、容量、カテゴリライズetc）を記録、管理します。いわゆるHDFSクラスタのリポジトリの位置付けです。NameNodeは、マスターサーバとスレーブサーバの構成で機能し、NameNodeによってファイルシステムを全体管理するため、マスタサーバ/ネームノードを通さずにDataNodeのファイル取得へのアクセスを規制します。応用としてケルベロス認証があります。ケルベロス認証は別の章にて記述します。
+<p>&nbsp; HDFSクラスターは、クラスター内のノードごとに1つのNameNode（ネームノード）と複数のDataNode（データノード）で構成されます。NameNodeは、すべてのHDFSメタデータ（属性情報、構成情報、容量、カテゴリライズetc）を記録、管理します。いわゆるHDFSクラスタのリポジトリの位置付けです。NameNodeは、マスターサーバとスレーブサーバの構成で機能し、NameNodeによってファイルシステムを全体管理するため、マスタサーバ/ネームノードを通さずにDataNodeのファイル取得へのアクセスを規制します。応用としてケルベロス認証があります。ケルベロス認証は別の章にて記述します。<br />
 &nbsp; NameNodeに入ってくるファイルは1つ以上のblockに分割され、それぞれのDataNodeに保存されます。NameNodeはファイルやディレクトリのオープン、クローズ、名前変更などのファイルシステム操作をします。DataNodeによって送信されたハートビートとブロックレポートからDataNodeへのブロックのマッピングを決定します。DataNodesは、読み取り/書き込み要求を実行し、NameNodeがコマンドを要求した場合にのみ、ブロック作成、ブロック削除、およびブロック複製を実行します。</p>
 
 <p><img src="../static_images/BD_Images_What_is_HDFS_001.png" alt="BD_Images_What_is_HDFS_001" />
 <br></p>
 
-<p>&nbsp; HDFSはデータ保存をメインとして利用しますが、HBaseやKudu、他のNoSQL、Spark、tensorflowのような他の様々なHadoopエコシステムに利用する場合があります。様々なユースケースに応じてHDFSの種別、圧縮形式、ストレージ形式を考慮する必要があります。これは様々なHadoopエコシステムに依存します。以下、本章ではHDFSのファイル形式、圧縮戦略、スキーマ設計などについて説明します。
+<p>&nbsp; HDFSはデータ保存をメインとして利用しますが、HBaseやKudu、他のNoSQL、Spark、tensorflowのような他の様々なHadoopエコシステムに利用する場合があります。様々なユースケースに応じてHDFSの種別、圧縮形式、ストレージ形式を考慮する必要があります。これは様々なHadoopエコシステムに依存します。以下、本章ではHDFSのファイル形式、圧縮戦略、スキーマ設計などについて説明します。<br />
 <br></p>
 
 <h2 id="hdfsの設計">HDFSの設計</h2>
 
-<p>&nbsp; 上記、HDFSのアーキテクチャを説明しました。HDFSはあくまでも大規模なビッグデータに対応するためのファイルシステムの故、以下のメリットとデメリットがあります。
+<p>&nbsp; 上記、HDFSのアーキテクチャを説明しました。HDFSはあくまでも大規模なビッグデータに対応するためのファイルシステムの故、以下のメリットとデメリットがあります。<br />
 <br></p>
 
 <table>
@@ -894,16 +894,16 @@ HadoopはHDFS（Hadoop Distributed Filesystem)と呼ばれる分散ファイル�
 
 <p>&nbsp; 画像/動画などのバイナルファイルは基本的にfile.block.sizeごとにSequenceなどのコンテナ形式で保存されます。逆に100GBとかあまりにも大きいバイナリファイルであれば、ブロック固定長の関係とディスクの転送レートからしてそのまま保存することが望ましいです。</p>
 
-<p>&nbsp; 他、HadoopのHDFSとして様々なファイル形式があります。特徴、列指向、様々なHadoopエコシステム、比較表を作成しましたので、こちらを参照いただければ幸いです。
+<p>&nbsp; 他、HadoopのHDFSとして様々なファイル形式があります。特徴、列指向、様々なHadoopエコシステム、比較表を作成しましたので、こちらを参照いただければ幸いです。<br />
 <img src="../static_images/BD_Images_What_is_HDFS_003.png" alt="BD_Images_What_is_HDFS_003" /></p>
 
-<p>この比較から、HDFSはParquetが最も有力候補となっています。
+<p>この比較から、HDFSはParquetが最も有力候補となっています。<br />
 <br></p>
 
 <h2 id="hdfs-parquetについて">HDFS_Parquetについて</h2>
 
-<p>&nbsp; 上記、比較表でまとめたように、HDFSはParquetが理想という結論が出ました。こちらについて補足します。
-&nbsp; Parquetを説明する前に、列指向について説明します。BigDataの場合、レコードが数千万、数億レコードと巨大になります。MySQLやOracleなどは通常、レコード最後の行までフルスキャンして処理するので、レコード数が多いほどI/O負荷、結果クエリを投げても処理が遅くなってしまいます。そのために列指向というデータベースが登場しました。
+<p>&nbsp; 上記、比較表でまとめたように、HDFSはParquetが理想という結論が出ました。こちらについて補足します。<br />
+&nbsp; Parquetを説明する前に、列指向について説明します。BigDataの場合、レコードが数千万、数億レコードと巨大になります。MySQLやOracleなどは通常、レコード最後の行までフルスキャンして処理するので、レコード数が多いほどI/O負荷、結果クエリを投げても処理が遅くなってしまいます。そのために列指向というデータベースが登場しました。<br />
 <img src="../static_images/BD_Images_What_is_HDFS_003.2.png" alt="BD_Images_What_is_HDFS_003.2" />
 <img src="../static_images/BD_Images_What_is_HDFS_003.3.png" alt="BD_Images_What_is_HDFS_003.2" />
 <br></p>
@@ -913,19 +913,19 @@ HadoopはHDFS（Hadoop Distributed Filesystem)と呼ばれる分散ファイル�
 <p><img src="../static_images/BD_Images_What_is_HDFS_003.5.png" alt="BD_Images_What_is_HDFS_003.5" />
 <br></p>
 
-<p>&nbsp; この様に、HDFSとしてデータを保存した後、分析処理をするとしたらMPPら列指向に柔軟に合わせる必要があります。それでは列指向としてなぜParquetが選ばれたかを説明します。
-Hadoopエコシステムとして開発された列指向フォーマットParquetとORCがあります。ParquetはHDFSから分散検索処理を高速化する技術（Googleの論文Dremel: <a href="https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/36632.pdf">Interactive Analysis of Web-Scale Datasets</a>）から開発されたフォーマット、ORCはApache Hiveのために開発されたフォーマットと目的や背景の違いがあります。Parquetは高い圧縮率と高速な分析を可能にするファイルフォーマットです。
-&nbsp; 例えば、以下の図の様なテーブルがあったとします。これが数千億レコード、100TBとあった場合、行指向、レコードを1行1行ずつスキャンして処理するのは骨が折れます。そのため、スキャンできる様にカラムごとにデータ分離して列チャンク（ネスト化）としてデータを保持します。これはデータ構造の情報を保持しつつ、サブセットごとにデータを保持したい思考から設計されたものです。こうして100TB規模の数千億レコードでも、抽出したいカラムだけをスキャンして処理するため、分析の高速処理が可能になります。
+<p>&nbsp; この様に、HDFSとしてデータを保存した後、分析処理をするとしたらMPPら列指向に柔軟に合わせる必要があります。それでは列指向としてなぜParquetが選ばれたかを説明します。<br />
+Hadoopエコシステムとして開発された列指向フォーマットParquetとORCがあります。ParquetはHDFSから分散検索処理を高速化する技術（Googleの論文Dremel: <a href="https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/36632.pdf">Interactive Analysis of Web-Scale Datasets</a>）から開発されたフォーマット、ORCはApache Hiveのために開発されたフォーマットと目的や背景の違いがあります。Parquetは高い圧縮率と高速な分析を可能にするファイルフォーマットです。<br />
+&nbsp; 例えば、以下の図の様なテーブルがあったとします。これが数千億レコード、100TBとあった場合、行指向、レコードを1行1行ずつスキャンして処理するのは骨が折れます。そのため、スキャンできる様にカラムごとにデータ分離して列チャンク（ネスト化）としてデータを保持します。これはデータ構造の情報を保持しつつ、サブセットごとにデータを保持したい思考から設計されたものです。こうして100TB規模の数千億レコードでも、抽出したいカラムだけをスキャンして処理するため、分析の高速処理が可能になります。<br />
 <img src="../static_images/BD_Images_What_is_HDFS_006.png" alt="BD_Images_What_is_HDFS_006" />
 <br></p>
 
-<p>他にParquetは現在も進化中なので、<a href="http://parquet.apache.org/documentation/latest/">最新情報やアーキテクチャはこちらを参照</a>いただければ幸いです。
+<p>他にParquetは現在も進化中なので、<a href="http://parquet.apache.org/documentation/latest/">最新情報やアーキテクチャはこちらを参照</a>いただければ幸いです。<br />
 <a href="http://parquet.apache.org/documentation/latest/">http://parquet.apache.org/documentation/latest/</a>
 <br></p>
 
 <h2 id="hdfsファイルの圧縮について">HDFSファイルの圧縮について</h2>
 
-<p>&nbsp; ビッグデータはデータを持つ分、ストレージら料金が高くなります。そのため、ほとんどはHDFSファイルを圧縮し格納します。そこで注意したいのが、HDFDSファイルの種別、圧縮有無についてです。HDFSファイルの種別は以下の図通りにそれぞれ特徴がありますので、ケースに合わせて対応が望ましいです。圧縮有無については、多くのHDFSファイルを圧縮した場合、解凍のための処理時間、CPU使用率が上がる問題がありますので、バランス調整が大事です。
+<p>&nbsp; ビッグデータはデータを持つ分、ストレージら料金が高くなります。そのため、ほとんどはHDFSファイルを圧縮し格納します。そこで注意したいのが、HDFDSファイルの種別、圧縮有無についてです。HDFSファイルの種別は以下の図通りにそれぞれ特徴がありますので、ケースに合わせて対応が望ましいです。圧縮有無については、多くのHDFSファイルを圧縮した場合、解凍のための処理時間、CPU使用率が上がる問題がありますので、バランス調整が大事です。<br />
 <img src="../static_images/BD_Images_What_is_HDFS_004.png" alt="BD_Images_What_is_HDFS_004" />
 <img src="../static_images/BD_Images_What_is_HDFS_005.png" alt="BD_Images_What_is_HDFS_005" />
 <br></p>

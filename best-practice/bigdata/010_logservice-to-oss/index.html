@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-09-20T06:32:14 UTC">
+<meta name="revised" content="2019-09-20T07:06:18 UTC">
 <title>LogServiceでOSSへデータを集める方法 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -744,6 +744,47 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
    Getting Started</option>
     <option value="/help/best-practice/" >
    ベストプラクティス</option> 
+    <option value="/help/best-practice/general/" >
+  - 
+   全般</option>
+    <option value="/help/best-practice/product/" >
+  - 
+   プロダクト</option>
+    <option value="/help/best-practice/web-application/" >
+  - 
+   Webアプリケーション</option>
+    <option value="/help/best-practice/terraform/" >
+  - 
+   Terraform</option>
+    <option value="/help/best-practice/container/" >
+  - 
+   コンテナ</option>
+    <option value="/help/best-practice/bigdata/" >
+  - 
+   Bigdata</option> 
+      <option value="/help/best-practice/bigdata/001_what-is-bigdata/" >-- BigDataとは</option>
+      <option value="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" >-- Hadoopとその周辺の技術について</option>
+      <option value="/help/best-practice/bigdata/003_what-is-spark/" >-- Sparkについて</option>
+      <option value="/help/best-practice/bigdata/004_what-is-hdfs/" >-- HDFSとは</option>
+      <option value="/help/best-practice/bigdata/005_what-is-yarn/" >-- YARNとは</option>
+      <option value="/help/best-practice/bigdata/006_what-is-required-for-dwh/" >-- DWHには何が必要か</option>
+      <option value="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" >-- OSSとE-MapReduce</option>
+      <option value="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/" >-- E-MapReduce起動、ETLとOLTP、OLAPをする</option>
+      <option value="/help/best-practice/bigdata/009_data-collection/" >-- 既存データからの移植について</option>
+      <option value="/help/best-practice/bigdata/010_logservice-to-oss/"  selected>-- LogServiceでOSSへデータを集める方法</option>
+      <option value="/help/best-practice/bigdata/011_aws-s3-to-oss/" >-- AWS S3からOSSへ</option>
+      <option value="/help/best-practice/bigdata/012_idc-to-oss/" >-- IDCからOSSへ</option>
+      <option value="/help/best-practice/bigdata/013_apache-spark-to-oss/" >-- ApacheSpark（Batch）からOSSへ</option>
+      <option value="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" >-- ApacheSpark（Streaming）からOSSへ</option>
+      <option value="/help/best-practice/bigdata/016_apache-flume-to-oss/" >-- Apache FlumeからOSSへ</option>
+      <option value="/help/best-practice/bigdata/017_fluentd-to-oss/" >-- FluentdからOSSへ</option>
+      <option value="/help/best-practice/bigdata/018_enbulk-to-oss/" >-- EnbulkからOSSへ</option>
+      <option value="/help/best-practice/bigdata/019_apache-arrow-to-oss/" >-- Apache ArrowからOSSへ</option>
+      <option value="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" >-- RDS for MySQLからOSSへ</option>
+      <option value="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" >-- AlibabaCloud OSSから別のOSSへ（移植）</option>
+      <option value="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" >-- AlibabaCloud OSSから別のOSSへ（同期）</option>
+      <option value="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/" >-- 開発環境構築について</option>
+  
   
     <option value="/help/scenario/" >
    ユースケース別シナリオ</option>
@@ -769,8 +810,8 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h2 id="はじめに">はじめに</h2>
 
-<p>&nbsp; 本章はAlibabaCloud LogServiceを使ってOSSへデータを送ります。ゴールとしては以下のような構成図になります。
-また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。
+<p>&nbsp; 本章はAlibabaCloud LogServiceを使ってOSSへデータを送ります。ゴールとしては以下のような構成図になります。<br />
+また、OSSにデータ収集後、E-MapReduceでHDFSへのETL処理がありますが、こちらは「OSSとE-MapReduce編」「ETL編」にて重複するため、割愛させていただきます。<br />
 （この章のゴールは外部データソースをOSSへ集約する、のみとなります）</p>
 
 <p><img src="../static_images/BD_Images_LogService_to_OSS_001.png" alt="BD_Images_LogService_to_OSS_001" />
@@ -780,7 +821,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <p>&nbsp; AlibabaCloudのLogServiceは迅速にログデータを収集、処理、送信、照会/分析することができるプロダクトサービスです。</p>
 
-<p><a href="https://jp.alibabacloud.com/help/doc-detail/48869.htm">詳しいことはhelpページにて記載</a>していますので、こちらを参照ください。
+<p><a href="https://jp.alibabacloud.com/help/doc-detail/48869.htm">詳しいことはhelpページにて記載</a>していますので、こちらを参照ください。<br />
 <a href="https://jp.alibabacloud.com/help/doc-detail/48869.htm">https://jp.alibabacloud.com/help/doc-detail/48869.htm</a></p>
 
 <h2 id="logserviceでのデータ収集方法">LogServiceでのデータ収集方法</h2>
@@ -789,8 +830,8 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <p><img src="../static_images/BD_Images_LogService_to_OSS_002.png" alt="BD_Images_LogService_to_OSS_002" /></p>
 
-<p>Step1 . LogServiceでプロジェクトの作成、Logstoreを作成します。
-<a href="https://jp.alibabacloud.com/help/doc-detail/54604.htm">こちらにやり方が記載</a>されていますので、説明は割愛します。
+<p>Step1 . LogServiceでプロジェクトの作成、Logstoreを作成します。<br />
+<a href="https://jp.alibabacloud.com/help/doc-detail/54604.htm">こちらにやり方が記載</a>されていますので、説明は割愛します。<br />
 <a href="https://jp.alibabacloud.com/help/doc-detail/54604.htm">https://jp.alibabacloud.com/help/doc-detail/54604.htm</a></p>
 
 <p>Step2. ECSインスタンスを起動
@@ -799,7 +840,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <p>下準備として、ECSインスタンスに以下ライブラリのインストールをします。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip3.6 install -U aliyun-log-python-sdk
 pip3.6 install twitter</code></pre></div>
-<p>次は以下、Pythonファイル<code>tweet.py</code>を作成し、実行します。
+<p>次は以下、Pythonファイル<code>tweet.py</code>を作成し、実行します。<br />
 ssh接続が切れても恒久的に起動し続けたい場合は、<code>nohup python3.6 tweet.py &amp;</code>と実行してください。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
 
@@ -925,7 +966,7 @@ ssh接続が切れても恒久的に起動し続けたい場合は、<code>nohup
 <span style="color:#00a8c8">if</span> <span style="color:#111">__name__</span><span style="color:#f92672">==</span><span style="color:#d88200">&#39;__main__&#39;</span><span style="color:#111">:</span>
     <span style="color:#111">twitter_put_logs</span><span style="color:#111">()</span></code></pre></div>
 <p><br>
-Step3. LogServiceでステータスチェックします。
+Step3. LogServiceでステータスチェックします。<br />
 LogServiceの「Logstoreリスト」の「解析検索」にある「解析」をクリックし、上記Pythonの実行結果、tweet情報を確認します。</p>
 
 <p><img src="../static_images/BD_Images_LogService_to_OSS_002.5.png" alt="BD_Images_LogService_to_OSS_002.5" /></p>
@@ -933,12 +974,12 @@ LogServiceの「Logstoreリスト」の「解析検索」にある「解析」�
 <p><img src="../static_images/BD_Images_LogService_to_OSS_003.png" alt="BD_Images_LogService_to_OSS_003" />
 <br></p>
 
-<p>今度はLogServiceの「Logstoreリスト」の「LogShipper」にある「OSS」をクリックし、収集したLogをOSSへ転送するように設定します。
-今回のTwitterデータの場合は以下のような設定となりました。
+<p>今度はLogServiceの「Logstoreリスト」の「LogShipper」にある「OSS」をクリックし、収集したLogをOSSへ転送するように設定します。<br />
+今回のTwitterデータの場合は以下のような設定となりました。<br />
 <img src="../static_images/BD_Images_LogService_to_OSS_004.png" alt="BD_Images_LogService_to_OSS_004" />
 <br></p>
 
-<p>Step4. OSSでデータが転送されてるかを確認します。データがあることを確認できたら終了です。
+<p>Step4. OSSでデータが転送されてるかを確認します。データがあることを確認できたら終了です。<br />
 <img src="../static_images/BD_Images_LogService_to_OSS_005.png" alt="BD_Images_LogService_to_OSS_005" /></p>
 
 <h2 id="最後に">最後に</h2>

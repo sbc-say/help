@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-09-20T06:32:14 UTC">
+<meta name="revised" content="2019-09-20T07:06:18 UTC">
 <title>E-MapReduce起動、ETLとOLTP、OLAPをする :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -810,25 +810,25 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h2 id="e-mapreduceの起動-チューリアトルについて">E-MapReduceの起動、チューリアトルについて</h2>
 
-<p>&nbsp; 簡単なチューリアトルとして、E-MapReduceを起動しHiveでOSSにあるCSVファイルをParquetへETLし、HiveでOLTP、ImpalaでOLAPというワークフローをしてみます。
-E-MapReduceの起動は非常に簡単です。ゴールとしては以下の通りになります。
+<p>&nbsp; 簡単なチューリアトルとして、E-MapReduceを起動しHiveでOSSにあるCSVファイルをParquetへETLし、HiveでOLTP、ImpalaでOLAPというワークフローをしてみます。<br />
+E-MapReduceの起動は非常に簡単です。ゴールとしては以下の通りになります。<br />
 <img src="../static_images/BD_Images_OSS_and_E-MapReduce_015.png" alt="BD_Images_OSS_and_E-MapReduce_015" />
 <br></p>
 
 <h4 id="step1-ossにデータを保存します">Step1: OSSにデータを保存します</h4>
 
-<p>BigDataを始めるためにはまずデータが必要です。今回はニューヨーク市のタクシーおよびリムジン委員会（NYC TLC）によるタクシーデータ（240GBを超えるCSVファイル）という<a href="https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page">オープンデータ</a>を使って、OSS+E-MapReduceを使用したETL、分析業務の取り込みについて説明します。
+<p>BigDataを始めるためにはまずデータが必要です。今回はニューヨーク市のタクシーおよびリムジン委員会（NYC TLC）によるタクシーデータ（240GBを超えるCSVファイル）という<a href="https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page">オープンデータ</a>を使って、OSS+E-MapReduceを使用したETL、分析業務の取り込みについて説明します。<br />
 <a href="https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page">https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page</a>
 <br></p>
 
 <p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_015.5.png" alt="BD_Images_OSS_and_E-MapReduce_015.5" />
 <br></p>
 
-<p>ECSインスタンス１台にて、aliyun-cliをインストールします。そのあと、NYTデータをダウンロード、OSSヘアップロードします。
-前提として、OSSにBigData専用のディレクトリを作成する必要があります。以下の例では
+<p>ECSインスタンス１台にて、aliyun-cliをインストールします。そのあと、NYTデータをダウンロード、OSSヘアップロードします。<br />
+前提として、OSSにBigData専用のディレクトリを作成する必要があります。以下の例では<br />
 <code>oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/</code> というディレクトリを作成しました。</p>
 
-<p>以下はECS、CentOS 7.6での操作になります。
+<p>以下はECS、CentOS 7.6での操作になります。<br />
 より詳しい<a href="https://www.alibabacloud.com/help/doc-detail/121541.htm">インストール方法はこちらを参考</a>にしてください。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span># 
 <span style="color:#f92672">[</span>root@aliyun ~<span style="color:#f92672">]</span><span style="color:#75715e"># yum -y install wget</span>
@@ -925,12 +925,12 @@ Bucket Number is: <span style="color:#ae81ff">5</span>
 <p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_016.png" alt="BD_Images_OSS_and_E-MapReduce_016" />
 <br></p>
 
-<p>これで、OSSへのDataLake（厳密には違うが）、下準備が完了しました。
+<p>これで、OSSへのDataLake（厳密には違うが）、下準備が完了しました。<br />
 <br></p>
 
 <h4 id="step2-e-mapreduceを起動する前に-ossでe-mapreduceに必要な権限を付与します">Step2: E-MapReduceを起動する前に、OSSでE-MapReduceに必要な権限を付与します。</h4>
 
-<p>&nbsp; E-MapReduceを起動する時に先に実施したいのがRAMロール <strong>AliyunEmrEcsDefaultRole</strong> の設定です。これを設定することで、EMRからOSSへのアクセスが楽になります。理由としては<a href="https://www.sbcloud.co.jp/entry/2019/02/01/metaservice/">こちらのBlog</a>が参考になると思います。
+<p>&nbsp; E-MapReduceを起動する時に先に実施したいのがRAMロール <strong>AliyunEmrEcsDefaultRole</strong> の設定です。これを設定することで、EMRからOSSへのアクセスが楽になります。理由としては<a href="https://www.sbcloud.co.jp/entry/2019/02/01/metaservice/">こちらのBlog</a>が参考になると思います。<br />
 <a href="https://www.sbcloud.co.jp/entry/2019/02/01/metaservice/">https://www.sbcloud.co.jp/entry/2019/02/01/metaservice/</a>
 <a href="https://jp.alibabacloud.com/help/doc-detail/43966.html">https://jp.alibabacloud.com/help/doc-detail/43966.html</a></p>
 
@@ -960,10 +960,10 @@ Bucket Number is: <span style="color:#ae81ff">5</span>
 </code></pre>
 
 <blockquote>
-<p>初期設定状態
+<p>初期設定状態<br />
 <img src="../static_images/BD_Images_OSS_and_E-MapReduce_019.png" alt="BD_Images_OSS_and_E-MapReduce_019" /></p>
 
-<p>E-MapReduceがOSSへアクセスできるように権限変更へ
+<p>E-MapReduceがOSSへアクセスできるように権限変更へ<br />
 <img src="../static_images/BD_Images_OSS_and_E-MapReduce_020.png" alt="BD_Images_OSS_and_E-MapReduce_020" /></p>
 </blockquote>
 
@@ -971,7 +971,7 @@ Bucket Number is: <span style="color:#ae81ff">5</span>
 
 <h4 id="step3-e-mapreduceを起動します">Step3: E-MapReduceを起動します。</h4>
 
-<p>&nbsp; 本題、E-MapReduceを起動します。consoleからE-MapReduceを選定し、クラスタ作成を進めます。
+<p>&nbsp; 本題、E-MapReduceを起動します。consoleからE-MapReduceを選定し、クラスタ作成を進めます。<br />
 今回、著者は以下の条件で起動いたしました。</p>
 
 <h6 id="環境について">環境について</h6>
@@ -1012,8 +1012,8 @@ Bucket Number is: <span style="color:#ae81ff">5</span>
 
 <p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_022.png" alt="BD_Images_OSS_and_E-MapReduce_022" />
 <br>
-Masterインスタンス、Coreインスタンス、Taskインスタンスは任意での選定になります。
-ただし、Hadoopエコシステムによっては必要な起動要件がありますので、状況によってはインスタンス台数を調整する必要があります。
+Masterインスタンス、Coreインスタンス、Taskインスタンスは任意での選定になります。<br />
+ただし、Hadoopエコシステムによっては必要な起動要件がありますので、状況によってはインスタンス台数を調整する必要があります。<br />
 役割はこちらを参考にしてください。</p>
 
 <table>
@@ -1049,28 +1049,31 @@ Masterインスタンス、Coreインスタンス、Taskインスタンスは任
 <p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_023.png" alt="BD_Images_OSS_and_E-MapReduce_023" />
 <br></p>
 
-<p>knox（REST APIを使用してWebHDFSやHBaseとかWeb UIインターフェースを閲覧するもの）を利用する場合は、こちらにてKnoxユーザ追加のアカウントを登録するとあとが便利です。
+<p>knox（REST APIを使用してWebHDFSやHBaseとかWeb UIインターフェースを閲覧するもの）を利用する場合は、こちらにてKnoxユーザ追加のアカウントを登録するとあとが便利です。<br />
 <img src="../static_images/BD_Images_OSS_and_E-MapReduce_023.5.png" alt="BD_Images_OSS_and_E-MapReduce_023.5" />
 <br></p>
 
-<p>途中、<code>ブートストラップアクション</code>という入力欄があります。ブートストラップアクションについて説明します。
-E-MapReduceは上記の説明通り、ECSを起動し、E-MapReduceに必要な機能をインストール・起動、こうしてE-MapReduceを起動します。
-この流れで注目したいのが <code>E-MapReduceに必要な機能をインストール・起動</code>という箇所で、これをブートストラップアクションと呼びます。
-AlibabaCloudのE-MapReduceはブートストラップアクションが利用できるので、以下の例に加えて、様々な応用ができます。
-* タイムゾーンの変更
-* Igniteなど、利用したいOSSやライブラリをインストール</p>
+<p>途中、<code>ブートストラップアクション</code>という入力欄があります。ブートストラップアクションについて説明します。<br />
+E-MapReduceは上記の説明通り、ECSを起動し、E-MapReduceに必要な機能をインストール・起動、こうしてE-MapReduceを起動します。<br />
+この流れで注目したいのが <code>E-MapReduceに必要な機能をインストール・起動</code>という箇所で、これをブートストラップアクションと呼びます。<br />
+AlibabaCloudのE-MapReduceはブートストラップアクションが利用できるので、以下の例に加えて、様々な応用ができます。</p>
 
-<p>ここでちょっと例を記載してみます。E-MapReduceでタイムゾーンを変更したいとします。この場合、以下のshellを作成し、OSSへ格納します。
+<ul>
+<li>タイムゾーンの変更</li>
+<li>Igniteなど、利用したいOSSやライブラリをインストール</li>
+</ul>
+
+<p>ここでちょっと例を記載してみます。E-MapReduceでタイムゾーンを変更したいとします。この場合、以下のshellを作成し、OSSへ格納します。<br />
 これをE-MapReduceのブートストラップアクション欄にてシェルを起動するように記載するだけです。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
 </span><span style="color:#75715e"></span>sudo rm /etc/localtime 
 sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime</code></pre></div>
 <p><br></p>
 
-<p>起動したい設定が終わったら、起動します。起動するエコシステムが多いほどブートストラップアクション含め時間がかかります（10〜30分）
+<p>起動したい設定が終わったら、起動します。起動するエコシステムが多いほどブートストラップアクション含め時間がかかります（10〜30分）<br />
 <br></p>
 
-<p>E-MapReduceが無事起動完了したら、ヘルスチェックを見て無事完了してるかを確認します。自動でヘルスチェックが行ってることもあり、基本的には問題ないことが多いです。
+<p>E-MapReduceが無事起動完了したら、ヘルスチェックを見て無事完了してるかを確認します。自動でヘルスチェックが行ってることもあり、基本的には問題ないことが多いです。<br />
 <img src="../static_images/BD_Images_OSS_and_E-MapReduce_024.png" alt="BD_Images_OSS_and_E-MapReduce_024" />
 <br></p>
 
@@ -1081,7 +1084,7 @@ Hueを使う前に、E-MapReduceのセキュリティルールを変更する必
 
 <h6 id="自分が使用してるnw環境のipアドレスのみを許容する場合">自分が使用してるNW環境のIPアドレスのみを許容する場合</h6>
 
-<p><a href="http://www.ip138.com">以下のサイト</a>へアクセスし、自分が使用してるNW環境のIPアドレスを取得します。これをE-MapReduceが使用してるセキュリティグループにてポート8443、8888に許容します。
+<p><a href="http://www.ip138.com">以下のサイト</a>へアクセスし、自分が使用してるNW環境のIPアドレスを取得します。これをE-MapReduceが使用してるセキュリティグループにてポート8443、8888に許容します。<br />
 <a href="http://www.ip138.com">http://www.ip138.com</a></p>
 
 <p>E-MapReduceでのポート8443、8888、8088は次のような位置付けです。</p>
@@ -1206,7 +1209,7 @@ Hueを使う前に、E-MapReduceのセキュリティルールを変更する必
       sv --&gt;&gt;- cl : 14.クエリ結果を表示            </code></pre></div>
 <p><br></p>
 
-<p>まずは 1〜2:「Hiveで中間テーブルを作成」の処理をします。HueでクエリをHiveに選択し、以下クエリを投げます。
+<p>まずは 1〜2:「Hiveで中間テーブルを作成」の処理をします。HueでクエリをHiveに選択し、以下クエリを投げます。<br />
 このSQLはHiveで一時的に中間テーブル（クラスタ内のデータノード）を作成するものです。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">EXTERNAL</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#f92672">`</span><span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span><span style="color:#f92672">`</span><span style="color:#111">(</span> 
 <span style="color:#f92672">`</span><span style="color:#111">vendor_id</span><span style="color:#f92672">`</span> <span style="color:#111">string</span><span style="color:#111">,</span> 
@@ -1229,8 +1232,8 @@ HueでSQL入力画面に上記のSQLクエリを入力後、実行ボタンを�
 <p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_032.png" alt="BD_Images_OSS_and_E-MapReduce_032" />
 <br></p>
 
-<p>続いて、3-6:「HiveでOSSのデータをLoad」の処理をします。
-Hiveのデータノードにて中間テーブル作成後、OSSのファイルを指定し、中間テーブルへLoadします（時間がかかります）
+<p>続いて、3-6:「HiveでOSSのデータをLoad」の処理をします。<br />
+Hiveのデータノードにて中間テーブル作成後、OSSのファイルを指定し、中間テーブルへLoadします（時間がかかります）<br />
 Load後 OSSのファイルは自動消去されますので、注意してください。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2009-08.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;200908&#39;</span><span style="color:#111">);</span>
 <span style="color:#00a8c8">LOAD</span> <span style="color:#00a8c8">DATA</span> <span style="color:#111">INPATH</span> <span style="color:#d88200">&#39;oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2009-09.csv&#39;</span>　<span style="color:#00a8c8">INTO</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#111">partition</span> <span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;200909&#39;</span><span style="color:#111">);</span>
@@ -1254,7 +1257,7 @@ SQL実行したい量が多いので、コツとして実行したいSQKをマ�
 <p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_034.png" alt="BD_Images_OSS_and_E-MapReduce_034" />
 <br></p>
 
-<p>テストにHive SQLを中間テーブルに投げてみます。ここでも結果が表示されていたらOKです。
+<p>テストにHive SQLを中間テーブルに投げてみます。ここでも結果が表示されていたらOKです。<br />
 &gt;注意として、レコード数が多いため、limit などでレコード表示件数を制限してください。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">SELECT</span> <span style="color:#111">vendor_id</span><span style="color:#111">,</span><span style="color:#111">pickup_datetime</span><span style="color:#111">,</span><span style="color:#111">passenger_count</span> <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips</span> <span style="color:#00a8c8">WHERE</span> <span style="color:#111">yyyymmdd</span> <span style="color:#f92672">&gt;=</span> <span style="color:#d88200">&#39;201003&#39;</span> <span style="color:#00a8c8">AND</span> <span style="color:#111">yyyymmdd</span> <span style="color:#f92672">&lt;=</span> <span style="color:#d88200">&#39;201004&#39;</span> <span style="color:#00a8c8">limit</span> <span style="color:#ae81ff">10</span><span style="color:#111">;</span></code></pre></div>
 <p><img src="../static_images/BD_Images_OSS_and_E-MapReduce_035.png" alt="BD_Images_OSS_and_E-MapReduce_035" />
@@ -1294,10 +1297,10 @@ SQL実行したい量が多いので、コツとして実行したいSQKをマ�
 <span style="color:#00a8c8">FROM</span> <span style="color:#111">yellow_trips</span> <span style="color:#00a8c8">where</span> <span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201004&#39;</span><span style="color:#111">;</span></code></pre></div>
 <p>その結果、OSSのPartitionが yyyymmdd=&lsquo;201004&rsquo; というところにHDFS_parquetファイルが生成されます。これでOSSにあったCSVファイルをHDFS_ParquetへETLすることができました。ちなみにDataNodeの中間データで Partitionが yyyymmdd=&lsquo;201004&rsquo; はこのSQLクエリにより自動削除されています。</p>
 
-<p>あとはPartitionごとに上記クエリを投与してETL処理をしていただければと思います。また、HiveはOLTP（加工処理）が得意なので、ここでSQLを使ってレコードの追加、削除、更新をしてみるのもいいです。
+<p>このようにPartitionに上記クエリを投与してETL処理をしていただければと思います。また、HiveはOLTP（加工処理）が得意なので、ここでSQLを使ってレコードの追加、削除、更新をしてみるのもいいです。<br />
 <br></p>
 
-<p>11-14.「ImpalaでOSSのHDFSにクエリ投与」の処理をします。Hueの「クエリ」プルタウンでImpalaを選択します。
+<p>11-14.「ImpalaでOSSのHDFSにクエリ投与」の処理をします。Hueの「クエリ」プルタウンでImpalaを選択します。<br />
 ImpalaでOSSにあるデータをHDFSとして認識するために以下SQLクエリを投与します。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">CREATE</span> <span style="color:#00a8c8">EXTERNAL</span> <span style="color:#00a8c8">TABLE</span> <span style="color:#111">yellow_trips_impala</span> <span style="color:#111">(</span>
 <span style="color:#f92672">`</span><span style="color:#111">vendor_id</span><span style="color:#f92672">`</span> <span style="color:#111">string</span><span style="color:#111">,</span> 
@@ -1315,7 +1318,7 @@ ImpalaでOSSにあるデータをHDFSとして認識するために以下SQLク�
 <span style="color:#00a8c8">alter</span> <span style="color:#00a8c8">table</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips_impala</span> <span style="color:#00a8c8">add</span> <span style="color:#111">partition</span><span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201004&#39;</span><span style="color:#111">);</span>
 <span style="color:#00a8c8">alter</span> <span style="color:#00a8c8">table</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips_impala</span> <span style="color:#00a8c8">add</span> <span style="color:#111">partition</span><span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201005&#39;</span><span style="color:#111">);</span>
 <span style="color:#00a8c8">alter</span> <span style="color:#00a8c8">table</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips_impala</span> <span style="color:#00a8c8">add</span> <span style="color:#111">partition</span><span style="color:#111">(</span><span style="color:#111">yyyymmdd</span><span style="color:#f92672">=</span><span style="color:#d88200">&#39;201006&#39;</span><span style="color:#111">);</span></code></pre></div>
-<p>あとはImpalaでPartitionを指定しつつ、好きに分析することができます。</p>
+<p>ImpalaでPartitionを指定しつつ、好きに分析することができます。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-SQL" data-lang="SQL"><span style="color:#00a8c8">SELECT</span> <span style="color:#111">vendor_id</span> <span style="color:#111">,</span> <span style="color:#111">pickup_datetime</span><span style="color:#111">,</span> <span style="color:#111">dropoff_datetime</span><span style="color:#111">,</span> <span style="color:#111">passenger_count</span> 
 <span style="color:#00a8c8">FROM</span> <span style="color:#00a8c8">default</span><span style="color:#111">.</span><span style="color:#111">yellow_trips_impala</span> 
 <span style="color:#00a8c8">WHERE</span> <span style="color:#111">yyyymmdd</span> <span style="color:#f92672">&gt;=</span> <span style="color:#d88200">&#39;201004&#39;</span> <span style="color:#00a8c8">limit</span> <span style="color:#ae81ff">10</span><span style="color:#111">;</span></code></pre></div>
@@ -1324,15 +1327,15 @@ ImpalaでOSSにあるデータをHDFSとして認識するために以下SQLク�
 
 <p><br></p>
 
-<p>Impalaの優れてるところはSQLクエリにてLOCATIONをOSSのパス先を指定するだけで、クエリを投げることができます。
-※もちろんSparkやHive、PrestoもOSSをセントラルストレージとしたSQLクエリ投与もできます。
+<p>Impalaの優れてるところはSQLクエリにてLOCATIONをOSSのパス先を指定するだけで、クエリを投げることができます。<br />
+※もちろんSparkやHive、PrestoもOSSをセントラルストレージとしたSQLクエリ投与もできます。<br />
 <br></p>
 
 <h2 id="まとめ">まとめ</h2>
 
-<p>本章ではE-MapReduceだけでOSSのcsvファイルをParquetへ簡単にETLできることや、OSSをセントラルストレージとしたOLTP、OLAP運用する手法を説明しました。
-AlibabaCloudのE-MapReduceはこの流れをタイムスケジューラによって自動処理化することも可能ですし、そこから機械学習をすることも可能です。ビジネスシーンに応じた様々な応用ができます。
-そのため、ファーストステップとして、上記E-MapReduceの全体的な流れを掴めればと思います。
+<p>本章ではE-MapReduceだけでOSSのcsvファイルをParquetへ簡単にETLできることや、OSSをセントラルストレージとしたOLTP、OLAP運用する手法を説明しました。<br />
+AlibabaCloudのE-MapReduceはこの流れをタイムスケジューラによって自動処理化することも可能ですし、そこから機械学習をすることも可能です。ビジネスシーンに応じた様々な応用ができます。<br />
+そのため、ファーストステップとして、上記E-MapReduceの全体的な流れを掴めればと思います。<br />
 <br></p>
 
 <h2 id="余談">余談</h2>
