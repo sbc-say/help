@@ -30,14 +30,15 @@ Fluentd は input, buffer, output という以下の役割を持っています�
 * データを紛失しないよう管理する (buffer)
   * やりとりの途中で何かエラーが起きたらリトライする
 
-他、特徴として、以下があります。
+他、特徴として、以下があります。    
+   
 * ログはタグで管理される
 * JSON形式
 * 様々なプラグインがあり、OSSやMySQL、Hadoop HDFSなど自由に接続が可能
 
-他、詳しいことは[Fluend公式サイト](https://www.fluentd.org/architecture)を参照してください。
-また、[Fluentdのガイドブック](https://docs.fluentd.org/)もありますので、使用方法はこちらを参考にしてください。
-https://docs.fluentd.org/
+他、詳しいことは[Fluend公式サイト](https://www.fluentd.org/architecture)を参照してください。    
+また、[Fluentdのガイドブック](https://docs.fluentd.org/)もありますので、使用方法はこちらを参考にしてください。    
+https://docs.fluentd.org/    
 <br>
 
 ## Fluendの導入
@@ -106,11 +107,12 @@ Loading mirror speeds from cached hostfile
 完了しました!
 [root@bigdatatest ~]# 
 ```
-Step3. AlibabaCloud ossへデータを流すためのFluentdプラグインをインストール
-$ td-agent-gem install fluent-plugin-aliyun-oss
-
-またfluent-plugin-aliyun-ossがインストールされてるか、以下のコマンドも実施
-$ td-agent-gem list fluent-plugin-aliyun-oss
+Step3. AlibabaCloud ossへデータを流すためのFluentdプラグインをインストール    
+`$ td-agent-gem install fluent-plugin-aliyun-oss`    
+    
+またfluent-plugin-aliyun-ossがインストールされてるか、以下のコマンドも実施    
+`$ td-agent-gem list fluent-plugin-aliyun-oss`    
+    
 ```bash
 [root@bigdatatest ~]# td-agent-gem install fluent-plugin-aliyun-oss
 Fetching: http-accept-1.7.0.gem (100%)
@@ -190,7 +192,8 @@ https://github.com/aliyun/fluent-plugin-oss
   port 8888
 </source>
 ```
-収集ログに対する権限エラー対策として、`/etc/init.d/td-agent` の設定ファイルを更新します。
+    
+収集ログに対する権限エラー対策として、`/etc/init.d/td-agent` の設定ファイルを更新します。    
 
 ```bash
 vi /etc/init.d/td-agent
@@ -202,8 +205,8 @@ TD_AGENT_USER=root
 TD_AGENT_GROUP=root
 TD_AGENT_RUBY=/opt/td-agent/embedded/bin/ruby
 ```
-
-Step5. td-agent.confファイルの編集が終われば、設定ファイルをリロードし、サーバを再起動します。
+    
+Step5. td-agent.confファイルの編集が終われば、設定ファイルをリロードし、サーバを再起動します。    
 ```bash
 [root@bigdatatest ~]# sudo /etc/init.d/td-agent reload
 Reloading td-agent configuration (via systemctl):          [  OK  ]
@@ -212,8 +215,8 @@ Reloading td-agent configuration (via systemctl):          [  OK  ]
 Reloading td-agent configuration (via systemctl):          [  OK  ]
 [root@bigdatatest ~]# 
 ```
-再起動すれば変更が反映されます。
-今回はApacheのAccess_Logとerror_Logを収集、OSSへ入れたいので、`/etc/td-agent/td-agent.conf`にて、以下の設定を付け加えます。
+再起動すれば変更が反映されます。    
+今回はApacheのAccess_Logとerror_Logを収集、OSSへ入れたいので、`/etc/td-agent/td-agent.conf`にて、以下の設定を付け加えます。    
 ```bash
 <source>
  type tail
@@ -240,8 +243,8 @@ Reloading td-agent configuration (via systemctl):          [  OK  ]
 Reloading td-agent configuration (via systemctl):          [  OK  ]
 [root@bigdatatest ~]# 
 ```
-
-Step6. fluentdのsystemdを有効化します。
+    
+Step6. fluentdのsystemdを有効化します。    
 
 ```bash
 [root@bigdatatest ~]# sudo systemctl enable td-agent
@@ -261,8 +264,8 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/td-agent.servic
  8月 30 17:10:15 bigdatatest.test systemd[1]: Started td-agent: Fluentd based data collector for Treasure Data.
 [root@bigdatatest ~]# 
 ```
-
-Step7. ちゃんと実現できてるかテストしてみます。
+    
+Step7. ちゃんと実現できてるかテストしてみます。    
 ```bash
 [root@bigdatatest ~]# curl -X POST -d 'json={"json":"message"}' http://localhost:8888/debug.test
 [root@bigdatatest ~]# tail -3 /var/log/td-agent/td-agent.log
@@ -272,15 +275,15 @@ Step7. ちゃんと実現できてるかテストしてみます。
 [root@bigdatatest ~]# 
 [root@bigdatatest ~]# 
 ```
-ちなみにLogファイルの場所は以下の通りになります（CentOSの場合）
-
+ちなみにLogファイルの場所は以下の通りになります（CentOSの場合）    
+    
 |ファイル名|場所|
 |---|---|
 |設定ファイル|/etc/td-agent/td-agent.conf|
 |ログファイル|/var/log/td-agent/td-agent.log|
 <br>
 
-OSSのバケットでも、Logがあることを確認できます。これで以上です。
+OSSのバケットでも、Logがあることを確認できます。これで以上です。    
 ![BD_Images_Fluend_to_OSS_002](../static_images/BD_Images_Fluend_to_OSS_002.png)
 <br>
 
