@@ -56,7 +56,8 @@ E-MapReduceを利用するメリット
 ![BD_Images_OSS_and_E-MapReduce_005](../static_images/BD_Images_OSS_and_E-MapReduce_005.png)
 <br>
 
-&nbsp; まとめると、OSSをセントラルストレージとしたBigData運用をすると以下のメリットがあります。      
+&nbsp; まとめると、OSSをセントラルストレージとしたBigData運用をすると以下のメリットがあります。     
+
 * ストレージと計算処理を分離できるため、データ消失のリスクがない      
 * OSSをセントラルストレージとすることで、全体的なコスト削減が見込める      
 * E-MapReduceの処理結果データをRDSやDataVなど、他プロダクトへ回すことが可能      
@@ -184,31 +185,8 @@ E-MapReduceを利用するメリット
 ![BD_Images_OSS_and_E-MapReduce_010](../static_images/BD_Images_OSS_and_E-MapReduce_010.png)
 <br>
 
-
-  
-
 ## まとめ
 本章ではOSSとE-MapReduceの相性、素晴らしさを説明しました。Hadoopに親しんでる人ならばE-MapReduceだけで簡単にETLできることや、OSSをセントラルストレージとしたOLTP、OLAP、機械学習、深層学習、ストリーミングができるのはAlibabaCloudのみです。
 加えて、本章では触れていませんでしたがHadoopに詳しくない、BigDataが初めての人でもマネージドサービスとしてMaxCompute、DataWorksプロダクトサービスもあります。このプロダクトだけでBigData運用を自己完結することも可能です。  
 このように、AlibabaCloudのBigData運用は非常に優位性があることを理解いただければと思います。
 <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
