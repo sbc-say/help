@@ -12,6 +12,7 @@ draft: false
 
 ## DataLake、DWH、OLTP、OLAPについて
 &nbsp; 本章ではDataLake、DWH、OLTP、OLAPについてを説明します。      
+
 * DataLakeとは、様々なデータを一点集約したデータのプールです。      
 * DWHとは、Data Ware House、二次三次利用できるよう処理済みのデータ基盤（テーブルたち）のことです。      
 * OLTPとは、Online Transaction Processing、オンライントランザクション処理のことです。      
@@ -36,9 +37,11 @@ draft: false
 <br>
 
 &nbsp; DWHを設計する上で特に意識したいことは以下の３点になります。      
+
 * データ収集、加工、処理が簡略化できる      
 * 容量を気にしない、長期的なデータ分できができる      
 * テーブル一本化（ファクトテーブル）で大規模加工処理や高速検索が可能      
+
 この３点を満たせば、DWHは分析基盤としても非常に有利になりますので、これらを意識して構築いただければと思います。      
 
 ![BD_Images_What_is_required_for_DWH_003](../static_images/BD_Images_What_is_required_for_DWH_003.png)
