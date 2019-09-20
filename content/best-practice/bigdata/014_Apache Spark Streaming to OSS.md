@@ -96,9 +96,9 @@ spark-submit network_wordcount.py emr-header-1.cluster-44076 9999
 <br>
 
 ## まとめ
-Spark Streamingはストリームデータを加工処理できるため（DStreams) 非常に便利です。ただ、Spark Streaming単体だけでは、TCPソケット接続を介してテキストデータを生成するsocketTextStream、ファイルデータを生成するtextFileStreamと、使用方法が少し限られています。そのため、これに加えてkafka、Ignite、などと連携することで更なるストリーミング応用ができます。
+Spark Streamingはストリームデータを加工処理できるため（DStreams) 非常に便利です。ただ、Spark Streaming単体だけでは、TCPソケット接続を介してテキストデータを生成するsocketTextStream、ファイルデータを生成するtextFileStreamと、使用方法が少し限られています。そのため、これに加えてkafka、Ignite、などと連携することで更なるストリーミング応用ができます。     
 <br>
-
+<br>
 参考：
 [Spark Streamingガイド](https://spark.apache.org/docs/latest/streaming-programming-guide.html)
 https://spark.apache.org/docs/latest/streaming-programming-guide.html

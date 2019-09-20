@@ -10,25 +10,25 @@ draft: false
 <!-- コンテンツを書くときはこの下に記載ください -->
 
 ## E-MapReduceの起動、チューリアトルについて
-&nbsp; 簡単なチューリアトルとして、E-MapReduceを起動しHiveでOSSにあるCSVファイルをParquetへETLし、HiveでOLTP、ImpalaでOLAPというワークフローをしてみます。
-E-MapReduceの起動は非常に簡単です。ゴールとしては以下の通りになります。
+&nbsp; 簡単なチューリアトルとして、E-MapReduceを起動しHiveでOSSにあるCSVファイルをParquetへETLし、HiveでOLTP、ImpalaでOLAPというワークフローをしてみます。  
+E-MapReduceの起動は非常に簡単です。ゴールとしては以下の通りになります。  
 ![BD_Images_OSS_and_E-MapReduce_015](../static_images/BD_Images_OSS_and_E-MapReduce_015.png)
 <br>
 
 #### Step1: OSSにデータを保存します
-BigDataを始めるためにはまずデータが必要です。今回はニューヨーク市のタクシーおよびリムジン委員会（NYC TLC）によるタクシーデータ（240GBを超えるCSVファイル）という[オープンデータ](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)を使って、OSS+E-MapReduceを使用したETL、分析業務の取り込みについて説明します。
+BigDataを始めるためにはまずデータが必要です。今回はニューヨーク市のタクシーおよびリムジン委員会（NYC TLC）によるタクシーデータ（240GBを超えるCSVファイル）という[オープンデータ](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)を使って、OSS+E-MapReduceを使用したETL、分析業務の取り込みについて説明します。  
 https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page
 <br>
 
 ![BD_Images_OSS_and_E-MapReduce_015.5](../static_images/BD_Images_OSS_and_E-MapReduce_015.5.png)
 <br>
 
-ECSインスタンス１台にて、aliyun-cliをインストールします。そのあと、NYTデータをダウンロード、OSSヘアップロードします。
-前提として、OSSにBigData専用のディレクトリを作成する必要があります。以下の例では
-`oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/` というディレクトリを作成しました。
-
-以下はECS、CentOS 7.6での操作になります。
-より詳しい[インストール方法はこちらを参考](https://www.alibabacloud.com/help/doc-detail/121541.htm)にしてください。
+ECSインスタンス１台にて、aliyun-cliをインストールします。そのあと、NYTデータをダウンロード、OSSヘアップロードします。  
+前提として、OSSにBigData専用のディレクトリを作成する必要があります。以下の例では  
+`oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/` というディレクトリを作成しました。  
+  
+以下はECS、CentOS 7.6での操作になります。    
+より詳しい[インストール方法はこちらを参考](https://www.alibabacloud.com/help/doc-detail/121541.htm)にしてください。  
 ```bash
 [root@aliyun ~]# 
 [root@aliyun ~]# yum -y install wget
@@ -106,7 +106,7 @@ Bucket Number is: 5
 ```
 <br>
 
-ECSでaliyun-cliのインストールが無事完了しましたので、今度はNYTデータをダウンロード、OSSへアップロードします。
+ECSでaliyun-cliのインストールが無事完了しましたので、今度はNYTデータをダウンロード、OSSへアップロードします。  
 ```bash
 [root@aliyun ~]# wget https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2018-09.csv
 [root@aliyun ~]# aliyun oss cp yellow_tripdata_2018-09.csv oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/
@@ -123,18 +123,18 @@ ECSでaliyun-cliのインストールが無事完了しましたので、今度�
 ```
 <br>
 
-この処理後、OSSのプレフィックス上では、このような感じになってると思います。
+この処理後、OSSのプレフィックス上では、このような感じになってると思います。  
 
 ![BD_Images_OSS_and_E-MapReduce_016](../static_images/BD_Images_OSS_and_E-MapReduce_016.png)
 <br>
 
 
-これで、OSSへのDataLake（厳密には違うが）、下準備が完了しました。
+これで、OSSへのDataLake（厳密には違うが）、下準備が完了しました。  
 <br>
 
 
-#### Step2: E-MapReduceを起動する前に、OSSでE-MapReduceに必要な権限を付与します。
-&nbsp; E-MapReduceを起動する時に先に実施したいのがRAMロール **AliyunEmrEcsDefaultRole** の設定です。これを設定することで、EMRからOSSへのアクセスが楽になります。理由としては[こちらのBlog](https://www.sbcloud.co.jp/entry/2019/02/01/metaservice/)が参考になると思います。
+#### Step2: E-MapReduceを起動する前に、OSSでE-MapReduceに必要な権限を付与します。  
+&nbsp; E-MapReduceを起動する時に先に実施したいのがRAMロール **AliyunEmrEcsDefaultRole** の設定です。これを設定することで、EMRからOSSへのアクセスが楽になります。理由としては[こちらのBlog](https://www.sbcloud.co.jp/entry/2019/02/01/metaservice/)が参考になると思います。  
 https://www.sbcloud.co.jp/entry/2019/02/01/metaservice/
 https://jp.alibabacloud.com/help/doc-detail/43966.html
 
@@ -163,17 +163,17 @@ https://jp.alibabacloud.com/help/doc-detail/43966.html
   "Version": "1"
 }
 ```
->初期設定状態
+>初期設定状態  
 ![BD_Images_OSS_and_E-MapReduce_019](../static_images/BD_Images_OSS_and_E-MapReduce_019.png)
 
->E-MapReduceがOSSへアクセスできるように権限変更へ
+>E-MapReduceがOSSへアクセスできるように権限変更へ  
 ![BD_Images_OSS_and_E-MapReduce_020](../static_images/BD_Images_OSS_and_E-MapReduce_020.png)
 
 <br>
 
 #### Step3: E-MapReduceを起動します。
-&nbsp; 本題、E-MapReduceを起動します。consoleからE-MapReduceを選定し、クラスタ作成を進めます。
-今回、著者は以下の条件で起動いたしました。
+&nbsp; 本題、E-MapReduceを起動します。consoleからE-MapReduceを選定し、クラスタ作成を進めます。  
+今回、著者は以下の条件で起動いたしました。  
 
 ###### 環境について
 |Clustor|instance|Type|台数|
@@ -185,8 +185,8 @@ https://jp.alibabacloud.com/help/doc-detail/43966.html
 
 ![BD_Images_OSS_and_E-MapReduce_022](../static_images/BD_Images_OSS_and_E-MapReduce_022.png)
 <br>
-Masterインスタンス、Coreインスタンス、Taskインスタンスは任意での選定になります。
-ただし、Hadoopエコシステムによっては必要な起動要件がありますので、状況によってはインスタンス台数を調整する必要があります。
+Masterインスタンス、Coreインスタンス、Taskインスタンスは任意での選定になります。  
+ただし、Hadoopエコシステムによっては必要な起動要件がありますので、状況によってはインスタンス台数を調整する必要があります。  
 役割はこちらを参考にしてください。
 
 |種類|説明|役割|
@@ -199,20 +199,21 @@ Masterインスタンス、Coreインスタンス、Taskインスタンスは任
 ![BD_Images_OSS_and_E-MapReduce_023](../static_images/BD_Images_OSS_and_E-MapReduce_023.png)
 <br>
 
-knox（REST APIを使用してWebHDFSやHBaseとかWeb UIインターフェースを閲覧するもの）を利用する場合は、こちらにてKnoxユーザ追加のアカウントを登録するとあとが便利です。
+knox（REST APIを使用してWebHDFSやHBaseとかWeb UIインターフェースを閲覧するもの）を利用する場合は、こちらにてKnoxユーザ追加のアカウントを登録するとあとが便利です。  
 ![BD_Images_OSS_and_E-MapReduce_023.5](../static_images/BD_Images_OSS_and_E-MapReduce_023.5.png)
 <br>
 
 
-途中、`ブートストラップアクション`という入力欄があります。ブートストラップアクションについて説明します。
-E-MapReduceは上記の説明通り、ECSを起動し、E-MapReduceに必要な機能をインストール・起動、こうしてE-MapReduceを起動します。
-この流れで注目したいのが `E-MapReduceに必要な機能をインストール・起動`という箇所で、これをブートストラップアクションと呼びます。
-AlibabaCloudのE-MapReduceはブートストラップアクションが利用できるので、以下の例に加えて、様々な応用ができます。
+途中、`ブートストラップアクション`という入力欄があります。ブートストラップアクションについて説明します。  
+E-MapReduceは上記の説明通り、ECSを起動し、E-MapReduceに必要な機能をインストール・起動、こうしてE-MapReduceを起動します。  
+この流れで注目したいのが `E-MapReduceに必要な機能をインストール・起動`という箇所で、これをブートストラップアクションと呼びます。  
+AlibabaCloudのE-MapReduceはブートストラップアクションが利用できるので、以下の例に加えて、様々な応用ができます。  
+
 * タイムゾーンの変更
 * Igniteなど、利用したいOSSやライブラリをインストール
 
-ここでちょっと例を記載してみます。E-MapReduceでタイムゾーンを変更したいとします。この場合、以下のshellを作成し、OSSへ格納します。
-これをE-MapReduceのブートストラップアクション欄にてシェルを起動するように記載するだけです。
+ここでちょっと例を記載してみます。E-MapReduceでタイムゾーンを変更したいとします。この場合、以下のshellを作成し、OSSへ格納します。  
+これをE-MapReduceのブートストラップアクション欄にてシェルを起動するように記載するだけです。  
 ```bash
 #!/bin/bash
 sudo rm /etc/localtime 
@@ -220,24 +221,24 @@ sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 ```
 <br>
 
-起動したい設定が終わったら、起動します。起動するエコシステムが多いほどブートストラップアクション含め時間がかかります（10〜30分）
+起動したい設定が終わったら、起動します。起動するエコシステムが多いほどブートストラップアクション含め時間がかかります（10〜30分）  
 <br>
 
-E-MapReduceが無事起動完了したら、ヘルスチェックを見て無事完了してるかを確認します。自動でヘルスチェックが行ってることもあり、基本的には問題ないことが多いです。
+E-MapReduceが無事起動完了したら、ヘルスチェックを見て無事完了してるかを確認します。自動でヘルスチェックが行ってることもあり、基本的には問題ないことが多いです。  
 ![BD_Images_OSS_and_E-MapReduce_024](../static_images/BD_Images_OSS_and_E-MapReduce_024.png)
 <br>
 
 
 #### Step4: E-MapReduceに関するセキュリティについて
 &nbsp; E-MapReduceを起動しました。ここで上記の目的を達成するためにはHiveを使います。そのためにはHueというWebによるGUIインターフェース、もしくはCLIコマンドベースを使う必要があります。今回はHueというWebによるGUIインターフェースを使います。
-Hueを使う前に、E-MapReduceのセキュリティルールを変更する必要があります。ここは用途に応じて対応をしてください。
+Hueを使う前に、E-MapReduceのセキュリティルールを変更する必要があります。ここは用途に応じて対応をしてください。  
 
 ###### 自分が使用してるNW環境のIPアドレスのみを許容する場合
-[以下のサイト](http://www.ip138.com)へアクセスし、自分が使用してるNW環境のIPアドレスを取得します。これをE-MapReduceが使用してるセキュリティグループにてポート8443、8888に許容します。
+[以下のサイト](http://www.ip138.com)へアクセスし、自分が使用してるNW環境のIPアドレスを取得します。これをE-MapReduceが使用してるセキュリティグループにてポート8443、8888に許容します。  
 http://www.ip138.com
-
-E-MapReduceでのポート8443、8888、8088は次のような位置付けです。
-
+  
+E-MapReduceでのポート8443、8888、8088は次のような位置付けです。  
+  
 |ポート|用途|
 |---|---|
 |knox|8443|
@@ -251,7 +252,7 @@ E-MapReduceでのポート8443、8888、8088は次のような位置付けです
 <br>
 
 ###### ローカルポートフォワードで接続
-クライアント端末からE-MapReduceの環境へ接続するためには、sshポートフォワードを経由してアクセスしたい、という場合に使う方法です。
+クライアント端末からE-MapReduceの環境へ接続するためには、sshポートフォワードを経由してアクセスしたい、という場合に使う方法です。  
 
 E-MapReduceのMasterNodeのプライベートIPを把握の上、Macローカルのターミナルにて以下コマンドでssh接続します。
 ```bash
@@ -294,7 +295,7 @@ Hueの便利なところは「クエリ」のボタンから様々なHiveやImpa
 
 
 #### Step6: Hueを使ってETL処理
-続いて、E-MapReduceのHiveを使ってOSSにあるCSVファイルをHDFS_Parquetへ変換します。流れとして以下シーケンス図通りになります。
+続いて、E-MapReduceのHiveを使ってOSSにあるCSVファイルをHDFS_Parquetへ変換します。流れとして以下シーケンス図通りになります。  
 
 ```mermaid
     sequenceDiagram
@@ -322,8 +323,8 @@ Hueの便利なところは「クエリ」のボタンから様々なHiveやImpa
 ```
 <br>
 
-まずは 1〜2:「Hiveで中間テーブルを作成」の処理をします。HueでクエリをHiveに選択し、以下クエリを投げます。
-このSQLはHiveで一時的に中間テーブル（クラスタ内のデータノード）を作成するものです。
+まずは 1〜2:「Hiveで中間テーブルを作成」の処理をします。HueでクエリをHiveに選択し、以下クエリを投げます。  
+このSQLはHiveで一時的に中間テーブル（クラスタ内のデータノード）を作成するものです。  
 
 ```SQL
 CREATE EXTERNAL TABLE `default.yellow_trips`( 
@@ -343,15 +344,15 @@ CREATE EXTERNAL TABLE `default.yellow_trips`(
  TBLPROPERTIES ("skip.header.line.count"="1");
 ```
 <br>
-HueでSQL入力画面に上記のSQLクエリを入力後、実行ボタンをクリックすればSQLが実行されます。
+HueでSQL入力画面に上記のSQLクエリを入力後、実行ボタンをクリックすればSQLが実行されます。  
 
 ![BD_Images_OSS_and_E-MapReduce_032](../static_images/BD_Images_OSS_and_E-MapReduce_032.png)
 <br>
 
 
-続いて、3-6:「HiveでOSSのデータをLoad」の処理をします。
-Hiveのデータノードにて中間テーブル作成後、OSSのファイルを指定し、中間テーブルへLoadします（時間がかかります）
-Load後 OSSのファイルは自動消去されますので、注意してください。
+続いて、3-6:「HiveでOSSのデータをLoad」の処理をします。  
+Hiveのデータノードにて中間テーブル作成後、OSSのファイルを指定し、中間テーブルへLoadします（時間がかかります）  
+Load後 OSSのファイルは自動消去されますので、注意してください。  
 ```SQL
 LOAD DATA INPATH 'oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2009-08.csv'　INTO TABLE default.yellow_trips partition (yyyymmdd='200908');
 LOAD DATA INPATH 'oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2009-09.csv'　INTO TABLE default.yellow_trips partition (yyyymmdd='200909');
@@ -366,21 +367,21 @@ LOAD DATA INPATH 'oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tr
 LOAD DATA INPATH 'oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/csv/yellow_tripdata_2010-06.csv'　INTO TABLE default.yellow_trips partition (yyyymmdd='201006');
 ```
 <br>
-SQL実行したい量が多いので、コツとして実行したいSQKをマウスで全て選択し、実行ボタンを押すと順次SQL実行してくれます。
+SQL実行したい量が多いので、コツとして実行したいSQKをマウスで全て選択し、実行ボタンを押すと順次SQL実行してくれます。  
 
 ![BD_Images_OSS_and_E-MapReduce_033](../static_images/BD_Images_OSS_and_E-MapReduce_033.png)
 <br>
 
 
-この処理の結果としてパーティションを確認します。ここでPartitionが表示されたらDataNode、中間テーブルにデータがあることがわかります。
+この処理の結果としてパーティションを確認します。ここでPartitionが表示されたらDataNode、中間テーブルにデータがあることがわかります。  
 ```SQL
 SHOW PARTITIONS default.yellow_trips;
 ```
 ![BD_Images_OSS_and_E-MapReduce_034](../static_images/BD_Images_OSS_and_E-MapReduce_034.png)
 <br>
 
-テストにHive SQLを中間テーブルに投げてみます。ここでも結果が表示されていたらOKです。
->注意として、レコード数が多いため、limit などでレコード表示件数を制限してください。
+テストにHive SQLを中間テーブルに投げてみます。ここでも結果が表示されていたらOKです。     
+>注意として、レコード数が多いため、limit などでレコード表示件数を制限してください。  
 ```SQL
 SELECT vendor_id,pickup_datetime,passenger_count FROM default.yellow_trips WHERE yyyymmdd >= '201003' AND yyyymmdd <= '201004' limit 10;
 ```
@@ -388,7 +389,7 @@ SELECT vendor_id,pickup_datetime,passenger_count FROM default.yellow_trips WHERE
 <br>
 
 
-7-10:「HiveでDataNodeのParquetをOSSへ保存」の処理をします。DataNodeにある中間テーブルをOSSへ保存するために、OSSでParquet形式で保存したいテーブルを作成します。
+7-10:「HiveでDataNodeのParquetをOSSへ保存」の処理をします。DataNodeにある中間テーブルをOSSへ保存するために、OSSでParquet形式で保存したいテーブルを作成します。  
 
 ```SQL
 CREATE EXTERNAL TABLE yellow_trips_parquet (
@@ -404,12 +405,12 @@ PARTITIONED BY (`yyyymmdd` string)
 STORED AS PARQUET
 LOCATION 'oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/hive_parquet';
 ```
-この結果として、上記の`oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/hive_parquet`にてフォルダが自動で作成されます。
+この結果として、上記の`oss://bigdata-prod-tech/nyc-taxi/yellow_tripdata/hive_parquet`にてフォルダが自動で作成されます。  
 
 ![BD_Images_OSS_and_E-MapReduce_036](../static_images/BD_Images_OSS_and_E-MapReduce_036.png)
 <br>
 
-続いて、DataNodeにある中間テーブルをOSSのParquetへ保存するSQLを実行します。
+続いて、DataNodeにある中間テーブルをOSSのParquetへ保存するSQLを実行します。  
 ```SQL
 set hive.exec.dynamic.partition.mode=nonstrict;
 INSERT OVERWRITE TABLE yellow_trips_parquet PARTITION (yyyymmdd)
@@ -425,14 +426,14 @@ rate_code ,
 yyyymmdd 
 FROM yellow_trips where yyyymmdd='201004';
 ```
-その結果、OSSのPartitionが yyyymmdd='201004' というところにHDFS_parquetファイルが生成されます。これでOSSにあったCSVファイルをHDFS_ParquetへETLすることができました。ちなみにDataNodeの中間データで Partitionが yyyymmdd='201004' はこのSQLクエリにより自動削除されています。
+その結果、OSSのPartitionが yyyymmdd='201004' というところにHDFS_parquetファイルが生成されます。これでOSSにあったCSVファイルをHDFS_ParquetへETLすることができました。ちなみにDataNodeの中間データで Partitionが yyyymmdd='201004' はこのSQLクエリにより自動削除されています。  
 
-あとはPartitionごとに上記クエリを投与してETL処理をしていただければと思います。また、HiveはOLTP（加工処理）が得意なので、ここでSQLを使ってレコードの追加、削除、更新をしてみるのもいいです。
+このようにPartitionに上記クエリを投与してETL処理をしていただければと思います。また、HiveはOLTP（加工処理）が得意なので、ここでSQLを使ってレコードの追加、削除、更新をしてみるのもいいです。  
 <br>
 
 
-11-14.「ImpalaでOSSのHDFSにクエリ投与」の処理をします。Hueの「クエリ」プルタウンでImpalaを選択します。
-ImpalaでOSSにあるデータをHDFSとして認識するために以下SQLクエリを投与します。
+11-14.「ImpalaでOSSのHDFSにクエリ投与」の処理をします。Hueの「クエリ」プルタウンでImpalaを選択します。  
+ImpalaでOSSにあるデータをHDFSとして認識するために以下SQLクエリを投与します。  
 ```SQL
 CREATE EXTERNAL TABLE yellow_trips_impala (
 `vendor_id` string, 
@@ -451,7 +452,7 @@ alter table default.yellow_trips_impala add partition(yyyymmdd='201004');
 alter table default.yellow_trips_impala add partition(yyyymmdd='201005');
 alter table default.yellow_trips_impala add partition(yyyymmdd='201006');
 ```
-あとはImpalaでPartitionを指定しつつ、好きに分析することができます。
+ImpalaでPartitionを指定しつつ、好きに分析することができます。
 ```SQL
 SELECT vendor_id , pickup_datetime, dropoff_datetime, passenger_count 
 FROM default.yellow_trips_impala 
@@ -464,19 +465,19 @@ WHERE yyyymmdd >= '201004' limit 10;
 
 <br>
 
-Impalaの優れてるところはSQLクエリにてLOCATIONをOSSのパス先を指定するだけで、クエリを投げることができます。
-※もちろんSparkやHive、PrestoもOSSをセントラルストレージとしたSQLクエリ投与もできます。
+Impalaの優れてるところはSQLクエリにてLOCATIONをOSSのパス先を指定するだけで、クエリを投げることができます。  
+※もちろんSparkやHive、PrestoもOSSをセントラルストレージとしたSQLクエリ投与もできます。  
 <br>
 
 
 ## まとめ
-本章ではE-MapReduceだけでOSSのcsvファイルをParquetへ簡単にETLできることや、OSSをセントラルストレージとしたOLTP、OLAP運用する手法を説明しました。
-AlibabaCloudのE-MapReduceはこの流れをタイムスケジューラによって自動処理化することも可能ですし、そこから機械学習をすることも可能です。ビジネスシーンに応じた様々な応用ができます。
-そのため、ファーストステップとして、上記E-MapReduceの全体的な流れを掴めればと思います。
+本章ではE-MapReduceだけでOSSのcsvファイルをParquetへ簡単にETLできることや、OSSをセントラルストレージとしたOLTP、OLAP運用する手法を説明しました。  
+AlibabaCloudのE-MapReduceはこの流れをタイムスケジューラによって自動処理化することも可能ですし、そこから機械学習をすることも可能です。ビジネスシーンに応じた様々な応用ができます。  
+そのため、ファーストステップとして、上記E-MapReduceの全体的な流れを掴めればと思います。  
 <br>
 
 ## 余談
-AlibabaCloud公式blogにもE-MapReduce起動方法、手法、ベストプラクティスが記載されていますので、こちらも参考にしてください。  
+AlibabaCloud公式blogにもE-MapReduce起動方法、手法、ベストプラクティスが記載されていますので、こちらも参考にしてください。    
 [EMRクラスター管理](https://www.alibabacloud.com/blog/diving-into-big-data-emr-cluster-management_595321)
 
 <br>
