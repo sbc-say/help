@@ -19,6 +19,7 @@ IDC調査によれば 2025年になるとデジタルデータはZbの領域に�
 
 このデジタルデータはどこから発生してるのか。具体例を見てみましょう。  
 ![BD_Images_What_is_BigData_001](../static_images/BD_Images_What_is_BigData_001.png)  
+
 * [1回のMRIスキャンで20,000枚の画像取得。](https://www.seagate.com/files/www-content/our-story/trends/files/idc-seagate-dataage-whitepaper.pdf)  
 * [Googleは1日あたり35億の検索クエリを処理。](http://www.internetlivestats.com/google-search-statistics/)  
 * [Instagramユーザーは毎分54,000枚の写真を投稿。](http://www.internetlivestats.com/one-second/#instagram-band.)  
