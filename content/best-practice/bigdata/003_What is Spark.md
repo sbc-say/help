@@ -144,6 +144,7 @@ rdd = sc.textFile(filePath2)
 #### Transformations
 &nbsp; Transformationsは名前通り、RDDの変換処理です。RDDの変換は既存のRDDを変化させるわけでなく、新しいRDDを生成するための変換処理です。最もよく使われる変換処理のいくつかを記載します。（他はSparkの公式ドキュメントを閲覧してください。）   
 <br>   
+
 |メソッド|備考|
 |---|---|
 |Filter|条件を満たす要素のみ抽出|
@@ -270,6 +271,7 @@ rdd.repartition(6).write.mode("append")•parquet("/user/root/hadoop/Table")
 #### Actions
 &nbsp; Actionsは、driver programに値を返すRDD操作です。最もよく使われる変換処理のいくつかを記載します。（他はSparkの公式ドキュメントを閲覧してください。）    
 <br>     
+
 |メソッド|備考|
 |---|---|
 |collect|全ての要素を返します|
