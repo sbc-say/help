@@ -9,14 +9,14 @@ draft: false
 <h4 id="index">目次</h4>
 
 * ECSとSpringBootを用いたWebアプリケーション構築の流れ
- 1. [VPCを用いたネットワークセグメント作成](#VPC)
- 1. [ECSを用いた仮想マシンの作成](#ECS)
- 1. [RDSを用いたMySQLインスタンスの作成](#RDS)
- 1. [Cent OS上でのSpringBootの実装と接続確認](#APP)
- 1. [SLBを用いたロードバランサーの作成](#SLB)
+ 1. [VPCを用いたネットワークセグメント作成](#1. VPCを用いたネットワークセグメント作成)
+ 1. [ECSを用いた仮想マシンの作成](#ECSを用いた仮想マシンの作成)
+ 1. [RDSを用いたMySQLインスタンスの作成](#RDSを用いたMySQLインスタンスの作成)
+ 1. [CentOS上でのSpringBootの実装と接続確認](#CentOS上でのSpringBootの実装と接続確認)
+ 1. [SLBを用いたロードバランサーの作成](#SLBを用いたロードバランサーの作成)
 
 ---
-<h4 id="VPC"></h4>
+
 ## 1. VPCを用いたネットワークセグメント作成
 &nbsp; Alibaba Cloudで、VPCとそれに付随するサブネット(VSwitchと呼ばれる)を作成したいと思います。
 
@@ -52,7 +52,7 @@ draft: false
 ![WS0001000.JPG](../img/VPC/VPC_08.jpeg)
 
 ---
-<h4 id="ECS"></h4>
+
 ## 2. ECSを用いた仮想マシンの作成
 &nbsp; Alibaba CloudのECSにおける仮想マシン作成手順を記します。また、AWSに知見のある方向けに、AWSとの違いも一部記します。
 
@@ -117,7 +117,7 @@ ECSダッシュボード画面で「インスタンス」をクリックしま�
 ![WS000009.JPG](../img/ECS/ECS_13.jpeg)
 
 ---
-<h4 id="RDS"></h4>
+
 ## 3. RDSを用いたMySQLインスタンスの作成
 Alibaba CloudのRDSを用いて、ECSのアプリケーションから接続するMySQLインスタンスを作成します。流れとしては以下となります。
 
@@ -190,8 +190,8 @@ ECS/RDSインスタンスが所属するVPCのネットワークセグメント�
 これによりECS上からMySQLへアクセス可能となりました。
 
 ---
-<h4 id="APP"></h4>
-## 4. OS上でのSpringBootの実装と接続確認
+
+## 4. CentOS上でのSpringBootの実装と接続確認
 ECSのCentOS上で、簡単なSpringbootアプリケーションを実装します。
 ### 4-1. JavaとGitのインストール
 まずは実行環境で必要なツールをパッケージインストールします。
@@ -357,7 +357,7 @@ Loading mirror speeds from cached hostfile
 ![APP_01.JPG](../img/APP/APP_01.png)
 
 ---
-<h4 id="SLB"></h4>
+
 ## 5. SLBを用いたロードバランサーの作成
 Alibaba Cloudでは、仮想ロードバランサの事を[Server Load Balancer](../img/SLB/SLB_01.jpeg)と呼称しており、その利用手順を記載します。
 
