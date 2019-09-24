@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-09-24T12:58:26 UTC">
+<meta name="revised" content="2019-09-24T13:04:44 UTC">
 <title>ECSとSpringBootの構築例 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -793,21 +793,23 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     
     
 
-<h4 id="index">目次</h4>
+<p><span id="index">目次</span></p>
 
 <ul>
 <li>ECSとSpringBootを用いたWebアプリケーション構築の流れ
 
 <ol>
-<li><a href="#1. VPCを用いたネットワークセグメント作成">VPCを用いたネットワークセグメント作成</a></li>
-<li><a href="#ECSを用いた仮想マシンの作成">ECSを用いた仮想マシンの作成</a></li>
-<li><a href="#RDSを用いたMySQLインスタンスの作成">RDSを用いたMySQLインスタンスの作成</a></li>
-<li><a href="#CentOS上でのSpringBootの実装と接続確認">CentOS上でのSpringBootの実装と接続確認</a></li>
-<li><a href="#SLBを用いたロードバランサーの作成">SLBを用いたロードバランサーの作成</a></li>
+<li><a href="#VPC">VPCを用いたネットワークセグメント作成</a></li>
+<li><a href="#ECS">ECSを用いた仮想マシンの作成</a></li>
+<li><a href="#RDS">RDSを用いたMySQLインスタンスの作成</a></li>
+<li><a href="#APP">Cent OS上でのSpringBootの実装と接続確認</a></li>
+<li><a href="#SLB">SLBを用いたロードバランサーの作成</a></li>
 </ol></li>
 </ul>
 
 <hr />
+
+<p><span> id=&ldquo;VPC&rdquo;&gt;</span></p>
 
 <h2 id="1-vpcを用いたネットワークセグメント作成">1. VPCを用いたネットワークセグメント作成</h2>
 
@@ -853,6 +855,8 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <img src="../img/VPC/VPC_08.jpeg" alt="WS0001000.JPG" /></p>
 
 <hr />
+
+<p><span id="ECS"></span></p>
 
 <h2 id="2-ecsを用いた仮想マシンの作成">2. ECSを用いた仮想マシンの作成</h2>
 
@@ -931,6 +935,8 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <p><img src="../img/ECS/ECS_13.jpeg" alt="WS000009.JPG" /></p>
 
 <hr />
+
+<p><span id="RDS"></span></p>
 
 <h2 id="3-rdsを用いたmysqlインスタンスの作成">3. RDSを用いたMySQLインスタンスの作成</h2>
 
@@ -1012,7 +1018,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <hr />
 
-<h2 id="4-centos上でのspringbootの実装と接続確認">4. CentOS上でのSpringBootの実装と接続確認</h2>
+<p><span id="APP"></span></p>
+
+<h2 id="4-os上でのspringbootの実装と接続確認">4. OS上でのSpringBootの実装と接続確認</h2>
 
 <p>ECSのCentOS上で、簡単なSpringbootアプリケーションを実装します。</p>
 
@@ -1180,6 +1188,8 @@ Loading mirror speeds from cached hostfile
 <img src="../img/APP/APP_01.png" alt="APP_01.JPG" /></p>
 
 <hr />
+
+<p><span id="SLB"></span></p>
 
 <h2 id="5-slbを用いたロードバランサーの作成">5. SLBを用いたロードバランサーの作成</h2>
 

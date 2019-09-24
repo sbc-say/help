@@ -17,12 +17,15 @@
       <pubDate>Mon, 23 Sep 2019 16:20:40 +0900</pubDate>
       
       <guid>https://www.sbcloud.co.jp/help/scenario/web-application/springboot-with-ecs/</guid>
-      <description>目次  ECSとSpringBootを用いたWebアプリケーション構築の流れ  VPCを用いたネットワークセグメント作成 ECSを用いた仮想マシンの作成 RDSを用いたMySQLインスタンスの作成 CentOS上でのSpringBootの実装と接続確認 SLBを用いたロードバランサーの作成   1. VPCを用いたネットワークセグメント作成 &amp;nbsp; Alibaba Cloudで、VPCとそれに付随するサブネット(VSwitchと呼ばれる)を作成したいと思います。
+      <description>目次
+ ECSとSpringBootを用いたWebアプリケーション構築の流れ  VPCを用いたネットワークセグメント作成 ECSを用いた仮想マシンの作成 RDSを用いたMySQLインスタンスの作成 Cent OS上でのSpringBootの実装と接続確認 SLBを用いたロードバランサーの作成    id=&amp;ldquo;VPC&amp;rdquo;&amp;gt;
+1. VPCを用いたネットワークセグメント作成 &amp;nbsp; Alibaba Cloudで、VPCとそれに付随するサブネット(VSwitchと呼ばれる)を作成したいと思います。
 1-1. サービスの選択 &amp;nbsp; ログイン後のコンソールで、「Virtual Private Cloud」を選択します。 1-2. VPCの作成 &amp;nbsp; 「VPCの作成」をクリックします。 以下のVPCパラメータを入力します。
  VPC名 IPv4 CIDR ブロック   1-3. VSwitchの作成 &amp;nbsp; 続けて同じ画面で、VSwitchと呼ばれるサブネットを作成します。 パラメータとしては以下の3つを入力、アベイラビリティゾーン分ける為、計2つのVSwitchを作成します。
  VPC名 アベイラビリティゾーン IPv4 CIDR ブロック
-「OK」をクリックした後、「完了」をクリックします。   1-4. VPCとVSwitchの確認 &amp;nbsp; 「完了」をクリック後、VPCが作成されている事が確認できます。 &amp;nbsp; また、VSwitchのダッシュボードより、VSWitchが作成されている事も確認できます。 2. ECSを用いた仮想マシンの作成 &amp;nbsp; Alibaba CloudのECSにおける仮想マシン作成手順を記します。また、AWSに知見のある方向けに、AWSとの違いも一部記します。
-2-1. ECSサービスの選択 ログイン後のコンソールで「Elastic Compute Service」（以下ECS）をクリックします ECSダッシュボード画面で「インスタンス」をクリックします ※AWSとの違い: ECSダッシュボード画面では全リージョンのインスタンスの利用状況が表示される 2-2. リージョン確認 インスタンス画面で初めてリージョンが確認できるので「日本（東京）」である事を確認します 2-3.</description>
+「OK」をクリックした後、「完了」をクリックします。   1-4. VPCとVSwitchの確認 &amp;nbsp; 「完了」をクリック後、VPCが作成されている事が確認できます。 &amp;nbsp; また、VSwitchのダッシュボードより、VSWitchが作成されている事も確認できます。 
+2. ECSを用いた仮想マシンの作成 &amp;nbsp; Alibaba CloudのECSにおける仮想マシン作成手順を記します。また、AWSに知見のある方向けに、AWSとの違いも一部記します。
+2-1. ECSサービスの選択 ログイン後のコンソールで「Elastic Compute Service」（以下ECS）をクリックします ECSダッシュボード画面で「インスタンス」をクリックします ※AWSとの違い: ECSダッシュボード画面では全リージョンのインスタンスの利用状況が表示される 2-2.</description>
     </item>
     
   </channel>
