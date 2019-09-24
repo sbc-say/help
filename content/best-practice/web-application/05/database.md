@@ -22,11 +22,11 @@ draft: false
  - アーキテクチャ図
 
 ## 対象サービス
-Relational DatabaseとしてAspara for RDS、NoSQL DatabaseとしてAspara for MongoDBを利用する事が出来ます。
-"Aspara"という名前はAlibaba社内でのAlibaba Cloudを指す為、その名残として名称となります。
+Relational DatabaseとしてApsara for RDS、NoSQL DatabaseとしてApsara for MongoDBを利用する事が出来ます。
+"Apsara"という名前はAlibaba社内でのAlibaba Cloudを指す為、その名残として名称となります。
 
 ### 基本的な仕様
-{{%panel header="Aspara for RDS"%}}
+{{%panel header="Apsara for RDS"%}}
 * リードレプリカの追加<br>
 * ディスク消費量のコンソールからの確認<br>
 * メンテナンス時間の設定<br>
@@ -37,7 +37,7 @@ Relational DatabaseとしてAspara for RDS、NoSQL DatabaseとしてAspara for M
 {{%panel header="Polar DB"%}}
 * 2019年8月末時点でジャカルタリージョンのみ利用可能です。<br>
 {{%/panel%}}
-{{%panel header="Aspara for MongoDB"%}}
+{{%panel header="Apsara for MongoDB"%}}
 * レプリカセットかシャーディングかの選択をした後に、リージョン、VPC、スペック、MongoDBバージョン、レプリカ/シャーディング数、パスワードを入力して作成<br>
 * 作成後には主に以下の設定が可能となります。<br>
   * バックアップ・リカバリ<br>
