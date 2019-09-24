@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/scenario/web-application/</loc>
+    <lastmod>2019-09-13T16:20:40+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/best-practice/container/01/introduction/</loc>
     <lastmod>2019-09-04T16:20:40+09:00</lastmod>
   </url>
@@ -55,6 +60,11 @@
   <url>
     <loc>https://www.sbcloud.co.jp/help/getting-started/product/ecs-by-region/</loc>
     <lastmod>2019-07-22T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sbcloud.co.jp/help/scenario/web-application/springboot-with-ecs/</loc>
+    <lastmod>2019-09-23T16:20:40+09:00</lastmod>
   </url>
   
   <url>

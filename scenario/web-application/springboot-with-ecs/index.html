@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SB Cloud&nbsp;テクニカルリファレンス</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-09-24T12:52:41 UTC">
+<title>ECSとSpringBootの構築例 :: テクニカルリファレンス</title>
+<link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
+<link href="/help/css/font-awesome.min.css" rel="stylesheet">
+<link href="/help/css/nucleus.css" rel="stylesheet">
+<link href="/help/theme-flex/style.css" rel="stylesheet">
+
+	<link href="/help/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/help/css/bootstrap.min.css">
+<script src="/help/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GTM-MQFZWG', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" id="mierucajs">
+window.__fid = window.__fid || [];__fid.push([317537360]);
+(function() {
+function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
+setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
+})();
+</script>
+
+
+
+<meta name="description" content="AlibabaCloudのIaaSを用いた、SpringBootアプリケーションの構築例を記載します。">
+
+        
+
+
+<link href="/help/css/custom.css"  rel="stylesheet">
+
+
+    
+  </head>
+  <body data-url="/help/scenario/web-application/springboot-with-ecs/">
+    
+      <header>
+
+    
+  <div class="logo">
+      <a href="https://www.sbcloud.co.jp/help/" style="vertical-align: baseline;">
+            <img src="https://www.sbcloud.co.jp/help//img/sbcloud_logo.png" class="noshadow" alt="">
+        </a>
+  </div>
+
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+
+<nav class="shortcuts">
+    <li>
+        <span class="searchbox">
+            <input data-search-input id="search-by" type="text" placeholder="検索">
+        </span>
+        <script type="text/javascript" src="/help/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/help/js/auto-complete.js"></script>
+        <link href="/help/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+            
+            var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+            
+        </script>
+        <script type="text/javascript" src="/help/js/search.js"></script>
+    </li>
+            <li class="" role="">
+                <a href="https://github.com/sbcloud/help"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+        </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/">Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/registration/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/registration/">
+            アカウント登録
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/getting-started/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/product/">プロダクトの紹介</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/product/links/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/links/">
+            プロダクト資料のリンク一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/product/ecs-by-region/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/ecs-by-region/">
+            ECSの使用可能なRegion/Spec/Price紹介
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/getting-started/cloud-users/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/cloud-users/vs-aws-gcp-azure/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/vs-aws-gcp-azure/">
+            サービスラインナップ比較
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/">ベストプラクティス</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/best-practice/general/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/general/">全般</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/general/advisory/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/advisory/">
+            アドバイザリ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/general/pricing/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/pricing/">
+            料金体系
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/product/">プロダクト</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/product/cloudmonitor/cloudmonitor/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/cloudmonitor/cloudmonitor/">
+            CloudMonitor
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/product/datav/datav-widget-develop-guide/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/datav/datav-widget-develop-guide/">
+            DataV Widget 開発ガイド
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/web-application/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/web-application/">Webアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/web-application/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/02/name-resolve/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/02/name-resolve/">
+            名前解決
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/03/loadbalancer/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/03/loadbalancer/">
+            負荷分散
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/04/web-ap/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/04/web-ap/">
+            Web/APサーバ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/05/database/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/05/database/">
+            データベース
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/terraform/01/how-to-use/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/01/how-to-use/">
+            Terraformとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/02/install/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/02/install/">
+            インストール
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/03/sample-project/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/03/sample-project/">
+            サンプルプロジェクトの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/04/run-terraform/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/04/run-terraform/">
+            サンプルプロジェクトの実行
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/05/program-syntax/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/05/program-syntax/">
+            Terraform文法について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/06/docker/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/06/docker/">
+            Dockerについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/07/module/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/07/module/">
+            Moduleについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/08/vpc/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/08/vpc/">
+            VPCの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/09/ecs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/09/ecs/">
+            ECS、EIPの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/10/slb/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/10/slb/">
+            SLBの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/11/autoscaling/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/11/autoscaling/">
+            AutoScalingの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/12/oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/12/oss/">
+            OSSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/13/rds/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/13/rds/">
+            RDSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/14/ram/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/14/ram/">
+            RAMの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/15/kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/15/kubernetes/">
+            Kubernetesの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/container/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/container/">コンテナ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/container/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/02/development-environment/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/02/development-environment/">
+            開発環境
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/03/image-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/03/image-management/">
+            コンテナイメージ作成・管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/04/deploy-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/04/deploy-management/">
+            コンテナデプロイ管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/05/monitoring/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/05/monitoring/">
+            ログ管理とモニタリング
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/bigdata/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/bigdata/">Bigdata</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/bigdata/001_what-is-bigdata/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/001_what-is-bigdata/">
+            BigDataとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/">
+            Hadoopとその周辺の技術について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/003_what-is-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/003_what-is-spark/">
+            Sparkについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/004_what-is-hdfs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/004_what-is-hdfs/">
+            HDFSとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/005_what-is-yarn/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/005_what-is-yarn/">
+            YARNとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/006_what-is-required-for-dwh/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/006_what-is-required-for-dwh/">
+            DWHには何が必要か
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/007_oss-and-e-mapreduce/">
+            OSSとE-MapReduce
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/">
+            E-MapReduce起動、ETLとOLTP、OLAPをする
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/009_data-collection/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/009_data-collection/">
+            既存データからの移植について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/010_logservice-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/010_logservice-to-oss/">
+            LogServiceでOSSへデータを集める方法
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/011_aws-s3-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/011_aws-s3-to-oss/">
+            AWS S3からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/012_idc-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/012_idc-to-oss/">
+            IDCからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/013_apache-spark-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/013_apache-spark-to-oss/">
+            ApacheSpark（Batch）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/">
+            ApacheSpark（Streaming）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/016_apache-flume-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/016_apache-flume-to-oss/">
+            Apache FlumeからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/017_fluentd-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/017_fluentd-to-oss/">
+            FluentdからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/018_enbulk-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/018_enbulk-to-oss/">
+            EnbulkからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/019_apache-arrow-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/019_apache-arrow-to-oss/">
+            Apache ArrowからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/">
+            RDS for MySQLからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/">
+            AlibabaCloud OSSから別のOSSへ（移植）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/">
+            AlibabaCloud OSSから別のOSSへ（同期）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/">
+            開発環境構築について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/scenario/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/scenario/">ユースケース別シナリオ</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/scenario/web-application/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/scenario/web-application/">Webアプリケーション</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/scenario/web-application/springboot-with-ecs/" class="dd-item active">
+        <div>
+          <a href="/help/scenario/web-application/springboot-with-ecs/">
+            ECSとSpringBootの構築例
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/scenario/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/scenario/terraform/bastion-server/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/bastion-server/">
+            SSH踏み台サーバの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/slb-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/slb-setting-sample/">
+            SLBの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/rds-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/rds-setting-sample/">
+            RDSの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/kubernetes-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/kubernetes-setting-sample/">
+            Kubernetesの構築と設定
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application/">
+            Webアプリケーションの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/accelerated-content-delivery/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/accelerated-content-delivery/">
+            高速コンテンツ配信の実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/auto-scaling/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/auto-scaling/">
+            オートスケーリングの実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application-on-kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application-on-kubernetes/">
+            KubernetesによるコンテナでWordPress作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/faq/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/faq/">よくある質問</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/faq/ecs/" class="dd-item">
+        <div>
+          <a href="/help/faq/ecs/">
+            ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/oss/" class="dd-item">
+        <div>
+          <a href="/help/faq/oss/">
+            OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/rds/" class="dd-item">
+        <div>
+          <a href="/help/faq/rds/">
+            RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
+        <div>
+          <a href="/help/faq/slb/">
+            SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/account/" class="dd-item">
+        <div>
+          <a href="/help/faq/account/">
+            アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/support/" class="dd-item">
+        <div>
+          <a href="/help/faq/support/">
+            サポート
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+<a class="github-button" href="https://github.com/sbcloud/help/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download SBC Technical Reference on GitHub">Download</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help" data-icon="octicon-star" data-show-count="false" aria-label="Star SBC Technical Reference on GitHub">Star</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork SBC Technical Reference on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    </section>
+  </aside>
+  <section class="page">
+
+    <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span id="sidebar-toggle-span">
+          <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+            <i class="fa fa-bars"></i>
+          </a>
+        </span>
+        <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+        <span class="links">
+        
+
+
+
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/scenario/'>ユースケース別シナリオ</a> > <a href='/help/scenario/web-application/'>Webアプリケーション</a> > ECSとSpringBootの構築例
+
+ 
+
+ 
+
+ 
+
+
+        </span>
+    </div>
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/help/getting-started/" >
+   Getting Started</option>
+    <option value="/help/best-practice/" >
+   ベストプラクティス</option>
+    <option value="/help/scenario/" >
+   ユースケース別シナリオ</option> 
+    <option value="/help/scenario/web-application/" >
+  - 
+   Webアプリケーション</option> 
+      <option value="/help/scenario/web-application/springboot-with-ecs/"  selected>-- ECSとSpringBootの構築例</option>
+  
+    <option value="/help/scenario/terraform/" >
+  - 
+   Terraform</option>
+  
+    <option value="/help/faq/" >
+   よくある質問</option>
+
+
+
+        </select>
+      </center>
+    </div>
+
+    <h1>ECSとSpringBootの構築例</h1>
+
+    
+    
+    
+    
+
+<h4 id="index">目次</h4>
+
+<ul>
+<li>ECSとSpringBootを用いたWebアプリケーション構築の流れ
+
+<ol>
+<li><a href="#VPC">VPCを用いたネットワークセグメント作成</a></li>
+<li><a href="#ECS">ECSを用いた仮想マシンの作成</a></li>
+<li><a href="#RDS">RDSを用いたMySQLインスタンスの作成</a></li>
+<li><a href="#APP">Cent OS上でのSpringBootの実装と接続確認</a></li>
+<li><a href="#SLB">SLBを用いたロードバランサーの作成</a></li>
+</ol></li>
+</ul>
+
+<hr />
+
+<p><h4 id="VPC"></h4></p>
+
+<h2 id="1-vpcを用いたネットワークセグメント作成">1. VPCを用いたネットワークセグメント作成</h2>
+
+<p>&nbsp; Alibaba Cloudで、VPCとそれに付随するサブネット(VSwitchと呼ばれる)を作成したいと思います。</p>
+
+<h3 id="1-1-サービスの選択">1-1. サービスの選択</h3>
+
+<p>&nbsp; ログイン後のコンソールで、<a href="https://jp.alibabacloud.com/product/vpc">「Virtual Private Cloud」</a>を選択します。
+<img src="../img/VPC/VPC_01.jpeg" alt="WS000000.JPG" /></p>
+
+<h3 id="1-2-vpcの作成">1-2. VPCの作成</h3>
+
+<p>&nbsp; 「VPCの作成」をクリックします。
+<img src="../img/VPC/VPC_02.jpeg" alt="WS000001.JPG" />
+以下のVPCパラメータを入力します。</p>
+
+<ul>
+<li>VPC名</li>
+<li>IPv4 CIDR ブロック
+<img src="../img/VPC/VPC_03.jpeg" alt="WS000003.JPG" /></li>
+</ul>
+
+<h3 id="1-3-vswitchの作成">1-3. VSwitchの作成</h3>
+
+<p>&nbsp; 続けて同じ画面で、VSwitchと呼ばれるサブネットを作成します。
+パラメータとしては以下の3つを入力、アベイラビリティゾーン分ける為、計2つのVSwitchを作成します。</p>
+
+<ul>
+<li>VPC名</li>
+<li>アベイラビリティゾーン</li>
+<li>IPv4 CIDR ブロック<br />
+<img src="../img/VPC/VPC_04.jpeg" alt="WS000004.JPG" />
+<img src="../img/VPC/VPC_05.jpeg" alt="WS000005.JPG" />
+「OK」をクリックした後、「完了」をクリックします。
+<img src="../img/VPC/VPC_06.jpeg" alt="WS000007.JPG" /></li>
+</ul>
+
+<h3 id="1-4-vpcとvswitchの確認">1-4. VPCとVSwitchの確認</h3>
+
+<p>&nbsp; 「完了」をクリック後、VPCが作成されている事が確認できます。
+<img src="../img/VPC/VPC_07.jpeg" alt="WS000008.JPG" />
+&nbsp; また、VSwitchのダッシュボードより、VSWitchが作成されている事も確認できます。
+<img src="../img/VPC/VPC_08.jpeg" alt="WS0001000.JPG" /></p>
+
+<hr />
+
+<p><h4 id="ECS"></h4></p>
+
+<h2 id="2-ecsを用いた仮想マシンの作成">2. ECSを用いた仮想マシンの作成</h2>
+
+<p>&nbsp; Alibaba CloudのECSにおける仮想マシン作成手順を記します。また、AWSに知見のある方向けに、AWSとの違いも一部記します。</p>
+
+<h3 id="2-1-ecsサービスの選択">2-1. ECSサービスの選択</h3>
+
+<p>ログイン後のコンソールで<a href="../img/ECS/ECS_00.jpeg">「Elastic Compute Service」</a>（以下ECS）をクリックします
+<img src="../img/ECS/ECS_01.jpeg" alt="WS000000.JPG" /></p>
+
+<p>ECSダッシュボード画面で「インスタンス」をクリックします
+　※AWSとの違い: ECSダッシュボード画面では全リージョンのインスタンスの利用状況が表示される
+<img src="../img/ECS/ECS_02.jpeg" alt="WS000001.JPG" /></p>
+
+<h3 id="2-2-リージョン確認">2-2. リージョン確認</h3>
+
+<p>インスタンス画面で初めてリージョンが確認できるので「日本（東京）」である事を確認します
+<img src="../img/ECS/ECS_03.jpeg" alt="WS000002.JPG" /></p>
+
+<h3 id="2-3-インスタンス作成開始">2-3. インスタンス作成開始</h3>
+
+<p>「インスタンスの作成」をクリックします
+<img src="../img/ECS/ECS_04.jpeg" alt="WS000003.JPG" /></p>
+
+<h3 id="2-4-パラメータ入力">2-4. パラメータ入力</h3>
+
+<p>以下パラメータを入力して、「次のステップ：ネットワーク」をクリックします</p>
+
+<ul>
+<li>サブスクリプション（AWSでいうリザーブドインスタンス）か従量課金か</li>
+<li>アベイラビリティゾーン（東京はap-northeast-1）</li>
+<li>インスタンスタイプ</li>
+<li>インスタンスOS</li>
+<li>ルートディスクの種類とサイズ</li>
+</ul>
+
+<p><img src="../img/ECS/ECS_05.jpeg" alt="WS000005.JPG" />
+<img src="../img/ECS/ECS_06.jpeg" alt="WS000007.JPG" /></p>
+
+<p>以下パラメータを入力して、「次のステップ：システム構成」をクリックします</p>
+
+<ul>
+<li>所属するVPCとVSwitch(AWSでいうサブネット)</li>
+<li>パブリックIPの割り当て</li>
+<li>アタッチするセキュリティグループと主要プロトコルの許可設定</li>
+</ul>
+
+<p><img src="../img/ECS/ECS_07.jpeg" alt="WS000008.JPG" /></p>
+
+<p>以下パラメータを入力して、「次のステップ：グループ化」をクリックします</p>
+
+<ul>
+<li>インスタンスにアクセスする為の秘密鍵もしくはパスワードを指定します<br />
+　※AWSとの違い：デフォルトだと秘密鍵・パスワード共に指定なし<br /></li>
+<li>コンソール上のインスタンス名と説明、インスタンスOS内部のホスト名を入力します<br /></li>
+</ul>
+
+<p><img src="../img/ECS/ECS_08.jpeg" alt="WS000010.JPG" /></p>
+
+<p>タグ名とタグ値を入力して、「次のステップ：プレビュー」をクリックします<br />
+<img src="../img/ECS/ECS_09.jpeg" alt="WS000011.JPG" /></p>
+
+<h3 id="2-5-インスタンス作成の完了">2-5. インスタンス作成の完了</h3>
+
+<p>「ECS SLAと利用規約に同意します」にチェックを入れて、「インスタンスの作成」をクリックします<br />
+<img src="../img/ECS/ECS_10.jpeg" alt="WS000013.JPG" /></p>
+
+<h3 id="2-6-作成されたインスタンスの確認">2-6. 作成されたインスタンスの確認</h3>
+
+<p>有効と表示されたら、「コンソール」をクリックして、当該インスタンスが作成されている事を確認します<br />
+<img src="../img/ECS/ECS_11.jpeg" alt="WS000015.JPG" />
+<img src="../img/ECS/ECS_12.jpeg" alt="WS0000166.JPG" /></p>
+
+<p>パブリックIP/EIPを割り当てている場合は、IPアドレスの列にグローバルIPアドレスが表示されます</p>
+
+<p><img src="../img/ECS/ECS_13.jpeg" alt="WS000009.JPG" /></p>
+
+<hr />
+
+<p><h4 id="RDS"></h4></p>
+
+<h2 id="3-rdsを用いたmysqlインスタンスの作成">3. RDSを用いたMySQLインスタンスの作成</h2>
+
+<p>Alibaba CloudのRDSを用いて、ECSのアプリケーションから接続するMySQLインスタンスを作成します。流れとしては以下となります。</p>
+
+<ol>
+<li>サービスの選択</li>
+<li>MySQLインスタンスの起動</li>
+<li>ネットワーク許可設定</li>
+<li>データベースユーザの作成</li>
+<li>データベースの作成と権限付与</li>
+</ol>
+
+<h3 id="3-1-サービスの選択">3-1. サービスの選択</h3>
+
+<p><img src="../img/RDS/RDS_01.png" alt="RDS_01.JPG" /></p>
+
+<h3 id="3-2-mysqlインスタンスの起動">3-2. MySQLインスタンスの起動</h3>
+
+<p>インスタンスの作成をクリックします。
+<img src="../img/RDS/RDS_02.png" alt="RDS_02.JPG" /></p>
+
+<p>作成画面にて、リージョン/ゾーン、データベースエンジン、インスタンスタイプ、ストレージ容量、VPC/VSwitch を選択します。
+<img src="../img/RDS/RDS_03.png" alt="RDS_03.JPG" />
+<img src="../img/RDS/RDS_04.png" alt="RDS_04.JPG" />
+<img src="../img/RDS/RDS_05.png" alt="RDS_05.JPG" />
+「いますぐ購入」をクリックして、利用規約に同意にチェックをして、「今すぐ支払いをクリックします。
+<img src="../img/RDS/RDS_06.png" alt="RDS_06.JPG" />
+<img src="../img/RDS/RDS_07.png" alt="RDS_07.JPG" /></p>
+
+<p>購入ができたら、Consoleをクリックして、Home画面より再びRDSを選択して、インスタンスリストより当該MySQLインスタンスが「作成中」となっている箏を確認します。
+<img src="../img/RDS/RDS_08.png" alt="RDS_08.JPG" />
+<img src="../img/RDS/RDS_09.png" alt="RDS_09.JPG" /></p>
+
+<p>RDS インスタンスが「実行中」になったら、そのインスタンスIDをクリックして、詳細を確認できます。
+<img src="../img/RDS/RDS_10.png" alt="RDS_10.JPG" /></p>
+
+<h3 id="3-2-ネットワーク許可設定">3-2. ネットワーク許可設定</h3>
+
+<p>インスタンス立ち上げただけではRDSにアドレスが付与されません。その為、インスタンスの詳細より、「ホワイトリストの設定」をクリックして、ネットワーク許可設定を施す事で、アドレスが付与されて、接続可能となります。
+<img src="../img/RDS/RDS_11.png" alt="RDS_11.JPG" /></p>
+
+<p>「セキュリティコントロール」のメニューに移動するので、「ホワイトリストグループを作成」をクリックします。</p>
+
+<p><img src="../img/RDS/RDS_13.png" alt="RDS_13.JPG" /></p>
+
+<p>ECS/RDSインスタンスが所属するVPCのネットワークセグメント（172.16.0.0/12）を指定します。</p>
+
+<p><img src="../img/RDS/RDS_14.png" alt="RDS_14.JPG" /></p>
+
+<p>ホワイトリストが正しく設定された事を確認します。</p>
+
+<p><img src="../img/RDS/RDS_15.png" alt="RDS_15.JPG" /></p>
+
+<h3 id="3-3-データベースユーザの作成">3-3. データベースユーザの作成</h3>
+
+<p>次に「アカウント管理」メニューをクリックして、アカウントを作成します。
+<img src="../img/RDS/RDS_16.png" alt="RDS_16.JPG" /></p>
+
+<p>まずは特権ユーザである「root」というアカウントを作成しました。（必須ではない）
+<img src="../img/RDS/RDS_17.png" alt="RDS_17.JPG" />
+<img src="../img/RDS/RDS_18.png" alt="RDS_18.JPG" /></p>
+
+<p>次に同じ容量で「springuser」というアカウントを作成しました。「許可済みデータベース」は、まだデータベースを作成していないので、選択不要です。</p>
+
+<p><img src="../img/RDS/RDS_19.png" alt="RDS_19.JPG" />
+<img src="../img/RDS/RDS_20.png" alt="RDS_20.JPG" /></p>
+
+<h3 id="3-4-データベースの作成と権限付与">3-4. データベースの作成と権限付与</h3>
+
+<p>最後に「データベースの管理」よりデータベースを作成します。
+<img src="../img/RDS/RDS_21.png" alt="RDS_21.JPG" />
+任意のデータベース名（デモアプリの仕様上ここではdb_example）を入力します。そして、「許可されたアカウント」と「アカウントタイプ」にて先程作ったユーザに読み取り書き込み権限を付与します。
+<img src="../img/RDS/RDS_22.png" alt="RDS_22.JPG" />
+そのまま作成して、正常に「実行中」となっている事を確認します。
+<img src="../img/RDS/RDS_23.png" alt="RDS_23.JPG" /></p>
+
+<p>これによりECS上からMySQLへアクセス可能となりました。</p>
+
+<hr />
+
+<p><h4 id="APP"></h4></p>
+
+<h2 id="4-os上でのspringbootの実装と接続確認">4. OS上でのSpringBootの実装と接続確認</h2>
+
+<p>ECSのCentOS上で、簡単なSpringbootアプリケーションを実装します。</p>
+
+<h3 id="4-1-javaとgitのインストール">4-1. JavaとGitのインストール</h3>
+
+<p>まずは実行環境で必要なツールをパッケージインストールします。</p>
+
+<pre><code>[root@iZ6we1q7wbpd4lko5h41ueZ ~]# yum install -y java-1.8.0-openjdk-devel
+読み込んだプラグイン:fastestmirror
+インストール処理の設定をしています
+Determining fastest mirrors
+依存性の解決をしています
+--&gt; トランザクションの確認を実行しています。
+---&gt; Package java-1.8.0-openjdk-devel.x86_64 1:1.8.0.222.b10-0.el6_10 will be インストール
+--&gt; 依存性の処理をしています: java-1.8.0-openjdk = 1:1.8.0.222.b10-0.el6_10 のパッケージ: 
+# 中略
+インストール:
+  java-1.8.0-openjdk-devel.x86_64 1:1.8.0.222.b10-0.el6_10                                                                                                                           
+
+依存性関連をインストールしました:
+  alsa-lib.x86_64 0:1.1.0-4.el6                    atk.x86_64 0:1.30.0-1.el6                                   avahi-libs.x86_64 0:0.6.25-17.el6                                   
+  cairo.x86_64 0:1.8.8-6.el6_6                     cups-libs.x86_64 1:1.4.2-81.el6_10                          fontconfig.x86_64 0:2.8.0-5.el6                                     
+  freetype.x86_64 0:2.3.11-17.el6                  gdk-pixbuf2.x86_64 0:2.24.1-6.el6_7                         giflib.x86_64 0:4.1.6-3.1.el6                                       
+  gnutls.x86_64 0:2.12.23-22.el6                   gtk2.x86_64 0:2.24.23-9.el6                                 hicolor-icon-theme.noarch 0:0.11-1.1.el6                            
+  jasper-libs.x86_64 0:1.900.1-22.el6              java-1.8.0-openjdk.x86_64 1:1.8.0.222.b10-0.el6_10          java-1.8.0-openjdk-headless.x86_64 1:1.8.0.222.b10-0.el6_10         
+  jpackage-utils.noarch 0:1.7.5-3.16.el6           libICE.x86_64 0:1.0.6-1.el6                                 libSM.x86_64 0:1.2.1-2.el6                                          
+  libX11.x86_64 0:1.6.4-3.el6                      libX11-common.noarch 0:1.6.4-3.el6                          libXau.x86_64 0:1.0.6-4.el6                                         
+  libXcomposite.x86_64 0:0.4.3-4.el6               libXcursor.x86_64 0:1.1.14-2.1.el6                          libXdamage.x86_64 0:1.1.3-4.el6                                     
+  libXext.x86_64 0:1.3.3-1.el6                     libXfixes.x86_64 0:5.0.3-1.el6                              libXfont.x86_64 0:1.5.1-2.el6                                       
+  libXft.x86_64 0:2.3.2-1.el6                      libXi.x86_64 0:1.7.8-1.el6                                  libXinerama.x86_64 0:1.1.3-2.1.el6                                  
+  libXrandr.x86_64 0:1.5.1-1.el6                   libXrender.x86_64 0:0.9.10-1.el6                            libXtst.x86_64 0:1.2.3-1.el6                                        
+  libfontenc.x86_64 0:1.1.2-3.el6                  libjpeg-turbo.x86_64 0:1.2.1-3.el6_5                        libpng.x86_64 2:1.2.49-2.el6_7                                      
+  libthai.x86_64 0:0.1.12-3.el6                    libtiff.x86_64 0:3.9.4-21.el6_8                             libxcb.x86_64 0:1.12-4.el6                                          
+  lksctp-tools.x86_64 0:1.0.10-7.el6               pango.x86_64 0:1.28.1-11.el6                                pcsc-lite-libs.x86_64 0:1.5.2-16.el6                                
+  pixman.x86_64 0:0.32.8-1.el6                     ttmkfdir.x86_64 0:3.0.9-32.1.el6                            tzdata-java.noarch 0:2019b-2.el6                                    
+  xorg-x11-font-utils.x86_64 1:7.2-11.el6          xorg-x11-fonts-Type1.noarch 0:7.2-11.el6                   
+
+完了しました!
+[root@iZ6we1q7wbpd4lko5h41ueZ ~]# yum install -y git
+読み込んだプラグイン:fastestmirror
+インストール処理の設定をしています
+Loading mirror speeds from cached hostfile
+依存性の解決をしています
+# 中略
+インストール:
+  git.x86_64 0:1.7.1-9.el6_9                                                                                                                                                         
+
+依存性関連をインストールしました:
+  perl-Error.noarch 1:0.17015-4.el6                                                          perl-Git.noarch 0:1.7.1-9.el6_9                                                         
+
+完了しました!
+[root@iZ6we1q7wbpd4lko5h41ueZ ~]# 
+
+</code></pre>
+
+<h3 id="4-2-springbootデモアプリの設定-実行">4-2. Springbootデモアプリの設定・実行</h3>
+
+<p>Springboot公式で提供されているMySQLにアクセス可能なデモアプリを利用します。<br />
+<a href="https://spring.io/guides/gs/accessing-data-mysql/">https://spring.io/guides/gs/accessing-data-mysql/</a></p>
+
+<pre><code>[root@iZ6we1q7wbpd4lko5h41ueZ ~]# git clone https://github.com/spring-guides/gs-accessing-data-mysql.git
+Initialized empty Git repository in /root/gs-accessing-data-mysql/.git/
+remote: Enumerating objects: 67, done.
+remote: Counting objects: 100% (67/67), done.
+remote: Compressing objects: 100% (41/41), done.
+remote: Total 810 (delta 20), reused 49 (delta 11), pack-reused 743
+Receiving objects: 100% (810/810), 584.09 KiB | 654 KiB/s, done.
+Resolving deltas: 100% (550/550), done.
+[root@iZ6we1q7wbpd4lko5h41ueZ ~]# 
+[root@iZ6we1q7wbpd4lko5h41ueZ ~]# 
+[root@iZ6we1q7wbpd4lko5h41ueZ ~]# ls
+gs-accessing-data-mysql
+[root@iZ6we1q7wbpd4lko5h41ueZ ~]# cd gs-accessing-data-mysql/
+[root@iZ6we1q7wbpd4lko5h41ueZ gs-accessing-data-mysql]# ls
+CONTRIBUTING.adoc  LICENSE.code.txt  LICENSE.writing.txt  README.adoc  complete  images  initial  test
+[root@iZ6we1q7wbpd4lko5h41ueZ gs-accessing-data-mysql]# cd complete/
+[root@iZ6we1q7wbpd4lko5h41ueZ complete]# ls
+build.gradle  docker-compose.yml  gradle  gradlew  gradlew.bat  mvnw  mvnw.cmd  pom.xml  src
+[root@iZ6we1q7wbpd4lko5h41ueZ complete]# ping rm-0iw6gy9273hhogef7.mysql.japan.rds.aliyuncs.com
+PING rm-0iw6gy9273hhogef7.mysql.japan.rds.aliyuncs.com (172.16.1.160) 56(84) bytes of data.
+64 bytes from 172.16.1.160: icmp_seq=1 ttl=102 time=0.999 ms
+64 bytes from 172.16.1.160: icmp_seq=2 ttl=102 time=0.136 ms
+^C
+--- rm-0iw6gy9273h45zlf7.mysql.japan.rds.aliyuncs.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1489ms
+rtt min/avg/max/mdev = 0.136/0.567/0.999/0.432 ms
+[root@iZ6we1q7wbpd4lko5h41ueZ complete]# vim src/main/resources/application.properties 
+# server.error.whitelabel.enabled=false を追記
+[root@iZ6we1q7wbpd4lko5h41ueZ complete]# export MYSQL_HOST=rm-0iw6gy9273hhogef7.mysql.japan.rds.aliyuncs.com
+[root@iZ6we1q7wbpd4lko5h41ueZ complete]# ./gradlew bootRun # デモなのでrootのまま実行
+
+&gt; Task :bootRun 
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.7.RELEASE)
+
+2019-09-19 11:57:49.052  INFO 2089 --- [           main] c.e.a.AccessingDataMysqlApplication      : Starting AccessingDataMysqlApplication on iZ6we1q7wbpd4lko5h41ueZ with PID 2089 (/root/gs-accessing-data-mysql/complete/build/classes/java/main started by root in /root/gs-accessing-data-mysql/complete)
+2019-09-19 11:57:49.079  INFO 2089 --- [           main] c.e.a.AccessingDataMysqlApplication      : No active profile set, falling back to default profiles: default
+2019-09-19 11:57:51.182  INFO 2089 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-19 11:57:51.304  INFO 2089 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96ms. Found 1 repository interfaces.
+2019-09-19 11:57:52.398  INFO 2089 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9fcdb7ed] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-19 11:57:53.171  INFO 2089 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-09-19 11:57:53.261  INFO 2089 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-19 11:57:53.261  INFO 2089 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-19 11:57:53.544  INFO 2089 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-19 11:57:53.545  INFO 2089 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4325 ms
+2019-09-19 11:57:54.051  INFO 2089 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-09-19 11:57:54.568  INFO 2089 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-09-19 11:57:54.809  INFO 2089 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+        name: default
+        ...]
+2019-09-19 11:57:54.935  INFO 2089 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2019-09-19 11:57:54.936  INFO 2089 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-09-19 11:57:55.356  INFO 2089 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-09-19 11:57:55.677  INFO 2089 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-09-19 11:57:57.056  INFO 2089 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-19 11:57:58.332  INFO 2089 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-19 11:57:58.430  WARN 2089 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-09-19 11:57:59.426  INFO 2089 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-09-19 11:57:59.428  INFO 2089 --- [           main] c.e.a.AccessingDataMysqlApplication      : Started AccessingDataMysqlApplication in 11.422 seconds (JVM running for 12.184)
+
+</code></pre>
+
+<p>上記Springbootアプリケーションがサーバで実行中に下記のコマンドを実行します。<br />
+<code>curl localhost:8080/demo/add -d name=First -d email=someemail@someemailprovider.com</code><br />
+ → <code>localhost</code> は適時読み変えてください</p>
+
+<p>これにより、MySQLにデータが登録されます。</p>
+
+<h3 id="4-3-nginxのインストール-設定">4-3. Nginxのインストール・設定</h3>
+
+<p>Nginx公式の手順を参考に、Springbootへのリバースプロキシを設定します。<br />
+<a href="https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/">https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/</a></p>
+
+<pre><code>[root@iZ6we1q7wbpd4lko5h41ueZ ~]# yum install -y nginx
+読み込んだプラグイン:fastestmirror
+インストール処理の設定をしています
+Loading mirror speeds from cached hostfile
+依存性の解決をしています
+--&gt; トランザクションの確認を実行しています。
+# 中略
+インストール:
+  nginx.x86_64 0:1.10.3-1.el6                                                                                                                                                        
+
+依存性関連をインストールしました:
+  GeoIP.x86_64 0:1.6.5-1.el6                                  GeoIP-GeoLite-data.noarch 0:2018.04-1.el6                    GeoIP-GeoLite-data-extra.noarch 0:2018.04-1.el6           
+  gd.x86_64 0:2.0.35-11.el6                                   geoipupdate.x86_64 0:3.1.1-2.el6                             libXpm.x86_64 0:3.5.10-2.el6                              
+  libxslt.x86_64 0:1.1.26-2.el6_3.1                           nginx-all-modules.noarch 0:1.10.3-1.el6                      nginx-filesystem.noarch 0:1.10.3-1.el6                    
+  nginx-mod-http-geoip.x86_64 0:1.10.3-1.el6                  nginx-mod-http-image-filter.x86_64 0:1.10.3-1.el6            nginx-mod-http-perl.x86_64 0:1.10.3-1.el6                 
+  nginx-mod-http-xslt-filter.x86_64 0:1.10.3-1.el6            nginx-mod-mail.x86_64 0:1.10.3-1.el6                         nginx-mod-stream.x86_64 0:1.10.3-1.el6                    
+
+完了しました!
+[root@iZ6we1q7wbpd4lko5h41ueZ ~]# 
+[root@iZ6we1q7wbpd4lko5h41ueZ ~]# vim /etc/nginx/conf.d/default.conf 
+# proxy_passを追記します。 
+[root@iZ6we1q7wbpd4lko5h41ueZ ~]# service nginx start
+</code></pre>
+
+<p>そして、ECSサーバにHTTPアクセスすると以下の画面が表示されるようになります。<br />
+<img src="../img/APP/APP_01.png" alt="APP_01.JPG" /></p>
+
+<hr />
+
+<p><h4 id="SLB"></h4></p>
+
+<h2 id="5-slbを用いたロードバランサーの作成">5. SLBを用いたロードバランサーの作成</h2>
+
+<p>Alibaba Cloudでは、仮想ロードバランサの事を<a href="../img/SLB/SLB_01.jpeg">Server Load Balancer</a>と呼称しており、その利用手順を記載します。</p>
+
+<h3 id="5-1-サービスの選択">5-1. サービスの選択</h3>
+
+<p>ログイン後のコンソールで、「Server Load Balancer」をクリックします。<br />
+<img src="../img/SLB/SLB_02.jpeg" alt="WS000000.JPG" /></p>
+
+<h3 id="5-2-ロードバランサの作成">5-2. ロードバランサの作成</h3>
+
+<p>「ロードバランサの作成」をクリックします。
+<img src="../img/SLB/SLB_03.jpeg" alt="WS000001.JPG" />
+ロードバランサのパラメータとして、以下を入力して、「今すぐ購入」をクリックします。</p>
+
+<ul>
+<li>リージョン</li>
+<li>プライマリーゾーン</li>
+<li>バックアップゾーン</li>
+<li>インスタンス名</li>
+<li>インスタンスタイプ（外部公開/内部公開）</li>
+<li>インスタンススペック</li>
+<li>個数
+<img src="../img/SLB/SLB_04.jpeg" alt="WS000003.JPG" />
+利用規約に同意して、「有効化」をクリックします。
+<img src="../img/SLB/SLB_05.jpeg" alt="WS000004.JPG" /></li>
+</ul>
+
+<h3 id="5-3-ロードバランサのリスナー設定">5-3. ロードバランサのリスナー設定</h3>
+
+<p>先程作成したロードバランサで「リスナーの設定」をクリックします。
+<img src="../img/SLB/SLB_06.jpeg" alt="WS000005.JPG" />
+接続することプロトコルとポート番号（今回はHTTPと80）を入力して、「次へ」をクリックします。
+<img src="../img/SLB/SLB_07.jpeg" alt="WS000007.JPG" /></p>
+
+<h3 id="5-4-ロードバランサのバックエンド設定">5-4. ロードバランサのバックエンド設定</h3>
+
+<p>VServerグループが選択されている事を確認して、「VServerグループの作成」をクリックします。
+<img src="../img/SLB/SLB_08.jpeg" alt="WS000009.JPG" />
+VServerグループ名を入力して、「追加」をクリックします。
+<img src="../img/SLB/SLB_09.jpeg" alt="WS000010.JPG" />
+既存のECSインスタンスの中から、バックエンドとなるインスタンスにチェックを入れて、「次のステップ：重みとポートの設定」をクリックします。
+<img src="../img/SLB/SLB_10.jpeg" alt="WS000012.JPG" />
+バックエンドがリッスンしているポート番号（80)と、重み（100）を入力して「次へ」をクリックします。
+<img src="../img/SLB/SLB_11.jpeg" alt="WS000013.JPG" /></p>
+
+<h3 id="5-5-ロードバランサのヘルスチェック設定">5-5. ロードバランサのヘルスチェック設定</h3>
+
+<p>ヘルスチェックの項目を確認、必要であれば変更して、「次へ」をクリックします。
+<img src="../img/SLB/SLB_12.jpeg" alt="WS000014.JPG" />
+確認画面が表示されるので、「送信」をクリックします。
+<img src="../img/SLB/SLB_13.jpeg" alt="WS000015.JPG" />
+作成が完了したら、「OK」をクリックします。
+<img src="../img/SLB/SLB_14.jpeg" alt="WS000017.JPG" /></p>
+
+<h3 id="5-6-ロードバランサの動作確認">5-6. ロードバランサの動作確認</h3>
+
+<p>ステータスは実行中であっても、ヘルスチェックが通るまでは利用不可と表示されます
+<img src="../img/SLB/SLB_15.jpeg" alt="WS000018.JPG" />
+ヘルスチェックが正常になったら、バックエンドにアクセス可能です。
+SLB経由でのNginxの動作確認は以下の通りです。
+<img src="../img/APP/APP_02.png" alt="APP_02.JPG" />
+SLBおよびNginx経由でのSpringbootの動作確認は以下の通りです。
+<img src="../img/APP/APP_03.png" alt="APP_03.JPG" /></p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/help/scenario/web-application/" title="Webアプリケーション"> <i class="fa fa-chevron-left"></i><label>Webアプリケーション</label></a>
+    <a class="nav nav-next" href="/help/scenario/terraform/" title="Terraform" style="margin-right: 0px;"><label>Terraform</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i>  09/23/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/sbcloud/help/tree/master/content/scenario/web-application/springboot-with-ecs.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/help/js/clipboard.min.js"></script>
+
+<link href="/help/css/featherlight.min.css" rel="stylesheet">
+<script src="/help/js/featherlight.min.js"></script>
+
+
+
+<script src="/help/theme-flex/script.js"></script>
+
+<link href="/help/mermaid/mermaid.css" type="text/css" rel="stylesheet" />
+<script src="/help/mermaid/mermaid.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
