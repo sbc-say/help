@@ -474,15 +474,15 @@ YARNファミリー  ResourceManager  クラスタのリソースを監視、管
       <guid>https://www.sbcloud.co.jp/help/best-practice/web-application/05/database/</guid>
       <description>以下の区分により、Alibaba Cloudを活用したWebアプリケーション構築手法を紹介いたします。
  名前解決 負荷分散 Web/APサーバ データベース  本項目では、Alibaba Cloudのデータベースに関するサービスの基本仕様と設計ポイントを紹介します。
-データベース  対象サービス 基本的な仕様 設計のポイント アーキテクチャ図  対象サービス Relational DatabaseとしてAspara for RDS、NoSQL DatabaseとしてAspara for MongoDBを利用する事が出来ます。 &amp;ldquo;Aspara&amp;rdquo;という名前はAlibaba社内でのAlibaba Cloudを指す為、その名残として名称となります。
-基本的な仕様 Aspara for RDS  リードレプリカの追加
+データベース  対象サービス 基本的な仕様 設計のポイント アーキテクチャ図  対象サービス Relational DatabaseとしてApsara for RDS、NoSQL DatabaseとしてApsara for MongoDBを利用する事が出来ます。 &amp;ldquo;Apsara&amp;rdquo;という名前はAlibaba社内でのAlibaba Cloudを指す為、その名残として名称となります。
+基本的な仕様 Apsara for RDS  リードレプリカの追加
  ディスク消費量のコンソールからの確認
  メンテナンス時間の設定
  アクセスホワイトリストの設定
  コンソールからパラメータの書き換え可能
  文字コードはデータベースの仕様に準拠
     Polar DB  2019年8月末時点でジャカルタリージョンのみ利用可能です。
-    Aspara for MongoDB  レプリカセットかシャーディングかの選択をした後に、リージョン、VPC、スペック、MongoDBバージョン、レプリカ/シャーディング数、パスワードを入力して作成
+    Apsara for MongoDB  レプリカセットかシャーディングかの選択をした後に、リージョン、VPC、スペック、MongoDBバージョン、レプリカ/シャーディング数、パスワードを入力して作成
  作成後には主に以下の設定が可能となります。
  バックアップ・リカバリ
  リソース監視
