@@ -167,6 +167,20 @@ AWS/Azure/GCPとの比較について ※ AlibabaCloud公式によるAWSとの�
     </item>
     
     <item>
+      <title>CloudMonitor</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/product/cloudmonitor/cloudmonitor/</link>
+      <pubDate>Mon, 23 Sep 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/product/cloudmonitor/cloudmonitor/</guid>
+      <description>本記事の狙い パブリッククラウドのメリットは、インフラ作業から開放し、サービス自体に集中できると言われていますが、基盤監視が不要ということではありません。オンプレミス環境と同様に、システム全体におけるパフォーマンス変化の把握、異常動作の検知、アラームの設定、自動バッチの実行、ログの可視化などを行う必要があります。
+AlibabaCloudが提供する無料監視プロダクトCloudMonitorを利用することにより、コンソール操作、または簡単なバッチ仕込むことから、AlibabaCloud上のリソースを監視することができます。本文は、下記5つのポイントからCloudMonitorの利用方法を紹介します。
+ 性能監視  ECS編 RDS編 SLB編  イベント監視  ECS編 RDS編 SLB編  カスタム監視 APIにより監視データの外部連携 Grafanaにより監視データの可視化  
+1. 性能監視 AlibabaCloudの製品を利用するだけで、無料で付いてくるCloudMonitor監視です。手間かかる設定が必要ありません。CloudMonitorのコンソールにて、下記リストされた各製品のメトリック項目の時系列監視図の確認はもちろん、アラームを設定することも可能です。ECS製品の場合、エージェントをECSにインストールすることにより、監視可能なメトリックが更に豊富になります。
+
+ECS編 ・基本監視（エージェント不要）    メトリック項目 説明 単位     ECS.CPUUtilization CPUの使用率 ％   ECS.InternetInRate インターネットインバウンドの帯域幅 ビット/秒   ECS.IntranetInRate イントラネットインバウンドの帯域幅 ビット/秒   ECS.InternetOutRate インターネットアウトバウンドの帯域幅 ビット/秒   ECS.IntranetOutRate イントラネットアウトバウンドの帯域幅 ビット/秒   ECS.SystemDiskReadbps 1秒あたりのシステムディスク読取バイト数 バイト/秒   ECS.SystemDiskWritebps 1秒あたりのシステムディスク書込バイト数 バイト/秒   ECS.</description>
+    </item>
+    
+    <item>
       <title>Hadoopとその周辺の技術について</title>
       <link>https://www.sbcloud.co.jp/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/</link>
       <pubDate>Fri, 30 Aug 2019 00:00:00 +0000</pubDate>
