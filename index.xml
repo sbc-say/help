@@ -287,6 +287,28 @@ $ echo 0.11.13 &amp;gt; .</description>
     </item>
     
     <item>
+      <title>日本と中国のNW接続</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/network/jp-cn/</link>
+      <pubDate>Mon, 30 Sep 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/network/jp-cn/</guid>
+      <description>目次  日本と中国のプライベートネットワーク接続（以下、日中接続）の解説の流れとなります。  本記事の狙い 日中接続パターン Alibaba Cloudであるメリット 日中接続の注意点 日中接続の構築例   
+1. 本記事の狙い パブリッククラウドにおけるAlibaba Cloudの代表的な強みとして、中国との安定したネットワーク接続が挙げられます。ではAlibaba Cloudで具体的にどのようなサービスを用いれば日中接続を実現できるかを、既存の資料を交えて紹介いたします。
+本記事を理解する前提として、Alibaba CloudのVPCとリージョンの知識が必要となるので、初見の方は以下のURLも併せてご確認ください。
+VPCとは: https://jp.alibabacloud.com/help/doc-detail/34217.htm
+リージョンとゾーン: https://jp.alibabacloud.com/help/doc-detail/40654.htm
+ 2. 日中接続パターン  Alibaba Cloud同士の接続 Alibaba Cloud以外のパブリッククラウドとの接続 オンプレミスの接続   Alibaba Cloud同士の接続 日中のシステムが共にAlibaba Cloud上で構築されている場合には、CEN (Cloud Enterprise Network) というサービスを用いるのが一般的です。
+CENは、VPC（仮想ネットワークセグメント）に対して包括的なルーティング機能を提供します。その為「CENインスタンスの作成」と「CENインスタンスに対してVPCを紐付ける」の2ステップによって、日中VPC間でのプライベートIPアドレスによる通信が可能となります。ダイナミックルーティング等の複雑な設定は一切不要です。
+ステップバイステップ手順 SBCloudドキュメント: CEN利用手順書
+https://www.sbcloud.co.jp/entry/2018/08/01/cen-introduction/
+Alibaba Cloudドキュメント: CEN利用手順書
+https://jp.alibabacloud.com/help/doc-detail/59870.htm
+本構成が当てはまるシステムの要件  データロスが許されないデータ通信 リアルタイム性が重要となるデータ通信 新規ビジネス展開に伴う新規システムの構築 既存のAlibaba Cloudリソースの利用 シンプルなインフラコードを実現したい  構成イメージ  Alibaba Cloud以外のパブリッククラウドとの接続 日中のシステムにおいて、他方がAlibaba Cloud以外のパブリッククラウド（AWSやAzure）上で構成されている場合、日中接続する為にIPSecを用いたVPNトンネルを構築するのが一般的です。
+VPNトンネルの構築は以下の2ステップで実現出来ます。
+ Alibaba CloudおよびAlibaba Cloud以外のアカウント、 この両方でVPNゲートウェイを作成する それぞれのVPNゲートウェイに、IPSec設定情報と対抗のゲートウェイ情報を入力する  VPNトンネルの構築後に、VPNトンネルを介した疎通を可能にする為、以下を実施します。</description>
+    </item>
+    
+    <item>
       <title>DataV のデータ権限制御</title>
       <link>https://www.sbcloud.co.jp/help/best-practice/product/datav/datav-develop-api-cookie/</link>
       <pubDate>Wed, 25 Sep 2019 12:30:18 +0800</pubDate>
