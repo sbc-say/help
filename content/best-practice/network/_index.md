@@ -9,6 +9,18 @@ draft: false
 
 <!-- コンテンツを書くときはこの下に記載ください -->
 
+<!-- 
+■InnerVPCの考え方  
+　全般, AWSとの比較  
+　https://www.slideshare.net/sbcloud/awsalibaba-cloudvpc  
+　https://www.sbcloud.co.jp/entry/2018/10/11/alibabacloud-vpc/  
+　イントラネット  
+　https://jp.alibabacloud.com/help/doc-detail/25385.htm  
+ クラシックリンク  
+　https://jp.alibabacloud.com/help/doc-detail/63906.htm  
+　ECSのネットワーク帯域幅  
+　https://jp.alibabacloud.com/help/doc-detail/25411.htm  
+ -->
 
 
 <!-- 配下タイトル一覧がコンテンツの後に表示されます -->
