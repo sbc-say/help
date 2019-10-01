@@ -3,7 +3,7 @@ title: "ECSとDjangoの構築例"
 description: "AlibabaCloudのIaaSを用いた、Python Djangoアプリケーションの構築例を記載します。"
 date: 2019-09-23T16:20:40+09:00
 weight: 30
-draft: false
+draft: true
 ---
 
 <span id="index">目次</span>
