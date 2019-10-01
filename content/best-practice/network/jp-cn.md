@@ -43,7 +43,7 @@ VPCとは: https://jp.alibabacloud.com/help/doc-detail/34217.htm
 
 #### Alibaba Cloud同士の接続  
 日中のシステムが共にAlibaba Cloud上で構築されている場合には、<b>CEN ([Cloud Enterprise Network](https://jp.alibabacloud.com/product/cen)) というサービスを用いる</b>のが一般的です。  
-CENは、VPC（仮想ネットワークセグメント）に対して包括的なルーティング機能を提供します。その為「CENインスタンスの作成」と「CENインスタンスに対してVPC（例：日本リージョンのVPCと中国リージョンのVPC）を紐付ける」の2ステップによって、日中VPC間でのプライベートIPアドレスによる通信が可能となります。ダイナミックルーティング等の複雑な設定は一切不要です。  
+CENは、VPC（仮想ネットワークセグメント）に対して包括的なルーティング機能を提供します。その為「CENインスタンスの作成」と「CENインスタンスに対してVPCを紐付ける」の2ステップによって、日中VPC間でのプライベートIPアドレスによる通信が可能となります。ダイナミックルーティング等の複雑な設定は一切不要です。  
 
 ##### ステップバイステップ手順  
 SBCloudドキュメント: CEN利用手順書  
@@ -99,19 +99,20 @@ https://jp.alibabacloud.com/help/doc-detail/65072.htm
 <div id="ali-on"></div>
 
 #### オンプレミスとの接続
-日中のシステムにおいて、他方がオンプレミス（凡そデータセンタ）で構成されている場合、日中接続する為の手段は2つあります。  
+日中のシステムにおいて、他方がオンプレミス（＝データセンタ）に存在している場合、日中接続する為の手段は2つあります。  
 <br>
 一つは、他社パブリッククラウド接続と同様に、VPNトンネルを経由した接続です。  
 もう一つは、ダイレクトアクセスという回線サービスを用いて、オンプレミスとAlibaba Cloudを直接接続する手法で、こちらを推奨しております。  
 <br>
-ダイレクトアクセスは、ソフトバンク株式会社が持つネットワーク資産とノウハウを利用して、Alibaba CloudのVPCとオンプレミスのシステムを閉域接続します。これによりVPNトンネル接続では実現できない、高品質なネットワーク接続を実現出来ます。
+ダイレクトアクセスは、ソフトバンク株式会社が持つネットワーク資産とノウハウを利用して、Alibaba CloudのVPCとオンプレミスのシステムを閉域接続します。これによりVPNトンネル接続では実現できない、高品質なネットワーク接続を実現出来ます。  
+また、VPNトンネルの構成でも、ダイレクトアクセスの構成でも、CENを併用する事で複数のVPCとオンプレミスとを一括で接続する事が可能です。
 <br>
 
 ##### ステップバイステップ手順書  
 SBCloudドキュメント：ダイレクトアクセス  
 https://www.sbcloud.co.jp/document/expressconnect_direcr_access  
 Softbankドキュメント：サービス紹介書   
-https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_alibaba/
+https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_alibaba/  
 Alibaba Cloudドキュメント:VPN ゲートウェイを経由したローカルデータセンターから Alibaba Cloudへの接続  
 https://jp.alibabacloud.com/help/doc-detail/87042.htm  
 Yamahaルータを用いたVPNトンネルによる接続  
@@ -121,8 +122,8 @@ https://network.yamaha.com/setting/router_firewall/cloud/alibaba_cloud
 ダイレクトアクセスによる日中接続を前提として、以下の要件に最適と言えます。
 
  - オンプレミスの基幹システムと連動したAlibaba Cloudの利用
- - オンプレミスからAlibaba Cloudへのシステム移行
  - オンプレミスとAlibaba Cloudでのシームレスなデータ連携
+ - オンプレミスからAlibaba Cloudへのシステム移行
 
 #### 構成イメージ 
 ダイレクトアクセス
@@ -133,10 +134,14 @@ https://network.yamaha.com/setting/router_firewall/cloud/alibaba_cloud
 ## 3. Alibaba Cloudであるメリット
 Alibaba Cloud以外のパブリッククラウドと比較して、何がメリットになるのかを記載します。
 
-  - ネットワーク品質が保証されている 
-  - 日中で単一のコンソールで管理したい
+  - ネットワーク品質が保証されている  
+  　　→帯域幅を購入する事でSLAに沿った品質が担保される  
+  - 日中アカウントを単一のコンソールで管理できる  
+  　　→ユーザ管理も含めて一括管理可能  
   - ネットワークセキュリティの実績が豊富  
+  　　→中国国内の数多く攻撃から防御した実績のあるプロダクト・構成を利用できる  
   - 中国国内で利用可能なプロダクトおよびリージョン数が多い  
+  　　→日本リージョンと同じプロダクトを中国リージョンでも利用できる為、システム構成に差異が生まれない  
 
 <div id="cons"></div>
 
