@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-09-27T04:03:40 UTC">
+<meta name="revised" content="2019-10-01T05:47:24 UTC">
 <title>DataV Widget 開発ガイド :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -47,7 +47,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-<meta name="description" content="第三者ライブラリEcharts をDataV Widgetに取り込みの方法を紹介します。">
+<meta name="description" content="第三者ライブラリ Echarts を DataV Widget に取り込む方法を紹介します。">
 
         
 
@@ -183,10 +183,17 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/best-practice/product/cloudmonitor/cloudmonitor/" class="dd-item">
+    <li data-nav-id="/help/best-practice/product/datav/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/product/datav/">DataV</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/product/datav/datav-develop-api-cookie/" class="dd-item">
         <div>
-          <a href="/help/best-practice/product/cloudmonitor/cloudmonitor/">
-            CloudMonitor
+          <a href="/help/best-practice/product/datav/datav-develop-api-cookie/">
+            DataV のデータ権限制御
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -194,6 +201,15 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
         <div>
           <a href="/help/best-practice/product/datav/datav-widget-develop-guide/">
             DataV Widget 開発ガイド
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/help/best-practice/product/cloudmonitor/cloudmonitor/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/cloudmonitor/cloudmonitor/">
+            CloudMonitor
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -739,7 +755,12 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
- <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/product/'>プロダクト</a> > DataV Widget 開発ガイド
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/product/'>プロダクト</a> > <a href='/help/best-practice/product/datav/'>DataV</a> > DataV Widget 開発ガイド
+
+ 
 
  
 
@@ -765,8 +786,13 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <option value="/help/best-practice/product/" >
   - 
    プロダクト</option> 
+    <option value="/help/best-practice/product/datav/" >
+  -- 
+   DataV</option> 
+      <option value="/help/best-practice/product/datav/datav-develop-api-cookie/" >--- DataV のデータ権限制御</option>
+      <option value="/help/best-practice/product/datav/datav-widget-develop-guide/"  selected>--- DataV Widget 開発ガイド</option>
+  
       <option value="/help/best-practice/product/cloudmonitor/cloudmonitor/" >-- CloudMonitor</option>
-      <option value="/help/best-practice/product/datav/datav-widget-develop-guide/"  selected>-- DataV Widget 開発ガイド</option>
   
     <option value="/help/best-practice/web-application/" >
   - 
@@ -805,15 +831,15 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h2 id="目的">目的</h2>
 
-<p>DataV は AlibabaCloud のデータ可視化プロダクトとして日々進化して、とても優れていますが、提供できる Widget が限られてるため、一部特殊ニーズがあるユーザに答えられない可能性があります。このため、<a href="https://data.aliyun.com/visual/datav">DataVのプロ版</a>（中国サイト基準の呼び方）はWidget開発権限を開放し、DataV固有のWidgetを利用以外はユーザ自身も自由に開発するできるようになります。</p>
+<p>DataV は AlibabaCloud のデータ可視化プロダクトとして日々進化しており、とても優れていますが、提供できる Widget が限られているため、一部特殊なニーズがあるユーザーに対応できない可能性があります。このため、<a href="https://data.aliyun.com/visual/datav">DataVのプロ版</a>（中国サイト基準の呼び方）では Widget 開発権限を開放し、DataV 固有の Widget の利用以外はユーザー自身も自由に開発できるようになります。</p>
 
-<p>　DataV プロ版はユーザ自身のWidgetを開発できるメリットがある以外は、開発された Widget を他人にも共有できるし、中国サイトの MarketPlace を販売することもできるので、開発ベンダーにとってもDataVはデータ可視化ツールの魅了的なプラットフォームです。</p>
+<p>　DataV プロ版はユーザー自身の Widget を開発できるメリットがあることに加えて、開発された Widget を他人にも共有でき、中国サイトの MarketPlace で販売することもできるため、開発ベンダーにとっても DataV はデータ可視化ツールの魅了的なプラットフォームです。</p>
 
 <p><img src="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16513/15644552497711_zh-CN.gif" alt="DataVイメージ図" /></p>
 
-<p>本ガイドは、いくつの簡単な <a href="https://echarts.apache.org">Echarts ライブラリ</a>をDataVに取り込みのサンプルを通じてDataV開発版の使い方とWidget開発ルールを紹介させていただきます。</p>
+<p>本ガイドでは、いくつの簡単な <a href="https://echarts.apache.org">Echarts ライブラリ</a>を DataV に取り込むためのサンプルを使用して、 DataV 開発版の使い方と Widget 開発のルールを紹介させていただきます。</p>
 
-<p>  本ガイド全体的な流れは下記の通り：</p>
+<p>  本ガイドの全体的な流れは下記の通りです。</p>
 
 <table>
 <thead>
@@ -827,26 +853,26 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <tbody>
 <tr>
 <td>前提知識</td>
-<td align="left">DataVの基本知識</td>
-<td align="left">DataVの概要を紹介、Widgetの簡単な説明</td>
+<td align="left">DataV の基本知識</td>
+<td align="left">DataV の概要紹介と Widget の簡単な説明</td>
 </tr>
 
 <tr>
 <td>-</td>
-<td align="left">Echarts基本知識</td>
-<td align="left">Echartsの概要紹介とOptionの簡単な説明</td>
+<td align="left">Echarts の基本知識</td>
+<td align="left">Echarts の概要紹介と Option の簡単な説明</td>
 </tr>
 
 <tr>
 <td>-</td>
-<td align="left">Nodejs基本知識</td>
-<td align="left">NodeJSのパッケージとDataV widgetの関係、及びNPMコマンドの簡単な説明</td>
+<td align="left">Nodejs の基本知識</td>
+<td align="left">NodeJS のパッケージと DataV widget の関係、および NPM コマンドの簡単な説明</td>
 </tr>
 
 <tr>
 <td>準備作業</td>
-<td align="left">Tokenの取得とGroupの作成</td>
-<td align="left">開発前にDataV側が必要な準備作業</td>
+<td align="left">Token の取得と Group の作成</td>
+<td align="left">開発前に DataV 側で必要な準備作業</td>
 </tr>
 
 <tr>
@@ -858,81 +884,81 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <tr>
 <td>開発ルール</td>
 <td align="left">index.js</td>
-<td align="left">index.jsの各Functionの説明</td>
+<td align="left">index.js の各 Function の説明</td>
 </tr>
 
 <tr>
 <td>-</td>
 <td align="left">package.json</td>
-<td align="left">package.jsonの説明</td>
+<td align="left">package.json の説明</td>
 </tr>
 
 <tr>
 <td>サンプルコード</td>
-<td align="left">EchartsのコードをそのままDataVに移行</td>
-<td align="left">package.jsonを使わない場合のEcharts取り込み方法</td>
+<td align="left">Echarts のコードをそのまま DataV に移行</td>
+<td align="left">package.json を使わない場合の Echarts 取り込み方法</td>
 </tr>
 
 <tr>
 <td>-</td>
-<td align="left">Option一部をDataVのpackage.jsonに変換</td>
-<td align="left">EchartsのOption一部をDataVのpackage.jsonに変換した場合</td>
+<td align="left">Option の一部 を DataV の package.json に変換</td>
+<td align="left">Echarts の Option の一部を DataV の package.json に変換する場合</td>
 </tr>
 
 <tr>
 <td>-</td>
-<td align="left">Optionを完全にDataVのpackage.jsonに変換</td>
-<td align="left">EchartsのOption完全にDataVのpackage.jsonに変換した場合</td>
+<td align="left">Option を完全に DataV の package.json に変換</td>
+<td align="left">Echarts の Option を完全に DataV の package.json に変換する場合</td>
 </tr>
 
 <tr>
-<td>PublishとDeploy</td>
+<td>Publish と Deploy</td>
 <td align="left">datav publish</td>
-<td align="left">開発したWidgetをDataVへPublishし、Dashboardを作る</td>
+<td align="left">開発した Widget を DataV へ Publish し、Dashboard を作成</td>
 </tr>
 </tbody>
 </table>
 
 <h2 id="前提知識">前提知識</h2>
 
-<p>本ガイドを理解するために、下記前提知識が必要になります。</p>
+<p>本ガイドを理解するために、下記の前提知識が必要になります。</p>
 
 <h3 id="1-datavの基本知識">1.DataVの基本知識</h3>
 
-<p>DataV は、Alibaba Cloud のデータ可視化サービスで、膨大な量の複雑なデータを視覚的なダッシュボードとして分析および表示できます。DataV は、データ可視化エクスペリエンスをより多くのユーザーに提供することを目的としており、経験の浅いエンジニアがグラフィカルユーザーインターフェイスを介して高度な可視化アプリケーションを簡単に構築できるよう支援します。</p>
+<p>DataV は、Alibaba Cloud のデータ可視化サービスで、膨大な量の複雑なデータを視覚的なダッシュボードとして分析し表示できます。DataV は、データ可視化エクスペリエンスをより多くのユーザーに提供することを目的としており、経験の浅いエンジニアがグラフィカルユーザーインターフェイスを介して、高度な可視化アプリケーションを簡単に構築できるよう支援します。</p>
 
-<p>DataV には、高度な可視化を実現するため、基本的なグラフライブラリからサードパーティのグラフライブラリまで幅広く用意されています。ユーザは高度なプログラミングスキルは不要で、単純なドラッグアンドドロップ操作で高度な可視化プロジェクトを作成できます。</p>
+<p>DataV には、高度な可視化を実現するため、基本的なグラフライブラリからサードパーティのグラフライブラリまで幅広く用意されています。ユーザーは高度なプログラミングスキルが不要で、単純なドラッグアンドドロップ操作で高度な可視化プロジェクトを作成できます。</p>
 
 <p><img src="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16513/15583310117715_ja-JP.gif" alt="操作イメージ図" /></p>
 
-<p>DataVは、中国サイト基準で現在下記四つバージョンが用意されています。（日本サイトと国際とのDataVバージョンは中国サイトより少し遅れています。）</p>
+<p>DataV は、中国サイトが基準で現在下記 4 つバージョンが用意されています。(日本サイトと国際の DataV バージョンは中国サイトより少し遅れています。）</p>
 
 <ul>
 <li>基本版
 
 <ul>
-<li>一般的なユーザ向けのバージョンです。使えるテンプレートもグラフ Widget も制限されていて、基本的な Dashboard を作れることが可能です。</li>
+<li>一般的なユーザー向けのバージョンです。使えるテンプレートもグラフ Widget も制限されており、基本的な Dashboard を作成することが可能です。</li>
 </ul></li>
 <li>企業版
 
 <ul>
-<li>一般的な企業向けに、基本版よりテンプレートもグラフ Widget も多いし、お客様自身も３つのWidgetまで開発することが可能です。</li>
+<li>一般的な企業向けに、基本版よりテンプレートとグラフ Widget の数も多く、お客様自身も３つの Widget まで開発することが可能です。</li>
 </ul></li>
 <li>プロ版
 
 <ul>
-<li>開発ベンダーや開発能力を持ってる大企業向けに、企業版より高級テンプレートを増えて、開発できる Widget の数も制限されていない。</li>
+<li>開発ベンダーや開発能力を持ってる大企業向けに、企業版より高度なテンプレートが増え、開発できる Widget の数も制限されていません。</li>
 </ul></li>
 <li>ローカル版
 
 <ul>
-<li>政府や特殊セキュリティ要件がある大企業向けに、DataV はお客様のローカル環境にディプロイできるバージョンです。 購入方法や料金について、個別に営業担当に問い合わせください。</li>
+<li>政府や特殊セキュリティ要件がある大企業向けに、DataV のお客様のローカル環境にディプロイできるバージョンです。 購入方法や料金については、個別に営業担当にお問い合わせください。</li>
 </ul></li>
 </ul>
 
-<p>今回の DataV 開発ガイドは、上記<code>プロ版</code>を使ってご紹介させていただきます。</p>
+<p>この DataV 開発ガイドでは、上記 <code>プロ版</code>を使ってご紹介させていただきます。</p>
 
-<p>一つDataV の Dashboard を作るために、基本的に下記順番で作業します。</p>
+<p>1 つの DataV の Dashboard を作るには、基本的に下記の順番で作業します。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mermaid" data-lang="mermaid">graph LR
     st((プロジェクト作成)) --&gt; op0[データソース追加]
     op0 --&gt; op1[Widget追加]
@@ -940,29 +966,29 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     op2 --&gt; op3[Widgetデータ設定]
     op3 --&gt; op4[プレビュー]
     op4 --&gt; en((プロジェクト公開))</code></pre></div>
-<p>一つの Widget は、基本的に<code>表示仕様</code>と<code>表示データ</code>２つパーツを設定する必要があります。設定イメージは下記に参照してください。</p>
+<p>一つの Widget では、基本的に<code>表示仕様</code>と<code>表示データ</code>の ２つパーツを設定する必要があります。設定イメージは下記をご参照ください。</p>
 
 <blockquote>
-<p>ユーザ自身を Widget を開発する場合も、一般的にこの２つパーツを明確に定義しないと行けない。詳細について、後ほど DataV 開発ルール部分を詳しく説明させていただきます。</p>
+<p>ユーザー自身が Widget を開発する場合も、一般的にこの ２ つパーツを明確に定義する必要があります。詳細については、後ほど DataV 開発ルールで詳しく説明させていただきます。</p>
 </blockquote>
 
 <p><img src="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16561/15583456528138_ja-JP.png" alt="Widget設定" /></p>
 
-<p>その他について、DataV に関する詳しい紹介は、<a href="https://jp.alibabacloud.com/help/doc-detail/57759.htm">プロダクトドキュメント</a> にご参考ください。</p>
+<p>その他 DataV に関する詳しい紹介については、「<a href="https://jp.alibabacloud.com/help/doc-detail/57759.htm">プロダクトドキュメント</a>」 をご参照ください。</p>
 
-<h3 id="2-echartsの基本概念">2.Echartsの基本概念</h3>
+<h3 id="2-echarts-の基本概念">2. Echarts の基本概念</h3>
 
-<p><a href="https://www.echartsjs.com/examples/en/">ECharts</a> は、中国の Baidu が提供しているJavascriptのデータ可視化ライブラリです。利用できるチャートが豊富で、ビッグデータ分析や処理の作成にも優れています。開発者にとってオプションのパラメータを調整するだけ綺麗なグラフを簡単に作れるため、世界中の開発者からどんどん人気を集まっています。</p>
+<p><a href="https://www.echartsjs.com/examples/en/">ECharts</a> は、中国の Baidu が提供している Javascript のデータ可視化ライブラリです。利用できるチャートが豊富で、ビッグデータ分析や処理の作成にも優れています。開発者にとってオプションのパラメーターを調整するだけで綺麗なグラフを簡単に作れるため、世界中の開発者から人気を集めています。</p>
 
 <p><img src="https://sterfield.co.jp/wp-content/uploads/2019/01/ecomfe-1024x512.png" alt="Echartsサンプル" /></p>
 
-<p>Echarts ライブラリを利用して一つグラフを作成してみましょう。</p>
+<p>Echarts ライブラリを利用してグラフを 1 つ作成します。</p>
 
 <p><a href="https://www.echartsjs.com/examples/en/editor.html?c=mix-line-bar">サンプルの例</a></p>
 
 <p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/image_1dkad6c5c869goi1hm1fr11u2r1j.png" alt="image_1dkad6c5c869goi1hm1fr11u2r1j.png-1262.9kB" /></p>
 
-<p>上記サンプルからわかったことは、Echarts はすべてのグラフパーツをオプションで制御することが可能です。よく使われるオプションの種類は下記です。</p>
+<p>上記サンプルからわかるように、Echarts ではすべてのグラフパーツをオプションで制御することが可能です。よく使用されるオプションの種類は、以下のとおりです。</p>
 
 <ul>
 <li>ToolTip</li>
@@ -974,34 +1000,35 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 </ul>
 
 <blockquote>
-<p>上記オプション以外は、明確に書いてないオプションを全部ディフォルトオプションを使っています（例：線の色、太さ、タイプなど）。この点を理解することは後のDataVの開発に対してとても大事です。</p>
+<p>上記オプション以外で明確に示していないオプションは、すべてデフォルトオプションを使用しています（例：線の色、太さ、タイプなど）。この点を理解しておくことは後の DataV の開発に対してとても大切です。</p>
 </blockquote>
 
-<p>Echarts すべてのオプションに関する説明について、<a href="https://www.echartsjs.com/en/option.html#title">Echartsドキュメント</a>にご参照ください。</p>
+<p>Echarts のすべてのオプションに関する説明については、「<a href="https://www.echartsjs.com/en/option.html#title">Echartsドキュメント</a>」をご参照ください。</p>
 
-<h3 id="3-nodejsの知識">3.Nodejsの知識</h3>
+<h3 id="3-nodejs-の知識">3. Nodejs の知識</h3>
 
-<p>DataV の Widget は Nodejs をベースに開発するため、<code>Nodejs</code> と <code>JavaScript</code> に関する基本知識が必要です。一つDataV の Widgetは一つの<code>Nodejs のパッケージ</code>を理解すればよい。</p>
+<p>DataV の Widget は Nodejs をベースに開発するため、<code>Nodejs</code> と <code>JavaScript</code> に関する基本知識が必要です。1 つの DataV の Widget に対して 1 つの <code>Nodejs のパッケージ</code> の理解が必要です。</p>
 
 <blockquote>
-<p>本ガイドは外部JavaScriptライブラリをDataVを取り込み方法を紹介することがメインのため、Nodejs と JavaScript 開発自身に関する紹介をここで割愛させていただきます。</p>
+<p>本ガイドは、外部 JavaScript ライブラリを DataV に取り込む方法を紹介することが目的のため、Nodejs と JavaScript の開発自体に関する紹介はここでは割愛させていただきます。</p>
 </blockquote>
 
-<p>下記基本概念を一旦知っておきましょう。</p>
+<p>基本概念は以下のとおりです。</p>
 
 <ul>
 <li>Nodejs
 
 <ul>
-<li>「Node.js」はサーバー側で動くJavaScriptの環境（プラットフォーム）であり、Googleが開発したV8エンジンと非同期処理によって高速なレスポンスを実現できるのが特徴です。<br /></li>
-<li>Node.jsとJavaScriptの違いについて、JavaScriptはブラウザ側で実行され、Node.jsはサーバー側で実行される。<br /></li>
+<li>「Node.js」はサーバー側で動く JavaScript の環境（プラットフォーム）であり、Google が開発した V8 エンジンと非同期処理によって高速なレスポンスを実現できるのが特徴です。</li>
+<li>Node.js と JavaScript の違いについては、JavaScript はブラウザ側で実行され、Node.js はサーバー側で実行されます。</li>
 </ul></li>
 <li>NPM
 
 <ul>
-<li>Node Package Manager、Node.jsのパッケージ（Package ）を管理する（Manager）ツールです。<br /></li>
-<li>DataVの開発ツールも、EchartsもNPM使ってインストール。<br /></li>
-<li>npmでパッケージをインストールする場合は次のようなコマンドを実行します。<br /></li>
+<li>Node Package Manager、Node.js のパッケージ（Package ）を管理する（Manager）ツールです。</li>
+<li>DataV の開発ツールも、Echarts も NPM を使ってインストールします。</li>
+<li>npm でパッケージをインストールする場合は、次のようなコマンドを実行します。
+<br /></li>
 </ul></li>
 </ul>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">npm install パッケージ名</code></pre></div>
@@ -1009,12 +1036,14 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <li>package.json
 
 <ul>
-<li>package.jsonはprojectのpackageを管理するためのファイルです。mavenで言うところのpom.xmlです。</li>
-<li>package.jsonはnode.jsのlibraryを公開する時のファイルなので、licenseなどが入ります。<code>dependencies</code>でライブラリの依存関係を管理します。</li>
-<li>npm installを実行すると、package.jsonの内容に従って、packageを自動にインストールします。</li>
-<li>一つサンプル：</li>
+<li>package.json は project の package を管理するためのファイルです。maven で言うところの pom.xml です。　</li>
+<li>package.json は node.js の library を公開する際のファイルのため、license などが入ります。<code>dependencies</code> でライブラリの依存関係を管理します。</li>
+<li>npm install を実行すると、package.json の内容に従って、package を自動的にインストールします。</li>
 </ul></li>
 </ul>
+
+<p>サンプル：
+　</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#f92672">{</span>
   <span style="color:#d88200">&#34;name&#34;</span>: <span style="color:#d88200">&#34;chart1&#34;</span>,
   <span style="color:#d88200">&#34;version&#34;</span>: <span style="color:#d88200">&#34;1.0.0&#34;</span>,
@@ -1032,88 +1061,85 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <span style="color:#f92672">}</span></code></pre></div>
 <h2 id="準備作業">準備作業</h2>
 
-<p>開発作業を入る前に、２つ準備作業が必要です。</p>
+<p>開発作業に入る前に、２ つの準備作業が必要です。</p>
 
-<h3 id="開発token取得とgroupid作成">開発Token取得とGroupID作成</h3>
+<h3 id="開発-token-の取得と-groupid-の作成">開発 Token の取得と GroupID の作成</h3>
 
-<p>DataVのプロ版を購入してから、Developer Token が手に入れます。このTokenを利用し、開発された Widget パッケージを DataV へ Deploy することが可能です。</p>
+<p>DataV のプロ版を購入し、Developer Token を取得します。この Token を利用し、開発された Widget パッケージを DataV へ Deploy することが可能です。</p>
 
-<p>購入手続き終わりましたら、「Widgets」タグの「Widgets Group」メニューに入って、ここで初めてのWidgets Groupを作ります。</p>
+<p>購入手続きが終了したら、[Widgets] タグの [Widgets Group] メニューに入り、ここで最初の Widgets Group を作成します。</p>
 
 <p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/image_1dkcadj8l14tv8as19he17hcq61g.png" alt="image_1dkcadj8l14tv8as19he17hcq61g.png-599.7kB" /></p>
 
-<p>Group IDの Naming ルールについて:</p>
+<p>Group ID の Naming ルールについて
+- 必ず [会社.group名] や [会社-group名] の形式にする必要があります。
+- Group 名の最後の文字を数値にすることはできません。</p>
 
-<ul>
-<li>必ず[会社.group名]や[会社-group名]のフォマットにしないと行けない。</li>
-<li>Group名の最後の文字は数値に入れるのはNG。</li>
-</ul>
-
-<p>Widgets Groupを作成されたら、最初はアリババ側の審査が必要です。審査は普通は一日二日程度で完了します。この間は審査を待たずに開発を進めることが可能です。</p>
+<p>Widgets Group を作成したら、最初に Alibaba 側の審査が必要です。審査は通常一日か二日程度で完了します。この間は審査を待たずに開発を進めることが可能です。</p>
 
 <p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/datav1.jpg" alt="datav1.jpg-474.5kB" /></p>
 
-<p>これで、クラウド側の準備は完了しました。次の、ローカルの開発環境の準備です。</p>
+<p>これで、クラウド側の準備は完了しました。次は、ローカルの開発環境の準備です。</p>
 
-<h3 id="ローカル開発環境構築">ローカル開発環境構築</h3>
+<h3 id="ローカル開発環境の構築">ローカル開発環境の構築</h3>
 
-<p>開発環境の準備について、基本的にドキュメントセンターの<a href="https://jp.alibabacloud.com/help/doc-detail/86874.htm">クイックスタート</a>を参考すれば良いです。</p>
+<p>開発環境の準備については、基本的にドキュメントセンターの「<a href="https://jp.alibabacloud.com/help/doc-detail/86874.htm">クイックスタート</a>」をご参照ください。</p>
 
-<p>ここでいくつ注意ポイントをあります。</p>
-
-<ul>
-<li>Nodejsのバージョン
+<p>ここでいくつかの注意点があります。</p>
 
 <ul>
-<li>Node.js をインストールする場合は、8.0.0 以降 〜 10.12.0のバージョンを推奨します。最新のバージョンをインストールすると、後のDataVツールはうまく動けない場合があります。</li>
+<li>Nodejs のバージョン
+
+<ul>
+<li>Node.js をインストールする場合は、8.0.0〜10.12.0 のバージョンを推奨します。最新のバージョンをインストールすると、後の DataV ツールがうまく作動しない場合があります。</li>
 </ul></li>
 <li>DataV login
 
 <ul>
-<li>DataV ログインの時、日本サイトは「Username　=　お客様アカウントのUID」、中国サイトは「Username　=　お客様アカウントのメールアドレス」です。ここだけ注意する必要があります。</li>
-<li>DataV loginは最後のDeploy時のみが必要なので、開発する時このステープをSkipしても構いません。</li>
+<li>DataV にログインする際、日本サイトは「Username　=　お客様のアカウントの UID」、中国サイトは「Username　=　お客様のアカウントのメールアドレス」です。ここだけ注意する必要があります。</li>
+<li>DataV login は最後の Deploy 時のみ必要で、開発時はこの手順を Skip しても構いません。</li>
 </ul></li>
 </ul>
 
-<p>DataVインストール終わりましたら、下記のように言語を設定し、正式に Widget 開発をできるようになりました。</p>
+<p>DataV のインストールが完了したら、下記のように言語を設定すると、正式に Widget の開発が可能になります。</p>
 
 <p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/image_1dkcbfvpiok9agct2416681f2p29.png" alt="image_1dkcbfvpiok9agct2416681f2p29.png-1825.6kB" /></p>
 
 <h2 id="開発ルール">開発ルール</h2>
 
-<p>まず <code>datav init</code> コマンドを実行し、テンプレートからDataVのWidget雛形を作りましょう。</p>
+<p>まず <code>datav init</code> コマンドを実行し、テンプレートから DataVのWidget の雛形を作成します。</p>
 
 <p><img src="http://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/16830/156774898733821_ja-JP.png" alt="dataV init" /></p>
 
-<p>出来たフォルダから見ると、一つのWidgetパッケージは下記ファイル構造があります。</p>
+<p>作成されたフォルダを見ると、 1 つの Widget パッケージには下記のファイル構造があります。</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">--coms-name //Widget name
 <span style="color:#111">|</span>--index.js //Widget メインファイル
 <span style="color:#111">|</span>--package.json //Widget 設定ファイル
 <span style="color:#111">|</span>--readme.md //Widget description
 <span style="color:#111">|</span>--history.md //Widget update history</code></pre></div>
-<p>ここで一番重要なファイルが２つあります。</p>
+<p>ここで一番重要なファイルが ２ つあります。</p>
 
 <ul>
 <li>index.js
 
 <ul>
-<li>パッケージのメインファイルです、ここでpackage.json中で書いた設定を読み込んでDataVの設定に変換し、最後はWidgetを表示させる。</li>
+<li>パッケージのメインファイルです。package.json の中で書いた設定を読み込んで DataV の設定に変換し、最後は Widget を表示します。</li>
 </ul></li>
 <li>package.json
 
 <ul>
-<li>パッケージ設定ファイル、依存するライブラリやDataVのすべての設定はここで記載する。</li>
+<li>パッケージ設定ファイルです。依存するライブラリや DataV のすべての設定はここで記載します。</li>
 </ul></li>
 </ul>
 
 <h3 id="index-jsの説明">index.jsの説明</h3>
 
-<p>一番重要なポイントは：</p>
+<p>一番重要なポイントは次のとおりです。</p>
 
 <ul>
-<li>必要なライブラリをRequireで引用する（事前にnpm install必要）</li>
-<li>this.configの中で設定を書く、普通は全部package.jsonの中で書くので、ここで書く必要がないですが、一部特別な設定をここで書く</li>
-<li>mergeConfigでpackage.jsonの設定とthis.config中で設定をマージし、変換する</li>
+<li>必要なライブラリを Require で引用する。（事前に npm install が必要）</li>
+<li>this.config の中に設定を書く。普通は全部 package.json の中に書くため、ここで書く必要はありませんが、一部特別な設定をここに書きます。</li>
+<li>mergeConfig で package.json の設定と this.config の設定をマージし、変換する。</li>
 </ul>
 
 <p>サンプル：</p>
@@ -1127,12 +1153,12 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 </span><span style="color:#75715e"> * Basic
 </span><span style="color:#75715e"> */</span>
 <span style="color:#75af00">module</span><span style="color:#111">.</span><span style="color:#75af00">exports</span> <span style="color:#f92672">=</span> <span style="color:#75af00">Event</span><span style="color:#111">.</span><span style="color:#75af00">extend</span><span style="color:#111">(</span><span style="color:#00a8c8">function</span> <span style="color:#75af00">Base</span><span style="color:#111">(</span><span style="color:#75af00">container</span><span style="color:#111">,</span> <span style="color:#75af00">config</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-  <span style="color:#75715e">//ここでWidgetの設定を補足として書く、一般的にすべての設定はPackage.jsonの中で書く
+  <span style="color:#75715e">//ここに Widget の設定を補足として書く。一般的にすべての設定は Package.json  の中に書く
 </span><span style="color:#75715e"></span>  <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">config</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span>
     <span style="color:#75af00">theme</span><span style="color:#f92672">:</span> <span style="color:#111">{}</span>
   <span style="color:#111">}</span>
   <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">container</span> <span style="color:#f92672">=</span> <span style="color:#75af00">$</span><span style="color:#111">(</span><span style="color:#75af00">container</span><span style="color:#111">);</span>           <span style="color:#75715e">//容器
-</span><span style="color:#75715e"></span>  <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">apis</span> <span style="color:#f92672">=</span> <span style="color:#75af00">config</span><span style="color:#111">.</span><span style="color:#75af00">apis</span><span style="color:#111">;</span>                 <span style="color:#75715e">//hook必ず必要
+</span><span style="color:#75715e"></span>  <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">apis</span> <span style="color:#f92672">=</span> <span style="color:#75af00">config</span><span style="color:#111">.</span><span style="color:#75af00">apis</span><span style="color:#111">;</span>                 <span style="color:#75715e">//hook 必須
 </span><span style="color:#75715e"></span>  <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">_data</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">null</span><span style="color:#111">;</span>                       <span style="color:#75715e">//データ
 </span><span style="color:#75715e"></span>  <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">chart</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">null</span><span style="color:#111">;</span>                       <span style="color:#75715e">//Chart
 </span><span style="color:#75715e"></span>  <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">init</span><span style="color:#111">(</span><span style="color:#75af00">config</span><span style="color:#111">);</span>
@@ -1141,19 +1167,19 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 </span><span style="color:#75715e">   * 初期化
 </span><span style="color:#75715e">   */</span>
   <span style="color:#75af00">init</span><span style="color:#f92672">:</span> <span style="color:#00a8c8">function</span> <span style="color:#111">(</span><span style="color:#75af00">config</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-    <span style="color:#75715e">//1.初期化,package.json中の設定とthis.configをマージする
+    <span style="color:#75715e">//1.初期化。package.json の設定と this.config をマージする
 </span><span style="color:#75715e"></span>    <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">mergeConfig</span><span style="color:#111">(</span><span style="color:#75af00">config</span><span style="color:#111">);</span>
-    <span style="color:#75715e">//2.レイアウト更新、なくても大丈夫
+    <span style="color:#75715e">//2.レイアウト更新。なくても OK
 </span><span style="color:#75715e"></span>    <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">updateLayout</span><span style="color:#111">();</span>
-    <span style="color:#75715e">//3.Widgetをインスタンス化
+    <span style="color:#75715e">//3.Widget をインスタンス化。
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">//this.chart = new Chart(this.container[0], this.config);
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">//4.仕様個別更新、なくても大丈夫
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//4.仕様個別更新。なくても OK
 </span><span style="color:#75715e"></span>    <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">updateStyle</span><span style="color:#111">();</span>
   <span style="color:#111">},</span>
   <span style="color:#75715e">/**
 </span><span style="color:#75715e">   * 描く
 </span><span style="color:#75715e">   * @param data
-</span><span style="color:#75715e">   * @param config なくでも大丈夫
+</span><span style="color:#75715e">   * @param config なくても OK
 </span><span style="color:#75715e">   */</span>
   <span style="color:#75af00">render</span><span style="color:#f92672">:</span> <span style="color:#00a8c8">function</span> <span style="color:#111">(</span><span style="color:#75af00">data</span><span style="color:#111">,</span> <span style="color:#75af00">config</span><span style="color:#111">)</span> <span style="color:#111">{</span>
     <span style="color:#75af00">data</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">data</span><span style="color:#111">(</span><span style="color:#75af00">data</span><span style="color:#111">);</span>
@@ -1162,7 +1188,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 </span><span style="color:#75715e"></span>    <span style="color:#75715e">//this.chart.render(data, cfg);
 </span><span style="color:#75715e"></span>    <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">container</span><span style="color:#111">.</span><span style="color:#75af00">html</span><span style="color:#111">(</span><span style="color:#75af00">data</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">].</span><span style="color:#75af00">value</span><span style="color:#111">)</span>
 
-    <span style="color:#75715e">//仕様個別更新、なくても大丈夫
+    <span style="color:#75715e">//仕様個別更新。なくても　OK
 </span><span style="color:#75715e"></span>    <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">updateStyle</span><span style="color:#111">();</span>
   <span style="color:#111">},</span>
   <span style="color:#75715e">/**
@@ -1177,7 +1203,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">_data</span><span style="color:#111">;</span>
   <span style="color:#111">},</span>
   <span style="color:#75715e">/**
-</span><span style="color:#75715e">   * package.json中の設定とthis.configをマージ
+</span><span style="color:#75715e">   * package.json の設定と this.config をマージ
 </span><span style="color:#75715e">   * 優先順: config.colors &gt; config.theme &gt; this.config.theme &gt; this.config.colors
 </span><span style="color:#75715e">   * @param config
 </span><span style="color:#75715e">   * @private
@@ -1190,7 +1216,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">config</span><span style="color:#111">;</span>
   <span style="color:#111">},</span>
   <span style="color:#75715e">/**
-</span><span style="color:#75715e">   *下記Functionは必要な時だけ実装
+</span><span style="color:#75715e">   *下記 Function は必要な時だけ実装
 </span><span style="color:#75715e">   * @param width
 </span><span style="color:#75715e">   * @param height
 </span><span style="color:#75715e">   */</span>
@@ -1203,16 +1229,16 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 </code></pre></div>
 <h3 id="package-jsonの説明">package.jsonの説明</h3>
 
-<p>一番重要なポイントは：</p>
+<p>一番重要なポイントは、次のとおりです。</p>
 
 <ul>
-<li>WidgetのDeployのため、nameの中で@namespaceは必ず前に準備したGroupIDと一致しないと行けない</li>
-<li>dependenciesの中で必要なライブラリとバージョンを記入する</li>
-<li>datavの下にはWidgetの仕様設定とデータを記入</li>
+<li>Widget の Deploy のため、name の @namespace は必ず前に準備した GroupID と一致しないといけない</li>
+<li>dependencies に必要なライブラリとバージョンを記入する</li>
+<li>datav には Widget の仕様設定とデータを記入する</li>
 </ul>
 
 <blockquote>
-<p>datav.config と datav.api_dataはDataV提供された仕様エディターでWidgetの仕様とデータをWebPageで更新できるための設定です。もし設定しない場合は、DataV提供された仕様エディターが使えないですが、index.jsの中でthis.configで設定すれば、Widgetの表示自体には影響がありません。</p>
+<p>datav.config と datav.api_data は DataV で提供される仕様エディターで、 Widget の仕様とデータを WebPage で更新するための設定です。設定しない場合、DataV で提供される仕様エディターは使えませんが、index.js の this.config で設定すれば、Widget の表示自体には影響がありません。</p>
 </blockquote>
 
 <p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/pie.jpg" alt="DataVeditor" /></p>
@@ -1226,14 +1252,14 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <span style="color:#d88200">&#34;jquery&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;2.1.4&#34;</span><span style="color:#111">,</span>
     <span style="color:#d88200">&#34;lodash&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;4.6.1&#34;</span>
   <span style="color:#111">},</span>
-  <span style="color:#d88200">&#34;datav&#34;</span><span style="color:#f92672">:</span> <span style="color:#111">{</span>  <span style="color:#75715e">// Widgetの属性説明、必ず必要
+  <span style="color:#d88200">&#34;datav&#34;</span><span style="color:#f92672">:</span> <span style="color:#111">{</span>  <span style="color:#75715e">// Widget の属性説明。必須
 </span><span style="color:#75715e"></span>    <span style="color:#d88200">&#34;cn_name&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;testline&#34;</span><span style="color:#111">,</span>
     <span style="color:#d88200">&#34;icon&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&#34;</span><span style="color:#111">,</span>
     <span style="color:#d88200">&#34;protocol&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span><span style="color:#111">,</span>
     <span style="color:#d88200">&#34;type&#34;</span><span style="color:#f92672">:</span> <span style="color:#111">[</span>
       <span style="color:#d88200">&#34;regular&#34;</span>
     <span style="color:#111">],</span>
-    <span style="color:#d88200">&#34;view&#34;</span><span style="color:#f92672">:</span> <span style="color:#111">{</span>   <span style="color:#75715e">// WidgetのFrameの大きさ、必ず必要
+    <span style="color:#d88200">&#34;view&#34;</span><span style="color:#f92672">:</span> <span style="color:#111">{</span>   <span style="color:#75715e">// Widget の Frame の大きさ。必須
 </span><span style="color:#75715e"></span>      <span style="color:#d88200">&#34;width&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;400&#34;</span><span style="color:#111">,</span>
       <span style="color:#d88200">&#34;height&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;200&#34;</span><span style="color:#111">,</span>
       <span style="color:#d88200">&#34;minWidth&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;200&#34;</span><span style="color:#111">,</span>
@@ -1250,7 +1276,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
         <span style="color:#111">}</span>
       <span style="color:#111">}</span>
     <span style="color:#111">},</span>
-    <span style="color:#d88200">&#34;config&#34;</span><span style="color:#f92672">:</span> <span style="color:#111">{</span>  <span style="color:#75715e">// Widgetの初期仕様
+    <span style="color:#d88200">&#34;config&#34;</span><span style="color:#f92672">:</span> <span style="color:#111">{</span>  <span style="color:#75715e">// Widget の初期仕様
 </span><span style="color:#75715e"></span>      <span style="color:#d88200">&#34;size&#34;</span><span style="color:#f92672">:</span> <span style="color:#111">{</span>
         <span style="color:#d88200">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;字号&#34;</span><span style="color:#111">,</span>
         <span style="color:#d88200">&#34;type&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;number&#34;</span><span style="color:#111">,</span>
@@ -1261,7 +1287,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
         <span style="color:#111">]</span>
       <span style="color:#111">}</span>
     <span style="color:#111">},</span>
-    <span style="color:#d88200">&#34;api_data&#34;</span><span style="color:#f92672">:</span> <span style="color:#111">{</span>  <span style="color:#75715e">// Widgetの初期データ
+    <span style="color:#d88200">&#34;api_data&#34;</span><span style="color:#f92672">:</span> <span style="color:#111">{</span>  <span style="color:#75715e">// Widget の初期データ
 </span><span style="color:#75715e"></span>      <span style="color:#d88200">&#34;source&#34;</span><span style="color:#f92672">:</span> <span style="color:#111">[</span>
         <span style="color:#111">{</span>
           <span style="color:#d88200">&#34;value&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;值&#34;</span>
@@ -1273,47 +1299,47 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 </code></pre></div>
 <h2 id="サンプルコード">サンプルコード</h2>
 
-<p>開発ルールの中で説明の通り、DataVの仕様エディターを使うか使わないかによって、package.json中のDataV設定を書かなくても済むの場合もあります。</p>
+<p>開発ルールで説明した通り、DataV の仕様エディターを使うか使わないかによって、package.json 中に DataV の設定を書かなくても済む場合があります。</p>
 
 <blockquote>
-<p>実際はDataVのWidget開発では、一番開発工数がかかる場所は、他のライブラリの設定をDataVの標準Configに変換することです。</p>
+<p>実際は DataV の Widget 開発で一番開発工数がかかるのは、他のライブラリの設定を DataV の標準 Config に変換することです。</p>
 </blockquote>
 
-<p>DataVの標準Configに変換するメリット：</p>
+<p>DataV の標準　Config に変換するメリット</p>
 
 <ul>
-<li>DataVの仕様エディターを使って、WebpageからWidgetの仕様設定を変えることが可能です。</li>
-<li>DataVのデータエディターを使って、DatabaseやAPIから動的にWidgetのデータを変更することが可能です。</li>
+<li>DataV の仕様エディターを使って、Webpage から Widget の仕様設定を変更することが可能です。</li>
+<li>DataV のデータエディターを使って、Database や API から動的に Widget のデータを変更することが可能です。</li>
 </ul>
 
-<p>以下はいくつの例を通じて、EchartsをDataVに取り込みの方法を紹介します。</p>
+<p>次にいくつかの例を使用して、Echarts を DataV に取り込む方法を紹介します。</p>
 
-<h3 id="echartsのコードをそのままdatavに移行">EchartsのコードをそのままDataVに移行</h3>
+<h3 id="echarts-のコードをそのまま-datav-に移行">Echarts のコードをそのまま DataV に移行</h3>
 
-<p>まず、一番楽なやり方は、EchartsのコードをそのままDataVに移行し、package.jsonの設定は使わない方法です。</p>
+<p>まず、一番楽な方法は、Echarts のコードをそのまま DataV に移行し、package.json の設定は使わない方法です。</p>
 
-<p>下記はEchartsのいくつちょっと複雑なサンプルをDataVに移行した結果です。</p>
+<p>下記は Echarts の少し複雑なサンプルを DataV に移行した結果です。</p>
 
 <ul>
 <li>Rich text
 
 <ul>
-<li><a href="https://echarts.apache.org/examples/en/editor.html?c=bar-rich-text">Echartサンプル</a>
+<li><a href="https://echarts.apache.org/examples/en/editor.html?c=bar-rich-text">Echart のサンプル</a>
 <img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/image_1dkcok4vq1tsm1bol10sgnjp1khf33.png" alt="image_1dkcok4vq1tsm1bol10sgnjp1khf33.png-1116.4kB" /></li>
-<li>DataVソース
+<li>DataV ソース
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/richtext/index.js">index.js</a>
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/richtext/package.json">package.json</a></li>
 </ul></li>
 </ul>
 
-<p>ソースコード：</p>
+<p>ソースコード:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//index.js
 </span><span style="color:#75715e"></span><span style="color:#00a8c8">var</span> <span style="color:#75af00">Event</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;bcore/event&#39;</span><span style="color:#111">);</span>
 <span style="color:#00a8c8">var</span> <span style="color:#75af00">$</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;jquery&#39;</span><span style="color:#111">);</span>
 <span style="color:#00a8c8">var</span> <span style="color:#75af00">_</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;lodash&#39;</span><span style="color:#111">);</span>
-<span style="color:#75715e">//Echartsのライブラリを引用
+<span style="color:#75715e">//Echarts のライブラリを引用
 </span><span style="color:#75715e"></span><span style="color:#00a8c8">var</span> <span style="color:#75af00">EChart</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;echarts&#39;</span><span style="color:#111">);</span>
-<span style="color:#75715e">// DataV提供したDataVのConfigをEchartsのoptionに変換するライブラリ
+<span style="color:#75715e">// DataV が提供した DataV の Config を Echarts の option に変換するライブラリ
 </span><span style="color:#75715e"></span><span style="color:#00a8c8">var</span> <span style="color:#75af00">Utils</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;datav:/com/maliang-echarts-utils/0.0.18&#39;</span><span style="color:#111">);</span>
 
 <span style="color:#75715e">/**
@@ -1336,7 +1362,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <span style="color:#111">};</span>
 
 <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#75af00">config</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span>
-    <span style="color:#75af00">backgroundColor</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#39;#FAFAFC&#39;</span><span style="color:#111">,</span>  <span style="color:#75715e">//開発時見やすいためbackgroundColorを設定しましたが、正式Deployの場合は、この設定は外したほうがお薦めです。
+    <span style="color:#75af00">backgroundColor</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#39;#FAFAFC&#39;</span><span style="color:#111">,</span>  <span style="color:#75715e">//開発時に見やすいように backgroundColor を設定しましたが、正式な Deploy の場合は、この設定を外すことを推奨します。
 </span><span style="color:#75715e"></span>    <span style="color:#75af00">title</span><span style="color:#f92672">:</span> <span style="color:#111">{</span>
         <span style="color:#75af00">text</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#39;Wheater Statistics&#39;</span>
     <span style="color:#111">},</span>
@@ -1501,7 +1527,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
   <span style="color:#d88200">&#34;version&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;1.2.5&#34;</span><span style="color:#111">,</span>
   <span style="color:#d88200">&#34;dependencies&#34;</span><span style="color:#f92672">:</span> <span style="color:#111">{</span>
     <span style="color:#d88200">&#34;bcore&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;0.0.18&#34;</span><span style="color:#111">,</span>
-    <span style="color:#d88200">&#34;echarts&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;^4.2.1&#34;</span><span style="color:#111">,</span>  <span style="color:#75715e">//Echartsの最新版を使う
+    <span style="color:#d88200">&#34;echarts&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;^4.2.1&#34;</span><span style="color:#111">,</span>  <span style="color:#75715e">//Echarts の最新版を使う
 </span><span style="color:#75715e"></span>    <span style="color:#d88200">&#34;jquery&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;2.1.4&#34;</span><span style="color:#111">,</span>
     <span style="color:#d88200">&#34;lodash&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;4.6.1&#34;</span><span style="color:#111">,</span>
     <span style="color:#d88200">&#34;zrender&#34;</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;3.4.4&#34;</span>
@@ -1547,9 +1573,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <li><p>GeoJson map</p>
 
 <ul>
-<li><a href="https://echarts.apache.org/examples/en/editor.html?c=map-HK">Echartサンプル</a>
+<li><a href="https://echarts.apache.org/examples/en/editor.html?c=map-HK">Echart のサンプル</a>
 <img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/echarts-map.jpg" alt="" /></li>
-<li>DataVソース
+<li>DataV ソース
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/geojsonmap/index.js">index.js</a>
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/geojsonmap/package.json">package.json</a></li>
 <li>効果
@@ -1559,9 +1585,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <li><p>Scatter</p>
 
 <ul>
-<li><a href="https://echarts.apache.org/examples/en/editor.html?c=scatter-aqi-color">Echartサンプル</a>
+<li><a href="https://echarts.apache.org/examples/en/editor.html?c=scatter-aqi-color">Echart のサンプル</a>
 <img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/echarts-scatter.jpg" alt="" /></li>
-<li>DataVソース
+<li>DataV ソース
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/scatter/index.js">index.js</a>
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/scatter/package.json">package.json</a></li>
 <li>効果
@@ -1571,9 +1597,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <li><p>Graph</p>
 
 <ul>
-<li><a href="https://echarts.apache.org/examples/en/editor.html?c=graph-webkit-dep">Echartサンプル</a>
+<li><a href="https://echarts.apache.org/examples/en/editor.html?c=graph-webkit-dep">Echart のサンプル</a>
 <img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/echarts-graph.jpg" alt="" /></li>
-<li>DataVソース
+<li>DataV ソース
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/graph/index.js">index.js</a>
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/graph/package.json">package.json</a></li>
 <li>効果
@@ -1583,9 +1609,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <li><p>Timeline</p>
 
 <ul>
-<li><a href="https://echarts.apache.org/examples/en/editor.html?c=mix-timeline-finance">Echartサンプル</a>
+<li><a href="https://echarts.apache.org/examples/en/editor.html?c=mix-timeline-finance">Echart のサンプル</a>
 <img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/echarts-timeline.jpg" alt="" /></li>
-<li>DataVソース
+<li>DataV ソース
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/timeline/index.js">index.js</a>
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/timeline/package.json">package.json</a></li>
 <li>効果
@@ -1595,9 +1621,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <li><p>3D</p>
 
 <ul>
-<li><a href="https://echarts.apache.org/examples/en/editor.html?c=bar3d-punch-card&amp;gl=1">Echartサンプル</a>
+<li><a href="https://echarts.apache.org/examples/en/editor.html?c=bar3d-punch-card&amp;gl=1">Echart のサンプル</a>
 <img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/echarts-3d.jpg" alt="" /></li>
-<li>DataVソース
+<li>DataV ソース
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/3d/index.js">index.js</a>
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/3d/package.json">package.json</a></li>
 <li>効果
@@ -1605,12 +1631,12 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 </ul></li>
 </ul>
 
-<h3 id="option一部をdatavのpackage-jsonに変換">Option一部をDataVのpackage.jsonに変換</h3>
+<h3 id="option-の一部を-datav-の-package-json-に変換">Option の一部を DataV の package.json に変換</h3>
 
-<p>Echartsの一部optionをDataVの標準Configに変換するサンプルです。</p>
+<p>Echarts の一部の option を DataV の標準 Config に変換するサンプルです。</p>
 
 <ul>
-<li><a href="https://echarts.apache.org/examples/en/editor.html?c=pie-simple">Echartサンプル</a>
+<li><a href="https://echarts.apache.org/examples/en/editor.html?c=pie-simple">Echart のサンプル</a>
 <img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/echarts-pie.jpg" alt="" /></li>
 <li>DataVソース
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/pie/index.js">index.js</a>
@@ -1624,9 +1650,9 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <p>Echartsの全部optionをDataVの標準Configに変換するサンプルです。</p>
 
 <ul>
-<li><a href="https://echarts.apache.org/examples/en/editor.html?c=pictorialBar-velocity">Echartサンプル</a>
+<li><a href="https://echarts.apache.org/examples/en/editor.html?c=pictorialBar-velocity">Echart のサンプル</a>
 <img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/echarts-bar.jpg" alt="" /></li>
-<li>DataVソース
+<li>DataV ソース
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/bar/index.js">index.js</a>
 <a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/bar/package.json">package.json</a></li>
 </ul>
@@ -1958,36 +1984,34 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <h2 id="publish-と-deploy">Publish と Deploy</h2>
 
-<p>DataVの Widget を開発終わったら、開発されたパッケージをDataVへPublishし、実際のDataVのDashboardを使ってみましょう。</p>
+<p>DataV の Widget の開発が終わったら、開発されたパッケージを DataV へ Publishし、実際の DataV の Dashboard を使ってみます。</p>
 
-<p>publishするのはとても簡単で、パッケージのフォルダに　<code>datav publish</code> コマンドを実施するだけです。</p>
+<p>publish はとても簡単で、パッケージのフォルダに　<code>datav publish</code> コマンドを実行するだけです。</p>
 
 <p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/datav2.jpg" alt="publish" /></p>
 
-<p>publish成功したら、DataVのコンソールからアップロードされたWidgetが見えるはず。
+<p>publish が成功したら、DataV のコンソールでアップロードされた Widget が見えるはずです。
 <img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/datav3.jpg" alt="publish" />
 一覧：
 <img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/datav4.jpg" alt="publish" /></p>
 
-<p>最後はDashboardの編集画面でWidget一覧を開いて、自分がアップロードされたWidgetが見えるはず。
+<p>最後に Dashboard の編集画面で Widget 一覧を開くと、自分がアップロードした Widget が見えるはずです。
 <img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/datav6.jpg" alt="publish" /></p>
 
-<p>※ Widgetをアップロードしてから見えるまで、時々ブラウザのCache削除必要です。</p>
+<p>※ Widget をアップロードしてから表示されるまで、時々ブラウザの　Cache　の削除が必要です。</p>
 
-<p>これで、私達取り込んだEchartsの図を使って、Dashboardを作れ事になります。</p>
+<p>これで、取り込んだ Echarts の図を使用して、Dashboard を作成することができます。</p>
 
 <p><a href="https://datav.aliyuncs.com/share/cb5ac6659dfe3356721c2128d319078d">https://datav.aliyuncs.com/share/cb5ac6659dfe3356721c2128d319078d</a>
 <img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/all-image/deploy.jpg" alt="deploy.jpg-1355.5kB" /></p>
-
-<p>以上</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/best-practice/product/cloudmonitor/cloudmonitor/" title="CloudMonitor"> <i class="fa fa-chevron-left"></i><label>CloudMonitor</label></a>
-    <a class="nav nav-next" href="/help/best-practice/web-application/" title="Webアプリケーション" style="margin-right: 0px;"><label>Webアプリケーション</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/best-practice/product/datav/datav-develop-api-cookie/" title="DataV のデータ権限制御"> <i class="fa fa-chevron-left"></i><label>DataV のデータ権限制御</label></a>
+    <a class="nav nav-next" href="/help/best-practice/product/cloudmonitor/cloudmonitor/" title="CloudMonitor" style="margin-right: 0px;"><label>CloudMonitor</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>

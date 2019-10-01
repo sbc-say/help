@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SB Cloud&nbsp;テクニカルリファレンス</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2019-10-01T05:47:24 UTC">
+<title>DataV のデータ権限制御 :: テクニカルリファレンス</title>
+<link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
+<link href="/help/css/font-awesome.min.css" rel="stylesheet">
+<link href="/help/css/nucleus.css" rel="stylesheet">
+<link href="/help/theme-flex/style.css" rel="stylesheet">
+
+	<link href="/help/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/help/css/bootstrap.min.css">
+<script src="/help/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+</script>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GTM-MQFZWG', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+<script type="text/javascript" id="mierucajs">
+window.__fid = window.__fid || [];__fid.push([317537360]);
+(function() {
+function mieruca(){if(typeof window.__fjsld != "undefined") return; window.__fjsld = 1; var fjs = document.createElement('script'); fjs.type = 'text/javascript'; fjs.async = true; fjs.id = "fjssync"; var timestamp = new Date;fjs.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://hm.mieru-ca.com/service/js/mieruca-hm.js?v='+ timestamp.getTime(); var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(fjs, x); };
+setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent("onload", mieruca) : window.addEventListener("load", mieruca, false)) : mieruca();
+})();
+</script>
+
+
+
+<meta name="description" content="同じ DataV Dashboard に対して違うユーザは違うデータを見えるする方法を紹介します。">
+
+        
+
+
+<link href="/help/css/custom.css"  rel="stylesheet">
+
+
+    
+  </head>
+  <body data-url="/help/best-practice/product/datav/datav-develop-api-cookie/">
+    
+      <header>
+
+    
+  <div class="logo">
+      <a href="https://www.sbcloud.co.jp/help/" style="vertical-align: baseline;">
+            <img src="https://www.sbcloud.co.jp/help//img/sbcloud_logo.png" class="noshadow" alt="">
+        </a>
+  </div>
+
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+
+<nav class="shortcuts">
+    <li>
+        <span class="searchbox">
+            <input data-search-input id="search-by" type="text" placeholder="検索">
+        </span>
+        <script type="text/javascript" src="/help/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/help/js/auto-complete.js"></script>
+        <link href="/help/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+            
+            var baseurl = "https:\/\/www.sbcloud.co.jp\/help\/";
+            
+        </script>
+        <script type="text/javascript" src="/help/js/search.js"></script>
+    </li>
+            <li class="" role="">
+                <a href="https://github.com/sbcloud/help"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+        </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+    <li data-nav-id="/help/getting-started/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/">Getting Started</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/registration/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/registration/">
+            アカウント登録
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+    <li data-nav-id="/help/getting-started/product/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/product/">プロダクトの紹介</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/product/links/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/links/">
+            プロダクト資料のリンク一覧
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/getting-started/product/ecs-by-region/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/product/ecs-by-region/">
+            ECSの使用可能なRegion/Spec/Price紹介
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/getting-started/cloud-users/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/getting-started/cloud-users/">AWS/Azure/GCPユーザ向け</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/getting-started/cloud-users/vs-aws-gcp-azure/" class="dd-item">
+        <div>
+          <a href="/help/getting-started/cloud-users/vs-aws-gcp-azure/">
+            サービスラインナップ比較
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/">ベストプラクティス</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/best-practice/general/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/general/">全般</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/general/advisory/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/advisory/">
+            アドバイザリ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/general/pricing/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/general/pricing/">
+            料金体系
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/product/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/product/">プロダクト</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/best-practice/product/datav/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/product/datav/">DataV</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/product/datav/datav-develop-api-cookie/" class="dd-item active">
+        <div>
+          <a href="/help/best-practice/product/datav/datav-develop-api-cookie/">
+            DataV のデータ権限制御
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/product/datav/datav-widget-develop-guide/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/datav/datav-widget-develop-guide/">
+            DataV Widget 開発ガイド
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+      <li data-nav-id="/help/best-practice/product/cloudmonitor/cloudmonitor/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/cloudmonitor/cloudmonitor/">
+            CloudMonitor
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/web-application/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/web-application/">Webアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/web-application/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/02/name-resolve/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/02/name-resolve/">
+            名前解決
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/03/loadbalancer/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/03/loadbalancer/">
+            負荷分散
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/04/web-ap/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/04/web-ap/">
+            Web/APサーバ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/web-application/05/database/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/web-application/05/database/">
+            データベース
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/terraform/01/how-to-use/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/01/how-to-use/">
+            Terraformとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/02/install/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/02/install/">
+            インストール
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/03/sample-project/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/03/sample-project/">
+            サンプルプロジェクトの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/04/run-terraform/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/04/run-terraform/">
+            サンプルプロジェクトの実行
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/05/program-syntax/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/05/program-syntax/">
+            Terraform文法について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/06/docker/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/06/docker/">
+            Dockerについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/07/module/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/07/module/">
+            Moduleについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/08/vpc/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/08/vpc/">
+            VPCの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/09/ecs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/09/ecs/">
+            ECS、EIPの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/10/slb/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/10/slb/">
+            SLBの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/11/autoscaling/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/11/autoscaling/">
+            AutoScalingの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/12/oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/12/oss/">
+            OSSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/13/rds/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/13/rds/">
+            RDSの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/14/ram/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/14/ram/">
+            RAMの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/terraform/15/kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/terraform/15/kubernetes/">
+            Kubernetesの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/container/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/container/">コンテナ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/container/01/introduction/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/01/introduction/">
+            イントロダクション
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/02/development-environment/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/02/development-environment/">
+            開発環境
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/03/image-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/03/image-management/">
+            コンテナイメージ作成・管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/04/deploy-management/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/04/deploy-management/">
+            コンテナデプロイ管理
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/container/05/monitoring/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/container/05/monitoring/">
+            ログ管理とモニタリング
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/best-practice/bigdata/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/bigdata/">Bigdata</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/bigdata/001_what-is-bigdata/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/001_what-is-bigdata/">
+            BigDataとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/002_hadoop-and-ecosystem-technologies/">
+            Hadoopとその周辺の技術について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/003_what-is-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/003_what-is-spark/">
+            Sparkについて
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/004_what-is-hdfs/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/004_what-is-hdfs/">
+            HDFSとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/005_what-is-yarn/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/005_what-is-yarn/">
+            YARNとは
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/006_what-is-required-for-dwh/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/006_what-is-required-for-dwh/">
+            DWHには何が必要か
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/007_oss-and-e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/007_oss-and-e-mapreduce/">
+            OSSとE-MapReduce
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/008_training_etl_and_olap_with_e-mapreduce/">
+            E-MapReduce起動、ETLとOLTP、OLAPをする
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/009_data-collection/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/009_data-collection/">
+            既存データからの移植について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/010_logservice-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/010_logservice-to-oss/">
+            LogServiceでOSSへデータを集める方法
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/011_aws-s3-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/011_aws-s3-to-oss/">
+            AWS S3からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/012_idc-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/012_idc-to-oss/">
+            IDCからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/013_apache-spark-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/013_apache-spark-to-oss/">
+            ApacheSpark（Batch）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/014_apache-spark-streaming-to-oss/">
+            ApacheSpark（Streaming）からOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/016_apache-flume-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/016_apache-flume-to-oss/">
+            Apache FlumeからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/017_fluentd-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/017_fluentd-to-oss/">
+            FluentdからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/018_enbulk-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/018_enbulk-to-oss/">
+            EnbulkからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/019_apache-arrow-to-oss/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/019_apache-arrow-to-oss/">
+            Apache ArrowからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/020_rds-for-mysql-to-oss-sqoop-and-spark/">
+            RDS for MySQLからOSSへ
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/021_alibabacloud-oss-to-another-oss-migration-/">
+            AlibabaCloud OSSから別のOSSへ（移植）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/022_alibabacloud-oss-to-another-oss-synchronization-/">
+            AlibabaCloud OSSから別のOSSへ（同期）
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/bigdata/023_development_environment_buildup_set_and_buildup_method/">
+            開発環境構築について
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/scenario/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/">ユースケース別シナリオ</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/help/scenario/web-application/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/web-application/">Webアプリケーション</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/scenario/web-application/springboot-with-ecs/" class="dd-item">
+        <div>
+          <a href="/help/scenario/web-application/springboot-with-ecs/">
+            ECSとSpringBootの構築例
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/scenario/terraform/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/scenario/terraform/">Terraform</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/scenario/terraform/bastion-server/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/bastion-server/">
+            SSH踏み台サーバの作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/slb-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/slb-setting-sample/">
+            SLBの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/rds-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/rds-setting-sample/">
+            RDSの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/kubernetes-setting-sample/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/kubernetes-setting-sample/">
+            Kubernetesの構築と設定
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application/">
+            Webアプリケーションの構築
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/accelerated-content-delivery/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/accelerated-content-delivery/">
+            高速コンテンツ配信の実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/auto-scaling/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/auto-scaling/">
+            オートスケーリングの実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/scenario/terraform/web-application-on-kubernetes/" class="dd-item">
+        <div>
+          <a href="/help/scenario/terraform/web-application-on-kubernetes/">
+            KubernetesによるコンテナでWordPress作成
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/help/faq/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/faq/">よくある質問</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/faq/ecs/" class="dd-item">
+        <div>
+          <a href="/help/faq/ecs/">
+            ECS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/oss/" class="dd-item">
+        <div>
+          <a href="/help/faq/oss/">
+            OSS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/rds/" class="dd-item">
+        <div>
+          <a href="/help/faq/rds/">
+            RDS
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/slb/" class="dd-item">
+        <div>
+          <a href="/help/faq/slb/">
+            SLB
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/account/" class="dd-item">
+        <div>
+          <a href="/help/faq/account/">
+            アカウント
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/faq/price/" class="dd-item">
+        <div>
+          <a href="/help/faq/price/">
+            料金
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+<a class="github-button" href="https://github.com/sbcloud/help/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download SBC Technical Reference on GitHub">Download</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help" data-icon="octicon-star" data-show-count="false" aria-label="Star SBC Technical Reference on GitHub">Star</a>
+
+<a class="github-button" href="https://github.com/sbcloud/help/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork SBC Technical Reference on GitHub">Fork</a>
+
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    </section>
+  </aside>
+  <section class="page">
+
+    <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+        <span id="sidebar-toggle-span">
+          <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+            <i class="fa fa-bars"></i>
+          </a>
+        </span>
+        <span id="toc-menu"><i class="fa fa-list-alt"></i></span>
+        <span class="links">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/product/'>プロダクト</a> > <a href='/help/best-practice/product/datav/'>DataV</a> > DataV のデータ権限制御
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+        </span>
+    </div>
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/help/getting-started/" >
+   Getting Started</option>
+    <option value="/help/best-practice/" >
+   ベストプラクティス</option> 
+    <option value="/help/best-practice/general/" >
+  - 
+   全般</option>
+    <option value="/help/best-practice/product/" >
+  - 
+   プロダクト</option> 
+    <option value="/help/best-practice/product/datav/" >
+  -- 
+   DataV</option> 
+      <option value="/help/best-practice/product/datav/datav-develop-api-cookie/"  selected>--- DataV のデータ権限制御</option>
+      <option value="/help/best-practice/product/datav/datav-widget-develop-guide/" >--- DataV Widget 開発ガイド</option>
+  
+      <option value="/help/best-practice/product/cloudmonitor/cloudmonitor/" >-- CloudMonitor</option>
+  
+    <option value="/help/best-practice/web-application/" >
+  - 
+   Webアプリケーション</option>
+    <option value="/help/best-practice/terraform/" >
+  - 
+   Terraform</option>
+    <option value="/help/best-practice/container/" >
+  - 
+   コンテナ</option>
+    <option value="/help/best-practice/bigdata/" >
+  - 
+   Bigdata</option>
+  
+    <option value="/help/scenario/" >
+   ユースケース別シナリオ</option>
+    <option value="/help/faq/" >
+   よくある質問</option>
+
+
+
+        </select>
+      </center>
+    </div>
+
+    <h1>DataV のデータ権限制御</h1>
+
+    
+    
+    
+    
+
+<p>Tags ： AlibabaCloud DataV API Develop</p>
+
+<hr />
+
+<h2 id="目的">目的</h2>
+
+<p>普段の業務上では一つ Dashboard に対してユーザの権限によって表示されたデータが異なるという要望がよくあります。例えば会社の中で部長が見える社員の勤怠データ範囲は課長より広いはず。逆に課長は自分の部下以外の人の情報を見てはいけません。</p>
+
+<p><img src="https://ip4pi.files.wordpress.com/2018/07/denied-1936877_1280.png?w=1000&amp;h=288&amp;crop=1" alt="権限イメージ図" /></p>
+
+<p>BIツールの場合はDashboard機能以外はユーザ権限管理機能もあるため、上記要件を実現しやすいですが、DataVはただの Dashboard ツールだけなので、ユーザ管理機能がふくまれていません。こんな場合はどうのようにこの要望を実現できるでしょうか？</p>
+
+<blockquote>
+<p>実現案のキーワードは、DataV Dashboard をユーザ既存システムに埋め込んで、DataVのAPIデータソースの中でユーザ既存システムの<code>Cookie</code>認証情報を利用すること。</p>
+</blockquote>
+
+<p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/image/system-image.jpg" alt="実現イメージ図" /></p>
+
+<p>本ガイドでは、一つ簡単なサンプルを通じてDataVの実現方法を紹介させていただきます。</p>
+
+<p>  本ガイドの全体的な流れは下記の通りです。</p>
+
+<table>
+<thead>
+<tr>
+<th>セクション</th>
+<th align="left">Topic</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>前提知識</td>
+<td align="left">DataV のAPIデータソース利用</td>
+<td align="left">DataV のAPIデータソースの紹介</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td align="left">CookieとCORS の基本知識</td>
+<td align="left">Cookieの紹介CORS制限の説明</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td align="left">NodejsとExpressの基本知識</td>
+<td align="left">Expressを使ってAPIサーバ構築の方法を紹介</td>
+</tr>
+
+<tr>
+<td>準備作業</td>
+<td align="left">APIサーバの構築</td>
+<td align="left">簡単な手順を紹介、細かいところを省略</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td align="left">DataVの設定</td>
+<td align="left">DataV設定方法の紹介</td>
+</tr>
+
+<tr>
+<td>実際の効果</td>
+<td align="left">効果を検証</td>
+<td align="left">実現したサンプルの効果を検証</td>
+</tr>
+
+<tr>
+<td>ソースコードの説明</td>
+<td align="left">APIソースコードの説明</td>
+<td align="left">APIサーバ構築中の注意ポイントを説明</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="前提知識">前提知識</h2>
+
+<p>本ガイドを理解するために、下記の前提知識が必要になります。</p>
+
+<h3 id="1-datavの基本利用">1.DataVの基本利用</h3>
+
+<p>DataV のデータ権限制御の話になる為、DavaVの基本利用を知っている前提となります。具体的には、データソース設定で「API」を選択した時の利用法となります。</p>
+
+<p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/image/datav-api.jpg" alt="APIイメージ図" /></p>
+
+<p>データソースタイプでAPIを選択した場合は、上記のように２つ選択肢チェックボックスが出てきます。それぞれの違いは以下の通り：</p>
+
+<ul>
+<li>サーバーからのリクエストを開始する (HTTPプロキシ)</li>
+</ul>
+
+<p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/image/image1.jpg" alt="option1" /></p>
+
+<ul>
+<li>Cookieが必要です (プロキシが選択されず、Cookieが必要な場合に使用する)</li>
+</ul>
+
+<p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/image/image2.jpg" alt="option2" /></p>
+
+<p>今回の実現案は<code>オプション２</code>を使います。</p>
+
+<h3 id="2-cookieとcors-の基本知識">2.CookieとCORS の基本知識</h3>
+
+<blockquote>
+<p>Cookie（クッキー）とは</p>
+</blockquote>
+
+<p>Cookie（クッキー）とは、ホームページを訪問したユーザーの情報を一時的の保存する仕組み、またはそのデータです。ID、パスワード、メールアドレス、訪問回数などがユーザー情報として保存されます。これによって再訪問したときにユーザーを特定し、情報を入力する手間が省けます。ショッピングサイトに訪問したとき、すでにログイン状態になっている、以前カートに入れた商品がそのまま残っているのは、Cookie機能がはたらいているからです。</p>
+
+<p>参考ページ：<a href="https://ferret-plus.com/6692">https://ferret-plus.com/6692</a></p>
+
+<blockquote>
+<p>CORS（Cross-Origin Resource Sharing）とは</p>
+</blockquote>
+
+<p>オリジン間リソース共有Cross-Origin Resource Sharing (CORS) は、追加の HTTP ヘッダーを使用して、あるオリジン (ドメイン) で動作しているウェブアプリケーションに、異なるオリジンのサーバーにある選択されたリソースへのアクセスを許可することができる仕組みです。ウェブアプリケーションは、自分のオリジンとは異なるオリジン (ドメイン、プロトコル、ポート番号) からリソースをリクエストするとき、オリジン間 HTTP リクエストを実行します。</p>
+
+<p>参考ページ：<a href="https://developer.mozilla.org/ja/docs/Web/HTTP/CORS">https://developer.mozilla.org/ja/docs/Web/HTTP/CORS</a></p>
+
+<p><img src="https://mdn.mozillademos.org/files/14295/CORS_principle.png" alt="option2" /></p>
+
+<p>今回はDataVはCookieを使ってユーザデータを取る場合は、Dashboardの閲覧者のブラウザから直接APIをコールするため、必ずCORS問題をクリアしないといけないです。</p>
+
+<p>CORS設定しない場合は、下記のようにDataV側はエラーが出ます。</p>
+
+<p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/image/cors-error.jpg" alt="cors error" /></p>
+
+<h3 id="3-nodejsとexpressの基本知識">3.NodejsとExpressの基本知識</h3>
+
+<p>今回のサンプルをNodeJSのExpressフレームワークを使ってAPIサーバを構築するので、環境構築方法と使い方について簡単に紹介します。</p>
+
+<p>APIサーバを実現したい要件は：</p>
+
+<ul>
+<li>HTTPSサーバ作成</li>
+<li>Cookieを使ってログインする</li>
+<li>Cookie読んでユーザデータを返す</li>
+<li>CORS設定し、DataVからもコールできるようにする</li>
+<li>Iframe使ってDataVをログイン後の画面に埋め込む、DataVはログインユーザの名前を表示する</li>
+</ul>
+
+<p>NodejsのExpressを使う場合は、複雑なサーバ設定なしで簡単ににAPIサーバを立ち上げすることが可能です。</p>
+
+<p><img src="https://smarttechies.files.wordpress.com/2015/10/node-express.png?w=605" alt="express" /></p>
+
+<p>もちろん、PHPもJavaのSpringBootも簡単にAPIサーバを構築することが可能なので、実装方法はお好みで任せます。参考リンク：<a href="https://www.baeldung.com/spring-cors">https://www.baeldung.com/spring-cors</a></p>
+
+<p>簡単な<code>Hello World</code>は下記チュートリアルにご参照ください。細かい説明はここで省略します。</p>
+
+<p><a href="https://expressjs.com/ja/starter/hello-world.html">https://expressjs.com/ja/starter/hello-world.html</a></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> <span style="color:#00a8c8">const</span> <span style="color:#75af00">express</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;express&#39;</span><span style="color:#111">)</span>
+ <span style="color:#00a8c8">const</span> <span style="color:#75af00">app</span> <span style="color:#f92672">=</span> <span style="color:#75af00">express</span><span style="color:#111">()</span>
+
+ <span style="color:#75af00">app</span><span style="color:#111">.</span><span style="color:#75af00">get</span><span style="color:#111">(</span><span style="color:#d88200">&#39;/&#39;</span><span style="color:#111">,</span> <span style="color:#111">(</span><span style="color:#75af00">req</span><span style="color:#111">,</span> <span style="color:#75af00">res</span><span style="color:#111">)</span> <span style="color:#111">=&gt;</span> <span style="color:#75af00">res</span><span style="color:#111">.</span><span style="color:#75af00">send</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Hello World!&#39;</span><span style="color:#111">))</span>
+
+ <span style="color:#75af00">app</span><span style="color:#111">.</span><span style="color:#75af00">listen</span><span style="color:#111">(</span><span style="color:#ae81ff">3000</span><span style="color:#111">,</span> <span style="color:#111">()</span> <span style="color:#111">=&gt;</span> <span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Example app listening on port 3000!&#39;</span><span style="color:#111">))</span>
+</code></pre></div>
+<h2 id="準備作業">準備作業</h2>
+
+<h3 id="1-apiサーバの構築">1.APIサーバの構築</h3>
+
+<p>今回はゼロからAPIを構築することではなく、ネット上簡単なサンプルを再利用し、必要な機能を追加することになります。</p>
+
+<p>メインの参照ドキュメントは下記です。このサンプルはCookie使ってログインすることまで実現できます。</p>
+
+<p><a href="https://blog.csdn.net/foruok/article/details/47719063">https://blog.csdn.net/foruok/article/details/47719063</a></p>
+
+<p><img src="https://img-blog.csdn.net/20150817064100278" alt="sample1" />
+<img src="https://img-blog.csdn.net/20150817064130322" alt="sample2" /></p>
+
+<p>今回は下記機能を追加しました。詳細の説明は本ガイドの最後で紹介させていただきます。ソースコードについてこちらから<a href="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/LoginDemo.zip">ダウンロード</a>が可能です。</p>
+
+<ul>
+<li>HTTPSサーバ作成(http使う場合はDataV側はエラーになる可能性があります)
+<img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/image/http-error.jpg" alt="error" /></li>
+<li>Cookie読んでユーザデータを返す</li>
+<li>CORS設定し、DataVからもコールできるようにする</li>
+<li>Iframe使ってDataVをログイン後の画面に埋め込む、DataVはログインユーザの名前を表示する</li>
+</ul>
+
+<p>ソースコードをダウンロードしてからサーバ立ち上げの手順をここで共有します（Centosを使う）。</p>
+
+<blockquote>
+<p>要注意： サーバ立ち上げた後で必要なポートをOpenすることが忘れないでください。</p>
+</blockquote>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># ログイン</span>
+ssh root@XXX.XXX.XXX.XXX
+
+<span style="color:#75715e"># 新バージョンのNodejsをインストール</span>
+curl --silent --location https://rpm.nodesource.com/setup_10.x <span style="color:#111">|</span> sudo bash -
+sudo yum -y install nodejs
+
+<span style="color:#75715e"># ソースコードをダウンロード</span>
+wget https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/LoginDemo.zip
+unzip LoginDemo.zip
+
+<span style="color:#75715e"># 必要なパッケージをインストール</span>
+<span style="color:#111">cd</span> LoginDemo
+npm install
+
+<span style="color:#75715e"># APIサーバ立ち上げ</span>
+npm start
+
+&gt; node ./bin/www
+
+HTTP Server is running on: http://localhost:1080
+HTTPS Server is running on: https://localhost:10443</code></pre></div>
+<p>ブラウザから <a href="https://XXX.XXX.XXX.XXX/login　をアクセスしてみて、ログイン画面が見えたらサーバ立ち上げが成功。">https://XXX.XXX.XXX.XXX/login　をアクセスしてみて、ログイン画面が見えたらサーバ立ち上げが成功。</a></p>
+
+<p>今回は２つユーザデータをソースコードの中に固定しました。
+* admin / 123456
+* datav / 888888</p>
+
+<blockquote>
+<p>今回のHTTPSサーバ使ってるSSL証明書はopenssl使って作ったものので、ブラウザから警告が出すことがあります。</p>
+</blockquote>
+
+<p>SSL証明書の作成方法は下記に参考（opensslインストールしたことを前提）。今回はこちら作成した証明書を使えるので、このステップをSKIPしても構いません。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">＃key作成
+
+openssl genrsa <span style="color:#ae81ff">1024</span> &gt; ./private.pem
+
+＃CSRの作成
+
+openssl req -new -key ./private.pem -out csr.pem
+
+＃証明書作成
+
+openssl x509 -req -days <span style="color:#ae81ff">365</span> -in csr.pem -signkey ./private.pem -out ./file.crt</code></pre></div>
+<h3 id="2-datavの設定">2.DataVの設定</h3>
+
+<p>APIサーバの立ち上げは成功したら、後のDataV設定はとても簡単です。今回は <a href="https://XXX.XXX.XXX.XXX/data">https://XXX.XXX.XXX.XXX/data</a> というAPIを用意しました。</p>
+
+<p>もしユーザログインの場合は、このAPIはCokkieを読んでユーザ名前を抽出し、クライアント側へ返します。もしユーザログインしない場合は、「no data」というJsonデータを返します。</p>
+
+<p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/image/datav-cookie-image.jpg" alt="setting" /></p>
+
+<h2 id="実際の効果">実際の効果</h2>
+
+<p>上記準備を終わりましたら、ログイン画面を通じてログインして見てください。最終効果は下記の通り。
+* adminでログイン
+<img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/image/effect1.png" alt="eff1" />
+<img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/image/effect2.png" alt="eff2" /></p>
+
+<ul>
+<li>datavでログイン
+<img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/image/effect3.png" alt="eff3" />
+<img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/image/effect4.png" alt="eff4" /></li>
+</ul>
+
+<p>実際の録画GIFは下記を参照：</p>
+
+<p><img src="https://sb-datav-sample.oss-ap-northeast-1.aliyuncs.com/cookie-sample/cookie-sampe.gif" alt="effect" /></p>
+
+<h2 id="ソースコードの説明">ソースコードの説明</h2>
+
+<h3 id="app-js">/app.js </h3>
+
+<p>APIの入り口、設定ファイル</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">var</span> <span style="color:#75af00">express</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;express&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">path</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;path&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">favicon</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;serve-favicon&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">logger</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;morgan&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">cookieParser</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;cookie-parser&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">bodyParser</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;body-parser&#39;</span><span style="color:#111">);</span>
+
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">users</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;./routes/users&#39;</span><span style="color:#111">);</span>
+
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">app</span> <span style="color:#f92672">=</span> <span style="color:#75af00">express</span><span style="color:#111">();</span>
+
+<span style="color:#75715e">// below is for https
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">var</span> <span style="color:#75af00">fs</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;fs&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">http</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;http&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">https</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;https&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">privateKey</span>  <span style="color:#f92672">=</span> <span style="color:#75af00">fs</span><span style="color:#111">.</span><span style="color:#75af00">readFileSync</span><span style="color:#111">(</span><span style="color:#d88200">&#39;./private.pem&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;utf8&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">certificate</span> <span style="color:#f92672">=</span> <span style="color:#75af00">fs</span><span style="color:#111">.</span><span style="color:#75af00">readFileSync</span><span style="color:#111">(</span><span style="color:#d88200">&#39;./file.crt&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;utf8&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">credentials</span> <span style="color:#f92672">=</span> <span style="color:#111">{</span><span style="color:#75af00">key</span><span style="color:#f92672">:</span> <span style="color:#75af00">privateKey</span><span style="color:#111">,</span> <span style="color:#75af00">cert</span><span style="color:#f92672">:</span> <span style="color:#75af00">certificate</span><span style="color:#111">};</span>
+
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">httpServer</span> <span style="color:#f92672">=</span> <span style="color:#75af00">http</span><span style="color:#111">.</span><span style="color:#75af00">createServer</span><span style="color:#111">(</span><span style="color:#75af00">app</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">httpsServer</span> <span style="color:#f92672">=</span> <span style="color:#75af00">https</span><span style="color:#111">.</span><span style="color:#75af00">createServer</span><span style="color:#111">(</span><span style="color:#75af00">credentials</span><span style="color:#111">,</span> <span style="color:#75af00">app</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">PORT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1080</span><span style="color:#111">;</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">SSLPORT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10443</span><span style="color:#111">;</span>
+
+<span style="color:#75af00">httpServer</span><span style="color:#111">.</span><span style="color:#75af00">listen</span><span style="color:#111">(</span><span style="color:#75af00">PORT</span><span style="color:#111">,</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#d88200">&#39;HTTP Server is running on: http://localhost:%s&#39;</span><span style="color:#111">,</span> <span style="color:#75af00">PORT</span><span style="color:#111">);</span>
+<span style="color:#111">});</span>
+<span style="color:#75715e">// https設定
+</span><span style="color:#75715e"></span><span style="color:#75af00">httpsServer</span><span style="color:#111">.</span><span style="color:#75af00">listen</span><span style="color:#111">(</span><span style="color:#75af00">SSLPORT</span><span style="color:#111">,</span> <span style="color:#00a8c8">function</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#75af00">console</span><span style="color:#111">.</span><span style="color:#75af00">log</span><span style="color:#111">(</span><span style="color:#d88200">&#39;HTTPS Server is running on: https://localhost:%s&#39;</span><span style="color:#111">,</span> <span style="color:#75af00">SSLPORT</span><span style="color:#111">);</span>
+<span style="color:#111">});</span>
+
+<span style="color:#75715e">//CORS設定
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">var</span> <span style="color:#75af00">allowCrossDomain</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">function</span> <span style="color:#111">(</span><span style="color:#75af00">req</span><span style="color:#111">,</span> <span style="color:#75af00">res</span><span style="color:#111">,</span> <span style="color:#75af00">next</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+ <span style="color:#75af00">res</span><span style="color:#111">.</span><span style="color:#75af00">header</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Access-Control-Allow-Origin&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#39;https://datav-ap-northeast-1.alibabacloud.com&#39;</span><span style="color:#111">);</span>
+ <span style="color:#75af00">res</span><span style="color:#111">.</span><span style="color:#75af00">header</span><span style="color:#111">(</span><span style="color:#d88200">&#39;Access-Control-Allow-Credentials&#39;</span><span style="color:#111">,</span> <span style="color:#00a8c8">true</span><span style="color:#111">);</span>
+ <span style="color:#75af00">next</span><span style="color:#111">();</span>
+<span style="color:#111">};</span>
+
+<span style="color:#75af00">app</span><span style="color:#111">.</span><span style="color:#75af00">use</span><span style="color:#111">(</span><span style="color:#75af00">allowCrossDomain</span><span style="color:#111">);</span> <span style="color:#75715e">//imortant
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">//app.all(&#39;*&#39;, users.requireAuthentication);
+</span><span style="color:#75715e"></span><span style="color:#75af00">app</span><span style="color:#111">.</span><span style="color:#75af00">use</span><span style="color:#111">(</span><span style="color:#d88200">&#39;/&#39;</span><span style="color:#111">,</span> <span style="color:#75af00">users</span><span style="color:#111">);</span>
+
+<span style="color:#111">...</span>
+
+<span style="color:#75af00">module</span><span style="color:#111">.</span><span style="color:#75af00">exports</span> <span style="color:#f92672">=</span> <span style="color:#75af00">app</span><span style="color:#111">;</span>
+</code></pre></div>
+<h3 id="router-users-js">/router/users.js </h3>
+
+<p>APIの中身、ログイン機能などはここで実現</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#00a8c8">var</span> <span style="color:#75af00">express</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;express&#39;</span><span style="color:#111">);</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">router</span> <span style="color:#f92672">=</span> <span style="color:#75af00">express</span><span style="color:#111">.</span><span style="color:#75af00">Router</span><span style="color:#111">();</span>
+<span style="color:#00a8c8">var</span> <span style="color:#75af00">crypto</span> <span style="color:#f92672">=</span> <span style="color:#75af00">require</span><span style="color:#111">(</span><span style="color:#d88200">&#39;crypto&#39;</span><span style="color:#111">);</span>
+
+<span style="color:#75715e">// just for tutorial, it&#39;s bad really
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">var</span> <span style="color:#75af00">userdb</span> <span style="color:#f92672">=</span> <span style="color:#111">[</span>
+    <span style="color:#111">{</span>
+      <span style="color:#75af00">userName</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;admin&#34;</span><span style="color:#111">,</span>
+      <span style="color:#75af00">hash</span><span style="color:#f92672">:</span> <span style="color:#75af00">hashPW</span><span style="color:#111">(</span><span style="color:#d88200">&#34;admin&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;123456&#34;</span><span style="color:#111">),</span>
+      <span style="color:#75af00">last</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&#34;</span>
+    <span style="color:#111">},</span>
+    <span style="color:#111">{</span>
+      <span style="color:#75af00">userName</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;datav&#34;</span><span style="color:#111">,</span>
+      <span style="color:#75af00">hash</span><span style="color:#f92672">:</span> <span style="color:#75af00">hashPW</span><span style="color:#111">(</span><span style="color:#d88200">&#34;datav&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;888888&#34;</span><span style="color:#111">),</span>
+      <span style="color:#75af00">last</span><span style="color:#f92672">:</span> <span style="color:#d88200">&#34;&#34;</span>
+    <span style="color:#111">}</span>
+  <span style="color:#111">];</span>
+
+<span style="color:#111">...</span>
+
+<span style="color:#75715e">// DataV使うAPI、Cookieからユーザ名前を読んで返す
+</span><span style="color:#75715e"></span>  <span style="color:#75af00">router</span><span style="color:#111">.</span><span style="color:#75af00">get</span><span style="color:#111">(</span><span style="color:#d88200">&#39;/data&#39;</span><span style="color:#111">,</span> <span style="color:#00a8c8">function</span><span style="color:#111">(</span><span style="color:#75af00">req</span><span style="color:#111">,</span> <span style="color:#75af00">res</span><span style="color:#111">,</span> <span style="color:#75af00">next</span><span style="color:#111">){</span>
+     <span style="color:#00a8c8">var</span> <span style="color:#75af00">nodata</span> <span style="color:#f92672">=</span> <span style="color:#111">[{</span>
+         <span style="color:#d88200">&#34;value&#34;</span><span style="color:#f92672">:</span><span style="color:#d88200">&#34;no data&#34;</span><span style="color:#111">,</span>
+         <span style="color:#d88200">&#34;url&#34;</span><span style="color:#f92672">:</span><span style="color:#d88200">&#34;&#34;</span>
+     <span style="color:#111">}];</span>
+    <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#75af00">isLogined</span><span style="color:#111">(</span><span style="color:#75af00">req</span><span style="color:#111">)){</span>
+      <span style="color:#00a8c8">var</span> <span style="color:#75af00">response</span> <span style="color:#f92672">=</span> <span style="color:#111">[{</span>
+         <span style="color:#d88200">&#34;value&#34;</span><span style="color:#f92672">:</span><span style="color:#75af00">req</span><span style="color:#111">.</span><span style="color:#75af00">cookies</span><span style="color:#111">[</span><span style="color:#d88200">&#34;account&#34;</span><span style="color:#111">].</span><span style="color:#75af00">account</span><span style="color:#111">,</span>
+         <span style="color:#d88200">&#34;url&#34;</span><span style="color:#f92672">:</span><span style="color:#d88200">&#34;&#34;</span>
+      <span style="color:#111">}];</span>
+      <span style="color:#75af00">res</span><span style="color:#111">.</span><span style="color:#75af00">end</span><span style="color:#111">(</span><span style="color:#75af00">JSON</span><span style="color:#111">.</span><span style="color:#75af00">stringify</span><span style="color:#111">(</span><span style="color:#75af00">response</span><span style="color:#111">));</span>
+    <span style="color:#111">}</span><span style="color:#00a8c8">else</span><span style="color:#111">{</span>
+      <span style="color:#75af00">res</span><span style="color:#111">.</span><span style="color:#75af00">end</span><span style="color:#111">(</span><span style="color:#75af00">JSON</span><span style="color:#111">.</span><span style="color:#75af00">stringify</span><span style="color:#111">(</span><span style="color:#75af00">nodata</span><span style="color:#111">));</span>
+    <span style="color:#111">}</span>
+
+  <span style="color:#111">});</span>
+</code></pre></div>
+<h3 id="views-profile-jade">/views/profile.jade</h3>
+
+<p><a href="http://jade-lang.com/">Jade</a>というテンプレートエンジンの使って、DataVをIframesに埋め込み。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">doctype html
+html
+  head
+    meta(charset=&#39;UTF-8&#39;)
+    title= title
+  body
+    p #{msg}
+    p #{lastTime}
+    p <span style="color:#111">&lt;</span><span style="color:#f92672">iframe</span> <span style="color:#75af00">width</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;700&#34;</span> <span style="color:#75af00">height</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;350&#34;</span> <span style="color:#75af00">src</span><span style="color:#f92672">=</span><span style="color:#d88200">&#34;https://datav-ap-northeast-1.alibabacloud.com/share/41682281fd8ed6bbef187763677c8cda&#34;</span><span style="color:#111">&gt;&lt;/</span><span style="color:#f92672">iframe</span><span style="color:#111">&gt;</span>
+    p
+      a(href=&#39;/logout&#39;) logout</code></pre></div>
+<p>以上です。</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/help/best-practice/product/datav/" title="DataV"> <i class="fa fa-chevron-left"></i><label>DataV</label></a>
+    <a class="nav nav-next" href="/help/best-practice/product/datav/datav-widget-develop-guide/" title="DataV Widget 開発ガイド" style="margin-right: 0px;"><label>DataV Widget 開発ガイド</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+    <div class="date">
+        <i class='fa fa-calendar'></i>  09/25/2019
+    </div>
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/product/datav/datav-develop-api-cookie.md" target="blank"><i class="fa fa-code-fork"></i>
+        </a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/help/js/clipboard.min.js"></script>
+
+<link href="/help/css/featherlight.min.css" rel="stylesheet">
+<script src="/help/js/featherlight.min.js"></script>
+
+
+
+<script src="/help/theme-flex/script.js"></script>
+
+<link href="/help/mermaid/mermaid.css" type="text/css" rel="stylesheet" />
+<script src="/help/mermaid/mermaid.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

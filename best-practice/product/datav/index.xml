@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DataV on テクニカルリファレンス</title>
+    <link>https://www.sbcloud.co.jp/help/best-practice/product/datav/</link>
+    <description>Recent content in DataV on テクニカルリファレンス</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Tue, 24 Sep 2019 12:30:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.sbcloud.co.jp/help/best-practice/product/datav/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DataV のデータ権限制御</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/product/datav/datav-develop-api-cookie/</link>
+      <pubDate>Wed, 25 Sep 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/product/datav/datav-develop-api-cookie/</guid>
+      <description>Tags ： AlibabaCloud DataV API Develop
+目的 普段の業務上では一つ Dashboard に対してユーザの権限によって表示されたデータが異なるという要望がよくあります。例えば会社の中で部長が見える社員の勤怠データ範囲は課長より広いはず。逆に課長は自分の部下以外の人の情報を見てはいけません。
+BIツールの場合はDashboard機能以外はユーザ権限管理機能もあるため、上記要件を実現しやすいですが、DataVはただの Dashboard ツールだけなので、ユーザ管理機能がふくまれていません。こんな場合はどうのようにこの要望を実現できるでしょうか？
+ 実現案のキーワードは、DataV Dashboard をユーザ既存システムに埋め込んで、DataVのAPIデータソースの中でユーザ既存システムのCookie認証情報を利用すること。
+ 本ガイドでは、一つ簡単なサンプルを通じてDataVの実現方法を紹介させていただきます。
+ 本ガイドの全体的な流れは下記の通りです。
+   セクション Topic 説明     前提知識 DataV のAPIデータソース利用 DataV のAPIデータソースの紹介   - CookieとCORS の基本知識 Cookieの紹介CORS制限の説明   - NodejsとExpressの基本知識 Expressを使ってAPIサーバ構築の方法を紹介   準備作業 APIサーバの構築 簡単な手順を紹介、細かいところを省略   - DataVの設定 DataV設定方法の紹介   実際の効果 効果を検証 実現したサンプルの効果を検証   ソースコードの説明 APIソースコードの説明 APIサーバ構築中の注意ポイントを説明    前提知識 本ガイドを理解するために、下記の前提知識が必要になります。</description>
+    </item>
+    
+    <item>
+      <title>DataV Widget 開発ガイド</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/product/datav/datav-widget-develop-guide/</link>
+      <pubDate>Tue, 10 Sep 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/product/datav/datav-widget-develop-guide/</guid>
+      <description>Tags ： AlibabaCloud DataV Widget Develop
+目的 DataV は AlibabaCloud のデータ可視化プロダクトとして日々進化しており、とても優れていますが、提供できる Widget が限られているため、一部特殊なニーズがあるユーザーに対応できない可能性があります。このため、DataVのプロ版（中国サイト基準の呼び方）では Widget 開発権限を開放し、DataV 固有の Widget の利用以外はユーザー自身も自由に開発できるようになります。
+　DataV プロ版はユーザー自身の Widget を開発できるメリットがあることに加えて、開発された Widget を他人にも共有でき、中国サイトの MarketPlace で販売することもできるため、開発ベンダーにとっても DataV はデータ可視化ツールの魅了的なプラットフォームです。
+本ガイドでは、いくつの簡単な Echarts ライブラリを DataV に取り込むためのサンプルを使用して、 DataV 開発版の使い方と Widget 開発のルールを紹介させていただきます。
+ 本ガイドの全体的な流れは下記の通りです。
+   セクション Topic 説明     前提知識 DataV の基本知識 DataV の概要紹介と Widget の簡単な説明   - Echarts の基本知識 Echarts の概要紹介と Option の簡単な説明   - Nodejs の基本知識 NodeJS のパッケージと DataV widget の関係、および NPM コマンドの簡単な説明   準備作業 Token の取得と Group の作成 開発前に DataV 側で必要な準備作業   - ローカル環境構築 ローカルの開発環境の構築手順   開発ルール index.</description>
+    </item>
+    
+  </channel>
+</rss>
