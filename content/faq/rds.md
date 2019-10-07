@@ -15,6 +15,7 @@ draft: false
  * [ホワイトリストの設定方法について](#ホワイトリストの設定方法について)
  * [インターネットアドレスとイントラネットアドレスの違いについて](#インターネットアドレスとイントラネットアドレスの違いについて)
  * [VPCとVswitchの変更方法について](#VPCとVswitchの変更方法について)
+ * [Oracleライセンスの持ち込みについて](#Oracleライセンスの持ち込みについて)
 * バックアップ
  * [バックアップ取得時の性能影響について](#バックアップ取得時の性能影響について)
  * [RDSバックアップの保存先について](#RDSバックアップの保存先について)
@@ -85,6 +86,17 @@ RDSにインターネットアドレスとイントラネットアドレスが�
 <h4 id="VPCとVswitchの変更方法について"></h4>
 {{%panel theme="default" header="VPCとVswitchの変更方法について"%}}
 RDS作成後のVPCとVSwitchの変更を対応していません。既存RDSのバックアップからVPCとVSwitchを指定して新規RDSを作成することになります。
+{{%/panel%}}
+<a href="#index">[⬆ 目次へ]</a>
+
+<h4 id="Oracleライセンスの持ち込みについて"></h4>
+{{%panel theme="default" header="Oracleライセンスの持ち込みについて"%}}
+AlibabaCloudにOracleライセンスを持ち込みの場合、Oracle社と再契約する必要があります。<br>
+契約するCPU数はECSのCPU数ではなく、ECSがフェイルオーバー可能な全物理機のCPU数となります。
+日本リージョンのECSに持ち込みの場合、日本データセンターの全物理サーバーCPUの契約となります。
+{{% notice info %}}
+ECS Bare Metal InstanceとDedicated Host (DDH)製品でも例外がありません。
+{{% /notice %}}
 {{%/panel%}}
 <a href="#index">[⬆ 目次へ]</a>
 
