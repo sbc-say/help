@@ -287,6 +287,22 @@ $ echo 0.11.13 &amp;gt; .</description>
     </item>
     
     <item>
+      <title>DataV より桜前線のシミュレーション実現</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/product/datav/datav-sakura/</link>
+      <pubDate>Mon, 30 Sep 2019 12:30:18 +0800</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/product/datav/datav-sakura/</guid>
+      <description>Tags ： AlibabaCloud DataV Develop
+目的 データ可視化の魅了の一つは、分かりづらい生データを生き生きで表現させて、誰でもすぐ分かるようにすることです。でも、データの表現力を豊かにするため、いつもプロのデザインナーに頼まないと行けないことで、普通のエンジニアにとってなかなか難しです。DataVの使命の一つは、まさにエンジニア達はこんな悩みから救えたいです。DataVを使えば、プロなデザインナーを頼らず、誰でも綺麗なDashboardを作れます。
+今回はアリババ が11 月 11 日に行われた「独身の日」セールの際の使われたライブダッシュボードをベスに、簡単に日本の桜前線をシミュレーションすることを挑戦します。
+実現したい効果は： * 日本地図上で、桜はいつどこで咲いてるか可視化したい * 日付ごとに桜前提の推移状況を動的に表現したい
+上記実現するために、DataV上必要なwidgetは下記だけ： * タイムライン * 3D地図
+ 要注意：3D地図 Widget はDataVのエンタプライズ版しか使えないです。
+ 本ガイドの全体的な流れは下記の通りです。
+   セクション Topic 説明     前提知識 DataV 基本紹介 DataV 基本機能の紹介   - Callback IDの紹介 DataV Callback IDの説明   - SpringBootの基本知識 SpringBootを使ってAPIサーバ構築の方法を紹介   準備作業 データの準備 必要な桜データと地図データの準備方法を紹介   - APIサーバの構築 APIサーバの構築方法を紹介   設定開始 DataVの設定 DataV各Widget設定方法の紹介   - 効果を検証 実現したシミュレーション効果を検証    前提知識 本ガイドを理解するために、下記の前提知識が必要になります。</description>
+    </item>
+    
+    <item>
       <title>日本と中国のNW接続</title>
       <link>https://www.sbcloud.co.jp/help/best-practice/network/jp-cn/</link>
       <pubDate>Mon, 30 Sep 2019 12:30:18 +0800</pubDate>
