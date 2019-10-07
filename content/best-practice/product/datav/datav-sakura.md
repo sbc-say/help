@@ -1,6 +1,6 @@
 ---
 title: "DataV より桜前線のシミュレーション実現"
-description: "DataV初心者向けに、３D Widgetより簡単な桜前線シミュレーションの実現方法を紹介します。"
+description: "DataV初心者向けに、３D Widgetより簡単な桜前線シミュレーションの実現方法を紹介します。"
 date: 2019-09-30T12:30:18+08:00
 weight: 30
 draft: false
@@ -82,16 +82,16 @@ DataV重要な特徴は下記の通り：
 
 ### 3.SpringBootの基本知識
 
-サンプルをJavaのSpringBootフレームワークを使ってAPIサーバを構築するので、環境構築方法と使い方について簡単に紹介します。
+サンプルを JavaのSpringBootフレームワークを使ってAPIサーバを構築するので、環境構築方法と使い方について簡単に紹介します。
 ![springboot](https://saikeblog.com/wp-content/uploads/2019/02/DU7GUGCV4AAf90X_0.jpg-large.png)
 
-APIサーバを実現したい要件は：
+ APIサーバを実現したい要件は：
 
-* HTTPサーバ作成
+* HTTP サーバ作成
 * 事前に作った５日間のJSONデータをrootフォルダの下に置く
 * 日付のパラメータを受けて、この日のJsonデータを返す
 
-SpringBootを使う場合は、複雑なサーバ設定なしで簡単ににAPIサーバを立ち上げすることが可能です。もちろん、NodeJSのExpressフレームワークを使って、同じことが簡単にできます。どちらにするかはお好み次第です。
+SpringBootを使う場合は、複雑なサーバ設定なしで 簡単ににAPIサーバを立ち上げすることが可能です。もちろん、NodeJSのExpressフレームワークを使って、同じことが簡単にできます。どちらにするかはお好み次第です。
 
 下記リンクから簡単なデモプロジェクトを作れます。細かい説明はここで省略します。
  https://start.spring.io/
