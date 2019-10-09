@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2019-10-07T09:01:23 UTC">
+<meta name="revised" content="2019-10-09T09:36:32 UTC">
 <title>SLB :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -691,6 +691,13 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
+      <li data-nav-id="/help/faq/other/" class="dd-item">
+        <div>
+          <a href="/help/faq/other/">
+            その他
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/help/faq/ecs/" class="dd-item">
         <div>
           <a href="/help/faq/ecs/">
@@ -794,6 +801,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
    ユースケース別シナリオ</option>
     <option value="/help/faq/" >
    よくある質問</option> 
+      <option value="/help/faq/other/" >- その他</option>
       <option value="/help/faq/ecs/" >- ECS</option>
       <option value="/help/faq/oss/" >- OSS</option>
       <option value="/help/faq/rds/" >- RDS</option>
@@ -827,6 +835,8 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <li><a href="#VServerグループとマスタースレーブグループの違いについて">VServerグループとマスタースレーブグループの違いについて</a></li>
 <li><a href="#サードパーティ証明書のアップロード方法について">サードパーティ証明書のアップロード方法について</a></li>
 <li><a href="#SLB関連の各APIのスロットリング上限について">SLB関連の各APIのスロットリング上限について</a></li>
+<li><a href="#SLBの接続要求のタイムアウト時間について">SLBの接続要求のタイムアウト時間について</a></li>
+<li><a href="#SLBスペック変更に伴うサービス切断について">SLBスペック変更に伴うサービス切断について</a></li>
 </ul></li>
 <li>ネットワーク
 
@@ -838,6 +848,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <li><a href="#SLBのインバウンド/アウトバウンド帯域幅について">SLBのインバウンド/アウトバウンド帯域幅について</a></li>
 <li><a href="#証明書をSLB側とECS側に設置の違いについて">証明書をSLB側とECS側に設置の違いについて</a></li>
 <li><a href="#TCP over SSLの対応について">TCP over SSLの対応について</a></li>
+<li><a href="#SLBのTLSバージョン選択機能について">SLBのTLSバージョン選択機能について</a></li>
 </ul></li>
 <li>負荷分散
 
@@ -951,6 +962,39 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <a href="#index">[⬆ 目次へ]</a></p>
 
+<p><h4 id="SLBの接続要求のタイムアウト時間について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">SLBの接続要求のタイムアウト時間について</div>
+	<div class="panel-body"><p>接続要求のタイムアウト時間については、指定したタイムアウト期間中にバックエンドサーバーからレスポンスがない場合、Server Load Balancer は待機を止め、エラーコード HTTP 504 をクライアントに送信します。<br>
+この値を「60（秒）」とした場合は、「バックエンドサーバーからのレスポンス待ち時間」の最大値が60秒となります。<br>
+尚、接続要求（リクエスト)のタイムアウト期間は秒単位で設定すすることができ、有効値は 1〜180となります。<br><br></p>
+
+<p>「接続要求のタイムアウト時間」を「60（秒）」にて作成したSLBに接続しているクライアントが10秒で接続を閉じた場合、SLBとバックエンドサーバーの間のコネクションは接続された状態となります。<br></p>
+
+<p>尚、同じメニュー内に「接続アイドルのタイムアウト時間」を設定する項目があります。
+こちらは接続のアイドルタイムアウトを秒単位で指定し（有効値: 1～60）、指定したタイムアウト期間中にリクエストが受信されない場合は、Server Load Balancer はいったん接続を閉じ、次のリクエストが入ってきたら接続を再開します。</p>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="SLBスペック変更に伴うサービス切断について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">SLBスペック変更に伴うサービス切断について</div>
+	<div class="panel-body"><p>SLBのタイプ変更時には、IPアドレスの変更はありませんが、パフォーマンス共有型から各パフォーマンス専有型に変更する際に、サービスは 10〜30 秒間切断することがございます。<br></p>
+
+<p>なお、パフォーマンス専有型の上位タイプへご変更の際は、サービスの切断は発生いたしません。</p>
+
+<div class="notices note" ><p>スペック変更は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/85942.htm">https://jp.alibabacloud.com/help/doc-detail/85942.htm</a></p>
+</div>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
 <h4 id="ネットワーク">ネットワーク</h4>
 
 <p><h4 id="パブリックSLBとプライベートSLBの違いについて"></h4>
@@ -1040,6 +1084,22 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <div class="panel panel-default">
 	<div class="panel-heading">TCP over SSLの対応について</div>
 	<div class="panel-body"><p>日本サイトのSLB現在レイヤー4のTCP over SSLを対応していません。SSL通信が必要な場合、レイヤー7のHTTPSを利用する必要があります。</p>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="SLBのTLSバージョン選択機能について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">SLBのTLSバージョン選択機能について</div>
+	<div class="panel-body"><p>SLBにHTTPSリスナーを利用する場合、利用可能のTLSバージョンを選択することが可能です。<br></p>
+
+<div class="notices tip" ><p>低いバージョンを利用すると互換性が良いですが、ROBOT Attack のような脆弱性を対応するためには、TLSセキュリティポリシーで以下のいづれかを選択しする必要があります<br>
+尚、この機能は「パファーマンス共有タイプSLB」が対象外となります。<br>
+<code>tls_cipher_policy_1_2_strict</code><br>
+<code>tls_cipher_policy_1.2_strict_with_1_3</code></p>
+</div>
 </div>
 	
 </div>

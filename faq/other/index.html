@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2019-10-09T09:36:32 UTC">
-<title>RDS :: テクニカルリファレンス</title>
+<title>その他 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -47,7 +47,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-<meta name="description" content="Alibaba CloudのRDSに関するよくある質問を紹介します。">
+<meta name="description" content="Alibaba Cloudの製品に関するよくある質問を紹介します。">
 
         
 
@@ -57,7 +57,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
   </head>
-  <body data-url="/help/faq/rds/">
+  <body data-url="/help/faq/other/">
     
       <header>
 
@@ -691,7 +691,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/help/faq/other/" class="dd-item">
+      <li data-nav-id="/help/faq/other/" class="dd-item active">
         <div>
           <a href="/help/faq/other/">
             その他
@@ -712,7 +712,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/faq/rds/" class="dd-item active">
+      <li data-nav-id="/help/faq/rds/" class="dd-item">
         <div>
           <a href="/help/faq/rds/">
             RDS
@@ -779,7 +779,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
- <a href='/help/'></a> > <a href='/help/faq/'>よくある質問</a> > RDS
+ <a href='/help/'></a> > <a href='/help/faq/'>よくある質問</a> > その他
 
  
 
@@ -801,10 +801,10 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
    ユースケース別シナリオ</option>
     <option value="/help/faq/" >
    よくある質問</option> 
-      <option value="/help/faq/other/" >- その他</option>
+      <option value="/help/faq/other/"  selected>- その他</option>
       <option value="/help/faq/ecs/" >- ECS</option>
       <option value="/help/faq/oss/" >- OSS</option>
-      <option value="/help/faq/rds/"  selected>- RDS</option>
+      <option value="/help/faq/rds/" >- RDS</option>
       <option value="/help/faq/slb/" >- SLB</option>
       <option value="/help/faq/account/" >- アカウント</option>
       <option value="/help/faq/price/" >- 料金</option>
@@ -816,144 +816,107 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       </center>
     </div>
 
-    <h1>RDS</h1>
+    <h1>その他</h1>
 
     
     
     
-    
-
-<h4 id="index">目次</h4>
+    <h4 id="index">目次</h4>
 
 <ul>
-<li>一般仕様
+<li>NAS
 
 <ul>
-<li><a href="#RDSのトラフィック料金について">RDSのトラフィック料金について</a></li>
-<li><a href="#sysadminの権限提供について">sysadminの権限提供について</a></li>
-<li><a href="#カスタマイズ可能なパラメーターについて">カスタマイズ可能なパラメーターについて</a></li>
-<li><a href="#RDSのストレージ容量の拡張方法について">RDSのストレージ容量の拡張方法について</a></li>
-<li><a href="#ホワイトリストの設定方法について">ホワイトリストの設定方法について</a></li>
-<li><a href="#インターネットアドレスとイントラネットアドレスの違いについて">インターネットアドレスとイントラネットアドレスの違いについて</a></li>
-<li><a href="#VPCとVswitchの変更方法について">VPCとVswitchの変更方法について</a></li>
-<li><a href="#Oracleライセンスの持ち込みについて">Oracleライセンスの持ち込みについて</a></li>
+<li><a href="#NASの使用可能容量の表示について">NASの使用可能容量の表示について</a></li>
 </ul></li>
-<li>バックアップ
+<li>RAM
 
 <ul>
-<li><a href="#バックアップ取得時の性能影響について">バックアップ取得時の性能影響について</a></li>
-<li><a href="#RDSバックアップの保存先について">RDSバックアップの保存先について</a></li>
-<li><a href="#リカバリ時に指定可能な時刻について">リカバリ時に指定可能な時刻について</a></li>
-<li><a href="#RDSリリース後のバックアップ提供について">RDSリリース後のバックアップ提供について</a></li>
+<li><a href="#RAMユーザの権限を特定のリージョンに制限する方法について">RAMユーザの権限を特定のリージョンに制限する方法について</a></li>
+<li><a href="#RAMユーザの権限をECS操作のみ可能、購入不可に制限する方法について">RAMユーザの権限をECS操作のみ可能、購入不可に制限する方法について</a></li>
+<li><a href="#RAMユーザでSSL Certifcate Serviceを利用時の権限について">RAMユーザでSSL Certifcate Serviceを利用時の権限について</a></li>
+<li><a href="#RAMユーザでコンテナのコンソールを操作させる方法について">RAMユーザでコンテナのコンソールを操作させる方法について</a></li>
 </ul></li>
-<li>マルチゾーン
+<li>Logservice
 
 <ul>
-<li><a href="#マルチゾーンの確認方法について">マルチゾーンの確認方法について</a></li>
-<li><a href="#マルチゾーンの切り替え方法について">マルチゾーンの切り替え方法について</a></li>
-<li><a href="#レプリカのマルチゾーン対応について">レプリカのマルチゾーン対応について</a></li>
+<li><a href="#Logstore の「internal-alert-history」ログについて">Logstore の「internal-alert-history」ログについて</a></li>
+<li><a href="#Logtailの履歴ログのインポートモードについて">Logtailの履歴ログのインポートモードについて</a></li>
 </ul></li>
-<li>暗号化
+<li>ExpressConnect
 
 <ul>
-<li><a href="#保存データの暗号化方法について">保存データの暗号化方法について</a></li>
-<li><a href="#SSLを利用するデータ転送方法について">SSLを利用するデータ転送方法について</a></li>
+<li><a href="#ExpressConnect同じリージョン内VPC-VPC接続の料金について">ExpressConnect同じリージョン内VPC-VPC接続の料金について</a></li>
+</ul></li>
+<li>CDN
+
+<ul>
+<li><a href="#CDNでのAlibaba Cloud の無料証明書申請について">CDNでのAlibaba Cloud の無料証明書申請について</a></li>
+<li><a href="#CDNオリジンへのリクエストタイムアウト値について">CDNオリジンへのリクエストタイムアウト値について</a></li>
+<li><a href="#CDN + OSS 構成の静的ウェブサイトホスティングについて">CDN + OSS 構成の静的ウェブサイトホスティングについて</a></li>
+</ul></li>
+<li>Imagesearch
+
+<ul>
+<li><a href="#Image SearchのインポートQPS制限について">Image SearchのインポートQPS制限について</a></li>
+</ul></li>
+<li>VPNGAteway
+
+<ul>
+<li><a href="#VPNGAtewayのSSL証明書作成仕様について">VPNGAtewayのSSL証明書作成仕様について</a></li>
+<li><a href="#VPNGatewayにて作成可能なSSL証明書数について">VPNGatewayにて作成可能なSSL証明書数について</a></li>
+<li><a href="#VPN Gatewayのヘルスチェック設定について">VPN Gatewayのヘルスチェック設定について</a></li>
+<li><a href="#SSL-VPNに払い出されるIPアドレスの仕様について">SSL-VPNに払い出されるIPアドレスの仕様について</a></li>
+</ul></li>
+<li>SSL Certifcate
+
+<ul>
+<li><a href="#SSL証明書の更新について">SSL証明書の更新について</a></li>
+<li><a href="#SSL証明書申請後のドメイン変更について">SSL証明書申請後のドメイン変更について</a></li>
+</ul></li>
+<li>DataV
+
+<ul>
+<li><a href="#DataVでの「コールバックID」の呼び出し範囲について">DataVでの「コールバックID」の呼び出し範囲について</a></li>
+</ul></li>
+<li>CEN
+
+<ul>
+<li><a href="#CENの帯域幅変更時の通信断発生について">CENの帯域幅変更時の通信断発生について</a></li>
+</ul></li>
+<li>Function Compute
+
+<ul>
+<li><a href="#Function Computeの時間トリガーのタイムゾーンについて">Function Computeの時間トリガーのタイムゾーンについて</a></li>
+<li><a href="#Function ComputeからRDSのイントラネット接続について">Function ComputeからRDSのイントラネット接続について</a></li>
+</ul></li>
+<li>IoT
+
+<ul>
+<li><a href="#IoT Platformのデバイス監視機能について">IoT Platformのデバイス監視機能について</a></li>
+</ul></li>
+<li>Redis
+
+<ul>
+<li><a href="#Redisのパスワードでの接続方法について">Redisのパスワードでの接続方法について</a></li>
+<li><a href="#ApsaraDB for Redisの強制アップグレードについて">ApsaraDB for Redisの強制アップグレードについて</a></li>
 </ul></li>
 </ul>
 
-<h4 id="一般仕様">一般仕様</h4>
-
-<p><h4 id="RDSのトラフィック料金について"></h4>
+<p><h4 id="NASの使用可能容量の表示について"></h4>
 <div class="panel panel-default">
-	<div class="panel-heading">RDSのトラフィック料金について</div>
-	<div class="panel-body"><p>RDS現在トラフィック（インバウンド、アウトバウンド含む）料金は無料です。</p>
-</div>
-	
-</div>
+	<div class="panel-heading">NASの使用可能容量の表示について</div>
+	<div class="panel-body"><p>各NASストレージの容量上限は10.0PBになります。<br></p>
 
-<a href="#index">[⬆ 目次へ]</a></p>
+<p>ストレージパッケージのご購入容量はNASのストレージ容量上限ではなく、購入した容量までを定額でご利用いただけるサービスとなり、
+購入いただいた設定額を超えた分は、従量課金として請求されます。<br></p>
 
-<p><h4 id="sysadminの権限提供について"></h4>
-<div class="panel panel-default">
-	<div class="panel-heading">sysadminの権限提供について</div>
-	<div class="panel-body"><p>インスタンスの安定性とセキュリティを保証するために、RDS for SQL Server では、sysadmin 権限を提供しておりません。</p>
+<p>そのため、ストレージパッケージのご購入もしくは従量課金でのご利用にかかわらず、NASの容量は10.0PBとなります。
+<div class="notices note" ><p>NASの料金表は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/product/nas/pricing">https://jp.alibabacloud.com/product/nas/pricing</a><br><br></p></p>
 
-<div class="notices note" ><p>RDSの制限詳細は下記のドキュメントをご参照ください。<br>
-<a href="https://jp.alibabacloud.com/help/doc-detail/26141.htm">https://jp.alibabacloud.com/help/doc-detail/26141.htm</a></p>
-</div>
-</div>
-	
-</div>
-
-<a href="#index">[⬆ 目次へ]</a></p>
-
-<p><h4 id="カスタマイズ可能なパラメーターについて"></h4>
-<div class="panel panel-default">
-	<div class="panel-heading">カスタマイズ可能なパラメーターについて</div>
-	<div class="panel-body"><p>RDSはマネジメントサービスのため、カスタマイズ可能なパラメーターはRDSコンソールのパラメーターの設定ページに表示されているパラメーターのみとなります。</p>
-</div>
-	
-</div>
-
-<a href="#index">[⬆ 目次へ]</a></p>
-
-<p><h4 id="RDSのストレージ容量の拡張方法について"></h4>
-<div class="panel panel-default">
-	<div class="panel-heading">RDSのストレージ容量の拡張方法について</div>
-	<div class="panel-body"><p>RDSのストレージ容量は下記メニューから拡張することができます。</p>
-
-<div class="notices tip" ><p>コンソール &gt; RDS &gt; インスタンスの「詳細」&gt; 設定を変更する &gt; 容量</p>
-</div>
-</div>
-	
-</div>
-
-<a href="#index">[⬆ 目次へ]</a></p>
-
-<p><h4 id="ホワイトリストの設定方法について"></h4>
-<div class="panel panel-default">
-	<div class="panel-heading">ホワイトリストの設定方法について</div>
-	<div class="panel-body"><p>RDSにはホワイトリストを利用してアクセスIPを制限することができます。</p>
-
-<div class="notices note" ><p>RDSのホワイトリストの設定は下記のドキュメントをご参照ください。<br>
-<a href="https://jp.alibabacloud.com/help/doc-detail/43186.html">https://jp.alibabacloud.com/help/doc-detail/43186.html</a></p>
-</div>
-</div>
-	
-</div>
-
-<a href="#index">[⬆ 目次へ]</a></p>
-
-<p><h4 id="インターネットアドレスとイントラネットアドレスの違いについて"></h4>
-<div class="panel panel-default">
-	<div class="panel-heading">インターネットアドレスとイントラネットアドレスの違いについて</div>
-	<div class="panel-body"><p>RDSにインターネットアドレスとイントラネットアドレスがあります。<br><br></p>
-
-<p>イントラネットアドレスは同じVPC内のインスタンスのみアクセスすることができます。<br>
-インターネットアドレスはインターネットからアクセスすることができます。</p>
-</div>
-	
-</div>
-
-<a href="#index">[⬆ 目次へ]</a></p>
-
-<p><h4 id="VPCとVswitchの変更方法について"></h4>
-<div class="panel panel-default">
-	<div class="panel-heading">VPCとVswitchの変更方法について</div>
-	<div class="panel-body"><p>RDS作成後のVPCとVSwitchの変更を対応していません。既存RDSのバックアップからVPCとVSwitchを指定して新規RDSを作成することになります。</p>
-</div>
-	
-</div>
-
-<a href="#index">[⬆ 目次へ]</a></p>
-
-<p><h4 id="Oracleライセンスの持ち込みについて"></h4>
-<div class="panel panel-default">
-	<div class="panel-heading">Oracleライセンスの持ち込みについて</div>
-	<div class="panel-body"><p>AlibabaCloudにOracleライセンスを持ち込みの場合、Oracle社と再契約する必要があります。<br>
-契約するCPU数はECSのCPU数ではなく、ECSがフェイルオーバー可能な全物理機のCPU数となります。
-日本リージョンのECSに持ち込みの場合、日本データセンターの全物理サーバーCPUの契約となります。
-<div class="notices info" ><p>ECS Bare Metal InstanceとDedicated Host (DDH)製品でも例外がありません。</p>
+<p><p>NASの課金シナリオは下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/27523.htm">https://jp.alibabacloud.com/help/doc-detail/27523.htm</a></p>
 </div></p>
 </div>
 	
@@ -961,57 +924,30 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <a href="#index">[⬆ 目次へ]</a></p>
 
-<h4 id="バックアップ">バックアップ</h4>
-
-<p><h4 id="バックアップ取得時の性能影響について"></h4>
+<p><h4 id="RAMユーザの権限を特定のリージョンに制限する方法について"></h4>
 <div class="panel panel-default">
-	<div class="panel-heading">バックアップ取得時の性能影響について</div>
-	<div class="panel-body"><p>RDSのバックアップはスレーブインスタンスから取得するため、取得時にスレーブインスタンスへ影響がありますが、マスターインスタンスの性能に影響がありません。</p>
-</div>
-	
-</div>
+	<div class="panel-heading">RAMユーザの権限を特定のリージョンに制限する方法について</div>
+	<div class="panel-body"><p>RAMユーザの権限を特定のリージョンに制限することは可能です。<br></p>
 
-<a href="#index">[⬆ 目次へ]</a></p>
+<p>下記例を参考して、お客様のニーズに合わせて、cn-shanghaiのところを対象リージョンIDに変更する必要です。</p>
 
-<p><h4 id="RDSバックアップの保存先について"></h4>
-<div class="panel panel-default">
-	<div class="panel-heading">RDSバックアップの保存先について</div>
-	<div class="panel-body"><p>RDSバックアップはアーキテクチャ上にOSS上に保存されますが、お客様のOSS領域ではありませんので、ダウンロードする際には、RDSコンソールからとなります。</p>
-</div>
-	
-</div>
+<div class="notices tip" ><p>以下は上海リージョンの一例です。<br><br></p>
 
-<a href="#index">[⬆ 目次へ]</a></p>
-
-<p><h4 id="リカバリ時に指定可能な時刻について"></h4>
-<div class="panel panel-default">
-	<div class="panel-heading">リカバリ時に指定可能な時刻について</div>
-	<div class="panel-body"><p>バックアップからリカバリ時に希望時刻を指定することができます。<br>
-指定可能の時刻は最初のフルバックアップ時刻から現時刻の間となります。</p>
-</div>
-	
+<pre><code>{
+  &quot;&quot;Statement&quot;&quot;: [
+    {
+      &quot;&quot;Action&quot;&quot;: &quot;&quot;*&quot;&quot;,
+      &quot;&quot;Effect&quot;&quot;: &quot;&quot;Allow&quot;&quot;,
+      &quot;&quot;Resource&quot;&quot;: &quot;&quot;*:*:cn-shanghai:*:*&quot;&quot;
+    }
+  ],
+  &quot;&quot;Version&quot;&quot;: &quot;&quot;1&quot;&quot;
+}
+</code></pre>
 </div>
 
-<a href="#index">[⬆ 目次へ]</a></p>
-
-<p><h4 id="RDSリリース後のバックアップ提供について"></h4>
-<div class="panel panel-default">
-	<div class="panel-heading">RDSリリース後のバックアップ提供について</div>
-	<div class="panel-body"><p>RDSのリリースに伴い、バックアップもリリースされます。RDSのバックアップをお客様のOSSに移管する機能は現在ありません。必要な場合、リリース前にRDSコンソールからダウンロードする必要があります。</p>
-</div>
-	
-</div>
-
-<a href="#index">[⬆ 目次へ]</a></p>
-
-<h4 id="マルチゾーン">マルチゾーン</h4>
-
-<p><h4 id="マルチゾーンの確認方法について"></h4>
-<div class="panel panel-default">
-	<div class="panel-heading">マルチゾーンの確認方法について</div>
-	<div class="panel-body"><p>下記メニューからマスターインスタンスとスレーブインスタンスの所在ゾーンを確認することができます。</p>
-
-<div class="notices tip" ><p>コンソール &gt; RDS &gt; インスタンス &gt; インスタンスの可用性 &gt; マスターノード ID/スレーブノード ID</p>
+<div class="notices note" ><p>ポリシーの基本要素は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/28663.htm">https://jp.alibabacloud.com/help/doc-detail/28663.htm</a></p>
 </div>
 </div>
 	
@@ -1019,12 +955,38 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <a href="#index">[⬆ 目次へ]</a></p>
 
-<p><h4 id="マルチゾーンの切り替え方法について"></h4>
+<p><h4 id="RAMユーザの権限をECS操作のみ可能、購入不可に制限する方法について"></h4>
 <div class="panel panel-default">
-	<div class="panel-heading">マルチゾーンの切り替え方法について</div>
-	<div class="panel-body"><p>下記メニューからマスターインスタンスとスレーブインスタンスを切り替えることができます。マスターノード ID/スレーブノード IDにて切り替え前後のゾーンを確認することができます。</p>
+	<div class="panel-heading">RAMユーザの権限をECS操作のみ可能、購入不可に制限する方法について</div>
+	<div class="panel-body"><p>RAMユーザの権限をECS操作のみ可能、購入不可に制限することは可能です。</p>
 
-<div class="notices tip" ><p>コンソール &gt; RDS &gt; インスタンス &gt; インスタンスの可用性 &gt; スイッチオーバー</p>
+<p>下記例を参考して、お客様のニーズに合わせて、cn-shanghaiのところを対象リージョンIDに変更する必要です。</p>
+
+<div class="notices tip" ><p>以下は上海リージョンの一例です。<br><br></p>
+
+<p>CreateInstanceはサブスクリプション、RunInstancesは従量課金の購入を制限しています。購入ページまでアクセスはできますが、最後支払う段階で、権限のない旨のエラーが発生しますので、実際には購入できません。</p>
+
+<pre><code>{
+  &quot;&quot;Statement&quot;&quot;: [
+    {
+      &quot;&quot;Action&quot;&quot;: &quot;&quot;ecs:*&quot;&quot;,
+      &quot;&quot;Effect&quot;&quot;: &quot;&quot;Allow&quot;&quot;,
+      &quot;&quot;Resource&quot;&quot;: &quot;&quot;*:*:cn-shanghai:*:*&quot;&quot;
+    },
+    {
+      &quot;&quot;Action&quot;&quot;: &quot;&quot;ecs:CreateInstance&quot;&quot;,
+      &quot;&quot;Effect&quot;&quot;: &quot;&quot;Deny&quot;&quot;,
+      &quot;&quot;Resource&quot;&quot;: &quot;&quot;*:*:cn-shanghai:*:*&quot;&quot;
+    },
+    {
+      &quot;&quot;Action&quot;&quot;: &quot;&quot;ecs:RunInstances&quot;&quot;,
+      &quot;&quot;Effect&quot;&quot;: &quot;&quot;Deny&quot;&quot;,
+      &quot;&quot;Resource&quot;&quot;: &quot;&quot;*:*:cn-shanghai:*:*&quot;&quot;
+    }
+  ],
+  &quot;&quot;Version&quot;&quot;: &quot;&quot;1&quot;&quot;
+}
+</code></pre>
 </div>
 </div>
 	
@@ -1032,28 +994,34 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <a href="#index">[⬆ 目次へ]</a></p>
 
-<p><h4 id="レプリカのマルチゾーン対応について"></h4>
+<p><h4 id="RAMユーザでSSL Certifcate Serviceを利用時の権限について"></h4>
 <div class="panel panel-default">
-	<div class="panel-heading">レプリカのマルチゾーン対応について</div>
-	<div class="panel-body"><p>RDSのレプリカインスタンスは現在シングルゾーンのみ対応しています。</p>
+	<div class="panel-heading">RAMユーザでSSL Certifcate Serviceを利用時の権限について</div>
+	<div class="panel-body"><p>RAMユーザでSSL証明書をご購入いただく場合、<code>AliyunYundunCertReadOnlyAccess</code>と<code>AliyunBSSFullAccess</code>の権限が必要です。<br></p>
+
+<p>SLBに証明書をバインドする場合は、<code>AliyunYundunCertReadOnlyAccess</code>と<code>AliyunSLBFullAccess</code>の権限がそれぞれ必要となります。</p>
 </div>
 	
 </div>
 
 <a href="#index">[⬆ 目次へ]</a></p>
 
-<h4 id="暗号化">暗号化</h4>
-
-<p><h4 id="保存データの暗号化方法について"></h4>
+<p><h4 id="RAMユーザでコンテナのコンソールを操作させる方法について"></h4>
 <div class="panel panel-default">
-	<div class="panel-heading">保存データの暗号化方法について</div>
-	<div class="panel-body"><p>RDSのデータ暗号化TDEを対応しています。<br>
-TDEの場合 Key Management Service（KMS）は、 Alibaba Cloud によって提供される安全で使いやすい管理サービスです。 KMS を用いて安全かつ便利にキーを管理することで、暗号化/復号化機能の開発に集中できます。</p>
+	<div class="panel-heading">RAMユーザでコンテナのコンソールを操作させる方法について</div>
+	<div class="panel-body"><p>RAMユーザでコンテナのコンソールを操作させるには、RAMユーザへのコンテナサービスコンソール権限付与、とコンテナサービス内で指定クラスタ権限の付与が必要です。</p>
 
-<div class="notices note" ><p>TDEの設定方法は下記のドキュメントをご参照ください。<br>
-<a href="https://jp.alibabacloud.com/help/doc-detail/33510.htm">https://jp.alibabacloud.com/help/doc-detail/33510.htm</a><br><br>
-Key Management Serviceは下記のドキュメントをご参照ください。<br>
-<a href="https://jp.alibabacloud.com/help/doc-detail/28935.htm">https://jp.alibabacloud.com/help/doc-detail/28935.htm</a></p>
+<div class="notices info" ><p>承認手順は下記をご参考ください。<br></p>
+
+<p>①新規RAMユーザーを作成します。<br>
+②対象RAMユーザーに<code>AliyunCSFullAccess</code>権限を追加します。<br>
+③コンテナーサービスのクラスター項目を選択します。<br>
+④承認を選択します。<br>
+⑤対象RAMユーザーを確認して、承認ボタンをクリックします。<br>
+⑥対象クラスーを選択して、名前空間を選択して、RBACのロールを選択します。<br>
+⑦「次のステップ」をクリックします。<br>
+⑧「承認ポリシーの更新」をクリックします。<br>
+⑨[承認成功]が表示されます。</p>
 </div>
 </div>
 	
@@ -1061,16 +1029,336 @@ Key Management Serviceは下記のドキュメントをご参照ください。<
 
 <a href="#index">[⬆ 目次へ]</a></p>
 
-<p><h4 id="SSLを利用するデータ転送方法について"></h4>
+<p><h4 id="Logstore の「internal-alert-history」ログについて"></h4>
 <div class="panel panel-default">
-	<div class="panel-heading">SSLを利用するデータ転送方法について</div>
-	<div class="panel-body"><p>RDSの通信暗号化にはSSLを対応しています。<br>
-SSLの秘密鍵はお客様自身で管理することができますが、Alibaba Cloud SSL Certificates Serviceを利用することで、RSA秘密鍵の一元管理することが可能になります。</p>
+	<div class="panel-heading">Logstore の「internal-alert-history」ログについて</div>
+	<div class="panel-body"><p>アラートルールを設定する際に、Log Serviceは自動的に対象アラートが所属されているプロジェクトにinternal-alert-historyを作成します。<br>
+このプロジェクト内に全てのアラートルールが実施される時にアラートが発生したかどうか関わらず、LogStoreのinternal-alert-historyに記録されます。<br><br></p>
 
-<div class="notices note" ><p>SSLの設定方法は下記のドキュメントをご参照ください。<br>
-<a href="https://jp.alibabacloud.com/help/doc-detail/32474.htm">https://jp.alibabacloud.com/help/doc-detail/32474.htm</a><br><br>
-Alibaba Cloud Certificates Serviceは下記のドキュメントをご参照ください。<br>
-<a href="https://jp.alibabacloud.com/help/doc-detail/28553.htm">https://jp.alibabacloud.com/help/doc-detail/28553.htm</a></p>
+<p>「internal-alert-history」により料金は発生しませんが、直接削除することもできません。対象プロジェクトを削除するとinternal-alert-historyも削除されます。</p>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="Logtailの履歴ログのインポートモードについて"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">Logtailの履歴ログのインポートモードについて</div>
+	<div class="panel-body"><p>履歴ログのインポートモード（ローカルイベントを追加した状態）と、通常のログ収集モードに違いがあります。<br><br></p>
+
+<p>名前の通り、通常のログ収集モードは、「Logtail 設定」完了後に、指定されたログファイルからリアルタイムでログを吸い上げます。<br>
+過去のログも一部取れますが、限度は1MBまでです。履歴ログのインポートモードは指定されたログファイルを一度のみ丸ごと吸い上げます。<br></p>
+
+<p>また、ローカルイベントで指定するログディレクトリは「Logtail 設定」で指定するディレクトリと一致する必要がありません。<br><br>
+ただし、重要なのは履歴ログのインポートモードのログディレクトリはローカルイベントにて指定されます。<br>
+コンソールの「Logtail 設定」には存在しないディレクトリでもOKです。&rdquo;</p>
+
+<div class="notices note" ><p>ログ収集は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/89928.htm">https://jp.alibabacloud.com/help/doc-detail/89928.htm</a></p>
+</div>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="ExpressConnect同じリージョン内VPC-VPC接続の料金について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">ExpressConnect同じリージョン内VPC-VPC接続の料金について</div>
+	<div class="panel-body"><p>以前は有料でしたが、2019/02/25のExpress Connect料金改定に伴い、同じリージョン内（異なるアカウントのVPC間を含め）のVPC接続をする場合は料金不要となりました。</p>
+
+<div class="notices note" ><p>Express Connect 料金表は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/notice/expressconnect-price-notice-20190225">https://jp.alibabacloud.com/notice/expressconnect-price-notice-20190225</a><br><br></p>
+
+<p>Express Connect 料金改定案内は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/product/express-connect/pricing">https://jp.alibabacloud.com/product/express-connect/pricing</a></p>
+</div>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="CDNでのAlibaba Cloud の無料証明書申請について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">CDNでのAlibaba Cloud の無料証明書申請について</div>
+	<div class="panel-body"><p>CDN無料証明書の取得条件は、DNS設定にてCDN用ドメインとCDNで払い出されているCNAMEとバインドすることですが、
+CDN用ドメインはトップドメイン、またはwwwドメインでCDN無料証明書を取得する場合、トップドメインとwwwドメイン両方をCDNで払い出されているCNAMEとバインドする必要があります。</p>
+
+<div class="notices info" ><p>DNS設定にて以下のようなCNAMEレコードを追加していただく、CDNコンソールにて無料証明書を取得可能になります。</p>
+
+<pre><code>例：
+                　CNAME
+hugo.com       -----------&gt;  www.hugo.com.w.cdngslb.com
+
+                  CNAME
+www.hugo.com   ----------&gt; www.hugo.com.w.cdngslb.com&quot;
+</code></pre>
+</div>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="CDNオリジンへのリクエストタイムアウト値について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">CDNオリジンへのリクエストタイムアウト値について</div>
+	<div class="panel-body"><p>AlibabaCloud CDN/DCDNに対して、オリジンへのリクエストタイムアウト値上限はデフォルトで30秒となります。<br><br></p>
+
+<p>オリジンサーバから応答時間は「30秒」以上かかる場合、チケットの申請により、該当上限値を引き上げることは可能です。</p>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="CDN + OSS 構成の静的ウェブサイトホスティングについて"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">CDN + OSS 構成の静的ウェブサイトホスティングについて</div>
+	<div class="panel-body"><p>OSSを非公開し、CDNの設定にて、プライベートバケットの Back-to-Originの設定を有効化した場合、下記の制限があります。</p>
+
+<div class="notices info" ><p>インデックスドキュメントの設定が利用できません。<br></p>
+
+<pre><code>http://example.com/
+とアクセスしても、403や404になり、
+http://example.com/index.html
+へリダイレクトされません。
+</code></pre>
+
+<p>制限を回避するには、CDNキャッシュ設定のカスタムページの設定で、403や404になると、
+<a href="http://example.com/index.html">http://example.com/index.html</a>
+を返すような設定することは可能です。</p>
+
+<pre><code>http://example.com/
+へアクセスすると、
+http://example.com/index.html
+としてアドレスバーにも表示されます。
+</code></pre>
+</div>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="Image SearchのインポートQPS制限について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">Image SearchのインポートQPS制限について</div>
+	<div class="panel-body"><p>Image Searchのプラン毎にAPIコードのQPSが定められています。APIからの画像アップロードではこのQPSの制限が受けられます。<br><br></p>
+
+<p>大量の画像をインポートする場合、OSSからのインポートはAPIのQPS制限を受けられませんので、ご利用ください。</p>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="VPNGAtewayのSSL証明書作成仕様について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">VPNGAtewayのSSL証明書作成仕様について</div>
+	<div class="panel-body"><p>1つVPNGatewayに作成可能なSSLクライアント証明書の上限数は50件となります。<br>
+同じ証明書は複数クライアントから同時使用可能のため、50のSSL証明書に対して最大1000人が同時利用（同時接続）可能です。<br><br></p>
+
+<p>SSLクライアント証明書の作成可能な回数は100回です。<br></p>
+
+<div class="notices tip" ><p>例えば、50件証明書を作成して、全部削除して、もう一度50件作成して、作成回数は100回上限に達します。
+それから、また1件を削除して49件証明書になっても、新規 SSL 証明書は作成できません。</p>
+</div>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="VPNGatewayにて作成可能なSSL証明書数について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">VPNGatewayにて作成可能なSSL証明書数について</div>
+	<div class="panel-body"><p>VPN GatewayのSSLサーバでは、クライアント向けのSSL証明書を作成できますが、作成可能な上限数があり、VPN Gatewayインスタンスあたり50個まで証明書を保存できます。<br><br></p>
+
+<p>VPN Gateway作成時に指定する「SSL接続数」が最大で1,000となりますが、これは複数のSSLクライアントでSSL証明書を共有することを想定しています。<br><br></p>
+
+<p>なお、スペックの「SSL接続数」と関係なく、50証明書を作成することは可能です。「SSL接続数」が10のVPN Gatewayインスタンスでも、20個の証明書を作ることが可能です。ただし、この場合、同時接続数は10です。<br><br></p>
+
+<p>また、最大 SSL クライアント作成数は100となります。これは、「累計で作成できる証明書数」が、VPN Gatewayインスタンスあたり100まで、を意味します。したがって、「作成／削除」を繰り返すと上限に達する恐れがあります。</p>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="VPN Gatewayのヘルスチェック設定について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">VPN Gatewayのヘルスチェック設定について</div>
+	<div class="panel-body"><p>VPN Gatewayヘルスチケットは該当IPsec Connection経由の往復通信を両方検知した場合、正常となります。<br><br></p>
+
+<p>冗長構成で、複数IPsec Connectionが構築された場合、トラフィックの往路はバックアップのIPsec Connection経由となっても、復路はマスターのIPsec Connectionとなることもありますので、バックアップ側に複路のトラフィックを検出できず、ヘルスチェックが失敗となるケースがあります。</p>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="SSL-VPNに払い出されるIPアドレスの仕様について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">SSL-VPNに払い出されるIPアドレスの仕様について</div>
+	<div class="panel-body"><p>AlibabaCloud SSL-VPNを利用する場合、設定されたクライアントレンジから払い出されるIP数に制限があります。<br>
+制限数は、「レンジIP総数/4-2」となります。<br><br></p>
+
+<p>192.168.0.0/28の場合は「2^<sup>4</sup>&frasl;<sub>4</sub>-2 = 2」で2つのIPアドレスが利用可能です。<br><br></p>
+
+<p>また、リリースしたクライアントアドレスはすぐ再取得できなく、１−２分おいてから、再取得可能です。</p>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="SSL証明書の更新について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">SSL証明書の更新について</div>
+	<div class="panel-body"><p>Alibaba Cloud SSL Certificates Serviceでは、 新規のSSL証明書購入のみをサポートしています。更新をサポートしていません。<br><br></p>
+
+<p>そのため、既存のSSL証明書を継続してご利用になさりたい場合、再度、購入し直していただく必要がございます。</p>
+
+<div class="notices note" ><p>期限切れに伴う新規購入は下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/28544.htm">https://jp.alibabacloud.com/help/doc-detail/28544.htm</a><br><br></p>
+
+<p>購入ガイドは下記のドキュメントをご参照ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/28542.htm">https://jp.alibabacloud.com/help/doc-detail/28542.htm</a></p>
+</div>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="SSL証明書申請後のドメイン変更について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">SSL証明書申請後のドメイン変更について</div>
+	<div class="panel-body"><p>審査が完了し、発行済みとなったSSL証明書の対象ドメインは変更することができません。<br><br></p>
+
+<p>ただし、対象証明書IDの右側で[取り消し]ボタンが表示される場合、申請した内容をキャンセルし、ドメイン変更後に再度申請することは可能です。</p>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="DataVでの「コールバックID」の呼び出し範囲について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">DataVでの「コールバックID」の呼び出し範囲について</div>
+	<div class="panel-body"><p>DataVで「コールバックID」を利用して、パラメータを別のウィジェットに渡すことが便利です。<br><br></p>
+
+<p>ただし、コールバックのパラメータを呼び出すウィジェットにデータソースの制限があります。現在利用可能なデータソースは「API」または「データベース」のみとなります。<br>
+「CSV」、「静的データ」、「TableStore」などはコールバックのパラメータを呼び出せませんので、ご注意ください。</p>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="CENの帯域幅変更時の通信断発生について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">CENの帯域幅変更時の通信断発生について</div>
+	<div class="panel-body"><p>CENでの帯域幅課金は２つの概念があります。<br>
+1つは「帯域幅パッケージ」もう1つは「リージョンの接続」です。<br>
+前者は、あるリージョンエリア（中国本土・アジア太平洋など）間で使用する帯域幅全体を指定します。これは購入を伴うものです。<br>
+後者は、その帯域幅パッケージの配分先となるリソースで、具体的に接続するリージョンを指定します。<br></p>
+
+<div class="notices tip" ><p>例えば「帯域幅パッケージ」として【中国本土・アジア太平洋】を『10Mbps』購入し、「リージョン接続」において【上海ー日本】に『4Mbps』を配分、【杭州ー香港】に『4Mbps』配分するといったイメージです。<br><br>
+ICMPベースの通信定義として、CENの帯域幅変更時に通信断は発生しません。</p>
+</div>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="Function Computeの時間トリガーのタイムゾーンについて"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">Function Computeの時間トリガーのタイムゾーンについて</div>
+	<div class="panel-body"><p>Function Computeの時間トリガーのタイムゾーンはUTCとなります。<br><br></p>
+
+<p>時間トリガーを<code>0:30（0 30 0 * * *）</code>で設定した場合、北京時間の8:30、日本時間の9:30に実行されます。<br>
+日本標準時の時刻(JST/UTC+0900）を基準として考える必要があります。</p>
+
+<div class="notices note" ><p>詳細は下記ドキュメントをご参考ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/68172.htm">https://jp.alibabacloud.com/help/doc-detail/68172.htm</a></p>
+</div>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="Function ComputeからRDSのイントラネット接続について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">Function ComputeからRDSのイントラネット接続について</div>
+	<div class="panel-body"><p>Function Compute サービスはダイナミック IP アドレスを使用します。<br>
+したがって、ホワイトリストを使用して Function Compute の ApsaraDB for RDSへのアクセスを許可することは推奨していません。<br>
+ホワイトリストにすべての IP アドレスを許可することは、危険性を高めてしまいます。<br><br></p>
+
+<p>尚、Function Compute は、VPC機能に対応しております。<br>
+VPC アクセスを有効にすることで、安全に VPC 内のリソース(RDS)にアクセスすることが可能になります。<br>
+ただし、Function Computeサービスおよびリソースは、同一リージョンで稼働している必要があります。<br><br></p>
+
+<p>なお、RDSのホワイトリストにて、Function Computeが所属するVPCのIPv4 CIDR Block、もしくはFunction Computeが所属するVSwitchのIPv4 CIDR Blockを許可する必要があります。</p>
+
+<div class="notices note" ><p>Function Compute に VPC へのアクセス詳細は下記ドキュメントをご参考ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/84514.htm">https://jp.alibabacloud.com/help/doc-detail/84514.htm</a><br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/84516.htm">https://jp.alibabacloud.com/help/doc-detail/84516.htm</a></p>
+</div>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="IoT Platformのデバイス監視機能について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">IoT Platformのデバイス監視機能について</div>
+	<div class="panel-body"><p>IoT Platformにデバイス監視の機能があり、デバイスからのパケット受信間隔で死活を判断しています。<br><br></p>
+
+<p>仕組みとして、IoT Platformからデバイスへキープアライブパケットを送信することではなく、
+デバイスからMQTT接続の確立時に、ヘッダにKeep Alive時間を30-1200sの間に指定する必要があります。<br><br></p>
+
+<p>設定されたKeep Alive時間の1.5倍を経って、もしPUBLISH, SUBSCRIBE, PING, or PUBACKの動作がなければ、
+MQTT接続が切断され、該当デバイスのステータスを「オフライン」に判断されます。</p>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="Redisのパスワードでの接続方法について"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">Redisのパスワードでの接続方法について</div>
+	<div class="panel-body"><p>Redis購入後に、コンソールに表示されたデフォルトアカウントの場合、ユーザー名不要、パスワードのみで接続可能です。<br><br></p>
+
+<p>コンソールにて別のアカウントを新規作成した場合、下記のようにauthコマンドを使用してデータベースにログインする必要があります。
+新規アカウントのパスワードのみで認証するとエラーになりますので、ご注意ください。</p>
+
+<div class="notices tip" ><pre><code># redis-cli -h 接続先エンドポイント
+&gt; auth account:password&quot;
+</code></pre>
+</div>
+</div>
+	
+</div>
+
+<a href="#index">[⬆ 目次へ]</a></p>
+
+<p><h4 id="ApsaraDB for Redisの強制アップグレードについて"></h4>
+<div class="panel panel-default">
+	<div class="panel-heading">ApsaraDB for Redisの強制アップグレードについて</div>
+	<div class="panel-body"><p>強制アップグレードの用途として、クラスタ構成とHA構成にサポートするコマンドに差異があり、一部クラスタ構成でサポートしないコマンドがあります。<br><br></p>
+
+<p>該当コマンドが含まれるHA構成からクラスタ構成にアップグレードする際に、「強制アップグレード」を選択する必要があります。</p>
+
+<div class="notices note" ><p>Redis対応可能なコマンドは下記ドキュメントをご参考ください。<br>
+<a href="https://jp.alibabacloud.com/help/doc-detail/26356.htm">https://jp.alibabacloud.com/help/doc-detail/26356.htm</a></p>
 </div>
 </div>
 	
@@ -1083,8 +1371,8 @@ Alibaba Cloud Certificates Serviceは下記のドキュメントをご参照く�
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/faq/oss/" title="OSS"> <i class="fa fa-chevron-left"></i><label>OSS</label></a>
-    <a class="nav nav-next" href="/help/faq/slb/" title="SLB" style="margin-right: 0px;"><label>SLB</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/faq/" title="よくある質問"> <i class="fa fa-chevron-left"></i><label>よくある質問</label></a>
+    <a class="nav nav-next" href="/help/faq/ecs/" title="ECS" style="margin-right: 0px;"><label>ECS</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -1099,13 +1387,13 @@ Alibaba Cloud Certificates Serviceは下記のドキュメントをご参照く�
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  07/19/2019
+        <i class='fa fa-calendar'></i>  10/04/2019
     </div>
     
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content/faq/rds.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/content/faq/other.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     
