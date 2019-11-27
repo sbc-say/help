@@ -3,7 +3,7 @@ title: "料金"
 description:  "Alibaba Cloudの料金に関するよくある質問を紹介します。"
 date: 2019-07-19T15:30:00+09:00
 weight: 100
-draft: false
+draft: true
 ---
 <h4 id="index">目次</h4>
 
