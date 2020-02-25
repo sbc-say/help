@@ -12,7 +12,7 @@ draft: false
 
 このサンプルで実行したTerraformのバージョンは`Terraform v0.11.13`、`tfenv 0.6.0`になります。Terraformのバージョン情報は以下の記事を参照ください。 
 
-https://sbcloud.github.io/help/best-practice/devops/terraform/02/install/
+https://www.sbcloud.co.jp/help/best-practice/terraform/02/install/index.html
 
 <br>
 実践例の実行方法の流れとしては、実行したいコードを空のディレクトリに保存（格納）し、コードを実行するだけです。なので他のプロジェクトの実行ファイル`.tf`と混ざらないように注意してください。
