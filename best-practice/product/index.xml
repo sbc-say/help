@@ -25,5 +25,31 @@ AlibabaCloudが提供する無料監視プロダクトCloudMonitorを利用す�
 ECS編 ・基本監視（エージェント不要）    メトリック項目 説明 単位     ECS.CPUUtilization CPUの使用率 ％   ECS.InternetInRate インターネットインバウンドの帯域幅 ビット/秒   ECS.IntranetInRate イントラネットインバウンドの帯域幅 ビット/秒   ECS.InternetOutRate インターネットアウトバウンドの帯域幅 ビット/秒   ECS.IntranetOutRate イントラネットアウトバウンドの帯域幅 ビット/秒   ECS.SystemDiskReadbps 1秒あたりのシステムディスク読取バイト数 バイト/秒   ECS.SystemDiskWritebps 1秒あたりのシステムディスク書込バイト数 バイト/秒   ECS.</description>
     </item>
     
+    <item>
+      <title>Linkkit SDK 利用ガイド</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/product/linkkit-sdk/</link>
+      <pubDate>Wed, 05 Feb 2020 12:30:18 +0800</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/product/linkkit-sdk/</guid>
+      <description>Tags ： AlibabaCloud IOT-Platform Linkkit
+目的 Link Kit SDKは、Alibaba Cloudによってデバイスメーカーに提供され、デバイスに統合し、デバイスをAlibaba Cloud IoTプラットフォームに安全に接続し、Alibaba Cloud IoTプラットフォームによってデバイスを制御および管理できるようにします。デバイスは、Link Kit SDKを統合するためにTCP / IPプロトコルスタックをサポートする必要があります。zigbeeやKNXなどの非IPデバイスの場合、ゲートウェイデバイスを介してAlibaba Cloud IoTプラットフォームに接続する必要があり、ゲートウェイデバイスはLink Kit SDKを統合する必要があります。
+本書はLink Kit SDK 関連の知識や Link Kit SDKを使ってIOT Platformと繋がる方法を紹介させてください。
+本ガイドの全体的な流れは下記の通りです。
+   セクション Topic 説明     概要紹介 Linkkit SDK と　AliOS things Linkkit SDK と　AliOS things の関係の紹介   - SDK利用以外の方法 SDK以外でIOT Platformへ繋がる方法を説明   - アーキテクチャ アーキテクチャ 基本特徴を紹介   - SDKバージョンと区別 各バージョンの紹介   - 製品の範囲 適用デバイスの紹介   開発プロセス 開発プロセス 一般的な開発プロセスの紹介   C言語Link Kit SDK紹介 C言語Link Kit SDK紹介 C言語SDKの開発概要を紹介   開発サンプル Linuxベースの開発事例 １つ簡単な開発事例を紹介    概要紹介 Linkkit SDKの概要について紹介させてください。</description>
+    </item>
+    
+    <item>
+      <title>AliOS Things 利用ガイド</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/product/ali0s-things/</link>
+      <pubDate>Sat, 01 Feb 2020 12:30:18 +0800</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/product/ali0s-things/</guid>
+      <description>Tags ： AlibabaCloud AliOS-Things IOT
+目的 Alibaba Cloud IoT IoTオペレーティングシステム（別名AliOS Things）は、Alibaba CloudのIoT分野向けの拡張性の高いIoTオペレーティングシステムです。 AliOS Thingsは、極端なパフォーマンス、最小限の開発、クラウド統合、豊富なコンポーネント、セキュリティ保護などの主要な機能を備えたクラウド統合IoTインフラストラクチャの構築に取り組んでいます。 AliOS Thingsは、Alibaba Cloud Linkプラットフォームに接続されたさまざまなデバイスをサポートしており、スマートホーム、スマートシティ、産業、新しい旅行などの分野で広く使用できます。
+本書はAliOS Things 関連の知識や AliOS Thingsを使ってIOT Platformと繋がる方法を紹介させてください。
+本ガイドの全体的な流れは下記の通りです。
+   セクション Topic 説明     前提知識 AliOS と AliOS things AliOS と AliOS things の関係の紹介   - AliOS things　と IOT Platform AliOS things　と IOT Platform の関係   基本構成 基本特徴 AliOS things 基本特徴を紹介   - アーキテクチャ AliOS things アーキテクチャを紹介   - 関連ハードウェア 関連ハードウェアと開発Board紹介   - 開発ツール 開発ツールAliOS Things Studio   開発サンプル AliOSの開発事例 AliOS使ってAlibabaCloudと繋がる事例を紹介    前提知識 本ガイドを理解するために、下記の前提知識が必要になります。</description>
+    </item>
+    
   </channel>
 </rss>

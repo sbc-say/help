@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-02-26T08:29:07 UTC">
-<title>プロダクト :: テクニカルリファレンス</title>
+<title>AliOS Things 利用ガイド :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -47,7 +47,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-<meta name="description" content="Alibaba Cloudを活用する上でのベストプラクティスをプロダクト別に記載します。">
+<meta name="description" content="AlibabaのIOT専用OS、AliOS Things の使い方と開発例を紹介します。">
 
         
 
@@ -57,7 +57,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
   </head>
-  <body data-url="/help/best-practice/product/">
+  <body data-url="/help/best-practice/product/ali0s-things/">
     
       <header>
 
@@ -176,7 +176,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/product/" class="dd-item parent active haschildren
+    <li data-nav-id="/help/best-practice/product/" class="dd-item parent haschildren
         ">
       <div>
       <a href="/help/best-practice/product/">プロダクト</a>
@@ -226,7 +226,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/best-practice/product/ali0s-things/" class="dd-item">
+      <li data-nav-id="/help/best-practice/product/ali0s-things/" class="dd-item active">
         <div>
           <a href="/help/best-practice/product/ali0s-things/">
             AliOS Things 利用ガイド
@@ -787,7 +787,12 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
- <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > プロダクト
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/product/'>プロダクト</a> > AliOS Things 利用ガイド
+
+ 
 
  
 
@@ -808,7 +813,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <option value="/help/best-practice/general/" >
   - 
    全般</option>
-    <option value="/help/best-practice/product/"  selected>
+    <option value="/help/best-practice/product/" >
   - 
    プロダクト</option> 
     <option value="/help/best-practice/product/datav/" >
@@ -816,7 +821,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
    DataV</option>
       <option value="/help/best-practice/product/cloudmonitor/cloudmonitor/" >-- CloudMonitor</option>
       <option value="/help/best-practice/product/linkkit-sdk/" >-- Linkkit SDK 利用ガイド</option>
-      <option value="/help/best-practice/product/ali0s-things/" >-- AliOS Things 利用ガイド</option>
+      <option value="/help/best-practice/product/ali0s-things/"  selected>-- AliOS Things 利用ガイド</option>
   
     <option value="/help/best-practice/web-application/" >
   - 
@@ -845,69 +850,326 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       </center>
     </div>
 
-    <h1>プロダクト</h1>
+    <h1>AliOS Things 利用ガイド</h1>
 
     
     
     
-Alibaba Cloudを活用する上でのベストプラクティスをプロダクト別に記載します。
-<!-- descriptionがコンテンツの前に表示されます -->
+    
 
-<!-- コンテンツを書くときはこの下に記載ください -->
+<p>Tags ： AlibabaCloud AliOS-Things IOT</p>
 
-<!-- 配下タイトル一覧がコンテンツの後に表示されます -->
+<hr />
+
+<h2 id="目的">目的</h2>
+
+<p>Alibaba Cloud IoT IoTオペレーティングシステム（別名AliOS Things）は、Alibaba CloudのIoT分野向けの拡張性の高いIoTオペレーティングシステムです。 AliOS Thingsは、極端なパフォーマンス、最小限の開発、クラウド統合、豊富なコンポーネント、セキュリティ保護などの主要な機能を備えたクラウド統合IoTインフラストラクチャの構築に取り組んでいます。 AliOS Thingsは、Alibaba Cloud Linkプラットフォームに接続されたさまざまなデバイスをサポートしており、スマートホーム、スマートシティ、産業、新しい旅行などの分野で広く使用できます。</p>
+
+<p>本書はAliOS Things 関連の知識や AliOS Thingsを使ってIOT Platformと繋がる方法を紹介させてください。</p>
+
+<p>本ガイドの全体的な流れは下記の通りです。</p>
+
+<table>
+<thead>
+<tr>
+<th>セクション</th>
+<th align="left">Topic</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>前提知識</td>
+<td align="left">AliOS と AliOS things</td>
+<td align="left">AliOS と AliOS things の関係の紹介</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td align="left">AliOS things　と IOT Platform</td>
+<td align="left">AliOS things　と IOT Platform の関係</td>
+</tr>
+
+<tr>
+<td>基本構成</td>
+<td align="left">基本特徴</td>
+<td align="left">AliOS things 基本特徴を紹介</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td align="left">アーキテクチャ</td>
+<td align="left">AliOS things アーキテクチャを紹介</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td align="left">関連ハードウェア</td>
+<td align="left">関連ハードウェアと開発Board紹介</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td align="left">開発ツール</td>
+<td align="left">開発ツールAliOS Things Studio</td>
+</tr>
+
+<tr>
+<td>開発サンプル</td>
+<td align="left">AliOSの開発事例</td>
+<td align="left">AliOS使ってAlibabaCloudと繋がる事例を紹介</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="前提知識">前提知識</h2>
+
+<p>本ガイドを理解するために、下記の前提知識が必要になります。</p>
+
+<h3 id="1-alios-と-alios-things-の関係">1.AliOS と ALIOS things の関係</h3>
+
+<p>AliOS Thingsは、AliOSファミリーに属するIoT指向の高度にスケーラブルなIoTオペレーティングシステムです。 AliOS Thingsは、限られた電力とリソース、接続されたソケットSoCを備えたMCU向けに設計されており、IoTデバイスに非常に適しています。</p>
+
+<h3 id="2-alios-things-と-iot-platform-の関係">2.AliOS things　と IOT Platform の関係</h3>
+
+<p>AliOS thingsを実装されたデバイスはIOT PlatformのSDK（Linkkit SDK）を実装不要で、簡単にIOT Platformへの接続が可能です。</p>
+
+<p>もしデバイスはAliOS thingsを実装してない場合は、Linkkit SDKの実装でIOT Platformへの接続も可能です。ただし、Linkkit SDKとデバイス既存OSへの適合性によって、一部ハードウェア関連のドライバー部分はお客様自身で実装する必要があります。</p>
+
+<h2 id="基本構成">基本構成</h2>
+
+<h3 id="1-基本特徴">1.基本特徴</h3>
 
 <ul>
-  
-    <li>
-        <a href="/help/best-practice/product/cloudmonitor/cloudmonitor/">
-            CloudMonitor
-        </a>
-    </li>
-    CloudMonitorを用いたAlibabaCloudリソースの監視について解説します。
-    <br>
-    <br>
-    
-    <li>
-        <a href="/help/best-practice/product/linkkit-sdk/">
-            Linkkit SDK 利用ガイド
-        </a>
-    </li>
-    Alibabaの IOT Platform と繋がるためデバイス側使ってるSDKとその開発例を紹介します。
-    <br>
-    <br>
-    
-    <li>
-        <a href="/help/best-practice/product/ali0s-things/">
-            AliOS Things 利用ガイド
-        </a>
-    </li>
-    AlibabaのIOT専用OS、AliOS Things の使い方と開発例を紹介します。
-    <br>
-    <br>
-    
-    
-    
-    <li>
-        <a href="/help/best-practice/product/datav/">
-            DataV
-        </a>
-    </li>
-    Alibaba CloudのDataVプロダクトの利用方法について記載します。
-    <br>
-    <br>
+<li><p>豊かな生態
+AliOS Thingsは、認定された80以上のハードウェアプラットフォームと100以上のセンサーサポートを提供します。</p></li>
 
+<li><p>高カスタマイズ性
+オンラインでコンポーネントの組み合わせを選択できる。</p></li>
 
+<li><p>安全統合
+Alibaba Cloud IoTセキュリティサービスのデバイス側機能をネイティブに統合して、IoTデバイスの安全な操作を保護します。</p></li>
 
+<li><p>IoTプロトコル
+Alink、MQTT、Http / Https、Coap、LwM2M、LoRaWANなど、さまざまなIoTプロトコルコンポーネントのサポートをユーザーに提供します。</p></li>
 
+<li><p>便利な開発ツール
+編集、コンパイル、およびデバッグを統合する開発ツールをサポートし、包括的な開発リンクツールをユーザーに提供します。</p></li>
+
+<li><p>SALソケット抽象化コンポーネント
+AIoTのMCU外部通信モジュールシナリオに適した標準のネットワークソケット抽象化コンポーネントを提供します。異なる通信モジュールの接続の違いからユーザーを保護し、開発をより効率的にするため。</p></li>
+
+<li><p>OTAオンラインアップグレード
+ユーザーに、ピンポンアップグレード、圧縮アップグレード、差分アップグレード、セキュリティアップグレードなど、複数のデバイス側のアップグレード方法を提供します。</p></li>
 </ul>
+
+<h3 id="2-alios-things-アーキテクチャ">2.AliOS things アーキテクチャ</h3>
+
+<p>AliOS Thingsのアーキテクチャは、階層型アーキテクチャとコンポーネント化されたアーキテクチャの両方に適用できます。下から上に、AliOS Thingsに含まれるもの：</p>
+
+<ul>
+<li>ボードサポートパッケージ（BSP）：SoCベンダーによって主に開発および保守されています</li>
+<li>ハードウェアアブストラクションレイヤー（HAL）：WiFiやUARTなど</li>
+<li>カーネル：Rhinoリアルタイムオペレーティングシステムカーネル、Yloop、VFS、KVストレージを含む</li>
+<li>プロトコルスタック：TCP / IPプロトコルスタック（LwIP）、uMeshネットワークプロトコルスタックを含む</li>
+<li>セキュリティ：セキュアトランスポートレイヤープロトコル（TLS）、トラステッドサービスフレームワーク（TFS）、トラステッドオペレーティング環境（TEE）</li>
+<li>AOS API：アプリケーションソフトウェアとミドルウェアのAPIを提供します</li>
+<li>ミドルウェア：一般的なIoTコンポーネントとAlibabaの付加価値サービスミドルウェアが含まれています</li>
+<li>サンプルアプリケーション：Aliの自己開発サンプルコード、および完全なテストに合格したアプリケーション（Alinkappなど）</li>
+</ul>
+
+<p>すべてのモジュールはコンポーネントに編成されており、各コンポーネントには独自の.mkファイルがあります。これは、他のコンポーネントとの依存関係を記述するために使用され、アプリケーション開発者が必要に応じて選択するのに便利です。</p>
+
+<p><img src="https://camo.githubusercontent.com/23557640f98638b76db16d163a35d36ff33c0d10/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f544231664b514d69687249384b4a6a7930467058586235685658612d323333302d313239322e706e67" alt="deploy" /></p>
+
+<h3 id="3-関連ハードウェアと開発board紹介">3.関連ハードウェアと開発Board紹介</h3>
+
+<ul>
+<li><p>AliOS Things Starter Kit
+スターターキットは、AliOS Thingsに合わせて開発された開発ボードで、ボードレベルセンサー、LCDスクリーン（240 * 240）、オーディオ、オンボードWiFiモジュールなど、豊富なオンボードリソースを提供します。
+<img src="https://img.alicdn.com/tfs/TB1_KoTiFmWBuNjSspdXXbugXXa-3704-2422.jpg" alt="" />
+GUIサンプル
+<img src="https://img.alicdn.com/tfs/TB17EnugqmWBuNjy1XaXXXCbXXa-484-387.gif" alt="" />
+詳細紹介：<a href="http://aliosthings.io/#/zh-cn/starterkit">http://aliosthings.io/#/zh-cn/starterkit</a></p></li>
+
+<li><p>AliOS Things Developer Kit</p></li>
+</ul>
+
+<p>Developer Kitは、AliOS Thingsが作成した公式のハイエンド開発ボードで、スターターキットよりも豊富なリソースを提供します。
+センサーに関しては、慣性航法加速度計およびジャイロスコープに加えて、磁力計、気圧計、温度および湿度センサー、赤外線センサー、近接光センサーなどの多数の環境センシングデバイスが提供され、さまざまなタイプのIoTビジネスシナリオを提供できます。クラウド統合ソリューションの検証。
+<img src="https://img.alicdn.com/tfs/TB122RCtntYBeNjy1XdXXXXyVXa-2373-3121.png" alt="" />
+詳細紹介：<a href="http://aliosthings.io/#/zh-cn/developerkit">http://aliosthings.io/#/zh-cn/developerkit</a></p>
+
+<ul>
+<li><p>サポートモジュール：</p>
+
+<ul>
+<li><p>慶科（EMW3060）
+<img src="https://img.alicdn.com/tfs/TB13M4zceOSBuNjy0FdXXbDnVXa-1200-761.png" alt="" />
+EMW3060は、上海Qingke（MXCHIP）が発売した費用対効果の高い組み込みW-Fiモジュールで、ARM9、WLAN MAC /ベースバンド/ RFと高度に統合され、最高周波数は120MHzです。</p></li>
+
+<li><p>楽鑫(ESP-WROOM-32)
+<img src="https://img.alicdn.com/tfs/TB1zrdLch9YBuNjy0FfXXXIsVXa-595-800.png" alt="" />
+乐鑫の最先端のSoCに基づいたESP-WROOM-32モジュールは、高性能で豊富な周辺機器を備え、Wi-FiとBluetooth機能を統合し、高度なIoTアプリケーションに高度に統合されたソリューションを提供します。</p></li>
+</ul></li>
+
+<li><p>そのたDiscovery kit
+Development board STM32 B-L475E-IOT01A
+詳細について、 <a href="http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-discovery-kits/b-l475e-iot01a.html">Introduction of STM32</a>
+<img src="https://camo.githubusercontent.com/c1e015357611579c5ef0a75145afa71257f6d685/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f5442314a364b4c6d5a4c4a384b4a6a7930466e58586346447058612d333936382d323937362e6a7067" alt="" /></p></li>
+</ul>
+
+<p>AliOSThings対応済みhardware一覧は下記リンクを参照してください：
+<a href="http://aliosthings.io/#/zh-cn/hardware">http://aliosthings.io/#/zh-cn/hardware</a></p>
+
+<h3 id="4-開発ツールalios-things-studio">4.開発ツールAliOS Things Studio</h3>
+
+<p>AliOS Studioは、vscodeに基づいた一連の開発環境であり、windows、linux、macOSをサポートしています。 AliOS Studioには次の機能があります：</p>
+
+<ul>
+<li>優れた開発体験とシンプルな操作インターフェース</li>
+<li>AliOS Thingsアプリケーション開発のサポート</li>
+<li>コード補完、インデックス作成、ヒントなど</li>
+<li>AliOS Thingsのコンパイル/ダウンロード/デバッグ</li>
+<li>複数の開発ボードに適応</li>
+<li>シリアルツール、TSL変換ツールなど</li>
+</ul>
+
+<h4 id="インストール">インストール</h4>
+
+<ul>
+<li>ダウンロードしてインストール Visual Studio Code</li>
+<li>以下に示すように、vscodeを開き、AliOS Studioプラグインをインストールします
+<img src="https://camo.githubusercontent.com/1c0d3cbfe721c4246b8964ac586ca03a70c464fc/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f5442315f746f35674d6f514d654a6a7930467058586354787058612d323838302d313830302e706e67" alt="deploy" /></li>
+<li>aos-cubeインストール
+AliOS Studioはaos-cubeに依存しています.aos-cubeを手動でインストールする場合は、システム環境のセットアップを参照してください。同時に、AliOS Studioは、以下に示すようにaos-cubeのワンクリックインストールもサポートしています：
+<img src="https://camo.githubusercontent.com/aa47d46f4033f11e5effe8d77920f9608a6a74fa/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f54423175644538645f5a6d7831566a535a464758586178325858612d313134302d3832302e6769662377696474683d" alt="deploy" /></li>
+</ul>
+
+<h4 id="使用">使用</h4>
+
+<p>AliOS Studioの主な機能は、vscodeの下のツールバーに集中しており、左から右への小さなアイコンがアプリケーションプロジェクトを作成しています。
+<img src="https://camo.githubusercontent.com/442b59c2b502e3f6fdcc68655561ed6190cf9715/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f5442316d65507269454831674b306a535a5379585858746c7058612d3939382d37362e6a7067" alt="" /></p>
+
+<p>左側のhelloworld @ developerkitはコンパイルターゲットで、形式はアプリケーション名@ターゲットボード名のルールに従っています。クリックして、アプリケーションとターゲットボードを順番に選択します。</p>
+
+<ul>
+<li><p>Build
+<img src="https://camo.githubusercontent.com/6a669b8de1c4e5124c6e5127bc75dd41ef0e22c3/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f544231625578724c7748714b31526a535a4667585861374a5858612d313134302d3832302e6769662377696474683d" alt="" /></p></li>
+
+<li><p>Upload
+開発ボードとコンピューターをUSBマイクロケーブルで接続し、下のツールバーの稲妻アイコンをクリックして、ファームウェアの書き込みを完了します：
+<img src="https://camo.githubusercontent.com/c5eeaf68688a6a1aaddf7ef8dddd5e9fa489e152/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f544231697138724c7232704b31526a535a46735858614e6c5858612d313134302d3832302e6769662377696474683d" alt="" /></p></li>
+
+<li><p>Monitor
+USBマイクロワイヤを介して、送信パネルと電源を接続します。
+最初の接続は、書き込みソケットのデバイス名と波の速度を示すことを示します。</p></li>
+
+<li><p>Debug
+F5キーを押すか、メニューバー[デバッグ]&gt; [デバッグの開始]をクリックして、デバッグモードに入ります。
+<img src="https://camo.githubusercontent.com/e3a6d7225b9ef4c165dea0475a2aad09c1b48a4e/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f544231634e52534c786a614b31526a535a4b7a58585856775858612d313134302d3832302e6769662377696474683d" alt="" /></p></li>
+</ul>
+
+<h2 id="開発サンプル">開発サンプル</h2>
+
+<p>使用条件：</p>
+
+<pre><code>AliOS Things &gt;= 3.0
+aos-cube &gt;= 0.3.7
+</code></pre>
+
+<p><img src="https://camo.githubusercontent.com/a73df4a7a04aae19cefa1a0364e877d5997ea7a3/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f54423138764b5268473637674b306a535a4648585861396a5658612d313230352d3730372e676966" alt="" /></p>
+
+<h3 id="1-alios-things-3-0ソースコードをダウンロード">1：AliOS Things 3.0ソースコードをダウンロード</h3>
+
+<ul>
+<li>Open sourceから <a href="https://github.com/alibaba/AliOS-Things">https://github.com/alibaba/AliOS-Things</a> 全量ダウンロード。</li>
+<li>オフィシャルサイトから：<a href="https://aliosthings.iot.aliyun.com">https://aliosthings.iot.aliyun.com</a> カスタマイズダウンロードも可能です。</li>
+</ul>
+
+<h3 id="2-aos-sdk-path環境変数を追加する">2：AOS_SDK_PATH環境変数を追加する</h3>
+
+<p>AOS_SDK_PATHシステム環境変数を追加して、AliOS Things 3.0ソースコードパスを指すようにするAos-cubeは、AOS_SDK_PATH環境変数に従ってAliOS Thingsソースコードを検索します。さまざまなシステムがさまざまな方法で環境変数を追加します。</p>
+
+<h3 id="３-alios-studioのアプリケーションプロジェクト作成">３：AliOS Studioのアプリケーションプロジェクト作成</h3>
+
+<p>Vscodeで、AliOS Studioが提供する「+」ボタンをクリックして、新しいプロジェクトを作成します（ボタンはvscodeの左下隅のステータスバーにあります）。AliOSStudioは、プロジェクト名&gt;プロジェクトストレージパス&gt;開発ボードの選択を求められ、指定したパスになります。以下で最も簡単なアプリケーションプロジェクトを生成します。</p>
+
+<pre><code>.
+├── .aos               # AliOS Things 3.0 アプリケーションの説明
+├── .vscode            # AliOS Studio 構成ファイル
+├── Config.in          # Menuconfig 構成ファイル
+├── README.md          # 説明ドキュメント
+├── aos.mk             # Buildファイル
+├── app_main.c         # サンプルコード
+└── k_app_config.h     # カーネル構成
+</code></pre>
+
+<p>完全な作成例：
+<img src="https://img.alicdn.com/tfs/TB18vKRhG67gK0jSZFHXXa9jVXa-1205-707.gif" alt="effect" /></p>
+
+<h3 id="４-alibaba-cloud-iot-プラットフォームへ接続する">４、Alibaba Cloud IoT プラットフォームへ接続する</h3>
+
+<ul>
+<li><p>4.1、クラウド上の5つのステップ:</p>
+
+<ul>
+<li>Alibabaクラウドアカウントを登録する</li>
+<li>IoTスイートを開始する</li>
+<li>製品の作成、getProductKey</li>
+<li>デバイスを作成し、DeviceNameとDeviceSecretを取得します</li>
+<li>Topic （PRODECT_KEY）/ $（DEVICE_NAME）/ dataを定義し、アクセス許可を次のように設定します：デバイスはパブリッシュおよびサブスクライブできます</li>
+</ul></li>
+
+<li><p>4.2、デバイス側のパラメーター変更
+mqttアプリのソースコードは <code>AliOS-Things/example/mqttapp/mqtt-example.c</code>で、mqttサーバーに接続するための資格情報は<code>framework/protocol/linkkit/iotkit /sdk-encap/imports/iot_import_product.h</code>にあります。
+クラウドから取得した3つのパラメーター（ProductKey、ProductSecret、DeviceNameおよびDeviceSecret）は、コード内の3つのマクロPRODUCT_KEY、PRODUCT_SECRET、DEVICE_NAMEおよびDEVICE_SECRETに対応しています。</p></li>
+</ul>
+
+<pre><code>#elif  MQTT_TEST
+#define PRODUCT_KEY             &quot;b1eszMRbDvz&quot;
+#define DEVICE_NAME             &quot;mqtt_test&quot;
+#define DEVICE_SECRET           &quot;CAaQz8Fc1JkFEyuzFhu4NpHSTlRSmRxV&quot;
+#define PRODUCT_SECRET          &quot;Fxx6nyYptOugnS6H&quot;
+#else
+</code></pre>
+
+<ul>
+<li>4.3、MQTT他のもののコンパイルアプリ
+現在のAliOS Things mqttアプリのコンパイルコマンドラインは次のとおりです。
+<code>
+aos make mqttapp @ b_l475e
+</code>
+コマンドの実行後、生成されたbinファイルとhexファイルはout / mqttapp @ b_l475e / binary /ディレクトリーにあります。</li>
+</ul>
+
+<h3 id="５-bulid-upload-debug">５、Bulid, Upload, Debug</h3>
+
+<p>前章の「開発ツールAliOS Things Studio」を参照してください。</p>
+
+<h3 id="６-ネットワークとデータ接続の構成">６、ネットワークとデータ接続の構成</h3>
+
+<p>上記の4つのステップの後、対応するmqttappバイナリがstm32L475開発ボードに焼き付けられ、次のようにポートプリントが開始されます。</p>
+
+<p>Wifiモジュールは、コマンドラインを介して対応するAPに接続できます。</p>
+
+<pre><code>netmgr connect * ssid * * password * * open | wep | wpa | wpa2 *
+</code></pre>
+
+<p>デバイスがネットワークに接続できるようになると、mqttappが実行を開始します。次の図は、mqtt実行ログです。</p>
+
+<p><img src="https://camo.githubusercontent.com/9feb1c73abdbe27fd030d608bd6c4b140e18c6b5/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f5442315f3943426d384448384b4a6a5373706e5858624e415658612d313730382d3238342e6a7067" alt="" /></p>
+
+<p>以上です。</p>
+
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/best-practice/general/pricing/" title="料金体系"> <i class="fa fa-chevron-left"></i><label>料金体系</label></a>
-    <a class="nav nav-next" href="/help/best-practice/product/datav/" title="DataV" style="margin-right: 0px;"><label>DataV</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/best-practice/product/linkkit-sdk/" title="Linkkit SDK 利用ガイド"> <i class="fa fa-chevron-left"></i><label>Linkkit SDK 利用ガイド</label></a>
+    <a class="nav nav-next" href="/help/best-practice/web-application/" title="Webアプリケーション" style="margin-right: 0px;"><label>Webアプリケーション</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -922,13 +1184,13 @@ Alibaba Cloudを活用する上でのベストプラクティスをプロダク�
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  07/22/2019
+        <i class='fa fa-calendar'></i>  02/01/2020
     </div>
     
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/product/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/product/Ali0S-Things.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     

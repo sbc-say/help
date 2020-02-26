@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2020-02-26T08:29:07 UTC">
-<title>プロダクト :: テクニカルリファレンス</title>
+<title>Linkkit SDK 利用ガイド :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -47,7 +47,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-<meta name="description" content="Alibaba Cloudを活用する上でのベストプラクティスをプロダクト別に記載します。">
+<meta name="description" content="Alibabaの IOT Platform と繋がるためデバイス側使ってるSDKとその開発例を紹介します。">
 
         
 
@@ -57,7 +57,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
   </head>
-  <body data-url="/help/best-practice/product/">
+  <body data-url="/help/best-practice/product/linkkit-sdk/">
     
       <header>
 
@@ -176,7 +176,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     </li>
         </ul>
     </li>
-    <li data-nav-id="/help/best-practice/product/" class="dd-item parent active haschildren
+    <li data-nav-id="/help/best-practice/product/" class="dd-item parent haschildren
         ">
       <div>
       <a href="/help/best-practice/product/">プロダクト</a>
@@ -219,7 +219,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
-      <li data-nav-id="/help/best-practice/product/linkkit-sdk/" class="dd-item">
+      <li data-nav-id="/help/best-practice/product/linkkit-sdk/" class="dd-item active">
         <div>
           <a href="/help/best-practice/product/linkkit-sdk/">
             Linkkit SDK 利用ガイド
@@ -787,7 +787,12 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
- <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > プロダクト
+
+
+
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/product/'>プロダクト</a> > Linkkit SDK 利用ガイド
+
+ 
 
  
 
@@ -808,14 +813,14 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <option value="/help/best-practice/general/" >
   - 
    全般</option>
-    <option value="/help/best-practice/product/"  selected>
+    <option value="/help/best-practice/product/" >
   - 
    プロダクト</option> 
     <option value="/help/best-practice/product/datav/" >
   -- 
    DataV</option>
       <option value="/help/best-practice/product/cloudmonitor/cloudmonitor/" >-- CloudMonitor</option>
-      <option value="/help/best-practice/product/linkkit-sdk/" >-- Linkkit SDK 利用ガイド</option>
+      <option value="/help/best-practice/product/linkkit-sdk/"  selected>-- Linkkit SDK 利用ガイド</option>
       <option value="/help/best-practice/product/ali0s-things/" >-- AliOS Things 利用ガイド</option>
   
     <option value="/help/best-practice/web-application/" >
@@ -845,69 +850,303 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       </center>
     </div>
 
-    <h1>プロダクト</h1>
+    <h1>Linkkit SDK 利用ガイド</h1>
 
     
     
     
-Alibaba Cloudを活用する上でのベストプラクティスをプロダクト別に記載します。
-<!-- descriptionがコンテンツの前に表示されます -->
+    
 
-<!-- コンテンツを書くときはこの下に記載ください -->
+<p>Tags ： AlibabaCloud IOT-Platform Linkkit</p>
 
-<!-- 配下タイトル一覧がコンテンツの後に表示されます -->
+<hr />
+
+<h2 id="目的">目的</h2>
+
+<p>Link Kit SDKは、Alibaba Cloudによってデバイスメーカーに提供され、デバイスに統合し、デバイスをAlibaba Cloud IoTプラットフォームに安全に接続し、Alibaba Cloud IoTプラットフォームによってデバイスを制御および管理できるようにします。デバイスは、Link Kit SDKを統合するためにTCP / IPプロトコルスタックをサポートする必要があります。zigbeeやKNXなどの非IPデバイスの場合、ゲートウェイデバイスを介してAlibaba Cloud IoTプラットフォームに接続する必要があり、ゲートウェイデバイスはLink Kit SDKを統合する必要があります。</p>
+
+<p><img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/103238/intl_en/1548121692667/relationShip.JPG" alt="" /></p>
+
+<p>本書はLink Kit SDK 関連の知識や Link Kit SDKを使ってIOT Platformと繋がる方法を紹介させてください。</p>
+
+<p>本ガイドの全体的な流れは下記の通りです。</p>
+
+<table>
+<thead>
+<tr>
+<th>セクション</th>
+<th align="left">Topic</th>
+<th align="left">説明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>概要紹介</td>
+<td align="left">Linkkit SDK と　AliOS things</td>
+<td align="left">Linkkit SDK と　AliOS things の関係の紹介</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td align="left">SDK利用以外の方法</td>
+<td align="left">SDK以外でIOT Platformへ繋がる方法を説明</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td align="left">アーキテクチャ</td>
+<td align="left">アーキテクチャ 基本特徴を紹介</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td align="left">SDKバージョンと区別</td>
+<td align="left">各バージョンの紹介</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td align="left">製品の範囲</td>
+<td align="left">適用デバイスの紹介</td>
+</tr>
+
+<tr>
+<td>開発プロセス</td>
+<td align="left">開発プロセス</td>
+<td align="left">一般的な開発プロセスの紹介</td>
+</tr>
+
+<tr>
+<td>C言語Link Kit SDK紹介</td>
+<td align="left">C言語Link Kit SDK紹介</td>
+<td align="left">C言語SDKの開発概要を紹介</td>
+</tr>
+
+<tr>
+<td>開発サンプル</td>
+<td align="left">Linuxベースの開発事例</td>
+<td align="left">１つ簡単な開発事例を紹介</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="概要紹介">概要紹介</h2>
+
+<p>Linkkit SDKの概要について紹介させてください。</p>
+
+<h3 id="linkkit-sdk-と-alios-things-の関係">Linkkit SDK と　AliOS things の関係</h3>
+
+<p>AliOS thingsを実装されたデバイスはIOT PlatformのSDK（Linkkit SDK）を実装不要で、簡単にIOT Platformへの接続が可能です。</p>
+
+<p>もしデバイスはAliOS thingsを実装してない場合は、Linkkit SDKの実装でIOT Platformへの接続も可能です。ただし、Linkkit SDKとデバイス既存OSへの適合性によって、一部ハードウェア関連のドライブ部分はお客様自身で実装する必要があります。</p>
+
+<h3 id="sdk利用以外の実装方法">SDK利用以外の実装方法</h3>
 
 <ul>
-  
-    <li>
-        <a href="/help/best-practice/product/cloudmonitor/cloudmonitor/">
-            CloudMonitor
-        </a>
-    </li>
-    CloudMonitorを用いたAlibabaCloudリソースの監視について解説します。
-    <br>
-    <br>
-    
-    <li>
-        <a href="/help/best-practice/product/linkkit-sdk/">
-            Linkkit SDK 利用ガイド
-        </a>
-    </li>
-    Alibabaの IOT Platform と繋がるためデバイス側使ってるSDKとその開発例を紹介します。
-    <br>
-    <br>
-    
-    <li>
-        <a href="/help/best-practice/product/ali0s-things/">
-            AliOS Things 利用ガイド
-        </a>
-    </li>
-    AlibabaのIOT専用OS、AliOS Things の使い方と開発例を紹介します。
-    <br>
-    <br>
-    
-    
-    
-    <li>
-        <a href="/help/best-practice/product/datav/">
-            DataV
-        </a>
-    </li>
-    Alibaba CloudのDataVプロダクトの利用方法について記載します。
-    <br>
-    <br>
+<li><p>Alinkプロトコルに基づいて独自のSDKを開発する
+提供されたSDKでは満たされない特定の開発要件がある場合は、Alinkプロトコルに基づいて独自のSDKを開発できます。詳細については、 <a href="https://www.alibabacloud.com/help/doc-detail/90459.htm?spm=a2c63.p38356.879954.7.530e1e025J4Jaa#concept-pfw-hdg-cfb">Alink protocol</a>に参照.</p></li>
 
-
-
-
+<li><p>汎用プロトコルSDK <a href="https://www.alibabacloud.com/help/doc-detail/86369.htm?spm=a2c63.p38356.879954.8.530e1e025J4Jaa#concept-d4s-jcv-42b">generic protocol SDK</a>使用できます。デバイスまたはプラットフォームをIoT Platformに接続するブリッジを構築し、相互に通信できるようにするためにIoT Platformによって提供されます。</p></li>
 </ul>
+
+<h3 id="ソフトウェアのアーキテクチャと機能">ソフトウェアのアーキテクチャと機能</h3>
+
+<p>Link Kit SDKのソフトウェアアーキテクチャと機能は次のとおりです。
+<img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/103238/intl_en/1548123349797/sdkStruct.JPG" alt="" /></p>
+
+<ul>
+<li><p>アプリケーションプログラミングインターフェイス（API）
+Link Kit SDKは、デバイスがさまざまな機能モジュールを制御するためのAPIを提供します。</p></li>
+
+<li><p>汎用モジュール
+Link Kit SDKは、一連の汎用モジュールを提供します。</p>
+
+<ol>
+<li>クラウド接続：MQTT、CoAP、HTTP、HTTPSなど、デバイスをAlibaba Cloud IoTプラットフォームに接続するためのさまざまな方法を提供します。</li>
+<li>デバイス認証：IoTプラットフォームに接続されたデバイスが正当であるかどうかを検証します。認証は、デバイスレベルまたは製品レベルごとに基づくことができます。</li>
+<li>OTA：デバイスファームウェアのアップグレードをサポートします。</li>
+<li>サブデバイス管理：ゲートウェイによってIoTプラットフォームに接続されたサブデバイスを接続します。</li>
+<li>Wi-Fiプロビジョニング：Wi-Fi AP SSIDとパスワードを、アップリンクネットワークインターフェイスとしてWi-Fiを使用するIoTデバイスに送信します。</li>
+<li>デバイスモデリング：デバイスのプロパティ、サービス、およびイベントに基づくデバイス管理。</li>
+<li>ユーザーバインド：SmartLifeがユーザーのアカウントをデバイスにバインドするために使用する安全なバインドトークンを提供します。</li>
+<li>ローカルデバイス制御：デバイスがスマートフォンまたはゲートウェイと同じローカルエリアネットワーク（LAN）に接続する場合、この機能を介してスマートフォンまたはゲートウェイで直接制御できます。これにより、より高速で信頼性の高いデバイス制御が可能になります。</li>
+</ol></li>
+
+<li><p>ハードウェアアブストラクションレイヤー (HAL)
+SDKはOSや製品から独立するように設計されているため、この目的のためにレイヤー（HAL）を定義します。デバイスメーカーはこれらの機能を実装する必要があります。</p></li>
+</ul>
+
+<h3 id="sdkバージョンと区別">SDKバージョンと区別</h3>
+
+<p>Link Kit SDKは現在、C、Java、Python、NodeJS、Android、iOSなどの複数の言語/プラットフォームをサポートしていますが、機能は異なる言語/プラットフォームバージョンで完全に同じではありません。詳細は<a href="https://help.aliyun.com/document_detail/100576.html">ドキュメント</a>に参照してください。</p>
+
+<p>OTAなどすべての機能を利用したい場合は、C言語のSDKがおすすめです。</p>
+
+<h3 id="製品の範囲">製品の範囲</h3>
+
+<p>Link Kit SDKは、TCP / IPを介してAlibaba Cloud IoTプラットフォームと通信できるすべての製品に適しています。典型的なデバイスの種類は次のとおりです:
+- 家庭用機器/家電
+<img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/103238/intl_en/1548124014219/wifiaccess.JPG" alt="" />
+- ゲートウェイ製品とサブデバイス製品
+<img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/103238/intl_en/1548124139449/GwAccess.JPG" alt="" />
+- セルラーネットワーク接続を使用する製品
+<img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/103238/intl_en/1548124228667/wanAccess.JPG" alt="" /></p>
+
+<h2 id="開発プロセス">開発プロセス</h2>
+
+<p>デバイスを開発してAlibaba Cloud IoT Platformに接続する手順は、次の手順で構成されています:</p>
+
+<ul>
+<li><p>クラウド側の製品定義：Alibaba Cloud IoT Platformで製品機能（デバイスプロパティ、サービス、イベントを含む）を定義します。このドキュメントでは、クラウド上で製品を定義する方法については説明しません。製品作成の詳細については、Alibaba Cloud IoT Webサイトをご覧ください。</p></li>
+
+<li><p>デバイス側の開発：Link Kit SDKをデバイスに統合して、機能開発を開始し、IoTプラットフォームで定義された製品機能を実装します。</p></li>
+
+<li><p>アップリンクおよびダウンリンクのデバッグ：IoTプラットフォームからテストデバイスの3つ組（デバイスがクラウドに接続するために使用する一意のIDを表す）に適用し、それらをデバイスに書き込みます。次に、デバイスとクラウド間のアップリンクおよびダウンリンク接続をデバッグして、デバイスがAlibabaクラウドIoTプラットフォームと適切に通信できることを確認します。このセクションでは、デバッグプロセスについては説明しません。以降のセクションで説明します。</p></li>
+</ul>
+
+<p><img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/103245/intl_en/1548125431388/ProdDevProc.JPG" alt="" /></p>
+
+<p>デバイスがデバッグされたら、デバイスの大量生産のために、Alibaba Cloud IoT Platformで複数のデバイスに同時にトライプルを適用します。</p>
+
+<p>次の図は、デバイス側でのLink Kit SDK統合の一般的な開発手順を示しています。
+<img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/103245/intl_en/1548125624674/DevSideDev.JPG" alt="" /></p>
+
+<p>Wi-Fi経由でネットワークに接続されているデバイスの場合、開発プロセスは次のとおりです。
+<img src="http://http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/103245/intl_en/1548127502273/wifiDevProc.JPG" alt="" /></p>
+
+<p>その他デバイスの開発プロセスについて、詳細は<a href="https://www.alibabacloud.com/help/doc-detail/96597.htm">ドキュメント</a> に参照ください。</p>
+
+<h2 id="c言語link-kit-sdk紹介">C言語Link Kit SDK紹介</h2>
+
+<h3 id="概要">概要</h3>
+
+<p>C言言リンクキットSDKは、C言言の実行速度が速い/必要な実行中のメモリ量が少ないため、C言言を実行する機能を使用するために、C言言を開くトラフィック処理を使用するデバイスに適しています。
+デバイスは、TCP / IPをサポートするか、AT命令の外部ネットワーク通信モジュールを介してLink Kit SDKを統合する必要があり、zigbee / 433 / KNXのような非IPデバイスは、Link Kit SDKを統合したウェブ関連デバイスをAliyunyunIoTに接続する必要があります。</p>
+
+<h3 id="アーキテクチャ">アーキテクチャ</h3>
+
+<p>構造図は下記の通り：
+特別なOSを使ってるデバイスの場合は、HAL層はデバイスプロバイダーより実装する必要があります。</p>
+
+<p><img src="https://sbcloud-iot-guide.oss-ap-northeast-1.aliyuncs.com/sdk_arc.png" alt="" /></p>
+
+<pre><code>    +---------------------------+
+    |                           |
+    |   C-SDK Example Program   |
+    |                           |
+    +---------------------------+
+    |                           |
+    |   C-SDK Interface Layer   |
+    |                           |
+    |       IOT_XXX_YYY() APIs  |
+    |   linkkit_mmm_nnn() APIs  |
+    |                           |
+    +---------------------------+
+    |                           |
+    |   C-SDK Core Implements   |
+    |   : =&gt;                    |
+    |   : You SHOULD NOT Focus  |
+    |   : on this unless        |
+    |   : you're debugging SDK  |
+    |                           |
+    +---------------------------+
+    |                           |
+    |  Hardware Abstract Layer  |   HAL層
+    |                           |
+    |     HAL_XXX_YYY() APIs    |
+    |                           |
+</code></pre>
+
+<h3 id="開発環境準備">開発環境準備</h3>
+
+<p>エンドポイントのいくつかの標準的な動作、登録されたウェブサイトのコントロールパネルの動作、十分な制御の動作、製品の種類の作成、および以下の機器の例など、Ubuntu16.04のインストールなどが含まれます。開発環境の構築、開発環境のインストール、C-SDKソースの代替品のダウンロードなど。</p>
+
+<h3 id="c-sdkをターゲットプラットフォームにクロスコンパイルします">C-SDKをターゲットプラットフォームにクロスコンパイルします</h3>
+
+<p>C-SDKソースコードを、開発したいデバイスのターゲット組み込みプラットフォーム形式にクロスコンパイルします。
+このリンクの成功した製品は、ターゲットプラットフォーム形式のバイナリスタティックライブラリファイルlibiot_sdk.aであり、当社が提供するxxx_api.hヘッダーファイル（xxxはアクセスする機能ポイントを表します）で、いわゆるSDKを取得しています。
+すべてのプログラミングAPI関数はヘッダーファイルで宣言され、ライブラリファイルで実装されます。</p>
+
+<h3 id="halレイヤーの実装を開発する">HALレイヤーの実装を開発する</h3>
+
+<p>C-SDK自体は、実行するハードウェアプラットフォーム、および実行するオペレーティングシステム（またはオペレーティングシステムなし）を想定しないクロスプラットフォームSDKです。基礎となるレイヤーへの依存関係は、HAL_XXXスタイルの関数インターフェイスのセットに抽象化されます。 xxxという名前の関数ポイントが依存する基礎となる関数の代わりに、それらはsrc / xxx / xxx_wrapper.hに表示されます。現時点では、ユーザーまたはハードウェアプラットフォームプロバイダーは、独自のプラットフォームでこれらのインターフェイス機能の実装を提供する必要があります。
+C-SDKには、参照用にUbuntuおよびWindowsでこれらのインターフェイスを実装するためのソースコードが付属しています。</p>
+
+<h3 id="sdkおよびhalレイヤー実装をファームウェアに埋め込みます">SDKおよびHALレイヤー実装をファームウェアに埋め込みます</h3>
+
+<p>上記のlibiot_sdk.aを機能のコアとして使用し、libiot_hal.aをSDKのサポートライブラリとして独自に開発したため、重要なコンポーネントの準備が整いました。それらをプロジェクトのコンパイルシステム/コンパイル環境に持ち込み、ターゲットファームウェアまたはターゲットアプリケーションにリンクされるようにコンパイル設定を変更します。C-SDKが提供するAPIを使用できます。</p>
+
+<h3 id="業務ロジック実装">業務ロジック実装</h3>
+
+<p>C-SDKが提供するAPIを使用した後、それを使用して、レポートデータ、トピックのサブスクライブ、コマンドの受信など、独自のビジネス/アプリケーションを作成できます。繰り返しになりますが、Ubuntu 16.04などのホストプラットフォームでビジネスロジックコードの記述とテストを完了してから、組み込みターゲットプラットフォームに移行することを強くお勧めします。これにより、問題がある場合は、ホスト上の同じソースコードと比較することもできます。</p>
+
+<h2 id="開発サンプル">開発サンプル</h2>
+
+<p>Alibaba Cloudが提供するデバイス側C言語SDKは、Linuxシステムで直接実行でき、MQTTプロトコルを介してIoTプラットフォームにアクセスできます。この記事では、Ubuntu x86_64システムでコンパイルされたデバイス側のC言語SDKを例にして、デバイスでのクラウド構成と開発プロセスを紹介します。</p>
+
+<h3 id="製品とデバイスを作成する">製品とデバイスを作成する</h3>
+
+<p>IoTプラットフォームコンソールにログインし、左側のナビゲーションバーで[デバイス管理]&gt; [製品]を選択し、[製品の作成]をクリックして製品を作成します。</p>
+
+<ul>
+<li>製品名：カスタム製品名。</li>
+<li>カテゴリ：カスタムカテゴリを選択します。</li>
+<li>ノードタイプ：直接接続されたデバイスを選択します。</li>
+<li>ネットワーク：WiFiを選択します。</li>
+<li>データ形式：ICA標準データ形式（Alink JSON）を選択します。</li>
+<li>認証方法：デバイスキーを選択します。</li>
+</ul>
+
+<p>左側のナビゲーションバーでデバイスを選択し、[デバイスの追加]をクリックして、作成した製品の下にデバイスを追加します。
+デバイスが正常に作成されたら、デバイス証明書情報を取得します（ProductKey、DeviceNameとDeviceSecret）。</p>
+
+<h3 id="製品モデルを定義する">製品モデルを定義する</h3>
+
+<p>IoTプラットフォームが提供するデバイス側のC SDKデモパッケージには、オブジェクトモデルというJSON形式のConfigファイルが含まれています。この例では、物理モデルファイルをインポートして、製品の物理モデルを生成します。</p>
+
+<ol>
+<li><p>モデルファイルの編集。
+TSLと呼ばれる<code>オブジェクトモデル</code>とは、Thing Specification Languageです。 JSON形式のファイルです。センサー、車載デバイス、建物、工場など、物理空間内のエンティティのデジタル表現です。属性、サービス、イベントの3つの次元で、エンティティの内容、実行できる内容、提供できる内容を説明します情報。これらの3つのディメンションが定義されると、製品機能の定義が完了します。
+<code>src/dev_model/examples</code>ディレクトリのmodel_for_examples.jsonファイルを開きます。<code>オブジェクトモデル</code>JSONファイルのproductKeyの値を、IoTプラットフォームで作成した製品ProductKeyに置き換えて、ファイルを保存します。
+<img src="https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2742669751/p71413.png" alt="" /></p></li>
+
+<li><p>IoTプラットフォームコンソールの製品ページで、以前に作成した製品を見つけて、対応するビューをクリックします。</p></li>
+
+<li><p>[製品の詳細]ページの[機能定義]タブで、[ドラフトの編集]&gt; [クイックインポート]をクリックします。
+4.ポップアップダイアログボックスで、インポートモデルを選択し、前の手順で編集したモデルのJSONファイルをアップロードして、[OK]をクリックします。</p></li>
+
+<li><p>[更新の発行]をクリックして、物理モデルを公式バージョンとして発行します。</p></li>
+</ol>
+
+<h3 id="sdk設定更新">SDK設定更新</h3>
+
+<p>開発ツールで、C SDKデモをインポートし、構成ファイルの情報をデバイス情報に変更します。</p>
+
+<ol>
+<li><code>wrappers/os/ubuntu</code>ディレクトリのSDKデモで、デバイス証明書情報を<code>HAL_OS_linux.c</code>ファイルのデバイス証明書情報に変更します。
+<img src="https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2742669751/p71419.png" alt="" /></li>
+<li>SDKをコンパイルします。 SDKルートディレクトリで、make reconfigを実行し、3を選択してからmakeを実行します。
+<img src="https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2742669751/p71422.png" alt="" /></li>
+<li>SDKテスト。
+<img src="https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2742669751/p71424.png" alt="" /></li>
+</ol>
+
+<p>SDKが正常に実行されると、IoTプラットフォームコンソールのデバイスのデバイス詳細ページで、デバイスによって報告されたデバイスステータスと材料モデルデータを表示できます。</p>
+
+<p>参考として、詳しい情報をほしい場合は下記中国語のドキュメントを参照してください。
+* <a href="https://code.aliyun.com/edward.yangx/public-docs/wikis/user-guide/Linkkit_User_Manual">SDK マニュアル</a>
+* <a href="https://help.aliyun.com/document_detail/96596.html">オフィシャルドキュメントセンター</a></p>
+
+<p>以上です。</p>
+
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/best-practice/general/pricing/" title="料金体系"> <i class="fa fa-chevron-left"></i><label>料金体系</label></a>
-    <a class="nav nav-next" href="/help/best-practice/product/datav/" title="DataV" style="margin-right: 0px;"><label>DataV</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/best-practice/product/cloudmonitor/cloudmonitor/" title="CloudMonitor"> <i class="fa fa-chevron-left"></i><label>CloudMonitor</label></a>
+    <a class="nav nav-next" href="/help/best-practice/product/ali0s-things/" title="AliOS Things 利用ガイド" style="margin-right: 0px;"><label>AliOS Things 利用ガイド</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -922,13 +1161,13 @@ Alibaba Cloudを活用する上でのベストプラクティスをプロダク�
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  07/22/2019
+        <i class='fa fa-calendar'></i>  02/05/2020
     </div>
     
 
     
     <div class="github-link">
-      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/product/_index.md" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/sbcloud/help/tree/master/content/best-practice/product/Linkkit-SDK.md" target="blank"><i class="fa fa-code-fork"></i>
         </a>
     </div>
     
