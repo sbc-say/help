@@ -1,7 +1,7 @@
 ---
 title: "AliOS Things 利用ガイド"
-description: "AlibabaのIOT専用OS、AliOS Things の使い方と開発例を紹介します。"
-date: 2020-02-01T12:30:18+08:00
+description: "AlibabaのIOT専用OS、AliOS Things の使い方と開発例を紹介します。"
+date: 2020-02-01T12:30:18+08:00
 weight: 30
 draft: false
 ---
@@ -24,7 +24,7 @@ Alibaba Cloud IoT IoTオペレーティングシステム（別名AliOS Things�
 | -                  | AliOS things　と IOT Platform    | AliOS things　と IOT Platform の関係        |
 | 基本構成           |  基本特徴             | AliOS things 基本特徴を紹介     |
 | -           | アーキテクチャ              | AliOS things アーキテクチャを紹介           |
-| -            | 関連ハードウェア          | 関連ハードウェアと開発Board紹介 |
+| -            | 関連ハードウェア          | 関連ハードウェアと開発Board紹介 |
 | -            | 開発ツール     | 開発ツールAliOS Things Studio   |
 | 開発サンプル           |  AliOSの開発事例          | AliOS使ってAlibabaCloudと繋がる事例を紹介     |
 
@@ -41,7 +41,7 @@ AliOS Thingsは、AliOSファミリーに属するIoT指向の高度にスケー
 
 AliOS thingsを実装されたデバイスはIOT PlatformのSDK（Linkkit SDK）を実装不要で、簡単にIOT Platformへの接続が可能です。
 
-もしデバイスはAliOS thingsを実装してない場合は、Linkkit SDKの実装でIOT Platformへの接続も可能です。ただし、Linkkit SDKとデバイス既存OSへの適合性によって、一部ハードウェア関連のドライバー部分はお客様自身で実装する必要があります。
+もしデバイスはAliOS thingsを実装してない場合は、Linkkit SDKの実装でIOT Platformへの接続も可能です。ただし、Linkkit SDKとデバイス既存OSへの適合性によって、一部ハードウェア関連のドライバー部分はお客様自身で実装する必要があります。
 
 ## 基本構成
 
@@ -51,7 +51,7 @@ AliOS thingsを実装されたデバイスはIOT PlatformのSDK（Linkkit SDK）
 AliOS Thingsは、認定された80以上のハードウェアプラットフォームと100以上のセンサーサポートを提供します。
 
 - 高カスタマイズ性
-オンラインでコンポーネントの組み合わせを選択できる。
+オンラインでコンポーネントの組み合わせを選択できる。
 
 - 安全統合
 Alibaba Cloud IoTセキュリティサービスのデバイス側機能をネイティブに統合して、IoTデバイスの安全な操作を保護します。
@@ -86,25 +86,25 @@ AliOS Thingsのアーキテクチャは、階層型アーキテクチャとコ�
 
 ![deploy](https://camo.githubusercontent.com/23557640f98638b76db16d163a35d36ff33c0d10/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f544231664b514d69687249384b4a6a7930467058586235685658612d323333302d313239322e706e67)
 
-### 3.関連ハードウェアと開発Board紹介
+### 3.関連ハードウェアと開発Board紹介
 
 - AliOS Things Starter Kit
 スターターキットは、AliOS Thingsに合わせて開発された開発ボードで、ボードレベルセンサー、LCDスクリーン（240 * 240）、オーディオ、オンボードWiFiモジュールなど、豊富なオンボードリソースを提供します。
 ![](https://img.alicdn.com/tfs/TB1_KoTiFmWBuNjSspdXXbugXXa-3704-2422.jpg)
 GUIサンプル
-![](https://img.alicdn.com/tfs/TB17EnugqmWBuNjy1XaXXXCbXXa-484-387.gif)
-詳細紹介：http://aliosthings.io/#/zh-cn/starterkit
+![](https://img.alicdn.com/tfs/TB17EnugqmWBuNjy1XaXXXCbXXa-484-387.gif)
+詳細紹介：http://aliosthings.io/#/zh-cn/starterkit
 
 - AliOS Things Developer Kit
 
 Developer Kitは、AliOS Thingsが作成した公式のハイエンド開発ボードで、スターターキットよりも豊富なリソースを提供します。
 センサーに関しては、慣性航法加速度計およびジャイロスコープに加えて、磁力計、気圧計、温度および湿度センサー、赤外線センサー、近接光センサーなどの多数の環境センシングデバイスが提供され、さまざまなタイプのIoTビジネスシナリオを提供できます。クラウド統合ソリューションの検証。
 ![](https://img.alicdn.com/tfs/TB122RCtntYBeNjy1XdXXXXyVXa-2373-3121.png)
-詳細紹介：http://aliosthings.io/#/zh-cn/developerkit
+詳細紹介：http://aliosthings.io/#/zh-cn/developerkit
 
 - サポートモジュール：
   - 慶科（EMW3060）
-![](https://img.alicdn.com/tfs/TB13M4zceOSBuNjy0FdXXbDnVXa-1200-761.png)
+![](https://img.alicdn.com/tfs/TB13M4zceOSBuNjy0FdXXbDnVXa-1200-761.png)
 EMW3060は、上海Qingke（MXCHIP）が発売した費用対効果の高い組み込みW-Fiモジュールで、ARM9、WLAN MAC /ベースバンド/ RFと高度に統合され、最高周波数は120MHzです。
 
   - 楽鑫(ESP-WROOM-32)

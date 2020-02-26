@@ -1,7 +1,7 @@
 ---
 title: "Linkkit SDK 利用ガイド"
 description: "Alibabaの IOT Platform と繋がるためデバイス側使ってるSDKとその開発例を紹介します。"
-date: 2020-02-05T12:30:18+08:00
+date: 2020-02-05T12:30:18+08:00
 weight: 30
 draft: false
 ---
@@ -27,8 +27,8 @@ Link Kit SDKは、Alibaba Cloudによってデバイスメーカーに提供さ�
 | -            | アーキテクチャ               | アーキテクチャ 基本特徴を紹介               |
 | -       | SDKバージョンと区別          | 各バージョンの紹介         |
 | -          | 製品の範囲         | 適用デバイスの紹介          |
-| 開発プロセス          | 開発プロセス  |   一般的な開発プロセスの紹介             |
-| C言語Link Kit SDK紹介 | C言語Link Kit SDK紹介     |  C言語SDKの開発概要を紹介 |
+| 開発プロセス          | 開発プロセス  |   一般的な開発プロセスの紹介             |
+| C言語Link Kit SDK紹介 | C言語Link Kit SDK紹介     |  C言語SDKの開発概要を紹介 |
 | 開発サンプル     |  Linuxベースの開発事例   | １つ簡単な開発事例を紹介 |
 
 
@@ -39,7 +39,7 @@ Linkkit SDKの概要について紹介させてください。
 
 AliOS thingsを実装されたデバイスはIOT PlatformのSDK（Linkkit SDK）を実装不要で、簡単にIOT Platformへの接続が可能です。
 
-もしデバイスはAliOS thingsを実装してない場合は、Linkkit SDKの実装でIOT Platformへの接続も可能です。ただし、Linkkit SDKとデバイス既存OSへの適合性によって、一部ハードウェア関連のドライブ部分はお客様自身で実装する必要があります。
+もしデバイスはAliOS thingsを実装してない場合は、Linkkit SDKの実装でIOT Platformへの接続も可能です。ただし、Linkkit SDKとデバイス既存OSへの適合性によって、一部ハードウェア関連のドライブ部分はお客様自身で実装する必要があります。
 
 ### SDK利用以外の実装方法
 
@@ -86,7 +86,7 @@ Link Kit SDKは、TCP / IPを介してAlibaba Cloud IoTプラットフォーム�
 - セルラーネットワーク接続を使用する製品
 ![](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/103238/intl_en/1548124228667/wanAccess.JPG)
 
-## 開発プロセス
+## 開発プロセス
 デバイスを開発してAlibaba Cloud IoT Platformに接続する手順は、次の手順で構成されています:
 
 - クラウド側の製品定義：Alibaba Cloud IoT Platformで製品機能（デバイスプロパティ、サービス、イベントを含む）を定義します。このドキュメントでは、クラウド上で製品を定義する方法については説明しません。製品作成の詳細については、Alibaba Cloud IoT Webサイトをご覧ください。
@@ -95,7 +95,7 @@ Link Kit SDKは、TCP / IPを介してAlibaba Cloud IoTプラットフォーム�
 
 - アップリンクおよびダウンリンクのデバッグ：IoTプラットフォームからテストデバイスの3つ組（デバイスがクラウドに接続するために使用する一意のIDを表す）に適用し、それらをデバイスに書き込みます。次に、デバイスとクラウド間のアップリンクおよびダウンリンク接続をデバッグして、デバイスがAlibabaクラウドIoTプラットフォームと適切に通信できることを確認します。このセクションでは、デバッグプロセスについては説明しません。以降のセクションで説明します。
 
-![](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/103245/intl_en/1548125431388/ProdDevProc.JPG)
+![](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/103245/intl_en/1548125431388/ProdDevProc.JPG)
 
 デバイスがデバッグされたら、デバイスの大量生産のために、Alibaba Cloud IoT Platformで複数のデバイスに同時にトライプルを適用します。
 
@@ -105,7 +105,7 @@ Link Kit SDKは、TCP / IPを介してAlibaba Cloud IoTプラットフォーム�
 Wi-Fi経由でネットワークに接続されているデバイスの場合、開発プロセスは次のとおりです。
 ![](http://http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/103245/intl_en/1548127502273/wifiDevProc.JPG)
 
-その他デバイスの開発プロセスについて、詳細は[ドキュメント](https://www.alibabacloud.com/help/doc-detail/96597.htm) に参照ください。
+その他デバイスの開発プロセスについて、詳細は[ドキュメント](https://www.alibabacloud.com/help/doc-detail/96597.htm) に参照ください。
 
 ## C言語Link Kit SDK紹介
 
@@ -155,7 +155,7 @@ C言言リンクキットSDKは、C言言の実行速度が速い/必要な実�
 C-SDKソースコードを、開発したいデバイスのターゲット組み込みプラットフォーム形式にクロスコンパイルします。
 このリンクの成功した製品は、ターゲットプラットフォーム形式のバイナリスタティックライブラリファイルlibiot_sdk.aであり、当社が提供するxxx_api.hヘッダーファイル（xxxはアクセスする機能ポイントを表します）で、いわゆるSDKを取得しています。
 すべてのプログラミングAPI関数はヘッダーファイルで宣言され、ライブラリファイルで実装されます。
-
+
 ### HALレイヤーの実装を開発する
 
 C-SDK自体は、実行するハードウェアプラットフォーム、および実行するオペレーティングシステム（またはオペレーティングシステムなし）を想定しないクロスプラットフォームSDKです。基礎となるレイヤーへの依存関係は、HAL_XXXスタイルの関数インターフェイスのセットに抽象化されます。 xxxという名前の関数ポイントが依存する基礎となる関数の代わりに、それらはsrc / xxx / xxx_wrapper.hに表示されます。現時点では、ユーザーまたはハードウェアプラットフォームプロバイダーは、独自のプラットフォームでこれらのインターフェイス機能の実装を提供する必要があります。
