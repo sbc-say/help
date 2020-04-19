@@ -1,7 +1,7 @@
 ---
 title: "CloudMonitor"
 description: "CloudMonitorを用いたAlibabaCloudリソースの監視について解説します。"
-date: 2019-09-23T12:30:18+08:00
+date: 2020-04-19T12:30:18+08:00
 weight: 20
 draft: false
 ---
@@ -10,7 +10,7 @@ draft: false
 パブリッククラウドのメリットは、インフラ作業から開放し、サービス自体に集中できると言われていますが、基盤監視が不要ということではありません。オンプレミス環境と同様に、システム全体におけるパフォーマンス変化の把握、異常動作の検知、アラームの設定、自動バッチの実行、ログの可視化などを行う必要があります。
 
 AlibabaCloudが提供する無料監視プロダクトCloudMonitorを利用することにより、コンソール操作、または簡単なバッチ仕込むことから、AlibabaCloud上のリソースを監視することができます。本文は、下記5つのポイントからCloudMonitorの利用方法を紹介します。
- 
+
 1. [性能監視](#性能監視)
   - [ECS編](#ECS性能監視)
   - [RDS編](#RDS性能監視)
@@ -22,6 +22,7 @@ AlibabaCloudが提供する無料監視プロダクトCloudMonitorを利用す�
 1. [カスタム監視](#カスタム監視)
 1. [APIにより監視データの外部連携](#API連携)
 1. [Grafanaにより監視データの可視化](#Grafana)
+1. [サイト監視の実装](#Site)
 
 <h4 id="性能監視"></h4>
 ## 1. 性能監視
@@ -187,7 +188,7 @@ AlibabaCloudの製品を利用するだけで、無料で付いてくるCloudMon
 |Upstream status codes of the format 4xx|特定ポートのRSから返す4xxのステータスコードの数|回/秒|
 |Upstream status codes of the format 5xx|特定ポートのRSから返す5xxのステータスコードの数|回/秒|
 |Upstream RT|	特定ポートのRSからプロキシへの平均リクエスト遅延|ミリ秒|
-|Instance QPS|SLBのQPS|回/秒|	
+|Instance QPS|SLBのQPS|回/秒|
 |Instance RT|SLBの平均リクエストレイテンシ|回/秒|
 |Instance Status codes of the format 2xx|SLBの2xxのステータスコードの数|回/秒|
 |Instance Status codes of the format 3xx|SLBの3xxのステータスコードの数|回/秒|
@@ -281,7 +282,7 @@ Configure Done!!!
 5.　カスタムデータをCloudMonitorにアップロードします。
 
 ```
-$ aliyun cms PutCustomMetric --MetricList.1.GroupId "1" --MetricList.1.MetricName cpu_total --MetricList.1.Dimensions '{"sampleName1":"value1","sampleName2":"value2"}' --MetricList.1.Time 20190919T145500.000+0900 --MetricList.1.Type 0 --MetricList.1.Period 60 --MetricList.1.Values '{"value":10.5}' 
+$ aliyun cms PutCustomMetric --MetricList.1.GroupId "1" --MetricList.1.MetricName cpu_total --MetricList.1.Dimensions '{"sampleName1":"value1","sampleName2":"value2"}' --MetricList.1.Time 20190919T145500.000+0900 --MetricList.1.Type 0 --MetricList.1.Period 60 --MetricList.1.Values '{"value":10.5}'
 {
 	"Message": "success",
 	"RequestId": "1EBC8667-911A-46FC-88CD-D3BDDBC5B798",
@@ -324,7 +325,7 @@ CloudMonitorが収集したメトリックデータリスト、または最新�
 /**
  * 指定期間内の監視データのクエリ例
  */
- 
+
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
@@ -390,7 +391,7 @@ CloudMonitorがGrafana連携用のプラグインを提供しています。Graf
 
 ```
 # cd /var/lib/grafana/plugins/
-# git clone https://github.com/aliyun/aliyun-cms-grafana.git 
+# git clone https://github.com/aliyun/aliyun-cms-grafana.git
 # service grafana-server restart
 ```
 
@@ -434,3 +435,108 @@ X-column:timestamp
 Y-column describe:<Y軸カスタマイズ接続語>
 ```
 ![](https://jiang-bestpratice.oss-ap-northeast-1.aliyuncs.com/8.jpg)
+
+<h4 id="Site"></h4>
+## 6. サイト監視の実装
+今回はWordpressサイトに対するCloudMonitorを利用した監視実装を例として紹介します。
+
+サイト構成として、仮想サーバー2台ECSで冗長組み、フロントにロードバランサーSLBを置き、データをバックエンドのRDSに保存する形になります。
+![](https://jiang-bestpratice.oss-ap-northeast-1.aliyuncs.com/9.jpg)
+
+### SLBに対する監視
+SLBのリスナーはHTTPプロトコルを使用するため、CloudMonitorはレイヤー7監視となります。
+
+今回のSLBに設定した監視項目は下記２つです。
+
+<br>
+１. 受信速度（Number of inbound bandwidth by instance）
+
+ 受信速度はサイトのインバウンドトラフィック負荷を現す指標です。
+ サイトの平均インバウンド帯域幅値の過去実績の120％にし、過去平均インバウンド帯域幅は10Mbits/sとし、
+ 5分サイクルで連続1周期の平均値>=12Mbits/sに設定します。
+
+<br>
+２. 障害サーバー数（Number of backend unhealthy ECS instances by port）
+
+ 障害サーバー数はバックエンドECSの死活を監視する指標です。
+ 検出された場合、対処が必要となる重要な項目です。
+ 5分サイクルで連続1周期の最小値>=1台に設定します。
+
+![](https://jiang-bestpratice.oss-ap-northeast-1.aliyuncs.com/10.jpg)
+
+### ECSに対する監視
+ECSの状態を現すCloudMonitor指標は豊富です。ネットワークトラフィックはSLBで監視するため、ここでは割愛します。
+
+今回のECSに設定した監視項目は下記3つです。
+
+<br>
+１．CPUの使用率（Host.cpu.total）
+
+CPUの使用率はECS負荷の測りに最も利用される指標です。
+特別なシナリオを除き、70％を超えた場合アラートするのは一般です。
+5分サイクルで連続3周期の平均値>=70%に設定します。
+
+<br>
+２．ディスクの使用率（Host.disk.utilization）
+
+ディスクの使用率はディスク容量不足を検出する指標です。
+早期発見は重要ですので、70％を超えた場合アラートするのは一般です。
+5分サイクルで連続3周期の平均値>=70%に設定します。
+
+<br>
+３．プロセス数（Number of process）
+
+プロセスの死活を監視する指標です。
+この指標を活用することで、プロセスの死活の監視により、サービスダウンを検出可能です。
+今回のサイトはApacheを利用したため、
+HTTPDプロセスに対して、5分サイクルで連続1周期のプロセス数<1に設定します。
+![](https://jiang-bestpratice.oss-ap-northeast-1.aliyuncs.com/11.jpg)
+
+### RDSに対する監視
+RDSの状態もCloudMonitorで監視できます。ECSと同様に、ネットワークトラフィックの監視を割愛します。
+
+今回のRDSに設定した監視項目は下記２つです。
+
+<br>
+１．CPUの使用率（Host.cpu.total）
+
+CPUの使用率はRDS負荷の測りに最も利用される指標です。
+特別なシナリオを除き、70％を超えた場合アラートするのは一般です。
+5分サイクルで連続3周期の平均値>=70%に設定します。
+
+<br>
+２．ディスクの使用率（Host.disk.utilization）
+
+ディスクの使用率はディスク容量不足を検出する指標です。
+早期発見は重要ですので、70％を超えた場合アラートするのは一般です。
+5分サイクルで連続3周期の平均値>=70%に設定します。
+![](https://jiang-bestpratice.oss-ap-northeast-1.aliyuncs.com/12.jpg)
+
+### サイト可用性に対する監視
+1台の監視用ECSを用意すれば、グループモニタリングの可能性モニタリング機能を活用し、サイトの可用性、アクセス遅延を監視することが可能です。
+
+監視対象はSLBのパブリックIPとなります。
+監視可能な項目は下記２つです。
+
+<br>
+１．ステータスコード
+
+監視用ECSから指定サイトまたはIPアドレスにリクエストし、
+戻り値のステータスコードにより、アラートを設定する方法です。
+戻り値200は一般ですので、アラートを連続3周期の戻り値>200に設定します。
+
+<br>
+２．遅延時間
+
+監視用ECSから指定サイトまたはIPアドレスにリクエストし、
+ロード完了までの遅延時間により、アラートを設定する方法です。
+連続3周期の遅延時間>=2000ミリ秒に設定します。
+![](https://jiang-bestpratice.oss-ap-northeast-1.aliyuncs.com/13.jpg)
+
+## 最後に
+Alibaba Cloud CloudMonitor Serviceの概要から、外部連携、可視化と実装までを紹介させていただきました。
+<br>
+Alibaba Cloudの利用中、製品監視のニーズがあった際に、無料のAlibaba Cloud CloudMonitor Service使ってみてはいかがでしょうか。
+
+<br>
+最後まで読んでいただき、ありがとうございました。

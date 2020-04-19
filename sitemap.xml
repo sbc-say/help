@@ -63,6 +63,11 @@
   </url>
   
   <url>
+    <loc>https://www.sbcloud.co.jp/help/best-practice/product/cloudmonitor/cloudmonitor/</loc>
+    <lastmod>2020-04-19T12:30:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sbcloud.co.jp/help/best-practice/product/datav/</loc>
     <lastmod>2019-09-24T12:30:18+08:00</lastmod>
   </url>
@@ -70,11 +75,6 @@
   <url>
     <loc>https://www.sbcloud.co.jp/help/scenario/web-application/springboot-with-ecs/</loc>
     <lastmod>2019-09-23T16:20:40+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.sbcloud.co.jp/help/best-practice/product/cloudmonitor/cloudmonitor/</loc>
-    <lastmod>2019-09-23T12:30:18+08:00</lastmod>
   </url>
   
   <url>

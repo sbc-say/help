@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-03-24T01:08:25 UTC">
+<meta name="revised" content="2020-04-19T13:44:50 UTC">
 <title>CloudMonitor :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
@@ -181,20 +181,41 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
             <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-    <li data-nav-id="/help/best-practice/product/datav/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/help/best-practice/product/datav/">DataV</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-        </ul>
-    </li>
       <li data-nav-id="/help/best-practice/product/cloudmonitor/cloudmonitor/" class="dd-item active">
         <div>
           <a href="/help/best-practice/product/cloudmonitor/cloudmonitor/">
             CloudMonitor
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
+    </li>
+    <li data-nav-id="/help/best-practice/product/datav/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/help/best-practice/product/datav/">DataV</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/help/best-practice/product/datav/datav-sakura/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/datav/datav-sakura/">
+            DataV より桜前線のシミュレーション実現
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/product/datav/datav-develop-api-cookie/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/datav/datav-develop-api-cookie/">
+            DataV のデータ権限制御
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/product/datav/datav-widget-develop-guide/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/product/datav/datav-widget-develop-guide/">
+            DataV Widget 開発ガイド
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
     </li>
       <li data-nav-id="/help/best-practice/product/linkkit-sdk/" class="dd-item">
         <div>
@@ -793,10 +814,10 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
     <option value="/help/best-practice/product/" >
   - 
    プロダクト</option> 
+      <option value="/help/best-practice/product/cloudmonitor/cloudmonitor/"  selected>-- CloudMonitor</option>
     <option value="/help/best-practice/product/datav/" >
   -- 
    DataV</option>
-      <option value="/help/best-practice/product/cloudmonitor/cloudmonitor/"  selected>-- CloudMonitor</option>
       <option value="/help/best-practice/product/linkkit-sdk/" >-- Linkkit SDK 利用ガイド</option>
       <option value="/help/best-practice/product/ali0s-things/" >-- AliOS Things 利用ガイド</option>
   
@@ -858,6 +879,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <li><a href="#カスタム監視">カスタム監視</a></li>
 <li><a href="#API連携">APIにより監視データの外部連携</a></li>
 <li><a href="#Grafana">Grafanaにより監視データの可視化</a></li>
+<li><a href="#Site">サイト監視の実装</a></li>
 </ol>
 
 <p><h4 id="性能監視"></h4></p>
@@ -1939,7 +1961,7 @@ Configure Done!!!
 
 <p>5.　カスタムデータをCloudMonitorにアップロードします。</p>
 
-<pre><code>$ aliyun cms PutCustomMetric --MetricList.1.GroupId &quot;1&quot; --MetricList.1.MetricName cpu_total --MetricList.1.Dimensions '{&quot;sampleName1&quot;:&quot;value1&quot;,&quot;sampleName2&quot;:&quot;value2&quot;}' --MetricList.1.Time 20190919T145500.000+0900 --MetricList.1.Type 0 --MetricList.1.Period 60 --MetricList.1.Values '{&quot;value&quot;:10.5}' 
+<pre><code>$ aliyun cms PutCustomMetric --MetricList.1.GroupId &quot;1&quot; --MetricList.1.MetricName cpu_total --MetricList.1.Dimensions '{&quot;sampleName1&quot;:&quot;value1&quot;,&quot;sampleName2&quot;:&quot;value2&quot;}' --MetricList.1.Time 20190919T145500.000+0900 --MetricList.1.Type 0 --MetricList.1.Period 60 --MetricList.1.Values '{&quot;value&quot;:10.5}'
 {
 	&quot;Message&quot;: &quot;success&quot;,
 	&quot;RequestId&quot;: &quot;1EBC8667-911A-46FC-88CD-D3BDDBC5B798&quot;,
@@ -2034,7 +2056,7 @@ Configure Done!!!
 <pre><code>/**
  * 指定期間内の監視データのクエリ例
  */
- 
+
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.exceptions.ClientException;
@@ -2098,7 +2120,7 @@ public class DescribeMetricList {
 <p>4.　GrafanaにCloudMonitor用プラグインをインストールします。</p>
 
 <pre><code># cd /var/lib/grafana/plugins/
-# git clone https://github.com/aliyun/aliyun-cms-grafana.git 
+# git clone https://github.com/aliyun/aliyun-cms-grafana.git
 # service grafana-server restart
 </code></pre>
 
@@ -2143,13 +2165,125 @@ Y-column describe:&lt;Y軸カスタマイズ接続語&gt;
 
 <p><img src="https://jiang-bestpratice.oss-ap-northeast-1.aliyuncs.com/8.jpg" alt="" /></p>
 
+<p><h4 id="Site"></h4></p>
+
+<h2 id="6-サイト監視の実装">6. サイト監視の実装</h2>
+
+<p>今回はWordpressサイトに対するCloudMonitorを利用した監視実装を例として紹介します。</p>
+
+<p>サイト構成として、仮想サーバー2台ECSで冗長組み、フロントにロードバランサーSLBを置き、データをバックエンドのRDSに保存する形になります。
+<img src="https://jiang-bestpratice.oss-ap-northeast-1.aliyuncs.com/9.jpg" alt="" /></p>
+
+<h3 id="slbに対する監視">SLBに対する監視</h3>
+
+<p>SLBのリスナーはHTTPプロトコルを使用するため、CloudMonitorはレイヤー7監視となります。</p>
+
+<p>今回のSLBに設定した監視項目は下記２つです。</p>
+
+<p><br>
+１. 受信速度（Number of inbound bandwidth by instance）</p>
+
+<p>受信速度はサイトのインバウンドトラフィック負荷を現す指標です。
+ サイトの平均インバウンド帯域幅値の過去実績の120％にし、過去平均インバウンド帯域幅は10Mbits/sとし、
+ 5分サイクルで連続1周期の平均値&gt;=12Mbits/sに設定します。</p>
+
+<p><br>
+２. 障害サーバー数（Number of backend unhealthy ECS instances by port）</p>
+
+<p>障害サーバー数はバックエンドECSの死活を監視する指標です。
+ 検出された場合、対処が必要となる重要な項目です。
+ 5分サイクルで連続1周期の最小値&gt;=1台に設定します。</p>
+
+<p><img src="https://jiang-bestpratice.oss-ap-northeast-1.aliyuncs.com/10.jpg" alt="" /></p>
+
+<h3 id="ecsに対する監視">ECSに対する監視</h3>
+
+<p>ECSの状態を現すCloudMonitor指標は豊富です。ネットワークトラフィックはSLBで監視するため、ここでは割愛します。</p>
+
+<p>今回のECSに設定した監視項目は下記3つです。</p>
+
+<p><br>
+１．CPUの使用率（Host.cpu.total）</p>
+
+<p>CPUの使用率はECS負荷の測りに最も利用される指標です。
+特別なシナリオを除き、70％を超えた場合アラートするのは一般です。
+5分サイクルで連続3周期の平均値&gt;=70%に設定します。</p>
+
+<p><br>
+２．ディスクの使用率（Host.disk.utilization）</p>
+
+<p>ディスクの使用率はディスク容量不足を検出する指標です。
+早期発見は重要ですので、70％を超えた場合アラートするのは一般です。
+5分サイクルで連続3周期の平均値&gt;=70%に設定します。</p>
+
+<p><br>
+３．プロセス数（Number of process）</p>
+
+<p>プロセスの死活を監視する指標です。
+この指標を活用することで、プロセスの死活の監視により、サービスダウンを検出可能です。
+今回のサイトはApacheを利用したため、
+HTTPDプロセスに対して、5分サイクルで連続1周期のプロセス数&lt;1に設定します。
+<img src="https://jiang-bestpratice.oss-ap-northeast-1.aliyuncs.com/11.jpg" alt="" /></p>
+
+<h3 id="rdsに対する監視">RDSに対する監視</h3>
+
+<p>RDSの状態もCloudMonitorで監視できます。ECSと同様に、ネットワークトラフィックの監視を割愛します。</p>
+
+<p>今回のRDSに設定した監視項目は下記２つです。</p>
+
+<p><br>
+１．CPUの使用率（Host.cpu.total）</p>
+
+<p>CPUの使用率はRDS負荷の測りに最も利用される指標です。
+特別なシナリオを除き、70％を超えた場合アラートするのは一般です。
+5分サイクルで連続3周期の平均値&gt;=70%に設定します。</p>
+
+<p><br>
+２．ディスクの使用率（Host.disk.utilization）</p>
+
+<p>ディスクの使用率はディスク容量不足を検出する指標です。
+早期発見は重要ですので、70％を超えた場合アラートするのは一般です。
+5分サイクルで連続3周期の平均値&gt;=70%に設定します。
+<img src="https://jiang-bestpratice.oss-ap-northeast-1.aliyuncs.com/12.jpg" alt="" /></p>
+
+<h3 id="サイト可用性に対する監視">サイト可用性に対する監視</h3>
+
+<p>1台の監視用ECSを用意すれば、グループモニタリングの可能性モニタリング機能を活用し、サイトの可用性、アクセス遅延を監視することが可能です。</p>
+
+<p>監視対象はSLBのパブリックIPとなります。
+監視可能な項目は下記２つです。</p>
+
+<p><br>
+１．ステータスコード</p>
+
+<p>監視用ECSから指定サイトまたはIPアドレスにリクエストし、
+戻り値のステータスコードにより、アラートを設定する方法です。
+戻り値200は一般ですので、アラートを連続3周期の戻り値&gt;200に設定します。</p>
+
+<p><br>
+２．遅延時間</p>
+
+<p>監視用ECSから指定サイトまたはIPアドレスにリクエストし、
+ロード完了までの遅延時間により、アラートを設定する方法です。
+連続3周期の遅延時間&gt;=2000ミリ秒に設定します。
+<img src="https://jiang-bestpratice.oss-ap-northeast-1.aliyuncs.com/13.jpg" alt="" /></p>
+
+<h2 id="最後に">最後に</h2>
+
+<p>Alibaba Cloud CloudMonitor Serviceの概要から、外部連携、可視化と実装までを紹介させていただきました。
+<br>
+Alibaba Cloudの利用中、製品監視のニーズがあった際に、無料のAlibaba Cloud CloudMonitor Service使ってみてはいかがでしょうか。</p>
+
+<p><br>
+最後まで読んでいただき、ありがとうございました。</p>
+
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/best-practice/product/datav/datav-widget-develop-guide/" title="DataV Widget 開発ガイド"> <i class="fa fa-chevron-left"></i><label>DataV Widget 開発ガイド</label></a>
-    <a class="nav nav-next" href="/help/best-practice/product/linkkit-sdk/" title="Linkkit SDK 利用ガイド" style="margin-right: 0px;"><label>Linkkit SDK 利用ガイド</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/best-practice/product/" title="プロダクト"> <i class="fa fa-chevron-left"></i><label>プロダクト</label></a>
+    <a class="nav nav-next" href="/help/best-practice/product/datav/" title="DataV" style="margin-right: 0px;"><label>DataV</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -2164,7 +2298,7 @@ Y-column describe:&lt;Y軸カスタマイズ接続語&gt;
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  09/23/2019
+        <i class='fa fa-calendar'></i>  04/19/2020
     </div>
     
 
