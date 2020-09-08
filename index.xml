@@ -1320,5 +1320,23 @@ Kubernetesでクラスタ生成 &amp;nbsp; KubernetesによるコンテナでWor
    リソース リソース名 パラメータ 必須 設定値 内容     alicloud_vpc vpc name 任意 ${var.project_name}-vpc VPC の名称。この例の場合、Web-App-on-k8s-for-Terraform-vpc として表示されます。    vpc cidr_block 必須 192.168.1.0/24 VPC の CIDR ブロック    vpc description 任意 Enable k8s-Setteing-Sample vpc VPC の説明。   alicloud_vswitch vsw name 任意 ${var.project_name}-vswitch vswitch の名称。この例の場合、Web-App-on-k8s-for-Terraform-vswitch として表示されます。    vsw vpc_id 必須 ${alicloud_vpc.</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/network/cisco891f/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/network/cisco891f/</guid>
+      <description>本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCisco ルーターとIPsec-VPNで接続します。
+事前準備 ネットワークや IP アドレス等を事前に設計し、VPN Gatewayを購入します。
+本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) とCiscoルーター側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
+本設定例について Alibaba CloudのVPCとの接続を保証するものではありません。
+2019年 5 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
+本設定例でテスト済みのCiscoルーターは以下になります。
+   モデル バージョン     C891FJ-K9 Version 15.4(3)M8    Ciscoルーターに関する情報および設定方法については、Ciscoルーターお客様相談センターまでお問い合わせください。
+設定手順 ステップ 1：VPN Gateway の設定  対象VPCにVPN Gatewayとカスタマーゲートウェイを作成します。カスタマーゲートウェイの設定ではお客様拠点 ルーターのグローバルIPアドレスを使って設定します。
+ IPsec ConnectionsよりVPN接続を作成します。
+   以下の項目を入力します  「名前」任意の識別名を入力します。 「VPN Gateway」作成したVPN Gateway名を選択します。 「カスタマーゲートウェイ」　作成したカスタマーゲートウェイを選択します。 「ローカルネットワーク」クラウド側ネットワーク (0.0.0.0/0) を入力します。 「リモートネットワーク」お客様拠点側ネットワーク ( 0.0.0.0/0 ) を入力します。 「今すぐ有効化」“はい”を選択します。 「高度な構成」有効にします。 「事前共有鍵」お客様拠点側ルーターと同一の任意の共有鍵を入力します。 「バージョン」ikev2を選択します。</description>
+    </item>
+    
   </channel>
 </rss>
