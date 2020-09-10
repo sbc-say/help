@@ -1,3 +1,11 @@
+﻿---
+title: "VPN Gatewayを用いたCiscoルーターとの手順"
+description: "VPN Gatewayを用いたCiscoルーターとのIP Sec-VPN接続手順を紹介します。"
+date: 2020-09-01T12:30:18+08:00
+weight: 40
+draft: false
+---
+
 本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCisco ルーターとIPsec-VPNで接続します。
 
 ## 事前準備
