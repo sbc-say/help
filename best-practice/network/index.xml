@@ -34,9 +34,9 @@ VPNトンネルの構築は以下の2ステップで実現出来ます。
     </item>
     
     <item>
-      <title></title>
+      <title>VPN Gatewayを用いたCiscoルーターとの手順</title>
       <link>https://www.sbcloud.co.jp/help/best-practice/network/cisco891f/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 01 Sep 2020 12:30:18 +0800</pubDate>
       
       <guid>https://www.sbcloud.co.jp/help/best-practice/network/cisco891f/</guid>
       <description>本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCisco ルーターとIPsec-VPNで接続します。
