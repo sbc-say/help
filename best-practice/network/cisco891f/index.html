@@ -5,8 +5,8 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2020-09-10T00:56:57 UTC">
-<title>VPN Gatewayを用いたCiscoルーターとの手順 :: テクニカルリファレンス</title>
+<meta name="revised" content="2020-09-15T02:39:44 UTC">
+<title>Ciscoルータとの接続 :: テクニカルリファレンス</title>
 <link rel="shortcut icon" href="/help/images/favicon.png" type="image/x-icon" />
 <link href="/help/css/font-awesome.min.css" rel="stylesheet">
 <link href="/help/css/nucleus.css" rel="stylesheet">
@@ -45,7 +45,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
-<meta name="description" content="VPN Gatewayを用いたCiscoルーターとのIP Sec-VPN接続手順を紹介します。">
+<meta name="description" content="VPN Gatewayを用いたCiscoルータとのIPsec-VPN接続手順を紹介します。">
 
         
 
@@ -402,10 +402,73 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
+      <li data-nav-id="/help/best-practice/network/009_centurysystems-futurenet/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/network/009_centurysystems-futurenet/">
+            CENTURY SYSTEMSとの接続
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/network/003_cisco-asa-5506w/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/network/003_cisco-asa-5506w/">
+            Cisco ASAとの接続
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
       <li data-nav-id="/help/best-practice/network/cisco891f/" class="dd-item active">
         <div>
           <a href="/help/best-practice/network/cisco891f/">
-            VPN Gatewayを用いたCiscoルーターとの手順
+            Ciscoルータとの接続
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/network/004_fortigate-60e/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/network/004_fortigate-60e/">
+            FortiGateとの接続
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/network/010_iij-seil-x1/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/network/010_iij-seil-x1/">
+            IIJ SEIL X1との接続
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/network/011_iij-seil-x4/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/network/011_iij-seil-x4/">
+            IIJ SEIL X4との接続
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/network/005_juniper-srx-320/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/network/005_juniper-srx-320/">
+            Juniper SRXとの接続
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/network/007_nec-ix2215/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/network/007_nec-ix2215/">
+            NEC IXルーターとの接続
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/network/008_dell-sonicwall-tz500/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/network/008_dell-sonicwall-tz500/">
+            SonicWALLとの接続
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/help/best-practice/network/006_yamaha-rtx/" class="dd-item">
+        <div>
+          <a href="/help/best-practice/network/006_yamaha-rtx/">
+            Yamahaルーターとの接続
           </a><i class="fa fa-circle-thin read-icon"></i>
         </div>
     </li>
@@ -795,7 +858,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 
 
- <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/network/'>ネットワーク</a> > VPN Gatewayを用いたCiscoルーターとの手順
+ <a href='/help/'></a> > <a href='/help/best-practice/'>ベストプラクティス</a> > <a href='/help/best-practice/network/'>ネットワーク</a> > Ciscoルータとの接続
 
  
 
@@ -831,7 +894,16 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
   - 
    ネットワーク</option> 
       <option value="/help/best-practice/network/jp-cn/" >-- 日本と中国のNW接続</option>
-      <option value="/help/best-practice/network/cisco891f/"  selected>-- VPN Gatewayを用いたCiscoルーターとの手順</option>
+      <option value="/help/best-practice/network/009_centurysystems-futurenet/" >-- CENTURY SYSTEMSとの接続</option>
+      <option value="/help/best-practice/network/003_cisco-asa-5506w/" >-- Cisco ASAとの接続</option>
+      <option value="/help/best-practice/network/cisco891f/"  selected>-- Ciscoルータとの接続</option>
+      <option value="/help/best-practice/network/004_fortigate-60e/" >-- FortiGateとの接続</option>
+      <option value="/help/best-practice/network/010_iij-seil-x1/" >-- IIJ SEIL X1との接続</option>
+      <option value="/help/best-practice/network/011_iij-seil-x4/" >-- IIJ SEIL X4との接続</option>
+      <option value="/help/best-practice/network/005_juniper-srx-320/" >-- Juniper SRXとの接続</option>
+      <option value="/help/best-practice/network/007_nec-ix2215/" >-- NEC IXルーターとの接続</option>
+      <option value="/help/best-practice/network/008_dell-sonicwall-tz500/" >-- SonicWALLとの接続</option>
+      <option value="/help/best-practice/network/006_yamaha-rtx/" >-- Yamahaルーターとの接続</option>
   
     <option value="/help/best-practice/container/" >
   - 
@@ -851,14 +923,18 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
       </center>
     </div>
 
-    <h1>VPN Gatewayを用いたCiscoルーターとの手順</h1>
+    <h1>Ciscoルータとの接続</h1>
 
     
     
     
     
 
-<p>本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCisco ルーターとIPsec-VPNで接続します。</p>
+<!-- descriptionがコンテンツの前に表示されます -->
+
+<!-- コンテンツを書くときはこの下に記載ください -->
+
+<p>本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCiscoルーターとIPsec-VPNで接続します。</p>
 
 <h2 id="事前準備">事前準備</h2>
 
@@ -890,7 +966,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 </tbody>
 </table>
 
-<p>Ciscoルーターに関する情報および設定方法については、Ciscoルーターお客様相談センターまでお問い合わせください。</p>
+<p>Ciscoルーターに関する情報および設定方法については、Ciscoテクニカルサポートまでお問い合わせください。</p>
 
 <h2 id="設定手順">設定手順</h2>
 
@@ -936,10 +1012,10 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
 <ul>
 <li><p><em>上記完了後、下記のポップアップが表示されるので、OKボタンを押します。</em>
-<img src="https://github.com/sbcloud/help/tree/master/content/best-practice/network/imgs/cm-001.png" alt="img" /></p></li>
+<img src="https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-001.png" alt="img" /></p></li>
 
 <li><p><em>下記、VPN-GWのルートテーブル画面へ遷移しますので、宛先ベースルーティングのタブを選択し、ルートエントリの追加を行います。</em>
-<img src="https://github.com/sbcloud/help/tree/master/content/best-practice/network/imgs/cm-002.png" alt="img" /></p></li>
+<img src="https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-002.png" alt="img" /></p></li>
 
 <li><p><em>ルートエントリの追加は下記の様に行います。</em></p></li>
 </ul>
@@ -947,21 +1023,21 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 <p><em>「宛先CIDRブロック」お客様拠点側セグメントを設定します。</em></p>
 
 <p><em>「VPCに公開」“はい”を選択します。</em>
-  <img src="https://github.com/sbcloud/help/tree/master/content/best-practice/network/imgs/cm-003.png" alt="img" /></p>
+  <img src="https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-003.png" alt="img" /></p>
 
 <p><em>「OK」ボタンを押します。</em></p>
 
 <ul>
 <li>*VPN-GW*<em>のルートテーブルにてルートエントリの追加が行われ、ステータスが公開済みとなっていることを確認します。</em>
-<img src="https://github.com/sbcloud/help/tree/master/content/best-practice/network/imgs/cm-004.png" alt="img" /></li>
+<img src="https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-004.png" alt="img" /></li>
 </ul>
 
 <ol>
 <li>IPsec Connectionsの画面より、VPN 接続が追加されることを確認します。
-<img src="https://github.com/sbcloud/help/tree/master/content/best-practice/network/imgs/cm-005.png" alt="img" /></li>
+<img src="https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-005.png" alt="img" /></li>
 </ol>
 
-<h3 id="ステップ-2-cisco-ルーターの設定">ステップ 2：Cisco ルーターの設定</h3>
+<h3 id="ステップ-2-ciscoルーターの設定">ステップ 2：Ciscoルーターの設定</h3>
 
 <p>Cisco ルーターにアクセスし以下の項目を設定します。</p>
 
@@ -1031,24 +1107,24 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 </ol>
 </blockquote>
 
-<p><strong><em>注意:</em></strong> <em>ルーティング、ポリシー等の項目についても運用方針に沿ってCisco ルーター側を設定する必要があります。ステップ１でVPN Gatewayのヘルスチェックを利用する場合は送信元IPからのICMPパケットをCisco ルーター側で許可する必要があります。</em></p>
+<p><strong><em>注意:</em></strong> <em>ルーティング、ポリシー等の項目についても運用方針に沿ってCiscoルーター側を設定する必要があります。ステップ１でVPN Gatewayのヘルスチェックを利用する場合は送信元IPからのICMPパケットをCiscoルーター側で許可する必要があります。</em></p>
 
 <h3 id="ステップ-3-ステータス確認">ステップ 3：ステータス確認</h3>
 
 <p>Cisco ルーターの設定が完了し、接続が成功すれば、接続ステータスが「成功」、ヘルスチェックステータスが「正常」に変わります。
-  <img src="https://github.com/sbcloud/help/tree/master/content/best-practice/network/imgs/cm-006.png" alt="img" /></p>
+  <img src="https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-006.png" alt="img" /></p>
 
 <h3 id="ステップ4-接続のテスト">ステップ4：接続のテスト</h3>
 
-<p>VPC 内のECS インスタンスにログインし、拠点内のプライベート IP アドレスに ping を送信して、VPC と拠点側の通信が成功することを確認します。</p>
+<p>VPC内のECSインスタンスにログインし、拠点内のプライベートIPアドレスにpingを送信して、VPCと拠点側の通信が成功することを確認します。</p>
 
 
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-prev" href="/help/best-practice/network/jp-cn/" title="日本と中国のNW接続"> <i class="fa fa-chevron-left"></i><label>日本と中国のNW接続</label></a>
-    <a class="nav nav-next" href="/help/best-practice/container/" title="コンテナ" style="margin-right: 0px;"><label>コンテナ</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/help/best-practice/network/003_cisco-asa-5506w/" title="Cisco ASAとの接続"> <i class="fa fa-chevron-left"></i><label>Cisco ASAとの接続</label></a>
+    <a class="nav nav-next" href="/help/best-practice/network/004_fortigate-60e/" title="FortiGateとの接続" style="margin-right: 0px;"><label>FortiGateとの接続</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -1063,7 +1139,7 @@ setTimeout(mieruca, 500); document.readyState != "complete" ? (window.attachEven
 
     
     <div class="date">
-        <i class='fa fa-calendar'></i>  09/01/2020
+        <i class='fa fa-calendar'></i>  09/10/2020
     </div>
     
 

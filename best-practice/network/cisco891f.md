@@ -1,12 +1,17 @@
-﻿---
-title: "VPN Gatewayを用いたCiscoルーターとの手順"
-description: "VPN Gatewayを用いたCiscoルーターとのIP Sec-VPN接続手順を紹介します。"
-date: 2020-09-01T12:30:18+08:00
+---
+title: "Ciscoルータとの接続"
+description: "VPN Gatewayを用いたCiscoルータとのIPsec-VPN接続手順を紹介します。"
+date: 2020-09-10T00:00:00+00:00
 weight: 40
 draft: false
+
 ---
 
-本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCisco ルーターとIPsec-VPNで接続します。
+<!-- descriptionがコンテンツの前に表示されます -->
+
+<!-- コンテンツを書くときはこの下に記載ください -->
+
+本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCiscoルーターとIPsec-VPNで接続します。
 
 ## 事前準備
 
@@ -26,7 +31,7 @@ Alibaba CloudのVPCとの接続を保証するものではありません。
 | ---------- | ----------------- |
 | C891FJ-K9  | Version 15.4(3)M8 |
 
-Ciscoルーターに関する情報および設定方法については、Ciscoルーターお客様相談センターまでお問い合わせください。
+Ciscoルーターに関する情報および設定方法については、Ciscoテクニカルサポートまでお問い合わせください。
 
 ## 設定手順
 
@@ -63,28 +68,28 @@ Ciscoルーターに関する情報および設定方法については、Cisco�
 3. ルートの追加をします。
 
 - *上記完了後、下記のポップアップが表示されるので、OKボタンを押します。*
-  ![img](https://github.com/sbcloud/help/tree/master/content/best-practice/network/imgs/cm-001.png)
+  ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-001.png)
 
 - *下記、VPN-GWのルートテーブル画面へ遷移しますので、宛先ベースルーティングのタブを選択し、ルートエントリの追加を行います。*
-  ![img](https://github.com/sbcloud/help/tree/master/content/best-practice/network/imgs/cm-002.png)
+  ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-002.png)
 
 - *ルートエントリの追加は下記の様に行います。*
 
   *「宛先CIDRブロック」お客様拠点側セグメントを設定します。*
 
   *「VPCに公開」“はい”を選択します。*
-  ![img](https://github.com/sbcloud/help/tree/master/content/best-practice/network/imgs/cm-003.png)
+  ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-003.png)
 
   *「OK」ボタンを押します。*
 
 - *VPN-GW**のルートテーブルにてルートエントリの追加が行われ、ステータスが公開済みとなっていることを確認します。*
-  ![img](https://github.com/sbcloud/help/tree/master/content/best-practice/network/imgs/cm-004.png)
+  ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-004.png)
 
 4. IPsec Connectionsの画面より、VPN 接続が追加されることを確認します。
-    ![img](https://github.com/sbcloud/help/tree/master/content/best-practice/network/imgs/cm-005.png)
+    ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-005.png)
 
 
-### ステップ 2：Cisco ルーターの設定
+### ステップ 2：Ciscoルーターの設定
 
 Cisco ルーターにアクセスし以下の項目を設定します。
 
@@ -92,12 +97,12 @@ Cisco ルーターにアクセスし以下の項目を設定します。
 
 
 >1.     !
->2.     crypto ikev2 proposal <ikev2proposal> 
+>2.     crypto ikev2 proposal <ikev2proposal>
 >3.     encryption aes-cbc-128
 >4.     integrity sha1
 >5.     group 2
 >6.     !
->7.     crypto ikev2 policy <ikev2policy> 
+>7.     crypto ikev2 policy <ikev2policy>
 >8.     proposal <ikev2proposal>
 >9.     !
 >10.     crypto ikev2 keyring <ikev2keyring>
@@ -109,12 +114,12 @@ Cisco ルーターにアクセスし以下の項目を設定します。
 >16.     !
 >17.     crypto ikev2 profile <ikev2profile>
 >18.     match address local <お客様拠点ルーターのグローバルIPアドレス>
->19.     match identity remote address <VPN GatewayのグローバルIPアドレス> 255.255.255.255 
+>19.     match identity remote address <VPN GatewayのグローバルIPアドレス> 255.255.255.255
 >20.     authentication remote pre-share
 >21.     authentication local pre-share
 >22.     keyring local <ikev2keyring>
 >23.     !
->24.     crypto ipsec transform-set ESP-AES-SHA esp-aes esp-sha-hmac 
+>24.     crypto ipsec transform-set ESP-AES-SHA esp-aes esp-sha-hmac
 >25.     mode tunnel
 >26.     !
 >27.     crypto ipsec profile <ipsecprofile>
@@ -137,14 +142,13 @@ Cisco ルーターにアクセスし以下の項目を設定します。
 
 >1.     ip route 192.168.0.0 255.255.255.0 Tunnel <Number>
 
-  ***注意:*** *ルーティング、ポリシー等の項目についても運用方針に沿ってCisco ルーター側を設定する必要があります。ステップ１でVPN Gatewayのヘルスチェックを利用する場合は送信元IPからのICMPパケットをCisco ルーター側で許可する必要があります。*
+  ***注意:*** *ルーティング、ポリシー等の項目についても運用方針に沿ってCiscoルーター側を設定する必要があります。ステップ１でVPN Gatewayのヘルスチェックを利用する場合は送信元IPからのICMPパケットをCiscoルーター側で許可する必要があります。*
 
 ### ステップ 3：ステータス確認
 
 Cisco ルーターの設定が完了し、接続が成功すれば、接続ステータスが「成功」、ヘルスチェックステータスが「正常」に変わります。
-  ![img](https://github.com/sbcloud/help/tree/master/content/best-practice/network/imgs/cm-006.png)
-
+  ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-006.png)
 
 ### ステップ4：接続のテスト
 
-VPC 内のECS インスタンスにログインし、拠点内のプライベート IP アドレスに ping を送信して、VPC と拠点側の通信が成功することを確認します。
+VPC内のECSインスタンスにログインし、拠点内のプライベートIPアドレスにpingを送信して、VPCと拠点側の通信が成功することを確認します。

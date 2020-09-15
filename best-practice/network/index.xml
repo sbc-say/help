@@ -34,21 +34,183 @@ VPNトンネルの構築は以下の2ステップで実現出来ます。
     </item>
     
     <item>
-      <title>VPN Gatewayを用いたCiscoルーターとの手順</title>
+      <title>CENTURY SYSTEMSとの接続</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/network/009_centurysystems-futurenet/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/network/009_centurysystems-futurenet/</guid>
+      <description>本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCENTURY SYSTEMSルーターとIPsec-VPNで接続します。
+事前準備 ネットワークやIPアドレス等を事前に設計し、VPN Gatewayを購入します。
+本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) とCENTURY SYSTEMSルーター側(セグメント 192.168.100.0/24) をRoute-basedで接続します。
+本設定例について Alibaba CloudのVPCとの接続を保証するものではありません。
+2019年 8 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
+本設定例でテスト済みのCENTURY SYSTEMSルーターは以下になります。
+   モデル バージョン     FutureNet NXR-G100 ver 6.20.0   FutureNet NXR-G240 ver 9.9.3    CENTURY SYSTEMSルーターに関する情報および設定方法については、CENTURY SYSTEMSルーターFutureNetサポートデスクまでお問い合わせください。
+設定手順 ステップ 1：VPN Gateway の設定  対象VPCにVPN Gatewayとカスタマーゲートウェイを作成します。カスタマーゲートウェイの設定ではお客様拠点 ルーターのグローバルIPアドレスを使って設定します。
+ IPsec ConnectionsよりVPN接続を作成します。
+   以下の項目を入力します  「名前」任意の識別名を入力します。 「VPN Gateway」作成したVPN Gateway名を選択します。 「カスタマーゲートウェイ」　作成したカスタマーゲートウェイを選択します。 「ローカルネットワーク」クラウド側ネットワーク (0.</description>
+    </item>
+    
+    <item>
+      <title>Cisco ASAとの接続</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/network/003_cisco-asa-5506w/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/network/003_cisco-asa-5506w/</guid>
+      <description>本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCisco ASAとIPsec-VPNで接続します。
+事前準備 ネットワークやIPアドレス等を事前に設計し、VPN Gatewayを購入します。
+本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) と拠点側のCisco ASAを (セグメント 192.168.100.0/24) Route-Based接続します。
+本設定例について Alibaba CloudのVPCとの接続を保証するものではありません。
+2019年 5 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
+本設定例でテスト済みのCisco ASAは以下になります。
+   モデル バージョン     Cisco ASA 5506W Version 9.10(1)    Cisco ASAに関する情報および設定方法については、Ciscoテクニカルサポートまでお問い合わせください。
+設定手順 ステップ 1：VPN Gateway の設定  対象VPCにVPN Gatewayとカスタマーゲートウェイを作成します。カスタマーゲートウェイの設定ではお客様拠点 ルーターのグローバルIPアドレスを使って設定します。
+ IPsec ConnectionsよりVPN接続を作成します。
+   以下の項目を入力します  「名前」任意の識別名を入力します。 「VPN Gateway」作成したVPN Gateway名を選択します。 「カスタマーゲートウェイ」　作成したカスタマーゲートウェイを選択します。 「ローカルネットワーク」クラウド側ネットワーク (0.0.0.0/0) を入力します。 「リモートネットワーク」お客様拠点側ネットワーク ( 0.</description>
+    </item>
+    
+    <item>
+      <title>Ciscoルータとの接続</title>
       <link>https://www.sbcloud.co.jp/help/best-practice/network/cisco891f/</link>
-      <pubDate>Tue, 01 Sep 2020 12:30:18 +0800</pubDate>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>https://www.sbcloud.co.jp/help/best-practice/network/cisco891f/</guid>
-      <description>本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCisco ルーターとIPsec-VPNで接続します。
+      <description>本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCiscoルーターとIPsec-VPNで接続します。
 事前準備 ネットワークや IP アドレス等を事前に設計し、VPN Gatewayを購入します。
 本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) とCiscoルーター側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
 本設定例について Alibaba CloudのVPCとの接続を保証するものではありません。
 2019年 5 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
 本設定例でテスト済みのCiscoルーターは以下になります。
-   モデル バージョン     C891FJ-K9 Version 15.4(3)M8    Ciscoルーターに関する情報および設定方法については、Ciscoルーターお客様相談センターまでお問い合わせください。
+   モデル バージョン     C891FJ-K9 Version 15.4(3)M8    Ciscoルーターに関する情報および設定方法については、Ciscoテクニカルサポートまでお問い合わせください。
 設定手順 ステップ 1：VPN Gateway の設定  対象VPCにVPN Gatewayとカスタマーゲートウェイを作成します。カスタマーゲートウェイの設定ではお客様拠点 ルーターのグローバルIPアドレスを使って設定します。
  IPsec ConnectionsよりVPN接続を作成します。
    以下の項目を入力します  「名前」任意の識別名を入力します。 「VPN Gateway」作成したVPN Gateway名を選択します。 「カスタマーゲートウェイ」　作成したカスタマーゲートウェイを選択します。 「ローカルネットワーク」クラウド側ネットワーク (0.0.0.0/0) を入力します。 「リモートネットワーク」お客様拠点側ネットワーク ( 0.0.0.0/0 ) を入力します。 「今すぐ有効化」“はい”を選択します。 「高度な構成」有効にします。 「事前共有鍵」お客様拠点側ルーターと同一の任意の共有鍵を入力します。 「バージョン」ikev2を選択します。</description>
+    </item>
+    
+    <item>
+      <title>FortiGateとの接続</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/network/004_fortigate-60e/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/network/004_fortigate-60e/</guid>
+      <description>本設定例では、VPCに設置したVPN Gatewayを、お客様拠点に設置したFortiGateとIPsec-VPNで接続します。
+事前準備 ネットワークやIPアドレス等を事前に設計し、VPN Gatewayを購入します。
+本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) とFortiGate側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
+本設定例について Alibaba CloudのVPCとの接続を保証するものではありません。
+2019年 5 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
+本設定例でテスト済みの FortiGateは以下になります。
+   モデル バージョン     FortiGate 60E v6.0.3 build0200 (GA)    FortiGateに関する情報および設定方法については、FortiGateご購入の販売店様にお問い合わせください。
+設定手順 ステップ 1：VPN Gateway の設定  対象VPCにVPN Gatewayとカスタマーゲートウェイを作成します。カスタマーゲートウェイの設定ではお客様拠点 ルーターのグローバルIPアドレスを使って設定します。
+ IPsec ConnectionsよりVPN接続を作成します。
+   以下の項目を入力します  「名前」任意の識別名を入力します。 「VPN Gateway」作成したVPN Gateway名を選択します。 「カスタマーゲートウェイ」　作成したカスタマーゲートウェイを選択します。 「ローカルネットワーク」クラウド側ネットワーク (0.0.0.0/0) を入力します。 「リモートネットワーク」お客様拠点側ネットワーク ( 0.0.0.0/0 ) を入力します。 「今すぐ有効化」“はい”を選択します。 「高度な構成」有効にします。 「事前共有鍵」お客様拠点側ルーターと同一の任意の共有鍵を入力します。 「バージョン」ikev2を選択します。</description>
+    </item>
+    
+    <item>
+      <title>IIJ SEIL X1との接続</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/network/010_iij-seil-x1/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/network/010_iij-seil-x1/</guid>
+      <description>本設定例では、VPC に作成したVPN Gatewayを、お客様拠点に設置したIIJ SEIL X1とIPsec-VPNで接続します。
+事前準備 ネットワークや IP アドレス等を事前に設計し、VPN Gatewayを購入します。
+本設定例では、クラウド側の VPC (セグメント 192.168.0.0/24) とIIJ SEIL X1側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
+本設定例について Alibaba CloudのVPCとの接続を保証するものではありません。
+2019年 5 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
+本設定例でテスト済みのIIJ ルーターは以下になります。
+   モデル バージョン     SEIL X1 Version 5.97    IIJ ルーターに関する情報および設定方法については、販売代理店までお問い合わせください。
+設定手順 ステップ 1：VPN Gateway の設定  対象VPCにVPN Gatewayとカスタマーゲートウェイを作成します。カスタマーゲートウェイの設定ではお客様拠点ルーターのグローバルIPアドレスを使って設定します。
+ IPsec ConnectionsよりVPN接続を作成します。
+   以下の項目を入力します  「名前」任意の識別名を入力します。 「VPN Gateway」作成したVPN Gateway名を選択します。 「カスタマーゲートウェイ」　作成したカスタマーゲートウェイを選択します。 「ローカルネットワーク」クラウド側ネットワーク (0.</description>
+    </item>
+    
+    <item>
+      <title>IIJ SEIL X4との接続</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/network/011_iij-seil-x4/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/network/011_iij-seil-x4/</guid>
+      <description>本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したIIJ SEIL X4とIPsec-VPNで接続します。
+事前準備 ネットワークや IP アドレス等を事前に設計し、VPN Gatewayを購入します。
+本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) とIIJ SEIL X4側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
+本設定例について Alibaba CloudのVPCとの接続を保証するものではありません。
+2019年 8 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
+本設定例でテスト済みのIIJ ルーターは以下になります。
+   モデル バージョン     SEIL X4 Version 1.1.0    IIJ ルーターに関する情報および設定方法については、販売代理店までお問い合わせください。
+設定手順 ステップ 1：VPN Gateway の設定  対象VPCにVPN Gatewayとカスタマーゲートウェイを作成します。カスタマーゲートウェイの設定ではお客様拠点 ルーターのグローバルIPアドレスを使って設定します。
+ IPsec ConnectionsよりVPN接続を作成します。
+   以下の項目を入力します  「名前」任意の識別名を入力します。 「VPN Gateway」作成したVPN Gateway名を選択します。 「カスタマーゲートウェイ」　作成したカスタマーゲートウェイを選択します。 「ローカルネットワーク」クラウド側ネットワーク (0.0.0.0/0) を入力します。 「リモートネットワーク」お客様拠点側ネットワーク ( 0.</description>
+    </item>
+    
+    <item>
+      <title>Juniper SRXとの接続</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/network/005_juniper-srx-320/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/network/005_juniper-srx-320/</guid>
+      <description>本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したJuniper SRXとIPsec-VPNで接続します。
+事前準備 ネットワークやIPアドレス等を事前に設計し、VPN Gatewayを購入します。
+本設定例では、クラウド側の VPC (セグメント 192.168.0.0/24) とJuniper SRX側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
+本設定例について Alibaba CloudのVPCとの接続を保証するものではありません。
+2019年 8 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
+本設定例でテスト済みの Juniper SRXは以下になります。
+   モデル バージョン     Juniper SRX320 Version 15.1X49-D150.2    Juniper SRXに関する情報および設定方法については、ジュニパーネットワークス株式会社または販売代理店までお問い合わせください。
+設定手順 ステップ 1：VPN Gateway の設定  対象VPCにVPN Gatewayとカスタマーゲートウェイを作成します。カスタマーゲートウェイの設定ではお客様拠点 ルーターのグローバルIPアドレスを使って設定します。
+ IPsec ConnectionsよりVPN接続を作成します。
+   以下の項目を入力します  「名前」任意の識別名を入力します。 「VPN Gateway」作成したVPN Gateway名を選択します。 「カスタマーゲートウェイ」　作成したカスタマーゲートウェイを選択します。 「ローカルネットワーク」クラウド側ネットワーク (0.0.0.0/0) を入力します。 「リモートネットワーク」お客様拠点側ネットワーク ( 0.</description>
+    </item>
+    
+    <item>
+      <title>NEC IXルーターとの接続</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/network/007_nec-ix2215/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/network/007_nec-ix2215/</guid>
+      <description>本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したNEC IXルーターとIPsec-VPNで接続します。
+事前準備 ネットワークやIPアドレス等を事前に設計し、VPN Gatewayを購入します。
+本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) とNEC IXルーター側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
+本設定例について Alibaba CloudのVPCとの接続を保証するものではありません。
+2019年 8 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
+本設定例でテスト済みのNEC IXルーターは以下になります。
+   モデル バージョン     NEC IX2215 Version 10.1.16    NEC IXルーターに関する情報および設定方法については、NECお問い合わせ窓口までお問い合わせください。
+設定手順 ステップ 1：VPN Gateway の設定  対象VPCにVPN Gatewayとカスタマーゲートウェイを作成します。カスタマーゲートウェイの設定ではお客様拠点 ルーターのグローバルIPアドレスを使って設定します。
+ IPsec ConnectionsよりVPN接続を作成します。
+   以下の項目を入力します  「名前」任意の識別名を入力します。 「VPN Gateway」作成したVPN Gateway名を選択します。 「カスタマーゲートウェイ」　作成したカスタマーゲートウェイを選択します。 「ローカルネットワーク」クラウド側ネットワーク (0.0.0.0/0) を入力します。 「リモートネットワーク」お客様拠点側ネットワーク ( 0.0.0.0/0 ) を入力します。 「今すぐ有効化」“はい”を選択します。 「高度な構成」有効にします。 「事前共有鍵」お客様拠点側ルーターと同一の任意の共有鍵を入力します。 「バージョン」ikev2を選択します。</description>
+    </item>
+    
+    <item>
+      <title>SonicWALLとの接続</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/network/008_dell-sonicwall-tz500/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/network/008_dell-sonicwall-tz500/</guid>
+      <description>本設定例では、VPCに設置したVPN Gatewayを、お客様拠点に設置したSonicWALLとIPsec-VPNで接続します。
+事前準備 ネットワークやIPアドレス等を事前に設計し、VPN Gatewayを購入します。
+本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) とSonicWALL側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
+本設定例について Alibaba CloudのVPCとの接続を保証するものではありません。
+2019年 11 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
+本設定例でテスト済みの SonicWALLは以下になります。
+   モデル バージョン     SonicWALL TZ500 SonicOS Enhanced 6.5.4.4-44n.jpn    SonicWALLに関する情報および設定方法については、SonicWALLお客様サポートセンターまでお問い合わせください。
+設定手順 ステップ 1：VPN Gateway の設定  対象VPCにVPN Gatewayとカスタマーゲートウェイを作成します。カスタマーゲートウェイの設定ではお客様拠点 ルーターのグローバルIPアドレスを使って設定します。
+ IPsec ConnectionsよりVPN接続を作成します。
+   以下の項目を入力します  「名前」任意の識別名を入力します。 「VPN Gateway」作成したVPN Gateway名を選択します。 「カスタマーゲートウェイ」　作成したカスタマーゲートウェイを選択します。 「ローカルネットワーク」クラウド側ネットワーク (0.0.0.0/0) を入力します。 「リモートネットワーク」お客様拠点側ネットワーク ( 0.0.0.0/0 ) を入力します。 「今すぐ有効化」“はい”を選択します。 「高度な構成」有効にします。 「事前共有鍵」お客様拠点側ルーターと同一の任意の共有鍵を入力します。 「バージョン」ikev2を選択します。</description>
+    </item>
+    
+    <item>
+      <title>Yamahaルーターとの接続</title>
+      <link>https://www.sbcloud.co.jp/help/best-practice/network/006_yamaha-rtx/</link>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.sbcloud.co.jp/help/best-practice/network/006_yamaha-rtx/</guid>
+      <description>本設定例では、VPC に設置したVPN Gatewayを、お客様拠点に設置したYamahaルーターとIPsec-VPNで接続します。
+事前準備 ネットワークや IP アドレス等を事前に設計し、VPN Gatewayを購入します。
+本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) とYamahaルーター側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
+本設定例について Alibaba CloudのVPCとの接続を保証するものではありません。
+2019年 5 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
+本設定例でテスト済みの Yamahaルーターは以下になります。
+   モデル バージョン     RTX830 Rev.15.02.09   RTX1210 Rev.14.01.33    Yamahaルーターに関する情報および設定方法については、Yamahaルーターお客様相談センターまでお問い合わせください。
+設定手順 ステップ 1：VPN Gateway の設定  対象VPCにVPN Gatewayとカスタマーゲートウェイを作成します。カスタマーゲートウェイの設定ではお客様拠点 ルーターのグローバルIPアドレスを使って設定します。
+ IPsec ConnectionsよりVPN接続を作成します。
+   以下の項目を入力します  「名前」任意の識別名を入力します。 「VPN Gateway」作成したVPN Gateway名を選択します。 「カスタマーゲートウェイ」　作成したカスタマーゲートウェイを選択します。 「ローカルネットワーク」クラウド側ネットワーク (0.0.0.0/0) を入力します。 「リモートネットワーク」お客様拠点側ネットワーク ( 0.</description>
     </item>
     
   </channel>
