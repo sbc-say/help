@@ -1,6 +1,6 @@
 ---
-title: "Ciscoルータとの接続"
-description: "VPN Gatewayを用いたCiscoルータとのIPsec-VPN接続手順を紹介します。"
+title: "Yamahaルーターとの接続"
+description: "VPN Gatewayを用いたYamahaルーターとのIPsec-VPN接続手順を紹介します。"
 date: 2020-09-10T00:00:00+00:00
 weight: 40
 draft: false
@@ -11,13 +11,15 @@ draft: false
 
 <!-- コンテンツを書くときはこの下に記載ください -->
 
-本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCiscoルーターとIPsec-VPNで接続します。
+
+
+本設定例では、VPC に設置したVPN Gatewayを、お客様拠点に設置したYamahaルーターとIPsec-VPNで接続します。
 
 ## 事前準備
 
 ネットワークや IP アドレス等を事前に設計し、VPN Gatewayを購入します。
 
-本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) とCiscoルーター側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
+本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) とYamahaルーター側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
 
 ## 本設定例について
 
@@ -25,13 +27,14 @@ Alibaba CloudのVPCとの接続を保証するものではありません。
 
 2019年 5 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
 
-本設定例でテスト済みのCiscoルーターは以下になります。
+本設定例でテスト済みの Yamahaルーターは以下になります。
 
-| **モデル** | **バージョン**    |
-| ---------- | ----------------- |
-| C891FJ-K9  | Version 15.4(3)M8 |
+| **モデル** | **バージョン** |
+| ---------- | -------------- |
+| RTX830     | Rev.15.02.09   |
+| RTX1210    | Rev.14.01.33   |
 
-Ciscoルーターに関する情報および設定方法については、Ciscoテクニカルサポートまでお問い合わせください。
+Yamahaルーターに関する情報および設定方法については、Yamahaルーターお客様相談センターまでお問い合わせください。
 
 ## 設定手順
 
@@ -88,65 +91,57 @@ Ciscoルーターに関する情報および設定方法については、Cisco�
 4. IPsec Connectionsの画面より、VPN 接続が追加されることを確認します。
     ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-005.png)
 
+### ステップ 2：Yamahaルーターの設定
 
-### ステップ 2：Ciscoルーターの設定
-
-Cisco ルーターにアクセスし以下の項目を設定します。
+Yamahaルーターにアクセスし以下の項目を設定します。
 
 -  IPsec接続設定
 
+>1.     tunnel select 1
+>2.     description tunnel "Alibaba Cloud"
+>3.     ipsec tunnel 1
+>4.     ipsec sa policy 1 1 esp aes-cbc sha-hmac
+>5.     ipsec ike version 1 2
+>6.     ipsec ike duration child-sa 1 86400
+>7.     ipsec ike duration ike-sa 1 86400
+>8.     ipsec ike keepalive log 1 off
+>9.     ipsec ike keepalive use 1 on dpd
+>10.     ipsec ike local address 1 (お客様拠点ルーターのグローバルIPアドレス)
+>11.     ipsec ike log 1 key-info payload-info
+>12.     ipsec ike local name 1 (お客様拠点ルーターのグローバルIPアドレス) ipv4-addr
+>13.     ipsec ike nat-traversal 1 on
+>14.     ipsec ike message-id-control 1 on
+>15.     ipsec ike child-exchange type 1 2
+>16.     ipsec ike pre-shared-key 1 text (任意の共有鍵)
+>17.     ipsec ike remote address 1 （VPN GatewayグローバルIPアドレス）
+>18.     ipsec ike remote name 1 （VPN GatewayグローバルIPアドレス） ipv4-addr
+>19.     ipsec ike negotiation receive 1 off
+>20.     ip tunnel tcp mss limit auto
+>21.     tunnel enable 1
 
->1.     !
->2.     crypto ikev2 proposal <ikev2proposal>
->3.     encryption aes-cbc-128
->4.     integrity sha1
->5.     group 2
->6.     !
->7.     crypto ikev2 policy <ikev2policy>
->8.     proposal <ikev2proposal>
->9.     !
->10.     crypto ikev2 keyring <ikev2keyring>
->11.     peer <AlibabaCloud>
->12.     address <VPN GatewayのグローバルIPアドレス>
->13.     pre-shared-key <Alibaba Cloud VPN Gatewayと同一の任意の共有鍵>
->14.     !
->15.     !
->16.     !
->17.     crypto ikev2 profile <ikev2profile>
->18.     match address local <お客様拠点ルーターのグローバルIPアドレス>
->19.     match identity remote address <VPN GatewayのグローバルIPアドレス> 255.255.255.255
->20.     authentication remote pre-share
->21.     authentication local pre-share
->22.     keyring local <ikev2keyring>
->23.     !
->24.     crypto ipsec transform-set ESP-AES-SHA esp-aes esp-sha-hmac
->25.     mode tunnel
->26.     !
->27.     crypto ipsec profile <ipsecprofile>
->28.     set security-association lifetime seconds <86400>
->29.     set transform-set <ESP-AES-SHA>
->30.     set ikev2-profile <ikev2profile>
->31.     !
+-  NATマスカレード設定
 
--  Tunnelインターフェイスの設定
+>1.     nat descriptor type 200 masquerade
 
->1.     interface Tunnel <Number>
->2.     ip unnumbered <お客様ルーターのWANインターフェイス>
->3.     ip virtual-reassembly in
->4.      tunnel source <お客様ルーターのグローバルIPアドレス>
->5.      tunnel mode ipsec ipv4
->6.      tunnel destination <VPN GatewayのグローバルIPアドレス>
->7.      tunnel protection ipsec profile <ipsecprofile>
+-  IPsec用静的マスカレード設定
+
+>1.     nat descriptor masquerade static 200 1 192.168.100.1 udp 4500
+>2.     nat descriptor masquerade static 200 2 192.168.100.1 udp 500
+>3.     nat descriptor masquerade static 200 3 192.168.100.1 esp
+
+-  IPsec接続始動（鍵交換）設定
+
+>1.     ipsec auto refresh on
 
 -  経路設定
 
->1.     ip route 192.168.0.0 255.255.255.0 Tunnel <Number>
+>1.     ip route 192.168.0.0/24 gateway tunnel 1
 
-  ***注意:*** *ルーティング、ポリシー等の項目についても運用方針に沿ってCiscoルーター側を設定する必要があります。ステップ１でVPN Gatewayのヘルスチェックを利用する場合は送信元IPからのICMPパケットをCiscoルーター側で許可する必要があります。*
+  ***注意:*** *ルーティング、ポリシー等の項目についても運用方針に沿ってYamahaルーター側を設定する必要があります。ステップ１でVPN Gatewayのヘルスチェックを利用する場合は送信元IPからのICMPパケットをYamaha ルーター側で許可する必要があります。*
 
 ### ステップ 3：ステータス確認
 
-Cisco ルーターの設定が完了し、接続が成功すれば、接続ステータスが「成功」、ヘルスチェックステータスが「正常」に変わります。
+Yamahaルーターの設定が完了し、接続が成功すれば、接続ステータスが「成功」、ヘルスチェックステータスが「正常」に変わります。
   ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-006.png)
 
 ### ステップ4：接続のテスト
