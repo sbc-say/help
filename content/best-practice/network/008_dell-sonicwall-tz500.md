@@ -1,6 +1,6 @@
 ---
-title: "Ciscoルータとの接続"
-description: "VPN Gatewayを用いたCiscoルータとのIPsec-VPN接続手順を紹介します。"
+title: "SonicWALLとの接続"
+description: "VPN Gatewayを用いたSonicWALLとのIPsec-VPN接続手順を紹介します。"
 date: 2020-09-10T00:00:00+00:00
 weight: 40
 draft: false
@@ -11,27 +11,29 @@ draft: false
 
 <!-- コンテンツを書くときはこの下に記載ください -->
 
-本設定例では、VPCに作成したVPN Gatewayを、お客様拠点に設置したCiscoルーターとIPsec-VPNで接続します。
+
+
+本設定例では、VPCに設置したVPN Gatewayを、お客様拠点に設置したSonicWALLとIPsec-VPNで接続します。
 
 ## 事前準備
 
-ネットワークや IP アドレス等を事前に設計し、VPN Gatewayを購入します。
+ネットワークやIPアドレス等を事前に設計し、VPN Gatewayを購入します。
 
-本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) とCiscoルーター側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
+本設定例では、クラウド側のVPC (セグメント 192.168.0.0/24) とSonicWALL側 (セグメント 192.168.100.0/24) をRoute-basedで接続します。
 
 ## 本設定例について
 
 Alibaba CloudのVPCとの接続を保証するものではありません。
 
-2019年 5 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
+2019年 11 月の仕様に基づいて記載しています。確認しているファームウェアは下記のとおりです。今後、サービス内容の変更や、仕様変更などによって接続できなくなる可能性があります。
 
-本設定例でテスト済みのCiscoルーターは以下になります。
+本設定例でテスト済みの SonicWALLは以下になります。
 
-| **モデル** | **バージョン**    |
-| ---------- | ----------------- |
-| C891FJ-K9  | Version 15.4(3)M8 |
+| **モデル**      | **バージョン**                    |
+| --------------- | --------------------------------- |
+| SonicWALL TZ500 | SonicOS Enhanced  6.5.4.4-44n.jpn |
 
-Ciscoルーターに関する情報および設定方法については、Ciscoテクニカルサポートまでお問い合わせください。
+SonicWALLに関する情報および設定方法については、SonicWALLお客様サポートセンターまでお問い合わせください。
 
 ## 設定手順
 
@@ -88,65 +90,50 @@ Ciscoルーターに関する情報および設定方法については、Cisco�
 4. IPsec Connectionsの画面より、VPN 接続が追加されることを確認します。
     ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-005.png)
 
+### ステップ 2：SonicWALLの設定
 
-### ステップ 2：Ciscoルーターの設定
+SonicWALLにアクセスし以下の項目を設定します。
 
-Cisco ルーターにアクセスし以下の項目を設定します。
+- IPsec接続設定
+管理 > 接続性 > VPN > 基本設定 を選択し、VPN ポリシー > 追加を選択します。
 
--  IPsec接続設定
+- 一般設定タブ
+\> セキュリティ
+ポリシー種別：トンネル インターフェースを選択します。
+認証方式：IKE (事前共有鍵を使用)を選択します。
+名前：任意の名前を入力します。
+プライマリ IPsec ゲートウェイ名またはアドレス：VPN GatewayのIPアドレスを入力します。
+  ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/sw-001.png)
+\> IKE 認証
+共有鍵：Alibaba Cloud VPN Gatewayと同一の任意の共有鍵を入力します。
+ローカル IKE ID：IPv4アドレスを選択し、お客様拠点ルータのIPアドレスを入力します。
+ピア IKE ID：IPv4 アドレスを選択し、VPN GatewayのIPアドレスを入力します。
+  ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/sw-002.png)
 
+- プロポーザル設定タブ
+\> IKE（フェーズ１）プロポーザル
+鍵交換モード：IKEv2モードを選択します。
+DH グループ：グループ 2を選択します。
+暗号化：AES-128を選択します。
+認証：SHA1を選択します。
+存続期間 (秒)：86400 を入力します。
+  ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/sw-003.png)
+\> Ipsec（フェーズ２）プロポーザル
+プロトコル：ESPを選択します。
+暗号化：AES-128を選択します。
+存続期間 (秒)：86400 を入力します。
+  ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/sw-004.png)
 
->1.     !
->2.     crypto ikev2 proposal <ikev2proposal>
->3.     encryption aes-cbc-128
->4.     integrity sha1
->5.     group 2
->6.     !
->7.     crypto ikev2 policy <ikev2policy>
->8.     proposal <ikev2proposal>
->9.     !
->10.     crypto ikev2 keyring <ikev2keyring>
->11.     peer <AlibabaCloud>
->12.     address <VPN GatewayのグローバルIPアドレス>
->13.     pre-shared-key <Alibaba Cloud VPN Gatewayと同一の任意の共有鍵>
->14.     !
->15.     !
->16.     !
->17.     crypto ikev2 profile <ikev2profile>
->18.     match address local <お客様拠点ルーターのグローバルIPアドレス>
->19.     match identity remote address <VPN GatewayのグローバルIPアドレス> 255.255.255.255
->20.     authentication remote pre-share
->21.     authentication local pre-share
->22.     keyring local <ikev2keyring>
->23.     !
->24.     crypto ipsec transform-set ESP-AES-SHA esp-aes esp-sha-hmac
->25.     mode tunnel
->26.     !
->27.     crypto ipsec profile <ipsecprofile>
->28.     set security-association lifetime seconds <86400>
->29.     set transform-set <ESP-AES-SHA>
->30.     set ikev2-profile <ikev2profile>
->31.     !
+- 詳細タブ
+\> 詳細設定
+VPN ポリシーの適用先：Alibaba Cloudへ向かうInterfaceを指定します。
+  ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/sw-005.png)
 
--  Tunnelインターフェイスの設定
-
->1.     interface Tunnel <Number>
->2.     ip unnumbered <お客様ルーターのWANインターフェイス>
->3.     ip virtual-reassembly in
->4.      tunnel source <お客様ルーターのグローバルIPアドレス>
->5.      tunnel mode ipsec ipv4
->6.      tunnel destination <VPN GatewayのグローバルIPアドレス>
->7.      tunnel protection ipsec profile <ipsecprofile>
-
--  経路設定
-
->1.     ip route 192.168.0.0 255.255.255.0 Tunnel <Number>
-
-  ***注意:*** *ルーティング、ポリシー等の項目についても運用方針に沿ってCiscoルーター側を設定する必要があります。ステップ１でVPN Gatewayのヘルスチェックを利用する場合は送信元IPからのICMPパケットをCiscoルーター側で許可する必要があります。*
+  ***注意:*** *ルーティング、ポリシー等の項目についても運用方針に沿ってSonicWALL側を設定する必要があります。ステップ１でVPN Gatewayのヘルスチェックを利用する場合は送信元IPからのICMPパケットをSonicWALL側で許可する必要があります。*
 
 ### ステップ 3：ステータス確認
 
-Cisco ルーターの設定が完了し、接続が成功すれば、接続ステータスが「成功」、ヘルスチェックステータスが「正常」に変わります。
+SonicWALLの設定が完了し、接続が成功すれば、接続ステータスが「成功」、ヘルスチェックステータスが「正常」に変わります。
   ![img](https://raw.githubusercontent.com/sbcloud/help/master/content/best-practice/network/imgs/cm-006.png)
 
 ### ステップ4：接続のテスト
